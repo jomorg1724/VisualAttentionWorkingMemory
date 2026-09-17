@@ -66,14 +66,14 @@
 \begin{document}
 \maketitle
 \begin{abstract}
-We describe the Kimi Delta Attention (KDA) accumulator as used inside a convolutional encoder in this project, derive its update rule from first principles as a per-location associative memory with learned decay and error-correcting writes, and explain, with equations and shapes, why it solves the cued-orientation retention tasks on which a plain CNN+GRU baseline falls short. On the five-task spatial battery's orientation family the KDA arm passes a from-scratch gate, learns the cued comparison by curriculum, and holds balanced accuracy 0.994 to 1.000 at retention delays of 4, 12 and 24 blank frames on two seeds, where the plain baseline reaches 0.85 to 0.88. We then set out two analysis programmes for the KDA model: an attention analysis that recovers the implicit attention weights and gate maps the recurrence induces, and a psychometric analysis that measures thresholds, slopes and forgetting functions the way one would for an observer. The paper is written to teach: every quantity is given with its dimensions, and every claim is tied to a measurement in the repository or marked as a hypothesis.
+We describe the Kimi Delta Attention (KDA) accumulator as used inside a convolutional encoder in this project, derive its update rule from first principles as a per-location associative memory with learned decay and error-correcting writes, and explain, with equations and shapes, why it solves the cued-orientation retention tasks on which a plain CNN+GRU baseline falls short. On the five-task spatial battery's orientation family the KDA arm passes a from-scratch gate, learns the cued comparison by curriculum, and holds balanced accuracy 0.994 to 1.000 at retention delays of 4, 12 and 24 blank frames on two seeds, where the plain baseline reaches 0.85 to 0.88. We then set out two analysis programmes for the KDA model and report their first results on a local re-run: an attention analysis that recovers the implicit attention weights and gate maps the recurrence induces (the memory is necessary at every delay; writes fall and retention rises on blanks; the probe attends to the samples and to nothing in between; a linear read of the state recovers the sample angle at R² 0.99 through 24 blanks), and a psychometric analysis that measures the model as an observer (threshold 2.2 to 2.9 degrees at every delay after training on 15 to 45; no forgetting out to 48 blanks; no distractor interference; sensitivity only to the cue's contrast and position). The paper is written to teach: every quantity is given with its dimensions, and every claim is tied to a measurement in the repository or marked as a hypothesis.
 \end{abstract}
 
 \section{1. Introduction}\label{introduction}
 
 The project's benchmark is a five-task battery of 100×100 image sequences (orientation change at a cued location with a signed report, spatial binding with a retrocue, cued motion-duration integration, cued motion-change detection after Krauzlis, and image recognition). Each trial gives one label per episode of 4 to 45 frames. In September 2026 an audit established that every task is recoverable from pixels by a fixed observer (experiment 25), that the training recipe used by the previous model lineage collapses any architecture to a constant output within 150 updates (experiment 26), and that a plain per-frame CNN followed by a GRU can learn the cued orientation task at zero delay only by curriculum and cannot hold the cued angle across blank frames without a further curriculum, reaching 0.85 to 0.88 even then (experiments 26 and 27).
 
-Experiment 27 asked one question: does putting a recurrent state \emph{inside} the convolutional stack, at each spatial location and scale, change this? Three update rules were compared against the plain model with everything else identical. Two of them, a convolutional GRU and the spatial KDA accumulator, reached ceiling at every delay on both seeds. This paper is about the second. Section 2 gives the background a reader needs: linear attention as an associative memory, the delta rule, and gated decay. Section 3 gives the module exactly as implemented, with shapes. Section 4 explains why it works on these tasks, including a matrix-form derivation that shows the update is nonexpansive and the write is a projection. Section 5 records the measured results. Sections 6 and 7 describe the attention and psychometric analyses we propose to run on it. Section 8 is limitations.
+Experiment 27 asked one question: does putting a recurrent state \emph{inside} the convolutional stack, at each spatial location and scale, change this? Three update rules were compared against the plain model with everything else identical. Two of them, a convolutional GRU and the spatial KDA accumulator, reached ceiling at every delay on both seeds. This paper is about the second. Section 2 gives the background a reader needs: linear attention as an associative memory, the delta rule, and gated decay. Section 3 gives the module exactly as implemented, with shapes. Section 4 explains why it works on these tasks, including a matrix-form derivation that shows the update is nonexpansive and the write is a projection. Section 5 records the measured results. Sections 6 and 7 describe the attention and psychometric analyses, with first results from a local re-run in 6.7 and 7.4. Section 8 is limitations.
 
 Notation. Bold lower case for vectors, upper case for matrices, \(\sigma\) for the logistic function, \(\odot\) for elementwise product, \(\mathrm{Diag}(\mathbf{a})\) for the diagonal matrix with \(\mathbf{a}\) on the diagonal. A ``site'' is one spatial position of one feature map at one scale. Frames are indexed by \(t\).
 
@@ -318,6 +318,20 @@ The final answer is read by the GRU and head from the flattened deepest map. Com
 
 A per-model report with: gate-map figures at D0/4/12/24; attention profiles; probe time courses; an intervention table; and a one-paragraph verdict per prediction in 4.2. The same code runs on the ConvGRU arm (gate maps and interventions only, since it has no key structure), which gives the comparison that the ablation in Section 8 needs.
 
+\subsection{6.7 First results (local KDA re-run, seed 1, final delay model)}\label{first-results-local-kda-re-run-seed-1-final-delay-model}
+
+\texttt{kda\_probe.py} was run on \texttt{runs/local\_kda\_program\_20260917/kda\_s1/delayC/terminal.pt} (test BA 1.000 at D0/4/12/24, the same as the pod run) with 128 trials per delay at the psychometric seed. Numbers are for the 25×25 scale unless stated; the two coarser scales behave the same way with weaker probes.
+
+\emph{Interventions.} Resetting the state before the probe gives BA 0.48, 0.52, 0.52 and 0.52 at D0, D4, D12 and D24: the memory is necessary at every delay, including D0, where the three-frame stack would in principle allow a direct comparison. Clamping \(\beta=0\) on every blank, or \(\boldsymbol\alpha=1\) on every blank, leaves BA at 1.000 at all delays: nothing written during blanks is used, and the learned retention is already as good as perfect retention.
+
+\emph{Gates.} Mean write strength \(\beta\) at Gabor sites is 0.77 on sample frames, 0.52 on blanks (0.58 at D4, 0.52 at D24) and 0.75 at the probe; on background sites it is 0.54 throughout. Mean retention \(\bar\alpha\) at Gabor sites is 0.94 on stimulus frames and 0.96 on blanks. So the network learned to write less and retain more when the input is gray, as Section 4.2 predicted, and it did so with no site-specific tuning at initialisation. The gates at cued and uncued Gabor sites are identical to two decimals: the memory writes every Gabor, and the cue is applied downstream by the readout, not by the write gate.
+
+\emph{Implicit attention.} The probe frame's attention weights \(|w_{t,\tau}|\) over the past, averaged over the cued Gabor sites, peak on the second sample frame (0.22 at D0, 0.18 at D4, 0.16 at D12, 0.13 at D24) and on the probe itself (0.13), and are 0.002 to 0.004 on every blank frame at D24. The memory's read at the probe is a read of the samples, not of the recent gray.
+
+\emph{State probe.} A linear regression from the state at the cued site to \((\cos2\theta,\sin2\theta)\) of the sample orientation, fit on half the trials and scored on the other half, gives \(R^2=0.99\) on every frame from the first sample through the 24th blank at the 25×25 scale (0.96 at 13×13, about 0.75 at 7×7). The angle is held losslessly, at the resolution of this probe, through the whole delay, and it is held at the finest scale.
+
+Together these say the module works as the derivation claimed: a site-local, key-addressed store written on stimulus frames, protected during blanks by high retention and a lowered write gate, and read at the probe by a query that lands on the sample entries. What it does not say is how the readout selects the cued site, which is the next probe (readout attribution, 6.5, and site swap, 6.4, were not run here).
+
 \section{7. Psychometric analysis for the KDA model}\label{psychometric-analysis-for-the-kda-model}
 
 Psychophysics treats the model as an observer and measures how performance depends on stimulus strength, delay and distraction. The generator already exposes the needed parameters; the plan is to sweep them on held-out trials, fit standard psychometric functions, and compare arms.
@@ -357,7 +371,38 @@ Per point: 512 fresh trials from a dedicated psychometric stream (a seed distinc
   Comparing KDA with ConvGRU and plain on the same curves turns ``1.000 versus 0.87'' into a description of \emph{how} they differ: precision, capacity or persistence.
 \end{itemize}
 
-\subsection{7.4 Relation to human data}\label{relation-to-human-data}
+\subsection{7.4 First results (local KDA re-run, seed 1, final delay model)}\label{first-results-local-kda-re-run-seed-1-final-delay-model-1}
+
+\texttt{psychometric.py} was run on the same checkpoint as 6.7, 512 trials per point at the psychometric seed, balanced accuracy with 95\% trial-bootstrap intervals (about ±0.02 at 0.9, ±0.04 at 0.75).
+
+\emph{Magnitude.} Trained only on 15°, 30° and 45°, the model reads much smaller rotations:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lllllll@{}}
+\toprule\noalign{}
+delay & 2.5° & 5° & 7.5° & 10° & 15° & threshold (75\%) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+D0 & 0.707 & 0.896 & 0.967 & 0.992 & 1.000 & 2.9° \\
+D4 & 0.750 & 0.963 & 1.000 & 1.000 & 1.000 & 2.5° \\
+D12 & 0.762 & 0.953 & 1.000 & 1.000 & 1.000 & 2.4° \\
+D24 & 0.779 & 0.947 & 0.996 & 1.000 & 1.000 & 2.2° \\
+\end{longtable}
+}
+
+The threshold does not rise with delay; if anything it is lowest at D24. Whatever precision the memory stores at the samples, it keeps through 24 blanks. The fitted lapse is 0.000 at every delay.
+
+\emph{Forgetting function.} At 15°, BA is 1.000 at delays 0, 1, 2, 4, 8, 12, 16, 24, 32 and 48. The exponential fit is degenerate (asymptote 1.000). Trained to 24, the memory holds at 48; the learned retention is not tuned to the training delays.
+
+\emph{Cue reliability (D4).} BA falls from 1.000 at the trained glyph to 0.947 and 0.850 with 2 px and 4 px position jitter, to 0.895 at half contrast, 0.537 at quarter contrast, and 0.500 at a tenth. Jitter and contrast loss compound (0.602 at half contrast with 4 px jitter). This is the one variable the observer is sensitive to.
+
+\emph{Distraction (D12).} BA is 0.994 with no uncued Gabors and 1.000 with one, two or three, whether they rotate as in the real task or all by the target's magnitude. The memory does not suffer interference from the other locations.
+
+\emph{Reading.} The three memory-side measurements (precision, persistence, distraction) all say the same thing as the probes in 6.7: the stored representation is precise, held without loss and site-local. The only fragility is the cue. Where the plain model's limit was retention, this model's limit is cue detection and the readout's use of it, which moves the next architectural question from memory to attention: how the cue selects a site and how robust that selection is to cue appearance. That question is the one the project's attention components were built for, and it can now be asked against a baseline whose memory is not the bottleneck.
+
+\subsection{7.5 Relation to human data}\label{relation-to-human-data}
 
 The battery's parameters were chosen to be human-plausible, and the Krauzlis task follows a published paradigm. Where human thresholds exist for orientation change detection and delayed orientation matching, the model's thresholds and forgetting function can be placed beside them. This is a comparison of shapes, not a claim of fit; the model has no reaction time and no lapse from inattention other than what its lapse parameter absorbs.
 
@@ -372,9 +417,9 @@ The battery's parameters were chosen to be human-plausible, and the Krauzlis tas
 \item
   The kda and convgru arms tie. An ablation is needed to separate gating from key-addressed storage: a per-site gated scalar memory (ConvGRU with 256 units), and KDA with \(\beta\) fixed to 1 or with the delta term removed (plain Hebbian write).
 \item
-  Delays were reached by a curriculum. Whether the kda arm learns D24 directly from the D0 model, without the D1/D2 and D2/D4 stages, is untested and matters for the claim that the memory is easy to learn.
+  Delays were reached by a curriculum. Whether the kda arm learns D24 directly from the D0 model, without the D1/D2 and D2/D4 stages, is untested and matters for the claim that the memory is easy to learn. (The psychometric results in 7.4 show that once learned the memory generalises to delays and magnitudes far outside training; they say nothing about how it was learned.)
 \item
-  The state was never inspected: the terminal weights of the pod runs were lost, so every claim in Section 4 about gates and keys is a hypothesis until the local re-run's checkpoints are analysed with Section 6's tools.
+  The pod runs' weights were lost; the state analysis in 6.7 is from a local re-run (seed 1) that reproduced the pod result. Site-swap and readout-attribution probes have not been run.
 \item
   The stack of three frames gives the first convolution direct access to adjacent-frame change. A per-frame version of the same encoder would show whether the accumulator can also do the D0 comparison on its own.
 \end{itemize}

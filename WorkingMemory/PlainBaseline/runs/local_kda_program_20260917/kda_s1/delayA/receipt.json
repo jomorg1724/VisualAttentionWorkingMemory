@@ -1,0 +1,210 @@
+{
+ "version": "plain_baseline_v1",
+ "task": "orientation_cued",
+ "cells": [
+  "orientation_cued_D0",
+  "orientation_cued_D1",
+  "orientation_cued_D2"
+ ],
+ "args": {
+  "task": "orientation_cued",
+  "out": "WorkingMemory\\PlainBaseline\\runs\\local_kda_program_20260917\\kda_s1\\delayA",
+  "episodes": 100000,
+  "batch": 64,
+  "chunk": 16,
+  "lr": 0.0001,
+  "seed": 1,
+  "cells": "D0,D1,D2",
+  "val_every": 200,
+  "val_n": 256,
+  "test_n": 512,
+  "profile": 0,
+  "device": "cuda",
+  "stack": 3,
+  "feature_norm": "none",
+  "workers": 2,
+  "encoder": "accum",
+  "accumulator": "kda",
+  "init": "WorkingMemory\\PlainBaseline\\runs\\local_kda_program_20260917\\kda_s1\\cued\\terminal.pt",
+  "center": true,
+  "zero_head": false
+ },
+ "params": 2747240,
+ "updates_planned": 1563,
+ "sources": {
+  "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\WorkingMemory\\SpatialTaskBattery\\stimuli.py": "16b7efd4575eba27b9a79329243dcce0da635008856687a9e62bda72b5ddeb37",
+  "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\WorkingMemory\\PlainBaseline\\baseline.py": "eaccf0ec5cee5eb7a11f4ff153cd317b2361fa657ba2e6ab0d2289fe9022b7c9"
+ },
+ "init": {
+  "path": "WorkingMemory\\PlainBaseline\\runs\\local_kda_program_20260917\\kda_s1\\cued\\terminal.pt",
+  "sha256": "19b4b4e2495fc48bcf7925fa7efc105d22529e33e25fcdb0409291219aea329b",
+  "parent_task": "orientation_cued",
+  "parent_step": 1563,
+  "parent_args": {
+   "task": "orientation_cued",
+   "out": "WorkingMemory\\PlainBaseline\\runs\\local_kda_program_20260917\\kda_s1\\cued",
+   "episodes": 100000,
+   "batch": 64,
+   "chunk": 16,
+   "lr": 0.0001,
+   "seed": 1,
+   "cells": "D0",
+   "val_every": 200,
+   "val_n": 256,
+   "test_n": 512,
+   "profile": 0,
+   "device": "cuda",
+   "stack": 3,
+   "feature_norm": "none",
+   "workers": 2,
+   "encoder": "accum",
+   "accumulator": "kda",
+   "init": "WorkingMemory\\PlainBaseline\\runs\\local_kda_program_20260917\\kda_s1\\ring\\terminal.pt",
+   "center": true,
+   "zero_head": false
+  },
+  "fresh_heads": []
+ },
+ "seeds": {
+  "train": 61973001,
+  "scheduler": 62973001,
+  "val": 63973001,
+  "test": 64973001
+ },
+ "model_seed": 1,
+ "started": "2026-09-17T12:26:55-0700",
+ "platform": {
+  "torch": "1.13.1+cu117",
+  "gpu": "NVIDIA GeForce RTX 3070 Laptop GPU"
+ },
+ "finished": "2026-09-17T12:36:17-0700",
+ "seconds": 562.5069661140442,
+ "updates_done": 1563,
+ "episodes": 100032,
+ "best_val": {
+  "mean_ba": 1.0,
+  "step": 400
+ },
+ "final": {
+  "best": {
+   "step": 400,
+   "test": {
+    "orientation_cued_D0": {
+     "n": 512,
+     "balanced_accuracy": 0.998046875,
+     "accuracy": 0.998046875,
+     "chance": 0.5,
+     "macro_ovr_auc": 1.0,
+     "confusion": [
+      [
+       255,
+       1
+      ],
+      [
+       0,
+       256
+      ]
+     ],
+     "loss": 0.006887536495923996
+    },
+    "orientation_cued_D1": {
+     "n": 512,
+     "balanced_accuracy": 0.998046875,
+     "accuracy": 0.998046875,
+     "chance": 0.5,
+     "macro_ovr_auc": 0.9999847412109375,
+     "confusion": [
+      [
+       255,
+       1
+      ],
+      [
+       0,
+       256
+      ]
+     ],
+     "loss": 0.009343496523797512
+    },
+    "orientation_cued_D2": {
+     "n": 512,
+     "balanced_accuracy": 0.998046875,
+     "accuracy": 0.998046875,
+     "chance": 0.5,
+     "macro_ovr_auc": 0.9999847412109375,
+     "confusion": [
+      [
+       256,
+       0
+      ],
+      [
+       1,
+       255
+      ]
+     ],
+     "loss": 0.004414263181388378
+    }
+   },
+   "sha256": "7a58e907748fcd4c3e42c67fc58ae8b8210913050d68612505b9bda3fbffa171"
+  },
+  "terminal": {
+   "step": 1563,
+   "test": {
+    "orientation_cued_D0": {
+     "n": 512,
+     "balanced_accuracy": 1.0,
+     "accuracy": 1.0,
+     "chance": 0.5,
+     "macro_ovr_auc": 1.0,
+     "confusion": [
+      [
+       256,
+       0
+      ],
+      [
+       0,
+       256
+      ]
+     ],
+     "loss": 0.00044335913844406605
+    },
+    "orientation_cued_D1": {
+     "n": 512,
+     "balanced_accuracy": 0.998046875,
+     "accuracy": 0.998046875,
+     "chance": 0.5,
+     "macro_ovr_auc": 0.999969482421875,
+     "confusion": [
+      [
+       255,
+       1
+      ],
+      [
+       0,
+       256
+      ]
+     ],
+     "loss": 0.006240783259272575
+    },
+    "orientation_cued_D2": {
+     "n": 512,
+     "balanced_accuracy": 1.0,
+     "accuracy": 1.0,
+     "chance": 0.5,
+     "macro_ovr_auc": 1.0,
+     "confusion": [
+      [
+       256,
+       0
+      ],
+      [
+       0,
+       256
+      ]
+     ],
+     "loss": 0.00046288970042951405
+    }
+   },
+   "sha256": "6d85e130f31e06e0c770808c0286f04e647c084c24ef98ed59094e11ca88310c"
+  }
+ }
+}

@@ -74,5 +74,63 @@
  "platform": {
   "torch": "1.13.1+cu117",
   "gpu": "NVIDIA GeForce RTX 3070 Laptop GPU"
+ },
+ "finished": "2026-09-17T12:26:51-0700",
+ "seconds": 446.85724329948425,
+ "updates_done": 1563,
+ "episodes": 100032,
+ "best_val": {
+  "mean_ba": 1.0,
+  "step": 600
+ },
+ "final": {
+  "best": {
+   "step": 600,
+   "test": {
+    "orientation_cued_D0": {
+     "n": 512,
+     "balanced_accuracy": 0.998046875,
+     "accuracy": 0.998046875,
+     "chance": 0.5,
+     "macro_ovr_auc": 0.9996490478515625,
+     "confusion": [
+      [
+       255,
+       1
+      ],
+      [
+       0,
+       256
+      ]
+     ],
+     "loss": 0.013523346744477749
+    }
+   },
+   "sha256": "953d1e7ae6111a6d139729d45d449268194192d7f88f5bd7f76df551e7de84f9"
+  },
+  "terminal": {
+   "step": 1563,
+   "test": {
+    "orientation_cued_D0": {
+     "n": 512,
+     "balanced_accuracy": 1.0,
+     "accuracy": 1.0,
+     "chance": 0.5,
+     "macro_ovr_auc": 1.0,
+     "confusion": [
+      [
+       256,
+       0
+      ],
+      [
+       0,
+       256
+      ]
+     ],
+     "loss": 0.0010262385476380587
+    }
+   },
+   "sha256": "19b4b4e2495fc48bcf7925fa7efc105d22529e33e25fcdb0409291219aea329b"
+  }
  }
 }

@@ -29,7 +29,220 @@
    },
    "params": 2747240,
    "init": null
+  },
+  "kda_s1/cued": {
+   "status": "completed",
+   "episodes": 100032,
+   "seconds": 446.85724329948425,
+   "test_terminal": {
+    "orientation_cued_D0": {
+     "ba": 1.0,
+     "auc": 1.0
+    }
+   },
+   "best_val": {
+    "mean_ba": 1.0,
+    "step": 600
+   },
+   "params": 2747240,
+   "init": {
+    "path": "WorkingMemory\\PlainBaseline\\runs\\local_kda_program_20260917\\kda_s1\\ring\\terminal.pt",
+    "sha256": "77dd216df8647cf1954e20f870e8609ad9e24f0145a93253d95f97ff23a60c04",
+    "parent_task": "orientation_ring",
+    "parent_step": 1563,
+    "parent_args": {
+     "task": "orientation_ring",
+     "out": "WorkingMemory\\PlainBaseline\\runs\\local_kda_program_20260917\\kda_s1\\ring",
+     "episodes": 100000,
+     "batch": 64,
+     "chunk": 16,
+     "lr": 0.0001,
+     "seed": 1,
+     "cells": "rung1",
+     "val_every": 200,
+     "val_n": 256,
+     "test_n": 512,
+     "profile": 0,
+     "device": "cuda",
+     "stack": 3,
+     "feature_norm": "none",
+     "workers": 2,
+     "encoder": "accum",
+     "accumulator": "kda",
+     "init": null,
+     "center": true,
+     "zero_head": false
+    },
+    "fresh_heads": []
+   }
+  },
+  "kda_s1/delayA": {
+   "status": "completed",
+   "episodes": 100032,
+   "seconds": 562.5069661140442,
+   "test_terminal": {
+    "orientation_cued_D0": {
+     "ba": 1.0,
+     "auc": 1.0
+    },
+    "orientation_cued_D1": {
+     "ba": 0.998046875,
+     "auc": 0.999969482421875
+    },
+    "orientation_cued_D2": {
+     "ba": 1.0,
+     "auc": 1.0
+    }
+   },
+   "best_val": {
+    "mean_ba": 1.0,
+    "step": 400
+   },
+   "params": 2747240,
+   "init": {
+    "path": "WorkingMemory\\PlainBaseline\\runs\\local_kda_program_20260917\\kda_s1\\cued\\terminal.pt",
+    "sha256": "19b4b4e2495fc48bcf7925fa7efc105d22529e33e25fcdb0409291219aea329b",
+    "parent_task": "orientation_cued",
+    "parent_step": 1563,
+    "parent_args": {
+     "task": "orientation_cued",
+     "out": "WorkingMemory\\PlainBaseline\\runs\\local_kda_program_20260917\\kda_s1\\cued",
+     "episodes": 100000,
+     "batch": 64,
+     "chunk": 16,
+     "lr": 0.0001,
+     "seed": 1,
+     "cells": "D0",
+     "val_every": 200,
+     "val_n": 256,
+     "test_n": 512,
+     "profile": 0,
+     "device": "cuda",
+     "stack": 3,
+     "feature_norm": "none",
+     "workers": 2,
+     "encoder": "accum",
+     "accumulator": "kda",
+     "init": "WorkingMemory\\PlainBaseline\\runs\\local_kda_program_20260917\\kda_s1\\ring\\terminal.pt",
+     "center": true,
+     "zero_head": false
+    },
+    "fresh_heads": []
+   }
+  },
+  "kda_s1/delayB": {
+   "status": "completed",
+   "episodes": 100032,
+   "seconds": 643.8204746246338,
+   "test_terminal": {
+    "orientation_cued_D0": {
+     "ba": 0.998046875,
+     "auc": 0.9980621337890625
+    },
+    "orientation_cued_D2": {
+     "ba": 0.998046875,
+     "auc": 1.0
+    },
+    "orientation_cued_D4": {
+     "ba": 0.99609375,
+     "auc": 0.9999847412109375
+    }
+   },
+   "best_val": {
+    "mean_ba": 1.0,
+    "step": 400
+   },
+   "params": 2747240,
+   "init": {
+    "path": "WorkingMemory\\PlainBaseline\\runs\\local_kda_program_20260917\\kda_s1\\delayA\\terminal.pt",
+    "sha256": "6d85e130f31e06e0c770808c0286f04e647c084c24ef98ed59094e11ca88310c",
+    "parent_task": "orientation_cued",
+    "parent_step": 1563,
+    "parent_args": {
+     "task": "orientation_cued",
+     "out": "WorkingMemory\\PlainBaseline\\runs\\local_kda_program_20260917\\kda_s1\\delayA",
+     "episodes": 100000,
+     "batch": 64,
+     "chunk": 16,
+     "lr": 0.0001,
+     "seed": 1,
+     "cells": "D0,D1,D2",
+     "val_every": 200,
+     "val_n": 256,
+     "test_n": 512,
+     "profile": 0,
+     "device": "cuda",
+     "stack": 3,
+     "feature_norm": "none",
+     "workers": 2,
+     "encoder": "accum",
+     "accumulator": "kda",
+     "init": "WorkingMemory\\PlainBaseline\\runs\\local_kda_program_20260917\\kda_s1\\cued\\terminal.pt",
+     "center": true,
+     "zero_head": false
+    },
+    "fresh_heads": []
+   }
+  },
+  "kda_s1/delayC": {
+   "status": "completed",
+   "episodes": 200000,
+   "seconds": 2885.9295556545258,
+   "test_terminal": {
+    "orientation_cued_D0": {
+     "ba": 1.0,
+     "auc": 1.0
+    },
+    "orientation_cued_D4": {
+     "ba": 1.0,
+     "auc": 1.0
+    },
+    "orientation_cued_D12": {
+     "ba": 1.0,
+     "auc": 1.0
+    },
+    "orientation_cued_D24": {
+     "ba": 1.0,
+     "auc": 1.0
+    }
+   },
+   "best_val": {
+    "mean_ba": 1.0,
+    "step": 200
+   },
+   "params": 2747240,
+   "init": {
+    "path": "WorkingMemory\\PlainBaseline\\runs\\local_kda_program_20260917\\kda_s1\\delayB\\terminal.pt",
+    "sha256": "1c41963059dfbe6612012c33de4d7ad537e210e4508b26ee52f6725651a9d6da",
+    "parent_task": "orientation_cued",
+    "parent_step": 1563,
+    "parent_args": {
+     "task": "orientation_cued",
+     "out": "WorkingMemory\\PlainBaseline\\runs\\local_kda_program_20260917\\kda_s1\\delayB",
+     "episodes": 100000,
+     "batch": 64,
+     "chunk": 16,
+     "lr": 0.0001,
+     "seed": 1,
+     "cells": "D0,D2,D4",
+     "val_every": 200,
+     "val_n": 256,
+     "test_n": 512,
+     "profile": 0,
+     "device": "cuda",
+     "stack": 3,
+     "feature_norm": "none",
+     "workers": 2,
+     "encoder": "accum",
+     "accumulator": "kda",
+     "init": "WorkingMemory\\PlainBaseline\\runs\\local_kda_program_20260917\\kda_s1\\delayA\\terminal.pt",
+     "center": true,
+     "zero_head": false
+    },
+    "fresh_heads": []
+   }
   }
  },
- "updated": "2026-09-17T12:19:21-0700"
+ "updated": "2026-09-17T13:35:14-0700",
+ "status": "completed"
 }
