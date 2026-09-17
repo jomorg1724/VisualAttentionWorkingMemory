@@ -1,0 +1,136 @@
+{
+ "version": "plain_baseline_v1",
+ "task": "orientation_cued",
+ "cells": [
+  "orientation_cued_D0"
+ ],
+ "args": {
+  "task": "orientation_cued",
+  "out": "/workspace/vawm_accum/results/lane1/convgru_s2/cued",
+  "episodes": 100000,
+  "batch": 64,
+  "chunk": 32,
+  "lr": 0.0001,
+  "seed": 2,
+  "cells": "D0",
+  "val_every": 200,
+  "val_n": 256,
+  "test_n": 512,
+  "profile": 0,
+  "device": "cuda",
+  "stack": 3,
+  "feature_norm": "none",
+  "workers": 3,
+  "encoder": "accum",
+  "accumulator": "convgru",
+  "init": "/workspace/vawm_accum/results/lane1/convgru_s2/ring/terminal.pt",
+  "center": true,
+  "zero_head": false
+ },
+ "params": 2839154,
+ "updates_planned": 1563,
+ "sources": {
+  "/workspace/vawm_accum/WorkingMemory/SpatialTaskBattery/stimuli.py": "16b7efd4575eba27b9a79329243dcce0da635008856687a9e62bda72b5ddeb37",
+  "/workspace/vawm_accum/WorkingMemory/PlainBaseline/baseline.py": "eaccf0ec5cee5eb7a11f4ff153cd317b2361fa657ba2e6ab0d2289fe9022b7c9"
+ },
+ "init": {
+  "path": "/workspace/vawm_accum/results/lane1/convgru_s2/ring/terminal.pt",
+  "sha256": "f00352770f69862e1a0cc2355d44b03da54012662ab6655cb8b957b5c7ba2661",
+  "parent_task": "orientation_ring",
+  "parent_step": 1563,
+  "parent_args": {
+   "task": "orientation_ring",
+   "out": "/workspace/vawm_accum/results/lane1/convgru_s2/ring",
+   "episodes": 100000,
+   "batch": 64,
+   "chunk": 32,
+   "lr": 0.0001,
+   "seed": 2,
+   "cells": "rung1",
+   "val_every": 200,
+   "val_n": 256,
+   "test_n": 512,
+   "profile": 0,
+   "device": "cuda",
+   "stack": 3,
+   "feature_norm": "none",
+   "workers": 3,
+   "encoder": "accum",
+   "accumulator": "convgru",
+   "init": null,
+   "center": true,
+   "zero_head": false
+  },
+  "fresh_heads": []
+ },
+ "seeds": {
+  "train": 61973001,
+  "scheduler": 62973001,
+  "val": 63973001,
+  "test": 64973001
+ },
+ "model_seed": 2,
+ "started": "2026-09-17T09:43:38+0000",
+ "platform": {
+  "torch": "1.13.1+cu117",
+  "gpu": "NVIDIA GeForce RTX 3090"
+ },
+ "finished": "2026-09-17T09:46:06+0000",
+ "seconds": 147.97100520133972,
+ "updates_done": 1563,
+ "episodes": 100032,
+ "best_val": {
+  "mean_ba": 1.0,
+  "step": 1200
+ },
+ "final": {
+  "best": {
+   "step": 1200,
+   "test": {
+    "orientation_cued_D0": {
+     "n": 512,
+     "balanced_accuracy": 0.99609375,
+     "accuracy": 0.99609375,
+     "chance": 0.5,
+     "macro_ovr_auc": 0.9999542236328125,
+     "confusion": [
+      [
+       255,
+       1
+      ],
+      [
+       1,
+       255
+      ]
+     ],
+     "loss": 0.008228261023759842
+    }
+   },
+   "sha256": "3a098bda5b01df17a6313c187b645dd8dc1b78c6259e15b874eccf1fa5c84df9"
+  },
+  "terminal": {
+   "step": 1563,
+   "test": {
+    "orientation_cued_D0": {
+     "n": 512,
+     "balanced_accuracy": 1.0,
+     "accuracy": 1.0,
+     "chance": 0.5,
+     "macro_ovr_auc": 1.0,
+     "confusion": [
+      [
+       256,
+       0
+      ],
+      [
+       0,
+       256
+      ]
+     ],
+     "loss": 0.004922851920127869
+    }
+   },
+   "sha256": "cf7ce34b2405e9e7e597e29d07fd95fd28757aea03d5bb82143efb4d7f5bcdc5"
+  }
+ }
+}

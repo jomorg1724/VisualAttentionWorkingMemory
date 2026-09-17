@@ -1,0 +1,247 @@
+{
+ "version": "plain_baseline_v1",
+ "task": "orientation_cued",
+ "cells": [
+  "orientation_cued_D0",
+  "orientation_cued_D4",
+  "orientation_cued_D12",
+  "orientation_cued_D24"
+ ],
+ "args": {
+  "task": "orientation_cued",
+  "out": "/workspace/vawm_accum/results/lane2/kda_s2/delayC",
+  "episodes": 200000,
+  "batch": 64,
+  "chunk": 32,
+  "lr": 0.0001,
+  "seed": 2,
+  "cells": "D0,D4,D12,D24",
+  "val_every": 200,
+  "val_n": 256,
+  "test_n": 512,
+  "profile": 0,
+  "device": "cuda",
+  "stack": 3,
+  "feature_norm": "none",
+  "workers": 3,
+  "encoder": "accum",
+  "accumulator": "kda",
+  "init": "/workspace/vawm_accum/results/lane2/kda_s2/delayB/terminal.pt",
+  "center": true,
+  "zero_head": false
+ },
+ "params": 2747240,
+ "updates_planned": 3125,
+ "sources": {
+  "/workspace/vawm_accum/WorkingMemory/SpatialTaskBattery/stimuli.py": "16b7efd4575eba27b9a79329243dcce0da635008856687a9e62bda72b5ddeb37",
+  "/workspace/vawm_accum/WorkingMemory/PlainBaseline/baseline.py": "eaccf0ec5cee5eb7a11f4ff153cd317b2361fa657ba2e6ab0d2289fe9022b7c9"
+ },
+ "init": {
+  "path": "/workspace/vawm_accum/results/lane2/kda_s2/delayB/terminal.pt",
+  "sha256": "3f767c19718863fe8a3ebdc4566c1242791ec318541af131e2446bfec6aa9a33",
+  "parent_task": "orientation_cued",
+  "parent_step": 1563,
+  "parent_args": {
+   "task": "orientation_cued",
+   "out": "/workspace/vawm_accum/results/lane2/kda_s2/delayB",
+   "episodes": 100000,
+   "batch": 64,
+   "chunk": 32,
+   "lr": 0.0001,
+   "seed": 2,
+   "cells": "D0,D2,D4",
+   "val_every": 200,
+   "val_n": 256,
+   "test_n": 512,
+   "profile": 0,
+   "device": "cuda",
+   "stack": 3,
+   "feature_norm": "none",
+   "workers": 3,
+   "encoder": "accum",
+   "accumulator": "kda",
+   "init": "/workspace/vawm_accum/results/lane2/kda_s2/delayA/terminal.pt",
+   "center": true,
+   "zero_head": false
+  },
+  "fresh_heads": []
+ },
+ "seeds": {
+  "train": 61973001,
+  "scheduler": 62973001,
+  "val": 63973001,
+  "test": 64973001
+ },
+ "model_seed": 2,
+ "started": "2026-09-17T10:34:22+0000",
+ "platform": {
+  "torch": "1.13.1+cu117",
+  "gpu": "NVIDIA GeForce RTX 3090"
+ },
+ "finished": "2026-09-17T10:46:14+0000",
+ "seconds": 711.7222104072571,
+ "updates_done": 3125,
+ "episodes": 200000,
+ "best_val": {
+  "mean_ba": 1.0,
+  "step": 400
+ },
+ "final": {
+  "best": {
+   "step": 400,
+   "test": {
+    "orientation_cued_D0": {
+     "n": 512,
+     "balanced_accuracy": 1.0,
+     "accuracy": 1.0,
+     "chance": 0.5,
+     "macro_ovr_auc": 1.0,
+     "confusion": [
+      [
+       256,
+       0
+      ],
+      [
+       0,
+       256
+      ]
+     ],
+     "loss": 3.610853309510276e-05
+    },
+    "orientation_cued_D4": {
+     "n": 512,
+     "balanced_accuracy": 1.0,
+     "accuracy": 1.0,
+     "chance": 0.5,
+     "macro_ovr_auc": 1.0,
+     "confusion": [
+      [
+       256,
+       0
+      ],
+      [
+       0,
+       256
+      ]
+     ],
+     "loss": 3.402488073334098e-05
+    },
+    "orientation_cued_D12": {
+     "n": 512,
+     "balanced_accuracy": 1.0,
+     "accuracy": 1.0,
+     "chance": 0.5,
+     "macro_ovr_auc": 1.0,
+     "confusion": [
+      [
+       256,
+       0
+      ],
+      [
+       0,
+       256
+      ]
+     ],
+     "loss": 3.469015791779384e-05
+    },
+    "orientation_cued_D24": {
+     "n": 512,
+     "balanced_accuracy": 1.0,
+     "accuracy": 1.0,
+     "chance": 0.5,
+     "macro_ovr_auc": 1.0,
+     "confusion": [
+      [
+       256,
+       0
+      ],
+      [
+       0,
+       256
+      ]
+     ],
+     "loss": 6.017768464516848e-05
+    }
+   },
+   "sha256": "c3d6033368d9271c640e5f60ee2c1ac7a626503bb7f742cb4b7fdbfb267ca071"
+  },
+  "terminal": {
+   "step": 3125,
+   "test": {
+    "orientation_cued_D0": {
+     "n": 512,
+     "balanced_accuracy": 1.0,
+     "accuracy": 1.0,
+     "chance": 0.5,
+     "macro_ovr_auc": 1.0,
+     "confusion": [
+      [
+       256,
+       0
+      ],
+      [
+       0,
+       256
+      ]
+     ],
+     "loss": 3.4956174204126e-05
+    },
+    "orientation_cued_D4": {
+     "n": 512,
+     "balanced_accuracy": 1.0,
+     "accuracy": 1.0,
+     "chance": 0.5,
+     "macro_ovr_auc": 1.0,
+     "confusion": [
+      [
+       256,
+       0
+      ],
+      [
+       0,
+       256
+      ]
+     ],
+     "loss": 2.6154322767979465e-05
+    },
+    "orientation_cued_D12": {
+     "n": 512,
+     "balanced_accuracy": 1.0,
+     "accuracy": 1.0,
+     "chance": 0.5,
+     "macro_ovr_auc": 1.0,
+     "confusion": [
+      [
+       256,
+       0
+      ],
+      [
+       0,
+       256
+      ]
+     ],
+     "loss": 2.666700675035827e-05
+    },
+    "orientation_cued_D24": {
+     "n": 512,
+     "balanced_accuracy": 1.0,
+     "accuracy": 1.0,
+     "chance": 0.5,
+     "macro_ovr_auc": 1.0,
+     "confusion": [
+      [
+       256,
+       0
+      ],
+      [
+       0,
+       256
+      ]
+     ],
+     "loss": 2.6510320822126232e-05
+    }
+   },
+   "sha256": "2021d8421d79eb8e58610efc697c09306d9d86bb860776123a75e87be3537e61"
+  }
+ }
+}

@@ -1,0 +1,175 @@
+{
+ "version": "plain_baseline_v1",
+ "task": "krauzlis_cued_motion",
+ "cells": [
+  "krauzlis_cued_motion_B12",
+  "krauzlis_cued_motion_B20",
+  "krauzlis_cued_motion_B28"
+ ],
+ "args": {
+  "task": "krauzlis_cued_motion",
+  "out": "WorkingMemory/PlainBaseline/runs/rung1_20260916_212434/krauzlis_cued_motion",
+  "episodes": 20000,
+  "batch": 64,
+  "chunk": 32,
+  "lr": 0.001,
+  "seed": 1,
+  "cells": "rung1",
+  "val_every": 100,
+  "val_n": 256,
+  "test_n": 512,
+  "profile": 0,
+  "device": "cuda",
+  "stack": 1,
+  "feature_norm": "none",
+  "workers": 0
+ },
+ "params": 2191404,
+ "updates_planned": 313,
+ "sources": {
+  "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\WorkingMemory\\SpatialTaskBattery\\stimuli.py": "16b7efd4575eba27b9a79329243dcce0da635008856687a9e62bda72b5ddeb37",
+  "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\WorkingMemory\\PlainBaseline\\baseline.py": "8bcc361cb11ae212152ed4f96cf5fc45676fe38646ea8b33fb6733af66f022b0"
+ },
+ "seeds": {
+  "train": 61973001,
+  "scheduler": 62973001,
+  "val": 63973001,
+  "test": 64973001
+ },
+ "model_seed": 1,
+ "started": "2026-09-16T22:01:25-0700",
+ "platform": {
+  "torch": "1.13.1+cu117",
+  "gpu": "NVIDIA GeForce RTX 3070 Laptop GPU"
+ },
+ "finished": "2026-09-16T22:29:37-0700",
+ "seconds": 1692.0618922710419,
+ "updates_done": 313,
+ "episodes": 20032,
+ "best_val": {
+  "mean_ba": 0.5,
+  "step": 100
+ },
+ "final": {
+  "best": {
+   "step": 100,
+   "test": {
+    "krauzlis_cued_motion_B12": {
+     "n": 512,
+     "balanced_accuracy": 0.5,
+     "accuracy": 0.576171875,
+     "chance": 0.5,
+     "macro_ovr_auc": 0.4939467312348668,
+     "confusion": [
+      [
+       0,
+       217
+      ],
+      [
+       0,
+       295
+      ]
+     ],
+     "loss": 0.6820836663246155
+    },
+    "krauzlis_cued_motion_B20": {
+     "n": 512,
+     "balanced_accuracy": 0.5,
+     "accuracy": 0.56640625,
+     "chance": 0.5,
+     "macro_ovr_auc": 0.5058403230817023,
+     "confusion": [
+      [
+       0,
+       222
+      ],
+      [
+       0,
+       290
+      ]
+     ],
+     "loss": 0.6843865513801575
+    },
+    "krauzlis_cued_motion_B28": {
+     "n": 512,
+     "balanced_accuracy": 0.5,
+     "accuracy": 0.564453125,
+     "chance": 0.5,
+     "macro_ovr_auc": 0.5146166617530684,
+     "confusion": [
+      [
+       0,
+       223
+      ],
+      [
+       0,
+       289
+      ]
+     ],
+     "loss": 0.6848480105400085
+    }
+   },
+   "sha256": "f4aa767ef038c8bfca6aafa6b456a909103d02a165d1b3e995c4fa83c8d28a65"
+  },
+  "terminal": {
+   "step": 313,
+   "test": {
+    "krauzlis_cued_motion_B12": {
+     "n": 512,
+     "balanced_accuracy": 0.5,
+     "accuracy": 0.576171875,
+     "chance": 0.5,
+     "macro_ovr_auc": 0.5222682183863157,
+     "confusion": [
+      [
+       0,
+       217
+      ],
+      [
+       0,
+       295
+      ]
+     ],
+     "loss": 0.6816338896751404
+    },
+    "krauzlis_cued_motion_B20": {
+     "n": 512,
+     "balanced_accuracy": 0.5,
+     "accuracy": 0.56640625,
+     "chance": 0.5,
+     "macro_ovr_auc": 0.5178782230506368,
+     "confusion": [
+      [
+       0,
+       222
+      ],
+      [
+       0,
+       290
+      ]
+     ],
+     "loss": 0.6848735213279724
+    },
+    "krauzlis_cued_motion_B28": {
+     "n": 512,
+     "balanced_accuracy": 0.5,
+     "accuracy": 0.564453125,
+     "chance": 0.5,
+     "macro_ovr_auc": 0.5343460517944978,
+     "confusion": [
+      [
+       0,
+       223
+      ],
+      [
+       0,
+       289
+      ]
+     ],
+     "loss": 0.6854687929153442
+    }
+   },
+   "sha256": "696ba536fd3b119fdc3f5ff882e8de78b7be415184e52d062e9289c52ea4d474"
+  }
+ }
+}

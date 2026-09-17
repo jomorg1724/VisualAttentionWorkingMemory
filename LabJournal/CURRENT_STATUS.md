@@ -5,6 +5,60 @@
 
 [Journal index](README.md) · [Chronology](CHRONOLOGY.md) · [Open questions](OPEN_QUESTIONS.md)
 
+**Updated 2026-09-17T12:10-07:00: experiment 27 is complete
+([page](experiments/27-accumulator-conv-stack.md)). On a RunPod 3090, with
+everything trainable from scratch and the same recipe, the conv stack with a
+gated spatial accumulator state after each scale (ConvGRU or KDA) passes the
+from-scratch gate, learns the real orientation task at D0 by curriculum, and
+is at ceiling (0.994-1.000) at D4, D12 and D24 on both seeds, where the plain
+CNN+GRU control reaches 0.85-0.88 and the opponent traces with learned
+retention are seed-dependent at D24 (0.55 / 1.00). This is the first
+component shown to beat a plain baseline under the rules. The pod is stopped
+and deleted (verified 404); results are local, terminal weights were not
+retrieved. Nothing is running. Next: the same program on the other four
+families with the ConvGRU model as the working baseline, then a
+gating-versus-placement ablation.**
+
+**Updated 2026-09-17T02:20-07:00: experiment 26 is complete for the
+orientation family ([page](experiments/26-plain-baseline-rung1.md)). The plain
+CNN + GRU learns every two-way rung from scratch (single Gabor, ring-cued,
+sign-glyph; all test BA 1.000 within 100k episodes) and not the three-way real
+task (chance after 544k episodes from scratch), but learns the real task at D0
+within 12.8k episodes from either two-way parent (test BA 0.998 and 1.000).
+Continuing that model on mixed delays keeps D0 at 0.996 and leaves D4/D12/D24
+at chance after 200k episodes: retention across blanks is a second, separate
+break. Nothing is training. Next: a delay ladder from the D0 model, then the
+same ladder for the other four families, then a second seed, before any
+architectural component. Uncommitted work: `WorkingMemory/BatteryAudit/`,
+`WorkingMemory/PlainBaseline/`, journal pages 25 and 26.**
+
+**Updated 2026-09-16T23:45-07:00: rung 1 of the ladder is running locally
+([experiment 26](experiments/26-plain-baseline-rung1.md)). A plain per-frame
+CNN + GRU with everything trainable collapses to a constant output within 150
+updates on all five tasks under the recipe as specified (Adam 1e-3, batch 64):
+the first Adam step makes the output input-independent, the same signature as
+the v2 lineage's checkpoint. Ten recipes (frame stacking, LayerNorm, centred
+input, zero head, lr 1e-3 to 3e-5) all leave the full orientation task at
+chance in 100k episodes. A difficulty ladder inside the orientation family
+locates the break: one uncued Gabor (rotation sign) and four Gabors with a ring
+cue (location x rotation) are both learned to BA 1.00 within 40k episodes by
+the centred stack-3 recipe at lr 1e-4; the real task adds the sign glyph
+(location x sign x rotation) and is not learned. In progress: the sign-only
+rung, and a 1M-episode run of the real task. Laptop GPU only; no cloud.**
+
+**Updated 2026-09-16T21:45-07:00: the handoff's section-4 audit is done
+([experiment 25](experiments/25-battery-audit.md),
+[WorkingMemory/BatteryAudit](../WorkingMemory/BatteryAudit/README.md)). Hand-coded
+observers reach BA 1.000 on orientation, binding and recognition, 0.954 on
+motion duration and AUC 0.999 on Krauzlis at D0 from the rendered frames alone,
+so the environments are not mis-specified. Streams are balanced, byte-exact on
+resume and identical across processes. One-step gradient diagnostics on the v2
+recipe show the clip at 1 scaling every update by 0.36 from step one, with
+orientation and Krauzlis taking two thirds of the gradient and motion 5%, and
+checkpoint 10240 producing input-invariant outputs with gradients below 0.003
+on three tasks. Next: the plain per-frame CNN + GRU baseline, one task at D0,
+on the laptop. Nothing is training locally or in the cloud.**
+
 **Updated 2026-09-16T08:20-07:00: the v2 overnight pod `vqpgk21cpi53b6` was
 user-stopped at step 10,621 / 424,840 episodes and deleted after complete
 verified retrieval (49 checkpoints, all logs, validations 800–10000). Every

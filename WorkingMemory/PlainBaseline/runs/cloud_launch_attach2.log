@@ -1,0 +1,27 @@
+﻿pod hy2m2tjf1awuhf
+uploaded
+python : Exception in thread Thread-11 (_readerthread):
+At line:1 char:372
++ ... ingMemory"; python -B WorkingMemory/PlainBaseline/cloud/launch.py --h ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Exception in th..._readerthread)::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Traceback (most recent call last):
+  File "C:\Python310\lib\threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "C:\Python310\lib\threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Python310\lib\subprocess.py", line 1497, in _readerthread
+    buffer.append(fh.read())
+  File "C:\Python310\lib\encodings\cp1252.py", line 23, in decode
+    return codecs.charmap_decode(input,self.errors,decoding_table)[0]
+UnicodeDecodeError: 'charmap' codec can't decode byte 0x81 in position 275: character maps to <undefined>
+Traceback (most recent call last):
+  File "C:\Users\jomor\Documents\VisualAttentionWorkingMemory\WorkingMemory\PlainBaseline\cloud\launch.py", line 94, 
+in <module>
+    if __name__=='__main__':main()
+  File "C:\Users\jomor\Documents\VisualAttentionWorkingMemory\WorkingMemory\PlainBaseline\cloud\launch.py", line 87, 
+in main
+    (run_root/'setup_output.log').write_text(setup.stdout+'\n--- stderr ---\n'+setup.stderr)
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'str'

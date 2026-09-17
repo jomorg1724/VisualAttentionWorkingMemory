@@ -1,0 +1,311 @@
+{
+ "tag": "scratch",
+ "step": 0,
+ "checkpoint": null,
+ "checkpoint_sha256": null,
+ "device": "cuda",
+ "batch_size": 8,
+ "clip": 1.0,
+ "params": 590015,
+ "params_per_module": {
+  "encoder": 266760,
+  "accumulators": 7488,
+  "attention": 27590,
+  "memory_input": 128,
+  "memory": 41216,
+  "readout": 166208,
+  "priority_readout": 75153,
+  "other": 5472
+ },
+ "optimizer_groups": [
+  {
+   "lr": 0.0003,
+   "weight_decay": 0.0001,
+   "params": 535264
+  },
+  {
+   "lr": 0.0003,
+   "weight_decay": 0.0,
+   "params": 54751
+  }
+ ],
+ "params_in_optimizer": 590015,
+ "cells": {
+  "orientation_cued": {
+   "delay": 0
+  },
+  "motion_duration_cued": {
+   "delay": 0
+  },
+  "krauzlis_cued_motion": {
+   "baseline_transitions": 20
+  },
+  "spatial_binding": {
+   "delay": 0
+  },
+  "image_recognition": {
+   "load": 4,
+   "probe_hold": 4
+  }
+ },
+ "per_task": {
+  "orientation_cued": {
+   "loss": 0.7738978266716003,
+   "chance_loss": 0.6931471805599453,
+   "frames": 4,
+   "grad_norm_scaled": 1.7136396169662476,
+   "grad_norm_unscaled": 8.568198204040527,
+   "per_module": {
+    "encoder": 0.17947705394787422,
+    "other": 0.0947619542881577,
+    "readout": 1.5373581862350774,
+    "accumulators": 0.08037476441786394,
+    "memory_input": 0.0036102786971743215,
+    "memory": 0.04240901481973627,
+    "attention": 0.056452542761256365,
+    "priority_readout": 0.7214153586203708
+   },
+   "seconds": 1.5830883979797363,
+   "logit_spread": 0.018687542527914047,
+   "pred_counts": [
+    0,
+    8
+   ],
+   "share_of_sum_cosine": 0.5792381167411804,
+   "projection_onto_sum_fraction": 0.3562467396259308
+  },
+  "motion_duration_cued": {
+   "loss": 1.4045307636260986,
+   "chance_loss": 1.3862943611198906,
+   "frames": 11,
+   "grad_norm_scaled": 0.49087002873420715,
+   "grad_norm_unscaled": 2.454350233078003,
+   "per_module": {
+    "encoder": 0.17327548186673306,
+    "other": 0.05953033013736839,
+    "readout": 0.39182872608623043,
+    "accumulators": 0.040700411256067,
+    "memory_input": 0.0018137213545176413,
+    "memory": 0.020887022106430238,
+    "attention": 0.021120424175314966,
+    "priority_readout": 0.22652420868613163
+   },
+   "seconds": 0.5669782161712646,
+   "logit_spread": 0.004878256935626268,
+   "pred_counts": [
+    8,
+    0,
+    0,
+    0
+   ],
+   "share_of_sum_cosine": 0.2725011110305786,
+   "projection_onto_sum_fraction": 0.048007503151893616
+  },
+  "krauzlis_cued_motion": {
+   "loss": 0.7702342867851257,
+   "chance_loss": 0.6931471805599453,
+   "frames": 37,
+   "grad_norm_scaled": 1.5513114929199219,
+   "grad_norm_unscaled": 7.756557464599609,
+   "per_module": {
+    "encoder": 0.4064740731715848,
+    "other": 0.1452721241186973,
+    "readout": 1.255738811379841,
+    "accumulators": 0.11225684834107287,
+    "memory_input": 0.005911926084705835,
+    "memory": 0.07803088381822718,
+    "attention": 0.08030405009370965,
+    "priority_readout": 0.7862492985333502
+   },
+   "seconds": 1.8457849025726318,
+   "logit_spread": 0.0021695527248084545,
+   "pred_counts": [
+    8,
+    0
+   ],
+   "share_of_sum_cosine": 0.5770906805992126,
+   "projection_onto_sum_fraction": 0.32130494713783264
+  },
+  "spatial_binding": {
+   "loss": 0.705569326877594,
+   "chance_loss": 0.6931471805599453,
+   "frames": 5,
+   "grad_norm_scaled": 0.8817431926727295,
+   "grad_norm_unscaled": 4.408716201782227,
+   "per_module": {
+    "encoder": 0.11993888328170978,
+    "other": 0.04945709858698225,
+    "readout": 0.8048788695140473,
+    "accumulators": 0.041989281456425075,
+    "memory_input": 0.001979912462522536,
+    "memory": 0.025041715871519977,
+    "attention": 0.030346067280967937,
+    "priority_readout": 0.33090001358315624
+   },
+   "seconds": 0.25691676139831543,
+   "logit_spread": 0.015306379646062851,
+   "pred_counts": [
+    0,
+    8
+   ],
+   "share_of_sum_cosine": 0.6189190149307251,
+   "projection_onto_sum_fraction": 0.1958620250225067
+  },
+  "image_recognition": {
+   "loss": 0.692650556564331,
+   "chance_loss": 0.6931471805599453,
+   "frames": 12,
+   "grad_norm_scaled": 0.5568506121635437,
+   "grad_norm_unscaled": 2.7842531204223633,
+   "per_module": {
+    "encoder": 0.14174605553746045,
+    "other": 0.06014670856500804,
+    "readout": 0.4685973881695017,
+    "accumulators": 0.039441472408882086,
+    "memory_input": 0.0020652592401574315,
+    "memory": 0.027025937540238232,
+    "attention": 0.02471153931080796,
+    "priority_readout": 0.25276187095546915
+   },
+   "seconds": 0.587975263595581,
+   "logit_spread": 0.04180283844470978,
+   "pred_counts": [
+    0,
+    8
+   ],
+   "share_of_sum_cosine": 0.3931806683540344,
+   "projection_onto_sum_fraction": 0.07857876271009445
+  }
+ },
+ "summed_gradient": {
+  "norm": 2.786285877227783,
+  "clip_factor": 0.3589005885118873,
+  "effective_lr_scale_after_clip": 0.3589005885118873,
+  "pairwise_cosine": {
+   "orientation_cued|motion_duration_cued": -0.014732924290001392,
+   "orientation_cued|krauzlis_cued_motion": -0.1630505621433258,
+   "orientation_cued|spatial_binding": 0.1424923986196518,
+   "orientation_cued|image_recognition": 0.06252264231443405,
+   "motion_duration_cued|krauzlis_cued_motion": 0.08871524035930634,
+   "motion_duration_cued|spatial_binding": 0.17545904219150543,
+   "motion_duration_cued|image_recognition": 0.0023490586318075657,
+   "krauzlis_cued_motion|spatial_binding": 0.24341996014118195,
+   "krauzlis_cued_motion|image_recognition": 0.13981612026691437,
+   "spatial_binding|image_recognition": 0.24210050702095032
+  }
+ },
+ "activation_checkpoint": {
+  "logits_max_abs_diff": 0.0,
+  "grad_max_abs_diff": 2.9802322387695312e-08,
+  "grad_rel_diff": 3.276036153465611e-08,
+  "bit_identical": false
+ },
+ "ei_blank_decay": {
+  "rate_norm_per_frame": [
+   15.029789924621582,
+   26.236570358276367,
+   34.66001510620117,
+   40.05490493774414,
+   44.842437744140625,
+   48.68552780151367,
+   51.66740798950195,
+   53.947906494140625,
+   55.678585052490234,
+   56.973365783691406,
+   57.89568328857422,
+   58.4686279296875,
+   58.72380447387695,
+   58.7364501953125,
+   58.60368728637695,
+   58.407554626464844,
+   58.19906997680664,
+   58.002933502197266,
+   57.827823638916016,
+   57.67457580566406,
+   57.540985107421875,
+   57.42409896850586,
+   57.3211669921875,
+   57.22988510131836,
+   57.14841079711914,
+   57.07526397705078,
+   57.00926971435547,
+   55.250022888183594
+  ],
+  "adaptation_norm_per_frame": [
+   0.0,
+   0.6224358081817627,
+   1.6707143783569336,
+   3.015192747116089,
+   4.497563362121582,
+   6.053091526031494,
+   7.645240783691406,
+   9.244532585144043,
+   10.828023910522461,
+   12.378475189208984,
+   13.88249683380127,
+   15.328447341918945,
+   16.70543670654297,
+   18.005088806152344,
+   19.224409103393555,
+   20.366262435913086,
+   21.4373779296875,
+   22.445810317993164,
+   23.39931869506836,
+   24.304676055908203,
+   25.16753387451172,
+   25.992511749267578,
+   26.78338050842285,
+   27.54323387145996,
+   28.274642944335938,
+   28.979764938354492,
+   29.66043472290039,
+   30.318235397338867
+  ],
+  "inactive_fraction_per_frame": [
+   0.47048354148864746,
+   0.34885817766189575,
+   0.2986547648906708,
+   0.2709874212741852,
+   0.26719674468040466,
+   0.265625,
+   0.2647235691547394,
+   0.26437684893608093,
+   0.26398390531539917,
+   0.2634985148906708,
+   0.2628282308578491,
+   0.26174187660217285,
+   0.2609791159629822,
+   0.2605861723423004,
+   0.2602625787258148,
+   0.26019322872161865,
+   0.2602625787258148,
+   0.2604937255382538,
+   0.260909765958786,
+   0.26148760318756104,
+   0.2621347904205322,
+   0.26319804787635803,
+   0.2646079957485199,
+   0.2669193744659424,
+   0.2700166404247284,
+   0.2737610936164856,
+   0.27940088510513306,
+   0.267913281917572
+  ],
+  "rate_norm_ratio_last_blank_over_last_sample": 1.644813758438198,
+  "tau_r": {
+   "min": 2.0,
+   "median": 3.9562318325042725,
+   "max": 8.0
+  },
+  "tau_a": {
+   "min": 16.000003814697266,
+   "median": 31.64986228942871,
+   "max": 64.00000762939453
+  },
+  "passive_decay_24_frames_at_median_tau_r": 0.0023195582907646894,
+  "fixed_trace_decay_24_frames": {
+   "fast": 3.552713678800501e-15,
+   "slow": 0.0010033912775533338
+  }
+ }
+}

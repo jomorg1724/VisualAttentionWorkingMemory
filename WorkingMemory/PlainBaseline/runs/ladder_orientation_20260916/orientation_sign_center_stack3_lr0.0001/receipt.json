@@ -1,0 +1,103 @@
+{
+ "version": "plain_baseline_v1",
+ "task": "orientation_sign",
+ "cells": [
+  "orientation_sign_D0"
+ ],
+ "args": {
+  "task": "orientation_sign",
+  "out": "WorkingMemory/PlainBaseline/runs/ladder_orientation_20260916/orientation_sign_center_stack3_lr0.0001",
+  "episodes": 100000,
+  "batch": 64,
+  "chunk": 32,
+  "lr": 0.0001,
+  "seed": 1,
+  "cells": "rung1",
+  "val_every": 200,
+  "val_n": 256,
+  "test_n": 512,
+  "profile": 0,
+  "device": "cuda",
+  "stack": 3,
+  "feature_norm": "none",
+  "workers": 2,
+  "center": true,
+  "zero_head": false
+ },
+ "params": 2197746,
+ "updates_planned": 1563,
+ "sources": {
+  "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\WorkingMemory\\SpatialTaskBattery\\stimuli.py": "16b7efd4575eba27b9a79329243dcce0da635008856687a9e62bda72b5ddeb37",
+  "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\WorkingMemory\\PlainBaseline\\baseline.py": "7801869bd07b041fd06db02f9b23855e142f72eaa061b4b5e84a80e98b2b57a6"
+ },
+ "seeds": {
+  "train": 61973001,
+  "scheduler": 62973001,
+  "val": 63973001,
+  "test": 64973001
+ },
+ "model_seed": 1,
+ "started": "2026-09-16T23:22:20-0700",
+ "platform": {
+  "torch": "1.13.1+cu117",
+  "gpu": "NVIDIA GeForce RTX 3070 Laptop GPU"
+ },
+ "finished": "2026-09-16T23:25:40-0700",
+ "seconds": 200.57152891159058,
+ "updates_done": 1563,
+ "episodes": 100032,
+ "best_val": {
+  "mean_ba": 1.0,
+  "step": 1200
+ },
+ "final": {
+  "best": {
+   "step": 1200,
+   "test": {
+    "orientation_sign_D0": {
+     "n": 512,
+     "balanced_accuracy": 0.994140625,
+     "accuracy": 0.994140625,
+     "chance": 0.5,
+     "macro_ovr_auc": 1.0,
+     "confusion": [
+      [
+       256,
+       0
+      ],
+      [
+       3,
+       253
+      ]
+     ],
+     "loss": 0.008979170583188534
+    }
+   },
+   "sha256": "2d6ba910841b8bd42fc0d9d9c6d76874665c89ea2d698724afcec0a9a01bfaf9"
+  },
+  "terminal": {
+   "step": 1563,
+   "test": {
+    "orientation_sign_D0": {
+     "n": 512,
+     "balanced_accuracy": 1.0,
+     "accuracy": 1.0,
+     "chance": 0.5,
+     "macro_ovr_auc": 1.0,
+     "confusion": [
+      [
+       256,
+       0
+      ],
+      [
+       0,
+       256
+      ]
+     ],
+     "loss": 0.0003293190966360271
+    }
+   },
+   "sha256": "e41945d2b48e2b95afd9215483e371bfa80a34392e5c4f4d43bfea129c42742c"
+  }
+ }
+}

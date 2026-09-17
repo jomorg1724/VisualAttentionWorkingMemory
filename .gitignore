@@ -17,3 +17,9 @@ parent_predictions.jsonl
 priority_maps*.jsonl
 **/aggregate_snapshots/
 **/PreAttentiveVision/data/
+
+# Cloud run scratch: source bundles are copies of versioned files; archives and pulled tarballs are large
+WorkingMemory/PlainBaseline/runs/*/bundle/
+WorkingMemory/PlainBaseline/runs/*/bundle.tar.gz
+WorkingMemory/PlainBaseline/runs/*/*.tar.gz
+WorkingMemory/PlainBaseline/runs/*/known_hosts

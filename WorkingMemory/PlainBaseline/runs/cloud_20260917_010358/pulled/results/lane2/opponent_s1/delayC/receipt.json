@@ -1,0 +1,247 @@
+{
+ "version": "plain_baseline_v1",
+ "task": "orientation_cued",
+ "cells": [
+  "orientation_cued_D0",
+  "orientation_cued_D4",
+  "orientation_cued_D12",
+  "orientation_cued_D24"
+ ],
+ "args": {
+  "task": "orientation_cued",
+  "out": "/workspace/vawm_accum/results/lane2/opponent_s1/delayC",
+  "episodes": 200000,
+  "batch": 64,
+  "chunk": 32,
+  "lr": 0.0001,
+  "seed": 1,
+  "cells": "D0,D4,D12,D24",
+  "val_every": 200,
+  "val_n": 256,
+  "test_n": 512,
+  "profile": 0,
+  "device": "cuda",
+  "stack": 3,
+  "feature_norm": "none",
+  "workers": 3,
+  "encoder": "accum",
+  "accumulator": "opponent",
+  "init": "/workspace/vawm_accum/results/lane2/opponent_s1/delayB/terminal.pt",
+  "center": true,
+  "zero_head": false
+ },
+ "params": 2680178,
+ "updates_planned": 3125,
+ "sources": {
+  "/workspace/vawm_accum/WorkingMemory/SpatialTaskBattery/stimuli.py": "16b7efd4575eba27b9a79329243dcce0da635008856687a9e62bda72b5ddeb37",
+  "/workspace/vawm_accum/WorkingMemory/PlainBaseline/baseline.py": "eaccf0ec5cee5eb7a11f4ff153cd317b2361fa657ba2e6ab0d2289fe9022b7c9"
+ },
+ "init": {
+  "path": "/workspace/vawm_accum/results/lane2/opponent_s1/delayB/terminal.pt",
+  "sha256": "c90f560281905c860a1cddcc7b9231498c8390cdcd75a08da25ca8849dfd53a7",
+  "parent_task": "orientation_cued",
+  "parent_step": 1563,
+  "parent_args": {
+   "task": "orientation_cued",
+   "out": "/workspace/vawm_accum/results/lane2/opponent_s1/delayB",
+   "episodes": 100000,
+   "batch": 64,
+   "chunk": 32,
+   "lr": 0.0001,
+   "seed": 1,
+   "cells": "D0,D2,D4",
+   "val_every": 200,
+   "val_n": 256,
+   "test_n": 512,
+   "profile": 0,
+   "device": "cuda",
+   "stack": 3,
+   "feature_norm": "none",
+   "workers": 3,
+   "encoder": "accum",
+   "accumulator": "opponent",
+   "init": "/workspace/vawm_accum/results/lane2/opponent_s1/delayA/terminal.pt",
+   "center": true,
+   "zero_head": false
+  },
+  "fresh_heads": []
+ },
+ "seeds": {
+  "train": 61973001,
+  "scheduler": 62973001,
+  "val": 63973001,
+  "test": 64973001
+ },
+ "model_seed": 1,
+ "started": "2026-09-17T08:57:42+0000",
+ "platform": {
+  "torch": "1.13.1+cu117",
+  "gpu": "NVIDIA GeForce RTX 3090"
+ },
+ "finished": "2026-09-17T09:19:56+0000",
+ "seconds": 1334.336338043213,
+ "updates_done": 3125,
+ "episodes": 200000,
+ "best_val": {
+  "mean_ba": 0.8828125,
+  "step": 3125
+ },
+ "final": {
+  "best": {
+   "step": 3125,
+   "test": {
+    "orientation_cued_D0": {
+     "n": 512,
+     "balanced_accuracy": 0.998046875,
+     "accuracy": 0.998046875,
+     "chance": 0.5,
+     "macro_ovr_auc": 1.0,
+     "confusion": [
+      [
+       255,
+       1
+      ],
+      [
+       0,
+       256
+      ]
+     ],
+     "loss": 0.0031261746771633625
+    },
+    "orientation_cued_D4": {
+     "n": 512,
+     "balanced_accuracy": 1.0,
+     "accuracy": 1.0,
+     "chance": 0.5,
+     "macro_ovr_auc": 1.0,
+     "confusion": [
+      [
+       256,
+       0
+      ],
+      [
+       0,
+       256
+      ]
+     ],
+     "loss": 0.0008123479783535004
+    },
+    "orientation_cued_D12": {
+     "n": 512,
+     "balanced_accuracy": 0.9921875,
+     "accuracy": 0.9921875,
+     "chance": 0.5,
+     "macro_ovr_auc": 0.9998321533203125,
+     "confusion": [
+      [
+       254,
+       2
+      ],
+      [
+       2,
+       254
+      ]
+     ],
+     "loss": 0.01534237153828144
+    },
+    "orientation_cued_D24": {
+     "n": 512,
+     "balanced_accuracy": 0.55078125,
+     "accuracy": 0.55078125,
+     "chance": 0.5,
+     "macro_ovr_auc": 0.5512542724609375,
+     "confusion": [
+      [
+       171,
+       85
+      ],
+      [
+       145,
+       111
+      ]
+     ],
+     "loss": 0.6905390024185181
+    }
+   },
+   "sha256": "a36f2b3680b64cf128d8a3fe89b90e593d60612c2463598e1da41f7586783369"
+  },
+  "terminal": {
+   "step": 3125,
+   "test": {
+    "orientation_cued_D0": {
+     "n": 512,
+     "balanced_accuracy": 0.998046875,
+     "accuracy": 0.998046875,
+     "chance": 0.5,
+     "macro_ovr_auc": 1.0,
+     "confusion": [
+      [
+       255,
+       1
+      ],
+      [
+       0,
+       256
+      ]
+     ],
+     "loss": 0.0031261746771633625
+    },
+    "orientation_cued_D4": {
+     "n": 512,
+     "balanced_accuracy": 1.0,
+     "accuracy": 1.0,
+     "chance": 0.5,
+     "macro_ovr_auc": 1.0,
+     "confusion": [
+      [
+       256,
+       0
+      ],
+      [
+       0,
+       256
+      ]
+     ],
+     "loss": 0.0008123479783535004
+    },
+    "orientation_cued_D12": {
+     "n": 512,
+     "balanced_accuracy": 0.9921875,
+     "accuracy": 0.9921875,
+     "chance": 0.5,
+     "macro_ovr_auc": 0.9998321533203125,
+     "confusion": [
+      [
+       254,
+       2
+      ],
+      [
+       2,
+       254
+      ]
+     ],
+     "loss": 0.01534237153828144
+    },
+    "orientation_cued_D24": {
+     "n": 512,
+     "balanced_accuracy": 0.55078125,
+     "accuracy": 0.55078125,
+     "chance": 0.5,
+     "macro_ovr_auc": 0.5512542724609375,
+     "confusion": [
+      [
+       171,
+       85
+      ],
+      [
+       145,
+       111
+      ]
+     ],
+     "loss": 0.6905390024185181
+    }
+   },
+   "sha256": "c88fd075be074c91442b424f557f0800ecb65348afb9b54bb15046cdb1ea2960"
+  }
+ }
+}

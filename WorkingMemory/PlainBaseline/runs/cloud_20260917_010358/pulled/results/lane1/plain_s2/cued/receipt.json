@@ -1,0 +1,136 @@
+{
+ "version": "plain_baseline_v1",
+ "task": "orientation_cued",
+ "cells": [
+  "orientation_cued_D0"
+ ],
+ "args": {
+  "task": "orientation_cued",
+  "out": "/workspace/vawm_accum/results/lane1/plain_s2/cued",
+  "episodes": 100000,
+  "batch": 64,
+  "chunk": 32,
+  "lr": 0.0001,
+  "seed": 2,
+  "cells": "D0",
+  "val_every": 200,
+  "val_n": 256,
+  "test_n": 512,
+  "profile": 0,
+  "device": "cuda",
+  "stack": 3,
+  "feature_norm": "none",
+  "workers": 3,
+  "encoder": "plain",
+  "accumulator": "convgru",
+  "init": "/workspace/vawm_accum/results/lane1/plain_s2/ring/terminal.pt",
+  "center": true,
+  "zero_head": false
+ },
+ "params": 2197746,
+ "updates_planned": 1563,
+ "sources": {
+  "/workspace/vawm_accum/WorkingMemory/SpatialTaskBattery/stimuli.py": "16b7efd4575eba27b9a79329243dcce0da635008856687a9e62bda72b5ddeb37",
+  "/workspace/vawm_accum/WorkingMemory/PlainBaseline/baseline.py": "eaccf0ec5cee5eb7a11f4ff153cd317b2361fa657ba2e6ab0d2289fe9022b7c9"
+ },
+ "init": {
+  "path": "/workspace/vawm_accum/results/lane1/plain_s2/ring/terminal.pt",
+  "sha256": "898d968a8181daea5a65c935c8eb4d4e758ddc37c807fcaee93af517342fc12e",
+  "parent_task": "orientation_ring",
+  "parent_step": 1563,
+  "parent_args": {
+   "task": "orientation_ring",
+   "out": "/workspace/vawm_accum/results/lane1/plain_s2/ring",
+   "episodes": 100000,
+   "batch": 64,
+   "chunk": 32,
+   "lr": 0.0001,
+   "seed": 2,
+   "cells": "rung1",
+   "val_every": 200,
+   "val_n": 256,
+   "test_n": 512,
+   "profile": 0,
+   "device": "cuda",
+   "stack": 3,
+   "feature_norm": "none",
+   "workers": 3,
+   "encoder": "plain",
+   "accumulator": "convgru",
+   "init": null,
+   "center": true,
+   "zero_head": false
+  },
+  "fresh_heads": []
+ },
+ "seeds": {
+  "train": 61973001,
+  "scheduler": 62973001,
+  "val": 63973001,
+  "test": 64973001
+ },
+ "model_seed": 2,
+ "started": "2026-09-17T08:59:52+0000",
+ "platform": {
+  "torch": "1.13.1+cu117",
+  "gpu": "NVIDIA GeForce RTX 3090"
+ },
+ "finished": "2026-09-17T09:01:46+0000",
+ "seconds": 114.0138304233551,
+ "updates_done": 1563,
+ "episodes": 100032,
+ "best_val": {
+  "mean_ba": 1.0,
+  "step": 1200
+ },
+ "final": {
+  "best": {
+   "step": 1200,
+   "test": {
+    "orientation_cued_D0": {
+     "n": 512,
+     "balanced_accuracy": 0.994140625,
+     "accuracy": 0.994140625,
+     "chance": 0.5,
+     "macro_ovr_auc": 0.999969482421875,
+     "confusion": [
+      [
+       255,
+       1
+      ],
+      [
+       2,
+       254
+      ]
+     ],
+     "loss": 0.010697174817323685
+    }
+   },
+   "sha256": "9971052b90dce7604631efbb071635d305f3da3b06da2d483f5484867f914ac4"
+  },
+  "terminal": {
+   "step": 1563,
+   "test": {
+    "orientation_cued_D0": {
+     "n": 512,
+     "balanced_accuracy": 0.986328125,
+     "accuracy": 0.986328125,
+     "chance": 0.5,
+     "macro_ovr_auc": 0.999755859375,
+     "confusion": [
+      [
+       252,
+       4
+      ],
+      [
+       3,
+       253
+      ]
+     ],
+     "loss": 0.025027375668287277
+    }
+   },
+   "sha256": "91b22f2d3452582078b62b6503d5676b22e2593c2d09998ca40934f7f81adc3e"
+  }
+ }
+}

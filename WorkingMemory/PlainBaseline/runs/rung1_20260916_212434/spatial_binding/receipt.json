@@ -1,0 +1,98 @@
+{
+ "version": "plain_baseline_v1",
+ "task": "spatial_binding",
+ "cells": [
+  "spatial_binding_D0"
+ ],
+ "args": {
+  "task": "spatial_binding",
+  "out": "WorkingMemory/PlainBaseline/runs/rung1_20260916_212434/spatial_binding",
+  "episodes": 20000,
+  "batch": 64,
+  "chunk": 32,
+  "lr": 0.001,
+  "seed": 1,
+  "cells": "rung1",
+  "val_every": 100,
+  "val_n": 256,
+  "test_n": 512,
+  "profile": 0,
+  "device": "cuda"
+ },
+ "params": 2191404,
+ "updates_planned": 313,
+ "sources": {
+  "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\WorkingMemory\\SpatialTaskBattery\\stimuli.py": "16b7efd4575eba27b9a79329243dcce0da635008856687a9e62bda72b5ddeb37",
+  "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\WorkingMemory\\PlainBaseline\\baseline.py": "a94dba2e36bf5f8968f34fe855c74dc63f4c1eb4650c585e827df011f30bdcdd"
+ },
+ "seeds": {
+  "train": 61973001,
+  "scheduler": 62973001,
+  "val": 63973001,
+  "test": 64973001
+ },
+ "model_seed": 1,
+ "started": "2026-09-16T21:47:17-0700",
+ "platform": {
+  "torch": "1.13.1+cu117",
+  "gpu": "NVIDIA GeForce RTX 3070 Laptop GPU"
+ },
+ "finished": "2026-09-16T21:52:00-0700",
+ "seconds": 283.1423890590668,
+ "updates_done": 313,
+ "episodes": 20032,
+ "best_val": {
+  "mean_ba": 0.515625,
+  "step": 313
+ },
+ "final": {
+  "best": {
+   "step": 313,
+   "test": {
+    "spatial_binding_D0": {
+     "n": 512,
+     "balanced_accuracy": 0.513671875,
+     "accuracy": 0.513671875,
+     "chance": 0.5,
+     "macro_ovr_auc": 0.501373291015625,
+     "confusion": [
+      [
+       39,
+       217
+      ],
+      [
+       32,
+       224
+      ]
+     ],
+     "loss": 0.6931478381156921
+    }
+   },
+   "sha256": "290eca747826d78b108f283e15ed78db92592566607b66a2d6206cd09e44487f"
+  },
+  "terminal": {
+   "step": 313,
+   "test": {
+    "spatial_binding_D0": {
+     "n": 512,
+     "balanced_accuracy": 0.513671875,
+     "accuracy": 0.513671875,
+     "chance": 0.5,
+     "macro_ovr_auc": 0.501373291015625,
+     "confusion": [
+      [
+       39,
+       217
+      ],
+      [
+       32,
+       224
+      ]
+     ],
+     "loss": 0.6931478381156921
+    }
+   },
+   "sha256": "12a4a3be285c28d8c54be51088b9164a53413300a009ee3103950bb7f9cb6ddb"
+  }
+ }
+}

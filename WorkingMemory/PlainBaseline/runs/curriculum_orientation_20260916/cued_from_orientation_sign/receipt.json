@@ -1,0 +1,130 @@
+{
+ "version": "plain_baseline_v1",
+ "task": "orientation_cued",
+ "cells": [
+  "orientation_cued_D0"
+ ],
+ "args": {
+  "task": "orientation_cued",
+  "out": "WorkingMemory/PlainBaseline/runs/curriculum_orientation_20260916/cued_from_orientation_sign",
+  "episodes": 100000,
+  "batch": 64,
+  "chunk": 32,
+  "lr": 0.0001,
+  "seed": 1,
+  "cells": "rung1",
+  "val_every": 200,
+  "val_n": 256,
+  "test_n": 512,
+  "profile": 0,
+  "device": "cuda",
+  "stack": 3,
+  "feature_norm": "none",
+  "workers": 2,
+  "init": "WorkingMemory/PlainBaseline/runs/ladder_orientation_20260916/orientation_sign_center_stack3_lr0.0001/terminal.pt",
+  "center": true,
+  "zero_head": false
+ },
+ "params": 2197746,
+ "updates_planned": 1563,
+ "sources": {
+  "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\WorkingMemory\\SpatialTaskBattery\\stimuli.py": "16b7efd4575eba27b9a79329243dcce0da635008856687a9e62bda72b5ddeb37",
+  "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\WorkingMemory\\PlainBaseline\\baseline.py": "3346e0cb22fc7ea95a73720d1f7ae6ae2b4645a2b83a69cd8dea31d75d90c26c"
+ },
+ "init": {
+  "path": "WorkingMemory/PlainBaseline/runs/ladder_orientation_20260916/orientation_sign_center_stack3_lr0.0001/terminal.pt",
+  "sha256": "e41945d2b48e2b95afd9215483e371bfa80a34392e5c4f4d43bfea129c42742c",
+  "parent_task": "orientation_sign",
+  "parent_step": 1563,
+  "parent_args": {
+   "task": "orientation_sign",
+   "out": "WorkingMemory/PlainBaseline/runs/ladder_orientation_20260916/orientation_sign_center_stack3_lr0.0001",
+   "episodes": 100000,
+   "batch": 64,
+   "chunk": 32,
+   "lr": 0.0001,
+   "seed": 1,
+   "cells": "rung1",
+   "val_every": 200,
+   "val_n": 256,
+   "test_n": 512,
+   "profile": 0,
+   "device": "cuda",
+   "stack": 3,
+   "feature_norm": "none",
+   "workers": 2,
+   "center": true,
+   "zero_head": false
+  }
+ },
+ "seeds": {
+  "train": 61973001,
+  "scheduler": 62973001,
+  "val": 63973001,
+  "test": 64973001
+ },
+ "model_seed": 1,
+ "started": "2026-09-16T23:26:18-0700",
+ "platform": {
+  "torch": "1.13.1+cu117",
+  "gpu": "NVIDIA GeForce RTX 3070 Laptop GPU"
+ },
+ "finished": "2026-09-16T23:33:24-0700",
+ "seconds": 426.3675055503845,
+ "updates_done": 1563,
+ "episodes": 100032,
+ "best_val": {
+  "mean_ba": 1.0,
+  "step": 1000
+ },
+ "final": {
+  "best": {
+   "step": 1000,
+   "test": {
+    "orientation_cued_D0": {
+     "n": 512,
+     "balanced_accuracy": 0.998046875,
+     "accuracy": 0.998046875,
+     "chance": 0.5,
+     "macro_ovr_auc": 1.0,
+     "confusion": [
+      [
+       256,
+       0
+      ],
+      [
+       1,
+       255
+      ]
+     ],
+     "loss": 0.008203507401049137
+    }
+   },
+   "sha256": "dde8b4ef995dbf0f54e7cb62a96c06193f456ff9d0c450f10c08bf16ea20bba1"
+  },
+  "terminal": {
+   "step": 1563,
+   "test": {
+    "orientation_cued_D0": {
+     "n": 512,
+     "balanced_accuracy": 0.998046875,
+     "accuracy": 0.998046875,
+     "chance": 0.5,
+     "macro_ovr_auc": 1.0,
+     "confusion": [
+      [
+       256,
+       0
+      ],
+      [
+       1,
+       255
+      ]
+     ],
+     "loss": 0.0039422158151865005
+    }
+   },
+   "sha256": "ced57a89666807accd58d3a698fad6a3317fdcc8df06d9d4d0f7e6b4a1bd07da"
+  }
+ }
+}

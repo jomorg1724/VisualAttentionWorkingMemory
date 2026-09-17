@@ -1,0 +1,101 @@
+{
+ "version": "plain_baseline_v1",
+ "task": "orientation_cued",
+ "cells": [
+  "orientation_cued_D0"
+ ],
+ "args": {
+  "task": "orientation_cued",
+  "out": "WorkingMemory/PlainBaseline/runs/sweep_orientation_lowlr_20260916/stack3_layernorm_lr0.0001",
+  "episodes": 100000,
+  "batch": 64,
+  "chunk": 32,
+  "lr": 0.0001,
+  "seed": 1,
+  "cells": "rung1",
+  "val_every": 200,
+  "val_n": 256,
+  "test_n": 512,
+  "profile": 0,
+  "device": "cuda",
+  "stack": 3,
+  "feature_norm": "layernorm",
+  "workers": 2
+ },
+ "params": 2196716,
+ "updates_planned": 1563,
+ "sources": {
+  "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\WorkingMemory\\SpatialTaskBattery\\stimuli.py": "16b7efd4575eba27b9a79329243dcce0da635008856687a9e62bda72b5ddeb37",
+  "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\WorkingMemory\\PlainBaseline\\baseline.py": "8bcc361cb11ae212152ed4f96cf5fc45676fe38646ea8b33fb6733af66f022b0"
+ },
+ "seeds": {
+  "train": 61973001,
+  "scheduler": 62973001,
+  "val": 63973001,
+  "test": 64973001
+ },
+ "model_seed": 1,
+ "started": "2026-09-16T21:53:39-0700",
+ "platform": {
+  "torch": "1.13.1+cu117",
+  "gpu": "NVIDIA GeForce RTX 3070 Laptop GPU"
+ },
+ "finished": "2026-09-16T22:02:28-0700",
+ "seconds": 529.1910865306854,
+ "updates_done": 1563,
+ "episodes": 100032,
+ "best_val": {
+  "mean_ba": 0.52734375,
+  "step": 1200
+ },
+ "final": {
+  "best": {
+   "step": 1200,
+   "test": {
+    "orientation_cued_D0": {
+     "n": 512,
+     "balanced_accuracy": 0.509765625,
+     "accuracy": 0.509765625,
+     "chance": 0.5,
+     "macro_ovr_auc": 0.5086669921875,
+     "confusion": [
+      [
+       143,
+       113
+      ],
+      [
+       138,
+       118
+      ]
+     ],
+     "loss": 0.6931387782096863
+    }
+   },
+   "sha256": "96fee3cc8bf202e998f5d4bb5ea277ff3f4001700ce9eb47dd7c8ee6ca4b3ade"
+  },
+  "terminal": {
+   "step": 1563,
+   "test": {
+    "orientation_cued_D0": {
+     "n": 512,
+     "balanced_accuracy": 0.4765625,
+     "accuracy": 0.4765625,
+     "chance": 0.5,
+     "macro_ovr_auc": 0.49749755859375,
+     "confusion": [
+      [
+       166,
+       90
+      ],
+      [
+       178,
+       78
+      ]
+     ],
+     "loss": 0.6931556463241577
+    }
+   },
+   "sha256": "59e6ca379743c4d239f5a319809db328d215fcebe59ea882a90f74f5184062a5"
+  }
+ }
+}

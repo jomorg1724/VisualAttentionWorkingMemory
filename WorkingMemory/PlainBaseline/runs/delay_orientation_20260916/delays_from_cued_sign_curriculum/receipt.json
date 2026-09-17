@@ -1,0 +1,243 @@
+{
+ "version": "plain_baseline_v1",
+ "task": "orientation_cued",
+ "cells": [
+  "orientation_cued_D0",
+  "orientation_cued_D4",
+  "orientation_cued_D12",
+  "orientation_cued_D24"
+ ],
+ "args": {
+  "task": "orientation_cued",
+  "out": "WorkingMemory/PlainBaseline/runs/delay_orientation_20260916/delays_from_cued_sign_curriculum",
+  "episodes": 200000,
+  "batch": 64,
+  "chunk": 32,
+  "lr": 0.0001,
+  "seed": 1,
+  "cells": "delay",
+  "val_every": 250,
+  "val_n": 256,
+  "test_n": 512,
+  "profile": 0,
+  "device": "cuda",
+  "stack": 3,
+  "feature_norm": "none",
+  "workers": 2,
+  "init": "WorkingMemory/PlainBaseline/runs/curriculum_orientation_20260916/cued_from_orientation_sign/terminal.pt",
+  "center": true,
+  "zero_head": false
+ },
+ "params": 2197746,
+ "updates_planned": 3125,
+ "sources": {
+  "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\WorkingMemory\\SpatialTaskBattery\\stimuli.py": "16b7efd4575eba27b9a79329243dcce0da635008856687a9e62bda72b5ddeb37",
+  "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\WorkingMemory\\PlainBaseline\\baseline.py": "7cfcd11710fefb76a4474c9450472e0d3ed9fc7ad09eee1de1f656c4e22fef28"
+ },
+ "init": {
+  "path": "WorkingMemory/PlainBaseline/runs/curriculum_orientation_20260916/cued_from_orientation_sign/terminal.pt",
+  "sha256": "ced57a89666807accd58d3a698fad6a3317fdcc8df06d9d4d0f7e6b4a1bd07da",
+  "parent_task": "orientation_cued",
+  "parent_step": 1563,
+  "parent_args": {
+   "task": "orientation_cued",
+   "out": "WorkingMemory/PlainBaseline/runs/curriculum_orientation_20260916/cued_from_orientation_sign",
+   "episodes": 100000,
+   "batch": 64,
+   "chunk": 32,
+   "lr": 0.0001,
+   "seed": 1,
+   "cells": "rung1",
+   "val_every": 200,
+   "val_n": 256,
+   "test_n": 512,
+   "profile": 0,
+   "device": "cuda",
+   "stack": 3,
+   "feature_norm": "none",
+   "workers": 2,
+   "init": "WorkingMemory/PlainBaseline/runs/ladder_orientation_20260916/orientation_sign_center_stack3_lr0.0001/terminal.pt",
+   "center": true,
+   "zero_head": false
+  },
+  "fresh_heads": []
+ },
+ "seeds": {
+  "train": 61973001,
+  "scheduler": 62973001,
+  "val": 63973001,
+  "test": 64973001
+ },
+ "model_seed": 1,
+ "started": "2026-09-16T23:44:59-0700",
+ "platform": {
+  "torch": "1.13.1+cu117",
+  "gpu": "NVIDIA GeForce RTX 3070 Laptop GPU"
+ },
+ "finished": "2026-09-17T00:30:51-0700",
+ "seconds": 2752.5099930763245,
+ "updates_done": 3125,
+ "episodes": 200000,
+ "best_val": {
+  "mean_ba": 0.64453125,
+  "step": 2000
+ },
+ "final": {
+  "best": {
+   "step": 2000,
+   "test": {
+    "orientation_cued_D0": {
+     "n": 512,
+     "balanced_accuracy": 0.998046875,
+     "accuracy": 0.998046875,
+     "chance": 0.5,
+     "macro_ovr_auc": 1.0,
+     "confusion": [
+      [
+       255,
+       1
+      ],
+      [
+       0,
+       256
+      ]
+     ],
+     "loss": 0.004804210737347603
+    },
+    "orientation_cued_D4": {
+     "n": 512,
+     "balanced_accuracy": 0.537109375,
+     "accuracy": 0.537109375,
+     "chance": 0.5,
+     "macro_ovr_auc": 0.5423507690429688,
+     "confusion": [
+      [
+       174,
+       82
+      ],
+      [
+       155,
+       101
+      ]
+     ],
+     "loss": 0.6905340552330017
+    },
+    "orientation_cued_D12": {
+     "n": 512,
+     "balanced_accuracy": 0.49609375,
+     "accuracy": 0.49609375,
+     "chance": 0.5,
+     "macro_ovr_auc": 0.5023345947265625,
+     "confusion": [
+      [
+       166,
+       90
+      ],
+      [
+       168,
+       88
+      ]
+     ],
+     "loss": 0.6947504281997681
+    },
+    "orientation_cued_D24": {
+     "n": 512,
+     "balanced_accuracy": 0.48046875,
+     "accuracy": 0.48046875,
+     "chance": 0.5,
+     "macro_ovr_auc": 0.4799652099609375,
+     "confusion": [
+      [
+       159,
+       97
+      ],
+      [
+       169,
+       87
+      ]
+     ],
+     "loss": 0.6956450343132019
+    }
+   },
+   "sha256": "a8533fb03f47cfac0aa8d6145c3c94ca98825cfbdf3ffa848f88d7766c0ce9a8"
+  },
+  "terminal": {
+   "step": 3125,
+   "test": {
+    "orientation_cued_D0": {
+     "n": 512,
+     "balanced_accuracy": 0.99609375,
+     "accuracy": 0.99609375,
+     "chance": 0.5,
+     "macro_ovr_auc": 0.999908447265625,
+     "confusion": [
+      [
+       254,
+       2
+      ],
+      [
+       0,
+       256
+      ]
+     ],
+     "loss": 0.014472553506493568
+    },
+    "orientation_cued_D4": {
+     "n": 512,
+     "balanced_accuracy": 0.498046875,
+     "accuracy": 0.498046875,
+     "chance": 0.5,
+     "macro_ovr_auc": 0.4720611572265625,
+     "confusion": [
+      [
+       138,
+       118
+      ],
+      [
+       139,
+       117
+      ]
+     ],
+     "loss": 0.694169282913208
+    },
+    "orientation_cued_D12": {
+     "n": 512,
+     "balanced_accuracy": 0.51171875,
+     "accuracy": 0.51171875,
+     "chance": 0.5,
+     "macro_ovr_auc": 0.5078582763671875,
+     "confusion": [
+      [
+       104,
+       152
+      ],
+      [
+       98,
+       158
+      ]
+     ],
+     "loss": 0.6929715871810913
+    },
+    "orientation_cued_D24": {
+     "n": 512,
+     "balanced_accuracy": 0.490234375,
+     "accuracy": 0.490234375,
+     "chance": 0.5,
+     "macro_ovr_auc": 0.4907684326171875,
+     "confusion": [
+      [
+       95,
+       161
+      ],
+      [
+       100,
+       156
+      ]
+     ],
+     "loss": 0.6935924291610718
+    }
+   },
+   "sha256": "befef89a9aafa3a94d67de0ecb46f6308e98039ba35ea7e141ccf4dddf31b031"
+  }
+ }
+}

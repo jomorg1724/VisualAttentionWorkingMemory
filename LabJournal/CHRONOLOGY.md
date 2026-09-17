@@ -257,3 +257,35 @@ gradients; the user called it a failure and had it stopped. Retrieval of all
 lookup 404). Overnight, all local processes had died at ≈22:40; the local v2
 run was resumed in place from checkpoint 256. See
 [experiment 24](experiments/24-av-context-v2.md).
+
+## 2026-09-16T21:45-07:00 — battery audit completed, no training
+
+Ideal observers, stream checks and one-step gradient diagnostics
+([experiment 25](experiments/25-battery-audit.md)). All five tasks are
+recoverable from pixels at D0 (BA 0.95-1.00); streams are correct; the v2
+recipe clips every update to 0.36 of its size from the first step and its
+trained checkpoint is input-invariant. The handoff's Krauzlis suspicion
+(integer rasterisation) was wrong: `_krauzlis` renders sub-pixel dots
+bilinearly. Decision: proceed to the plain baseline (ladder rung 1) on the
+laptop.
+
+## 2026-09-17T02:20-07:00 — plain baseline rung 1 and 2, orientation family
+
+Experiment 26 completed on the laptop. The specified recipe (Adam 1e-3,
+batch 64) collapses to a constant output within 150 updates on all five tasks,
+by the same first-step mechanism as the v2 lineage. Ten recipes leave the real
+orientation task at chance in 100k episodes, and a centred stack-3 lr 1e-4
+run stays at chance through 544k. A within-family ladder shows every two-way
+rung is learned to BA 1.000 from scratch, and the real task is learned to
+0.998-1.000 within 12.8k episodes from either two-way parent. The same model
+continued on mixed delays learns no delay (D4/12/24 at chance, D0 retained).
+Decision: a delay ladder next, then the same ladder for the other families.
+
+## 2026-09-17T12:10-07:00 — accumulator-in-the-conv-stack program completed on RunPod
+
+Experiment 27: four arms (plain, convgru, opponent, kda) x two seeds, each
+through ring gate, D0 curriculum and a three-stage delay ladder, on one 3090
+pod (`hy2m2tjf1awuhf`). ConvGRU and KDA at ceiling at every delay on both
+seeds; plain 0.85-0.88; opponent split at D24. The pod idled about 8 h after
+completion because the local watcher died with the session; finalised by hand
+(stop 200, delete 204, lookup 404). Checkpoints were not retrieved.

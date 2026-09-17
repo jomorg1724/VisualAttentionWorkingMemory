@@ -1,0 +1,24 @@
+# Accumulator program summary
+
+| lane | stage | status | episodes | test BA per cell |
+|---|---|---|---:|---|
+| plain_s1 | ring | completed | 100032 | D0=1.000 |
+| plain_s1 | cued | completed | 100032 | D0=0.998 |
+| plain_s1 | delayA | completed | 100032 | D0=0.992 D1=0.998 D2=0.523 |
+| plain_s1 | delayB | completed | 100032 | D0=0.996 D2=0.697 D4=0.658 |
+| plain_s1 | delayC | completed | 200000 | D0=0.998 D4=0.867 D12=0.867 D24=0.848 |
+| plain_s2 | ring | completed | 100032 | D0=1.000 |
+| plain_s2 | cued | completed | 100032 | D0=0.986 |
+| plain_s2 | delayA | completed | 100032 | D0=0.990 D1=0.994 D2=0.580 |
+| plain_s2 | delayB | completed | 100032 | D0=0.998 D2=0.711 D4=0.717 |
+| plain_s2 | delayC | completed | 200000 | D0=0.992 D4=0.875 D12=0.883 D24=0.875 |
+| convgru_s1 | ring | completed | 100032 | D0=1.000 |
+| convgru_s1 | cued | completed | 100032 | D0=1.000 |
+| convgru_s1 | delayA | completed | 100032 | D0=1.000 D1=1.000 D2=1.000 |
+| convgru_s1 | delayB | completed | 100032 | D0=1.000 D2=1.000 D4=1.000 |
+| convgru_s1 | delayC | completed | 200000 | D0=0.998 D4=1.000 D12=1.000 D24=1.000 |
+| convgru_s2 | ring | completed | 100032 | D0=1.000 |
+| convgru_s2 | cued | completed | 100032 | D0=1.000 |
+| convgru_s2 | delayA | completed | 100032 | D0=0.998 D1=1.000 D2=1.000 |
+| convgru_s2 | delayB | completed | 100032 | D0=1.000 D2=1.000 D4=0.998 |
+| convgru_s2 | delayC | completed | 200000 | D0=1.000 D4=1.000 D12=1.000 D24=1.000 |

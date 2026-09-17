@@ -1,0 +1,23 @@
+[cued_from_orientation_ring] Traceback (most recent call last):
+[cued_from_orientation_ring]   File "C:\Python310\lib\runpy.py", line 196, in _run_module_as_main
+[cued_from_orientation_ring]     return _run_code(code, main_globals, None,
+[cued_from_orientation_ring]   File "C:\Python310\lib\runpy.py", line 86, in _run_code
+[cued_from_orientation_ring]     exec(code, run_globals)
+[cued_from_orientation_ring]   File "C:\Users\jomor\Documents\VisualAttentionWorkingMemory\WorkingMemory\PlainBaseline\baseline.py", line 167, in <module>
+[cued_from_orientation_ring]     if __name__=='__main__':main()
+[cued_from_orientation_ring]   File "C:\Users\jomor\Documents\VisualAttentionWorkingMemory\WorkingMemory\PlainBaseline\baseline.py", line 129, in main
+[cued_from_orientation_ring]     saved=torch.load(a.init,map_location=device);model.load_state_dict(saved['model'],strict=True)
+[cued_from_orientation_ring]   File "C:\Python310\lib\site-packages\torch\nn\modules\module.py", line 1671, in load_state_dict
+[cued_from_orientation_ring]     raise RuntimeError('Error(s) in loading state_dict for {}:\n\t{}'.format(
+[cued_from_orientation_ring] RuntimeError: Error(s) in loading state_dict for PlainBaseline:
+[cued_from_orientation_ring] 	Missing key(s) in state_dict: "heads.orientation_sign.weight", "heads.orientation_sign.bias". 
+[cued_from_orientation_sign] [orientation_cued] update 200/1563 episodes 12800 val mean BA 0.977 orientation_cued_D0=0.977 (57s)
+[cued_from_orientation_sign] [orientation_cued] update 400/1563 episodes 25600 val mean BA 0.988 orientation_cued_D0=0.988 (110s)
+[cued_from_orientation_sign] [orientation_cued] update 600/1563 episodes 38400 val mean BA 0.996 orientation_cued_D0=0.996 (162s)
+[cued_from_orientation_sign] [orientation_cued] update 800/1563 episodes 51200 val mean BA 0.996 orientation_cued_D0=0.996 (215s)
+[cued_from_orientation_sign] [orientation_cued] update 1000/1563 episodes 64000 val mean BA 1.000 orientation_cued_D0=1.000 (269s)
+[cued_from_orientation_sign] [orientation_cued] update 1200/1563 episodes 76800 val mean BA 0.996 orientation_cued_D0=0.996 (322s)
+[cued_from_orientation_sign] [orientation_cued] update 1400/1563 episodes 89600 val mean BA 0.996 orientation_cued_D0=0.996 (375s)
+[cued_from_orientation_sign] [orientation_cued] update 1563/1563 episodes 100032 val mean BA 1.000 orientation_cued_D0=1.000 (418s)
+[cued_from_orientation_sign] [orientation_cued] done. test BA per cell (terminal): orientation_cued_D0=0.998
+ALL_DONE

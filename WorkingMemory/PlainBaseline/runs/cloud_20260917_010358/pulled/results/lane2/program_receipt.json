@@ -1,0 +1,935 @@
+{
+ "started": "2026-09-17T08:40:17+0000",
+ "args": {
+  "out": "/workspace/vawm_accum/results/lane2",
+  "arms": "opponent,kda",
+  "seeds": "1,2",
+  "deadline": 1789653841.4368398,
+  "workers": 3,
+  "chunk": 32,
+  "scale": 1.0,
+  "gate": 0.9,
+  "val_n": 256,
+  "test_n": 512
+ },
+ "stages": {
+  "opponent_s1/ring": {
+   "status": "completed",
+   "episodes": 100032,
+   "seconds": 203.0865273475647,
+   "test_terminal": {
+    "orientation_ring_D0": {
+     "ba": 1.0,
+     "auc": 1.0
+    }
+   },
+   "best_val": {
+    "mean_ba": 1.0,
+    "step": 1400
+   },
+   "params": 2680178,
+   "init": null
+  },
+  "opponent_s1/cued": {
+   "status": "completed",
+   "episodes": 100032,
+   "seconds": 199.83483004570007,
+   "test_terminal": {
+    "orientation_cued_D0": {
+     "ba": 0.990234375,
+     "auc": 0.999969482421875
+    }
+   },
+   "best_val": {
+    "mean_ba": 1.0,
+    "step": 600
+   },
+   "params": 2680178,
+   "init": {
+    "path": "/workspace/vawm_accum/results/lane2/opponent_s1/ring/terminal.pt",
+    "sha256": "42ff5138a92ab5ef039ea404ec418256d40430fd7fd98e8e8751a4415c633e7c",
+    "parent_task": "orientation_ring",
+    "parent_step": 1563,
+    "parent_args": {
+     "task": "orientation_ring",
+     "out": "/workspace/vawm_accum/results/lane2/opponent_s1/ring",
+     "episodes": 100000,
+     "batch": 64,
+     "chunk": 32,
+     "lr": 0.0001,
+     "seed": 1,
+     "cells": "rung1",
+     "val_every": 200,
+     "val_n": 256,
+     "test_n": 512,
+     "profile": 0,
+     "device": "cuda",
+     "stack": 3,
+     "feature_norm": "none",
+     "workers": 3,
+     "encoder": "accum",
+     "accumulator": "opponent",
+     "init": null,
+     "center": true,
+     "zero_head": false
+    },
+    "fresh_heads": []
+   }
+  },
+  "opponent_s1/delayA": {
+   "status": "completed",
+   "episodes": 100032,
+   "seconds": 279.791223526001,
+   "test_terminal": {
+    "orientation_cued_D0": {
+     "ba": 0.994140625,
+     "auc": 0.9996337890625
+    },
+    "orientation_cued_D1": {
+     "ba": 1.0,
+     "auc": 1.0
+    },
+    "orientation_cued_D2": {
+     "ba": 0.9765625,
+     "auc": 0.9999237060546875
+    }
+   },
+   "best_val": {
+    "mean_ba": 0.9869791666666666,
+    "step": 1563
+   },
+   "params": 2680178,
+   "init": {
+    "path": "/workspace/vawm_accum/results/lane2/opponent_s1/cued/terminal.pt",
+    "sha256": "7be4a35ac56712542994da666c2cb8e19f9f9ac38eafc6a096180b4e0f93a32d",
+    "parent_task": "orientation_cued",
+    "parent_step": 1563,
+    "parent_args": {
+     "task": "orientation_cued",
+     "out": "/workspace/vawm_accum/results/lane2/opponent_s1/cued",
+     "episodes": 100000,
+     "batch": 64,
+     "chunk": 32,
+     "lr": 0.0001,
+     "seed": 1,
+     "cells": "D0",
+     "val_every": 200,
+     "val_n": 256,
+     "test_n": 512,
+     "profile": 0,
+     "device": "cuda",
+     "stack": 3,
+     "feature_norm": "none",
+     "workers": 3,
+     "encoder": "accum",
+     "accumulator": "opponent",
+     "init": "/workspace/vawm_accum/results/lane2/opponent_s1/ring/terminal.pt",
+     "center": true,
+     "zero_head": false
+    },
+    "fresh_heads": []
+   }
+  },
+  "opponent_s1/delayB": {
+   "status": "completed",
+   "episodes": 100032,
+   "seconds": 346.92404651641846,
+   "test_terminal": {
+    "orientation_cued_D0": {
+     "ba": 0.998046875,
+     "auc": 1.0
+    },
+    "orientation_cued_D2": {
+     "ba": 0.994140625,
+     "auc": 0.999908447265625
+    },
+    "orientation_cued_D4": {
+     "ba": 0.9921875,
+     "auc": 0.9996795654296875
+    }
+   },
+   "best_val": {
+    "mean_ba": 1.0,
+    "step": 1000
+   },
+   "params": 2680178,
+   "init": {
+    "path": "/workspace/vawm_accum/results/lane2/opponent_s1/delayA/terminal.pt",
+    "sha256": "8c6f1430f4b98f65407828ac7f798b924d9b07296cb07aa80d9f8976bef5c676",
+    "parent_task": "orientation_cued",
+    "parent_step": 1563,
+    "parent_args": {
+     "task": "orientation_cued",
+     "out": "/workspace/vawm_accum/results/lane2/opponent_s1/delayA",
+     "episodes": 100000,
+     "batch": 64,
+     "chunk": 32,
+     "lr": 0.0001,
+     "seed": 1,
+     "cells": "D0,D1,D2",
+     "val_every": 200,
+     "val_n": 256,
+     "test_n": 512,
+     "profile": 0,
+     "device": "cuda",
+     "stack": 3,
+     "feature_norm": "none",
+     "workers": 3,
+     "encoder": "accum",
+     "accumulator": "opponent",
+     "init": "/workspace/vawm_accum/results/lane2/opponent_s1/cued/terminal.pt",
+     "center": true,
+     "zero_head": false
+    },
+    "fresh_heads": []
+   }
+  },
+  "opponent_s1/delayC": {
+   "status": "completed",
+   "episodes": 200000,
+   "seconds": 1334.336338043213,
+   "test_terminal": {
+    "orientation_cued_D0": {
+     "ba": 0.998046875,
+     "auc": 1.0
+    },
+    "orientation_cued_D4": {
+     "ba": 1.0,
+     "auc": 1.0
+    },
+    "orientation_cued_D12": {
+     "ba": 0.9921875,
+     "auc": 0.9998321533203125
+    },
+    "orientation_cued_D24": {
+     "ba": 0.55078125,
+     "auc": 0.5512542724609375
+    }
+   },
+   "best_val": {
+    "mean_ba": 0.8828125,
+    "step": 3125
+   },
+   "params": 2680178,
+   "init": {
+    "path": "/workspace/vawm_accum/results/lane2/opponent_s1/delayB/terminal.pt",
+    "sha256": "c90f560281905c860a1cddcc7b9231498c8390cdcd75a08da25ca8849dfd53a7",
+    "parent_task": "orientation_cued",
+    "parent_step": 1563,
+    "parent_args": {
+     "task": "orientation_cued",
+     "out": "/workspace/vawm_accum/results/lane2/opponent_s1/delayB",
+     "episodes": 100000,
+     "batch": 64,
+     "chunk": 32,
+     "lr": 0.0001,
+     "seed": 1,
+     "cells": "D0,D2,D4",
+     "val_every": 200,
+     "val_n": 256,
+     "test_n": 512,
+     "profile": 0,
+     "device": "cuda",
+     "stack": 3,
+     "feature_norm": "none",
+     "workers": 3,
+     "encoder": "accum",
+     "accumulator": "opponent",
+     "init": "/workspace/vawm_accum/results/lane2/opponent_s1/delayA/terminal.pt",
+     "center": true,
+     "zero_head": false
+    },
+    "fresh_heads": []
+   }
+  },
+  "opponent_s2/ring": {
+   "status": "completed",
+   "episodes": 100032,
+   "seconds": 202.95377206802368,
+   "test_terminal": {
+    "orientation_ring_D0": {
+     "ba": 1.0,
+     "auc": 1.0
+    }
+   },
+   "best_val": {
+    "mean_ba": 1.0,
+    "step": 1000
+   },
+   "params": 2680178,
+   "init": null
+  },
+  "opponent_s2/cued": {
+   "status": "completed",
+   "episodes": 100032,
+   "seconds": 204.23228883743286,
+   "test_terminal": {
+    "orientation_cued_D0": {
+     "ba": 0.99609375,
+     "auc": 1.0
+    }
+   },
+   "best_val": {
+    "mean_ba": 1.0,
+    "step": 1000
+   },
+   "params": 2680178,
+   "init": {
+    "path": "/workspace/vawm_accum/results/lane2/opponent_s2/ring/terminal.pt",
+    "sha256": "f4b44d08659a2fa3a84b974899171e0b4d0e0b8b52284a8782d8d1667a0ee70e",
+    "parent_task": "orientation_ring",
+    "parent_step": 1563,
+    "parent_args": {
+     "task": "orientation_ring",
+     "out": "/workspace/vawm_accum/results/lane2/opponent_s2/ring",
+     "episodes": 100000,
+     "batch": 64,
+     "chunk": 32,
+     "lr": 0.0001,
+     "seed": 2,
+     "cells": "rung1",
+     "val_every": 200,
+     "val_n": 256,
+     "test_n": 512,
+     "profile": 0,
+     "device": "cuda",
+     "stack": 3,
+     "feature_norm": "none",
+     "workers": 3,
+     "encoder": "accum",
+     "accumulator": "opponent",
+     "init": null,
+     "center": true,
+     "zero_head": false
+    },
+    "fresh_heads": []
+   }
+  },
+  "opponent_s2/delayA": {
+   "status": "completed",
+   "episodes": 100032,
+   "seconds": 287.9809420108795,
+   "test_terminal": {
+    "orientation_cued_D0": {
+     "ba": 0.998046875,
+     "auc": 1.0
+    },
+    "orientation_cued_D1": {
+     "ba": 1.0,
+     "auc": 1.0
+    },
+    "orientation_cued_D2": {
+     "ba": 0.990234375,
+     "auc": 0.999114990234375
+    }
+   },
+   "best_val": {
+    "mean_ba": 0.9973958333333334,
+    "step": 1563
+   },
+   "params": 2680178,
+   "init": {
+    "path": "/workspace/vawm_accum/results/lane2/opponent_s2/cued/terminal.pt",
+    "sha256": "6cc773169ca35c908176261781e234db02923c261655fe885a66f0d4f6803131",
+    "parent_task": "orientation_cued",
+    "parent_step": 1563,
+    "parent_args": {
+     "task": "orientation_cued",
+     "out": "/workspace/vawm_accum/results/lane2/opponent_s2/cued",
+     "episodes": 100000,
+     "batch": 64,
+     "chunk": 32,
+     "lr": 0.0001,
+     "seed": 2,
+     "cells": "D0",
+     "val_every": 200,
+     "val_n": 256,
+     "test_n": 512,
+     "profile": 0,
+     "device": "cuda",
+     "stack": 3,
+     "feature_norm": "none",
+     "workers": 3,
+     "encoder": "accum",
+     "accumulator": "opponent",
+     "init": "/workspace/vawm_accum/results/lane2/opponent_s2/ring/terminal.pt",
+     "center": true,
+     "zero_head": false
+    },
+    "fresh_heads": []
+   }
+  },
+  "opponent_s2/delayB": {
+   "status": "completed",
+   "episodes": 100032,
+   "seconds": 338.8747606277466,
+   "test_terminal": {
+    "orientation_cued_D0": {
+     "ba": 0.998046875,
+     "auc": 0.9999237060546875
+    },
+    "orientation_cued_D2": {
+     "ba": 0.990234375,
+     "auc": 0.9999237060546875
+    },
+    "orientation_cued_D4": {
+     "ba": 0.982421875,
+     "auc": 0.9994964599609375
+    }
+   },
+   "best_val": {
+    "mean_ba": 0.9973958333333334,
+    "step": 1200
+   },
+   "params": 2680178,
+   "init": {
+    "path": "/workspace/vawm_accum/results/lane2/opponent_s2/delayA/terminal.pt",
+    "sha256": "102be4ad5a56e4364d41f045f07b693de67d4f18726e61039f4a7eda14b2e7bd",
+    "parent_task": "orientation_cued",
+    "parent_step": 1563,
+    "parent_args": {
+     "task": "orientation_cued",
+     "out": "/workspace/vawm_accum/results/lane2/opponent_s2/delayA",
+     "episodes": 100000,
+     "batch": 64,
+     "chunk": 32,
+     "lr": 0.0001,
+     "seed": 2,
+     "cells": "D0,D1,D2",
+     "val_every": 200,
+     "val_n": 256,
+     "test_n": 512,
+     "profile": 0,
+     "device": "cuda",
+     "stack": 3,
+     "feature_norm": "none",
+     "workers": 3,
+     "encoder": "accum",
+     "accumulator": "opponent",
+     "init": "/workspace/vawm_accum/results/lane2/opponent_s2/cued/terminal.pt",
+     "center": true,
+     "zero_head": false
+    },
+    "fresh_heads": []
+   }
+  },
+  "opponent_s2/delayC": {
+   "status": "completed",
+   "episodes": 200000,
+   "seconds": 1406.366156578064,
+   "test_terminal": {
+    "orientation_cued_D0": {
+     "ba": 0.99609375,
+     "auc": 0.9999542236328125
+    },
+    "orientation_cued_D4": {
+     "ba": 1.0,
+     "auc": 1.0
+    },
+    "orientation_cued_D12": {
+     "ba": 0.990234375,
+     "auc": 0.9999237060546875
+    },
+    "orientation_cued_D24": {
+     "ba": 0.99609375,
+     "auc": 1.0
+    }
+   },
+   "best_val": {
+    "mean_ba": 0.99609375,
+    "step": 3000
+   },
+   "params": 2680178,
+   "init": {
+    "path": "/workspace/vawm_accum/results/lane2/opponent_s2/delayB/terminal.pt",
+    "sha256": "37ca1a06d308006cc27b79944887bf2c0af49d202800c256abbf0ef4c58e63cd",
+    "parent_task": "orientation_cued",
+    "parent_step": 1563,
+    "parent_args": {
+     "task": "orientation_cued",
+     "out": "/workspace/vawm_accum/results/lane2/opponent_s2/delayB",
+     "episodes": 100000,
+     "batch": 64,
+     "chunk": 32,
+     "lr": 0.0001,
+     "seed": 2,
+     "cells": "D0,D2,D4",
+     "val_every": 200,
+     "val_n": 256,
+     "test_n": 512,
+     "profile": 0,
+     "device": "cuda",
+     "stack": 3,
+     "feature_norm": "none",
+     "workers": 3,
+     "encoder": "accum",
+     "accumulator": "opponent",
+     "init": "/workspace/vawm_accum/results/lane2/opponent_s2/delayA/terminal.pt",
+     "center": true,
+     "zero_head": false
+    },
+    "fresh_heads": []
+   }
+  },
+  "kda_s1/ring": {
+   "status": "completed",
+   "episodes": 100032,
+   "seconds": 185.10600924491882,
+   "test_terminal": {
+    "orientation_ring_D0": {
+     "ba": 1.0,
+     "auc": 1.0
+    }
+   },
+   "best_val": {
+    "mean_ba": 1.0,
+    "step": 1000
+   },
+   "params": 2747240,
+   "init": null
+  },
+  "kda_s1/cued": {
+   "status": "completed",
+   "episodes": 100032,
+   "seconds": 181.2839539051056,
+   "test_terminal": {
+    "orientation_cued_D0": {
+     "ba": 1.0,
+     "auc": 1.0
+    }
+   },
+   "best_val": {
+    "mean_ba": 1.0,
+    "step": 600
+   },
+   "params": 2747240,
+   "init": {
+    "path": "/workspace/vawm_accum/results/lane2/kda_s1/ring/terminal.pt",
+    "sha256": "e37082b480257bcc637e646764a8e100ecf5ba4d81815f57f934e280f6fba4ef",
+    "parent_task": "orientation_ring",
+    "parent_step": 1563,
+    "parent_args": {
+     "task": "orientation_ring",
+     "out": "/workspace/vawm_accum/results/lane2/kda_s1/ring",
+     "episodes": 100000,
+     "batch": 64,
+     "chunk": 32,
+     "lr": 0.0001,
+     "seed": 1,
+     "cells": "rung1",
+     "val_every": 200,
+     "val_n": 256,
+     "test_n": 512,
+     "profile": 0,
+     "device": "cuda",
+     "stack": 3,
+     "feature_norm": "none",
+     "workers": 3,
+     "encoder": "accum",
+     "accumulator": "kda",
+     "init": null,
+     "center": true,
+     "zero_head": false
+    },
+    "fresh_heads": []
+   }
+  },
+  "kda_s1/delayA": {
+   "status": "completed",
+   "episodes": 100032,
+   "seconds": 154.7196638584137,
+   "test_terminal": {
+    "orientation_cued_D0": {
+     "ba": 1.0,
+     "auc": 1.0
+    },
+    "orientation_cued_D1": {
+     "ba": 1.0,
+     "auc": 1.0
+    },
+    "orientation_cued_D2": {
+     "ba": 1.0,
+     "auc": 1.0
+    }
+   },
+   "best_val": {
+    "mean_ba": 1.0,
+    "step": 200
+   },
+   "params": 2747240,
+   "init": {
+    "path": "/workspace/vawm_accum/results/lane2/kda_s1/cued/terminal.pt",
+    "sha256": "433f973089873bb164dd624b0b4a2ecb1ac9d9fa552d1931c7c672905397edb9",
+    "parent_task": "orientation_cued",
+    "parent_step": 1563,
+    "parent_args": {
+     "task": "orientation_cued",
+     "out": "/workspace/vawm_accum/results/lane2/kda_s1/cued",
+     "episodes": 100000,
+     "batch": 64,
+     "chunk": 32,
+     "lr": 0.0001,
+     "seed": 1,
+     "cells": "D0",
+     "val_every": 200,
+     "val_n": 256,
+     "test_n": 512,
+     "profile": 0,
+     "device": "cuda",
+     "stack": 3,
+     "feature_norm": "none",
+     "workers": 3,
+     "encoder": "accum",
+     "accumulator": "kda",
+     "init": "/workspace/vawm_accum/results/lane2/kda_s1/ring/terminal.pt",
+     "center": true,
+     "zero_head": false
+    },
+    "fresh_heads": []
+   }
+  },
+  "kda_s1/delayB": {
+   "status": "completed",
+   "episodes": 100032,
+   "seconds": 176.20021986961365,
+   "test_terminal": {
+    "orientation_cued_D0": {
+     "ba": 1.0,
+     "auc": 1.0
+    },
+    "orientation_cued_D2": {
+     "ba": 1.0,
+     "auc": 1.0
+    },
+    "orientation_cued_D4": {
+     "ba": 0.998046875,
+     "auc": 1.0
+    }
+   },
+   "best_val": {
+    "mean_ba": 1.0,
+    "step": 200
+   },
+   "params": 2747240,
+   "init": {
+    "path": "/workspace/vawm_accum/results/lane2/kda_s1/delayA/terminal.pt",
+    "sha256": "d9487bd944b307279829dd4ea5f03a893a9944e3031f4a67f4550211bc911014",
+    "parent_task": "orientation_cued",
+    "parent_step": 1563,
+    "parent_args": {
+     "task": "orientation_cued",
+     "out": "/workspace/vawm_accum/results/lane2/kda_s1/delayA",
+     "episodes": 100000,
+     "batch": 64,
+     "chunk": 32,
+     "lr": 0.0001,
+     "seed": 1,
+     "cells": "D0,D1,D2",
+     "val_every": 200,
+     "val_n": 256,
+     "test_n": 512,
+     "profile": 0,
+     "device": "cuda",
+     "stack": 3,
+     "feature_norm": "none",
+     "workers": 3,
+     "encoder": "accum",
+     "accumulator": "kda",
+     "init": "/workspace/vawm_accum/results/lane2/kda_s1/cued/terminal.pt",
+     "center": true,
+     "zero_head": false
+    },
+    "fresh_heads": []
+   }
+  },
+  "kda_s1/delayC": {
+   "status": "completed",
+   "episodes": 200000,
+   "seconds": 715.5695502758026,
+   "test_terminal": {
+    "orientation_cued_D0": {
+     "ba": 0.994140625,
+     "auc": 0.999847412109375
+    },
+    "orientation_cued_D4": {
+     "ba": 1.0,
+     "auc": 1.0
+    },
+    "orientation_cued_D12": {
+     "ba": 1.0,
+     "auc": 1.0
+    },
+    "orientation_cued_D24": {
+     "ba": 1.0,
+     "auc": 1.0
+    }
+   },
+   "best_val": {
+    "mean_ba": 1.0,
+    "step": 400
+   },
+   "params": 2747240,
+   "init": {
+    "path": "/workspace/vawm_accum/results/lane2/kda_s1/delayB/terminal.pt",
+    "sha256": "13038b508ac682c5a67e96a82c7f3545d3fa888404acbba377616312beeadafa",
+    "parent_task": "orientation_cued",
+    "parent_step": 1563,
+    "parent_args": {
+     "task": "orientation_cued",
+     "out": "/workspace/vawm_accum/results/lane2/kda_s1/delayB",
+     "episodes": 100000,
+     "batch": 64,
+     "chunk": 32,
+     "lr": 0.0001,
+     "seed": 1,
+     "cells": "D0,D2,D4",
+     "val_every": 200,
+     "val_n": 256,
+     "test_n": 512,
+     "profile": 0,
+     "device": "cuda",
+     "stack": 3,
+     "feature_norm": "none",
+     "workers": 3,
+     "encoder": "accum",
+     "accumulator": "kda",
+     "init": "/workspace/vawm_accum/results/lane2/kda_s1/delayA/terminal.pt",
+     "center": true,
+     "zero_head": false
+    },
+    "fresh_heads": []
+   }
+  },
+  "kda_s2/ring": {
+   "status": "completed",
+   "episodes": 100032,
+   "seconds": 121.09258985519409,
+   "test_terminal": {
+    "orientation_ring_D0": {
+     "ba": 0.998046875,
+     "auc": 1.0
+    }
+   },
+   "best_val": {
+    "mean_ba": 1.0,
+    "step": 600
+   },
+   "params": 2747240,
+   "init": null
+  },
+  "kda_s2/cued": {
+   "status": "completed",
+   "episodes": 100032,
+   "seconds": 120.00191736221313,
+   "test_terminal": {
+    "orientation_cued_D0": {
+     "ba": 0.998046875,
+     "auc": 1.0
+    }
+   },
+   "best_val": {
+    "mean_ba": 1.0,
+    "step": 200
+   },
+   "params": 2747240,
+   "init": {
+    "path": "/workspace/vawm_accum/results/lane2/kda_s2/ring/terminal.pt",
+    "sha256": "a340957f25514e9d4f143ffa2d3a5502c713672c992b24b46f6263cd20e1c49a",
+    "parent_task": "orientation_ring",
+    "parent_step": 1563,
+    "parent_args": {
+     "task": "orientation_ring",
+     "out": "/workspace/vawm_accum/results/lane2/kda_s2/ring",
+     "episodes": 100000,
+     "batch": 64,
+     "chunk": 32,
+     "lr": 0.0001,
+     "seed": 2,
+     "cells": "rung1",
+     "val_every": 200,
+     "val_n": 256,
+     "test_n": 512,
+     "profile": 0,
+     "device": "cuda",
+     "stack": 3,
+     "feature_norm": "none",
+     "workers": 3,
+     "encoder": "accum",
+     "accumulator": "kda",
+     "init": null,
+     "center": true,
+     "zero_head": false
+    },
+    "fresh_heads": []
+   }
+  },
+  "kda_s2/delayA": {
+   "status": "completed",
+   "episodes": 100032,
+   "seconds": 152.1666715145111,
+   "test_terminal": {
+    "orientation_cued_D0": {
+     "ba": 1.0,
+     "auc": 1.0
+    },
+    "orientation_cued_D1": {
+     "ba": 1.0,
+     "auc": 1.0
+    },
+    "orientation_cued_D2": {
+     "ba": 1.0,
+     "auc": 1.0
+    }
+   },
+   "best_val": {
+    "mean_ba": 1.0,
+    "step": 400
+   },
+   "params": 2747240,
+   "init": {
+    "path": "/workspace/vawm_accum/results/lane2/kda_s2/cued/terminal.pt",
+    "sha256": "40381c0fe8dd0c06b0a53982315e36f4ea3702b1471a5ee82d986c8fa4192959",
+    "parent_task": "orientation_cued",
+    "parent_step": 1563,
+    "parent_args": {
+     "task": "orientation_cued",
+     "out": "/workspace/vawm_accum/results/lane2/kda_s2/cued",
+     "episodes": 100000,
+     "batch": 64,
+     "chunk": 32,
+     "lr": 0.0001,
+     "seed": 2,
+     "cells": "D0",
+     "val_every": 200,
+     "val_n": 256,
+     "test_n": 512,
+     "profile": 0,
+     "device": "cuda",
+     "stack": 3,
+     "feature_norm": "none",
+     "workers": 3,
+     "encoder": "accum",
+     "accumulator": "kda",
+     "init": "/workspace/vawm_accum/results/lane2/kda_s2/ring/terminal.pt",
+     "center": true,
+     "zero_head": false
+    },
+    "fresh_heads": []
+   }
+  },
+  "kda_s2/delayB": {
+   "status": "completed",
+   "episodes": 100032,
+   "seconds": 175.4044508934021,
+   "test_terminal": {
+    "orientation_cued_D0": {
+     "ba": 0.998046875,
+     "auc": 1.0
+    },
+    "orientation_cued_D2": {
+     "ba": 1.0,
+     "auc": 1.0
+    },
+    "orientation_cued_D4": {
+     "ba": 1.0,
+     "auc": 1.0
+    }
+   },
+   "best_val": {
+    "mean_ba": 1.0,
+    "step": 200
+   },
+   "params": 2747240,
+   "init": {
+    "path": "/workspace/vawm_accum/results/lane2/kda_s2/delayA/terminal.pt",
+    "sha256": "e65eed7ae8792c11a039a28861e061363add6d4d6165f99e76f4443dacc9d93d",
+    "parent_task": "orientation_cued",
+    "parent_step": 1563,
+    "parent_args": {
+     "task": "orientation_cued",
+     "out": "/workspace/vawm_accum/results/lane2/kda_s2/delayA",
+     "episodes": 100000,
+     "batch": 64,
+     "chunk": 32,
+     "lr": 0.0001,
+     "seed": 2,
+     "cells": "D0,D1,D2",
+     "val_every": 200,
+     "val_n": 256,
+     "test_n": 512,
+     "profile": 0,
+     "device": "cuda",
+     "stack": 3,
+     "feature_norm": "none",
+     "workers": 3,
+     "encoder": "accum",
+     "accumulator": "kda",
+     "init": "/workspace/vawm_accum/results/lane2/kda_s2/cued/terminal.pt",
+     "center": true,
+     "zero_head": false
+    },
+    "fresh_heads": []
+   }
+  },
+  "kda_s2/delayC": {
+   "status": "completed",
+   "episodes": 200000,
+   "seconds": 711.7222104072571,
+   "test_terminal": {
+    "orientation_cued_D0": {
+     "ba": 1.0,
+     "auc": 1.0
+    },
+    "orientation_cued_D4": {
+     "ba": 1.0,
+     "auc": 1.0
+    },
+    "orientation_cued_D12": {
+     "ba": 1.0,
+     "auc": 1.0
+    },
+    "orientation_cued_D24": {
+     "ba": 1.0,
+     "auc": 1.0
+    }
+   },
+   "best_val": {
+    "mean_ba": 1.0,
+    "step": 400
+   },
+   "params": 2747240,
+   "init": {
+    "path": "/workspace/vawm_accum/results/lane2/kda_s2/delayB/terminal.pt",
+    "sha256": "3f767c19718863fe8a3ebdc4566c1242791ec318541af131e2446bfec6aa9a33",
+    "parent_task": "orientation_cued",
+    "parent_step": 1563,
+    "parent_args": {
+     "task": "orientation_cued",
+     "out": "/workspace/vawm_accum/results/lane2/kda_s2/delayB",
+     "episodes": 100000,
+     "batch": 64,
+     "chunk": 32,
+     "lr": 0.0001,
+     "seed": 2,
+     "cells": "D0,D2,D4",
+     "val_every": 200,
+     "val_n": 256,
+     "test_n": 512,
+     "profile": 0,
+     "device": "cuda",
+     "stack": 3,
+     "feature_norm": "none",
+     "workers": 3,
+     "encoder": "accum",
+     "accumulator": "kda",
+     "init": "/workspace/vawm_accum/results/lane2/kda_s2/delayA/terminal.pt",
+     "center": true,
+     "zero_head": false
+    },
+    "fresh_heads": []
+   }
+  }
+ },
+ "updated": "2026-09-17T10:46:14+0000",
+ "status": "completed"
+}

@@ -64,6 +64,9 @@ run remains stopped and unchanged. See
 | 22 | [Spatially preserving task-conditioned priority readout](experiments/22-spatial-priority-readout.md) | Scratch cloud training live; complementary frozen-core diagnostic complete |
 | 23 | [Dual pre/post attention with exclusive priority-map decoding](experiments/23-dual-attention-priority.md) | Independent scratch cloud training live |
 | 24 | [AV-context v2: five combined changes, local scratch run](experiments/24-av-context-v2.md) | Local training live; pre-registered gate at 2,400 |
+| 25 | [Battery audit: ideal observers, streams, one-step training diagnostics](experiments/25-battery-audit.md) | completed 2026-09-16 (audit only, no training) |
+| 26 | [Plain baseline, rung 1: standard CNN+GRU from scratch, recipe sweep, difficulty ladder](experiments/26-plain-baseline-rung1.md) | completed 2026-09-17 (orientation family; other families record runs only) |
+| 27 | [Accumulator states inside the conv stack vs plain baseline: gate, curriculum, delay ladder](experiments/27-accumulator-conv-stack.md) | completed 2026-09-17 (RunPod, both lanes, two seeds) |
 
 The useful trajectory is not a sequence of architectures declared permanently good or bad. It contains task acquisition failures, output-use failures, genuine improvements, and regressions that triggered targeted diagnostics. Notably, contour was solved by changing allocation; earlier motion information survived in E/I rates and benefited from output refitting; spatial memory helped binding but harmed motion; pre-update attention improved delayed orientation, and its blank-period routing is functionally important.
 

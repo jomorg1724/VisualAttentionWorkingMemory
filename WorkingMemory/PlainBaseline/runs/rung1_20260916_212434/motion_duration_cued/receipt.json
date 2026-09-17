@@ -1,0 +1,133 @@
+{
+ "version": "plain_baseline_v1",
+ "task": "motion_duration_cued",
+ "cells": [
+  "motion_duration_cued_D0"
+ ],
+ "args": {
+  "task": "motion_duration_cued",
+  "out": "WorkingMemory/PlainBaseline/runs/rung1_20260916_212434/motion_duration_cued",
+  "episodes": 20000,
+  "batch": 64,
+  "chunk": 32,
+  "lr": 0.001,
+  "seed": 1,
+  "cells": "rung1",
+  "val_every": 100,
+  "val_n": 256,
+  "test_n": 512,
+  "profile": 0,
+  "device": "cuda",
+  "stack": 1,
+  "feature_norm": "none",
+  "workers": 0
+ },
+ "params": 2191404,
+ "updates_planned": 313,
+ "sources": {
+  "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\WorkingMemory\\SpatialTaskBattery\\stimuli.py": "16b7efd4575eba27b9a79329243dcce0da635008856687a9e62bda72b5ddeb37",
+  "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\WorkingMemory\\PlainBaseline\\baseline.py": "8bcc361cb11ae212152ed4f96cf5fc45676fe38646ea8b33fb6733af66f022b0"
+ },
+ "seeds": {
+  "train": 61973001,
+  "scheduler": 62973001,
+  "val": 63973001,
+  "test": 64973001
+ },
+ "model_seed": 1,
+ "started": "2026-09-16T21:54:15-0700",
+ "platform": {
+  "torch": "1.13.1+cu117",
+  "gpu": "NVIDIA GeForce RTX 3070 Laptop GPU"
+ },
+ "finished": "2026-09-16T22:01:19-0700",
+ "seconds": 424.1755955219269,
+ "updates_done": 313,
+ "episodes": 20032,
+ "best_val": {
+  "mean_ba": 0.25,
+  "step": 100
+ },
+ "final": {
+  "best": {
+   "step": 100,
+   "test": {
+    "motion_duration_cued_D0": {
+     "n": 512,
+     "balanced_accuracy": 0.25,
+     "accuracy": 0.25,
+     "chance": 0.25,
+     "macro_ovr_auc": 0.49935150146484375,
+     "confusion": [
+      [
+       0,
+       96,
+       32,
+       0
+      ],
+      [
+       0,
+       96,
+       32,
+       0
+      ],
+      [
+       0,
+       96,
+       32,
+       0
+      ],
+      [
+       0,
+       96,
+       32,
+       0
+      ]
+     ],
+     "loss": 1.3862942457199097
+    }
+   },
+   "sha256": "659a23fb59e9de0c5448026d66d2850e473b0ba9f32042b4ce62db7d15ba36fc"
+  },
+  "terminal": {
+   "step": 313,
+   "test": {
+    "motion_duration_cued_D0": {
+     "n": 512,
+     "balanced_accuracy": 0.25,
+     "accuracy": 0.25,
+     "chance": 0.25,
+     "macro_ovr_auc": 0.498199462890625,
+     "confusion": [
+      [
+       0,
+       0,
+       0,
+       128
+      ],
+      [
+       0,
+       0,
+       0,
+       128
+      ],
+      [
+       0,
+       0,
+       0,
+       128
+      ],
+      [
+       0,
+       0,
+       0,
+       128
+      ]
+     ],
+     "loss": 1.386295199394226
+    }
+   },
+   "sha256": "8d583c41e0bb016edf728922c98a88678d88c7a9b6d5555b8c5a19c210c29f66"
+  }
+ }
+}

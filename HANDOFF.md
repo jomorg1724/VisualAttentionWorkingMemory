@@ -104,6 +104,8 @@ judge an architecture again.
 
 ## 4. Audit the environments and the training logic first
 
+> Done 2026-09-16/17: see also [experiment 26](LabJournal/experiments/26-plain-baseline-rung1.md) and [experiment 27](LabJournal/experiments/27-accumulator-conv-stack.md): environments sound; the specified recipe collapses on every task; a plain CNN+GRU learns the orientation family by curriculum; a gated spatial accumulator in the conv stack (ConvGRU/KDA) reaches ceiling at every delay where the plain model reaches 0.85-0.88. Audit detail: see [experiment 25](LabJournal/experiments/25-battery-audit.md) and `WorkingMemory/BatteryAudit/README.md`. Every task is recoverable from pixels by a fixed observer at D0 (BA 0.95-1.00); streams pass all checks; the v2 recipe clips every update to 0.36 from step one. The Krauzlis integer-rasterisation suspicion below is wrong (bilinear sub-pixel rendering).
+
 Do this before any architecture work. Each item is concrete and cheap.
 
 ### 4.1 Motion duration (`_motion` in stimuli.py)

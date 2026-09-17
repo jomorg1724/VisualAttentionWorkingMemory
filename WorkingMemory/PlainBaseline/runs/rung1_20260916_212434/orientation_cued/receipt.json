@@ -1,0 +1,98 @@
+{
+ "version": "plain_baseline_v1",
+ "task": "orientation_cued",
+ "cells": [
+  "orientation_cued_D0"
+ ],
+ "args": {
+  "task": "orientation_cued",
+  "out": "WorkingMemory/PlainBaseline/runs/rung1_20260916_212434/orientation_cued",
+  "episodes": 100000,
+  "batch": 64,
+  "chunk": 32,
+  "lr": 0.001,
+  "seed": 1,
+  "cells": "rung1",
+  "val_every": 200,
+  "val_n": 256,
+  "test_n": 512,
+  "profile": 0,
+  "device": "cuda"
+ },
+ "params": 2191404,
+ "updates_planned": 1563,
+ "sources": {
+  "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\WorkingMemory\\SpatialTaskBattery\\stimuli.py": "16b7efd4575eba27b9a79329243dcce0da635008856687a9e62bda72b5ddeb37",
+  "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\WorkingMemory\\PlainBaseline\\baseline.py": "a94dba2e36bf5f8968f34fe855c74dc63f4c1eb4650c585e827df011f30bdcdd"
+ },
+ "seeds": {
+  "train": 61973001,
+  "scheduler": 62973001,
+  "val": 63973001,
+  "test": 64973001
+ },
+ "model_seed": 1,
+ "started": "2026-09-16T21:24:37-0700",
+ "platform": {
+  "torch": "1.13.1+cu117",
+  "gpu": "NVIDIA GeForce RTX 3070 Laptop GPU"
+ },
+ "finished": "2026-09-16T21:44:43-0700",
+ "seconds": 1206.3801755905151,
+ "updates_done": 1563,
+ "episodes": 100032,
+ "best_val": {
+  "mean_ba": 0.5078125,
+  "step": 400
+ },
+ "final": {
+  "best": {
+   "step": 400,
+   "test": {
+    "orientation_cued_D0": {
+     "n": 512,
+     "balanced_accuracy": 0.4921875,
+     "accuracy": 0.4921875,
+     "chance": 0.5,
+     "macro_ovr_auc": 0.46927642822265625,
+     "confusion": [
+      [
+       55,
+       201
+      ],
+      [
+       59,
+       197
+      ]
+     ],
+     "loss": 0.6931483149528503
+    }
+   },
+   "sha256": "27c440e643f48c931399ed9d1ac142484b8f37f49dd0a8c26605deee2d2a59e8"
+  },
+  "terminal": {
+   "step": 1563,
+   "test": {
+    "orientation_cued_D0": {
+     "n": 512,
+     "balanced_accuracy": 0.48828125,
+     "accuracy": 0.48828125,
+     "chance": 0.5,
+     "macro_ovr_auc": 0.490814208984375,
+     "confusion": [
+      [
+       149,
+       107
+      ],
+      [
+       155,
+       101
+      ]
+     ],
+     "loss": 0.6931490898132324
+    }
+   },
+   "sha256": "9b8019c84ad0599d16a54057a937115f016b43ea2762fd67cc51bc734a2476bb"
+  }
+ }
+}

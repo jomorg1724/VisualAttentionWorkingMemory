@@ -1,0 +1,107 @@
+{
+ "version": "plain_baseline_v1",
+ "task": "orientation_ring",
+ "cells": [
+  "orientation_ring_D0"
+ ],
+ "args": {
+  "task": "orientation_ring",
+  "out": "/workspace/vawm_accum/results/lane2/kda_s2/ring",
+  "episodes": 100000,
+  "batch": 64,
+  "chunk": 32,
+  "lr": 0.0001,
+  "seed": 2,
+  "cells": "rung1",
+  "val_every": 200,
+  "val_n": 256,
+  "test_n": 512,
+  "profile": 0,
+  "device": "cuda",
+  "stack": 3,
+  "feature_norm": "none",
+  "workers": 3,
+  "encoder": "accum",
+  "accumulator": "kda",
+  "init": null,
+  "center": true,
+  "zero_head": false
+ },
+ "params": 2747240,
+ "updates_planned": 1563,
+ "sources": {
+  "/workspace/vawm_accum/WorkingMemory/SpatialTaskBattery/stimuli.py": "16b7efd4575eba27b9a79329243dcce0da635008856687a9e62bda72b5ddeb37",
+  "/workspace/vawm_accum/WorkingMemory/PlainBaseline/baseline.py": "eaccf0ec5cee5eb7a11f4ff153cd317b2361fa657ba2e6ab0d2289fe9022b7c9"
+ },
+ "init": null,
+ "seeds": {
+  "train": 61973001,
+  "scheduler": 62973001,
+  "val": 63973001,
+  "test": 64973001
+ },
+ "model_seed": 2,
+ "started": "2026-09-17T10:24:44+0000",
+ "platform": {
+  "torch": "1.13.1+cu117",
+  "gpu": "NVIDIA GeForce RTX 3090"
+ },
+ "finished": "2026-09-17T10:26:45+0000",
+ "seconds": 121.09258985519409,
+ "updates_done": 1563,
+ "episodes": 100032,
+ "best_val": {
+  "mean_ba": 1.0,
+  "step": 600
+ },
+ "final": {
+  "best": {
+   "step": 600,
+   "test": {
+    "orientation_ring_D0": {
+     "n": 512,
+     "balanced_accuracy": 0.986328125,
+     "accuracy": 0.986328125,
+     "chance": 0.5,
+     "macro_ovr_auc": 0.999969482421875,
+     "confusion": [
+      [
+       249,
+       7
+      ],
+      [
+       0,
+       256
+      ]
+     ],
+     "loss": 0.02541365846991539
+    }
+   },
+   "sha256": "43cc330e96f7475a36daadd159e7435c1aea04ee6ef25a10b80fa8decf4c91ef"
+  },
+  "terminal": {
+   "step": 1563,
+   "test": {
+    "orientation_ring_D0": {
+     "n": 512,
+     "balanced_accuracy": 0.998046875,
+     "accuracy": 0.998046875,
+     "chance": 0.5,
+     "macro_ovr_auc": 1.0,
+     "confusion": [
+      [
+       256,
+       0
+      ],
+      [
+       1,
+       255
+      ]
+     ],
+     "loss": 0.003913211636245251
+    }
+   },
+   "sha256": "a340957f25514e9d4f143ffa2d3a5502c713672c992b24b46f6263cd20e1c49a"
+  }
+ }
+}

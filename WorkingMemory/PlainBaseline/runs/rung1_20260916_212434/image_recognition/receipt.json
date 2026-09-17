@@ -1,0 +1,175 @@
+{
+ "version": "plain_baseline_v1",
+ "task": "image_recognition",
+ "cells": [
+  "image_recognition_N4_H3",
+  "image_recognition_N4_H4",
+  "image_recognition_N4_H5"
+ ],
+ "args": {
+  "task": "image_recognition",
+  "out": "WorkingMemory/PlainBaseline/runs/rung1_20260916_212434/image_recognition",
+  "episodes": 20000,
+  "batch": 64,
+  "chunk": 32,
+  "lr": 0.001,
+  "seed": 1,
+  "cells": "rung1",
+  "val_every": 100,
+  "val_n": 256,
+  "test_n": 512,
+  "profile": 0,
+  "device": "cuda",
+  "stack": 1,
+  "feature_norm": "none",
+  "workers": 0
+ },
+ "params": 2191404,
+ "updates_planned": 313,
+ "sources": {
+  "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\WorkingMemory\\SpatialTaskBattery\\stimuli.py": "16b7efd4575eba27b9a79329243dcce0da635008856687a9e62bda72b5ddeb37",
+  "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\WorkingMemory\\PlainBaseline\\baseline.py": "8bcc361cb11ae212152ed4f96cf5fc45676fe38646ea8b33fb6733af66f022b0"
+ },
+ "seeds": {
+  "train": 61973001,
+  "scheduler": 62973001,
+  "val": 63973001,
+  "test": 64973001
+ },
+ "model_seed": 1,
+ "started": "2026-09-16T21:52:04-0700",
+ "platform": {
+  "torch": "1.13.1+cu117",
+  "gpu": "NVIDIA GeForce RTX 3070 Laptop GPU"
+ },
+ "finished": "2026-09-16T21:54:09-0700",
+ "seconds": 124.4425642490387,
+ "updates_done": 313,
+ "episodes": 20032,
+ "best_val": {
+  "mean_ba": 0.5104166666666666,
+  "step": 200
+ },
+ "final": {
+  "best": {
+   "step": 200,
+   "test": {
+    "image_recognition_N4_H3": {
+     "n": 512,
+     "balanced_accuracy": 0.513671875,
+     "accuracy": 0.513671875,
+     "chance": 0.5,
+     "macro_ovr_auc": 0.476837158203125,
+     "confusion": [
+      [
+       206,
+       50
+      ],
+      [
+       199,
+       57
+      ]
+     ],
+     "loss": 0.6934235095977783
+    },
+    "image_recognition_N4_H4": {
+     "n": 512,
+     "balanced_accuracy": 0.51171875,
+     "accuracy": 0.51171875,
+     "chance": 0.5,
+     "macro_ovr_auc": 0.4853973388671875,
+     "confusion": [
+      [
+       216,
+       40
+      ],
+      [
+       210,
+       46
+      ]
+     ],
+     "loss": 0.6932381391525269
+    },
+    "image_recognition_N4_H5": {
+     "n": 512,
+     "balanced_accuracy": 0.484375,
+     "accuracy": 0.484375,
+     "chance": 0.5,
+     "macro_ovr_auc": 0.53753662109375,
+     "confusion": [
+      [
+       228,
+       28
+      ],
+      [
+       236,
+       20
+      ]
+     ],
+     "loss": 0.6930222511291504
+    }
+   },
+   "sha256": "dbba2c0612f85e8e497fffd2dc6fb11ddeb61300e4e776bf330a869c4180ff28"
+  },
+  "terminal": {
+   "step": 313,
+   "test": {
+    "image_recognition_N4_H3": {
+     "n": 512,
+     "balanced_accuracy": 0.525390625,
+     "accuracy": 0.525390625,
+     "chance": 0.5,
+     "macro_ovr_auc": 0.5135345458984375,
+     "confusion": [
+      [
+       45,
+       211
+      ],
+      [
+       32,
+       224
+      ]
+     ],
+     "loss": 0.6930795907974243
+    },
+    "image_recognition_N4_H4": {
+     "n": 512,
+     "balanced_accuracy": 0.5,
+     "accuracy": 0.5,
+     "chance": 0.5,
+     "macro_ovr_auc": 0.49765777587890625,
+     "confusion": [
+      [
+       68,
+       188
+      ],
+      [
+       68,
+       188
+      ]
+     ],
+     "loss": 0.6931651830673218
+    },
+    "image_recognition_N4_H5": {
+     "n": 512,
+     "balanced_accuracy": 0.50390625,
+     "accuracy": 0.50390625,
+     "chance": 0.5,
+     "macro_ovr_auc": 0.5234527587890625,
+     "confusion": [
+      [
+       101,
+       155
+      ],
+      [
+       99,
+       157
+      ]
+     ],
+     "loss": 0.6930597424507141
+    }
+   },
+   "sha256": "238c8bc36f1e795f3a4acbb4c21e3c6964306807d6d7df97a5bb516e821d7807"
+  }
+ }
+}
