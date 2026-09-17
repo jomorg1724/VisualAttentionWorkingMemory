@@ -1,0 +1,107 @@
+{
+ "version": "plain_baseline_v1",
+ "task": "orientation_ring",
+ "cells": [
+  "orientation_ring_D0"
+ ],
+ "args": {
+  "task": "orientation_ring",
+  "out": "WorkingMemory\\PlainBaseline\\runs\\local_kda_program_20260917\\kda_s1\\ring",
+  "episodes": 100000,
+  "batch": 64,
+  "chunk": 16,
+  "lr": 0.0001,
+  "seed": 1,
+  "cells": "rung1",
+  "val_every": 200,
+  "val_n": 256,
+  "test_n": 512,
+  "profile": 0,
+  "device": "cuda",
+  "stack": 3,
+  "feature_norm": "none",
+  "workers": 2,
+  "encoder": "accum",
+  "accumulator": "kda",
+  "init": null,
+  "center": true,
+  "zero_head": false
+ },
+ "params": 2747240,
+ "updates_planned": 1563,
+ "sources": {
+  "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\WorkingMemory\\SpatialTaskBattery\\stimuli.py": "16b7efd4575eba27b9a79329243dcce0da635008856687a9e62bda72b5ddeb37",
+  "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\WorkingMemory\\PlainBaseline\\baseline.py": "eaccf0ec5cee5eb7a11f4ff153cd317b2361fa657ba2e6ab0d2289fe9022b7c9"
+ },
+ "init": null,
+ "seeds": {
+  "train": 61973001,
+  "scheduler": 62973001,
+  "val": 63973001,
+  "test": 64973001
+ },
+ "model_seed": 1,
+ "started": "2026-09-17T12:11:58-0700",
+ "platform": {
+  "torch": "1.13.1+cu117",
+  "gpu": "NVIDIA GeForce RTX 3070 Laptop GPU"
+ },
+ "finished": "2026-09-17T12:19:21-0700",
+ "seconds": 443.23003697395325,
+ "updates_done": 1563,
+ "episodes": 100032,
+ "best_val": {
+  "mean_ba": 1.0,
+  "step": 800
+ },
+ "final": {
+  "best": {
+   "step": 800,
+   "test": {
+    "orientation_ring_D0": {
+     "n": 512,
+     "balanced_accuracy": 1.0,
+     "accuracy": 1.0,
+     "chance": 0.5,
+     "macro_ovr_auc": 1.0,
+     "confusion": [
+      [
+       256,
+       0
+      ],
+      [
+       0,
+       256
+      ]
+     ],
+     "loss": 0.0019460621988400817
+    }
+   },
+   "sha256": "6af2e20bec3dd0821cf288d59215031a26015e2ac2163494e4f460ca1ff9dc65"
+  },
+  "terminal": {
+   "step": 1563,
+   "test": {
+    "orientation_ring_D0": {
+     "n": 512,
+     "balanced_accuracy": 1.0,
+     "accuracy": 1.0,
+     "chance": 0.5,
+     "macro_ovr_auc": 1.0,
+     "confusion": [
+      [
+       256,
+       0
+      ],
+      [
+       0,
+       256
+      ]
+     ],
+     "loss": 0.00023083112319000065
+    }
+   },
+   "sha256": "77dd216df8647cf1954e20f870e8609ad9e24f0145a93253d95f97ff23a60c04"
+  }
+ }
+}

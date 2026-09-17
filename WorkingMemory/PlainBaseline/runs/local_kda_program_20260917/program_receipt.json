@@ -1,0 +1,35 @@
+{
+ "started": "2026-09-17T12:11:50-0700",
+ "args": {
+  "out": "WorkingMemory/PlainBaseline/runs/local_kda_program_20260917",
+  "arms": "kda",
+  "seeds": "1",
+  "deadline": 1789693909.0,
+  "workers": 2,
+  "chunk": 16,
+  "scale": 1.0,
+  "gate": 0.9,
+  "val_n": 256,
+  "test_n": 512
+ },
+ "stages": {
+  "kda_s1/ring": {
+   "status": "completed",
+   "episodes": 100032,
+   "seconds": 443.23003697395325,
+   "test_terminal": {
+    "orientation_ring_D0": {
+     "ba": 1.0,
+     "auc": 1.0
+    }
+   },
+   "best_val": {
+    "mean_ba": 1.0,
+    "step": 800
+   },
+   "params": 2747240,
+   "init": null
+  }
+ },
+ "updated": "2026-09-17T12:19:21-0700"
+}

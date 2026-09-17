@@ -70,3 +70,4 @@ Next decision: adopt the ConvGRU-in-the-conv-stack model as the working baseline
 
 - `WorkingMemory/PlainBaseline/runs/cloud_20260917_010358/`: `cloud_provisioning.json`, `launch_receipt.json`, `bundle_manifest.json` (source hashes), `pulled/results/lane{1,2}/` (per-stage `receipt.json`, `metrics.csv`, `validation.json`, `program_receipt.json`), `final_tables.md`, `finalize_receipt.json` (stop 200 / delete 204 / lookup 404), `watch.log`.
 - Code: `WorkingMemory/PlainBaseline/accum.py`, `program.py`, `cloud/`.
+- Second-pass material: `SecondPass/` (KDA paper with the attention and psychometric analysis plans, pod runbook, bibliography); analysis tools in `WorkingMemory/PlainBaseline/analysis/`; local KDA re-run with checkpoints in `runs/local_kda_program_20260917/`.
