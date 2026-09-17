@@ -6,7 +6,9 @@ The project builds components of a visual attention and working-memory system, u
 
 PreAttentiveVision (PAV) is only the first component. Visual working memory, visual attention and integration follow later. Do not equate the whole project with PAV or select their implementations now.
 
-Current authorized task: research, implement and compare five promising lightweight convolutional encoders, each processing two separate100x100x3frames through shared weights; a sufficiently expressive common decoder predicts change/no change. Include several stimulus families such as Gabors, moving dots and images. Put all PAV tasks, code, source rationale, results and discussion in PreAttentiveVision/.
+Current direction (2026-09-16): the previous lineage is closed as a failure; see HANDOFF.md. Keep the five-task spatial battery as the benchmark, audit the environments and training logic for bugs and mis-specification first, then re-evaluate the architecture from first principles with every parameter trainable and a plain baseline beside every component. Never freeze weights or inherit a learning-rate split during development. No training or cloud provisioning is authorized by this note.
+
+Historical first task (complete): research, implement and compare five promising lightweight convolutional encoders, each processing two separate100x100x3frames through shared weights; a sufficiently expressive common decoder predicts change/no change. Include several stimulus families such as Gabors, moving dots and images. Put all PAV tasks, code, source rationale, results and discussion in PreAttentiveVision/.
 
 Researcher agents implement and execute experiments. Use primary literature/official implementations, explain adopted mathematical properties, and distinguish measured performance from neuroscience grounding. Run GPU jobs sequentially with a finite local budget; no paid/cloud compute or unrequested external publication. The current user instruction controls scope and supersedes historical plans. No mandatory architecture, obsolete harness, repeated validation campaign or old roadmap is inherited.
 

@@ -1,220 +1,271 @@
-# Agent handoff — Visual Attention and Working Memory
-
-Prepared 2026-09-14 from the implementation, experiment reports and cleanup receipts. This is a handoff, not authorization to restart experiments.
-
-## Update 2026-09-15T22:05-07:00
-
-The user authorized and launched a local five-task scratch run of the
-five-change AV-context v2 arm. See
-[experiment 24](LabJournal/experiments/24-av-context-v2.md) and the
-[V2 README](WorkingMemory/AttentionContextComparator/V2/README.md). Monitor
-with `python WorkingMemory/AttentionContextComparator/V2/status.py`. The
-supervisor applies a pre-registered stopping rule at validation 2,400 on its
-own. The material below predates this run.
-
-## Start here
-
-We have a functioning sensory / spatial recurrent-memory / pre-update attention model, but the newest spatial task battery exposes major acquisition failures. It learns spatial binding and image-set recognition. It has not learned the new cued signed-orientation and motion tasks. A completed motion-only continuation also stayed at chance, including with zero inserted blank frames.
-
-**All requested training is stopped or complete. The latest prospective-query cloud pod was deleted after verified retrieval, and no monitor remains active. Do not relaunch anything from an old plan or launcher.** The latest user action was to stop the prospective-query run after its first matched validation failed to improve the primary cued motion-duration result.
-
-Workspace: `C:/Users/jomor/Documents/VisualAttentionWorkingMemory`; Windows / PowerShell. Start with this file, then [current journal status](LabJournal/CURRENT_STATUS.md), [cloud partial report](WorkingMemory/SpatialTaskBattery/BiasedTraining/runs/biased_20260913_194506/report.md), and [local final report](WorkingMemory/SpatialTaskBattery/SingleTaskMotion/completion_report.md).
-
-## User intent and working rules
-
-- Build components incrementally, using Jeremy Wolfe's Guided Search 6.0 as a functional scaffold. Omit the diffuser; treating activated long-term memory as synaptic weights is the user's approximation, not Wolfe's claim.
-- PAV is only the sensory component, not the entire project. The repository was deliberately reset; do not recover deleted pre-reset architectures or plans.
-- The user wants **study, learn, justify, build**. They reject repeatedly training a failing design without investigating its failure. Explain neural-network computations directly, with equations and tensor shapes when useful.
-- Researchers implement and execute experiments. Use existing researcher agents where available. Root coordinates, reads results and handles cloud lifecycle. Maintain the wiki-style `LabJournal/` alongside experiment reports.
-- Use primary ML and neuroscience sources for new designs. Distinguish biological inspiration from measured performance and biological validation.
-- Do not silently change stimuli, cues, losses, curricula or supervision to make a model succeed. The user explicitly objected to replacing known failures with an easier teaching task.
-- Avoid repeated approval gates and broad validation campaigns. Use proportionate checks and finite compute. Historical budgets are closed, not reusable allowances.
-- Current authorization is documentation/handoff. Ordinary read-only investigation is fine; no new training, cloud provisioning, budget renewal or paused latent extraction is implied.
-
-## Operational closure
-
-Latest closure: prospective-query pod `dqi13o2x3qkvos` was user-stopped at
-logged step9430 /41,200 episodes; durable checkpoint9216 contains32,640
-episodes. All29 artifacts were verified locally, the provider reported
-`EXITED`, deletion succeeded, subsequent lookup returned404, the pod list was
-empty and account spend was $0/hour. See
-[completion](WorkingMemory/ProspectiveQuery/completion_report.md) and
-[cleanup](WorkingMemory/ProspectiveQuery/runs/prospective_20260914_175602/cleanup_receipt.json).
-
-| Item | Verified state / evidence |
-|---|---|
-| Cloud pod | `ep8bmcjxz9k66l`, NVIDIA L40 48 GB, Palladio account; **deleted** |
-| Cleanup | Stop returned `EXITED`; delete returned success / HTTP 204; subsequent pod listing was empty |
-| Cleanup timestamp | 2026-09-14 05:52:23 UTC; this is a recorded shutdown check, not a claim of a fresh account check on every read |
-| Cloud retrieval | All **73** frozen result files, including saved checkpoints, checksum-verified locally |
-| Local motion run | Completed; all **97** immutable run artifacts verified; model workers exited |
-| Monitor | `finish-attention-runpod-experiment`, name `Completed training cleanup`, **PAUSED** |
-
-Evidence: [cloud retrieval](WorkingMemory/SpatialTaskBattery/BiasedTraining/retrieval_receipt.json), [API cleanup](WorkingMemory/SpatialTaskBattery/BiasedTraining/cleanup_receipt.json), [user stop](WorkingMemory/SpatialTaskBattery/BiasedTraining/user_stop_receipt.json), [local completion](WorkingMemory/SpatialTaskBattery/SingleTaskMotion/completion_receipt.json).
-
-Some launch-time READMEs/protocols still describe a running job. Their historical tense is not operational authority; cleanup receipts and the user's stop instruction supersede them. Do not reconnect to the deleted pod or restart a watcher to satisfy stale text.
-
-## Architecture currently being tested
-
-Implementation entry points:
-
-- [BiasedTraining/model.py](WorkingMemory/SpatialTaskBattery/BiasedTraining/model.py): current five-task wrapper and migration; version `spatial_five_task_original_attention_biases_v1`.
-- [PreUpdateAttention/model.py](WorkingMemory/PreUpdateAttention/model.py): attention and per-frame computation.
-- [SpatialComparison/model.py](WorkingMemory/SpatialComparison/model.py): spatial E/I dynamics, normalization and comparator.
-- [TemporalIntegration/accumulators.py](PreAttentiveVision/TemporalIntegration/accumulators.py): sensory temporal computations.
-
-The model processes RGB frames sequentially. Its learned convolutional sensory encoder and opponent temporal computations produce a field `H_t: [B,64,13,13]`. Opponent trace state persists within the trial. Do not confuse this with the obsolete vector-memory bottleneck: the current memory is spatial.
-
-Previous firing rates `R_(t-1)` and adaptation `A_(t-1)` each have shape `[B,64,13,13]`. Memory and sensory traces reset at the beginning of each episode. There is no growing frame cache.
-
-### Pre-update joint attention
-
-Flatten space into 169 tokens while keeping 64 features per token. Previous memory supplies 169 queries. Concatenate 169 current sensory tokens and 169 previous-memory tokens to supply 338 keys and values. Two heads each have width 32.
-
-With learned position `P` and source embeddings `e_v,e_m`:
-
-\[
-Q=W_Q(\operatorname{LN}_q(R)+P+e_m),\qquad
-K=W_K(\operatorname{LN}_k([H;R])+[P+e_v;P+e_m]),\qquad
-V=W_V[H;R].
-\]
-
-For head h, query i and source token j:
-
-\[
-L_{hij}=\frac{Q_{hi}\cdot K_{hj}}{\sqrt{32}}
-+b_{h,\operatorname{source}(j)}
--\operatorname{softplus}(\ell_h)\|p_i-p_j\|^2,
-\qquad U=W_O\operatorname{concat}_h(\operatorname{softmax}_j(L_h)V_h).
-\]
-
-Attention weights have shape `[B,2,169,338]`; reshape U to `[B,64,13,13]`. **Both heads can read both sources**; they are not a dedicated visual head and a dedicated memory head. Source bias and locality penalty are currently present and trainable. Learned source/position embeddings are separate parameters.
-
-### Spatial E/I update and decision
-
-Apply channel LayerNorm independently at each location to U. The E/I core has a learned 1×1 input projection, signed 3×3 recurrent convolution, 51 excitatory and 13 inhibitory channels, ReLU firing rates and adaptation. Synapse signs are fixed by presynaptic channel; magnitudes are learned through softplus.
-
-\[
-R_t=(1-\alpha)R_{t-1}+\alpha\operatorname{ReLU}(W_{in}z_t+K*R_{t-1}-gA_{t-1}+b),
-\]
-\[
-A_t=(1-\beta)A_{t-1}+\beta R_{t-1}.
-\]
-
-The implementation uses **previous** rates in the adaptation update. Per-channel learned bounded time constants give `alpha=1-exp(-1/tau_r)` and `beta=1-exp(-1/tau_a)`; `tau_r` is bounded 1–32 frames, `tau_a` 4–128, and adaptation gain 0–0.5.
-
-In parallel, a comparator processes concatenated **old memory and current H** through 1×1 and 3×3 convolutions. At the final frame, spatial mean/max pooled sensory, updated-memory and comparator branches each produce a 128-dimensional contribution; these are summed before the task-specific linear head. Attention supplies the external drive into memory; the separate sensory/comparator decision paths still exist.
-
-The five-task model has **557,676 parameters**: 556,128 inherited parameters plus 1,548 parameters for five new heads. All learned components used by the task train; unused legacy heads receive no gradients. Fixed Gabor kernels, prescribed sensory retention coefficients and energy equations remain fixed. This is not a fully learned replacement of those predefined computations, nor a biologically validated circuit.
-
-## Initialization and shared training — avoid ambiguity
-
-The cloud five-task run was **continued training**, not random initialization. It started independently from original intact **attention8400**, with compatible learned tensors and 123 Adam parameter-state entries retained. Five new semantic heads were initialized fresh. It did not inherit the cancelled bias-free run's degraded weights.
-
-All five tasks share encoder, temporal processing, attention, memory and comparator weights. Only the small output heads differ. Each cloud update processes five microbatches of eight episodes, averages their five mean cross-entropies, clips the combined gradient at 1, then performs one Adam update. Full BPTT, fp32; inherited sensory LR `3e-5`, memory/attention/comparator/new-head LR `3e-4`, Adam epsilon `1e-10`. Task identity selects the output head; this is not unconstrained inference of which task to perform.
-
-## Current five-task battery
-
-Canonical specification: [PROTOCOL.md](WorkingMemory/SpatialTaskBattery/PROTOCOL.md), [stimuli.py](WorkingMemory/SpatialTaskBattery/stimuli.py), [SOURCES.md](WorkingMemory/SpatialTaskBattery/SOURCES.md). [Actual rendered previews](WorkingMemory/SpatialTaskBattery/previews/index.html) are useful before interpreting failures.
-
-| Task | What the model must do |
-|---|---|
-| `orientation_cued` | Four Gabors. A local plus/minus cue identifies both the relevant location and relevant rotation sign. Report whether its sample-to-probe rotation matches that sign; negatives include no rotation and opposite rotation. Rotation magnitudes 15/30/45°. |
-| `motion_duration_cued` | Four independent dot patches. A ring selects one patch. Across eight cardinal-direction transitions, report that patch's direction with greatest total duration. Four classes, chance 25%. Cue stays present during evidence. |
-| `krauzlis_cued_motion` | Two dot patches, brief target precue, then detect a small mean-direction change in the target while ignoring foil changes. Based on Arcizet & Krauzlis 2018; disclosed 100×100 and compressed-timing adaptations, not a replication. |
-| `spatial_binding` | Four orientations are shown; after the delay a retrocue selects a location. Report whether a swap involved that location. Every trial contains one swap, so total global change does not reveal the answer. |
-| `image_recognition` | Show 0/4/12/24 consecutive natural images, one frame each, then **three blanks total**, then a query repeated identically for 3/4/5 frames. Report exact membership. Positive raster is identical to a study image. |
-
-Orientation, duration and binding use D=0/4/12/24 inserted blanks. Four-region centers are `(27,27),(73,27),(27,73),(73,73)`. Recognition uses 500 BSDS images with official identity-separated splits; empty lists are negative-only controls, excluded from BA/AUC averages. Krauzlis uses 12/20/28 baseline transitions and target/foil/catch proportions 57/29/14%; always saying target-change gives 57% ordinary accuracy but only 50% balanced accuracy.
-
-These are **new tasks**, not the old single-field motion / same-versus-different orientation tasks on which related checkpoints succeeded. Spatial cue use, multiple competing patches, rotation-sign rules, small direction changes and image lists add demands. Do not interpret a cross-battery score change as an isolated architecture effect.
-
-## Most recent results
-
-### Cloud five-task run — stopped early by the user
-
-Planned: 4,000 added updates / 160,000 episodes. Logged at stop: **3,523 updates / 140,920 episodes**, global11923. Latest saved checkpoint: **11776**, representing **3,376 updates / 135,040 episodes**. The last 147 logged updates / 5,880 episodes were not checkpointed.
-
-**No final held-out test was performed.** Last completed validation was **11600**; selection-so-far chose **10000** under the minimum chance-normalized family BA / mean AUC rule. These are three different saved/evaluated endpoints; never attach validation11600 scores to durable11776.
-
-| Last validation11600 | Balanced accuracy |
-|---|---:|
-| Spatial binding, all delays | 100% |
-| Recognition, list4, all query holds | 96.88% |
-| Recognition, list12, all query holds | 82.81% |
-| Recognition, list24, holds3/4/5 | 71.88 / 71.88 / 73.44% |
-| Orientation, D0/4/12/24 | 42.19 / 53.12 / 45.31 / 46.88% |
-| Motion duration, D0/4/12/24 | 25.00 / 23.44 / 25.00 / 25.00% |
-| Krauzlis, all three baseline lengths | 50% |
-
-Non-Krauzlis validation cells contain 64 examples; Krauzlis cells contain 100. Empty-list recognition accuracy was 100%, with BA undefined. Report per-condition results rather than hiding weak tasks in an aggregate.
-
-### Local motion-only run — complete, negative result
-
-Branched from the cloud's **10000** checkpoint, which had already seen 12,800 new-battery motion episodes. Restored model, 133 Adam states, RNG, motion stream and delay scheduler. Trained **only** motion duration for 2,200 updates / **17,600 additional episodes**, batch8. All used learned components remained trainable. Profiling reduced the initial target to fit a new two-hour cap; training/evaluation took 56.4 minutes and final analysis 59.2 minutes. No worker remains.
-
-| Blanks | Parent10000 | Selected11760 | Terminal12200 |
-|---|---:|---:|---:|
-| 0 | 25.00% | 24.80% | 25.20% |
-| 4 | 25.00% | 25.78% | 25.00% |
-| 12 | 25.00% | 25.00% | 25.78% |
-| 24 | 25.00% | 25.00% | 25.00% |
-
-Final tests use 512 independent base episodes paired across delays and models, not 2,048 independent histories. All paired gain intervals include zero. Output AUC is roughly 0.50–0.52. Strong class collapse remains; selected D12/D24 outputs one class for every example. Last-200-update mean CE=1.3877, near `log(4)=1.3863`; losses/gradients were finite.
-
-This amount of task-only continuation **did not teach the task**. Failure already at D0 cannot be explained only by losing information during inserted blanks. It does not by itself establish an architecture capacity limit, a generator bug, or a specific optimization mechanism. Cloud/local validation draws differ; their trajectory comparison is unpaired. Local full motion CE also differs from the cloud's five-loss average, so this is not a pure gradient-conflict intervention.
-
-## Checkpoint and evidence map
-
-Paths below are relative to the repository. Step numbers are not globally unique: identify the run and version as well as the step.
-
-| Purpose | Location |
-|---|---|
-| Original attention8400 | `WorkingMemory/PreUpdateAttention/runs/attention_20260913_143459/retrieved/remote_results/preupdate_attention/checkpoint_008400.pt` |
-| Cloud retrieved result root | `WorkingMemory/SpatialTaskBattery/BiasedTraining/runs/biased_20260913_194506/retrieved/biased_results/` |
-| Cloud current saved weights | Under that root: `spatial_biased/training/checkpoint_011776.pt` |
-| Cloud selected-so-far / local branch parent | Same directory: `checkpoint_010000.pt` |
-| Cloud last evaluated checkpoint | Same directory: `checkpoint_011600.pt` |
-| Local run root | `WorkingMemory/SpatialTaskBattery/SingleTaskMotion/runs/motion_20260913_214605/` |
-| Local selected / terminal | Under local root: `training/checkpoint_011760.pt`, `training/checkpoint_012200.pt` |
-| Local detailed findings | `WorkingMemory/SpatialTaskBattery/SingleTaskMotion/completion_findings.json` |
-| Cloud actual config/lineage/logs | Retrieved result root plus `BiasedTraining/construction_checks.json`, launch/retrieval/stop receipts |
-
-Recorded SHA256:
-
-- Original attention8400: `e37602aa20ccfc400ea8fe9d98c11f29c508069388897c55803b97f2ccdf1bc9`.
-- Cloud10000 / local parent: `35281f264131e01678ab5725a5b66816d47302583f78b9751f775f18adf22942`.
-- Cloud durable11776: `8014155821a1df1456c580be6dcdc7856a9fd969e4458444b627d0329cabea5c`.
-
-Use checkpoint config/version and source receipts to reconstruct models; do not indiscriminately run a migration function on an already migrated checkpoint. Existing local worker restoration code is a reference, not a command to launch another training run.
-
-## How we reached this point
-
-1. PAV compared five lightweight encoders on seven two-frame tasks. More contour allocation improved the selected convolutional reference. The causal opponent temporal model subsequently reached 98.44–100% across those seven tasks. This does not establish long-sequence or multi-patch ability.
-2. LSTM versus E/I recurrent-memory experiments exposed ordering sensitivity and readout limitations. A frozen E/I-state diagnostic found accessible early motion evidence; output-only refitting improved deployed long-motion decisions to about79%.
-3. Delayed orientation remained weak in an earlier vector E/I model. A frozen diagnostic nevertheless decoded sample orientation at D24 with about4.25° error; an analysis-only comparator reached73.44% versus deployed50%. This distinguished accessible information from successful use, for that earlier model/task.
-4. Spatial64×13×13 E/I memory improved binding but did not alone resolve delayed orientation. Pre-update joint sensory/memory attention subsequently improved delayed orientation. Acute memory-source exclusion during blanks harmed it, but did not uniquely distinguish refreshing memory from rejecting blank drive.
-5. Old-task training allocation tests recovered some motion at the cost of weaker orientation and unstable terminal direction predictions. There was no clear all-task winner. See [experiment16](LabJournal/experiments/16-training-exposure.md).
-6. Attention maps showed a nearly constant first-head source preference and strong locality. Removing both explicit source bias and locality together hurt old-task D24 orientation (91.60→57.62%) and binding (99.41→49.80%), with no reliable motion gain. This one continuation cannot separate the two terms or show unbiased attention universally fails. See [experiment18](LabJournal/experiments/18-unbiased-attention-spatial-battery.md).
-7. The new five-task bias-free attempt was cancelled early. The user restored the original bias terms and launched the independent intact-parent cloud run described above. It was stopped for the night, while the local task-only branch completed without acquisition.
-
-## Visualization and paused work
-
-`WorkingMemory/AttentionMaps/index.html` is the corrected **per-timestep** viewer: 48 movies, 912 frames, old attention8400, three old task families, D0/D24. Four full13×13 grids show each head × source bank. Do not present it as the current five-task model or as evidence from cloud11776.
-
-The user rejected single-query one-pixel maps and time-averaged maps. Preserve the corrected viewer; `frame_view.py` is the relevant renderer. Do not blindly run older `render.py`. Source allocation is not image-pixel attribution; remembered-scene overlays are spatial references, not reconstructions. Constant routing weights do not imply constant value vectors or outputs.
-
-Broader `WorkingMemory/LatentDynamics` probes / PCA / UMAP / t-SNE remain paused. No authorization to restart them is inherited from this handoff.
-
-## Unresolved questions and a useful next conversation
-
-The immediate weakness is **acquiring the relevant motion / signed-change decision**, not just retaining an already correct decision through blanks. Binding success suggests some location-cue use, but is not a causal demonstration of general attention. The motion-only failure means competing task updates are not a sufficient explanation for the failure under this continuation; inherited weights/Adam, feature availability, optimization and task difficulty remain possible factors.
-
-Possible next investigations to discuss, **not launched or pre-authorized**:
-
-- Inspect actual movies, labels and saved prediction confusions to separate sensory difficulty from cue-dependent selection/rule use.
-- Pair identical multi-patch evidence with different valid cues that change the required answer. This would test cue influence more directly than comparing unrelated trials.
-- Compare available evidence before memory with the final decision, using analysis-only probes with appropriate splits if authorized. Probe failure alone would not establish erasure.
-- If training a diagnostic simplification is requested, change one factor explicitly: single versus multiple patches, cue selection, duration integration, or delay. Do not silently rewrite the main battery or introduce privileged supervision.
-
-Start by telling the user that the local focused run did not solve acquisition and that the cloud results are partial validation. Bring a concrete hypothesis and the smallest discriminating experiment rather than another unexplained long run. Preserve the models that already work on the earlier task battery.
+# Handoff — reset to first principles
+
+Prepared 2026-09-16 after the user judged the AV-context v2 arm, and with it
+the whole from-scratch line, a failure. This document replaces the 2026-09-14
+handoff (still in git history). It is a handoff, not authorization to train.
+
+Repository: `C:/Users/jomor/Documents/VisualAttentionWorkingMemory`, pushed to
+[github.com/jomorg1724/VisualAttentionWorkingMemory](https://github.com/jomorg1724/VisualAttentionWorkingMemory)
+(private). Windows, PowerShell, Python 3.10, torch 1.13.1+cu117, laptop RTX
+3070 (8 GB). Checkpoints, datasets and result bundles are on disk but not in
+git; every receipt records their SHA256. **Nothing is running locally or in
+the cloud, and no RunPod pod exists on the account.**
+
+Read next: [current status](LabJournal/CURRENT_STATUS.md),
+[chronology](LabJournal/CHRONOLOGY.md),
+[experiment 24](LabJournal/experiments/24-av-context-v2.md), then this file's
+audit list.
+
+## 1. Where the project stands
+
+The user's assessment, which the evidence supports: the lineage was a house of
+cards. Each component was validated on the previous component's terms, the
+whole chain was never shown to be learnable end to end, and when the new
+five-task battery demanded genuinely new computation (cue-directed selection,
+signed change, multi-patch duration integration) nothing in the stack could
+acquire it.
+
+What has been tried on the current five-task battery, all stopped:
+
+| Arm | Init | Exposure | Outcome |
+|---|---|---|---|
+| Biased five-task (exp. 19) | warm start from attention 8400 | 140,920 episodes | binding 100%, recognition 97/83/72%, orientation ≈50%, motion 25%, Krauzlis 50% |
+| Motion-only continuation (exp. 20) | warm start from cloud 10000 | +17,600 motion episodes | 25% at every delay |
+| Prospective query (exp. 21) | warm start | 41,200 episodes | small orientation/binding gains, motion at chance |
+| Spatial priority readout, scratch (exp. 22) | scratch | ≥200,000 | all tasks at chance |
+| Dual attention, scratch (exp. 23) | scratch | ≈218,000 | all tasks at chance |
+| AV-context v1, scratch | scratch | ≈256,000 | all tasks at chance |
+| AV-context v2, five changes (exp. 24) | scratch | 424,840 (cloud) | all tasks at chance; training CE never left chance on 4/5 tasks |
+
+The clean split in that table is not architecture. It is warm start versus
+scratch. Every warm-started arm solved binding and recognition quickly; every
+scratch arm solved nothing, including binding and recognition. The question
+the v2 experiment was designed to ask (does cue-directed routing get used) was
+never actually posed to the network because it never left the constant-output
+regime. See the loss table in experiment 24.
+
+## 2. Where we went wrong
+
+1. **Frozen and slowed weights during development.** The PAV encoder was
+   trained on two-frame change tasks, then frozen (`requires_grad_(False)`,
+   `encoder.eval()`) while the temporal accumulators were selected on top of
+   it. When everything was later unfrozen, all inherited parameters trained
+   at 3e-5 while new parts trained at 3e-4, and that split was copied
+   verbatim into every later recipe, including the scratch arms, where it
+   trained 73% of a random network ten times too slowly. Component
+   comparisons made under frozen or crippled predecessors selected
+   components that fit a fixed representation, not components that could
+   learn one. The user's rule going forward: never freeze weights during
+   development, and never inherit a learning-rate split.
+2. **Hard-coded computations that were never tested against learned ones.**
+   The opponent accumulator uses a fixed Gabor quadrature bank, fixed
+   fast/slow retention (0.25/0.75), a fixed opponent energy equation, fixed
+   E/I sign masks with softplus magnitudes and bounded time constants.
+   These were adopted as neuroscience-motivated priors and then carried as
+   load-bearing structure. None was ever ablated against a plain learned
+   alternative on the same tasks.
+3. **Warm starts that hid learnability.** Every "success" came from a chain
+   of continuations. Binding at 100% looked like evidence that the
+   architecture works; it was evidence that a pretrained two-frame change
+   detector plus a working recurrent memory can be fine-tuned into a swap
+   detector. The first time the stack had to learn from scratch it could not
+   even do that.
+4. **A weak training signal for a long credit-assignment path.** One scalar
+   label per episode of 5–45 frames, batch 8, five microbatches of different
+   tasks averaged into one Adam step, gradient clipping at 1, full BPTT
+   through encoder → traces → fusion → attention → E/I recurrence → readout.
+   The scratch runs show the signature of this: gradient norm decaying from
+   0.6 to 0.26 while outputs go constant.
+5. **Too much scaffolding per experiment, too little diagnosis.** Each run
+   came with pinned hashes, receipts, lifecycle monitors and cloud
+   provisioning, and each ended at chance. The engineering was sound; the
+   science had no ladder of small learnable steps under it.
+6. **Never establishing that the tasks are learnable at all.** No standard
+   model was ever trained on the five-task battery. We do not know whether
+   `motion_duration_cued` or `krauzlis_cued_motion` can be learned by anything
+   at this resolution and signal level. Section 4 gives specific reasons to
+   doubt it.
+
+## 3. Keep the tasks as the benchmark
+
+The five tasks stay:
+[PROTOCOL.md](WorkingMemory/SpatialTaskBattery/PROTOCOL.md),
+[stimuli.py](WorkingMemory/SpatialTaskBattery/stimuli.py),
+[SOURCES.md](WorkingMemory/SpatialTaskBattery/SOURCES.md),
+[rendered previews](WorkingMemory/SpatialTaskBattery/previews/index.html).
+Scoring: [summarize_spatial](WorkingMemory/UnbiasedAttention/protocol.py)
+(within-task condition means, chance-normalised BA, mean OVR AUC; empty
+recognition lists excluded from ranking). Fixed seeds: train 61973001,
+scheduler 62973001, validation 63973001, test 64973001.
+
+Keeping them as benchmarks does not mean keeping their parameters
+unexamined. Section 4 lists what to verify before any of them is used to
+judge an architecture again.
+
+## 4. Audit the environments and the training logic first
+
+Do this before any architecture work. Each item is concrete and cheap.
+
+### 4.1 Motion duration (`_motion` in stimuli.py)
+
+- Dots are rendered by `np.rint` to integer pixels after steps of 0.8, 1.2
+  or 1.6 px. At 0.8 px a dot moves 0 or 1 px per frame, irregularly.
+- 16 of 32 dots per patch are replaced at every one of the 8 transitions
+  (`reset[rng.choice(32,16,replace=False)]=True`), so a dot survives two
+  frames on average. The per-frame direction signal is ~16 dots × ~1 px
+  against 16 fresh random dots.
+- The label is the majority direction over 8 frames with a margin of only
+  `max(1, length//8) = 1` frame (`_motion_schedule`), so schedules like
+  counts [3,2,2,1] are legal.
+- Four such patches, one cued by a thin ring (160 non-gray pixels in the
+  cue frame; 0.07 contrast after 13×13 average pooling).
+- The old single-field motion task that reached ~79% used 1–3 px steps on a
+  single patch. This task is far harder and its difficulty was never
+  calibrated against anything.
+
+Test: train a plain strong model (3D conv or per-frame CNN + GRU, batch 64,
+lr 1e-3, no fixed priors) on motion D0 only. If it cannot exceed chance in
+100k episodes, the task is mis-specified for this resolution, not the model.
+Then sweep step size, replacement rate and margin to find where it becomes
+learnable, and record the human-plausible operating point.
+
+### 4.2 Krauzlis (`_krauzlis`)
+
+Step 0.375 px per frame, 16 dots per patch, radius 8 px, direction SD 16°,
+event = a small mean-direction change. Same learnability test as 4.1; the
+sub-pixel step plus integer rasterisation is the first suspect. Check the
+57/29/14 event proportions are what the summariser assumes for balanced
+accuracy.
+
+### 4.3 Orientation (`_orientation`)
+
+The ±glyph is 10×10 px placed 23 px above the target centre, which for the
+top row lands at rows 4–14, near the border. Verify the glyph survives the
+encoder's downsampling and that its sign is unambiguous at 13×13. Verify
+`rotation_multiset_before_target_assignment` really makes the aligned,
+opposite and unchanged locations equally likely under both labels (the
+foil-control claim in the metadata).
+
+### 4.4 Binding, recognition, cue timing
+
+- Binding: confirm that "one swap per trial" plus a retrocue cannot be
+  solved from the global change signal (the metadata claims this; test it
+  with a model that sees no cue).
+- Recognition: confirm split disjointness and that positive probes are
+  byte-identical to a study image; confirm the empty-list cells never enter
+  ranking.
+- For every task, print the frame index at which the cue appears, the
+  evidence frames, blanks and report frame for D0 and D24, and confirm the
+  worker feeds all of them (`frame_count` versus the images tensor).
+
+### 4.5 Label pairing and streams
+
+`SpatialBatteryStream._case` draws labels through a `pending` queue so
+classes are balanced within a stream. Verify per-task label counts over 10k
+draws, verify `state_dict`/`load_state_dict` round-trips exactly (the resume
+path depends on it), and verify validation/test streams with the fixed seeds
+regenerate identical trials across processes.
+
+### 4.6 Training logic
+
+- Each update averages five per-task losses (`loss/5` each) and clips the
+  summed gradient at 1. Log per-task gradient norms separately once; if one
+  task's gradient dominates the clip, the others are effectively frozen.
+- Batch 8 per task is tiny for a scratch run with one scalar label per
+  episode. Establish the learnable batch size on the plain baseline first.
+- `activation_checkpoint=True` with `preserve_rng_state`: confirm the
+  recomputed forward is bit-identical to the direct forward (the readout
+  dropout was deleted, so it should be).
+- The E/I update uses previous rates in the adaptation term and bounded
+  time constants (τ_r 1–32, τ_a 4–128). Check that a 24-frame blank at the
+  initial time constants does not annihilate the state by construction
+  (0.75²⁴ ≈ 0.001 for the slow trace is already known).
+- Adam ε = 1e-10 and weight decay 1e-4 on matrices were never tuned.
+
+## 5. Re-evaluate the architecture from first principles
+
+Ask, for each piece, three questions: is it essential to solve the task
+suite, is it hurting, and has it ever been shown to learn from scratch?
+
+| Component | Status | What to do |
+|---|---|---|
+| Pretrained PAV encoder (convnext_se_residual) | never trained end to end on these tasks | Replace with a small plain CNN trained from scratch inside the baseline; compare only if the baseline learns |
+| Fixed Gabor quadrature bank + fixed opponent energy | hard prior, never ablated | Compare against learned 3D/temporal convolutions; if the learned version wins or ties, drop the prior |
+| Fixed fast/slow traces (0.25/0.75) | hard prior | Learn the retention or replace with a learned recurrent unit; the 0.75²⁴ decay makes them useless for D24 anyway |
+| Average pooling to 13×13 | dilutes sparse signals; v2's max pooling did not rescue a scratch run | Keep resolution higher until the task is learnable, then compress |
+| Pre-update joint attention with source bias and locality (λ=4) | helped delayed orientation in a warm start; head 1 was never recruited from scratch | Drop for the baseline; reintroduce only when a working representation exists and a cue-use failure is measured |
+| Spatial E/I memory (Dale signs, softplus magnitudes, bounded τ) | worked when warm-started; never learned from scratch | Baseline with a plain ConvGRU or LSTM first; then test whether E/I constraints cost anything |
+| Priority-map readout (spatial softmax × evidence) | uniform-priority fixed point demonstrated | Use a plain pooled readout for the baseline; treat priority as a hypothesis to test, not a default |
+| Per-task heads with task-identity selection | fine | keep |
+
+Suggested ladder, every rung with all weights trainable and a plain
+comparison model beside it:
+
+1. **Learnability of each task at D0 with a standard model** (per-frame CNN
+   + GRU, batch 64+, lr 1e-3, 100k episodes). This is the environment audit's
+   final word and the floor every later model must beat. Record it.
+2. **Delay curve for that model** (D0/4/12/24). This measures what memory
+   the task actually demands.
+3. **One added inductive bias at a time** (spatial recurrence, E/I
+   constraints, opponent temporal features, attention, priority readout),
+   each compared to rung 2 on the same seeds, at least two seeds.
+4. Only then a combined model, and only then any Guided Search framing.
+
+The GS6 scaffold (no diffuser; activated long-term memory as synaptic
+weights) remains the user's framing for the eventual system. It is not a
+constraint on the baseline.
+
+## 6. Rules for the next agent
+
+- Never freeze parameters during development. Never inherit a learning-rate
+  split. If a component is compared, it is compared with everything
+  trainable.
+- Every model must first be shown to learn from scratch on at least one
+  task before it becomes a parent for anything.
+- Change one factor at a time and keep a plain baseline in the table.
+- Keep the receipts, pinned hashes and finite budgets; they are what made
+  this failure diagnosable. But do not build cloud lifecycle machinery for an
+  experiment before a laptop-scale version has left chance.
+- The user wants study, learn, justify, build: read the primary source,
+  explain the computation with equations and shapes, then implement.
+- Finite compute. Do not provision cloud without an explicit instruction.
+  Local GPU jobs run sequentially.
+- Report per-condition results, never aggregates that hide a weak task.
+  Distinguish measured performance from biological motivation.
+
+## 7. Operational notes
+
+- Run `python WorkingMemory/cloud_shutdown.py <cloud_provisioning.json>` to
+  stop a pod with retrieval first; it refuses to delete on failed retrieval
+  unless `--force`. Run launchers and monitors from PowerShell so `ssh` is
+  Windows OpenSSH; Git's MSYS `ssh` rewrites backslashes in remote
+  arguments and broke two retrievals on 2026-09-15.
+- Git stores files byte-exact (`* -text`, `core.autocrlf=false`) because
+  workers verify SHA256 of pinned sources. Do not change that.
+- Detached local processes launched from a Claude session died overnight on
+  2026-09-15; if a run must survive the session, launch it as a scheduled
+  task or service and check it before assuming it is alive.
+- Preserved checkpoints worth knowing about: attention 8400 (the last
+  warm-started model that solves the old battery; SHA
+  `e37602aa…1bc9`), cloud 10000 of the biased five-task run
+  (`35281f26…2942`), and the v2 cloud arm's 49 checkpoints under
+  `WorkingMemory/AttentionContextComparator/V2/runs/cloud_20260915_222845/retrieved_user_stop/`.
+  None of these should be a parent for new work under the rules above; they
+  are references for the old battery and for post-mortem analysis.
+
+## 8. Useful code to reuse
+
+- `WorkingMemory/SpatialTaskBattery/stimuli.py`: the battery generator and
+  streams (audit first, section 4).
+- `PreAttentiveVision/evaluate_multitask.py` and
+  `WorkingMemory/UnbiasedAttention/protocol.py`: scoring.
+- `WorkingMemory/AttentionContextComparator/V2/worker.py`: a bounded worker
+  with resume, per-update diagnostics and hash-pinned sources; strip the
+  v2-specific diagnostics and reuse the skeleton.
+- `WorkingMemory/AttentionContextComparator/V2/check.py`: the pattern for a
+  hard identity gate between two model versions.
+- `WorkingMemory/AttentionContextComparator/V2/preflight_probe.py`: forward-
+  only linear probing of intermediate fields.
+- `WorkingMemory/AttentionContextComparator/V2/cloud/`: provisioning,
+  watcher, lifecycle and pull scripts for RunPod, if cloud is ever
+  authorised again.
