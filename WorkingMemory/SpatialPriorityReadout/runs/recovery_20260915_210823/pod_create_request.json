@@ -1,0 +1,24 @@
+{
+  "name": "vawm-spatial-priority-control-recovery-3200",
+  "imageName": "runpod/pytorch:2.1.0-py3.10-cuda11.8.0-devel-ubuntu22.04",
+  "computeType": "GPU",
+  "cloudType": "COMMUNITY",
+  "gpuTypeIds": [
+    "NVIDIA RTX A4500"
+  ],
+  "gpuTypePriority": "custom",
+  "gpuCount": 1,
+  "containerDiskInGb": 30,
+  "volumeInGb": 10,
+  "volumeMountPath": "/workspace",
+  "ports": [
+    "22/tcp"
+  ],
+  "supportPublicIp": true,
+  "interruptible": false,
+  "minRAMPerGPU": 16,
+  "minVCPUPerGPU": 4,
+  "env": {
+    "PUBLIC_KEY": "[recorded local public key]"
+  }
+}

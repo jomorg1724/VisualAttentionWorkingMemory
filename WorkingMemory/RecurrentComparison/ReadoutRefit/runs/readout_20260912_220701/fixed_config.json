@@ -1,0 +1,264 @@
+{
+  "parent_checkpoint": "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\WorkingMemory\\RecurrentComparison\\runs\\recurrent_20260912_202158\\remote_retrieval\\remote_results\\ei_adaptive\\checkpoint_005000.pt",
+  "parent_sha256": "0a1d498ca678337aac42232ad1c9e048951b64ec0c0128e68b9cf0522b0b2520",
+  "parent_step": 5000,
+  "allowance_seconds": 3600,
+  "recipe": {
+    "seed": 59301,
+    "common_seed": 59311,
+    "core_seed": 59312,
+    "train_seed": 593001,
+    "batch_size": 8,
+    "new_lr": 0.0003,
+    "parent_lr": 3e-05,
+    "weight_decay": 0.0001,
+    "grad_clip": 1.0,
+    "adam_eps": 1e-10,
+    "activation_checkpoint": false,
+    "task_classes": {
+      "motion_direction": 4,
+      "orientation": 2
+    },
+    "cells": {
+      "motion_anchor": {
+        "family": "motion_direction",
+        "condition": {
+          "protocol": "anchor",
+          "length": 8,
+          "delay": 0,
+          "load": 1,
+          "cue_visible": true,
+          "distractor": false,
+          "precue": false,
+          "post_delay": 2,
+          "threshold_level": null
+        }
+      },
+      "orientation_anchor": {
+        "family": "orientation",
+        "condition": {
+          "protocol": "anchor",
+          "length": 8,
+          "delay": 0,
+          "load": 1,
+          "cue_visible": true,
+          "distractor": false,
+          "precue": false,
+          "post_delay": 2,
+          "threshold_level": null
+        }
+      },
+      "motion_L2": {
+        "family": "motion_direction",
+        "condition": {
+          "protocol": "integration",
+          "length": 2,
+          "delay": 0,
+          "load": 1,
+          "cue_visible": true,
+          "distractor": false,
+          "precue": false,
+          "post_delay": 2,
+          "threshold_level": null
+        }
+      },
+      "motion_L8": {
+        "family": "motion_direction",
+        "condition": {
+          "protocol": "integration",
+          "length": 8,
+          "delay": 0,
+          "load": 1,
+          "cue_visible": true,
+          "distractor": false,
+          "precue": false,
+          "post_delay": 2,
+          "threshold_level": null
+        }
+      },
+      "orientation_recall_minimal": {
+        "family": "orientation",
+        "condition": {
+          "protocol": "recall",
+          "length": 8,
+          "delay": 0,
+          "load": 1,
+          "cue_visible": true,
+          "distractor": false,
+          "precue": false,
+          "post_delay": 0,
+          "threshold_level": null
+        }
+      },
+      "orientation_recall_D4": {
+        "family": "orientation",
+        "condition": {
+          "protocol": "recall",
+          "length": 8,
+          "delay": 4,
+          "load": 1,
+          "cue_visible": true,
+          "distractor": false,
+          "precue": false,
+          "post_delay": 2,
+          "threshold_level": null
+        }
+      }
+    },
+    "cycle": [
+      "motion_anchor",
+      "motion_L2",
+      "orientation_recall_minimal",
+      "motion_L8",
+      "orientation_recall_D4",
+      "motion_L2",
+      "orientation_recall_minimal",
+      "motion_L8",
+      "orientation_recall_D4",
+      "motion_L2",
+      "orientation_anchor",
+      "orientation_recall_minimal",
+      "motion_L8",
+      "orientation_recall_D4",
+      "motion_L2",
+      "orientation_recall_minimal",
+      "motion_L8",
+      "orientation_recall_D4",
+      "motion_L2",
+      "orientation_recall_minimal",
+      "motion_anchor",
+      "motion_L8",
+      "orientation_recall_D4",
+      "motion_L2",
+      "orientation_recall_minimal",
+      "motion_L8",
+      "orientation_recall_D4",
+      "motion_L2",
+      "orientation_recall_minimal",
+      "motion_L8",
+      "orientation_anchor",
+      "orientation_recall_D4",
+      "motion_L2",
+      "orientation_recall_minimal",
+      "motion_L8",
+      "orientation_recall_D4",
+      "motion_L2",
+      "orientation_recall_minimal",
+      "motion_L8",
+      "orientation_recall_D4"
+    ],
+    "fp32": true,
+    "amp": false,
+    "optimizer": "preserved_Adam_states_same_parameter_inventory",
+    "purpose": "existing_readout_only_continuation",
+    "training_protocol": "readout_only_six_cell_v1",
+    "generator_version": "wm_visual_sequences_v1",
+    "checkpoint_selection": "Maximum arithmetic mean six-cell OVR-AUC; exact ties earlier",
+    "arm": "ei_adaptive"
+  },
+  "cells": {
+    "motion_anchor": {
+      "family": "motion_direction",
+      "condition": {
+        "protocol": "anchor",
+        "length": 8,
+        "delay": 0,
+        "load": 1,
+        "cue_visible": true,
+        "distractor": false,
+        "precue": false,
+        "post_delay": 2,
+        "threshold_level": null
+      }
+    },
+    "orientation_anchor": {
+      "family": "orientation",
+      "condition": {
+        "protocol": "anchor",
+        "length": 8,
+        "delay": 0,
+        "load": 1,
+        "cue_visible": true,
+        "distractor": false,
+        "precue": false,
+        "post_delay": 2,
+        "threshold_level": null
+      }
+    },
+    "motion_L2": {
+      "family": "motion_direction",
+      "condition": {
+        "protocol": "integration",
+        "length": 2,
+        "delay": 0,
+        "load": 1,
+        "cue_visible": true,
+        "distractor": false,
+        "precue": false,
+        "post_delay": 2,
+        "threshold_level": null
+      }
+    },
+    "motion_L8": {
+      "family": "motion_direction",
+      "condition": {
+        "protocol": "integration",
+        "length": 8,
+        "delay": 0,
+        "load": 1,
+        "cue_visible": true,
+        "distractor": false,
+        "precue": false,
+        "post_delay": 2,
+        "threshold_level": null
+      }
+    },
+    "orientation_recall_minimal": {
+      "family": "orientation",
+      "condition": {
+        "protocol": "recall",
+        "length": 8,
+        "delay": 0,
+        "load": 1,
+        "cue_visible": true,
+        "distractor": false,
+        "precue": false,
+        "post_delay": 0,
+        "threshold_level": null
+      }
+    },
+    "orientation_recall_D4": {
+      "family": "orientation",
+      "condition": {
+        "protocol": "recall",
+        "length": 8,
+        "delay": 4,
+        "load": 1,
+        "cue_visible": true,
+        "distractor": false,
+        "precue": false,
+        "post_delay": 2,
+        "threshold_level": null
+      }
+    }
+  },
+  "additional_updates": 4840,
+  "additional_episodes": 38720,
+  "targets": [
+    6210,
+    7420,
+    8630,
+    9840
+  ],
+  "validation_n_per_cell": 128,
+  "test_n_per_cell": 512,
+  "validation_seed": 18953001,
+  "test_seed": 19953001,
+  "estimated_training_seconds": 3059.1703998678595,
+  "reserved_evaluation_reporting_seconds": 438.7008000165224,
+  "trainable_parameters": 33670,
+  "profile_training_episodes": 48,
+  "profile_eval_episodes": 48,
+  "inference_reference": "untouched EI5000 paired on identical fresh standard-task test movies",
+  "selection": "mean six-cell validation OVR-AUC, exact ties earlier"
+}

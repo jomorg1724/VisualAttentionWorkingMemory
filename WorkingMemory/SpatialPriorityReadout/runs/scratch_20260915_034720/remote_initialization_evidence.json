@@ -1,0 +1,251 @@
+{
+  "checks": {
+    "status": "passed",
+    "version": "spatial_priority_readout_scratch_v2",
+    "initialization_kind": "full_model_from_scratch",
+    "initial_model_sha256": "9e2a507a4bc9920eb5ca7d0c288943a56867579eeaffc15eda0886734d249a45",
+    "deterministic_same_seed": true,
+    "different_model_seed_changes_initialization": true,
+    "loaded_parent": false,
+    "loaded_model_tensors": 0,
+    "loaded_optimizer_states": 0,
+    "fresh_optimizer_state_empty": true,
+    "original_joint_attention_class": true,
+    "original_spatial_ei_class": true,
+    "original_comparator_class": true,
+    "source_and_locality_trainable": true,
+    "prospective_gamma_absent": true,
+    "global_terminal_pooling_absent": true,
+    "no_terminal_classifier_bypass": true,
+    "task_output_shapes": {
+      "orientation_cued": [
+        2,
+        2
+      ],
+      "motion_duration_cued": [
+        2,
+        4
+      ],
+      "krauzlis_cued_motion": [
+        2,
+        2
+      ],
+      "spatial_binding": [
+        2,
+        2
+      ],
+      "image_recognition": [
+        2,
+        2
+      ]
+    },
+    "priority_maps_normalized": true,
+    "task_specific_selection_and_evidence": true,
+    "finite_full_forward_backward": true,
+    "full_gradient_parameter_count": 121,
+    "priority_gradient_norms": {
+      "shared.0.weight": 0.3232005834579468,
+      "shared.1.weight": 0.10269318521022797,
+      "shared.1.bias": 0.14554078876972198,
+      "shared.3.weight": 2.9246950149536133,
+      "shared.4.weight": 0.14495928585529327,
+      "shared.4.bias": 0.19510240852832794,
+      "selection.orientation_cued.weight": 0.05230358615517616,
+      "selection.orientation_cued.bias": 2.735760062932968e-09,
+      "selection.motion_duration_cued.weight": 0.03493713587522507,
+      "selection.motion_duration_cued.bias": 0.0,
+      "selection.krauzlis_cued_motion.weight": 0.06671586632728577,
+      "selection.krauzlis_cued_motion.bias": 9.313225746154785e-10,
+      "selection.spatial_binding.weight": 0.0778406485915184,
+      "selection.spatial_binding.bias": 9.778887033462524e-09,
+      "selection.image_recognition.weight": 0.021866342052817345,
+      "selection.image_recognition.bias": 2.3283064365386963e-10,
+      "evidence.orientation_cued.weight": 0.5310945510864258,
+      "evidence.orientation_cued.bias": 0.269964337348938,
+      "evidence.motion_duration_cued.weight": 0.34268781542778015,
+      "evidence.motion_duration_cued.bias": 0.1740887612104416,
+      "evidence.krauzlis_cued_motion.weight": 0.6316016912460327,
+      "evidence.krauzlis_cued_motion.bias": 0.32099199295043945,
+      "evidence.spatial_binding.weight": 0.7438486814498901,
+      "evidence.spatial_binding.bias": 0.377966046333313,
+      "evidence.image_recognition.weight": 0.22024312615394592,
+      "evidence.image_recognition.bias": 0.11197196692228317
+    },
+    "updates": 4000,
+    "episodes": 160000,
+    "validation_targets": [
+      800,
+      1600,
+      2400,
+      3200,
+      4000
+    ],
+    "total_parameters": 579423,
+    "trainable_parameters": 579423,
+    "lineage": {
+      "version": "spatial_priority_readout_scratch_v2",
+      "initialization_kind": "full_model_from_scratch",
+      "loaded_parent": false,
+      "loaded_model_tensors": 0,
+      "loaded_optimizer_states": 0,
+      "initial_model_sha256": "9e2a507a4bc9920eb5ca7d0c288943a56867579eeaffc15eda0886734d249a45",
+      "seeds": {
+        "global_model": 41973001,
+        "pav_common": 30312,
+        "pav_core": 30313,
+        "recurrent_common": 59311,
+        "recurrent_core": 59312,
+        "spatial_components": 31973001,
+        "spatial_comparison_output": 31973002,
+        "joint_attention": 41973001,
+        "priority_readout": 41973101,
+        "python_numpy_torch": 41973001,
+        "training_stream": 61973001,
+        "task_scheduler": 62973001
+      },
+      "prospective_gamma_absent": true,
+      "attention": "Original JointAttention class and source_bias - softplus(raw_locality)*distance_squared computation, freshly initialized.",
+      "architecture": "All components train from scratch. Terminal concat[H_T,R_T,C_T] at 13x13 uses shared 1x1 192->96 and 3x3 96->64 convolutions, then per-task selection/evidence maps and spatial-softmax weighted evidence."
+    }
+  },
+  "profile": {
+    "status": "completed",
+    "rows": [
+      {
+        "step": 1,
+        "episodes": 40,
+        "frames_total": 816,
+        "loss": 0.9027740597724915,
+        "accuracy": 0.3,
+        "gradient_norm": 3.1366679668426514,
+        "clipped": 1,
+        "seconds": 4.452371120452881,
+        "task_losses": "{\"orientation_cued\": 0.849085807800293, \"motion_duration_cued\": 1.490370512008667, \"krauzlis_cued_motion\": 0.7536712884902954, \"spatial_binding\": 0.7096269726753235, \"image_recognition\": 0.7111157178878784}",
+        "task_accuracies": "{\"orientation_cued\": 0.375, \"motion_duration_cued\": 0.0, \"krauzlis_cued_motion\": 0.25, \"spatial_binding\": 0.5, \"image_recognition\": 0.375}",
+        "cells": "{\"orientation_cued\": \"orientation_cued_D24\", \"motion_duration_cued\": \"motion_duration_cued_D0\", \"krauzlis_cued_motion\": \"krauzlis_B28\", \"spatial_binding\": \"spatial_binding_D0\", \"image_recognition\": \"image_recognition_N4_H5\"}",
+        "diagnostics": "{\"orientation_cued\": {\"priority_entropy\": 5.1298980712890625, \"priority_peak\": 0.005917159840464592, \"priority_gradient_norm\": 1.296196460723877, \"attention_gradient_norm\": 0.08671737462282181}, \"motion_duration_cued\": {\"priority_entropy\": 5.1298980712890625, \"priority_peak\": 0.005917159840464592, \"priority_gradient_norm\": 1.7526507377624512, \"attention_gradient_norm\": 0.09170174598693848}, \"krauzlis_cued_motion\": {\"priority_entropy\": 5.1298980712890625, \"priority_peak\": 0.005917159840464592, \"priority_gradient_norm\": 1.925228476524353, \"attention_gradient_norm\": 0.12052290141582489}, \"spatial_binding\": {\"priority_entropy\": 5.1298980712890625, \"priority_peak\": 0.005917159840464592, \"priority_gradient_norm\": 1.997422695159912, \"attention_gradient_norm\": 0.12654900550842285}, \"image_recognition\": {\"priority_entropy\": 5.1298980712890625, \"priority_peak\": 0.005917159840464592, \"priority_gradient_norm\": 2.023197650909424, \"attention_gradient_norm\": 0.12203606218099594}}"
+      },
+      {
+        "step": 2,
+        "episodes": 80,
+        "frames_total": 1688,
+        "loss": 0.8541876435279846,
+        "accuracy": 0.425,
+        "gradient_norm": 2.270380735397339,
+        "clipped": 1,
+        "seconds": 2.9966812133789062,
+        "task_losses": "{\"orientation_cued\": 0.6882668733596802, \"motion_duration_cued\": 1.464859127998352, \"krauzlis_cued_motion\": 0.7270522117614746, \"spatial_binding\": 0.6974951028823853, \"image_recognition\": 0.693264901638031}",
+        "task_accuracies": "{\"orientation_cued\": 0.625, \"motion_duration_cued\": 0.125, \"krauzlis_cued_motion\": 0.375, \"spatial_binding\": 0.5, \"image_recognition\": 0.5}",
+        "cells": "{\"orientation_cued\": \"orientation_cued_D12\", \"motion_duration_cued\": \"motion_duration_cued_D4\", \"krauzlis_cued_motion\": \"krauzlis_B12\", \"spatial_binding\": \"spatial_binding_D12\", \"image_recognition\": \"image_recognition_N24_H4\"}",
+        "diagnostics": "{\"orientation_cued\": {}, \"motion_duration_cued\": {}, \"krauzlis_cued_motion\": {}, \"spatial_binding\": {}, \"image_recognition\": {}}"
+      },
+      {
+        "step": 3,
+        "episodes": 120,
+        "frames_total": 2520,
+        "loss": 0.8434131622314454,
+        "accuracy": 0.4,
+        "gradient_norm": 1.3073632717132568,
+        "clipped": 1,
+        "seconds": 2.830805778503418,
+        "task_losses": "{\"orientation_cued\": 0.6987074017524719, \"motion_duration_cued\": 1.3849531412124634, \"krauzlis_cued_motion\": 0.733782172203064, \"spatial_binding\": 0.6942057609558105, \"image_recognition\": 0.7054173350334167}",
+        "task_accuracies": "{\"orientation_cued\": 0.5, \"motion_duration_cued\": 0.125, \"krauzlis_cued_motion\": 0.375, \"spatial_binding\": 0.5, \"image_recognition\": 0.5}",
+        "cells": "{\"orientation_cued\": \"orientation_cued_D0\", \"motion_duration_cued\": \"motion_duration_cued_D12\", \"krauzlis_cued_motion\": \"krauzlis_B20\", \"spatial_binding\": \"spatial_binding_D24\", \"image_recognition\": \"image_recognition_N4_H3\"}",
+        "diagnostics": "{\"orientation_cued\": {}, \"motion_duration_cued\": {}, \"krauzlis_cued_motion\": {}, \"spatial_binding\": {}, \"image_recognition\": {}}"
+      }
+    ],
+    "mean_update_seconds": 3.426619370778402,
+    "peak_allocated_bytes": 1013941248,
+    "peak_reserved_bytes": 1121976320,
+    "parameters": 579423,
+    "checkpoint": "/workspace/vawm_spatial_priority_scratch/spatial_priority_results/profile/checkpoint_000003.pt",
+    "worker_seconds": 11.691046714782715
+  },
+  "training_initialization": {
+    "lineage": {
+      "version": "spatial_priority_readout_scratch_v2",
+      "initialization_kind": "full_model_from_scratch",
+      "loaded_parent": false,
+      "loaded_model_tensors": 0,
+      "loaded_optimizer_states": 0,
+      "initial_model_sha256": "9e2a507a4bc9920eb5ca7d0c288943a56867579eeaffc15eda0886734d249a45",
+      "seeds": {
+        "global_model": 41973001,
+        "pav_common": 30312,
+        "pav_core": 30313,
+        "recurrent_common": 59311,
+        "recurrent_core": 59312,
+        "spatial_components": 31973001,
+        "spatial_comparison_output": 31973002,
+        "joint_attention": 41973001,
+        "priority_readout": 41973101,
+        "python_numpy_torch": 41973001,
+        "training_stream": 61973001,
+        "task_scheduler": 62973001
+      },
+      "prospective_gamma_absent": true,
+      "attention": "Original JointAttention class and source_bias - softplus(raw_locality)*distance_squared computation, freshly initialized.",
+      "architecture": "All components train from scratch. Terminal concat[H_T,R_T,C_T] at 13x13 uses shared 1x1 192->96 and 3x3 96->64 convolutions, then per-task selection/evidence maps and spatial-softmax weighted evidence."
+    },
+    "total_parameters": 579423,
+    "trainable_parameters": 579423,
+    "loaded_parent": false,
+    "loaded_model_tensors": 0,
+    "inherited_adam_states": 0,
+    "fresh_optimizer_states": 137
+  },
+  "checkpoint_index": [
+    {
+      "file": "checkpoint_000000.pt",
+      "step": 0,
+      "sha256": "97b7e6ce513592fc094724854ea1d4d329c93fd1ae0d86aa20ed50e4fd653f76"
+    }
+  ],
+  "checkpoint_keys": [
+    "arm",
+    "cell_counts",
+    "config",
+    "counts",
+    "lineage",
+    "model",
+    "optimizer",
+    "rng",
+    "source_hashes",
+    "step",
+    "stream",
+    "version"
+  ],
+  "checkpoint_lineage": {
+    "version": "spatial_priority_readout_scratch_v2",
+    "initialization_kind": "full_model_from_scratch",
+    "loaded_parent": false,
+    "loaded_model_tensors": 0,
+    "loaded_optimizer_states": 0,
+    "initial_model_sha256": "9e2a507a4bc9920eb5ca7d0c288943a56867579eeaffc15eda0886734d249a45",
+    "seeds": {
+      "global_model": 41973001,
+      "pav_common": 30312,
+      "pav_core": 30313,
+      "recurrent_common": 59311,
+      "recurrent_core": 59312,
+      "spatial_components": 31973001,
+      "spatial_comparison_output": 31973002,
+      "joint_attention": 41973001,
+      "priority_readout": 41973101,
+      "python_numpy_torch": 41973001,
+      "training_stream": 61973001,
+      "task_scheduler": 62973001
+    },
+    "prospective_gamma_absent": true,
+    "attention": "Original JointAttention class and source_bias - softplus(raw_locality)*distance_squared computation, freshly initialized.",
+    "architecture": "All components train from scratch. Terminal concat[H_T,R_T,C_T] at 13x13 uses shared 1x1 192->96 and 3x3 96->64 convolutions, then per-task selection/evidence maps and spatial-softmax weighted evidence."
+  },
+  "checkpoint_step": 0,
+  "checkpoint_counts": {
+    "episodes": 0,
+    "frames": 0
+  },
+  "has_parent_key": false,
+  "checkpoint_optimizer_state_entries": 0,
+  "checkpoint_zero_optimizer_state_empty": true
+}

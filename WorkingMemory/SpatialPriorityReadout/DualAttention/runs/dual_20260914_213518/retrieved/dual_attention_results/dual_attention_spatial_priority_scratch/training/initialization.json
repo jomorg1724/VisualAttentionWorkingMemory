@@ -1,0 +1,32 @@
+{
+  "lineage": {
+    "version": "dual_attention_spatial_priority_scratch_v1",
+    "initialization_kind": "full_model_from_scratch",
+    "loaded_parent": false,
+    "loaded_model_tensors": 0,
+    "loaded_optimizer_states": 0,
+    "initial_model_sha256": "e2ac2db5a4175e783bbcd1acaa54381d7a4c57b01c4afbf9234c472ef94167a1",
+    "seeds": {
+      "global_model": 41973001,
+      "pav_common": 30312,
+      "pav_core": 30313,
+      "recurrent_common": 59311,
+      "recurrent_core": 59312,
+      "spatial_components": 31973001,
+      "spatial_comparison_output": 31973002,
+      "dual_attention": 41973301,
+      "priority_decoder": 41973201,
+      "python_numpy_torch": 41973001,
+      "training_stream": 61973001,
+      "task_scheduler": 62973001
+    },
+    "prospective_gamma_absent": true,
+    "architecture": "One-head width-64 pre attention produces raw C and W_O_pre(C) memory drive; unchanged spatial E/I update; one-head width-64 post attention queries R over [C,H,R]; terminal P alone enters the convolutional task-specific spatial-softmax priority decoder."
+  },
+  "total_parameters": 549344,
+  "trainable_parameters": 549344,
+  "loaded_parent": false,
+  "loaded_model_tensors": 0,
+  "inherited_adam_states": 0,
+  "fresh_optimizer_states": 142
+}

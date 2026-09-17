@@ -1,0 +1,44 @@
+{
+  "status": "completed",
+  "reason": "User explicitly requested immediate stop after the negative primary step-9200 validation result.",
+  "pod_id": "dqi13o2x3qkvos",
+  "pod_name": "vawm-prospective-query-160k",
+  "account": "jonathan@palladio.ai",
+  "worker_sigterm_utc": "2026-09-15T02:02:05Z",
+  "worker_pid": 2688,
+  "supervisor_pid": 399,
+  "post_worker_stop_processes": [],
+  "provider_exit_utc": "2026-09-15T02:03:36Z",
+  "provider_exit_status": "EXITED",
+  "delete_result": {
+    "deleted": true,
+    "id": "dqi13o2x3qkvos"
+  },
+  "delete_verified_by_utc": "2026-09-15T02:04:33.9212457+00:00",
+  "post_delete_get": "HTTP 404 pod not found",
+  "post_delete_pod_list": [],
+  "post_delete_current_spend_per_hour_usd": 0,
+  "post_delete_account_balance_usd": 24.6557504855,
+  "listed_gpu_rate_usd_per_hour": 1.59,
+  "rental_seconds_created_to_exit": 4008.25,
+  "rental_minutes_created_to_exit": 66.80416666666666,
+  "rate_based_cost_estimate_usd": 1.7703104166666668,
+  "observed_balance_change_from_approximate_prelaunch_snapshot_usd": 1.7596495145000013,
+  "cost_note": "The rate-based value is an estimate, not a provider invoice. The balance change uses the approximately recorded pre-launch balance and may include provider accounting timing.",
+  "retrieval": {
+    "status": "verified",
+    "verified_files": 29,
+    "archive_sha256": "4579749c01cd5c228e2b83a9c1a8ce53679d1243ab80314dc60752b7d43057b1",
+    "retrieval_receipt_sha256": "d4e44274be3d71320becfdee79863cd5d76cdb82a0561fa67666b38b483bffe3",
+    "artifact_index_sha256": "a8f77e481f387e579923fe0e56f27aec80bdeded522a3ea6954fa270009428fc",
+    "metrics_sha256": "b098c5a654156616b3ec777c0d582f2c314a087cc0c1f5002f5e1cfaf4efa9ba",
+    "results": "WorkingMemory/ProspectiveQuery/runs/prospective_20260914_175602/retrieved/prospective_query_results"
+  },
+  "watcher": {
+    "status": "completed",
+    "shell_id": "prospective-watcher-validation",
+    "exit_code": 0,
+    "active_monitor_remaining": false
+  },
+  "billing_prevention": "The pod was stopped and deleted after verified retrieval. RunPod reports no pods and currentSpendPerHr=0."
+}

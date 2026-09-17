@@ -1,0 +1,13 @@
+# Frozen routing diagnostic
+
+Authorized September13 after the pre-update attention arm completed. One local GPU worker;1800second cap starts before first GPU profile and includes all profiling, evaluation and CPU analysis. No main-model training, cloud compute, new teaching or budget renewal.
+
+Selected checkpoints: attention8400 and ordinary continuation8400, immutable SHA256 recorded by checks/run. Exact ordinary/wrapped baseline and empty-phase no-op equality checked on CPU; source exclusion gives zero memory attention mass. No original source is edited. One independent source/config review before GPU profiling.
+
+Primary orientation:512paired heldout D24 episodes, with baseline and memory K/V exclusion during sample1–2, blanks3–26, identity query27 or probe28 independently. D0anchor128uses baseline and sample/query/probe exclusions. Query is a separate cue-bearing phase, not the probe or an inserted blank. The probe-only manipulation can affect postupdate memory_output but not the old-memory/current-probe comparator computed first.
+
+Motion:512matched L8episodes each atD0/D24, attention and continuation baselines; attention memory K/V exclusion or directH-drive bypass during transition-bearing frames2–9. Initial reference image1 and instruction0 are untouched. Preserve memory queries, E/I recurrence, adaptation and existing decision routes. Exclusion removes only source tokens through negative-infinity attention logits and visual renormalization. Bypass sends H to existing memory_input normalization in that phase. All interventions are explicitly evaluation-only and out of distribution.
+
+Reuse seed46973001and exact prior heldout evidence. Profile disposable8episode batches for each family×delay, then pin512or greatest fitting128-multiple prefix with1.4×profile estimate and180second reporting reserve. Reuse cached sensory fields across variants for each frozen model; there is no memory-to-sensory feedback. This avoids unnecessary convolution passes without changing dynamics. Save raw predictions, labels/metadata, confusion/probabilities, per-stage per-head source masses and value RMS, and exact final sensory/memory/comparator logit contributions with head bias counted once.1000class-stratified paired bootstrap intervals condition on these trained models; repeated delays/variants are not independent examples.
+
+Memory-source exclusion tests routing contribution to current execution. Failure to rescue does not establish information erasure. Branch magnitudes are additive decision contributions, not causal tests of removing branches. A separate researcher audits saved motion trajectories and class-offset calibration using existing validation/test predictions. No new feature probe extraction is included.

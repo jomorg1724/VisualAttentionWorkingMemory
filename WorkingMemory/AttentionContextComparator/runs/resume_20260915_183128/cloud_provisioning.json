@@ -1,0 +1,43 @@
+{
+  "status": "live_posthoc_extension_armed",
+  "account_email": "jonathan@palladio.ai",
+  "pod_id": "6mopzgoioemdp2",
+  "pod_name": "vawm-context-scratch-resume-4000",
+  "created_at": "2026-09-16 01:33:45.737 +0000 UTC",
+  "deadline_unix": 1789553428.0,
+  "cloud": "COMMUNITY",
+  "gpu_requested": "NVIDIA GeForce RTX 3090",
+  "gpu_usd_per_hour": 0.22,
+  "remote_root": "/workspace/vawm_attention_context",
+  "remote_results": "/workspace/vawm_attention_context/attention_context_comparator_results",
+  "remote_bundle": "/workspace/attention_context_comparator_resume_bundle.tar.gz",
+  "bundle_sha256": "2a05594ada0bb5a30c27d4c77ff90772dd843a1db66a45fb3089c185aab60a35",
+  "remote_dataset_bundle": "/workspace/bsds500_runtime.tar.gz",
+  "dataset_bundle_sha256": "990e2bd405f6bcc4c940299f437685fc08765dcb56923ab0ab639f5f37c1883e",
+  "venv_root": "/workspace/attention-context-venv",
+  "ssh_host": "64.119.209.250",
+  "ssh_port": 11404,
+  "ssh_user": "root",
+  "ssh_identity": "C:/Users/jomor/.runpod/ssh/runpodctl-ssh-key",
+  "known_hosts": "C:/Users/jomor/Documents/VisualAttentionWorkingMemory/WorkingMemory/AttentionContextComparator/runs/resume_20260915_183128/known_hosts",
+  "local_run": "C:/Users/jomor/Documents/VisualAttentionWorkingMemory/WorkingMemory/AttentionContextComparator/runs/resume_20260915_183128",
+  "retrieval_grace_seconds": 900,
+  "expected_runtime": {
+    "torch": "1.13.1+cu117",
+    "numpy": "1.23.1",
+    "scipy": "1.8.1",
+    "pillow": "9.1.1"
+  },
+  "target_updates": 12000,
+  "resume_step": 1024,
+  "remaining_updates": 10976,
+  "target_fresh_episodes": 480000,
+  "durable_fresh_episodes": 40960,
+  "remaining_fresh_episodes": 439040,
+  "authorized_arms": [
+    "attention_context_comparator_scratch"
+  ],
+  "initialization_kind": "exact_durable_resume",
+  "resume_checkpoint_sha256": "c0e51019677c0b0003ba147f91a9077296a3e7d134c8f4392a4ef6ba555c642b",
+  "cleanup_owner": "Independent detached lifecycle retrieves/verifies this resumed scratch arm only, then stops and deletes pod at completion/failure or hard deadline."
+}

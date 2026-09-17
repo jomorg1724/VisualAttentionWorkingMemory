@@ -1,0 +1,3321 @@
+{
+  "aggregate": {
+    "status": "training",
+    "platform": {
+      "python": "3.10.12",
+      "torch": "1.13.1+cu117",
+      "numpy": "1.23.1",
+      "scipy": "1.8.1",
+      "pillow": "9.1.1",
+      "platform": "Linux-6.8.0-60-generic-x86_64-with-glibc2.35"
+    },
+    "runs": {
+      "spatial_biased": {
+        "config": {
+          "cells": {
+            "orientation_cued_D0": {
+              "task": "orientation_cued",
+              "condition": {
+                "delay": 0
+              }
+            },
+            "orientation_cued_D4": {
+              "task": "orientation_cued",
+              "condition": {
+                "delay": 4
+              }
+            },
+            "orientation_cued_D12": {
+              "task": "orientation_cued",
+              "condition": {
+                "delay": 12
+              }
+            },
+            "orientation_cued_D24": {
+              "task": "orientation_cued",
+              "condition": {
+                "delay": 24
+              }
+            },
+            "motion_duration_cued_D0": {
+              "task": "motion_duration_cued",
+              "condition": {
+                "delay": 0
+              }
+            },
+            "motion_duration_cued_D4": {
+              "task": "motion_duration_cued",
+              "condition": {
+                "delay": 4
+              }
+            },
+            "motion_duration_cued_D12": {
+              "task": "motion_duration_cued",
+              "condition": {
+                "delay": 12
+              }
+            },
+            "motion_duration_cued_D24": {
+              "task": "motion_duration_cued",
+              "condition": {
+                "delay": 24
+              }
+            },
+            "spatial_binding_D0": {
+              "task": "spatial_binding",
+              "condition": {
+                "delay": 0
+              }
+            },
+            "spatial_binding_D4": {
+              "task": "spatial_binding",
+              "condition": {
+                "delay": 4
+              }
+            },
+            "spatial_binding_D12": {
+              "task": "spatial_binding",
+              "condition": {
+                "delay": 12
+              }
+            },
+            "spatial_binding_D24": {
+              "task": "spatial_binding",
+              "condition": {
+                "delay": 24
+              }
+            },
+            "image_recognition_N0_H3": {
+              "task": "image_recognition",
+              "condition": {
+                "load": 0,
+                "probe_hold": 3
+              }
+            },
+            "image_recognition_N0_H4": {
+              "task": "image_recognition",
+              "condition": {
+                "load": 0,
+                "probe_hold": 4
+              }
+            },
+            "image_recognition_N0_H5": {
+              "task": "image_recognition",
+              "condition": {
+                "load": 0,
+                "probe_hold": 5
+              }
+            },
+            "image_recognition_N4_H3": {
+              "task": "image_recognition",
+              "condition": {
+                "load": 4,
+                "probe_hold": 3
+              }
+            },
+            "image_recognition_N4_H4": {
+              "task": "image_recognition",
+              "condition": {
+                "load": 4,
+                "probe_hold": 4
+              }
+            },
+            "image_recognition_N4_H5": {
+              "task": "image_recognition",
+              "condition": {
+                "load": 4,
+                "probe_hold": 5
+              }
+            },
+            "image_recognition_N12_H3": {
+              "task": "image_recognition",
+              "condition": {
+                "load": 12,
+                "probe_hold": 3
+              }
+            },
+            "image_recognition_N12_H4": {
+              "task": "image_recognition",
+              "condition": {
+                "load": 12,
+                "probe_hold": 4
+              }
+            },
+            "image_recognition_N12_H5": {
+              "task": "image_recognition",
+              "condition": {
+                "load": 12,
+                "probe_hold": 5
+              }
+            },
+            "image_recognition_N24_H3": {
+              "task": "image_recognition",
+              "condition": {
+                "load": 24,
+                "probe_hold": 3
+              }
+            },
+            "image_recognition_N24_H4": {
+              "task": "image_recognition",
+              "condition": {
+                "load": 24,
+                "probe_hold": 4
+              }
+            },
+            "image_recognition_N24_H5": {
+              "task": "image_recognition",
+              "condition": {
+                "load": 24,
+                "probe_hold": 5
+              }
+            },
+            "krauzlis_B12": {
+              "task": "krauzlis_cued_motion",
+              "condition": {
+                "baseline_transitions": 12
+              }
+            },
+            "krauzlis_B20": {
+              "task": "krauzlis_cued_motion",
+              "condition": {
+                "baseline_transitions": 20
+              }
+            },
+            "krauzlis_B28": {
+              "task": "krauzlis_cued_motion",
+              "condition": {
+                "baseline_transitions": 28
+              }
+            }
+          },
+          "cycle": [
+            "orientation_cued_D0",
+            "orientation_cued_D4",
+            "orientation_cued_D12",
+            "orientation_cued_D24",
+            "motion_duration_cued_D0",
+            "motion_duration_cued_D4",
+            "motion_duration_cued_D12",
+            "motion_duration_cued_D24",
+            "spatial_binding_D0",
+            "spatial_binding_D4",
+            "spatial_binding_D12",
+            "spatial_binding_D24",
+            "image_recognition_N0_H3",
+            "image_recognition_N0_H4",
+            "image_recognition_N0_H5",
+            "image_recognition_N4_H3",
+            "image_recognition_N4_H4",
+            "image_recognition_N4_H5",
+            "image_recognition_N12_H3",
+            "image_recognition_N12_H4",
+            "image_recognition_N12_H5",
+            "image_recognition_N24_H3",
+            "image_recognition_N24_H4",
+            "image_recognition_N24_H5",
+            "krauzlis_B12",
+            "krauzlis_B20",
+            "krauzlis_B28"
+          ],
+          "batch_size": 8,
+          "train_seed": 61973001,
+          "scheduler_seed": 62973001,
+          "model_seed": 41973001,
+          "new_lr": 0.0003,
+          "parent_lr": 3e-05,
+          "adam_eps": 1e-10,
+          "weight_decay": 0.0001,
+          "clip": 1.0,
+          "activation_checkpoint": true,
+          "battery": "spatial",
+          "updates": 4000,
+          "task_classes": {
+            "orientation_cued": 2,
+            "motion_duration_cued": 4,
+            "krauzlis_cued_motion": 2,
+            "spatial_binding": 2,
+            "image_recognition": 2
+          },
+          "train_names": {
+            "orientation_cued": [
+              "orientation_cued_D0",
+              "orientation_cued_D4",
+              "orientation_cued_D12",
+              "orientation_cued_D24"
+            ],
+            "motion_duration_cued": [
+              "motion_duration_cued_D0",
+              "motion_duration_cued_D4",
+              "motion_duration_cued_D12",
+              "motion_duration_cued_D24"
+            ],
+            "spatial_binding": [
+              "spatial_binding_D0",
+              "spatial_binding_D4",
+              "spatial_binding_D12",
+              "spatial_binding_D24"
+            ],
+            "image_recognition": [
+              "image_recognition_N0_H3",
+              "image_recognition_N0_H4",
+              "image_recognition_N0_H5",
+              "image_recognition_N4_H3",
+              "image_recognition_N4_H4",
+              "image_recognition_N4_H5",
+              "image_recognition_N12_H3",
+              "image_recognition_N12_H4",
+              "image_recognition_N12_H5",
+              "image_recognition_N24_H3",
+              "image_recognition_N24_H4",
+              "image_recognition_N24_H5"
+            ],
+            "krauzlis_cued_motion": [
+              "krauzlis_B12",
+              "krauzlis_B20",
+              "krauzlis_B28"
+            ]
+          }
+        },
+        "validation": [],
+        "updates": 4000,
+        "added_episodes": 160000
+      }
+    },
+    "parent": "/workspace/vawm_unbiased/portable/parent_checkpoint_008400.pt",
+    "parent_sha256": "e37602aa20ccfc400ea8fe9d98c11f29c508069388897c55803b97f2ccdf1bc9",
+    "interpretation": "Five-task training with original learned source/locality priors, from intact attention8400. Cancelled bias-free experiment is preserved separately; no old-task rerun.",
+    "profiles": {
+      "spatial_biased": {
+        "status": "completed",
+        "rows": [
+          {
+            "loss": 0.7900785803794861,
+            "accuracy": 0.25,
+            "gradient_norm": 1.8735263347625732,
+            "clipped": 1,
+            "frames": 4,
+            "seconds": 1.8270461559295654,
+            "diagnostics": {
+              "first_sensory_field_gradient_norm": 0.0010676629608497024,
+              "early_r_gradient_norm": 0.005311648827046156,
+              "early_r_rms": 0.05091303959488869,
+              "early_a_gradient_norm": 5.8806919696507975e-05,
+              "early_a_rms": 0.0,
+              "late_r_gradient_norm": 0.0009831632487475872,
+              "late_r_rms": 0.17672988772392273,
+              "late_a_gradient_norm": null,
+              "late_a_rms": 0.007296763360500336,
+              "attention_gradient_norm": 0.028303274884819984,
+              "encoder_gradient_norm": 0.8847440481185913,
+              "per_frame_attention": [
+                {
+                  "memory_attention_mass": 0.12670613825321198,
+                  "memory_attention_mass_by_head": [
+                    0.11979955434799194,
+                    0.1336127370595932
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6864452362060547,
+                    0.7137601971626282
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.416263610124588,
+                  "memory_attention_mass_by_head": [
+                    0.12089977413415909,
+                    0.7116274237632751
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6886088252067566,
+                    0.8837916851043701
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.44220423698425293,
+                  "memory_attention_mass_by_head": [
+                    0.1213558241724968,
+                    0.7630527019500732
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6894786953926086,
+                    0.7435014247894287
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4280356764793396,
+                  "memory_attention_mass_by_head": [
+                    0.12131649255752563,
+                    0.7347549200057983
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6894429922103882,
+                    0.748650312423706
+                  ]
+                }
+              ],
+              "raw_recurrent_gradient_rms": 9.407083467749544e-08,
+              "state_stats": {
+                "inactive_fraction": 0.5236570835113525,
+                "tau_r_mean": 4.8742804527282715,
+                "tau_a_mean": 37.803260803222656,
+                "adaptation_gain_mean": 0.04522702097892761,
+                "memory_attention_mass": 0.4280356764793396,
+                "memory_attention_mass_by_head": [
+                  0.12131649255752563,
+                  0.7347549200057983
+                ],
+                "attention_entropy_by_head": [
+                  0.6894429922103882,
+                  0.748650312423706
+                ],
+                "locality": [
+                  4.031601428985596,
+                  4.027606964111328
+                ]
+              }
+            },
+            "name": "orientation_cued_D0",
+            "eval_seconds": 0.02739715576171875
+          },
+          {
+            "loss": 0.5762723684310913,
+            "accuracy": 0.5,
+            "gradient_norm": 0.7294423580169678,
+            "clipped": 0,
+            "frames": 28,
+            "seconds": 0.8211314678192139,
+            "diagnostics": {
+              "first_sensory_field_gradient_norm": 0.0006500345771200955,
+              "early_r_gradient_norm": 0.004165470600128174,
+              "early_r_rms": 0.05086119845509529,
+              "early_a_gradient_norm": 0.00015994814748410136,
+              "early_a_rms": 0.0,
+              "late_r_gradient_norm": 0.0008127732435241342,
+              "late_r_rms": 0.32026395201683044,
+              "late_a_gradient_norm": null,
+              "late_a_rms": 0.09468018263578415,
+              "attention_gradient_norm": 0.09635467827320099,
+              "encoder_gradient_norm": 0.258877158164978,
+              "per_frame_attention": [
+                {
+                  "memory_attention_mass": 0.12670432031154633,
+                  "memory_attention_mass_by_head": [
+                    0.11979977786540985,
+                    0.133608877658844
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6864457130432129,
+                    0.7137563824653625
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4152384400367737,
+                  "memory_attention_mass_by_head": [
+                    0.12088966369628906,
+                    0.7095872163772583
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6885825991630554,
+                    0.8837849497795105
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.43824514746665955,
+                  "memory_attention_mass_by_head": [
+                    0.12127965688705444,
+                    0.7552106380462646
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6893215179443359,
+                    0.7515601515769958
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.47905784845352173,
+                  "memory_attention_mass_by_head": [
+                    0.12222276628017426,
+                    0.8358929753303528
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6912719011306763,
+                    0.6144559383392334
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.49894219636917114,
+                  "memory_attention_mass_by_head": [
+                    0.12241722643375397,
+                    0.8754671812057495
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6916549801826477,
+                    0.6081609725952148
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.5032030940055847,
+                  "memory_attention_mass_by_head": [
+                    0.12265413999557495,
+                    0.8837520480155945
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6921132206916809,
+                    0.6192541718482971
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.5017268061637878,
+                  "memory_attention_mass_by_head": [
+                    0.12286065518856049,
+                    0.880592942237854
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6925134062767029,
+                    0.6365857720375061
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4988512098789215,
+                  "memory_attention_mass_by_head": [
+                    0.12303345650434494,
+                    0.8746690154075623
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6928494572639465,
+                    0.6540523171424866
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.49587544798851013,
+                  "memory_attention_mass_by_head": [
+                    0.12317917495965958,
+                    0.8685716390609741
+                  ],
+                  "attention_entropy_by_head": [
+                    0.693133533000946,
+                    0.6695833206176758
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.493133544921875,
+                  "memory_attention_mass_by_head": [
+                    0.12330011278390884,
+                    0.8629669547080994
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6933695673942566,
+                    0.6829388737678528
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.490673691034317,
+                  "memory_attention_mass_by_head": [
+                    0.1233954131603241,
+                    0.8579518795013428
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6935556530952454,
+                    0.6943580508232117
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.48848143219947815,
+                  "memory_attention_mass_by_head": [
+                    0.12346528470516205,
+                    0.8534975051879883
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6936919093132019,
+                    0.7041173577308655
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.48653244972229004,
+                  "memory_attention_mass_by_head": [
+                    0.12351270020008087,
+                    0.8495522141456604
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6937842965126038,
+                    0.7124503254890442
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.48479732871055603,
+                  "memory_attention_mass_by_head": [
+                    0.12354223430156708,
+                    0.846052348613739
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6938416957855225,
+                    0.7195725440979004
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4832462966442108,
+                  "memory_attention_mass_by_head": [
+                    0.12355874478816986,
+                    0.8429338932037354
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6938736438751221,
+                    0.7256892323493958
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4818536043167114,
+                  "memory_attention_mass_by_head": [
+                    0.12356653064489365,
+                    0.8401406407356262
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6938885450363159,
+                    0.7309854626655579
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4805944263935089,
+                  "memory_attention_mass_by_head": [
+                    0.12356889992952347,
+                    0.837619960308075
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6938930153846741,
+                    0.7356269359588623
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4794474244117737,
+                  "memory_attention_mass_by_head": [
+                    0.1235678642988205,
+                    0.8353269696235657
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6938908100128174,
+                    0.7397435307502747
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.47839581966400146,
+                  "memory_attention_mass_by_head": [
+                    0.12356459349393845,
+                    0.8332270383834839
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6938842535018921,
+                    0.7434327006340027
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.47742655873298645,
+                  "memory_attention_mass_by_head": [
+                    0.12355968356132507,
+                    0.8312933444976807
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6938745975494385,
+                    0.7467681765556335
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.476531982421875,
+                  "memory_attention_mass_by_head": [
+                    0.12355359643697739,
+                    0.8295102119445801
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6938626766204834,
+                    0.7497953176498413
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4757080674171448,
+                  "memory_attention_mass_by_head": [
+                    0.12354670464992523,
+                    0.8278694152832031
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6938490867614746,
+                    0.7525418400764465
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4749516248703003,
+                  "memory_attention_mass_by_head": [
+                    0.1235392689704895,
+                    0.8263639211654663
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6938346028327942,
+                    0.7550301551818848
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4742591381072998,
+                  "memory_attention_mass_by_head": [
+                    0.12353147566318512,
+                    0.8249867558479309
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6938192844390869,
+                    0.7572812438011169
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.47362667322158813,
+                  "memory_attention_mass_by_head": [
+                    0.1235235184431076,
+                    0.8237298727035522
+                  ],
+                  "attention_entropy_by_head": [
+                    0.693803608417511,
+                    0.7593157291412354
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.47304973006248474,
+                  "memory_attention_mass_by_head": [
+                    0.12351549416780472,
+                    0.8225839734077454
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6937878727912903,
+                    0.7611539959907532
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.47252362966537476,
+                  "memory_attention_mass_by_head": [
+                    0.12350757420063019,
+                    0.8215397000312805
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6937723755836487,
+                    0.7628159523010254
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4256981313228607,
+                  "memory_attention_mass_by_head": [
+                    0.12317761778831482,
+                    0.7282186150550842
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6931068301200867,
+                    0.8563093543052673
+                  ]
+                }
+              ],
+              "raw_recurrent_gradient_rms": 1.7850937865659944e-06,
+              "state_stats": {
+                "inactive_fraction": 0.6011348962783813,
+                "tau_r_mean": 4.8742804527282715,
+                "tau_a_mean": 37.803260803222656,
+                "adaptation_gain_mean": 0.04522702097892761,
+                "memory_attention_mass": 0.4256981313228607,
+                "memory_attention_mass_by_head": [
+                  0.12317761778831482,
+                  0.7282186150550842
+                ],
+                "attention_entropy_by_head": [
+                  0.6931068301200867,
+                  0.8563093543052673
+                ],
+                "locality": [
+                  4.031601428985596,
+                  4.027606964111328
+                ]
+              }
+            },
+            "name": "orientation_cued_D24",
+            "eval_seconds": 0.1803264617919922
+          },
+          {
+            "loss": 1.313029408454895,
+            "accuracy": 0.375,
+            "gradient_norm": 1.441635012626648,
+            "clipped": 1,
+            "frames": 11,
+            "seconds": 0.3421967029571533,
+            "diagnostics": {
+              "first_sensory_field_gradient_norm": 0.0022406834177672863,
+              "early_r_gradient_norm": 0.008582176640629768,
+              "early_r_rms": 0.05506511777639389,
+              "early_a_gradient_norm": 0.00023964772117324173,
+              "early_a_rms": 0.0,
+              "late_r_gradient_norm": 0.0037650391459465027,
+              "late_r_rms": 0.281772643327713,
+              "late_a_gradient_norm": null,
+              "late_a_rms": 0.04268840327858925,
+              "attention_gradient_norm": 0.1695902794599533,
+              "encoder_gradient_norm": 0.26530712842941284,
+              "per_frame_attention": [
+                {
+                  "memory_attention_mass": 0.12642674148082733,
+                  "memory_attention_mass_by_head": [
+                    0.11980163305997849,
+                    0.13305185735225677
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6864493489265442,
+                    0.7126836180686951
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.44801539182662964,
+                  "memory_attention_mass_by_head": [
+                    0.12133625894784927,
+                    0.7746945023536682
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6895062327384949,
+                    0.7847503423690796
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4627876877784729,
+                  "memory_attention_mass_by_head": [
+                    0.12130783498287201,
+                    0.8042674660682678
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6894428133964539,
+                    0.7575616836547852
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.46616724133491516,
+                  "memory_attention_mass_by_head": [
+                    0.12147267162799835,
+                    0.8108618259429932
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6897627711296082,
+                    0.7516862154006958
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.47094735503196716,
+                  "memory_attention_mass_by_head": [
+                    0.12170246988534927,
+                    0.8201922178268433
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6902135014533997,
+                    0.7411915063858032
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.47320079803466797,
+                  "memory_attention_mass_by_head": [
+                    0.12192894518375397,
+                    0.8244725465774536
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6906626224517822,
+                    0.7361291646957397
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4736863672733307,
+                  "memory_attention_mass_by_head": [
+                    0.12214410305023193,
+                    0.8252286314964294
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6910856366157532,
+                    0.7375562787055969
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4770433306694031,
+                  "memory_attention_mass_by_head": [
+                    0.12237975746393204,
+                    0.8317069411277771
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6915481686592102,
+                    0.7330479025840759
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.47624099254608154,
+                  "memory_attention_mass_by_head": [
+                    0.12257103621959686,
+                    0.829910933971405
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6919224262237549,
+                    0.7377256155014038
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4754290282726288,
+                  "memory_attention_mass_by_head": [
+                    0.12276045978069305,
+                    0.8280976414680481
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6922966241836548,
+                    0.7430224418640137
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.47748294472694397,
+                  "memory_attention_mass_by_head": [
+                    0.1230524405837059,
+                    0.8319133520126343
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6928931474685669,
+                    0.7444154024124146
+                  ]
+                }
+              ],
+              "raw_recurrent_gradient_rms": 1.498245183029212e-06,
+              "state_stats": {
+                "inactive_fraction": 0.6950351595878601,
+                "tau_r_mean": 4.8742804527282715,
+                "tau_a_mean": 37.803260803222656,
+                "adaptation_gain_mean": 0.04522702097892761,
+                "memory_attention_mass": 0.47748294472694397,
+                "memory_attention_mass_by_head": [
+                  0.1230524405837059,
+                  0.8319133520126343
+                ],
+                "attention_entropy_by_head": [
+                  0.6928931474685669,
+                  0.7444154024124146
+                ],
+                "locality": [
+                  4.031601428985596,
+                  4.027606964111328
+                ]
+              }
+            },
+            "name": "motion_duration_cued_D0",
+            "eval_seconds": 0.0716090202331543
+          },
+          {
+            "loss": 1.8112355470657349,
+            "accuracy": 0.125,
+            "gradient_norm": 2.1640071868896484,
+            "clipped": 1,
+            "frames": 35,
+            "seconds": 1.0099148750305176,
+            "diagnostics": {
+              "first_sensory_field_gradient_norm": 0.0009003404411487281,
+              "early_r_gradient_norm": 0.004971221089363098,
+              "early_r_rms": 0.05458173528313637,
+              "early_a_gradient_norm": 0.00028322101570665836,
+              "early_a_rms": 0.0,
+              "late_r_gradient_norm": 0.004119568038731813,
+              "late_r_rms": 0.31977736949920654,
+              "late_a_gradient_norm": null,
+              "late_a_rms": 0.12122480571269989,
+              "attention_gradient_norm": 0.2400214970111847,
+              "encoder_gradient_norm": 0.24638232588768005,
+              "per_frame_attention": [
+                {
+                  "memory_attention_mass": 0.1264415681362152,
+                  "memory_attention_mass_by_head": [
+                    0.11980163305997849,
+                    0.13308152556419373
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6864492297172546,
+                    0.7127382159233093
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.44936564564704895,
+                  "memory_attention_mass_by_head": [
+                    0.1213296428322792,
+                    0.7774017453193665
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6894897222518921,
+                    0.7831296324729919
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4615320563316345,
+                  "memory_attention_mass_by_head": [
+                    0.12130990624427795,
+                    0.8017542362213135
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6894463896751404,
+                    0.7630057334899902
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4676723778247833,
+                  "memory_attention_mass_by_head": [
+                    0.12152492254972458,
+                    0.8138198256492615
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6898647546768188,
+                    0.7492278814315796
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4716058373451233,
+                  "memory_attention_mass_by_head": [
+                    0.12176036089658737,
+                    0.8214512467384338
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6903309226036072,
+                    0.7404401898384094
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.47512945532798767,
+                  "memory_attention_mass_by_head": [
+                    0.1219763234257698,
+                    0.8282825350761414
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6907504200935364,
+                    0.7341216802597046
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4764198362827301,
+                  "memory_attention_mass_by_head": [
+                    0.12217982113361359,
+                    0.8306597471237183
+                  ],
+                  "attention_entropy_by_head": [
+                    0.691152811050415,
+                    0.7329752445220947
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4771917760372162,
+                  "memory_attention_mass_by_head": [
+                    0.12239587306976318,
+                    0.831987738609314
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6915819048881531,
+                    0.7347506284713745
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4753839373588562,
+                  "memory_attention_mass_by_head": [
+                    0.1226181611418724,
+                    0.828149676322937
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6920173168182373,
+                    0.7409101128578186
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4745294749736786,
+                  "memory_attention_mass_by_head": [
+                    0.12277697771787643,
+                    0.8262818455696106
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6923291683197021,
+                    0.7459506392478943
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4774740934371948,
+                  "memory_attention_mass_by_head": [
+                    0.12307526916265488,
+                    0.8318729996681213
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6929402351379395,
+                    0.7445369362831116
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4780868887901306,
+                  "memory_attention_mass_by_head": [
+                    0.12329107522964478,
+                    0.8328827023506165
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6933619379997253,
+                    0.7453851699829102
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4782543480396271,
+                  "memory_attention_mass_by_head": [
+                    0.12345274537801743,
+                    0.833055853843689
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6936771273612976,
+                    0.746721088886261
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4780293405056,
+                  "memory_attention_mass_by_head": [
+                    0.12355852127075195,
+                    0.832500159740448
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6938827633857727,
+                    0.7486695051193237
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4777093529701233,
+                  "memory_attention_mass_by_head": [
+                    0.12362069636583328,
+                    0.8317980170249939
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6940034031867981,
+                    0.7504923343658447
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4774130582809448,
+                  "memory_attention_mass_by_head": [
+                    0.1236492469906807,
+                    0.8311768770217896
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6940584778785706,
+                    0.7519125938415527
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.47715434432029724,
+                  "memory_attention_mass_by_head": [
+                    0.12365226447582245,
+                    0.8306563496589661
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6940637230873108,
+                    0.7529433965682983
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.47691211104393005,
+                  "memory_attention_mass_by_head": [
+                    0.12363707274198532,
+                    0.830187201499939
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6940335035324097,
+                    0.7537198066711426
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4766567647457123,
+                  "memory_attention_mass_by_head": [
+                    0.12361060827970505,
+                    0.8297029137611389
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6939811110496521,
+                    0.7544192671775818
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.47635340690612793,
+                  "memory_attention_mass_by_head": [
+                    0.12357890605926514,
+                    0.8291279673576355
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6939185261726379,
+                    0.7552167773246765
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.47598573565483093,
+                  "memory_attention_mass_by_head": [
+                    0.12354639917612076,
+                    0.8284251093864441
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6938544511795044,
+                    0.7562130689620972
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4755482077598572,
+                  "memory_attention_mass_by_head": [
+                    0.12351573258638382,
+                    0.8275807499885559
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6937939524650574,
+                    0.757449209690094
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4750533401966095,
+                  "memory_attention_mass_by_head": [
+                    0.12348815053701401,
+                    0.8266184329986572
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6937395334243774,
+                    0.7588867545127869
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.47451862692832947,
+                  "memory_attention_mass_by_head": [
+                    0.12346383184194565,
+                    0.8255734443664551
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6936914920806885,
+                    0.7604626417160034
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.47396454215049744,
+                  "memory_attention_mass_by_head": [
+                    0.1234423890709877,
+                    0.8244867324829102
+                  ],
+                  "attention_entropy_by_head": [
+                    0.693649172782898,
+                    0.7621057629585266
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4734081029891968,
+                  "memory_attention_mass_by_head": [
+                    0.12342329323291779,
+                    0.8233928680419922
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6936114430427551,
+                    0.7637581825256348
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.47286325693130493,
+                  "memory_attention_mass_by_head": [
+                    0.12340615689754486,
+                    0.8223203420639038
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6935775876045227,
+                    0.7653732895851135
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4723414182662964,
+                  "memory_attention_mass_by_head": [
+                    0.12339074909687042,
+                    0.8212921619415283
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6935471892356873,
+                    0.7669144868850708
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.471848726272583,
+                  "memory_attention_mass_by_head": [
+                    0.12337690591812134,
+                    0.8203205466270447
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6935198903083801,
+                    0.7683631181716919
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4713861644268036,
+                  "memory_attention_mass_by_head": [
+                    0.12336451560258865,
+                    0.8194078207015991
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6934954524040222,
+                    0.7697157263755798
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.47095271944999695,
+                  "memory_attention_mass_by_head": [
+                    0.12335342168807983,
+                    0.8185520768165588
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6934735178947449,
+                    0.7709760665893555
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.47054579854011536,
+                  "memory_attention_mass_by_head": [
+                    0.12334345281124115,
+                    0.8177481293678284
+                  ],
+                  "attention_entropy_by_head": [
+                    0.693453848361969,
+                    0.7721521854400635
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4701627492904663,
+                  "memory_attention_mass_by_head": [
+                    0.12333451211452484,
+                    0.8169909715652466
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6934360861778259,
+                    0.7732522487640381
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4698018729686737,
+                  "memory_attention_mass_by_head": [
+                    0.12332646548748016,
+                    0.816277265548706
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6934201717376709,
+                    0.7742831707000732
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4696379005908966,
+                  "memory_attention_mass_by_head": [
+                    0.12332078069448471,
+                    0.8159549832344055
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6934088468551636,
+                    0.7748777866363525
+                  ]
+                }
+              ],
+              "raw_recurrent_gradient_rms": 5.4217689466895536e-06,
+              "state_stats": {
+                "inactive_fraction": 0.7222633361816406,
+                "tau_r_mean": 4.8742804527282715,
+                "tau_a_mean": 37.803260803222656,
+                "adaptation_gain_mean": 0.04522702097892761,
+                "memory_attention_mass": 0.4696379005908966,
+                "memory_attention_mass_by_head": [
+                  0.12332078069448471,
+                  0.8159549832344055
+                ],
+                "attention_entropy_by_head": [
+                  0.6934088468551636,
+                  0.7748777866363525
+                ],
+                "locality": [
+                  4.031601428985596,
+                  4.027606964111328
+                ]
+              }
+            },
+            "name": "motion_duration_cued_D24",
+            "eval_seconds": 0.22143864631652832
+          },
+          {
+            "loss": 0.5250324010848999,
+            "accuracy": 0.875,
+            "gradient_norm": 0.8632301688194275,
+            "clipped": 0,
+            "frames": 5,
+            "seconds": 0.18209242820739746,
+            "diagnostics": {
+              "first_sensory_field_gradient_norm": 0.0024833527859300375,
+              "early_r_gradient_norm": 0.011989012360572815,
+              "early_r_rms": 0.050964754074811935,
+              "early_a_gradient_norm": 0.0001676983811194077,
+              "early_a_rms": 0.0,
+              "late_r_gradient_norm": 0.0027218209579586983,
+              "late_r_rms": 0.19227801263332367,
+              "late_a_gradient_norm": null,
+              "late_a_rms": 0.011170443147420883,
+              "attention_gradient_norm": 0.07235652208328247,
+              "encoder_gradient_norm": 0.7241464853286743,
+              "per_frame_attention": [
+                {
+                  "memory_attention_mass": 0.12671756744384766,
+                  "memory_attention_mass_by_head": [
+                    0.11979973316192627,
+                    0.13363541662693024
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6864455342292786,
+                    0.7138047814369202
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.41878804564476013,
+                  "memory_attention_mass_by_head": [
+                    0.12089593708515167,
+                    0.7166801691055298
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6886056661605835,
+                    0.8770867586135864
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4480454921722412,
+                  "memory_attention_mass_by_head": [
+                    0.12130644917488098,
+                    0.774784505367279
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6893796324729919,
+                    0.7339751124382019
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.47699102759361267,
+                  "memory_attention_mass_by_head": [
+                    0.12230271846055984,
+                    0.8316793441772461
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6914128661155701,
+                    0.6280012726783752
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.44725704193115234,
+                  "memory_attention_mass_by_head": [
+                    0.1216551885008812,
+                    0.7728589177131653
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6901171803474426,
+                    0.7309862971305847
+                  ]
+                }
+              ],
+              "raw_recurrent_gradient_rms": 3.185614616540988e-07,
+              "state_stats": {
+                "inactive_fraction": 0.5225938558578491,
+                "tau_r_mean": 4.8742804527282715,
+                "tau_a_mean": 37.803260803222656,
+                "adaptation_gain_mean": 0.04522702097892761,
+                "memory_attention_mass": 0.44725704193115234,
+                "memory_attention_mass_by_head": [
+                  0.1216551885008812,
+                  0.7728589177131653
+                ],
+                "attention_entropy_by_head": [
+                  0.6901171803474426,
+                  0.7309862971305847
+                ],
+                "locality": [
+                  4.031601428985596,
+                  4.027606964111328
+                ]
+              }
+            },
+            "name": "spatial_binding_D0",
+            "eval_seconds": 0.03367924690246582
+          },
+          {
+            "loss": 1.0163177251815796,
+            "accuracy": 0.5,
+            "gradient_norm": 2.453341007232666,
+            "clipped": 1,
+            "frames": 29,
+            "seconds": 0.8442587852478027,
+            "diagnostics": {
+              "first_sensory_field_gradient_norm": 0.0026861149817705154,
+              "early_r_gradient_norm": 0.01848633773624897,
+              "early_r_rms": 0.050964754074811935,
+              "early_a_gradient_norm": 0.0007137873326428235,
+              "early_a_rms": 0.0,
+              "late_r_gradient_norm": 0.0037525256630033255,
+              "late_r_rms": 0.3249814808368683,
+              "late_a_gradient_norm": null,
+              "late_a_rms": 0.09804117679595947,
+              "attention_gradient_norm": 0.43502411246299744,
+              "encoder_gradient_norm": 0.5821829438209534,
+              "per_frame_attention": [
+                {
+                  "memory_attention_mass": 0.12671756744384766,
+                  "memory_attention_mass_by_head": [
+                    0.11979973316192627,
+                    0.13363541662693024
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6864455342292786,
+                    0.7138047814369202
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4205577075481415,
+                  "memory_attention_mass_by_head": [
+                    0.12090791761875153,
+                    0.7202074527740479
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6886305809020996,
+                    0.8764667510986328
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4466213285923004,
+                  "memory_attention_mass_by_head": [
+                    0.12131590396165848,
+                    0.7719268202781677
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6894086003303528,
+                    0.736827552318573
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.48141908645629883,
+                  "memory_attention_mass_by_head": [
+                    0.12228016555309296,
+                    0.8405580520629883
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6913892030715942,
+                    0.6120530366897583
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.49919432401657104,
+                  "memory_attention_mass_by_head": [
+                    0.1224704384803772,
+                    0.8759180903434753
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6917619705200195,
+                    0.6097272038459778
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.5025792121887207,
+                  "memory_attention_mass_by_head": [
+                    0.12270743399858475,
+                    0.8824509978294373
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6922203898429871,
+                    0.621881365776062
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.5008138418197632,
+                  "memory_attention_mass_by_head": [
+                    0.1229173019528389,
+                    0.8787104487419128
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6926271319389343,
+                    0.6398536562919617
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.497804194688797,
+                  "memory_attention_mass_by_head": [
+                    0.12309267371892929,
+                    0.8725157976150513
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6929678916931152,
+                    0.6578215956687927
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.49474483728408813,
+                  "memory_attention_mass_by_head": [
+                    0.123239666223526,
+                    0.8662501573562622
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6932541728019714,
+                    0.6738101243972778
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4919472932815552,
+                  "memory_attention_mass_by_head": [
+                    0.12336200475692749,
+                    0.8605325222015381
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6934927701950073,
+                    0.6875295042991638
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4894593358039856,
+                  "memory_attention_mass_by_head": [
+                    0.12345899641513824,
+                    0.8554596304893494
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6936817169189453,
+                    0.6991758942604065
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.48726803064346313,
+                  "memory_attention_mass_by_head": [
+                    0.12353019416332245,
+                    0.8510059714317322
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6938202381134033,
+                    0.7090117335319519
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4853460192680359,
+                  "memory_attention_mass_by_head": [
+                    0.12357796728610992,
+                    0.8471139669418335
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6939130425453186,
+                    0.7172860503196716
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.48366281390190125,
+                  "memory_attention_mass_by_head": [
+                    0.12360657751560211,
+                    0.843718945980072
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6939683556556702,
+                    0.7242313027381897
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.48218441009521484,
+                  "memory_attention_mass_by_head": [
+                    0.1236211359500885,
+                    0.8407477140426636
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6939963102340698,
+                    0.7300691604614258
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4808805286884308,
+                  "memory_attention_mass_by_head": [
+                    0.12362648546695709,
+                    0.8381345868110657
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6940063238143921,
+                    0.7350002527236938
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.47972244024276733,
+                  "memory_attention_mass_by_head": [
+                    0.12362632900476456,
+                    0.8358185291290283
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6940056681632996,
+                    0.7392159104347229
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4786801338195801,
+                  "memory_attention_mass_by_head": [
+                    0.12362302839756012,
+                    0.8337371945381165
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6939989328384399,
+                    0.7428886294364929
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.47773030400276184,
+                  "memory_attention_mass_by_head": [
+                    0.12361782789230347,
+                    0.8318427205085754
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6939886212348938,
+                    0.7461479306221008
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4768597483634949,
+                  "memory_attention_mass_by_head": [
+                    0.12361140549182892,
+                    0.8301079273223877
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6939759850502014,
+                    0.7490735650062561
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4760575592517853,
+                  "memory_attention_mass_by_head": [
+                    0.12360411882400513,
+                    0.8285109996795654
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6939616799354553,
+                    0.7517240047454834
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4753168821334839,
+                  "memory_attention_mass_by_head": [
+                    0.12359625846147537,
+                    0.8270375728607178
+                  ],
+                  "attention_entropy_by_head": [
+                    0.693946361541748,
+                    0.7541370391845703
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4746359586715698,
+                  "memory_attention_mass_by_head": [
+                    0.12358804792165756,
+                    0.8256839513778687
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6939302682876587,
+                    0.7563297152519226
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.47401267290115356,
+                  "memory_attention_mass_by_head": [
+                    0.12357967346906662,
+                    0.8244455456733704
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6939138770103455,
+                    0.758317232131958
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.47344356775283813,
+                  "memory_attention_mass_by_head": [
+                    0.12357120215892792,
+                    0.8233158588409424
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6938973665237427,
+                    0.7601161599159241
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4729250967502594,
+                  "memory_attention_mass_by_head": [
+                    0.1235627830028534,
+                    0.8222873210906982
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6938809156417847,
+                    0.7617431282997131
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.47245338559150696,
+                  "memory_attention_mass_by_head": [
+                    0.12355450540781021,
+                    0.8213521838188171
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6938647031784058,
+                    0.7632144689559937
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4595002830028534,
+                  "memory_attention_mass_by_head": [
+                    0.12356183677911758,
+                    0.7954387068748474
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6938747763633728,
+                    0.7910124063491821
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.42175039649009705,
+                  "memory_attention_mass_by_head": [
+                    0.12322507053613663,
+                    0.7202757000923157
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6932134628295898,
+                    0.8584008812904358
+                  ]
+                }
+              ],
+              "raw_recurrent_gradient_rms": 7.4249528552172706e-06,
+              "state_stats": {
+                "inactive_fraction": 0.5952870845794678,
+                "tau_r_mean": 4.8742804527282715,
+                "tau_a_mean": 37.803260803222656,
+                "adaptation_gain_mean": 0.04522702097892761,
+                "memory_attention_mass": 0.42175039649009705,
+                "memory_attention_mass_by_head": [
+                  0.12322507053613663,
+                  0.7202757000923157
+                ],
+                "attention_entropy_by_head": [
+                  0.6932134628295898,
+                  0.8584008812904358
+                ],
+                "locality": [
+                  4.031601428985596,
+                  4.027606964111328
+                ]
+              }
+            },
+            "name": "spatial_binding_D24",
+            "eval_seconds": 0.18449759483337402
+          },
+          {
+            "loss": 0.1994490921497345,
+            "accuracy": 1.0,
+            "gradient_norm": 1.0294528007507324,
+            "clipped": 1,
+            "frames": 7,
+            "seconds": 0.22174572944641113,
+            "diagnostics": {
+              "first_sensory_field_gradient_norm": 0.0014873469481244683,
+              "early_r_gradient_norm": 0.006386984139680862,
+              "early_r_rms": 0.050964754074811935,
+              "early_a_gradient_norm": 8.94646582310088e-05,
+              "early_a_rms": 0.0,
+              "late_r_gradient_norm": 0.001095758518204093,
+              "late_r_rms": 0.3618105947971344,
+              "late_a_gradient_norm": null,
+              "late_a_rms": 0.023090261965990067,
+              "attention_gradient_norm": 0.08216676115989685,
+              "encoder_gradient_norm": 0.29839393496513367,
+              "per_frame_attention": [
+                {
+                  "memory_attention_mass": 0.12671756744384766,
+                  "memory_attention_mass_by_head": [
+                    0.11979973316192627,
+                    0.13363541662693024
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6864455342292786,
+                    0.7138047814369202
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4819337725639343,
+                  "memory_attention_mass_by_head": [
+                    0.1211085245013237,
+                    0.8427590131759644
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6890519261360168,
+                    0.7476417422294617
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4815325438976288,
+                  "memory_attention_mass_by_head": [
+                    0.12108177691698074,
+                    0.8419832587242126
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6890006065368652,
+                    0.7505943775177002
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.479868620634079,
+                  "memory_attention_mass_by_head": [
+                    0.1212383583188057,
+                    0.8384987115859985
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6893112063407898,
+                    0.7544602751731873
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.21876245737075806,
+                  "memory_attention_mass_by_head": [
+                    0.12018506228923798,
+                    0.31733986735343933
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6871658563613892,
+                    0.8931542038917542
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.19292698800563812,
+                  "memory_attention_mass_by_head": [
+                    0.11854885518550873,
+                    0.2673051357269287
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6839369535446167,
+                    0.7523409724235535
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.19442719221115112,
+                  "memory_attention_mass_by_head": [
+                    0.11926981061697006,
+                    0.269584596157074
+                  ],
+                  "attention_entropy_by_head": [
+                    0.685407817363739,
+                    0.7397271394729614
+                  ]
+                }
+              ],
+              "raw_recurrent_gradient_rms": 2.2212329042758938e-07,
+              "state_stats": {
+                "inactive_fraction": 0.1278892457485199,
+                "tau_r_mean": 4.8742804527282715,
+                "tau_a_mean": 37.803260803222656,
+                "adaptation_gain_mean": 0.04522702097892761,
+                "memory_attention_mass": 0.19442719221115112,
+                "memory_attention_mass_by_head": [
+                  0.11926981061697006,
+                  0.269584596157074
+                ],
+                "attention_entropy_by_head": [
+                  0.685407817363739,
+                  0.7397271394729614
+                ],
+                "locality": [
+                  4.031601428985596,
+                  4.027606964111328
+                ]
+              }
+            },
+            "name": "image_recognition_N0_H3",
+            "eval_seconds": 0.04639625549316406
+          },
+          {
+            "loss": 1.1914609670639038,
+            "accuracy": 0.5,
+            "gradient_norm": 4.277323246002197,
+            "clipped": 1,
+            "frames": 33,
+            "seconds": 1.2367241382598877,
+            "diagnostics": {
+              "first_sensory_field_gradient_norm": 0.00166786415502429,
+              "early_r_gradient_norm": 0.01315357070416212,
+              "early_r_rms": 0.050964754074811935,
+              "early_a_gradient_norm": 0.0008489181636832654,
+              "early_a_rms": 0.0,
+              "late_r_gradient_norm": 0.003637360641732812,
+              "late_r_rms": 0.5727916359901428,
+              "late_a_gradient_norm": null,
+              "late_a_rms": 0.26299887895584106,
+              "attention_gradient_norm": 0.9034510254859924,
+              "encoder_gradient_norm": 1.1270352602005005,
+              "per_frame_attention": [
+                {
+                  "memory_attention_mass": 0.12671756744384766,
+                  "memory_attention_mass_by_head": [
+                    0.11979973316192627,
+                    0.13363541662693024
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6864455342292786,
+                    0.7138047814369202
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.23211751878261566,
+                  "memory_attention_mass_by_head": [
+                    0.12022408843040466,
+                    0.34401094913482666
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6872256994247437,
+                    0.9291744828224182
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.18277940154075623,
+                  "memory_attention_mass_by_head": [
+                    0.119111068546772,
+                    0.24644775688648224
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6850338578224182,
+                    0.7848570346832275
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.1704903393983841,
+                  "memory_attention_mass_by_head": [
+                    0.11976946145296097,
+                    0.22121120989322662
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6863670349121094,
+                    0.783722996711731
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.1687808334827423,
+                  "memory_attention_mass_by_head": [
+                    0.1201886311173439,
+                    0.2173730581998825
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6871948838233948,
+                    0.7966955900192261
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.1691075563430786,
+                  "memory_attention_mass_by_head": [
+                    0.12034047394990921,
+                    0.2178746610879898
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6875112652778625,
+                    0.7965645790100098
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.17276152968406677,
+                  "memory_attention_mass_by_head": [
+                    0.12044859677553177,
+                    0.22507445514202118
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6877314448356628,
+                    0.7941547632217407
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.18355192244052887,
+                  "memory_attention_mass_by_head": [
+                    0.11979442834854126,
+                    0.24730946123600006
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6864399909973145,
+                    0.798160195350647
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.18069769442081451,
+                  "memory_attention_mass_by_head": [
+                    0.12057976424694061,
+                    0.2408156394958496
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6879902482032776,
+                    0.8007803559303284
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.17895826697349548,
+                  "memory_attention_mass_by_head": [
+                    0.12021217495203018,
+                    0.2377043515443802
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6872707009315491,
+                    0.7907083034515381
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.18172800540924072,
+                  "memory_attention_mass_by_head": [
+                    0.12002591788768768,
+                    0.24343010783195496
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6868818402290344,
+                    0.7832111716270447
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.18821603059768677,
+                  "memory_attention_mass_by_head": [
+                    0.11947247385978699,
+                    0.2569596469402313
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6857914924621582,
+                    0.7839608192443848
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.179936021566391,
+                  "memory_attention_mass_by_head": [
+                    0.1196979358792305,
+                    0.24017411470413208
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6862027645111084,
+                    0.7816559672355652
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.18312755227088928,
+                  "memory_attention_mass_by_head": [
+                    0.119523786008358,
+                    0.24673131108283997
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6858783960342407,
+                    0.777849555015564
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.18099822103977203,
+                  "memory_attention_mass_by_head": [
+                    0.11957837641239166,
+                    0.2424180507659912
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6859723329544067,
+                    0.7842291593551636
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.1841059923171997,
+                  "memory_attention_mass_by_head": [
+                    0.11940702050924301,
+                    0.2488049864768982
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6856376528739929,
+                    0.7831985950469971
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.18369533121585846,
+                  "memory_attention_mass_by_head": [
+                    0.1190825030207634,
+                    0.24830815196037292
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6849772930145264,
+                    0.7854186296463013
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.18455471098423004,
+                  "memory_attention_mass_by_head": [
+                    0.11917872726917267,
+                    0.2499307096004486
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6851786375045776,
+                    0.7855616807937622
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.18180330097675323,
+                  "memory_attention_mass_by_head": [
+                    0.11930723488330841,
+                    0.24429935216903687
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6854351162910461,
+                    0.783796489238739
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.18024401366710663,
+                  "memory_attention_mass_by_head": [
+                    0.11906811594963074,
+                    0.24141991138458252
+                  ],
+                  "attention_entropy_by_head": [
+                    0.684965968132019,
+                    0.7864514589309692
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.17721381783485413,
+                  "memory_attention_mass_by_head": [
+                    0.11916522681713104,
+                    0.2352624088525772
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6851599812507629,
+                    0.7824279069900513
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.17959164083003998,
+                  "memory_attention_mass_by_head": [
+                    0.11891798675060272,
+                    0.24026529490947723
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6846431493759155,
+                    0.7892736196517944
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.18054185807704926,
+                  "memory_attention_mass_by_head": [
+                    0.1186239942908287,
+                    0.2424597442150116
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6840685606002808,
+                    0.7872712016105652
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.17214184999465942,
+                  "memory_attention_mass_by_head": [
+                    0.11911984533071518,
+                    0.22516384720802307
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6850753426551819,
+                    0.7669909000396729
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.17370235919952393,
+                  "memory_attention_mass_by_head": [
+                    0.1188880205154419,
+                    0.22851666808128357
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6845961213111877,
+                    0.7777671217918396
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.2105572670698166,
+                  "memory_attention_mass_by_head": [
+                    0.11981675028800964,
+                    0.30129778385162354
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6865047812461853,
+                    0.841036856174469
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.2725498676300049,
+                  "memory_attention_mass_by_head": [
+                    0.11982858180999756,
+                    0.425271213054657
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6865224838256836,
+                    0.9215887188911438
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.35920223593711853,
+                  "memory_attention_mass_by_head": [
+                    0.12032043188810349,
+                    0.598084032535553
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6874951124191284,
+                    0.9347579479217529
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.24977944791316986,
+                  "memory_attention_mass_by_head": [
+                    0.12027551233768463,
+                    0.3792833983898163
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6873728036880493,
+                    0.8822509050369263
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.2190956324338913,
+                  "memory_attention_mass_by_head": [
+                    0.11972405761480331,
+                    0.3184671998023987
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6862792372703552,
+                    0.8359788656234741
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.20092642307281494,
+                  "memory_attention_mass_by_head": [
+                    0.11925084888935089,
+                    0.2826020121574402
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6853727698326111,
+                    0.7961662411689758
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.1920965611934662,
+                  "memory_attention_mass_by_head": [
+                    0.11909767240285873,
+                    0.26509544253349304
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6851058006286621,
+                    0.7732836604118347
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.18922734260559082,
+                  "memory_attention_mass_by_head": [
+                    0.11911141872406006,
+                    0.2593432664871216
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6851627230644226,
+                    0.7663090229034424
+                  ]
+                }
+              ],
+              "raw_recurrent_gradient_rms": 1.4860188457532786e-05,
+              "state_stats": {
+                "inactive_fraction": 0.0018837832612916827,
+                "tau_r_mean": 4.8742804527282715,
+                "tau_a_mean": 37.803260803222656,
+                "adaptation_gain_mean": 0.04522702097892761,
+                "memory_attention_mass": 0.18922734260559082,
+                "memory_attention_mass_by_head": [
+                  0.11911141872406006,
+                  0.2593432664871216
+                ],
+                "attention_entropy_by_head": [
+                  0.6851627230644226,
+                  0.7663090229034424
+                ],
+                "locality": [
+                  4.031601428985596,
+                  4.027606964111328
+                ]
+              }
+            },
+            "name": "image_recognition_N24_H5",
+            "eval_seconds": 0.209028959274292
+          },
+          {
+            "loss": 0.5475925207138062,
+            "accuracy": 0.75,
+            "gradient_norm": 0.397982656955719,
+            "clipped": 0,
+            "frames": 29,
+            "seconds": 0.8464760780334473,
+            "diagnostics": {
+              "first_sensory_field_gradient_norm": 0.0022160608787089586,
+              "early_r_gradient_norm": 0.00695450184866786,
+              "early_r_rms": 0.05201417952775955,
+              "early_a_gradient_norm": 0.00031877835863269866,
+              "early_a_rms": 0.0,
+              "late_r_gradient_norm": 0.002108632819727063,
+              "late_r_rms": 0.30910956859588623,
+              "late_a_gradient_norm": null,
+              "late_a_rms": 0.09415457397699356,
+              "attention_gradient_norm": 0.053544025868177414,
+              "encoder_gradient_norm": 0.23884810507297516,
+              "per_frame_attention": [
+                {
+                  "memory_attention_mass": 0.12659740447998047,
+                  "memory_attention_mass_by_head": [
+                    0.11980122327804565,
+                    0.13339360058307648
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6864482164382935,
+                    0.7133535146713257
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4679969847202301,
+                  "memory_attention_mass_by_head": [
+                    0.12136750668287277,
+                    0.8146265149116516
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6895624995231628,
+                    0.7595016360282898
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.47400200366973877,
+                  "memory_attention_mass_by_head": [
+                    0.12137382477521896,
+                    0.826630175113678
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6895844340324402,
+                    0.7539110779762268
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4822724461555481,
+                  "memory_attention_mass_by_head": [
+                    0.1215437725186348,
+                    0.8430010676383972
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6899206638336182,
+                    0.7378084659576416
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.48470157384872437,
+                  "memory_attention_mass_by_head": [
+                    0.12178793549537659,
+                    0.8476151823997498
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6904010772705078,
+                    0.7305871248245239
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4853628873825073,
+                  "memory_attention_mass_by_head": [
+                    0.12200679630041122,
+                    0.84871906042099
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6908313035964966,
+                    0.7284261584281921
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.48490428924560547,
+                  "memory_attention_mass_by_head": [
+                    0.12218701094388962,
+                    0.8476216197013855
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6911852359771729,
+                    0.730155348777771
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.47980329394340515,
+                  "memory_attention_mass_by_head": [
+                    0.12232691794633865,
+                    0.8372796773910522
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6914559006690979,
+                    0.7438277006149292
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.48065438866615295,
+                  "memory_attention_mass_by_head": [
+                    0.12243980169296265,
+                    0.8388687968254089
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6916751265525818,
+                    0.7430184483528137
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4797413945198059,
+                  "memory_attention_mass_by_head": [
+                    0.12254960834980011,
+                    0.8369331955909729
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6918907165527344,
+                    0.7466514110565186
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4783346354961395,
+                  "memory_attention_mass_by_head": [
+                    0.12265098094940186,
+                    0.834018349647522
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6920874118804932,
+                    0.7510163187980652
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.47566547989845276,
+                  "memory_attention_mass_by_head": [
+                    0.12273123860359192,
+                    0.8285998106002808
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6922445893287659,
+                    0.758491575717926
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4723608195781708,
+                  "memory_attention_mass_by_head": [
+                    0.12279994040727615,
+                    0.8219218254089355
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6923807859420776,
+                    0.766575813293457
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4698010981082916,
+                  "memory_attention_mass_by_head": [
+                    0.12286848574876785,
+                    0.8167336583137512
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6925150156021118,
+                    0.7729160189628601
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.46883055567741394,
+                  "memory_attention_mass_by_head": [
+                    0.12292762845754623,
+                    0.8147333860397339
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6926295161247253,
+                    0.7760802507400513
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.46663498878479004,
+                  "memory_attention_mass_by_head": [
+                    0.12295935302972794,
+                    0.8103104829788208
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6926926374435425,
+                    0.7814164757728577
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.46553799510002136,
+                  "memory_attention_mass_by_head": [
+                    0.12300488352775574,
+                    0.8080711960792542
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6927809119224548,
+                    0.7838382124900818
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4637279808521271,
+                  "memory_attention_mass_by_head": [
+                    0.12304141372442245,
+                    0.8044146299362183
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6928515434265137,
+                    0.7872689962387085
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4634069502353668,
+                  "memory_attention_mass_by_head": [
+                    0.12306620180606842,
+                    0.8037475943565369
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6928994059562683,
+                    0.7880980372428894
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.46251749992370605,
+                  "memory_attention_mass_by_head": [
+                    0.12308819591999054,
+                    0.8019468784332275
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6929419636726379,
+                    0.7900295257568359
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4620688259601593,
+                  "memory_attention_mass_by_head": [
+                    0.12310783565044403,
+                    0.8010298013687134
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6929803490638733,
+                    0.7915160059928894
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4607927203178406,
+                  "memory_attention_mass_by_head": [
+                    0.12311961501836777,
+                    0.7984657883644104
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6930029988288879,
+                    0.7944942712783813
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4611559212207794,
+                  "memory_attention_mass_by_head": [
+                    0.12314118444919586,
+                    0.7991704940795898
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6930438876152039,
+                    0.793749213218689
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4613688290119171,
+                  "memory_attention_mass_by_head": [
+                    0.12315955758094788,
+                    0.799578070640564
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6930781602859497,
+                    0.7940070629119873
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4609622061252594,
+                  "memory_attention_mass_by_head": [
+                    0.12315752357244492,
+                    0.7987669110298157
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6930737495422363,
+                    0.7947855591773987
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4604928195476532,
+                  "memory_attention_mass_by_head": [
+                    0.12316766381263733,
+                    0.7978180050849915
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6930959224700928,
+                    0.7961004972457886
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.45942842960357666,
+                  "memory_attention_mass_by_head": [
+                    0.12317409366369247,
+                    0.7956828474998474
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6931087374687195,
+                    0.797346293926239
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.45853275060653687,
+                  "memory_attention_mass_by_head": [
+                    0.1231904998421669,
+                    0.7938750982284546
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6931397914886475,
+                    0.7983782887458801
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.46186697483062744,
+                  "memory_attention_mass_by_head": [
+                    0.12324105203151703,
+                    0.8004928827285767
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6932485103607178,
+                    0.7939449548721313
+                  ]
+                }
+              ],
+              "raw_recurrent_gradient_rms": 9.868754204944707e-07,
+              "state_stats": {
+                "inactive_fraction": 0.7431467175483704,
+                "tau_r_mean": 4.8742804527282715,
+                "tau_a_mean": 37.803260803222656,
+                "adaptation_gain_mean": 0.04522702097892761,
+                "memory_attention_mass": 0.46186697483062744,
+                "memory_attention_mass_by_head": [
+                  0.12324105203151703,
+                  0.8004928827285767
+                ],
+                "attention_entropy_by_head": [
+                  0.6932485103607178,
+                  0.7939449548721313
+                ],
+                "locality": [
+                  4.031601428985596,
+                  4.027606964111328
+                ]
+              }
+            },
+            "name": "krauzlis_B12",
+            "eval_seconds": 0.18463349342346191
+          },
+          {
+            "loss": 1.0323030948638916,
+            "accuracy": 0.375,
+            "gradient_norm": 3.407449722290039,
+            "clipped": 1,
+            "frames": 45,
+            "seconds": 1.321991205215454,
+            "diagnostics": {
+              "first_sensory_field_gradient_norm": 0.002109765773639083,
+              "early_r_gradient_norm": 0.00776547659188509,
+              "early_r_rms": 0.051959384232759476,
+              "early_a_gradient_norm": 0.00047467471449635923,
+              "early_a_rms": 0.0,
+              "late_r_gradient_norm": 0.0030360526870936155,
+              "late_r_rms": 0.33782821893692017,
+              "late_a_gradient_norm": null,
+              "late_a_rms": 0.14335530996322632,
+              "attention_gradient_norm": 0.48902425169944763,
+              "encoder_gradient_norm": 0.6248627305030823,
+              "per_frame_attention": [
+                {
+                  "memory_attention_mass": 0.12657707929611206,
+                  "memory_attention_mass_by_head": [
+                    0.11980137228965759,
+                    0.13335281610488892
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6864484548568726,
+                    0.7132601141929626
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4693934917449951,
+                  "memory_attention_mass_by_head": [
+                    0.12137807905673981,
+                    0.8174088001251221
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6895838975906372,
+                    0.7592706680297852
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.47461727261543274,
+                  "memory_attention_mass_by_head": [
+                    0.12136459350585938,
+                    0.8278700113296509
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6895639300346375,
+                    0.7532029151916504
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.48067307472229004,
+                  "memory_attention_mass_by_head": [
+                    0.1215384230017662,
+                    0.8398076295852661
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6899056434631348,
+                    0.7434457540512085
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4827323257923126,
+                  "memory_attention_mass_by_head": [
+                    0.12177818268537521,
+                    0.8436865210533142
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6903766989707947,
+                    0.7372205257415771
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.48317164182662964,
+                  "memory_attention_mass_by_head": [
+                    0.12199289351701736,
+                    0.8443504571914673
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6907986402511597,
+                    0.7356399297714233
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.482528954744339,
+                  "memory_attention_mass_by_head": [
+                    0.12217037379741669,
+                    0.8428875803947449
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6911473870277405,
+                    0.7377720475196838
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.47586557269096375,
+                  "memory_attention_mass_by_head": [
+                    0.12230068445205688,
+                    0.8294304013252258
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6913982033729553,
+                    0.755648136138916
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4760097563266754,
+                  "memory_attention_mass_by_head": [
+                    0.12244009226560593,
+                    0.8295793533325195
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6916704177856445,
+                    0.7557918429374695
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4750656187534332,
+                  "memory_attention_mass_by_head": [
+                    0.12256203591823578,
+                    0.8275691866874695
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6919082403182983,
+                    0.7589392066001892
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.474086195230484,
+                  "memory_attention_mass_by_head": [
+                    0.12265656143426895,
+                    0.825515866279602
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6920941472053528,
+                    0.7622185945510864
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4726925194263458,
+                  "memory_attention_mass_by_head": [
+                    0.12272185832262039,
+                    0.8226630687713623
+                  ],
+                  "attention_entropy_by_head": [
+                    0.692223072052002,
+                    0.7672978639602661
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.47026297450065613,
+                  "memory_attention_mass_by_head": [
+                    0.12276120483875275,
+                    0.8177647590637207
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6923013925552368,
+                    0.7731419205665588
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.46819812059402466,
+                  "memory_attention_mass_by_head": [
+                    0.12280849367380142,
+                    0.8135877847671509
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6923945546150208,
+                    0.7787392735481262
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.46599358320236206,
+                  "memory_attention_mass_by_head": [
+                    0.12286212295293808,
+                    0.8091251254081726
+                  ],
+                  "attention_entropy_by_head": [
+                    0.692499577999115,
+                    0.7835767269134521
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4642389118671417,
+                  "memory_attention_mass_by_head": [
+                    0.12288985401391983,
+                    0.8055880665779114
+                  ],
+                  "attention_entropy_by_head": [
+                    0.692554771900177,
+                    0.7875037789344788
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.46271297335624695,
+                  "memory_attention_mass_by_head": [
+                    0.12292411923408508,
+                    0.802501916885376
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6926212906837463,
+                    0.7907353043556213
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.46174585819244385,
+                  "memory_attention_mass_by_head": [
+                    0.12295330315828323,
+                    0.8005383610725403
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6926795840263367,
+                    0.7936374545097351
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.46062400937080383,
+                  "memory_attention_mass_by_head": [
+                    0.12298250198364258,
+                    0.7982656359672546
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6927366852760315,
+                    0.7960084080696106
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4603656232357025,
+                  "memory_attention_mass_by_head": [
+                    0.12301333248615265,
+                    0.7977179288864136
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6927945613861084,
+                    0.797143280506134
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4597700834274292,
+                  "memory_attention_mass_by_head": [
+                    0.12304279208183289,
+                    0.7964973449707031
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6928518414497375,
+                    0.7983319759368896
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.45830729603767395,
+                  "memory_attention_mass_by_head": [
+                    0.12307951599359512,
+                    0.793535053730011
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6929205060005188,
+                    0.8006914854049683
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.45827603340148926,
+                  "memory_attention_mass_by_head": [
+                    0.12310639023780823,
+                    0.7934456467628479
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6929713487625122,
+                    0.8002419471740723
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4580754339694977,
+                  "memory_attention_mass_by_head": [
+                    0.12312407046556473,
+                    0.7930267453193665
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6930070519447327,
+                    0.8017067313194275
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.45770353078842163,
+                  "memory_attention_mass_by_head": [
+                    0.12314184010028839,
+                    0.7922652363777161
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6930400133132935,
+                    0.802459180355072
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4580329954624176,
+                  "memory_attention_mass_by_head": [
+                    0.12315261363983154,
+                    0.7929134964942932
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6930621266365051,
+                    0.8024472594261169
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.45736944675445557,
+                  "memory_attention_mass_by_head": [
+                    0.12316347658634186,
+                    0.7915753126144409
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6930838227272034,
+                    0.8032743334770203
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4571700394153595,
+                  "memory_attention_mass_by_head": [
+                    0.12316258251667023,
+                    0.7911774516105652
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6930851936340332,
+                    0.8038054704666138
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.45722419023513794,
+                  "memory_attention_mass_by_head": [
+                    0.12315946817398071,
+                    0.7912889122962952
+                  ],
+                  "attention_entropy_by_head": [
+                    0.693078875541687,
+                    0.8038309216499329
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4569874107837677,
+                  "memory_attention_mass_by_head": [
+                    0.12316005676984787,
+                    0.7908148169517517
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6930794715881348,
+                    0.8046548366546631
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4576099216938019,
+                  "memory_attention_mass_by_head": [
+                    0.1231686994433403,
+                    0.7920510768890381
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6930953860282898,
+                    0.8037123680114746
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4579259157180786,
+                  "memory_attention_mass_by_head": [
+                    0.1231774315237999,
+                    0.7926744222640991
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6931106448173523,
+                    0.8034666180610657
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4571634531021118,
+                  "memory_attention_mass_by_head": [
+                    0.12318356335163116,
+                    0.7911432981491089
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6931211352348328,
+                    0.8042663931846619
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4575050473213196,
+                  "memory_attention_mass_by_head": [
+                    0.12319917231798172,
+                    0.7918108701705933
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6931512951850891,
+                    0.8034897446632385
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.45733317732810974,
+                  "memory_attention_mass_by_head": [
+                    0.12321140617132187,
+                    0.7914549708366394
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6931771039962769,
+                    0.8036898374557495
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.45770254731178284,
+                  "memory_attention_mass_by_head": [
+                    0.12322250753641129,
+                    0.7921825051307678
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6932000517845154,
+                    0.8029512763023376
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4575173258781433,
+                  "memory_attention_mass_by_head": [
+                    0.12321870774030685,
+                    0.7918159365653992
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6931942701339722,
+                    0.8032363653182983
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.45709228515625,
+                  "memory_attention_mass_by_head": [
+                    0.12322044372558594,
+                    0.7909640669822693
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6931964755058289,
+                    0.8041192293167114
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4566335380077362,
+                  "memory_attention_mass_by_head": [
+                    0.12322544306516647,
+                    0.7900416254997253
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6932032108306885,
+                    0.8043670654296875
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4571261405944824,
+                  "memory_attention_mass_by_head": [
+                    0.12323625385761261,
+                    0.7910159826278687
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6932235360145569,
+                    0.8028622269630432
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.457419216632843,
+                  "memory_attention_mass_by_head": [
+                    0.12324679642915726,
+                    0.7915917038917542
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6932488679885864,
+                    0.8018772602081299
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.457859069108963,
+                  "memory_attention_mass_by_head": [
+                    0.12324679642915726,
+                    0.7924712896347046
+                  ],
+                  "attention_entropy_by_head": [
+                    0.69324791431427,
+                    0.8015102744102478
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4578447639942169,
+                  "memory_attention_mass_by_head": [
+                    0.1232530027627945,
+                    0.7924364805221558
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6932610273361206,
+                    0.8018782734870911
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4576868414878845,
+                  "memory_attention_mass_by_head": [
+                    0.1232592910528183,
+                    0.7921143770217896
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6932709813117981,
+                    0.8014578819274902
+                  ]
+                },
+                {
+                  "memory_attention_mass": 0.4599744975566864,
+                  "memory_attention_mass_by_head": [
+                    0.12331407517194748,
+                    0.7966349124908447
+                  ],
+                  "attention_entropy_by_head": [
+                    0.6933905482292175,
+                    0.7969819903373718
+                  ]
+                }
+              ],
+              "raw_recurrent_gradient_rms": 9.234845492755994e-06,
+              "state_stats": {
+                "inactive_fraction": 0.7657521367073059,
+                "tau_r_mean": 4.8742804527282715,
+                "tau_a_mean": 37.803260803222656,
+                "adaptation_gain_mean": 0.04522702097892761,
+                "memory_attention_mass": 0.4599744975566864,
+                "memory_attention_mass_by_head": [
+                  0.12331407517194748,
+                  0.7966349124908447
+                ],
+                "attention_entropy_by_head": [
+                  0.6933905482292175,
+                  0.7969819903373718
+                ],
+                "locality": [
+                  4.031601428985596,
+                  4.027606964111328
+                ]
+              }
+            },
+            "name": "krauzlis_B28",
+            "eval_seconds": 0.28370237350463867
+          }
+        ],
+        "checkpoint": "/workspace/vawm_unbiased/biased_results/spatial_biased/profile/checkpoint_008410.pt",
+        "peak_allocated_bytes": 1037234688,
+        "peak_reserved_bytes": 1138753536,
+        "parameters": 557676,
+        "state_entries": 21632,
+        "worker_seconds": 10.898141145706177
+      }
+    },
+    "pinned_updates": {
+      "spatial_biased": 4000
+    },
+    "profile_costs": {
+      "old_training": 0.0,
+      "old_evaluation": 0.0,
+      "new_update": 5.2771450426334,
+      "new_evaluation": 548.4453237414359,
+      "spatial_target_reduced": false
+    }
+  },
+  "budget": {
+    "started_unix": 1789353955.7106447,
+    "deadline_unix": 1789378585.001,
+    "source_hashes": {
+      "PreAttentiveVision/TemporalIntegration/accumulators.py": "93706e822f9d0114f544392736bb4ef830cdbe2fc580034e48c0495658f333d7",
+      "PreAttentiveVision/decoder.py": "234e2cd36845ce11a6f04e61dfd1c63d8168c58718eb2260fc5a3386f089c776",
+      "PreAttentiveVision/evaluate.py": "504d265ecc60d6cba0dec8eccabdcc3d6e862f45bf5f61f453c7e88db5ee0566",
+      "PreAttentiveVision/evaluate_multitask.py": "24339f53ba77af81535bde37b858c28c3de3f0b18649f0e11b3c520f53a95268",
+      "PreAttentiveVision/hybrid_models.py": "094a013c709f91d7f2354b0ad644db79f4dab2c1e7369b6b6d1f2412b29fa928",
+      "PreAttentiveVision/models.py": "9d326177efac6aea8049aa9ca42d1a7109b34d44b02081185f3ae2d308b0e488",
+      "PreAttentiveVision/natural_stimuli.py": "d0f5930e863b1b1997251bad5f5315e675b6d84eec5887727fdbf4025065b452",
+      "PreAttentiveVision/neuroscience_stimuli.py": "f4d3ed226b8bb4945753127651b037b0994715752258f283d10ca98c06eb8e87",
+      "PreAttentiveVision/train.py": "3085e85ba8b1791846cde9a2938f819a9b899d1deff1234aed39517192ea7cdf",
+      "WorkingMemory/PreUpdateAttention/model.py": "816f0d46e35926429560aaf98f592ecc3a06ef8c5b120defd98bd806432d5b2d",
+      "WorkingMemory/PreUpdateAttention/remote_sweep.py": "7fe86901208a041e20f3d72f5e44c7a2e8cb8133dfdd0ddcdf1f8b2d9da56b48",
+      "WorkingMemory/PreUpdateAttention/train.py": "5ce36442e3eecdaa8ae6850d630ccf50e21986368cb1ec92b9763da6361f315b",
+      "WorkingMemory/RecurrentComparison/ReadoutRefit/sweep.py": "ac9f200425eabcd70e92283dc2505c0fdd7b19e93418beb9f4e2fe415e564986",
+      "WorkingMemory/RecurrentComparison/ReadoutRefit/train.py": "04c79e7be652856ca49a125fd2ba08bcf51f556f55ff481dd3e293dff80c48ea",
+      "WorkingMemory/RecurrentComparison/Retention/protocol.py": "b6abcbe080e104a64ff729bf44d1e65d2546c8ff5ab4f48b80bbfcbd56989ba3",
+      "WorkingMemory/RecurrentComparison/Retention/sweep.py": "0811b9632d6998748d1363fb6d74c551ef31da61748cb9360f2175001fbbc51d",
+      "WorkingMemory/RecurrentComparison/Retention/train.py": "24ac4600b0ae273a4ae7ccf3515f91df502fbec4bfab91445e7ddcf1bc5cbe5e",
+      "WorkingMemory/RecurrentComparison/evaluate.py": "2b252145c90986a3b36cebdf3ec02972bf4b023d134849ce00b1539817fe0aa2",
+      "WorkingMemory/RecurrentComparison/model.py": "4de3e509d44d183694d871e06dd17aeb1e3355a963f6e9c5617089f5db27404d",
+      "WorkingMemory/RecurrentComparison/sweep.py": "a484e864513994deeda02d9d6dc8b72e443c203f2c5182498b5e3ed94c8bd4bb",
+      "WorkingMemory/RecurrentComparison/train.py": "1516e1a58863596cbb0ac0bb4b166c0a809e20a92e4f510a091d48b807e70d0c",
+      "WorkingMemory/SpatialComparison/model.py": "6e0830f494b28e08b242075d511988aa8395677ac169ea9fcf73a7d1d32881b7",
+      "WorkingMemory/SpatialComparison/stimuli.py": "abbf467e3ed435df56a8a8ad5a305bf427bb05e03f4baeb0e847b1c812813bd4",
+      "WorkingMemory/SpatialComparison/sweep.py": "481ca26bd54a4d52a8776ca0f6264472712924978f536b5c77029454b559bda5",
+      "WorkingMemory/SpatialComparison/train.py": "90193f3c522e76b5c92e3f2834224a8a1049e9d998aa81c061a981f93cab6024",
+      "WorkingMemory/SpatialTaskBattery/stimuli.py": "16b7efd4575eba27b9a79329243dcce0da635008856687a9e62bda72b5ddeb37",
+      "WorkingMemory/TrainingExposure/protocol.py": "407432b0ba020a43b5ef681fb613f1ebaa63ba011a815dbd941ad51780ec1f88",
+      "WorkingMemory/TrainingExposure/sweep.py": "5b65b6a5c4e40bfd3bb406bf5accbd10f3b17cbcaf5e6fa34be0ca4ea45adf03",
+      "WorkingMemory/UnbiasedAttention/model.py": "6099e17c49f1bb25c003c494420fd1585fa3c1bf4dbb382652bf6ee47e7d5171",
+      "WorkingMemory/UnbiasedAttention/protocol.py": "0e89cbf61bd7430a1b39d52f536d63414b546b6ea057a972af54b3e2f3344c22",
+      "WorkingMemory/UnbiasedAttention/sweep.py": "688af44b8f63973d3c7d473b0cd70f4f12ba6e0170299009e50230f7f725b16b",
+      "WorkingMemory/UnbiasedAttention/worker.py": "1e5d21d7d37602f69d494e609bf809a95bad3416491fba81dbfc5ed41007e9ad",
+      "WorkingMemory/evaluate.py": "46399d0134e569ff1da02e0fb58cb82b3db7e2bc2a855fa7adbcc462901f5a48",
+      "WorkingMemory/model.py": "012c538178b0bf5d61141625bc97dbfe6fdeda36722f68f6efcc692a461a48d3",
+      "WorkingMemory/stimuli.py": "c5a6c6d1c2aa38e3b418e09a9d6c03bd022112d5ece4b5384c5336d9f592c127",
+      "WorkingMemory/sweep.py": "7249060574272e169c89337dc02d8246ca1725492f7cc29990bcd437092d5203",
+      "WorkingMemory/train.py": "83c6b1121a11913916326284ad3056b95c3366efa74b3d9c21b73dd75f3b7eda",
+      "WorkingMemory/SpatialTaskBattery/BiasedTraining/model.py": "39ba88931593806482f276082b962a70661e3a3ddf9307ceda7132d5f90b058c",
+      "WorkingMemory/SpatialTaskBattery/BiasedTraining/worker.py": "5038c7e6527b4df9327b3207009ba91fc36f6b777e022cc8f74b161db626ec29",
+      "WorkingMemory/SpatialTaskBattery/BiasedTraining/sweep.py": "02f091643a9d6e9cd49a66b6fdb2a4341564a8579ecf9813d3e3e282dd2faa40"
+    },
+    "events": [
+      {
+        "arm": "spatial_biased",
+        "tag": "profile",
+        "pid": 20113,
+        "returncode": 0,
+        "seconds": 13.943261623382568
+      }
+    ],
+    "active": {
+      "pid": 20260,
+      "arm": "spatial_biased",
+      "tag": "train_9200",
+      "log": "/workspace/vawm_unbiased/biased_results/spatial_biased_train_9200.log"
+    }
+  },
+  "last_training_row": {
+    "step": "8448",
+    "episodes": "1920",
+    "frames_total": "40320",
+    "cell": "five_tasks",
+    "loss": "0.8595485210418701",
+    "accuracy": "0.5",
+    "gradient_norm": "2.0932931900024414",
+    "clipped": "1",
+    "frames": "76",
+    "seconds": "2.1998863220214844",
+    "diagnostics": "{\"orientation_cued\": {}, \"motion_duration_cued\": {}, \"krauzlis_cued_motion\": {}, \"spatial_binding\": {}, \"image_recognition\": {}}"
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "status": "authorized",
+  "authorized_unix": 1789528227.8367472,
+  "kind": "post_hoc_user_authorized_protocol_extension",
+  "arm": "attention_context_comparator_scratch",
+  "old_supervisor_pid": 510,
+  "inherited_worker_pid": 2811,
+  "old_total_updates": 4000,
+  "new_total_updates": 12000,
+  "episodes_per_update": 40,
+  "new_total_episodes": 480000,
+  "validation_targets": [
+    800,
+    1600,
+    2400,
+    3200,
+    4000,
+    4800,
+    5600,
+    6400,
+    7200,
+    8000,
+    8800,
+    9600,
+    10400,
+    11200,
+    12000
+  ],
+  "completed_validation_targets_at_authorization": [800, 1600, 2400],
+  "trajectory_policy": "Preserve model, optimizer, RNG, task-local stream, counters, metrics, checkpoints, and validation history; orchestration handoff only.",
+  "rationale": "Post-hoc extension explicitly authorized by the user for a fairer scratch-versus-trained comparison.",
+  "extended_deadline_unix": 1789553428.0,
+  "max_incremental_cloud_hours_from_arming": 7.0,
+  "cloud_rate_usd_per_hour": 0.22,
+  "max_incremental_cost_usd": 1.54,
+  "throughput_measurement": {
+    "step": 3050,
+    "mean_seconds_per_update_last_100": 2.0475525069236755
+  },
+  "projection_from_handoff": {
+    "live_step": 3123,
+    "remaining_updates": 8877,
+    "training_seconds": 18175.62210371567,
+    "validation_and_terminal_evaluation_seconds": 525,
+    "retrieval_reserve_seconds": 900,
+    "projected_hours_to_verified_cleanup": 5.444617251032131,
+    "projected_incremental_cost_usd": 1.1978157952270687,
+    "projected_total_pod_hours": 7.056561739820374,
+    "projected_total_pod_cost_usd": 1.5524435827604823
+  }
+}

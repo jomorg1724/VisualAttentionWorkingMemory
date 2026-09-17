@@ -1,0 +1,162 @@
+{
+  "status": "live",
+  "checked_unix": 1789449758.5456567,
+  "pod_id": "ce00y2ooosl7wc",
+  "gpu": "NVIDIA GeForce RTX 3090, 24576, 2, 0, 21.50",
+  "remote_total_metric_rows": 1613,
+  "latest": {
+    "step": 1613,
+    "episodes": 64520,
+    "frames_total": 1354896,
+    "loss": 0.6955221447395161,
+    "accuracy": 0.55,
+    "gradient_norm": 0.20320981740951538,
+    "seconds": 2.6501641273498535
+  },
+  "rolling": {
+    "20": {
+      "updates": 20,
+      "step_start": 1594,
+      "step_end": 1613,
+      "mean_loss": 0.8027386784853296,
+      "mean_accuracy": 0.47375,
+      "mean_gradient_norm": 0.39543274641036985,
+      "mean_update_seconds": 3.0123944997787477
+    },
+    "100": {
+      "updates": 100,
+      "step_start": 1514,
+      "step_end": 1613,
+      "mean_loss": 0.7957587721996826,
+      "mean_accuracy": 0.48200000000000015,
+      "mean_gradient_norm": 0.3780396942794323,
+      "mean_update_seconds": 2.9088138556480407
+    },
+    "256": {
+      "updates": 256,
+      "step_start": 1358,
+      "step_end": 1613,
+      "mean_loss": 0.7965880184669911,
+      "mean_accuracy": 0.48134765625000014,
+      "mean_gradient_norm": 0.3975112907937728,
+      "mean_update_seconds": 2.9175025187432766
+    }
+  },
+  "budget_status": "failed",
+  "active": null,
+  "validations": [
+    {
+      "file": "validation_1600_result.json",
+      "step": 1600,
+      "status": "completed",
+      "rank": [
+        -0.0078125,
+        0.4948950885931975
+      ],
+      "task_scores": {
+        "image_recognition": {
+          "normalized_ba": 0.06597222222222222,
+          "mean_auc": 0.5457899305555556
+        },
+        "krauzlis_cued_motion": {
+          "normalized_ba": 0.0,
+          "mean_auc": 0.5132598939208486
+        },
+        "motion_duration_cued": {
+          "normalized_ba": 0.0,
+          "mean_auc": 0.5013020833333334
+        },
+        "orientation_cued": {
+          "normalized_ba": 0.0,
+          "mean_auc": 0.46002197265625
+        },
+        "spatial_binding": {
+          "normalized_ba": -0.0078125,
+          "mean_auc": 0.4541015625
+        }
+      }
+    },
+    {
+      "file": "validation_800_result.json",
+      "step": 800,
+      "status": "completed",
+      "rank": [
+        0.0,
+        0.5295273443476514
+      ],
+      "task_scores": {
+        "image_recognition": {
+          "normalized_ba": 0.04513888888888889,
+          "mean_auc": 0.5717230902777778
+        },
+        "krauzlis_cued_motion": {
+          "normalized_ba": 0.0,
+          "mean_auc": 0.5452536379708962
+        },
+        "motion_duration_cued": {
+          "normalized_ba": 0.0,
+          "mean_auc": 0.5225423177083333
+        },
+        "orientation_cued": {
+          "normalized_ba": 0.0,
+          "mean_auc": 0.55645751953125
+        },
+        "spatial_binding": {
+          "normalized_ba": 0.0234375,
+          "mean_auc": 0.45166015625
+        }
+      }
+    }
+  ],
+  "checkpoints": [
+    {
+      "file": "checkpoint_000000.pt",
+      "step": 0,
+      "sha256": "97b7e6ce513592fc094724854ea1d4d329c93fd1ae0d86aa20ed50e4fd653f76"
+    },
+    {
+      "file": "checkpoint_000256.pt",
+      "step": 256,
+      "sha256": "ee750693eb60fe611c1f4a1546f23f2a1d56e7c7b97d3c868a5708a4dd34ee78"
+    },
+    {
+      "file": "checkpoint_000512.pt",
+      "step": 512,
+      "sha256": "ddf8f8e680463855a0b967a0ca1883c706ed3891f6eb5f8a73dc1be9cab8ab35"
+    },
+    {
+      "file": "checkpoint_000768.pt",
+      "step": 768,
+      "sha256": "fe85f84e5c7741834eb8e3696be4c5eaf81613d3f20ec957e0aca0054999452a"
+    },
+    {
+      "file": "checkpoint_000800.pt",
+      "step": 800,
+      "sha256": "0c319d55dcb605b0af341a7b018383a6ff59081669f6ec32146570352e0f3f08"
+    },
+    {
+      "file": "checkpoint_001024.pt",
+      "step": 1024,
+      "sha256": "d16482e113919e4ff32629960baac87d357858ea3e70ee18dd9a758c95eb6a21"
+    },
+    {
+      "file": "checkpoint_001280.pt",
+      "step": 1280,
+      "sha256": "0143d0dfdd8dd877916bcb1fe195bf37272373c89cfe604e35d2320e5db7fe8b"
+    },
+    {
+      "file": "checkpoint_001536.pt",
+      "step": 1536,
+      "sha256": "3a38c057b505a7e312e6686568b39df87f6f2914f5e521b2ae75ccb56c1151e2"
+    },
+    {
+      "file": "checkpoint_001600.pt",
+      "step": 1600,
+      "sha256": "72db47dc6adc837d081909a590978935185583e2f7e9628dbc639e9206acea20"
+    }
+  ],
+  "deadline_unix": 1789469766.615367,
+  "seconds_to_deadline": 20008.06971025467,
+  "cadence_seconds": 45,
+  "cleanup_owner": "Detached lifecycle retrieves and verifies indexed artifacts, POSTs stop, then DELETEs this ephemeral pod on completion/failure or by hard deadline; root agent is fallback."
+}

@@ -1,0 +1,257 @@
+{
+  "version": "attention_context_comparator_v2",
+  "status": "passed",
+  "identity_gate": {
+    "v2_changes": {
+      "A": true,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "bit_identical_logits_cpu": true,
+    "max_abs_logit_difference_cpu": 0.0,
+    "batches": [
+      [
+        "motion_duration_cued",
+        [
+          2,
+          11,
+          3,
+          100,
+          100
+        ]
+      ],
+      [
+        "orientation_cued",
+        [
+          2,
+          8,
+          3,
+          100,
+          100
+        ]
+      ],
+      [
+        "spatial_binding",
+        [
+          2,
+          5,
+          3,
+          100,
+          100
+        ]
+      ]
+    ],
+    "bit_identical_logits_cuda": false,
+    "max_abs_logit_difference_cuda": 3.103911876678467e-05
+  },
+  "full_v2_differs_from_v1": true,
+  "arm": "attention_context_comparator_v2",
+  "deterministic_scratch_initialization": true,
+  "loaded_parent": false,
+  "loaded_model_tensors": 0,
+  "loaded_optimizer_states": 0,
+  "initial_model_sha256": "da965d9090bc3f6770a6372c959c6c4325fe3d468b9bcb65936246e420df0b3c",
+  "v1_initial_model_sha256": "8bacf11efc8b1d35b7f9290fe132059c085c3943f74f9531622eda272c0458f9",
+  "total_parameters": 590015,
+  "v1_total_parameters": 534239,
+  "parameter_delta_by_change": {
+    "A": 480,
+    "B": 55296
+  },
+  "learning_rate_parameter_counts": {
+    "0.0003": 590015
+  },
+  "v1_learning_rate_parameter_counts": {
+    "3e-05": 390152,
+    "0.0003": 144087
+  },
+  "locality_by_head": [
+    4.0,
+    0.019999999552965164
+  ],
+  "raw_locality": [
+    3.9815144538879395,
+    -3.9020063877105713
+  ],
+  "source_bias": [
+    [
+      2.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0
+    ]
+  ],
+  "head1_sigma_cells": 5.0,
+  "head1_penalty_at_3_cells": 0.18,
+  "head1_penalty_at_6_cells": 0.72,
+  "selection_weight_norms": {
+    "orientation_cued": 0.6785387992858887,
+    "motion_duration_cued": 0.7277128100395203,
+    "krauzlis_cued_motion": 0.6907384991645813,
+    "spatial_binding": 0.7681226134300232,
+    "image_recognition": 0.6888942122459412
+  },
+  "per_task_forward": {
+    "orientation_cued": {
+      "frames": 4,
+      "loss": 0.769740104675293,
+      "priority_entropy_fraction": 0.9935373067855835,
+      "attention_mass_beyond_3_by_head": [
+        2.2533521542855096e-17,
+        0.7157189846038818
+      ]
+    },
+    "motion_duration_cued": {
+      "frames": 11,
+      "loss": 1.2312299013137817,
+      "priority_entropy_fraction": 0.9932411313056946,
+      "attention_mass_beyond_3_by_head": [
+        2.2523739304931044e-17,
+        0.7157007455825806
+      ]
+    },
+    "krauzlis_cued_motion": {
+      "frames": 29,
+      "loss": 0.4997839331626892,
+      "priority_entropy_fraction": 0.996510922908783,
+      "attention_mass_beyond_3_by_head": [
+        2.254404328024677e-17,
+        0.7156899571418762
+      ]
+    },
+    "spatial_binding": {
+      "frames": 5,
+      "loss": 0.7126381397247314,
+      "priority_entropy_fraction": 0.9873104095458984,
+      "attention_mass_beyond_3_by_head": [
+        2.2534868192892332e-17,
+        0.7156760096549988
+      ]
+    },
+    "image_recognition": {
+      "frames": 7,
+      "loss": 0.8423184752464294,
+      "priority_entropy_fraction": 0.9897925853729248,
+      "attention_mass_beyond_3_by_head": [
+        2.2523257885814538e-17,
+        0.7156237363815308
+      ]
+    }
+  },
+  "new_column_gradient_norms": {
+    "accumulator_new_columns": [
+      0.010849175974726677,
+      0.03439941257238388,
+      0.025227578356862068
+    ],
+    "fusion_max_columns": [
+      2.518057107925415,
+      2.1239471435546875,
+      1.2972612380981445
+    ],
+    "selection": [
+      0.012324570678174496,
+      0.01157212071120739,
+      0.015543482266366482,
+      0.006992993410676718,
+      0.02176346443593502
+    ],
+    "raw_locality": [
+      -0.0004060349892824888,
+      0.0003521179605741054
+    ],
+    "source_bias": [
+      [
+        0.0014110921183601022,
+        -0.0014110920019447803
+      ],
+      [
+        0.01594424620270729,
+        -0.015944253653287888
+      ]
+    ]
+  },
+  "finite_gradient_parameter_count": 133,
+  "gate": {
+    "step": 2400,
+    "cued_tasks": [
+      "orientation_cued",
+      "motion_duration_cued",
+      "krauzlis_cued_motion"
+    ]
+  },
+  "updates": 12000,
+  "episodes": 480000,
+  "validation_targets": [
+    800,
+    1600,
+    2400,
+    3200,
+    4000,
+    4800,
+    5600,
+    6400,
+    7200,
+    8000,
+    8800,
+    9600,
+    10400,
+    11200,
+    12000
+  ],
+  "lineage": {
+    "version": "attention_context_comparator_v2",
+    "base_version": "attention_context_comparator_scratch_v1",
+    "initialization_kind": "full_model_from_scratch",
+    "loaded_parent": false,
+    "loaded_model_tensors": 0,
+    "loaded_optimizer_states": 0,
+    "initial_model_sha256": "da965d9090bc3f6770a6372c959c6c4325fe3d468b9bcb65936246e420df0b3c",
+    "changes": {
+      "A": {
+        "enabled": true,
+        "text": "opponent raw_opponent[4] + magnitude[1] channels restored; accumulator output Conv2d(77,32,1), new columns zero"
+      },
+      "B": {
+        "enabled": true,
+        "text": "mixed adaptive avg+max pooling per scale; readout.fusion ConvNormAct(192,64), max-half zero"
+      },
+      "C": {
+        "enabled": true,
+        "text": "attention head 1 lambda=0.02 (sigma=5 cells) and source-neutral; head 0 unchanged"
+      },
+      "D": {
+        "enabled": true,
+        "text": "priority selection maps xavier_uniform(gain=.5), zero bias"
+      },
+      "E": {
+        "enabled": true,
+        "text": "single learning rate new_lr for all parameters (recipe sets parent_lr = new_lr)"
+      }
+    },
+    "learning_rate_parameter_counts": {
+      "0.0003": 590015
+    },
+    "seeds": {
+      "global_model": 41973001,
+      "pav_common": 30312,
+      "pav_core": 30313,
+      "recurrent_common": 59311,
+      "recurrent_core": 59312,
+      "spatial_components": 31973001,
+      "spatial_comparison_output": 31973002,
+      "joint_attention": 41973001,
+      "priority_readout": 41973101,
+      "priority_selection_v2": 41973201,
+      "python_numpy_torch": 41973001,
+      "training_stream": 61973001,
+      "task_scheduler": 62973001
+    },
+    "prospective_gamma_absent": true,
+    "comparator": "C_t is concat_heads(sum_j A_t,h,i,j V_t,h,j) before W_O; the learned Conv([R_t-1,H_t]) comparator is absent."
+  }
+}

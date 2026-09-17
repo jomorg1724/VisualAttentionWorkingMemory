@@ -1,0 +1,87 @@
+{
+  "status": "recovery_pod_ready",
+  "arm": "spatial_priority_readout_scratch",
+  "prior_pod_id": "vsvke9kks981cm",
+  "prior_pod_deleted": true,
+  "prior_provider_status": 404,
+  "prior_failure": "RuntimeError('Cached result job mismatch')",
+  "retrieved_files": 28,
+  "checkpoint_step": 3200,
+  "checkpoint_sha256": "f796f5fb6d681b09a6ec62714b486f091c2f1302ba2b2fc2e6aea14b39afaef5",
+  "metrics_sha256": "429c08cce82eba7ceae0211ae4c51108809efa91926f24b00045dadb4fad93fe",
+  "recovery_policy": {
+    "kind": "operational_continuation_not_model_reset_or_remigration",
+    "checkpoint_step": 3200,
+    "checkpoint_episodes": 128000,
+    "target_updates": 12000,
+    "target_episodes": 480000,
+    "remaining_updates": 8800,
+    "remaining_episodes": 352000,
+    "validation_targets": [
+      3200,
+      4000,
+      4800,
+      5600,
+      6400,
+      7200,
+      8000,
+      8800,
+      9600,
+      10400,
+      11200,
+      12000
+    ],
+    "validation_3200_status": "not_completed; run exactly once after restore",
+    "reuse_cached_jobs": false,
+    "new_versioned_result_root": "spatial_priority_recovery_results",
+    "preserved_state": [
+      "model",
+      "optimizer",
+      "RNG",
+      "stream",
+      "counters",
+      "metrics",
+      "checkpoint index",
+      "validation history"
+    ],
+    "root_cause_fix": "new result root and new job/result namespace; no cached jobs copied"
+  },
+  "restore_continuity_check": "restore_continuity_check.json",
+  "new_pod_id": "dar93b43d8cymz",
+  "gpu_requested": "NVIDIA RTX A4500",
+  "usd_per_hour": 0.2,
+  "pod_created_utc": "2026-09-16T04:15:38.479Z",
+  "deadline_unix": 1789564166.496,
+  "deadline_utc": "2026-09-16T13:09:26.496Z",
+  "training_eval_window_hours": 9.0,
+  "cleanup_reserve_seconds": 1200,
+  "created_unix": 1789531870.8488371,
+  "gpu": "NVIDIA RTX 4000 Ada Generation",
+  "gpu_vram_gb": 20,
+  "location": "US",
+  "ssh_host": "205.196.17.172",
+  "ssh_port": 13093,
+  "bundle_sha256": "63c64313d29eccb05b9dd8e9de1c2e4c42a690e2419a6c19fffb38dac46d3391",
+  "failed_provision_attempts": [
+    {
+      "pod_id": "wen73mqydbm3fy",
+      "gpu": "NVIDIA RTX A4500",
+      "status": "provider_disappeared_404"
+    },
+    {
+      "gpu": "NVIDIA GeForce RTX 4090",
+      "create_http": 500,
+      "reason": "no instances available"
+    },
+    {
+      "pod_id": "6otwzeiblfqs93",
+      "gpu": "NVIDIA GeForce RTX 3090",
+      "status": "provider_disappeared_404_after_one_ssh_probe"
+    },
+    {
+      "gpu": "NVIDIA GeForce RTX 3080 Ti",
+      "create_http": 500,
+      "reason": "no instances available"
+    }
+  ]
+}

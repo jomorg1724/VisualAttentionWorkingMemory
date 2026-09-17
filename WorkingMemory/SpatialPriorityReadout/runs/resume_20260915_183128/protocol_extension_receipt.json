@@ -1,0 +1,85 @@
+{
+  "status": "armed_live_handoff",
+  "pod_id": "vsvke9kks981cm",
+  "arm": "spatial_priority_readout_scratch",
+  "remote_root": "/workspace/vawm_spatial_priority_scratch_resume_1600",
+  "old_supervisor_pid": 1716,
+  "inflight_worker_pid": 3052,
+  "inflight_target": 3200,
+  "observed_step_at_planning": 2589,
+  "original_deadline_unix": 1789552481.222,
+  "extended_deadline_unix": 1789560600.0,
+  "extension": {
+    "authorization": "user-authorized post-hoc protocol extension",
+    "authorized_utc": "2026-09-16T03:08:51.202Z",
+    "reason": "fairer scratch-vs-trained comparison",
+    "original_target_updates": 4000,
+    "extended_target_updates": 12000,
+    "additional_updates_vs_original": 8000,
+    "episodes_per_update": 40,
+    "extended_target_total_episodes": 480000,
+    "validation_targets": [
+      2400,
+      3200,
+      4000,
+      4800,
+      5600,
+      6400,
+      7200,
+      8000,
+      8800,
+      9600,
+      10400,
+      11200,
+      12000
+    ],
+    "historical_validations_preserved": [
+      800,
+      1600
+    ],
+    "preserve_trajectory": true,
+    "no_restart_reset_or_remigration": true,
+    "interpretation": "This extension was authorized after launch and is not part of the original preregistered 4000-update protocol."
+  },
+  "controller_sha256": "49cee4eb1440fcc7239ba938bce8a83f9d91c7367bc45fdc5954d20f9982392c",
+  "continuity_checks_required": [
+    "metrics exactly contiguous from step 1601 through 3200",
+    "step-3200 result completed",
+    "step-3200 checkpoint hash agrees with append-only index",
+    "episode count equals step*40"
+  ],
+  "handoff": "Stop only supervisor 1716; worker 3052 completes unchanged, then verified handoff launches patched supervisor.",
+  "throughput_basis": {
+    "train_1600_to_2400_wall_seconds": 2115.6630737781525,
+    "seconds_per_update_including_checkpoint_overhead": 2.644578842222691,
+    "validation_2400_seconds": 40.27674865722656
+  },
+  "projection": {
+    "remaining_updates_from_observed_step": 9411,
+    "training_hours": 6.913369856710484,
+    "remaining_validation_count": 12,
+    "evaluation_and_retrieval_reserve_seconds": 1200,
+    "projected_hours_including_reserve": 7.3809590189012395,
+    "gpu_usd_per_hour": 0.19,
+    "projected_incremental_usd": 1.4023822135912356,
+    "deadline_backstop_incremental_usd": 1.7079416666666665,
+    "pod_lifetime_backstop_usd": 1.9484910611172517
+  },
+  "created_unix": 1789528275.6273243,
+  "armed_unix": 1789528899.1354573,
+  "armed_evidence": "extension_armed_receipt.json",
+  "continuity_evidence": "extension_verification.json",
+  "lifecycle": {
+    "lifecycle_pid": 24000,
+    "watcher_pid": 15180,
+    "deadline_unix": 1789560600.0,
+    "cleanup_owner": "Detached lifecycle retrieves, hash-verifies, stops, and deletes the ephemeral pod."
+  },
+  "live_handoff": {
+    "old_supervisor_pid": 1716,
+    "old_supervisor_stopped": true,
+    "inflight_worker_pid": 3052,
+    "handoff_pid": 3668,
+    "handoff_action": "wait for unchanged train_3200 worker, verify exact through-step continuity, then launch extended supervisor"
+  }
+}

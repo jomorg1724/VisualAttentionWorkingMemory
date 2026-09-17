@@ -1,0 +1,329 @@
+{
+  "selected": [
+    "convnext_grn",
+    "mobilenet_se"
+  ],
+  "validation": [
+    {
+      "first": "convnext_grn",
+      "second": "mobilenet_se",
+      "tasks": {
+        "motion_direction": {
+          "first": {
+            "balanced_accuracy": 0.8125,
+            "macro_ovr_auc": 0.9335671768707483
+          },
+          "second": {
+            "balanced_accuracy": 0.2455357142857143,
+            "macro_ovr_auc": 0.530984268707483
+          },
+          "ensemble": {
+            "balanced_accuracy": 0.7142857142857143,
+            "macro_ovr_auc": 0.9301392431972789
+          }
+        },
+        "contour": {
+          "first": {
+            "balanced_accuracy": 0.5446428571428571,
+            "macro_ovr_auc": 0.6045918367346939
+          },
+          "second": {
+            "balanced_accuracy": 0.7544642857142858,
+            "macro_ovr_auc": 0.8730070153061223
+          },
+          "ensemble": {
+            "balanced_accuracy": 0.7589285714285714,
+            "macro_ovr_auc": 0.8887117346938777
+          }
+        }
+      },
+      "selection_score": 0.9094254889455783
+    },
+    {
+      "first": "convnext_grn",
+      "second": "vone_resnet",
+      "tasks": {
+        "motion_direction": {
+          "first": {
+            "balanced_accuracy": 0.8125,
+            "macro_ovr_auc": 0.9335671768707483
+          },
+          "second": {
+            "balanced_accuracy": 0.22767857142857145,
+            "macro_ovr_auc": 0.5025244472789115
+          },
+          "ensemble": {
+            "balanced_accuracy": 0.75,
+            "macro_ovr_auc": 0.9147268282312925
+          }
+        },
+        "contour": {
+          "first": {
+            "balanced_accuracy": 0.5446428571428571,
+            "macro_ovr_auc": 0.6045918367346939
+          },
+          "second": {
+            "balanced_accuracy": 0.7455357142857143,
+            "macro_ovr_auc": 0.8425542091836735
+          },
+          "ensemble": {
+            "balanced_accuracy": 0.7678571428571429,
+            "macro_ovr_auc": 0.8692602040816327
+          }
+        }
+      },
+      "selection_score": 0.8919935161564626
+    }
+  ],
+  "test": [
+    {
+      "task": "motion_direction",
+      "first": "convnext_grn",
+      "second": "mobilenet_se",
+      "n": 448,
+      "metrics": {
+        "first": {
+          "balanced_accuracy": 0.8058035714285715,
+          "macro_ovr_auc": 0.9356000212585034
+        },
+        "second": {
+          "balanced_accuracy": 0.27678571428571425,
+          "macro_ovr_auc": 0.5214511585884354
+        },
+        "ensemble": {
+          "balanced_accuracy": 0.7075892857142857,
+          "macro_ovr_auc": 0.9288305165816326
+        }
+      },
+      "counts": {
+        "both_correct": 110,
+        "first_only_correct": 251,
+        "second_only_correct": 14,
+        "both_wrong": 73,
+        "ensemble_fixes_first_error": 4,
+        "ensemble_breaks_first_correct": 48,
+        "ensemble_fixes_second_error": 206,
+        "ensemble_breaks_second_correct": 13,
+        "first_correct": 361,
+        "second_correct": 124,
+        "ensemble_correct": 317,
+        "oracle_correct": 375
+      },
+      "paired_differences": {
+        "balanced_accuracy_vs_first": -0.09821428571428581,
+        "balanced_accuracy_vs_second": 0.43080357142857145,
+        "balanced_accuracy_vs_best_test_constituent": -0.09821428571428581,
+        "macro_ovr_auc_vs_first": -0.006769504676870763,
+        "macro_ovr_auc_vs_second": 0.40737935799319724,
+        "macro_ovr_auc_vs_best_test_constituent": -0.006769504676870763
+      },
+      "paired_difference_ci95": {
+        "balanced_accuracy_vs_first": [
+          -0.12416421994903579,
+          -0.07372558810504315
+        ],
+        "balanced_accuracy_vs_second": [
+          0.38157052571380784,
+          0.4803977573757417
+        ],
+        "macro_ovr_auc_vs_first": [
+          -0.012050306339329178,
+          -0.0015132930778157616
+        ],
+        "macro_ovr_auc_vs_second": [
+          0.3712778005557014,
+          0.44353331994188766
+        ]
+      },
+      "oracle_accuracy": 0.8370535714285714,
+      "oracle_interpretation": "True-label-informed any-constituent-correct upper bound for selecting these two predictions; unavailable to a deployable selector"
+    },
+    {
+      "task": "contour",
+      "first": "convnext_grn",
+      "second": "mobilenet_se",
+      "n": 448,
+      "metrics": {
+        "first": {
+          "balanced_accuracy": 0.6026785714285714,
+          "macro_ovr_auc": 0.6250797193877551
+        },
+        "second": {
+          "balanced_accuracy": 0.7165178571428572,
+          "macro_ovr_auc": 0.8300980548469388
+        },
+        "ensemble": {
+          "balanced_accuracy": 0.7477678571428572,
+          "macro_ovr_auc": 0.8515226403061223
+        }
+      },
+      "counts": {
+        "both_correct": 179,
+        "first_only_correct": 91,
+        "second_only_correct": 142,
+        "both_wrong": 36,
+        "ensemble_fixes_first_error": 137,
+        "ensemble_breaks_first_correct": 72,
+        "ensemble_fixes_second_error": 19,
+        "ensemble_breaks_second_correct": 5,
+        "first_correct": 270,
+        "second_correct": 321,
+        "ensemble_correct": 335,
+        "oracle_correct": 412
+      },
+      "paired_differences": {
+        "balanced_accuracy_vs_first": 0.1450892857142858,
+        "balanced_accuracy_vs_second": 0.03125,
+        "balanced_accuracy_vs_best_test_constituent": 0.03125,
+        "macro_ovr_auc_vs_first": 0.22644292091836726,
+        "macro_ovr_auc_vs_second": 0.021424585459183576,
+        "macro_ovr_auc_vs_best_test_constituent": 0.021424585459183576
+      },
+      "paired_difference_ci95": {
+        "balanced_accuracy_vs_first": [
+          0.09148630232090094,
+          0.2031330148576299
+        ],
+        "balanced_accuracy_vs_second": [
+          0.011159518622367307,
+          0.05317769755666474
+        ],
+        "macro_ovr_auc_vs_first": [
+          0.16914296445451024,
+          0.283829885504726
+        ],
+        "macro_ovr_auc_vs_second": [
+          0.010508200840563014,
+          0.03247560689377679
+        ]
+      },
+      "oracle_accuracy": 0.9196428571428571,
+      "oracle_interpretation": "True-label-informed any-constituent-correct upper bound for selecting these two predictions; unavailable to a deployable selector"
+    },
+    {
+      "task": "motion_direction",
+      "first": "convnext_grn",
+      "second": "vone_resnet",
+      "n": 448,
+      "metrics": {
+        "first": {
+          "balanced_accuracy": 0.8058035714285715,
+          "macro_ovr_auc": 0.9356000212585034
+        },
+        "second": {
+          "balanced_accuracy": 0.23883928571428573,
+          "macro_ovr_auc": 0.5115792410714285
+        },
+        "ensemble": {
+          "balanced_accuracy": 0.7767857142857142,
+          "macro_ovr_auc": 0.9222536670918366
+        }
+      },
+      "counts": {
+        "both_correct": 87,
+        "first_only_correct": 274,
+        "second_only_correct": 20,
+        "both_wrong": 67,
+        "ensemble_fixes_first_error": 22,
+        "ensemble_breaks_first_correct": 35,
+        "ensemble_fixes_second_error": 243,
+        "ensemble_breaks_second_correct": 2,
+        "first_correct": 361,
+        "second_correct": 107,
+        "ensemble_correct": 348,
+        "oracle_correct": 381
+      },
+      "paired_differences": {
+        "balanced_accuracy_vs_first": -0.029017857142857317,
+        "balanced_accuracy_vs_second": 0.5379464285714285,
+        "balanced_accuracy_vs_best_test_constituent": -0.029017857142857317,
+        "macro_ovr_auc_vs_first": -0.01334635416666674,
+        "macro_ovr_auc_vs_second": 0.41067442602040816,
+        "macro_ovr_auc_vs_best_test_constituent": -0.01334635416666674
+      },
+      "paired_difference_ci95": {
+        "balanced_accuracy_vs_first": [
+          -0.061011784904950746,
+          0.0036105834005255148
+        ],
+        "balanced_accuracy_vs_second": [
+          0.4954498273822419,
+          0.5779303395922474
+        ],
+        "macro_ovr_auc_vs_first": [
+          -0.021429324929295158,
+          -0.00539376352365516
+        ],
+        "macro_ovr_auc_vs_second": [
+          0.3770435642786604,
+          0.44510972068095206
+        ]
+      },
+      "oracle_accuracy": 0.8504464285714286,
+      "oracle_interpretation": "True-label-informed any-constituent-correct upper bound for selecting these two predictions; unavailable to a deployable selector"
+    },
+    {
+      "task": "contour",
+      "first": "convnext_grn",
+      "second": "vone_resnet",
+      "n": 448,
+      "metrics": {
+        "first": {
+          "balanced_accuracy": 0.6026785714285714,
+          "macro_ovr_auc": 0.6250797193877551
+        },
+        "second": {
+          "balanced_accuracy": 0.7209821428571428,
+          "macro_ovr_auc": 0.8039500956632653
+        },
+        "ensemble": {
+          "balanced_accuracy": 0.7477678571428572,
+          "macro_ovr_auc": 0.8343032525510204
+        }
+      },
+      "counts": {
+        "both_correct": 178,
+        "first_only_correct": 92,
+        "second_only_correct": 145,
+        "both_wrong": 33,
+        "ensemble_fixes_first_error": 140,
+        "ensemble_breaks_first_correct": 75,
+        "ensemble_fixes_second_error": 17,
+        "ensemble_breaks_second_correct": 5,
+        "first_correct": 270,
+        "second_correct": 323,
+        "ensemble_correct": 335,
+        "oracle_correct": 415
+      },
+      "paired_differences": {
+        "balanced_accuracy_vs_first": 0.1450892857142858,
+        "balanced_accuracy_vs_second": 0.026785714285714413,
+        "balanced_accuracy_vs_best_test_constituent": 0.026785714285714413,
+        "macro_ovr_auc_vs_first": 0.20922353316326536,
+        "macro_ovr_auc_vs_second": 0.030353156887755195,
+        "macro_ovr_auc_vs_best_test_constituent": 0.030353156887755195
+      },
+      "paired_difference_ci95": {
+        "balanced_accuracy_vs_first": [
+          0.08759863254311852,
+          0.20653893087641093
+        ],
+        "balanced_accuracy_vs_second": [
+          0.006562760672125384,
+          0.04724934400264314
+        ],
+        "macro_ovr_auc_vs_first": [
+          0.14706690081456159,
+          0.2714296949579729
+        ],
+        "macro_ovr_auc_vs_second": [
+          0.017242341620343275,
+          0.04328173868972079
+        ]
+      },
+      "oracle_accuracy": 0.9263392857142857,
+      "oracle_interpretation": "True-label-informed any-constituent-correct upper bound for selecting these two predictions; unavailable to a deployable selector"
+    }
+  ],
+  "cpu_seconds": 4.858999999938533
+}

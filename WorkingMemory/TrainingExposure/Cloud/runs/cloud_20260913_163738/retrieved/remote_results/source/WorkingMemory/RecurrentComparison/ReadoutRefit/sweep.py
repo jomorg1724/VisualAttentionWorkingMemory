@@ -1,0 +1,67 @@
+"""One existing-readout continuation versus untouched parent; finite local cap."""
+import os,sys,time,json,shutil,subprocess
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[3];HERE=Path(__file__).resolve().parent;sys.path.insert(0,str(ROOT))
+from PreAttentiveVision.train import read,write,sha
+from WorkingMemory.RecurrentComparison.sweep import protocol
+PARENT=ROOT/'WorkingMemory/RecurrentComparison/runs/recurrent_20260912_202158/remote_retrieval/remote_results/ei_adaptive/checkpoint_005000.pt'
+def run(root):
+    root=Path(root).resolve();root.mkdir(parents=True,exist_ok=True)
+    if (root/'budget.json').exists():raise RuntimeError('Cannot renew existing allowance')
+    cells,cycle=protocol();prior=read(ROOT/'WorkingMemory/RecurrentComparison/runs/recurrent_20260912_202158/fixed_config.json')
+    cfg=dict(prior['recipe'],arm='ei_adaptive',batch_size=8,activation_checkpoint=False,purpose='existing_readout_only_continuation',optimizer='preserved_Adam_states_same_parameter_inventory',training_protocol='readout_only_six_cell_v1')
+    names=list(read(ROOT/'WorkingMemory/RecurrentComparison/runs/recurrent_20260912_202158/budget.json')['source_hashes'])
+    names+=['WorkingMemory/RecurrentComparison/ReadoutRefit/'+n for n in ('train.py','sweep.py')]
+    hashes={n:sha(ROOT/n) for n in names}
+    for name in names:
+        dst=root/'source'/name;dst.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(ROOT/name,dst)
+    digest=sha(PARENT)
+    if digest!='0a1d498ca678337aac42232ad1c9e048951b64ec0c0128e68b9cf0522b0b2520':raise RuntimeError('Parent identity mismatch')
+    now=time.time();deadline=now+3600
+    ledger=dict(started_unix=now,deadline_unix=deadline,hard_seconds=3600,status='profiling',active=None,events=[],source_hashes=hashes)
+    aggregate=dict(status='profiling',run_root=str(root),config=dict(parent_checkpoint=str(PARENT),parent_sha256=digest,parent_step=5000,allowance_seconds=3600,recipe=cfg,cells=cells),profiles=[],training={},validation=[],parent_test=None,test=None)
+    def publish():write(root/'aggregate.json',aggregate);write(HERE/'results.json',aggregate);write(root/'budget.json',ledger)
+    def launch(kind,out,**kw):
+        number=len(ledger['events']);result=root/f'job_{number:03d}_result.json';job=root/f'job_{number:03d}.json';log=root/f'worker_{number:03d}.log'
+        write(job,dict(kind=kind,config=cfg,out=str(out),deadline=deadline-60,result=str(result),source_hashes=hashes,parent_checkpoint=str(PARENT),parent_sha256=digest,**kw));tick=time.time()
+        with log.open('w') as f:
+            p=subprocess.Popen([sys.executable,'-X','utf8','-B',str(HERE/'train.py'),str(job)],cwd=ROOT,stdout=f,stderr=subprocess.STDOUT)
+            ledger['active']=dict(pid=p.pid,kind=kind,started_unix=tick,log=str(log));publish()
+            try:code=p.wait(timeout=max(.01,deadline-time.time()-60))
+            except subprocess.TimeoutExpired:p.kill();p.wait();code=124
+            finally:
+                if p.poll() is None:p.kill();p.wait()
+        ledger['events'].append(dict(ledger['active'],returncode=code,wall_seconds=time.time()-tick));ledger['active']=None;publish()
+        if code:raise RuntimeError(f'{kind} exit{code}: {log}')
+        return read(result)
+    publish()
+    try:
+        profile_cells=[(cells[n]['family'],cells[n]['condition']) for n in ['motion_L8','orientation_recall_D4','motion_L2','orientation_recall_minimal','motion_anchor','orientation_anchor']]
+        profile=launch('profile',root/'separate_profile',profile_cells=profile_cells);aggregate['profiles'].append(profile)
+        lookup={(m['family'],json.dumps(m['condition'],sort_keys=True)):m for m in profile['measurements']}
+        prices={n:lookup[(c['family'],json.dumps(c['condition'],sort_keys=True))] for n,c in cells.items()}
+        average=sum(prices[n]['step_seconds'] for n in cycle)/len(cycle)
+        reserve=300+1.4*sum(m['eval_seconds'] for m in prices.values())/8*(4*128+2*512)
+        steps=next((n for n in range(5000,0,-40) if 1.3*n*average+reserve<deadline-time.time()-90),None)
+        if steps is None:raise RuntimeError('No complete-cycle exposure fits allowance')
+        targets=[5000+round(steps*f) for f in (.25,.5,.75,1.)]
+        aggregate['config'].update(additional_updates=steps,additional_episodes=steps*8,targets=targets,validation_n_per_cell=128,test_n_per_cell=512,validation_seed=18953001,test_seed=19953001,
+            estimated_training_seconds=1.3*steps*average,reserved_evaluation_reporting_seconds=reserve,trainable_parameters=profile['trainable_parameters'],profile_training_episodes=48,profile_eval_episodes=48,
+            inference_reference='untouched EI5000 paired on identical fresh standard-task test movies',selection='mean six-cell validation OVR-AUC, exact ties earlier')
+        write(root/'fixed_config.json',aggregate['config']);print('FIXED_ALLOCATION '+json.dumps(aggregate['config']),flush=True)
+        aggregate['status']=ledger['status']='training';publish();cp=None;best=None
+        for target in targets:
+            result=launch('train',root/'readout_refit',target=target,checkpoint=cp);aggregate['training']=result;cp=result['checkpoint'];publish()
+            if result['step']!=target:raise RuntimeError('Fixed target interrupted by deadline')
+            val=launch('eval',root/f'validation_{target:06d}',checkpoint=cp,split='val',eval_seed=18953001,n_per_cell=128,resamples=0);aggregate['validation'].append(val)
+            if best is None or val['selection_mean_auc']>best['selection_mean_auc']:best=val;aggregate.update(selected_checkpoint=cp,selected_step=target)
+            publish()
+        aggregate['status']=ledger['status']='final_test';publish()
+        aggregate['parent_test']=launch('eval',root/'parent_test',split='test',eval_seed=19953001,n_per_cell=512,resamples=0);publish()
+        aggregate['test']=launch('eval',root/'refit_test',checkpoint=aggregate['selected_checkpoint'],split='test',eval_seed=19953001,n_per_cell=512,resamples=0);publish()
+        aggregate['status']='completed'
+    except BaseException as error:aggregate.update(status='failed',error=repr(error));raise
+    finally:
+        aggregate['wall_seconds']=time.time()-now;ledger['status']=aggregate['status'];publish()
+        write(root/'exit.json',dict(status=aggregate['status'],wall_seconds=time.time()-now,deadline_unix=deadline,error=aggregate.get('error')))
+if __name__=='__main__':run(sys.argv[1])

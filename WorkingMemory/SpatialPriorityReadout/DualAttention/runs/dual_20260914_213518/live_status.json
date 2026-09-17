@@ -1,0 +1,111 @@
+{
+  "status": "live",
+  "checked_unix": 1789449527.6482186,
+  "pod_id": "f7y0zw02f4fzum",
+  "gpu": "NVIDIA GeForce RTX 3090, 24576, 1, 0, 41.71",
+  "remote_total_metric_rows": 947,
+  "latest": {
+    "step": 947,
+    "episodes": 37880,
+    "frames_total": 795488,
+    "loss": 0.8540607929229737,
+    "accuracy": 0.325,
+    "gradient_norm": 0.3869759142398834,
+    "seconds": 1.541968822479248
+  },
+  "rolling": {
+    "20": {
+      "updates": 20,
+      "step_start": 928,
+      "step_end": 947,
+      "mean_loss": 0.7970516416819191,
+      "mean_accuracy": 0.47999999999999987,
+      "mean_gradient_norm": 0.1898772843182087,
+      "mean_update_seconds": 2.2131887435913087
+    },
+    "100": {
+      "updates": 100,
+      "step_start": 848,
+      "step_end": 947,
+      "mean_loss": 0.7958511281756894,
+      "mean_accuracy": 0.48599999999999993,
+      "mean_gradient_norm": 0.1553140966966748,
+      "mean_update_seconds": 2.1946888875961306
+    },
+    "256": {
+      "updates": 256,
+      "step_start": 692,
+      "step_end": 947,
+      "mean_loss": 0.7953257529938034,
+      "mean_accuracy": 0.4865234374999998,
+      "mean_gradient_norm": 0.24736105583724566,
+      "mean_update_seconds": 2.189679726958275
+    }
+  },
+  "budget_status": "failed",
+  "active": null,
+  "validations": [
+    {
+      "file": "validation_800_result.json",
+      "step": 800,
+      "status": "completed",
+      "rank": [
+        0.0,
+        0.5010957906477373
+      ],
+      "task_scores": {
+        "image_recognition": {
+          "normalized_ba": 0.027777777777777776,
+          "mean_auc": 0.5252821180555556
+        },
+        "krauzlis_cued_motion": {
+          "normalized_ba": 0.0,
+          "mean_auc": 0.509859921120631
+        },
+        "motion_duration_cued": {
+          "normalized_ba": 0.0,
+          "mean_auc": 0.5030517578125
+        },
+        "orientation_cued": {
+          "normalized_ba": 0.0,
+          "mean_auc": 0.4420166015625
+        },
+        "spatial_binding": {
+          "normalized_ba": 0.0,
+          "mean_auc": 0.5252685546875
+        }
+      }
+    }
+  ],
+  "checkpoints": [
+    {
+      "file": "checkpoint_000000.pt",
+      "step": 0,
+      "sha256": "ef10c6f4896a2c2639502ab21777c038d4963547d17f968bf5d5af58c2763138"
+    },
+    {
+      "file": "checkpoint_000256.pt",
+      "step": 256,
+      "sha256": "543911839ecadd119dceb46756c04a17dd93cc5d83d7e670dbb2c7172c6aff2b"
+    },
+    {
+      "file": "checkpoint_000512.pt",
+      "step": 512,
+      "sha256": "313c46ddff0a85949f5f3938be251e6daaba2fbb073c71e4b82560b895fd160c"
+    },
+    {
+      "file": "checkpoint_000768.pt",
+      "step": 768,
+      "sha256": "c03ef830f544f1befb5953f79e9e5fa8e4f32c6546d64dbc6f0bbcb56a3520e5"
+    },
+    {
+      "file": "checkpoint_000800.pt",
+      "step": 800,
+      "sha256": "ca5cc7200e845cbaf45f5874724a5a5acfc6a1991cb8eb4249cc127b84cfd5af"
+    }
+  ],
+  "deadline_unix": 1789475718.0,
+  "seconds_to_deadline": 26190.351781368256,
+  "cadence_seconds": 45,
+  "cleanup_owner": "Independent detached dual-attention lifecycle only; never touches other pod IDs."
+}

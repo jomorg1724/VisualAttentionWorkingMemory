@@ -1,0 +1,91 @@
+{
+  "protocol": {
+    "version": "cardinal_motion_v2",
+    "shape": [
+      100,
+      100,
+      3
+    ],
+    "aperture_diameter_pixels": 85.0,
+    "domain_dots": 256,
+    "raster_pixels_per_degree": 10.0,
+    "displacements_pixels": [
+      1.0,
+      2.0,
+      3.0
+    ],
+    "dot_sigma_pixels": 0.7,
+    "dot_lifetime_frames": 2,
+    "survivor_coherence": 1.0,
+    "background": 0.2,
+    "dot_increment": 0.7,
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3412590/"
+  },
+  "examples": [
+    {
+      "task": "motion_direction",
+      "family": "motion_direction",
+      "protocol": "cardinal_motion_v2",
+      "direction": "right",
+      "label": 0,
+      "displacement_pixels": 2.0,
+      "difficulty": "displacement_2px",
+      "coherence": 1.0,
+      "coherence_definition": "fraction of surviving dots following the selected direction",
+      "survivor_count_domain": 128,
+      "reborn_count_domain": 128,
+      "base_id": null,
+      "split": "val",
+      "trial_id": "val/2026091202/2"
+    },
+    {
+      "task": "motion_direction",
+      "family": "motion_direction",
+      "protocol": "cardinal_motion_v2",
+      "direction": "up",
+      "label": 1,
+      "displacement_pixels": 2.0,
+      "difficulty": "displacement_2px",
+      "coherence": 1.0,
+      "coherence_definition": "fraction of surviving dots following the selected direction",
+      "survivor_count_domain": 128,
+      "reborn_count_domain": 128,
+      "base_id": null,
+      "split": "val",
+      "trial_id": "val/2026091202/0"
+    },
+    {
+      "task": "motion_direction",
+      "family": "motion_direction",
+      "protocol": "cardinal_motion_v2",
+      "direction": "left",
+      "label": 2,
+      "displacement_pixels": 2.0,
+      "difficulty": "displacement_2px",
+      "coherence": 1.0,
+      "coherence_definition": "fraction of surviving dots following the selected direction",
+      "survivor_count_domain": 128,
+      "reborn_count_domain": 128,
+      "base_id": null,
+      "split": "val",
+      "trial_id": "val/2026091202/3"
+    },
+    {
+      "task": "motion_direction",
+      "family": "motion_direction",
+      "protocol": "cardinal_motion_v2",
+      "direction": "down",
+      "label": 3,
+      "displacement_pixels": 2.0,
+      "difficulty": "displacement_2px",
+      "coherence": 1.0,
+      "coherence_definition": "fraction of surviving dots following the selected direction",
+      "survivor_count_domain": 128,
+      "reborn_count_domain": 128,
+      "base_id": null,
+      "split": "val",
+      "trial_id": "val/2026091202/1"
+    }
+  ],
+  "preview_timing": "300ms each image plus600ms blank; display-only slowed preview, not a scientific refresh setting"
+}

@@ -1,0 +1,74 @@
+{
+  "status": "live",
+  "checked_unix": 1789443749.3045256,
+  "pod_id": "mbi39b005jp884",
+  "gpu": "NVIDIA GeForce RTX 4090, 24564, 2014, 41, 143.08",
+  "remote_total_metric_rows": 338,
+  "latest": {
+    "step": 8738,
+    "episodes": 13520,
+    "frames_total": 284024,
+    "loss": 0.7046406611800193,
+    "accuracy": 0.525,
+    "gradient_norm": 2.9786152839660645,
+    "seconds": 2.5435597896575928
+  },
+  "rolling": {
+    "20": {
+      "updates": 20,
+      "step_start": 8719,
+      "step_end": 8738,
+      "mean_loss": 0.6762992427893914,
+      "mean_accuracy": 0.58375,
+      "mean_gradient_norm": 2.3400769270956516,
+      "mean_update_seconds": 2.3873257994651795
+    },
+    "100": {
+      "updates": 100,
+      "step_start": 8639,
+      "step_end": 8738,
+      "mean_loss": 0.6944839664576575,
+      "mean_accuracy": 0.5727499999999999,
+      "mean_gradient_norm": 3.07149852052331,
+      "mean_update_seconds": 2.42797239780426
+    },
+    "256": {
+      "updates": 256,
+      "step_start": 8483,
+      "step_end": 8738,
+      "mean_loss": 0.7432386832409973,
+      "mean_accuracy": 0.5401367187499999,
+      "mean_gradient_norm": 1.9330437554162927,
+      "mean_update_seconds": 2.430166531354189
+    }
+  },
+  "budget_status": "training",
+  "active": {
+    "pid": 478,
+    "kind": "train",
+    "tag": "train_9200",
+    "log": "/workspace/vawm_spatial_priority/spatial_priority_results/train_9200.log"
+  },
+  "validations": [],
+  "checkpoints": [
+    {
+      "file": "checkpoint_008400.pt",
+      "step": 8400,
+      "sha256": "ede9213b7120a32ffdb425801ebd9896af4b98dfc8ab6cd8c1e0de2f2125d4a0"
+    },
+    {
+      "file": "checkpoint_008448.pt",
+      "step": 8448,
+      "sha256": "75ed7b78a7012eb2221b3e00f5b9b6e477de3f40af7dac0546d33fa8467fa121"
+    },
+    {
+      "file": "checkpoint_008704.pt",
+      "step": 8704,
+      "sha256": "5f374ddf3759d6f595c80388562956b0a088234d4da5431f98099bdce02c9103"
+    }
+  ],
+  "deadline_unix": 1789469766.615367,
+  "seconds_to_deadline": 26017.310841321945,
+  "cadence_seconds": 45,
+  "cleanup_owner": "Primary/root agent must retrieve all indexed artifacts, POST stop, then DELETE pod immediately on terminal completion/failure or by hard deadline; no idle billing."
+}

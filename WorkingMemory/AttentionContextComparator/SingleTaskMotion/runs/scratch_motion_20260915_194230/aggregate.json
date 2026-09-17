@@ -1,0 +1,2460 @@
+{
+  "status": "extended_training",
+  "run_root": "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\WorkingMemory\\AttentionContextComparator\\SingleTaskMotion\\runs\\scratch_motion_20260915_194230",
+  "task": "motion_duration_cued",
+  "architecture_version": "attention_context_comparator_scratch_v1",
+  "initialization_kind": "full_model_and_optimizer_from_scratch",
+  "loaded_parent": false,
+  "loaded_model_tensors": 0,
+  "inherited_optimizer_states": 0,
+  "requested_exposure": {
+    "updates": 12000,
+    "episodes": 96000
+  },
+  "validation_targets": [
+    800,
+    1600,
+    2400,
+    3200,
+    4000,
+    4800,
+    5600,
+    6400,
+    7200,
+    8000,
+    8800,
+    9600,
+    10400,
+    11200,
+    12000
+  ],
+  "validation_n_per_delay": 64,
+  "test_n_per_delay": 256,
+  "config": {
+    "cells": {
+      "orientation_cued_D0": {
+        "task": "orientation_cued",
+        "condition": {
+          "delay": 0
+        }
+      },
+      "orientation_cued_D4": {
+        "task": "orientation_cued",
+        "condition": {
+          "delay": 4
+        }
+      },
+      "orientation_cued_D12": {
+        "task": "orientation_cued",
+        "condition": {
+          "delay": 12
+        }
+      },
+      "orientation_cued_D24": {
+        "task": "orientation_cued",
+        "condition": {
+          "delay": 24
+        }
+      },
+      "motion_duration_cued_D0": {
+        "task": "motion_duration_cued",
+        "condition": {
+          "delay": 0
+        }
+      },
+      "motion_duration_cued_D4": {
+        "task": "motion_duration_cued",
+        "condition": {
+          "delay": 4
+        }
+      },
+      "motion_duration_cued_D12": {
+        "task": "motion_duration_cued",
+        "condition": {
+          "delay": 12
+        }
+      },
+      "motion_duration_cued_D24": {
+        "task": "motion_duration_cued",
+        "condition": {
+          "delay": 24
+        }
+      },
+      "spatial_binding_D0": {
+        "task": "spatial_binding",
+        "condition": {
+          "delay": 0
+        }
+      },
+      "spatial_binding_D4": {
+        "task": "spatial_binding",
+        "condition": {
+          "delay": 4
+        }
+      },
+      "spatial_binding_D12": {
+        "task": "spatial_binding",
+        "condition": {
+          "delay": 12
+        }
+      },
+      "spatial_binding_D24": {
+        "task": "spatial_binding",
+        "condition": {
+          "delay": 24
+        }
+      },
+      "image_recognition_N0_H3": {
+        "task": "image_recognition",
+        "condition": {
+          "load": 0,
+          "probe_hold": 3
+        }
+      },
+      "image_recognition_N0_H4": {
+        "task": "image_recognition",
+        "condition": {
+          "load": 0,
+          "probe_hold": 4
+        }
+      },
+      "image_recognition_N0_H5": {
+        "task": "image_recognition",
+        "condition": {
+          "load": 0,
+          "probe_hold": 5
+        }
+      },
+      "image_recognition_N4_H3": {
+        "task": "image_recognition",
+        "condition": {
+          "load": 4,
+          "probe_hold": 3
+        }
+      },
+      "image_recognition_N4_H4": {
+        "task": "image_recognition",
+        "condition": {
+          "load": 4,
+          "probe_hold": 4
+        }
+      },
+      "image_recognition_N4_H5": {
+        "task": "image_recognition",
+        "condition": {
+          "load": 4,
+          "probe_hold": 5
+        }
+      },
+      "image_recognition_N12_H3": {
+        "task": "image_recognition",
+        "condition": {
+          "load": 12,
+          "probe_hold": 3
+        }
+      },
+      "image_recognition_N12_H4": {
+        "task": "image_recognition",
+        "condition": {
+          "load": 12,
+          "probe_hold": 4
+        }
+      },
+      "image_recognition_N12_H5": {
+        "task": "image_recognition",
+        "condition": {
+          "load": 12,
+          "probe_hold": 5
+        }
+      },
+      "image_recognition_N24_H3": {
+        "task": "image_recognition",
+        "condition": {
+          "load": 24,
+          "probe_hold": 3
+        }
+      },
+      "image_recognition_N24_H4": {
+        "task": "image_recognition",
+        "condition": {
+          "load": 24,
+          "probe_hold": 4
+        }
+      },
+      "image_recognition_N24_H5": {
+        "task": "image_recognition",
+        "condition": {
+          "load": 24,
+          "probe_hold": 5
+        }
+      },
+      "krauzlis_B12": {
+        "task": "krauzlis_cued_motion",
+        "condition": {
+          "baseline_transitions": 12
+        }
+      },
+      "krauzlis_B20": {
+        "task": "krauzlis_cued_motion",
+        "condition": {
+          "baseline_transitions": 20
+        }
+      },
+      "krauzlis_B28": {
+        "task": "krauzlis_cued_motion",
+        "condition": {
+          "baseline_transitions": 28
+        }
+      }
+    },
+    "cycle": [
+      "orientation_cued_D0",
+      "orientation_cued_D4",
+      "orientation_cued_D12",
+      "orientation_cued_D24",
+      "motion_duration_cued_D0",
+      "motion_duration_cued_D4",
+      "motion_duration_cued_D12",
+      "motion_duration_cued_D24",
+      "spatial_binding_D0",
+      "spatial_binding_D4",
+      "spatial_binding_D12",
+      "spatial_binding_D24",
+      "image_recognition_N0_H3",
+      "image_recognition_N0_H4",
+      "image_recognition_N0_H5",
+      "image_recognition_N4_H3",
+      "image_recognition_N4_H4",
+      "image_recognition_N4_H5",
+      "image_recognition_N12_H3",
+      "image_recognition_N12_H4",
+      "image_recognition_N12_H5",
+      "image_recognition_N24_H3",
+      "image_recognition_N24_H4",
+      "image_recognition_N24_H5",
+      "krauzlis_B12",
+      "krauzlis_B20",
+      "krauzlis_B28"
+    ],
+    "batch_size": 8,
+    "train_seed": 61973001,
+    "scheduler_seed": 62973001,
+    "model_seed": 41973001,
+    "new_lr": 0.0003,
+    "parent_lr": 3e-05,
+    "adam_eps": 1e-10,
+    "weight_decay": 0.0001,
+    "clip": 1.0,
+    "activation_checkpoint": true,
+    "battery": "spatial",
+    "updates": 4000,
+    "task_classes": {
+      "orientation_cued": 2,
+      "motion_duration_cued": 4,
+      "krauzlis_cued_motion": 2,
+      "spatial_binding": 2,
+      "image_recognition": 2
+    },
+    "train_names": {
+      "orientation_cued": [
+        "orientation_cued_D0",
+        "orientation_cued_D4",
+        "orientation_cued_D12",
+        "orientation_cued_D24"
+      ],
+      "motion_duration_cued": [
+        "motion_duration_cued_D0",
+        "motion_duration_cued_D4",
+        "motion_duration_cued_D12",
+        "motion_duration_cued_D24"
+      ],
+      "spatial_binding": [
+        "spatial_binding_D0",
+        "spatial_binding_D4",
+        "spatial_binding_D12",
+        "spatial_binding_D24"
+      ],
+      "image_recognition": [
+        "image_recognition_N0_H3",
+        "image_recognition_N0_H4",
+        "image_recognition_N0_H5",
+        "image_recognition_N4_H3",
+        "image_recognition_N4_H4",
+        "image_recognition_N4_H5",
+        "image_recognition_N12_H3",
+        "image_recognition_N12_H4",
+        "image_recognition_N12_H5",
+        "image_recognition_N24_H3",
+        "image_recognition_N24_H4",
+        "image_recognition_N24_H5"
+      ],
+      "krauzlis_cued_motion": [
+        "krauzlis_B12",
+        "krauzlis_B20",
+        "krauzlis_B28"
+      ]
+    }
+  },
+  "source_hashes": {
+    "WorkingMemory/AttentionContextComparator/SingleTaskMotion/protocol.py": "3db9aee915fea273c88fca01fb9b7c138f91d8cd8ab1ec698f3e2a75d8b1ce68",
+    "WorkingMemory/AttentionContextComparator/SingleTaskMotion/worker.py": "98d6bd411eb3e29da93c32754da37a18ae6f579137edf534d2945e87359789e3",
+    "WorkingMemory/AttentionContextComparator/SingleTaskMotion/check.py": "a09034078d096d342b5c1e7c107364e3f9ccdf74a736076a30374d4e670f290a",
+    "WorkingMemory/AttentionContextComparator/SingleTaskMotion/run.py": "763b318d3992307c98259939e8ded828830d96856356dbefec5197ff44907a13",
+    "WorkingMemory/AttentionContextComparator/model.py": "3b71e8f0b1b34f8b3b80aa4b100023242fe1c77d791dfc02e9fe350a4b64b0cb",
+    "WorkingMemory/SpatialPriorityReadout/model.py": "524e5bc0bec45d85d116167c5ffd136e54bec8315f0c30a3a06f4d5c5bc24755",
+    "WorkingMemory/PreUpdateAttention/model.py": "816f0d46e35926429560aaf98f592ecc3a06ef8c5b120defd98bd806432d5b2d",
+    "WorkingMemory/SpatialTaskBattery/stimuli.py": "16b7efd4575eba27b9a79329243dcce0da635008856687a9e62bda72b5ddeb37",
+    "WorkingMemory/UnbiasedAttention/protocol.py": "0e89cbf61bd7430a1b39d52f536d63414b546b6ea057a972af54b3e2f3344c22",
+    "WorkingMemory/TrainingExposure/protocol.py": "407432b0ba020a43b5ef681fb613f1ebaa63ba011a815dbd941ad51780ec1f88",
+    "PreAttentiveVision/evaluate_multitask.py": "24339f53ba77af81535bde37b858c28c3de3f0b18649f0e11b3c520f53a95268"
+  },
+  "platform": {
+    "python": "3.10.6",
+    "torch": "1.13.1+cu117",
+    "platform": "Windows-10-10.0.22621-SP0",
+    "device": "cuda",
+    "gpu": "NVIDIA GeForce RTX 3070 Laptop GPU"
+  },
+  "validation": [
+    {
+      "status": "completed",
+      "step": 800,
+      "cells": {
+        "D0": {
+          "n": 64,
+          "classes": 4,
+          "confusion_true_rows_pred_columns": [
+            [
+              16,
+              0,
+              0,
+              0
+            ],
+            [
+              16,
+              0,
+              0,
+              0
+            ],
+            [
+              16,
+              0,
+              0,
+              0
+            ],
+            [
+              16,
+              0,
+              0,
+              0
+            ]
+          ],
+          "class_counts": [
+            16,
+            16,
+            16,
+            16
+          ],
+          "recall": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "recall_ci95": [
+            [
+              0.8063923194655637,
+              1.0
+            ],
+            [
+              0.0,
+              0.1936076805344365
+            ],
+            [
+              0.0,
+              0.1936076805344365
+            ],
+            [
+              0.0,
+              0.1936076805344365
+            ]
+          ],
+          "accuracy": 0.25,
+          "balanced_accuracy": 0.25,
+          "chance_accuracy": 0.25,
+          "macro_ovr_auc": 0.5078125,
+          "per_class_ovr_auc": [
+            0.4856770833333333,
+            0.5703125,
+            0.4583333333333333,
+            0.5169270833333334
+          ],
+          "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+          "unique_base_groups": 64,
+          "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+        },
+        "D4": {
+          "n": 64,
+          "classes": 4,
+          "confusion_true_rows_pred_columns": [
+            [
+              12,
+              0,
+              0,
+              4
+            ],
+            [
+              13,
+              0,
+              0,
+              3
+            ],
+            [
+              12,
+              0,
+              0,
+              4
+            ],
+            [
+              13,
+              0,
+              0,
+              3
+            ]
+          ],
+          "class_counts": [
+            16,
+            16,
+            16,
+            16
+          ],
+          "recall": [
+            0.75,
+            0.0,
+            0.0,
+            0.1875
+          ],
+          "recall_ci95": [
+            [
+              0.5050168346449122,
+              0.8981793250878696
+            ],
+            [
+              0.0,
+              0.1936076805344365
+            ],
+            [
+              0.0,
+              0.1936076805344365
+            ],
+            [
+              0.06591599071428142,
+              0.4300888096197414
+            ]
+          ],
+          "accuracy": 0.234375,
+          "balanced_accuracy": 0.234375,
+          "chance_accuracy": 0.25,
+          "macro_ovr_auc": 0.5066731770833334,
+          "per_class_ovr_auc": [
+            0.4895833333333333,
+            0.5143229166666666,
+            0.49609375,
+            0.5266927083333334
+          ],
+          "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+          "unique_base_groups": 64,
+          "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+        },
+        "D12": {
+          "n": 64,
+          "classes": 4,
+          "confusion_true_rows_pred_columns": [
+            [
+              0,
+              0,
+              0,
+              16
+            ],
+            [
+              0,
+              0,
+              0,
+              16
+            ],
+            [
+              0,
+              0,
+              0,
+              16
+            ],
+            [
+              0,
+              0,
+              0,
+              16
+            ]
+          ],
+          "class_counts": [
+            16,
+            16,
+            16,
+            16
+          ],
+          "recall": [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "recall_ci95": [
+            [
+              0.0,
+              0.1936076805344365
+            ],
+            [
+              0.0,
+              0.1936076805344365
+            ],
+            [
+              0.0,
+              0.1936076805344365
+            ],
+            [
+              0.8063923194655637,
+              1.0
+            ]
+          ],
+          "accuracy": 0.25,
+          "balanced_accuracy": 0.25,
+          "chance_accuracy": 0.25,
+          "macro_ovr_auc": 0.51611328125,
+          "per_class_ovr_auc": [
+            0.5338541666666666,
+            0.53515625,
+            0.505859375,
+            0.4895833333333333
+          ],
+          "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+          "unique_base_groups": 64,
+          "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+        },
+        "D24": {
+          "n": 64,
+          "classes": 4,
+          "confusion_true_rows_pred_columns": [
+            [
+              0,
+              0,
+              0,
+              16
+            ],
+            [
+              0,
+              0,
+              0,
+              16
+            ],
+            [
+              0,
+              0,
+              0,
+              16
+            ],
+            [
+              0,
+              0,
+              0,
+              16
+            ]
+          ],
+          "class_counts": [
+            16,
+            16,
+            16,
+            16
+          ],
+          "recall": [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "recall_ci95": [
+            [
+              0.0,
+              0.1936076805344365
+            ],
+            [
+              0.0,
+              0.1936076805344365
+            ],
+            [
+              0.0,
+              0.1936076805344365
+            ],
+            [
+              0.8063923194655637,
+              1.0
+            ]
+          ],
+          "accuracy": 0.25,
+          "balanced_accuracy": 0.25,
+          "chance_accuracy": 0.25,
+          "macro_ovr_auc": 0.5319010416666666,
+          "per_class_ovr_auc": [
+            0.4921875,
+            0.5729166666666666,
+            0.552734375,
+            0.509765625
+          ],
+          "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+          "unique_base_groups": 64,
+          "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+        }
+      },
+      "rank": [
+        0.234375,
+        0.515625
+      ],
+      "predictions": "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\WorkingMemory\\AttentionContextComparator\\SingleTaskMotion\\runs\\scratch_motion_20260915_194230\\validation_800\\predictions.jsonl",
+      "predictions_sha256": "1ecec563f3be7d69ab5f46fb4959aaa0f6f90946d513b08b659bf9f780fb3c7f",
+      "episodes": 256,
+      "checkpoint": "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\WorkingMemory\\AttentionContextComparator\\SingleTaskMotion\\runs\\scratch_motion_20260915_194230\\training\\checkpoint_000800.pt",
+      "worker_seconds": 12.55334734916687
+    },
+    {
+      "status": "completed",
+      "step": 1600,
+      "cells": {
+        "D0": {
+          "n": 64,
+          "classes": 4,
+          "confusion_true_rows_pred_columns": [
+            [
+              0,
+              0,
+              16,
+              0
+            ],
+            [
+              0,
+              0,
+              16,
+              0
+            ],
+            [
+              0,
+              0,
+              16,
+              0
+            ],
+            [
+              0,
+              0,
+              16,
+              0
+            ]
+          ],
+          "class_counts": [
+            16,
+            16,
+            16,
+            16
+          ],
+          "recall": [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          "recall_ci95": [
+            [
+              0.0,
+              0.1936076805344365
+            ],
+            [
+              0.0,
+              0.1936076805344365
+            ],
+            [
+              0.8063923194655637,
+              1.0
+            ],
+            [
+              0.0,
+              0.1936076805344365
+            ]
+          ],
+          "accuracy": 0.25,
+          "balanced_accuracy": 0.25,
+          "chance_accuracy": 0.25,
+          "macro_ovr_auc": 0.501953125,
+          "per_class_ovr_auc": [
+            0.50390625,
+            0.4361979166666667,
+            0.5520833333333334,
+            0.515625
+          ],
+          "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+          "unique_base_groups": 64,
+          "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+        },
+        "D4": {
+          "n": 64,
+          "classes": 4,
+          "confusion_true_rows_pred_columns": [
+            [
+              0,
+              0,
+              16,
+              0
+            ],
+            [
+              0,
+              0,
+              16,
+              0
+            ],
+            [
+              0,
+              0,
+              16,
+              0
+            ],
+            [
+              0,
+              0,
+              16,
+              0
+            ]
+          ],
+          "class_counts": [
+            16,
+            16,
+            16,
+            16
+          ],
+          "recall": [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          "recall_ci95": [
+            [
+              0.0,
+              0.1936076805344365
+            ],
+            [
+              0.0,
+              0.1936076805344365
+            ],
+            [
+              0.8063923194655637,
+              1.0
+            ],
+            [
+              0.0,
+              0.1936076805344365
+            ]
+          ],
+          "accuracy": 0.25,
+          "balanced_accuracy": 0.25,
+          "chance_accuracy": 0.25,
+          "macro_ovr_auc": 0.4775390625,
+          "per_class_ovr_auc": [
+            0.4817708333333333,
+            0.453125,
+            0.515625,
+            0.4596354166666667
+          ],
+          "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+          "unique_base_groups": 64,
+          "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+        },
+        "D12": {
+          "n": 64,
+          "classes": 4,
+          "confusion_true_rows_pred_columns": [
+            [
+              16,
+              0,
+              0,
+              0
+            ],
+            [
+              16,
+              0,
+              0,
+              0
+            ],
+            [
+              16,
+              0,
+              0,
+              0
+            ],
+            [
+              16,
+              0,
+              0,
+              0
+            ]
+          ],
+          "class_counts": [
+            16,
+            16,
+            16,
+            16
+          ],
+          "recall": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "recall_ci95": [
+            [
+              0.8063923194655637,
+              1.0
+            ],
+            [
+              0.0,
+              0.1936076805344365
+            ],
+            [
+              0.0,
+              0.1936076805344365
+            ],
+            [
+              0.0,
+              0.1936076805344365
+            ]
+          ],
+          "accuracy": 0.25,
+          "balanced_accuracy": 0.25,
+          "chance_accuracy": 0.25,
+          "macro_ovr_auc": 0.50048828125,
+          "per_class_ovr_auc": [
+            0.4713541666666667,
+            0.5416666666666666,
+            0.5078125,
+            0.4811197916666667
+          ],
+          "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+          "unique_base_groups": 64,
+          "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+        },
+        "D24": {
+          "n": 64,
+          "classes": 4,
+          "confusion_true_rows_pred_columns": [
+            [
+              16,
+              0,
+              0,
+              0
+            ],
+            [
+              16,
+              0,
+              0,
+              0
+            ],
+            [
+              16,
+              0,
+              0,
+              0
+            ],
+            [
+              16,
+              0,
+              0,
+              0
+            ]
+          ],
+          "class_counts": [
+            16,
+            16,
+            16,
+            16
+          ],
+          "recall": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "recall_ci95": [
+            [
+              0.8063923194655637,
+              1.0
+            ],
+            [
+              0.0,
+              0.1936076805344365
+            ],
+            [
+              0.0,
+              0.1936076805344365
+            ],
+            [
+              0.0,
+              0.1936076805344365
+            ]
+          ],
+          "accuracy": 0.25,
+          "balanced_accuracy": 0.25,
+          "chance_accuracy": 0.25,
+          "macro_ovr_auc": 0.4886067708333333,
+          "per_class_ovr_auc": [
+            0.541015625,
+            0.50390625,
+            0.46875,
+            0.4407552083333333
+          ],
+          "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+          "unique_base_groups": 64,
+          "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+        }
+      },
+      "rank": [
+        0.25,
+        0.4921468098958333
+      ],
+      "predictions": "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\WorkingMemory\\AttentionContextComparator\\SingleTaskMotion\\runs\\scratch_motion_20260915_194230\\validation_1600\\predictions.jsonl",
+      "predictions_sha256": "cb942d52a94a9ace6e3aeea259e5feed907480644fc19dfdd4f70ce5879caa13",
+      "episodes": 256,
+      "checkpoint": "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\WorkingMemory\\AttentionContextComparator\\SingleTaskMotion\\runs\\scratch_motion_20260915_194230\\training\\checkpoint_001600.pt",
+      "worker_seconds": 12.408419132232666
+    },
+    {
+      "status": "completed",
+      "step": 2400,
+      "cells": {
+        "D0": {
+          "n": 64,
+          "classes": 4,
+          "confusion_true_rows_pred_columns": [
+            [
+              0,
+              0,
+              0,
+              16
+            ],
+            [
+              0,
+              0,
+              0,
+              16
+            ],
+            [
+              0,
+              0,
+              0,
+              16
+            ],
+            [
+              0,
+              0,
+              0,
+              16
+            ]
+          ],
+          "class_counts": [
+            16,
+            16,
+            16,
+            16
+          ],
+          "recall": [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "recall_ci95": [
+            [
+              0.0,
+              0.1936076805344365
+            ],
+            [
+              0.0,
+              0.1936076805344365
+            ],
+            [
+              0.0,
+              0.1936076805344365
+            ],
+            [
+              0.8063923194655637,
+              1.0
+            ]
+          ],
+          "accuracy": 0.25,
+          "balanced_accuracy": 0.25,
+          "chance_accuracy": 0.25,
+          "macro_ovr_auc": 0.48893229166666663,
+          "per_class_ovr_auc": [
+            0.5364583333333334,
+            0.4166666666666667,
+            0.4231770833333333,
+            0.5794270833333334
+          ],
+          "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+          "unique_base_groups": 64,
+          "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+        },
+        "D4": {
+          "n": 64,
+          "classes": 4,
+          "confusion_true_rows_pred_columns": [
+            [
+              0,
+              0,
+              0,
+              16
+            ],
+            [
+              0,
+              0,
+              0,
+              16
+            ],
+            [
+              0,
+              0,
+              0,
+              16
+            ],
+            [
+              0,
+              0,
+              0,
+              16
+            ]
+          ],
+          "class_counts": [
+            16,
+            16,
+            16,
+            16
+          ],
+          "recall": [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "recall_ci95": [
+            [
+              0.0,
+              0.1936076805344365
+            ],
+            [
+              0.0,
+              0.1936076805344365
+            ],
+            [
+              0.0,
+              0.1936076805344365
+            ],
+            [
+              0.8063923194655637,
+              1.0
+            ]
+          ],
+          "accuracy": 0.25,
+          "balanced_accuracy": 0.25,
+          "chance_accuracy": 0.25,
+          "macro_ovr_auc": 0.48079427083333326,
+          "per_class_ovr_auc": [
+            0.5182291666666666,
+            0.4440104166666667,
+            0.4348958333333333,
+            0.5260416666666666
+          ],
+          "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+          "unique_base_groups": 64,
+          "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+        },
+        "D12": {
+          "n": 64,
+          "classes": 4,
+          "confusion_true_rows_pred_columns": [
+            [
+              0,
+              0,
+              0,
+              16
+            ],
+            [
+              0,
+              0,
+              0,
+              16
+            ],
+            [
+              0,
+              0,
+              0,
+              16
+            ],
+            [
+              0,
+              0,
+              0,
+              16
+            ]
+          ],
+          "class_counts": [
+            16,
+            16,
+            16,
+            16
+          ],
+          "recall": [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "recall_ci95": [
+            [
+              0.0,
+              0.1936076805344365
+            ],
+            [
+              0.0,
+              0.1936076805344365
+            ],
+            [
+              0.0,
+              0.1936076805344365
+            ],
+            [
+              0.8063923194655637,
+              1.0
+            ]
+          ],
+          "accuracy": 0.25,
+          "balanced_accuracy": 0.25,
+          "chance_accuracy": 0.25,
+          "macro_ovr_auc": 0.4978841145833333,
+          "per_class_ovr_auc": [
+            0.482421875,
+            0.50390625,
+            0.5234375,
+            0.4817708333333333
+          ],
+          "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+          "unique_base_groups": 64,
+          "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+        },
+        "D24": {
+          "n": 64,
+          "classes": 4,
+          "confusion_true_rows_pred_columns": [
+            [
+              0,
+              0,
+              0,
+              16
+            ],
+            [
+              0,
+              0,
+              0,
+              16
+            ],
+            [
+              0,
+              0,
+              0,
+              16
+            ],
+            [
+              0,
+              0,
+              0,
+              16
+            ]
+          ],
+          "class_counts": [
+            16,
+            16,
+            16,
+            16
+          ],
+          "recall": [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "recall_ci95": [
+            [
+              0.0,
+              0.1936076805344365
+            ],
+            [
+              0.0,
+              0.1936076805344365
+            ],
+            [
+              0.0,
+              0.1936076805344365
+            ],
+            [
+              0.8063923194655637,
+              1.0
+            ]
+          ],
+          "accuracy": 0.25,
+          "balanced_accuracy": 0.25,
+          "chance_accuracy": 0.25,
+          "macro_ovr_auc": 0.5196940104166666,
+          "per_class_ovr_auc": [
+            0.47265625,
+            0.505859375,
+            0.5045572916666666,
+            0.595703125
+          ],
+          "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+          "unique_base_groups": 64,
+          "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+        }
+      },
+      "rank": [
+        0.25,
+        0.496826171875
+      ],
+      "predictions": "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\WorkingMemory\\AttentionContextComparator\\SingleTaskMotion\\runs\\scratch_motion_20260915_194230\\validation_2400\\predictions.jsonl",
+      "predictions_sha256": "2ecc8135eb60a2c038e9e6ee95d4fed9e725254b317c5f6df2c6a847c2a9e1da",
+      "episodes": 256,
+      "checkpoint": "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\WorkingMemory\\AttentionContextComparator\\SingleTaskMotion\\runs\\scratch_motion_20260915_194230\\training\\checkpoint_002400.pt",
+      "worker_seconds": 13.54578423500061
+    },
+    {
+      "status": "completed",
+      "step": 3200,
+      "cells": {
+        "D0": {
+          "n": 64,
+          "classes": 4,
+          "confusion_true_rows_pred_columns": [
+            [
+              7,
+              0,
+              9,
+              0
+            ],
+            [
+              6,
+              0,
+              10,
+              0
+            ],
+            [
+              6,
+              0,
+              10,
+              0
+            ],
+            [
+              5,
+              0,
+              11,
+              0
+            ]
+          ],
+          "class_counts": [
+            16,
+            16,
+            16,
+            16
+          ],
+          "recall": [
+            0.4375,
+            0.0,
+            0.625,
+            0.0
+          ],
+          "recall_ci95": [
+            [
+              0.23098652405492354,
+              0.6682144360118811
+            ],
+            [
+              0.0,
+              0.1936076805344365
+            ],
+            [
+              0.38641040545502714,
+              0.8151876744113636
+            ],
+            [
+              0.0,
+              0.1936076805344365
+            ]
+          ],
+          "accuracy": 0.265625,
+          "balanced_accuracy": 0.265625,
+          "chance_accuracy": 0.25,
+          "macro_ovr_auc": 0.5081380208333334,
+          "per_class_ovr_auc": [
+            0.5442708333333334,
+            0.44921875,
+            0.51953125,
+            0.51953125
+          ],
+          "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+          "unique_base_groups": 64,
+          "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+        },
+        "D4": {
+          "n": 64,
+          "classes": 4,
+          "confusion_true_rows_pred_columns": [
+            [
+              15,
+              0,
+              1,
+              0
+            ],
+            [
+              16,
+              0,
+              0,
+              0
+            ],
+            [
+              15,
+              0,
+              1,
+              0
+            ],
+            [
+              16,
+              0,
+              0,
+              0
+            ]
+          ],
+          "class_counts": [
+            16,
+            16,
+            16,
+            16
+          ],
+          "recall": [
+            0.9375,
+            0.0,
+            0.0625,
+            0.0
+          ],
+          "recall_ci95": [
+            [
+              0.7167126242970107,
+              0.9888806552353576
+            ],
+            [
+              0.0,
+              0.1936076805344365
+            ],
+            [
+              0.01111934476464252,
+              0.28328737570298945
+            ],
+            [
+              0.0,
+              0.1936076805344365
+            ]
+          ],
+          "accuracy": 0.25,
+          "balanced_accuracy": 0.25,
+          "chance_accuracy": 0.25,
+          "macro_ovr_auc": 0.5100911458333334,
+          "per_class_ovr_auc": [
+            0.53515625,
+            0.45703125,
+            0.5208333333333334,
+            0.52734375
+          ],
+          "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+          "unique_base_groups": 64,
+          "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+        },
+        "D12": {
+          "n": 64,
+          "classes": 4,
+          "confusion_true_rows_pred_columns": [
+            [
+              16,
+              0,
+              0,
+              0
+            ],
+            [
+              16,
+              0,
+              0,
+              0
+            ],
+            [
+              16,
+              0,
+              0,
+              0
+            ],
+            [
+              16,
+              0,
+              0,
+              0
+            ]
+          ],
+          "class_counts": [
+            16,
+            16,
+            16,
+            16
+          ],
+          "recall": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "recall_ci95": [
+            [
+              0.8063923194655637,
+              1.0
+            ],
+            [
+              0.0,
+              0.1936076805344365
+            ],
+            [
+              0.0,
+              0.1936076805344365
+            ],
+            [
+              0.0,
+              0.1936076805344365
+            ]
+          ],
+          "accuracy": 0.25,
+          "balanced_accuracy": 0.25,
+          "chance_accuracy": 0.25,
+          "macro_ovr_auc": 0.5016276041666666,
+          "per_class_ovr_auc": [
+            0.4856770833333333,
+            0.5026041666666666,
+            0.5078125,
+            0.5104166666666666
+          ],
+          "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+          "unique_base_groups": 64,
+          "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+        },
+        "D24": {
+          "n": 64,
+          "classes": 4,
+          "confusion_true_rows_pred_columns": [
+            [
+              16,
+              0,
+              0,
+              0
+            ],
+            [
+              16,
+              0,
+              0,
+              0
+            ],
+            [
+              16,
+              0,
+              0,
+              0
+            ],
+            [
+              16,
+              0,
+              0,
+              0
+            ]
+          ],
+          "class_counts": [
+            16,
+            16,
+            16,
+            16
+          ],
+          "recall": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "recall_ci95": [
+            [
+              0.8063923194655637,
+              1.0
+            ],
+            [
+              0.0,
+              0.1936076805344365
+            ],
+            [
+              0.0,
+              0.1936076805344365
+            ],
+            [
+              0.0,
+              0.1936076805344365
+            ]
+          ],
+          "accuracy": 0.25,
+          "balanced_accuracy": 0.25,
+          "chance_accuracy": 0.25,
+          "macro_ovr_auc": 0.5001627604166667,
+          "per_class_ovr_auc": [
+            0.4837239583333333,
+            0.5091145833333334,
+            0.5260416666666666,
+            0.4817708333333333
+          ],
+          "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+          "unique_base_groups": 64,
+          "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+        }
+      },
+      "rank": [
+        0.25,
+        0.5050048828125
+      ],
+      "predictions": "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\WorkingMemory\\AttentionContextComparator\\SingleTaskMotion\\runs\\scratch_motion_20260915_194230\\validation_3200\\predictions.jsonl",
+      "predictions_sha256": "bcf4dbd4a01df601cf94718d22abb74179ff91715e1c14a0b64f02aa9ab065c9",
+      "episodes": 256,
+      "checkpoint": "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\WorkingMemory\\AttentionContextComparator\\SingleTaskMotion\\runs\\scratch_motion_20260915_194230\\training\\checkpoint_003200.pt",
+      "worker_seconds": 12.716391801834106
+    },
+    {
+      "status": "completed",
+      "step": 4000,
+      "cells": {
+        "D0": {
+          "n": 64,
+          "classes": 4,
+          "confusion_true_rows_pred_columns": [
+            [
+              1,
+              0,
+              0,
+              15
+            ],
+            [
+              0,
+              0,
+              0,
+              16
+            ],
+            [
+              2,
+              0,
+              0,
+              14
+            ],
+            [
+              0,
+              0,
+              0,
+              16
+            ]
+          ],
+          "class_counts": [
+            16,
+            16,
+            16,
+            16
+          ],
+          "recall": [
+            0.0625,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "recall_ci95": [
+            [
+              0.01111934476464252,
+              0.28328737570298945
+            ],
+            [
+              0.0,
+              0.1936076805344365
+            ],
+            [
+              0.0,
+              0.1936076805344365
+            ],
+            [
+              0.8063923194655637,
+              1.0
+            ]
+          ],
+          "accuracy": 0.265625,
+          "balanced_accuracy": 0.265625,
+          "chance_accuracy": 0.25,
+          "macro_ovr_auc": 0.5224609374999999,
+          "per_class_ovr_auc": [
+            0.5533854166666666,
+            0.48046875,
+            0.5065104166666666,
+            0.5494791666666666
+          ],
+          "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+          "unique_base_groups": 64,
+          "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+        },
+        "D4": {
+          "n": 64,
+          "classes": 4,
+          "confusion_true_rows_pred_columns": [
+            [
+              0,
+              0,
+              0,
+              16
+            ],
+            [
+              0,
+              0,
+              0,
+              16
+            ],
+            [
+              0,
+              0,
+              0,
+              16
+            ],
+            [
+              0,
+              0,
+              0,
+              16
+            ]
+          ],
+          "class_counts": [
+            16,
+            16,
+            16,
+            16
+          ],
+          "recall": [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "recall_ci95": [
+            [
+              0.0,
+              0.1936076805344365
+            ],
+            [
+              0.0,
+              0.1936076805344365
+            ],
+            [
+              0.0,
+              0.1936076805344365
+            ],
+            [
+              0.8063923194655637,
+              1.0
+            ]
+          ],
+          "accuracy": 0.25,
+          "balanced_accuracy": 0.25,
+          "chance_accuracy": 0.25,
+          "macro_ovr_auc": 0.51806640625,
+          "per_class_ovr_auc": [
+            0.5572916666666666,
+            0.5299479166666666,
+            0.4817708333333333,
+            0.5032552083333334
+          ],
+          "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+          "unique_base_groups": 64,
+          "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+        },
+        "D12": {
+          "n": 64,
+          "classes": 4,
+          "confusion_true_rows_pred_columns": [
+            [
+              0,
+              16,
+              0,
+              0
+            ],
+            [
+              0,
+              16,
+              0,
+              0
+            ],
+            [
+              0,
+              16,
+              0,
+              0
+            ],
+            [
+              0,
+              16,
+              0,
+              0
+            ]
+          ],
+          "class_counts": [
+            16,
+            16,
+            16,
+            16
+          ],
+          "recall": [
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "recall_ci95": [
+            [
+              0.0,
+              0.1936076805344365
+            ],
+            [
+              0.8063923194655637,
+              1.0
+            ],
+            [
+              0.0,
+              0.1936076805344365
+            ],
+            [
+              0.0,
+              0.1936076805344365
+            ]
+          ],
+          "accuracy": 0.25,
+          "balanced_accuracy": 0.25,
+          "chance_accuracy": 0.25,
+          "macro_ovr_auc": 0.5247395833333334,
+          "per_class_ovr_auc": [
+            0.5325520833333334,
+            0.533203125,
+            0.4993489583333333,
+            0.5338541666666666
+          ],
+          "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+          "unique_base_groups": 64,
+          "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+        },
+        "D24": {
+          "n": 64,
+          "classes": 4,
+          "confusion_true_rows_pred_columns": [
+            [
+              0,
+              16,
+              0,
+              0
+            ],
+            [
+              0,
+              16,
+              0,
+              0
+            ],
+            [
+              0,
+              16,
+              0,
+              0
+            ],
+            [
+              0,
+              16,
+              0,
+              0
+            ]
+          ],
+          "class_counts": [
+            16,
+            16,
+            16,
+            16
+          ],
+          "recall": [
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "recall_ci95": [
+            [
+              0.0,
+              0.1936076805344365
+            ],
+            [
+              0.8063923194655637,
+              1.0
+            ],
+            [
+              0.0,
+              0.1936076805344365
+            ],
+            [
+              0.0,
+              0.1936076805344365
+            ]
+          ],
+          "accuracy": 0.25,
+          "balanced_accuracy": 0.25,
+          "chance_accuracy": 0.25,
+          "macro_ovr_auc": 0.5159505208333333,
+          "per_class_ovr_auc": [
+            0.515625,
+            0.5201822916666666,
+            0.482421875,
+            0.5455729166666666
+          ],
+          "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+          "unique_base_groups": 64,
+          "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+        }
+      },
+      "rank": [
+        0.25,
+        0.5203043619791667
+      ],
+      "predictions": "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\WorkingMemory\\AttentionContextComparator\\SingleTaskMotion\\runs\\scratch_motion_20260915_194230\\validation_4000\\predictions.jsonl",
+      "predictions_sha256": "6432821e5e35bc5ae7ad4293200de88cbe7309a3f1c428fbe363b7f21228cb3a",
+      "episodes": 256,
+      "checkpoint": "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\WorkingMemory\\AttentionContextComparator\\SingleTaskMotion\\runs\\scratch_motion_20260915_194230\\training\\checkpoint_004000.pt",
+      "worker_seconds": 12.796565771102905
+    },
+    {
+      "status": "completed",
+      "step": 4800,
+      "cells": {
+        "D0": {
+          "n": 64,
+          "classes": 4,
+          "confusion_true_rows_pred_columns": [
+            [
+              16,
+              0,
+              0,
+              0
+            ],
+            [
+              16,
+              0,
+              0,
+              0
+            ],
+            [
+              16,
+              0,
+              0,
+              0
+            ],
+            [
+              16,
+              0,
+              0,
+              0
+            ]
+          ],
+          "class_counts": [
+            16,
+            16,
+            16,
+            16
+          ],
+          "recall": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "recall_ci95": [
+            [
+              0.8063923194655637,
+              1.0
+            ],
+            [
+              0.0,
+              0.1936076805344365
+            ],
+            [
+              0.0,
+              0.1936076805344365
+            ],
+            [
+              0.0,
+              0.1936076805344365
+            ]
+          ],
+          "accuracy": 0.25,
+          "balanced_accuracy": 0.25,
+          "chance_accuracy": 0.25,
+          "macro_ovr_auc": 0.5110677083333334,
+          "per_class_ovr_auc": [
+            0.53515625,
+            0.4401041666666667,
+            0.5494791666666666,
+            0.51953125
+          ],
+          "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+          "unique_base_groups": 64,
+          "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+        },
+        "D4": {
+          "n": 64,
+          "classes": 4,
+          "confusion_true_rows_pred_columns": [
+            [
+              16,
+              0,
+              0,
+              0
+            ],
+            [
+              16,
+              0,
+              0,
+              0
+            ],
+            [
+              16,
+              0,
+              0,
+              0
+            ],
+            [
+              16,
+              0,
+              0,
+              0
+            ]
+          ],
+          "class_counts": [
+            16,
+            16,
+            16,
+            16
+          ],
+          "recall": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "recall_ci95": [
+            [
+              0.8063923194655637,
+              1.0
+            ],
+            [
+              0.0,
+              0.1936076805344365
+            ],
+            [
+              0.0,
+              0.1936076805344365
+            ],
+            [
+              0.0,
+              0.1936076805344365
+            ]
+          ],
+          "accuracy": 0.25,
+          "balanced_accuracy": 0.25,
+          "chance_accuracy": 0.25,
+          "macro_ovr_auc": 0.5195312499999999,
+          "per_class_ovr_auc": [
+            0.5963541666666666,
+            0.46484375,
+            0.5221354166666666,
+            0.4947916666666667
+          ],
+          "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+          "unique_base_groups": 64,
+          "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+        },
+        "D12": {
+          "n": 64,
+          "classes": 4,
+          "confusion_true_rows_pred_columns": [
+            [
+              16,
+              0,
+              0,
+              0
+            ],
+            [
+              16,
+              0,
+              0,
+              0
+            ],
+            [
+              16,
+              0,
+              0,
+              0
+            ],
+            [
+              16,
+              0,
+              0,
+              0
+            ]
+          ],
+          "class_counts": [
+            16,
+            16,
+            16,
+            16
+          ],
+          "recall": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "recall_ci95": [
+            [
+              0.8063923194655637,
+              1.0
+            ],
+            [
+              0.0,
+              0.1936076805344365
+            ],
+            [
+              0.0,
+              0.1936076805344365
+            ],
+            [
+              0.0,
+              0.1936076805344365
+            ]
+          ],
+          "accuracy": 0.25,
+          "balanced_accuracy": 0.25,
+          "chance_accuracy": 0.25,
+          "macro_ovr_auc": 0.49723307291666663,
+          "per_class_ovr_auc": [
+            0.5006510416666666,
+            0.515625,
+            0.4739583333333333,
+            0.4986979166666667
+          ],
+          "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+          "unique_base_groups": 64,
+          "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+        },
+        "D24": {
+          "n": 64,
+          "classes": 4,
+          "confusion_true_rows_pred_columns": [
+            [
+              16,
+              0,
+              0,
+              0
+            ],
+            [
+              16,
+              0,
+              0,
+              0
+            ],
+            [
+              16,
+              0,
+              0,
+              0
+            ],
+            [
+              16,
+              0,
+              0,
+              0
+            ]
+          ],
+          "class_counts": [
+            16,
+            16,
+            16,
+            16
+          ],
+          "recall": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "recall_ci95": [
+            [
+              0.8063923194655637,
+              1.0
+            ],
+            [
+              0.0,
+              0.1936076805344365
+            ],
+            [
+              0.0,
+              0.1936076805344365
+            ],
+            [
+              0.0,
+              0.1936076805344365
+            ]
+          ],
+          "accuracy": 0.25,
+          "balanced_accuracy": 0.25,
+          "chance_accuracy": 0.25,
+          "macro_ovr_auc": 0.4890950520833333,
+          "per_class_ovr_auc": [
+            0.4947916666666667,
+            0.513671875,
+            0.4583333333333333,
+            0.4895833333333333
+          ],
+          "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+          "unique_base_groups": 64,
+          "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+        }
+      },
+      "rank": [
+        0.25,
+        0.5042317708333334
+      ],
+      "predictions": "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\WorkingMemory\\AttentionContextComparator\\SingleTaskMotion\\runs\\scratch_motion_20260915_194230\\validation_4800\\predictions.jsonl",
+      "predictions_sha256": "b08c650c1dccec633ea799ed4647c536aa635389e202700befa7bf9a15a3043f",
+      "episodes": 256,
+      "checkpoint": "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\WorkingMemory\\AttentionContextComparator\\SingleTaskMotion\\runs\\scratch_motion_20260915_194230\\training\\checkpoint_004800.pt",
+      "worker_seconds": 13.690816402435303
+    }
+  ],
+  "selection": "Maximum [minimum delay balanced accuracy, mean delay macro OVR AUC], then earlier update.",
+  "interpretation": "Scratch single-task acquisition test. Full motion CE per update and absence of other task gradients differ from the five-task optimization trajectory; results do not by themselves identify a gradient-conflict mechanism.",
+  "construction_checks": {
+    "status": "passed",
+    "architecture_version": "attention_context_comparator_scratch_v1",
+    "exact_deterministic_scratch_initialization": true,
+    "initial_model_sha256": "8bacf11efc8b1d35b7f9290fe132059c085c3943f74f9531622eda272c0458f9",
+    "loaded_parent": false,
+    "loaded_model_tensors": 0,
+    "inherited_optimizer_states": 0,
+    "old_comparator_absent": true,
+    "prospective_gamma_absent": true,
+    "only_training_task": "motion_duration_cued",
+    "classes": 4,
+    "canonical_delays": [
+      0,
+      4,
+      12,
+      24
+    ],
+    "canonical_renderer": {
+      "shape": [
+        1,
+        11,
+        3,
+        100,
+        100
+      ],
+      "patches": 4,
+      "cue_frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "moving_frames": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "report_frame": 10,
+      "motion_transitions": 8,
+      "dots_per_patch": 32
+    },
+    "full_bptt_finite": true,
+    "finite_gradient_parameter_count": 117,
+    "non_motion_head_gradients": [],
+    "attention_context_shape": [
+      1,
+      64,
+      13,
+      13
+    ],
+    "priority_shape": [
+      1,
+      1,
+      13,
+      13
+    ],
+    "scheduler_complete_delay_block": true,
+    "updates": 4000,
+    "batch_size": 8,
+    "episodes": 32000,
+    "lineage": {
+      "version": "attention_context_comparator_scratch_v1",
+      "initialization_kind": "full_model_from_scratch",
+      "loaded_parent": false,
+      "loaded_model_tensors": 0,
+      "loaded_optimizer_states": 0,
+      "initial_model_sha256": "8bacf11efc8b1d35b7f9290fe132059c085c3943f74f9531622eda272c0458f9",
+      "seeds": {
+        "global_model": 41973001,
+        "pav_common": 30312,
+        "pav_core": 30313,
+        "recurrent_common": 59311,
+        "recurrent_core": 59312,
+        "spatial_components": 31973001,
+        "spatial_comparison_output": 31973002,
+        "joint_attention": 41973001,
+        "priority_readout": 41973101,
+        "python_numpy_torch": 41973001,
+        "training_stream": 61973001,
+        "task_scheduler": 62973001
+      },
+      "prospective_gamma_absent": true,
+      "comparator": "C_t is concat_heads(sum_j A_t,h,i,j V_t,h,j) before W_O; the learned Conv([R_t-1,H_t]) comparator is absent.",
+      "attended_drive": "U_t=W_O(C_t), identical JointAttention output computation"
+    }
+  },
+  "profile": {
+    "status": "completed",
+    "rows": [
+      {
+        "delay": 0,
+        "loss": 1.4743014574050903,
+        "accuracy": 0.0,
+        "gradient_norm": 8.6288480758667,
+        "clipped": 1,
+        "frames": 11,
+        "seconds": 5.049044132232666,
+        "diagnostics": {
+          "first_field_gradient": 0.00011889230518136173,
+          "attention_gradient_norm": 0.05265121906995773,
+          "priority_gradient_norm": 0.5987789034843445,
+          "source_bias_gradient": 0.0016178821679204702,
+          "locality_gradient": 2.784333992167376e-05
+        },
+        "first_trial_id": "SpatialBattery/train/61973001/motion_duration_cued/0"
+      },
+      {
+        "delay": 4,
+        "loss": 1.517666220664978,
+        "accuracy": 0.125,
+        "gradient_norm": 8.584890365600586,
+        "clipped": 1,
+        "frames": 15,
+        "seconds": 0.7865800857543945,
+        "diagnostics": {},
+        "first_trial_id": "SpatialBattery/train/61973001/motion_duration_cued/8"
+      },
+      {
+        "delay": 12,
+        "loss": 1.439266562461853,
+        "accuracy": 0.125,
+        "gradient_norm": 5.349187850952148,
+        "clipped": 1,
+        "frames": 23,
+        "seconds": 1.1747727394104004,
+        "diagnostics": {},
+        "first_trial_id": "SpatialBattery/train/61973001/motion_duration_cued/16"
+      },
+      {
+        "delay": 24,
+        "loss": 1.409663200378418,
+        "accuracy": 0.125,
+        "gradient_norm": 4.293245315551758,
+        "clipped": 1,
+        "frames": 35,
+        "seconds": 1.7638049125671387,
+        "diagnostics": {},
+        "first_trial_id": "SpatialBattery/train/61973001/motion_duration_cued/24"
+      }
+    ],
+    "mean_update_seconds": 2.19355046749115,
+    "peak_allocated_bytes": 856750080,
+    "peak_reserved_bytes": 968884224,
+    "device": "cuda",
+    "profile_exposure_discarded": true,
+    "worker_seconds": 9.066686630249023
+  },
+  "pinned_updates": 12000,
+  "pinned_episodes": 96000,
+  "pinned_targets": [
+    800,
+    1600,
+    2400,
+    3200,
+    4000,
+    4800,
+    5600,
+    6400,
+    7200,
+    8000,
+    8800,
+    9600,
+    10400,
+    11200,
+    12000
+  ],
+  "exposure_reduced": false,
+  "profile_projection": {
+    "mean_update_seconds": 2.19355046749115,
+    "conservative_update_seconds": 2.9612931311130524,
+    "projected_training_seconds": 11845.17252445221,
+    "evaluation_reporting_reserve_seconds": 900.0,
+    "remaining_seconds": 14384.600399017334
+  },
+  "training": {
+    "status": "completed",
+    "step": 4800,
+    "checkpoint": "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\WorkingMemory\\AttentionContextComparator\\SingleTaskMotion\\runs\\scratch_motion_20260915_194230\\training\\checkpoint_004800.pt",
+    "counts": {
+      "episodes": 38400,
+      "frames": 806400
+    },
+    "cell_counts": {
+      "D0": 9600,
+      "D4": 9600,
+      "D12": 9600,
+      "D24": 9600
+    },
+    "worker_seconds": 1067.2208712100983
+  },
+  "selected_step": 4000,
+  "selected_checkpoint": "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\WorkingMemory\\AttentionContextComparator\\SingleTaskMotion\\runs\\scratch_motion_20260915_194230\\training\\checkpoint_004000.pt",
+  "error": "FileNotFoundError(2, 'No such file or directory')",
+  "wall_seconds": 1677.632392168045,
+  "pre_extension_protocol": {
+    "requested_exposure": {
+      "updates": 4000,
+      "episodes": 32000
+    },
+    "validation_targets": [
+      800,
+      1600,
+      2400,
+      3200,
+      4000
+    ],
+    "pinned_updates": 4000,
+    "pinned_episodes": 32000,
+    "original_deadline_unix": 1789540950.935617
+  },
+  "pre_extension_evaluation": {
+    "selected_step": 800,
+    "selected_checkpoint": "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\WorkingMemory\\AttentionContextComparator\\SingleTaskMotion\\runs\\scratch_motion_20260915_194230\\training\\checkpoint_000800.pt",
+    "selected_test": null,
+    "terminal_test": null
+  },
+  "post_launch_protocol_extension": {
+    "status": "authorized_and_supervised",
+    "authorization": "User explicitly extended the live trajectory post-launch.",
+    "protocol_change": "Total exposure only: 4000 to 12000 optimizer updates.",
+    "original_total_updates": 4000,
+    "original_total_episodes": 32000,
+    "authorized_total_updates": 12000,
+    "authorized_total_episodes": 96000,
+    "original_validation_targets": [
+      800,
+      1600,
+      2400,
+      3200,
+      4000
+    ],
+    "effective_validation_targets": [
+      800,
+      1600,
+      2400,
+      3200,
+      4000,
+      4800,
+      5600,
+      6400,
+      7200,
+      8000,
+      8800,
+      9600,
+      10400,
+      11200,
+      12000
+    ],
+    "extension_validation_targets": [
+      4800,
+      5600,
+      6400,
+      7200,
+      8000,
+      8800,
+      9600,
+      10400,
+      11200,
+      12000
+    ],
+    "preserve_validation_800": true,
+    "restart_or_reset": false,
+    "continuation": "Resume exact indexed checkpoint with model, Adam, RNG, task-local stream and counters restored by the pinned worker.",
+    "original_deadline_unix": 1789540950.935617,
+    "extended_deadline_unix": 1789548150.935617,
+    "original_runtime_seconds": 21600,
+    "extended_total_runtime_seconds": 21600,
+    "deadline_extension_seconds": 7200.0,
+    "source_hashes": {
+      "WorkingMemory/AttentionContextComparator/SingleTaskMotion/protocol.py": "3db9aee915fea273c88fca01fb9b7c138f91d8cd8ab1ec698f3e2a75d8b1ce68",
+      "WorkingMemory/AttentionContextComparator/SingleTaskMotion/worker.py": "98d6bd411eb3e29da93c32754da37a18ae6f579137edf534d2945e87359789e3",
+      "WorkingMemory/AttentionContextComparator/SingleTaskMotion/check.py": "a09034078d096d342b5c1e7c107364e3f9ccdf74a736076a30374d4e670f290a",
+      "WorkingMemory/AttentionContextComparator/SingleTaskMotion/run.py": "763b318d3992307c98259939e8ded828830d96856356dbefec5197ff44907a13",
+      "WorkingMemory/AttentionContextComparator/model.py": "3b71e8f0b1b34f8b3b80aa4b100023242fe1c77d791dfc02e9fe350a4b64b0cb",
+      "WorkingMemory/SpatialPriorityReadout/model.py": "524e5bc0bec45d85d116167c5ffd136e54bec8315f0c30a3a06f4d5c5bc24755",
+      "WorkingMemory/PreUpdateAttention/model.py": "816f0d46e35926429560aaf98f592ecc3a06ef8c5b120defd98bd806432d5b2d",
+      "WorkingMemory/SpatialTaskBattery/stimuli.py": "16b7efd4575eba27b9a79329243dcce0da635008856687a9e62bda72b5ddeb37",
+      "WorkingMemory/UnbiasedAttention/protocol.py": "0e89cbf61bd7430a1b39d52f536d63414b546b6ea057a972af54b3e2f3344c22",
+      "WorkingMemory/TrainingExposure/protocol.py": "407432b0ba020a43b5ef681fb613f1ebaa63ba011a815dbd941ad51780ec1f88",
+      "PreAttentiveVision/evaluate_multitask.py": "24339f53ba77af81535bde37b858c28c3de3f0b18649f0e11b3c520f53a95268"
+    },
+    "extension_supervisor_sha256": "645291bd3a742eaf289d9c0e21cafc230e2b172a32a27e01c096d7e9569b4081",
+    "recorded_unix": 1789533293.4048352
+  }
+}

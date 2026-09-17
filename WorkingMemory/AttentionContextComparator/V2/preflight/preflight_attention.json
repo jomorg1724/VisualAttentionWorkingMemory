@@ -1,0 +1,311 @@
+{
+  "status": "completed",
+  "checkpoint": "WorkingMemory/AttentionContextComparator/SingleTaskMotion/runs/scratch_motion_20260915_194230/training/checkpoint_003200.pt",
+  "checkpoint_sha256": "a761578394c8fe512cf84b08a388190275e22ce335c32281c2b243fe849f5447",
+  "checkpoint_step": 3200,
+  "checkpoint_training": "scratch v1, motion_duration_cued only, 25,600 episodes",
+  "task": "motion_duration_cued",
+  "condition": "D0 (cue present through evidence, report frame 10 blank)",
+  "evaluation_stream": {
+    "seed": 63973001,
+    "split": "val"
+  },
+  "geometry": {
+    "cell_px": 7.6923076923076925,
+    "patch_cells": "cell centers within the 11.5 px aperture of the cued patch",
+    "cue_cells": "cell centers within 0.75 cell of the 14 px cue ring, excluding patch cells"
+  },
+  "trained_checkpoint": {
+    "model": "v1 local scratch motion-only step 3200",
+    "trials": 64,
+    "query_timesteps": 704,
+    "locality_by_head": [
+      4.023272514343262,
+      4.02679967880249
+    ],
+    "source_bias": [
+      [
+        2.013705253601074,
+        -0.013703570701181889
+      ],
+      [
+        2.0098791122436523,
+        -0.009882424026727676
+      ]
+    ],
+    "distance_bins_cells": [
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.5
+      ],
+      [
+        1.5,
+        2.5
+      ],
+      [
+        2.5,
+        3.5
+      ],
+      [
+        3.5,
+        6.5
+      ],
+      [
+        6.5,
+        99.0
+      ]
+    ],
+    "mass_by_head_source_bin": [
+      [
+        [
+          0.828096563165838,
+          0.05554737827994607,
+          2.9653008162065153e-07,
+          2.5371841326914744e-14,
+          8.30008991574022e-23,
+          0.0
+        ],
+        [
+          0.10904074798930775,
+          0.007314274256879633,
+          3.90460002108739e-08,
+          3.3408707386922004e-15,
+          1.0929248454694052e-23,
+          0.0
+        ]
+      ],
+      [
+        [
+          0.8275432586669922,
+          0.055311907421458854,
+          2.9214896296087484e-07,
+          2.4647887503100166e-14,
+          7.922866843026523e-23,
+          0.0
+        ],
+        [
+          0.10980455441908403,
+          0.007339164614677429,
+          3.876437982729509e-08,
+          3.2704508835533245e-15,
+          1.0512596794388259e-23,
+          0.0
+        ]
+      ]
+    ],
+    "mass_beyond_3_by_head_source": [
+      [
+        1.580046476654031e-17,
+        2.0805445290280765e-18
+      ],
+      [
+        1.5242807872094363e-17,
+        2.0225160042997816e-18
+      ]
+    ],
+    "mass_beyond_3_by_head": [
+      1.7881009295568388e-17,
+      1.7265323876394144e-17
+    ],
+    "mass_beyond_3_by_phase_by_head": {
+      "cue_evidence": [
+        1.7880991247991388e-17,
+        1.726531343887878e-17
+      ],
+      "report": [
+        1.7880991247991388e-17,
+        1.7265312446262044e-17
+      ]
+    },
+    "patch_query_to_cue_key_mass_by_head_source": [
+      [
+        0.02012017233805223,
+        0.002649350261146372
+      ],
+      [
+        0.020034669475121933,
+        0.0026583424346013503
+      ]
+    ],
+    "patch_query_to_patch_key_mass_by_head_source": [
+      [
+        0.8634074818004261,
+        0.11369026790965688
+      ],
+      [
+        0.8627051440152255,
+        0.11446985331448642
+      ]
+    ],
+    "cue_query_to_patch_key_mass_by_head_source": [
+      [
+        0.015090130269527435,
+        0.0019870127805254674
+      ],
+      [
+        0.01502600379965522,
+        0.001993756741285324
+      ]
+    ],
+    "predicted_locality_penalty_at_3_cells_by_head": [
+      36.209452629089355,
+      36.24119710922241
+    ],
+    "predicted_exp_penalty_at_3_cells_by_head": [
+      1.8811980957122806e-16,
+      1.8224183424964393e-16
+    ]
+  },
+  "v2_initialization": {
+    "model": "v2 initialization (all changes)",
+    "trials": 64,
+    "query_timesteps": 704,
+    "locality_by_head": [
+      4.0,
+      0.019999997690320015
+    ],
+    "source_bias": [
+      [
+        2.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ]
+    ],
+    "distance_bins_cells": [
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.5
+      ],
+      [
+        1.5,
+        2.5
+      ],
+      [
+        2.5,
+        3.5
+      ],
+      [
+        3.5,
+        6.5
+      ],
+      [
+        6.5,
+        99.0
+      ]
+    ],
+    "mass_by_head_source_bin": [
+      [
+        [
+          0.8246854435313832,
+          0.056630375710400666,
+          3.242821161496646e-07,
+          3.043625501469197e-14,
+          1.1180830138692668e-22,
+          0.0
+        ],
+        [
+          0.11105192384936592,
+          0.007631880231201649,
+          4.368915669643188e-08,
+          4.102428359191146e-15,
+          1.5064125567994635e-23,
+          0.0
+        ]
+      ],
+      [
+        [
+          0.006833664818920873,
+          0.04552415893836455,
+          0.05693487077951431,
+          0.062075803903016175,
+          0.20929946140809494,
+          0.11739988760514693
+        ],
+        [
+          0.0068813387981869955,
+          0.04586461389606649,
+          0.05738158320838755,
+          0.06257044049826535,
+          0.21096282384612344,
+          0.11827132376757535
+        ]
+      ]
+    ],
+    "mass_beyond_3_by_head_source": [
+      [
+        1.9851421493876406e-17,
+        2.6752466320089756e-18
+      ],
+      [
+        0.3564646135676991,
+        0.359235172921961
+      ]
+    ],
+    "mass_beyond_3_by_head": [
+      2.252666812588538e-17,
+      0.71569978648966
+    ],
+    "mass_beyond_3_by_phase_by_head": {
+      "cue_evidence": [
+        2.2527552938427157e-17,
+        0.7157009601593017
+      ],
+      "report": [
+        2.251780056172322e-17,
+        0.7156885787844658
+      ]
+    },
+    "patch_query_to_cue_key_mass_by_head_source": [
+      [
+        0.020462466742504726,
+        0.002769516548141837
+      ],
+      [
+        0.06464541771195152,
+        0.06515349642458287
+      ]
+    ],
+    "patch_query_to_patch_key_mass_by_head_source": [
+      [
+        0.8604698831384833,
+        0.11615964685651389
+      ],
+      [
+        0.051842665638435974,
+        0.05208907843652097
+      ]
+    ],
+    "cue_query_to_patch_key_mass_by_head_source": [
+      [
+        0.015412537359886548,
+        0.002080032062208788
+      ],
+      [
+        0.050865691070529545,
+        0.05115158881314776
+      ]
+    ],
+    "predicted_locality_penalty_at_3_cells_by_head": [
+      36.0,
+      0.17999997921288013
+    ],
+    "predicted_exp_penalty_at_3_cells_by_head": [
+      2.3195228302435696e-16,
+      0.8352702287741343
+    ]
+  },
+  "wall_seconds": 25.993963718414307,
+  "device": "cuda",
+  "interpretation": "Forward-only measurement; no training. Mass beyond 3 cells is the fraction of each query's attention placed on keys more than 3 grid cells away, averaged over queries, timesteps and trials. Sources are the current sensory bank (0) and the previous memory bank (1)."
+}

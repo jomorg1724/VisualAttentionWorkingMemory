@@ -1,0 +1,105 @@
+{
+  "status": "passed",
+  "version": "dual_attention_spatial_priority_scratch_v1",
+  "exact_post_shapes": {
+    "query": [
+      2,
+      169,
+      64
+    ],
+    "key": [
+      2,
+      507,
+      64
+    ],
+    "value": [
+      2,
+      507,
+      64
+    ],
+    "weights": [
+      2,
+      1,
+      169,
+      507
+    ],
+    "priority_field": [
+      2,
+      64,
+      13,
+      13
+    ]
+  },
+  "finite_forward_backward": true,
+  "output_loss_gradient_norms": {
+    "pre_q": 6.9809316300961655e-06,
+    "pre_k": 8.172432899300475e-06,
+    "pre_v": 0.002090641064569354,
+    "post_q": 6.538163870573044e-05,
+    "post_k": 5.7369335991097614e-05,
+    "post_v": 0.018857084214687347
+  },
+  "isolated_path_gradient_norms": {
+    "pre_q": 1.2450374015315901e-05,
+    "pre_k": 1.2513899491750635e-05,
+    "pre_v": 0.0005883983103558421,
+    "post_q": 0.00010740166180767119,
+    "post_k": 0.00010374136763857678,
+    "post_v": 0.005669771693646908
+  },
+  "decoder_terminal_input_only": "P_T",
+  "decoder_signature": [
+    "priority_field",
+    "task"
+  ],
+  "priority_weights_normalized": true,
+  "loaded_parent": false,
+  "loaded_model_tensors": 0,
+  "loaded_optimizer_states": 0,
+  "optimizer_state_empty": true,
+  "deterministic_scratch_initialization": true,
+  "shared_control_tensor_count": 119,
+  "all_shared_tensors_exact_reconstructed_control": true,
+  "all_shared_tensors_exact_control_checkpoint0": false,
+  "checkpoint_equality_required": false,
+  "control_checkpoint_sha256": "97b7e6ce513592fc094724854ea1d4d329c93fd1ae0d86aa20ed50e4fd653f76",
+  "prospective_gamma_absent": true,
+  "old_comparator_absent": true,
+  "global_pooling_absent": true,
+  "total_parameters": 549344,
+  "trainable_parameters": 549344,
+  "initial_model_sha256": "ef93f8461596c485acb1ac8689d96ab0e2b9cdfc1b8f090b0598fd3bb5ff773f",
+  "updates": 4000,
+  "episodes": 160000,
+  "validation_targets": [
+    800,
+    1600,
+    2400,
+    3200,
+    4000
+  ],
+  "lineage": {
+    "version": "dual_attention_spatial_priority_scratch_v1",
+    "initialization_kind": "full_model_from_scratch",
+    "loaded_parent": false,
+    "loaded_model_tensors": 0,
+    "loaded_optimizer_states": 0,
+    "initial_model_sha256": "ef93f8461596c485acb1ac8689d96ab0e2b9cdfc1b8f090b0598fd3bb5ff773f",
+    "seeds": {
+      "global_model": 41973001,
+      "pav_common": 30312,
+      "pav_core": 30313,
+      "recurrent_common": 59311,
+      "recurrent_core": 59312,
+      "spatial_components": 31973001,
+      "spatial_comparison_output": 31973002,
+      "dual_attention": 41973301,
+      "priority_decoder": 41973201,
+      "python_numpy_torch": 41973001,
+      "training_stream": 61973001,
+      "task_scheduler": 62973001
+    },
+    "prospective_gamma_absent": true,
+    "architecture": "One-head width-64 pre attention produces raw C and W_O_pre(C) memory drive; unchanged spatial E/I update; one-head width-64 post attention queries R over [C,H,R]; terminal P alone enters the convolutional task-specific spatial-softmax priority decoder."
+  }
+}

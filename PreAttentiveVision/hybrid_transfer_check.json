@@ -1,0 +1,57 @@
+{
+  "status": "passed",
+  "cpu_only": true,
+  "parent_step": 756,
+  "checks": "All inherited parameter tensors and Adam states exactly match by name; new parameter states absent; one synthetic-gradient Adam update matches exact control; branch identity checks separately supplied by model owner",
+  "arms": [
+    {
+      "arm": "convnext_grn",
+      "parent_parameter_names": 96,
+      "inherited_adam_states": 96,
+      "new_parameter_names": [],
+      "new_state_keys": [],
+      "transfer": "Original tensors and compatible Adam states by exact parameter name; no inherited state assigned to new parameters"
+    },
+    {
+      "arm": "convnext_gabor_residual",
+      "parent_parameter_names": 96,
+      "inherited_adam_states": 96,
+      "new_parameter_names": [
+        "encoder.gabor_alpha",
+        "encoder.gabor_norm.norm.weight",
+        "encoder.gabor_norm.norm.bias",
+        "encoder.gabor_projection.weight",
+        "encoder.gabor_projection.bias"
+      ],
+      "new_state_keys": [
+        "encoder.gabor_alpha",
+        "encoder.gabor_frontend.real",
+        "encoder.gabor_frontend.imag",
+        "encoder.gabor_blur.kernel",
+        "encoder.gabor_norm.norm.weight",
+        "encoder.gabor_norm.norm.bias",
+        "encoder.gabor_projection.weight",
+        "encoder.gabor_projection.bias"
+      ],
+      "transfer": "Original tensors and compatible Adam states by exact parameter name; no inherited state assigned to new parameters"
+    },
+    {
+      "arm": "convnext_se_residual",
+      "parent_parameter_names": 96,
+      "inherited_adam_states": 96,
+      "new_parameter_names": [
+        "encoder.se_reduce.weight",
+        "encoder.se_reduce.bias",
+        "encoder.se_expand.weight",
+        "encoder.se_expand.bias"
+      ],
+      "new_state_keys": [
+        "encoder.se_reduce.weight",
+        "encoder.se_reduce.bias",
+        "encoder.se_expand.weight",
+        "encoder.se_expand.bias"
+      ],
+      "transfer": "Original tensors and compatible Adam states by exact parameter name; no inherited state assigned to new parameters"
+    }
+  ]
+}

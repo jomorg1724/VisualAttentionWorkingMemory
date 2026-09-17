@@ -1,0 +1,77 @@
+{
+  "status": "user_stopped_partial",
+  "experiment": "prospective_query_v1",
+  "supervisor_wall_seconds": 3708.4280214309692,
+  "target": {
+    "updates": 4000,
+    "episodes": 160000,
+    "terminal_step": 12400
+  },
+  "logged_endpoint": {
+    "step": 9430,
+    "additional_updates": 1030,
+    "fresh_episodes": 41200,
+    "frames": 865104,
+    "fraction_of_target": 0.2575,
+    "loss": 0.625168713927269,
+    "composite_accuracy": 0.575,
+    "gradient_norm_preclip": 1.7071372270584106,
+    "clipped": true,
+    "gamma": -0.018503211438655853,
+    "gamma_gradient_preclip": 0.00006542560004163533
+  },
+  "durable_endpoint": {
+    "checkpoint": "prospective_query/training/checkpoint_009216.pt",
+    "checkpoint_sha256": "c1fc95c30296ed97eb4637865f9d658409c58aa5c3b21547eb4d03592bed8258",
+    "step": 9216,
+    "additional_updates": 816,
+    "fresh_episodes": 32640,
+    "frames": 685440,
+    "fraction_of_target": 0.204,
+    "gamma": -0.018505895510315895
+  },
+  "logged_but_not_checkpointed": {
+    "updates": 214,
+    "episodes": 8560
+  },
+  "completed_validations": [
+    9200
+  ],
+  "validation_9200": {
+    "examples": 1836,
+    "exactly_paired_with_historical_control": true,
+    "prospective_rank": [
+      -0.026041666666666668,
+      0.6421557248635761
+    ],
+    "control_rank": [
+      -0.1015625,
+      0.6186005306879421
+    ],
+    "primary_motion_duration_normalized_ba": -0.026041666666666668,
+    "primary_motion_duration_mean_auc": 0.49462890625,
+    "interpretation": "The primary cued motion-duration failure was not improved at the only completed matched validation. Orientation and binding improved, recognition was mixed and weaker at load 24, and Krauzlis motion remained at chance."
+  },
+  "rolling_logged_endpoint": {
+    "last_20_mean_loss": 0.6733755150833167,
+    "last_100_mean_loss": 0.6721324982729274,
+    "last_256_mean_loss": 0.6867597554605709,
+    "last_100_composite_accuracy": 0.59075,
+    "last_100_mean_gradient_norm_preclip": 1.963708719611168,
+    "last_100_clip_fraction": 0.89
+  },
+  "termination": {
+    "requested": true,
+    "worker_returncode": -15,
+    "budget_status": "failed",
+    "semantic_status": "user_stopped_partial",
+    "no_final_heldout_evaluation": true,
+    "no_checkpoint_selection": true
+  },
+  "artifacts": {
+    "retrieval_verified_files": 29,
+    "retrieval_receipt": "WorkingMemory/ProspectiveQuery/runs/prospective_20260914_175602/retrieval_receipt.json",
+    "cleanup_receipt": "WorkingMemory/ProspectiveQuery/runs/prospective_20260914_175602/cleanup_receipt.json",
+    "validation_report": "WorkingMemory/ProspectiveQuery/runs/prospective_20260914_175602/validation_9200_report.md"
+  }
+}

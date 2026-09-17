@@ -1,0 +1,219 @@
+{
+  "kind": "profile",
+  "arm": "control_10",
+  "config": {
+    "cells": {
+      "single_D0": {
+        "family": "orientation_single",
+        "condition": {
+          "delay": 0,
+          "spacing": "mixed"
+        }
+      },
+      "single_D4": {
+        "family": "orientation_single",
+        "condition": {
+          "delay": 4,
+          "spacing": "mixed"
+        }
+      },
+      "single_D12": {
+        "family": "orientation_single",
+        "condition": {
+          "delay": 12,
+          "spacing": "mixed"
+        }
+      },
+      "single_D24": {
+        "family": "orientation_single",
+        "condition": {
+          "delay": 24,
+          "spacing": "mixed"
+        }
+      },
+      "binding_D0": {
+        "family": "orientation_binding",
+        "condition": {
+          "delay": 0,
+          "spacing": "mixed"
+        }
+      },
+      "binding_D4": {
+        "family": "orientation_binding",
+        "condition": {
+          "delay": 4,
+          "spacing": "mixed"
+        }
+      },
+      "binding_D12": {
+        "family": "orientation_binding",
+        "condition": {
+          "delay": 12,
+          "spacing": "mixed"
+        }
+      },
+      "binding_D24": {
+        "family": "orientation_binding",
+        "condition": {
+          "delay": 24,
+          "spacing": "mixed"
+        }
+      },
+      "motion_D0": {
+        "family": "motion_direction",
+        "condition": {
+          "delay": 0,
+          "spacing": "mixed"
+        }
+      },
+      "motion_D24": {
+        "family": "motion_direction",
+        "condition": {
+          "delay": 24,
+          "spacing": "mixed"
+        }
+      }
+    },
+    "cycle": [
+      "single_D0",
+      "single_D0",
+      "single_D0",
+      "single_D0",
+      "single_D0",
+      "single_D0",
+      "single_D0",
+      "single_D0",
+      "single_D0",
+      "single_D4",
+      "single_D4",
+      "single_D4",
+      "single_D4",
+      "single_D4",
+      "single_D4",
+      "single_D4",
+      "single_D4",
+      "single_D4",
+      "single_D12",
+      "single_D12",
+      "single_D12",
+      "single_D12",
+      "single_D12",
+      "single_D12",
+      "single_D12",
+      "single_D12",
+      "single_D12",
+      "single_D24",
+      "single_D24",
+      "single_D24",
+      "single_D24",
+      "single_D24",
+      "single_D24",
+      "single_D24",
+      "single_D24",
+      "single_D24",
+      "binding_D0",
+      "binding_D0",
+      "binding_D0",
+      "binding_D0",
+      "binding_D0",
+      "binding_D0",
+      "binding_D0",
+      "binding_D0",
+      "binding_D0",
+      "binding_D4",
+      "binding_D4",
+      "binding_D4",
+      "binding_D4",
+      "binding_D4",
+      "binding_D4",
+      "binding_D4",
+      "binding_D4",
+      "binding_D4",
+      "binding_D12",
+      "binding_D12",
+      "binding_D12",
+      "binding_D12",
+      "binding_D12",
+      "binding_D12",
+      "binding_D12",
+      "binding_D12",
+      "binding_D12",
+      "binding_D24",
+      "binding_D24",
+      "binding_D24",
+      "binding_D24",
+      "binding_D24",
+      "binding_D24",
+      "binding_D24",
+      "binding_D24",
+      "binding_D24",
+      "motion_D0",
+      "motion_D0",
+      "motion_D0",
+      "motion_D0",
+      "motion_D24",
+      "motion_D24",
+      "motion_D24",
+      "motion_D24"
+    ],
+    "batch_size": 8,
+    "train_seed": 32973001,
+    "scheduler_seed": 33973001,
+    "model_seed": 41973001,
+    "new_lr": 0.0003,
+    "parent_lr": 3e-05,
+    "adam_eps": 1e-10,
+    "weight_decay": 0.0001,
+    "clip": 1.0,
+    "activation_checkpoint": true
+  },
+  "out": "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\WorkingMemory\\TrainingExposure\\runs\\exposure_20260913_163542\\profile",
+  "result": "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\WorkingMemory\\TrainingExposure\\runs\\exposure_20260913_163542\\job_000_result.json",
+  "deadline": 1789356764.4010413,
+  "parent": "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\WorkingMemory\\PreUpdateAttention\\runs\\attention_20260913_143459\\retrieved\\remote_results\\preupdate_attention\\checkpoint_008400.pt",
+  "parent_sha256": "e37602aa20ccfc400ea8fe9d98c11f29c508069388897c55803b97f2ccdf1bc9",
+  "source_hashes": {
+    "WorkingMemory/RecurrentComparison/model.py": "4de3e509d44d183694d871e06dd17aeb1e3355a963f6e9c5617089f5db27404d",
+    "WorkingMemory/RecurrentComparison/train.py": "1516e1a58863596cbb0ac0bb4b166c0a809e20a92e4f510a091d48b807e70d0c",
+    "WorkingMemory/RecurrentComparison/sweep.py": "a484e864513994deeda02d9d6dc8b72e443c203f2c5182498b5e3ed94c8bd4bb",
+    "WorkingMemory/RecurrentComparison/evaluate.py": "2b252145c90986a3b36cebdf3ec02972bf4b023d134849ce00b1539817fe0aa2",
+    "WorkingMemory/model.py": "012c538178b0bf5d61141625bc97dbfe6fdeda36722f68f6efcc692a461a48d3",
+    "WorkingMemory/train.py": "83c6b1121a11913916326284ad3056b95c3366efa74b3d9c21b73dd75f3b7eda",
+    "WorkingMemory/sweep.py": "7249060574272e169c89337dc02d8246ca1725492f7cc29990bcd437092d5203",
+    "WorkingMemory/evaluate.py": "46399d0134e569ff1da02e0fb58cb82b3db7e2bc2a855fa7adbcc462901f5a48",
+    "WorkingMemory/stimuli.py": "c5a6c6d1c2aa38e3b418e09a9d6c03bd022112d5ece4b5384c5336d9f592c127",
+    "PreAttentiveVision/models.py": "9d326177efac6aea8049aa9ca42d1a7109b34d44b02081185f3ae2d308b0e488",
+    "PreAttentiveVision/hybrid_models.py": "094a013c709f91d7f2354b0ad644db79f4dab2c1e7369b6b6d1f2412b29fa928",
+    "PreAttentiveVision/decoder.py": "234e2cd36845ce11a6f04e61dfd1c63d8168c58718eb2260fc5a3386f089c776",
+    "PreAttentiveVision/TemporalIntegration/accumulators.py": "93706e822f9d0114f544392736bb4ef830cdbe2fc580034e48c0495658f333d7",
+    "PreAttentiveVision/neuroscience_stimuli.py": "f4d3ed226b8bb4945753127651b037b0994715752258f283d10ca98c06eb8e87",
+    "PreAttentiveVision/natural_stimuli.py": "d0f5930e863b1b1997251bad5f5315e675b6d84eec5887727fdbf4025065b452",
+    "PreAttentiveVision/evaluate.py": "504d265ecc60d6cba0dec8eccabdcc3d6e862f45bf5f61f453c7e88db5ee0566",
+    "PreAttentiveVision/evaluate_multitask.py": "24339f53ba77af81535bde37b858c28c3de3f0b18649f0e11b3c520f53a95268",
+    "PreAttentiveVision/train.py": "3085e85ba8b1791846cde9a2938f819a9b899d1deff1234aed39517192ea7cdf",
+    "WorkingMemory/RecurrentComparison/ReadoutRefit/train.py": "04c79e7be652856ca49a125fd2ba08bcf51f556f55ff481dd3e293dff80c48ea",
+    "WorkingMemory/RecurrentComparison/ReadoutRefit/sweep.py": "ac9f200425eabcd70e92283dc2505c0fdd7b19e93418beb9f4e2fe415e564986",
+    "WorkingMemory/RecurrentComparison/Retention/train.py": "24ac4600b0ae273a4ae7ccf3515f91df502fbec4bfab91445e7ddcf1bc5cbe5e",
+    "WorkingMemory/RecurrentComparison/Retention/sweep.py": "0811b9632d6998748d1363fb6d74c551ef31da61748cb9360f2175001fbbc51d",
+    "WorkingMemory/RecurrentComparison/Retention/protocol.py": "b6abcbe080e104a64ff729bf44d1e65d2546c8ff5ab4f48b80bbfcbd56989ba3",
+    "WorkingMemory/SpatialComparison/model.py": "6e0830f494b28e08b242075d511988aa8395677ac169ea9fcf73a7d1d32881b7",
+    "WorkingMemory/SpatialComparison/train.py": "90193f3c522e76b5c92e3f2834224a8a1049e9d998aa81c061a981f93cab6024",
+    "WorkingMemory/SpatialComparison/sweep.py": "481ca26bd54a4d52a8776ca0f6264472712924978f536b5c77029454b559bda5",
+    "WorkingMemory/SpatialComparison/stimuli.py": "abbf467e3ed435df56a8a8ad5a305bf427bb05e03f4baeb0e847b1c812813bd4",
+    "WorkingMemory/PreUpdateAttention/model.py": "816f0d46e35926429560aaf98f592ecc3a06ef8c5b120defd98bd806432d5b2d",
+    "WorkingMemory/PreUpdateAttention/train.py": "5ce36442e3eecdaa8ae6850d630ccf50e21986368cb1ec92b9763da6361f315b",
+    "WorkingMemory/PreUpdateAttention/remote_sweep.py": "7fe86901208a041e20f3d72f5e44c7a2e8cb8133dfdd0ddcdf1f8b2d9da56b48",
+    "WorkingMemory/TrainingExposure/model.py": "9d569ab7e3afa8eef27e88baea59f7b17c590bd0ce08db47c09d3b37c0a3e393",
+    "WorkingMemory/TrainingExposure/protocol.py": "407432b0ba020a43b5ef681fb613f1ebaa63ba011a815dbd941ad51780ec1f88",
+    "WorkingMemory/TrainingExposure/worker.py": "43a92a02c21ee7a72d720d5e0e300260a701cf3c01d69b4821d01b248476f32e",
+    "WorkingMemory/TrainingExposure/sweep.py": "5b65b6a5c4e40bfd3bb406bf5accbd10f3b17cbcaf5e6fa34be0ca4ea45adf03"
+  },
+  "profile_names": [
+    "binding_D24",
+    "single_D24",
+    "motion_D24",
+    "binding_D0",
+    "single_D0",
+    "motion_D0"
+  ]
+}

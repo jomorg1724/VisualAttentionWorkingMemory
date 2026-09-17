@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "C:\Users\jomor\Documents\VisualAttentionWorkingMemory\WorkingMemory\SelectiveMaintenance\sweep.py", line 75, in <module>
+    if __name__=='__main__':run(sys.argv[1])
+  File "C:\Users\jomor\Documents\VisualAttentionWorkingMemory\WorkingMemory\SelectiveMaintenance\sweep.py", line 65, in run
+    v=launch('eval',arm,root/f'{arm}_val_{target:06d}',checkpoint=cp,split='val',eval_seed=45973001,n=128,heldout_locations=False);record['validation'].append(v)
+  File "C:\Users\jomor\Documents\VisualAttentionWorkingMemory\WorkingMemory\SelectiveMaintenance\sweep.py", line 30, in launch
+    p=subprocess.Popen([sys.executable,'-X','utf8','-B',str(HERE/'train.py'),str(job)],cwd=ROOT,stdout=f,stderr=subprocess.STDOUT);ledger['active']=dict(pid=p.pid,arm=arm,kind=kind,log=str(log));publish()
+  File "C:\Users\jomor\Documents\VisualAttentionWorkingMemory\WorkingMemory\SelectiveMaintenance\sweep.py", line 25, in publish
+    def publish():write(root/'budget.json',ledger);write(root/'aggregate.json',agg);write(HERE/'results.json',agg)
+  File "C:\Users\jomor\Documents\VisualAttentionWorkingMemory\PreAttentiveVision\train.py", line 22, in write
+    tmp=path.with_suffix(path.suffix+'.tmp');tmp.write_text(json.dumps(obj,indent=2,allow_nan=False),encoding='utf-8');os.replace(tmp,path)
+PermissionError: [WinError 5] Access is denied: 'C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\WorkingMemory\\SelectiveMaintenance\\results.json.tmp' -> 'C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\WorkingMemory\\SelectiveMaintenance\\results.json'

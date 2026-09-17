@@ -1,0 +1,327 @@
+{
+  "arm": "attention_context_comparator_v2",
+  "version": "attention_context_comparator_v2",
+  "base_version": "attention_context_comparator_scratch_v1",
+  "initialization_kind": "full_model_and_optimizer_from_scratch",
+  "v2_changes": {
+    "A": true,
+    "B": true,
+    "C": true,
+    "D": true,
+    "E": true
+  },
+  "learning_rates": {
+    "new_lr": 0.0003,
+    "parent_lr": 0.0003
+  },
+  "requested_exposure": {
+    "updates": 12000,
+    "episodes": 480000
+  },
+  "validation_targets": [
+    800,
+    1600,
+    2400,
+    3200,
+    4000,
+    4800,
+    5600,
+    6400,
+    7200,
+    8000,
+    8800,
+    9600,
+    10400,
+    11200,
+    12000
+  ],
+  "gate_step": 2400,
+  "validation_n_per_cell": 64,
+  "test_n_per_cell": 256,
+  "config": {
+    "cells": {
+      "orientation_cued_D0": {
+        "task": "orientation_cued",
+        "condition": {
+          "delay": 0
+        }
+      },
+      "orientation_cued_D4": {
+        "task": "orientation_cued",
+        "condition": {
+          "delay": 4
+        }
+      },
+      "orientation_cued_D12": {
+        "task": "orientation_cued",
+        "condition": {
+          "delay": 12
+        }
+      },
+      "orientation_cued_D24": {
+        "task": "orientation_cued",
+        "condition": {
+          "delay": 24
+        }
+      },
+      "motion_duration_cued_D0": {
+        "task": "motion_duration_cued",
+        "condition": {
+          "delay": 0
+        }
+      },
+      "motion_duration_cued_D4": {
+        "task": "motion_duration_cued",
+        "condition": {
+          "delay": 4
+        }
+      },
+      "motion_duration_cued_D12": {
+        "task": "motion_duration_cued",
+        "condition": {
+          "delay": 12
+        }
+      },
+      "motion_duration_cued_D24": {
+        "task": "motion_duration_cued",
+        "condition": {
+          "delay": 24
+        }
+      },
+      "spatial_binding_D0": {
+        "task": "spatial_binding",
+        "condition": {
+          "delay": 0
+        }
+      },
+      "spatial_binding_D4": {
+        "task": "spatial_binding",
+        "condition": {
+          "delay": 4
+        }
+      },
+      "spatial_binding_D12": {
+        "task": "spatial_binding",
+        "condition": {
+          "delay": 12
+        }
+      },
+      "spatial_binding_D24": {
+        "task": "spatial_binding",
+        "condition": {
+          "delay": 24
+        }
+      },
+      "image_recognition_N0_H3": {
+        "task": "image_recognition",
+        "condition": {
+          "load": 0,
+          "probe_hold": 3
+        }
+      },
+      "image_recognition_N0_H4": {
+        "task": "image_recognition",
+        "condition": {
+          "load": 0,
+          "probe_hold": 4
+        }
+      },
+      "image_recognition_N0_H5": {
+        "task": "image_recognition",
+        "condition": {
+          "load": 0,
+          "probe_hold": 5
+        }
+      },
+      "image_recognition_N4_H3": {
+        "task": "image_recognition",
+        "condition": {
+          "load": 4,
+          "probe_hold": 3
+        }
+      },
+      "image_recognition_N4_H4": {
+        "task": "image_recognition",
+        "condition": {
+          "load": 4,
+          "probe_hold": 4
+        }
+      },
+      "image_recognition_N4_H5": {
+        "task": "image_recognition",
+        "condition": {
+          "load": 4,
+          "probe_hold": 5
+        }
+      },
+      "image_recognition_N12_H3": {
+        "task": "image_recognition",
+        "condition": {
+          "load": 12,
+          "probe_hold": 3
+        }
+      },
+      "image_recognition_N12_H4": {
+        "task": "image_recognition",
+        "condition": {
+          "load": 12,
+          "probe_hold": 4
+        }
+      },
+      "image_recognition_N12_H5": {
+        "task": "image_recognition",
+        "condition": {
+          "load": 12,
+          "probe_hold": 5
+        }
+      },
+      "image_recognition_N24_H3": {
+        "task": "image_recognition",
+        "condition": {
+          "load": 24,
+          "probe_hold": 3
+        }
+      },
+      "image_recognition_N24_H4": {
+        "task": "image_recognition",
+        "condition": {
+          "load": 24,
+          "probe_hold": 4
+        }
+      },
+      "image_recognition_N24_H5": {
+        "task": "image_recognition",
+        "condition": {
+          "load": 24,
+          "probe_hold": 5
+        }
+      },
+      "krauzlis_B12": {
+        "task": "krauzlis_cued_motion",
+        "condition": {
+          "baseline_transitions": 12
+        }
+      },
+      "krauzlis_B20": {
+        "task": "krauzlis_cued_motion",
+        "condition": {
+          "baseline_transitions": 20
+        }
+      },
+      "krauzlis_B28": {
+        "task": "krauzlis_cued_motion",
+        "condition": {
+          "baseline_transitions": 28
+        }
+      }
+    },
+    "cycle": [
+      "orientation_cued_D0",
+      "orientation_cued_D4",
+      "orientation_cued_D12",
+      "orientation_cued_D24",
+      "motion_duration_cued_D0",
+      "motion_duration_cued_D4",
+      "motion_duration_cued_D12",
+      "motion_duration_cued_D24",
+      "spatial_binding_D0",
+      "spatial_binding_D4",
+      "spatial_binding_D12",
+      "spatial_binding_D24",
+      "image_recognition_N0_H3",
+      "image_recognition_N0_H4",
+      "image_recognition_N0_H5",
+      "image_recognition_N4_H3",
+      "image_recognition_N4_H4",
+      "image_recognition_N4_H5",
+      "image_recognition_N12_H3",
+      "image_recognition_N12_H4",
+      "image_recognition_N12_H5",
+      "image_recognition_N24_H3",
+      "image_recognition_N24_H4",
+      "image_recognition_N24_H5",
+      "krauzlis_B12",
+      "krauzlis_B20",
+      "krauzlis_B28"
+    ],
+    "batch_size": 8,
+    "train_seed": 61973001,
+    "scheduler_seed": 62973001,
+    "model_seed": 41973001,
+    "new_lr": 0.0003,
+    "parent_lr": 0.0003,
+    "adam_eps": 1e-10,
+    "weight_decay": 0.0001,
+    "clip": 1.0,
+    "activation_checkpoint": true,
+    "battery": "spatial",
+    "updates": 12000,
+    "task_classes": {
+      "orientation_cued": 2,
+      "motion_duration_cued": 4,
+      "krauzlis_cued_motion": 2,
+      "spatial_binding": 2,
+      "image_recognition": 2
+    },
+    "train_names": {
+      "orientation_cued": [
+        "orientation_cued_D0",
+        "orientation_cued_D4",
+        "orientation_cued_D12",
+        "orientation_cued_D24"
+      ],
+      "motion_duration_cued": [
+        "motion_duration_cued_D0",
+        "motion_duration_cued_D4",
+        "motion_duration_cued_D12",
+        "motion_duration_cued_D24"
+      ],
+      "spatial_binding": [
+        "spatial_binding_D0",
+        "spatial_binding_D4",
+        "spatial_binding_D12",
+        "spatial_binding_D24"
+      ],
+      "image_recognition": [
+        "image_recognition_N0_H3",
+        "image_recognition_N0_H4",
+        "image_recognition_N0_H5",
+        "image_recognition_N4_H3",
+        "image_recognition_N4_H4",
+        "image_recognition_N4_H5",
+        "image_recognition_N12_H3",
+        "image_recognition_N12_H4",
+        "image_recognition_N12_H5",
+        "image_recognition_N24_H3",
+        "image_recognition_N24_H4",
+        "image_recognition_N24_H5"
+      ],
+      "krauzlis_cued_motion": [
+        "krauzlis_B12",
+        "krauzlis_B20",
+        "krauzlis_B28"
+      ]
+    },
+    "v2_changes": {
+      "A": true,
+      "B": true,
+      "C": true,
+      "D": true,
+      "E": true
+    }
+  },
+  "profile_projection": {
+    "mean_update_seconds": 6.510179042816162,
+    "projected_training_hours_to_gate": 4.340119361877441,
+    "projected_training_hours_full": 21.700596809387207,
+    "peak_allocated_gb": 1.05053696,
+    "remaining_hours": 39.983063188460136
+  },
+  "platform": {
+    "python": "3.10.6",
+    "torch": "1.13.1+cu117",
+    "platform": "Windows-10-10.0.22621-SP0",
+    "device": "cuda",
+    "gpu": "NVIDIA GeForce RTX 3070 Laptop GPU"
+  }
+}

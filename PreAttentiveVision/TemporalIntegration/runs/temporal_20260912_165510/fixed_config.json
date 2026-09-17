@@ -1,0 +1,81 @@
+{
+  "models": [
+    "spatial_kda",
+    "convgru",
+    "opponent"
+  ],
+  "task_classes": {
+    "motion_direction": 4,
+    "orientation": 2,
+    "contrast": 2,
+    "spatial_frequency": 2,
+    "chromatic_increment": 2,
+    "contour": 2,
+    "natural_spectrum": 2
+  },
+  "batch_size": 32,
+  "seeds": [
+    30301
+  ],
+  "budget_seconds": 7200.0,
+  "parent_checkpoint": "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\PreAttentiveVision\\runs\\allocation_20260912_160414\\contour_focus_seed20271\\checkpoint_002268.pt",
+  "parent_sha256": "31dc0f4b6a2ef7706e5f724837281a80787cb53462a57011be5ac48279b69ba2",
+  "parent_step": 2268,
+  "engineering_criterion": "At least.95balanced accuracy on EVERYtask; ambitious engineering target, not guaranteed horizon",
+  "updates": 4032,
+  "targets": [
+    1008,
+    2016,
+    3024,
+    4032
+  ],
+  "training_pairs_per_arm": 129024,
+  "training_pairs_per_task": {
+    "motion_direction": 10752,
+    "orientation": 10752,
+    "contrast": 10752,
+    "spatial_frequency": 10752,
+    "chromatic_increment": 10752,
+    "contour": 64512,
+    "natural_spectrum": 10752
+  },
+  "training_derived_seeds": {
+    "motion_direction": 410004,
+    "orientation": 510007,
+    "contrast": 610010,
+    "spatial_frequency": 710013,
+    "chromatic_increment": 810016,
+    "contour": 910019,
+    "natural_spectrum": 1010022
+  },
+  "val_pairs_per_task": 224,
+  "test_pairs_per_task": 448,
+  "recipe": {
+    "batch_size": 32,
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "grad_clip": 5.0,
+    "fp32": true,
+    "amp": false,
+    "task_classes": {
+      "motion_direction": 4,
+      "orientation": 2,
+      "contrast": 2,
+      "spatial_frequency": 2,
+      "chromatic_increment": 2,
+      "contour": 2,
+      "natural_spectrum": 2
+    },
+    "decoder": "current_plus_causal_state_v1",
+    "optimizer": "Adam",
+    "common_seed": 30312,
+    "core_seed": 30313,
+    "train_base_seed": 310001,
+    "training_recipe": "Same focused12cycle for all three; frozenencoder, freshprojection/core/readout; task-local streams310001+100003*(index+1)",
+    "sampler_protocol": "task_local_allocation_v1",
+    "checkpoint_selection": "Highest minimum task BA, then mean task OVR-AUC; exact ties earliest checkpoint",
+    "decision_rule": "Fixed argmax for every task; no test tuning"
+  },
+  "estimated_remaining_seconds": 3473.9410000038333,
+  "uncertainty": "1000 source-photo-cluster or generated-pair bootstrap replicates per normal task; paired intervals versus pair reference; diagnostic repetitions not independent samples"
+}

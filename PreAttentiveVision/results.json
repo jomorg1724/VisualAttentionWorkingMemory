@@ -1,0 +1,246 @@
+{
+  "status": "user_stopped",
+  "config": {
+    "models": [
+      "aa_resnet",
+      "convnext_grn",
+      "inceptionnext",
+      "mobilenet_se",
+      "vone_resnet"
+    ],
+    "batch_size": 32,
+    "budget_seconds": 3600,
+    "seeds": [
+      20261
+    ],
+    "updates": 1536,
+    "training_pairs_per_model_seed": 49152,
+    "val_pairs_per_family": 200,
+    "test_pairs_per_family": 800,
+    "recipe": {
+      "batch_size": 32,
+      "lr": 0.001,
+      "weight_decay": 0.0001,
+      "grad_clip": 5.0,
+      "fp32": true,
+      "amp": false,
+      "loss": "equal-family mean episode crossentropy",
+      "input_normalization": "(x-.5)/.5",
+      "decoder": "symmetric_multiscale_v1",
+      "decoder_seed_offset": 500000,
+      "engineering_goal": "macro validation BA>=.90 and each family BA>=.85; heuristic goal, no earlystop; locked test confirmation reported"
+    },
+    "estimated_remaining_seconds": 2968.1013997248374,
+    "selection": "Checkpoint highest macro validation AUC; exact ties earlieststep. One validation-calibrated common threshold. All final test comparisons shown; test not used to extend training.",
+    "profiling": "32 fresh profiling updates/model, separate preserved states, all charged to hard budget",
+    "uncertainty": "Natural CIFAR source-image cluster bootstrap; procedural pair bootstrap; macro averages independent family bootstrap replicates; training seeds reported separately."
+  },
+  "profiles": {
+    "aa_resnet": {
+      "status": "completed",
+      "step": 32,
+      "checkpoint": "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\PreAttentiveVision\\runs\\benchmark_20260912_135139\\profiles\\aa_resnet\\checkpoint_000032.pt",
+      "worker_seconds": 8.405999999959022,
+      "fresh_pairs": 1024,
+      "train_step_median": 0.2029999999795109,
+      "train_step_p90": 0.27649999998975544,
+      "eval_batch_median": 0.2654999999795109,
+      "peak_vram_bytes": 982891008,
+      "encoder_params": 479160,
+      "decoder_params": 160898,
+      "total_params": 640058,
+      "trainable_params": 640058,
+      "profiling_updates": 32,
+      "profiling_inference_pairs": 256
+    },
+    "convnext_grn": {
+      "status": "completed",
+      "step": 32,
+      "checkpoint": "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\PreAttentiveVision\\runs\\benchmark_20260912_135139\\profiles\\convnext_grn\\checkpoint_000032.pt",
+      "worker_seconds": 11.562000000150874,
+      "fresh_pairs": 1024,
+      "train_step_median": 0.32849999994505197,
+      "train_step_p90": 0.375,
+      "eval_batch_median": 0.21850000007543713,
+      "peak_vram_bytes": 1113567232,
+      "encoder_params": 262032,
+      "decoder_params": 160898,
+      "total_params": 422930,
+      "trainable_params": 422930,
+      "profiling_updates": 32,
+      "profiling_inference_pairs": 256
+    },
+    "inceptionnext": {
+      "status": "completed",
+      "step": 32,
+      "checkpoint": "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\PreAttentiveVision\\runs\\benchmark_20260912_135139\\profiles\\inceptionnext\\checkpoint_000032.pt",
+      "worker_seconds": 7.734999999869615,
+      "fresh_pairs": 1024,
+      "train_step_median": 0.18799999984912574,
+      "train_step_p90": 0.23020000001415608,
+      "eval_batch_median": 0.26599999994505197,
+      "peak_vram_bytes": 833354240,
+      "encoder_params": 245574,
+      "decoder_params": 160898,
+      "total_params": 406472,
+      "trainable_params": 406472,
+      "profiling_updates": 32,
+      "profiling_inference_pairs": 256
+    },
+    "mobilenet_se": {
+      "status": "completed",
+      "step": 32,
+      "checkpoint": "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\PreAttentiveVision\\runs\\benchmark_20260912_135139\\profiles\\mobilenet_se\\checkpoint_000032.pt",
+      "worker_seconds": 9.327999999979511,
+      "fresh_pairs": 1024,
+      "train_step_median": 0.2190000000409782,
+      "train_step_p90": 0.3279999999795109,
+      "eval_batch_median": 0.2734999998938292,
+      "peak_vram_bytes": 1265768448,
+      "encoder_params": 329730,
+      "decoder_params": 160898,
+      "total_params": 490628,
+      "trainable_params": 490628,
+      "profiling_updates": 32,
+      "profiling_inference_pairs": 256
+    },
+    "vone_resnet": {
+      "status": "completed",
+      "step": 32,
+      "checkpoint": "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\PreAttentiveVision\\runs\\benchmark_20260912_135139\\profiles\\vone_resnet\\checkpoint_000032.pt",
+      "worker_seconds": 9.514999999897555,
+      "fresh_pairs": 1024,
+      "train_step_median": 0.2190000000409782,
+      "train_step_p90": 0.3452000001445412,
+      "eval_batch_median": 0.24249999993480742,
+      "peak_vram_bytes": 1104005120,
+      "encoder_params": 489528,
+      "decoder_params": 160898,
+      "total_params": 650426,
+      "trainable_params": 650426,
+      "profiling_updates": 32,
+      "profiling_inference_pairs": 256
+    }
+  },
+  "runs": [
+    {
+      "model": "aa_resnet",
+      "seed": 20261,
+      "status": "user_stopped",
+      "step": 512,
+      "best_step": 512,
+      "train_pairs": 16384,
+      "training_seconds": 158.1588065624237,
+      "val_curve": [
+        {
+          "step": 512,
+          "macro_auc": 0.999975,
+          "macro_balanced_accuracy": 0.99875,
+          "summary": "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\PreAttentiveVision\\runs\\benchmark_20260912_135139\\aa_resnet_seed20261\\eval_val_000512\\summary.json"
+        }
+      ],
+      "test": null,
+      "checkpoint": "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\PreAttentiveVision\\runs\\benchmark_20260912_135139\\aa_resnet_seed20261\\checkpoint_000512.pt",
+      "best_auc": 0.999975,
+      "best_checkpoint": "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\PreAttentiveVision\\runs\\benchmark_20260912_135139\\aa_resnet_seed20261\\checkpoint_000512.pt",
+      "calibration": {
+        "threshold": 0.054847490042448044,
+        "macro_balanced_accuracy": 0.99875,
+        "rule": "Maximize equal-family validation BA; exact ties choose largest threshold. One common threshold across all tasks."
+      },
+      "stop_progress": {
+        "logged_updates": 512,
+        "logged_pairs": 16384,
+        "last_checkpoint": "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\PreAttentiveVision\\runs\\benchmark_20260912_135139\\aa_resnet_seed20261\\checkpoint_000512.pt"
+      },
+      "interpretation": "Obsolete stimulus-protocol diagnostic only; no result for the requested Krauzlis-grounded task."
+    },
+    {
+      "model": "convnext_grn",
+      "seed": 20261,
+      "status": "user_stopped",
+      "step": 512,
+      "best_step": 512,
+      "train_pairs": 16384,
+      "training_seconds": 171.1805694103241,
+      "val_curve": [
+        {
+          "step": 512,
+          "macro_auc": 0.99565,
+          "macro_balanced_accuracy": 0.985,
+          "summary": "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\PreAttentiveVision\\runs\\benchmark_20260912_135139\\convnext_grn_seed20261\\eval_val_000512\\summary.json"
+        }
+      ],
+      "test": null,
+      "checkpoint": "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\PreAttentiveVision\\runs\\benchmark_20260912_135139\\convnext_grn_seed20261\\checkpoint_000512.pt",
+      "best_auc": 0.99565,
+      "best_checkpoint": "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\PreAttentiveVision\\runs\\benchmark_20260912_135139\\convnext_grn_seed20261\\checkpoint_000512.pt",
+      "calibration": {
+        "threshold": 0.8473383188247681,
+        "macro_balanced_accuracy": 0.985,
+        "rule": "Maximize equal-family validation BA; exact ties choose largest threshold. One common threshold across all tasks."
+      },
+      "stop_progress": {
+        "logged_updates": 512,
+        "logged_pairs": 16384,
+        "last_checkpoint": "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\PreAttentiveVision\\runs\\benchmark_20260912_135139\\convnext_grn_seed20261\\checkpoint_000512.pt"
+      },
+      "interpretation": "Obsolete stimulus-protocol diagnostic only; no result for the requested Krauzlis-grounded task."
+    },
+    {
+      "model": "inceptionnext",
+      "seed": 20261,
+      "status": "user_stopped",
+      "step": 0,
+      "best_step": null,
+      "train_pairs": 0,
+      "training_seconds": 0.0,
+      "val_curve": [],
+      "test": null,
+      "stop_progress": {
+        "logged_updates": 386,
+        "logged_pairs": 12352,
+        "last_checkpoint": "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\PreAttentiveVision\\runs\\benchmark_20260912_135139\\inceptionnext_seed20261\\checkpoint_000256.pt"
+      },
+      "interpretation": "Obsolete stimulus-protocol diagnostic only; no result for the requested Krauzlis-grounded task."
+    },
+    {
+      "model": "mobilenet_se",
+      "seed": 20261,
+      "status": "not_started",
+      "step": 0,
+      "best_step": null,
+      "train_pairs": 0,
+      "training_seconds": 0.0,
+      "val_curve": [],
+      "test": null,
+      "stop_progress": {
+        "logged_updates": 0,
+        "logged_pairs": 0,
+        "last_checkpoint": null
+      },
+      "interpretation": "Obsolete stimulus-protocol diagnostic only; no result for the requested Krauzlis-grounded task."
+    },
+    {
+      "model": "vone_resnet",
+      "seed": 20261,
+      "status": "not_started",
+      "step": 0,
+      "best_step": null,
+      "train_pairs": 0,
+      "training_seconds": 0.0,
+      "val_curve": [],
+      "test": null,
+      "stop_progress": {
+        "logged_updates": 0,
+        "logged_pairs": 0,
+        "last_checkpoint": null
+      },
+      "interpretation": "Obsolete stimulus-protocol diagnostic only; no result for the requested Krauzlis-grounded task."
+    }
+  ],
+  "stop_reason": "User requested immediate stop: moving-dot task must be grounded in Krauzlis experiments; arbitrary two-frame displacement task is not the requested protocol. No replacement run authorized here.",
+  "wall_seconds": 542.223769903183,
+  "stop_receipt": "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\PreAttentiveVision\\runs\\benchmark_20260912_135139\\exit.json",
+  "run_root": "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\PreAttentiveVision\\runs\\benchmark_20260912_135139"
+}

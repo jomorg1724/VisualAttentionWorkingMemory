@@ -1,0 +1,42 @@
+{
+  "status": "completed",
+  "analysis_only": true,
+  "result": "diagnostic_results.json",
+  "result_sha256": "b764c19667fdd93a4ce6aedcd2f6d8981c0119f5a33a3b926e7afc388e786ebd",
+  "frozen_checkpoint": "WorkingMemory/SpatialTaskBattery/BiasedTraining/runs/biased_20260913_194506/retrieved/biased_results/spatial_biased/training/checkpoint_010000.pt",
+  "frozen_checkpoint_sha256": "35281f264131e01678ab5725a5b66816d47302583f78b9751f775f18adf22942",
+  "paired_cue": {
+    "independent_base_movies": 32,
+    "paired_presentations": 64,
+    "prediction_changes": 15,
+    "prediction_change_rate": 0.46875,
+    "prediction_change_rate_wilson_95": [
+      0.30869387108068835,
+      0.6355048288102536
+    ],
+    "original_accuracy": 0.21875,
+    "counterfactual_accuracy": 0.34375,
+    "mean_original_correct_probability": 0.24941036198288202,
+    "mean_counterfactual_correct_probability": 0.24920014664530754,
+    "mean_routing_absolute_change": 0.0003545265171851497,
+    "maximum_routing_absolute_change": 0.6363705992698669,
+    "pairing": "Motion schedules, dots, nuisance draws and all pixels outside the union of the two valid cue rings are identical.",
+    "interpretation": "Changing only the valid cue altered routing and the predicted class in 15/32 paired movies, demonstrating cue sensitivity in the frozen baseline. Accuracy and correct-class probability remained near chance, so this does not demonstrate successful use of the cue-duration rule."
+  },
+  "sensory_probe": {
+    "train_base_episodes": 256,
+    "validation_base_episodes": 64,
+    "test_base_episodes": 128,
+    "patch_examples_per_base_episode": 4,
+    "selected_ridge_penalty": 100.0,
+    "validation_accuracy": 0.3125,
+    "test_accuracy": 0.259765625,
+    "test_target_patch_accuracy": 0.234375,
+    "test_foil_patch_accuracy": 0.2682291666666667,
+    "chance_accuracy": 0.25,
+    "representation": "Frozen final moving-frame 64-channel sensory field, local 3x3 mean at each patch center before global pooling.",
+    "split_control": "Independent base episodes by split, train-only standardization and validation-only ridge selection.",
+    "interpretation": "Held-out linear decoding is effectively at chance, providing no evidence that this particular local final-frame feature summary exposes longest-duration direction. Probe failure does not establish absence from all sensory states or nonlinear representations."
+  },
+  "immutability": "The checkpoint SHA256 was verified before and after diagnostics; no model weights were updated."
+}

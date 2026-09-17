@@ -1,0 +1,49 @@
+{
+  "status": "passed",
+  "seconds": 1.080021858215332,
+  "parent_sha256": "e37602aa20ccfc400ea8fe9d98c11f29c508069388897c55803b97f2ccdf1bc9",
+  "parent_version": "spatial_preupdate_joint_attention_v1",
+  "parent_step": 8400,
+  "retained_tensors_exact": 138,
+  "retained_adam_states_exact": 123,
+  "new_tensors": [
+    "attention.gamma",
+    "readout.heads.image_recognition.bias",
+    "readout.heads.image_recognition.weight",
+    "readout.heads.krauzlis_cued_motion.bias",
+    "readout.heads.krauzlis_cued_motion.weight",
+    "readout.heads.motion_duration_cued.bias",
+    "readout.heads.motion_duration_cued.weight",
+    "readout.heads.orientation_cued.bias",
+    "readout.heads.orientation_cued.weight",
+    "readout.heads.spatial_binding.bias",
+    "readout.heads.spatial_binding.weight"
+  ],
+  "total_parameters": 557677,
+  "gamma_initial": 0.0,
+  "gamma_gradient_at_zero": 1.9900609254837036,
+  "gamma_zero_query_max_abs_error": 0.0,
+  "gamma_zero_attention_output_max_abs_error": 0.0,
+  "gamma_zero_full_model_output_max_abs_error": 0.0,
+  "changed_sensory_query_max_abs_change": 0.12569020688533783,
+  "changed_sensory_routing_max_abs_change": 0.029035985469818115,
+  "remigration_refused": true,
+  "wrong_parent_hash_refused": true,
+  "fixed_exposure": {
+    "updates": 4000,
+    "episodes_per_update": 40,
+    "episodes": 160000
+  },
+  "recipe_exact_biased_training": true,
+  "fresh_heads_exact_biased_training": true,
+  "source_bias_exact": true,
+  "locality_exact": true,
+  "newest_indexed_checkpoint_at_10000": "checkpoint_010000.pt",
+  "matched_historical_control_validation_steps": [
+    9200,
+    10000,
+    10800,
+    11600
+  ],
+  "terminal_and_heldout_label": "unmatched_exploratory"
+}

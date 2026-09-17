@@ -1,0 +1,19 @@
+# Ordered two-frame task implementation
+
+Current status: the user subsequently authorized the seven-task comparison; it completed all five encoders and held-out tests. See [the execution report](runs/multitask_20260912_141316/report.md) and [exit receipt](runs/multitask_20260912_141316/exit.json). The original symmetric benchmark remains stopped and preserved.
+
+The sections below retain the initial motion-only implementation design and provisional budget discussion; their pre-launch wording is historical, superseded by the completed run records.
+
+The authorized motion target is four cardinal directions from exactly two RGB100Ã—100 images. Grounding and stimulus details belong in the stimulus document; two observations are a restricted motion measurement, not a recreation of an extended motion-direction-change trial.
+
+Each independent encoder supplies three spatial fields (24Ã—50Ã—50, 48Ã—25Ã—25, 96Ã—13Ã—13) for both ordered frames. The common decoder projects each scale to32 channels with one shared projection, then combines signed second-minus-first features, absolute differences, means, products and25 ordered local correlation offsets (dy,dx eachâˆ’2â€¦2). Channel-normalized correlation matches first-frame location(x,y) to second-frame(x+dx,y+dy), with zero padding rather than wraparound. Local3Ã—3 convolutions reduce each stage to32 channels; alignment to13Ã—13 and fusion to64 channels precede mean/max pooling and an MLP128. Defined tasks receive separate final linear outputs; motion receives four logits. Task identity selects the readout and is not inserted as a feature. No raw image or metadata bypass reaches the decoder.
+
+The first symmetric decoder cannot identify direction because its output is invariant under exchanging frames. The new signed interactions and ordered displacement channels remove that invariance. They provide an inductive bias; passing the focused shift/gradient check is not evidence that the trained model acquires the task or matches a neural mechanism.
+
+Files: `decoder_multitask.py`, `evaluate_multitask.py`, `train_multitask.py`. The focused CPU check is `python -B -m PreAttentiveVision.test_decoder_multitask`; it passed with CUDA hidden. No new GPU profile or training has executed.
+
+The worker takes one explicit JSON job with absolute deadline, configuration, pinned source hashes, output path and job kind. It preserves model/AdamW/sampler/RNG state, immutable checkpoints and scores. A future sequential supervisor must enforce one physical GPU worker and the same hard deadline. The worker cannot create or renew a budget. Task iteration is deterministic round-robin; checkpoint targets must be multiples of the final number of tasks if equal per-task exposure is desired. Fresh procedural streams and common seeds pair corresponding draws across encoder runs.
+
+Evaluation uses fixed argmax, task-specific confusion matrices, per-class recall, macro recall (balanced accuracy), and one-versus-rest AUC. Four-way chance accuracy is25%; binary chance is50%. Bootstrap uncertainty resamples source-image clusters if present and generated pairs otherwise, conditional on the trained model. No test scores select training duration or model weights. Binary hit/false-alarm summaries are produced only for binary heads; four-way outputs are not forced into a binary sensitivity index.
+
+The original3600s cap has542.2238s conservatively charged (including stop bookkeeping), leaving **3057.7762s**. This is an available remaining compute allowance, not an acquisition horizon or a new authorization. A provisional one-seed, equal1024updatesÃ—32pairs/model option may fit; the ordered correlation decoder and final data generator need a short charged throughput profile before choosing the actual fixed all-five budget. No launch occurs until the task set is finalized. Profiling, training and evaluation must all fit the remaining allowance; no automatic extension is allowed.

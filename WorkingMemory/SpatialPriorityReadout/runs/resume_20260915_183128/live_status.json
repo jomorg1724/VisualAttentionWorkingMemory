@@ -1,0 +1,131 @@
+{
+  "status": "live",
+  "checked_unix": 1789529856.2879086,
+  "pod_id": "vsvke9kks981cm",
+  "gpu": "NVIDIA RTX A4500, 20470, 1, 0, 23.68",
+  "remote_total_metric_rows": 1600,
+  "latest": {
+    "step": 3200,
+    "episodes": 128000,
+    "frames_total": 2688128,
+    "loss": 0.6881266049109399,
+    "accuracy": 0.6,
+    "gradient_norm": 0.2313823401927948,
+    "seconds": 2.113304615020752
+  },
+  "rolling": {
+    "20": {
+      "updates": 20,
+      "step_start": 3181,
+      "step_end": 3200,
+      "mean_loss": 0.791193810442928,
+      "mean_accuracy": 0.4862499999999999,
+      "mean_gradient_norm": 0.5237637042999268,
+      "mean_update_seconds": 2.418948781490326
+    },
+    "100": {
+      "updates": 100,
+      "step_start": 3101,
+      "step_end": 3200,
+      "mean_loss": 0.8261175543513386,
+      "mean_accuracy": 0.4929999999999999,
+      "mean_gradient_norm": 2.976697486191988,
+      "mean_update_seconds": 2.402571747303009
+    },
+    "256": {
+      "updates": 256,
+      "step_start": 2945,
+      "step_end": 3200,
+      "mean_loss": 0.8082198913669738,
+      "mean_accuracy": 0.48837890624999974,
+      "mean_gradient_norm": 1.6914258596370928,
+      "mean_update_seconds": 2.401998900808394
+    }
+  },
+  "budget_status": "failed",
+  "active": null,
+  "validations": [
+    {
+      "file": "validation_2400_result.json",
+      "step": 2400,
+      "status": "completed",
+      "rank": [
+        0.0,
+        0.49738103647905196
+      ],
+      "task_scores": {
+        "image_recognition": {
+          "normalized_ba": 0.024305555555555556,
+          "mean_auc": 0.5444607204861112
+        },
+        "krauzlis_cued_motion": {
+          "normalized_ba": 0.0,
+          "mean_auc": 0.5583095335237318
+        },
+        "motion_duration_cued": {
+          "normalized_ba": 0.0,
+          "mean_auc": 0.48990885416666674
+        },
+        "orientation_cued": {
+          "normalized_ba": 0.0,
+          "mean_auc": 0.456787109375
+        },
+        "spatial_binding": {
+          "normalized_ba": 0.0,
+          "mean_auc": 0.43743896484375
+        }
+      }
+    }
+  ],
+  "checkpoints": [
+    {
+      "file": "checkpoint_001600.pt",
+      "step": 1600,
+      "sha256": "72db47dc6adc837d081909a590978935185583e2f7e9628dbc639e9206acea20"
+    },
+    {
+      "file": "checkpoint_001792.pt",
+      "step": 1792,
+      "sha256": "aefd2d2241bfe07c1f0d691ba3677ef3c2ee2e10e4dd1014bbdd89a58babf0ee"
+    },
+    {
+      "file": "checkpoint_002048.pt",
+      "step": 2048,
+      "sha256": "7048ba8f289b87a6481d94d467ff79c56ad2b5f516d203ca0888f5bf4d429a3c"
+    },
+    {
+      "file": "checkpoint_002304.pt",
+      "step": 2304,
+      "sha256": "fe154f33897c2ea394fe144401bb25373269c6f0ce00add21d71e19b8268ef1c"
+    },
+    {
+      "file": "checkpoint_002400.pt",
+      "step": 2400,
+      "sha256": "b3e19ae553651b63b74ccde74d6c0672feb6a971d8215b6bc436f972720ce7dd"
+    },
+    {
+      "file": "checkpoint_002560.pt",
+      "step": 2560,
+      "sha256": "ab9a7eb45ebddad7b739c9ad54a7a259612353b06c287c8302bc27dccc578d3f"
+    },
+    {
+      "file": "checkpoint_002816.pt",
+      "step": 2816,
+      "sha256": "995be72085cccba3559459dd07ac3642fcbcebc2e0a6fbf0c1b27ae264e88ef8"
+    },
+    {
+      "file": "checkpoint_003072.pt",
+      "step": 3072,
+      "sha256": "76baa6477fcdd5100a15de5433f31105994dfec6c63eafaac70ff0ba99ce9e81"
+    },
+    {
+      "file": "checkpoint_003200.pt",
+      "step": 3200,
+      "sha256": "f796f5fb6d681b09a6ec62714b486f091c2f1302ba2b2fc2e6aea14b39afaef5"
+    }
+  ],
+  "deadline_unix": 1789560600.0,
+  "seconds_to_deadline": 30743.712091445923,
+  "cadence_seconds": 45,
+  "cleanup_owner": "Detached lifecycle retrieves, hash-verifies, stops, and deletes the ephemeral pod."
+}

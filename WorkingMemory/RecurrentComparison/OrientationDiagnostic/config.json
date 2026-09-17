@@ -1,0 +1,40 @@
+{
+  "version": "orientation_frozen_v1",
+  "samples": {
+    "train": 2048,
+    "val": 512,
+    "test": 512
+  },
+  "delays": [
+    0,
+    4,
+    12,
+    24
+  ],
+  "seed": 27973001,
+  "budget_seconds": 1800,
+  "batch": 8,
+  "parent": "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\WorkingMemory\\RecurrentComparison\\Retention\\runs\\retention_20260913_084433\\retention\\checkpoint_014800.pt",
+  "parent_sha256": "b8ffa90c9e23b662ec3b16b3de2cb56ca9488b60d05a096aa5675f9081c588bc",
+  "ridge_lambdas": [
+    0.0001,
+    0.01,
+    1.0
+  ],
+  "mlp": {
+    "hidden": 64,
+    "epochs": 150,
+    "validation_every": 10,
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "loss": "MSE: axial vector regression or one-hot classification"
+  },
+  "angle_mlp_trigger_val_mae_degrees": 3.75,
+  "source_hashes": {
+    "WorkingMemory\\RecurrentComparison\\OrientationDiagnostic\\run.py": "26ae13882467a885a63dbbc35d888a1a7d14af914d0e0d94eeaa994df06b2d47",
+    "WorkingMemory\\RecurrentComparison\\OrientationDiagnostic\\supervise.py": "5622cde7121da65fe143a28a6fd6756838b70281f305276aada172c8ee7bc49e",
+    "WorkingMemory\\stimuli.py": "c5a6c6d1c2aa38e3b418e09a9d6c03bd022112d5ece4b5384c5336d9f592c127",
+    "WorkingMemory\\RecurrentComparison\\model.py": "4de3e509d44d183694d871e06dd17aeb1e3355a963f6e9c5617089f5db27404d",
+    "WorkingMemory\\model.py": "012c538178b0bf5d61141625bc97dbfe6fdeda36722f68f6efcc692a461a48d3"
+  }
+}

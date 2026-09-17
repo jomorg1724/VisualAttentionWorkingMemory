@@ -1,0 +1,77 @@
+{
+  "status": "armed_verified",
+  "pod_id": "629g1utqkk8non",
+  "remote_root": "/workspace/vawm_dual_attention_resume_800",
+  "authorization": "post-hoc user-authorized extension motivated by fair scratch-vs-trained comparison",
+  "trajectory": {
+    "old_target_step": 4000,
+    "new_target_step": 12000,
+    "same_live_worker_preserved": true,
+    "model_optimizer_rng_stream_counters_reset": false
+  },
+  "handoff": {
+    "old_supervisor_pid": 465,
+    "old_supervisor_alive": false,
+    "extension_supervisor_pid": 4107,
+    "extension_supervisor_alive": true,
+    "active_worker_pid": 3108,
+    "active_worker_alive": true,
+    "active_job": "train_3200",
+    "active_job_checkpoint_step": 2400,
+    "verified_metric_step": 3016
+  },
+  "continuity": {
+    "metric_first_step": 1,
+    "metric_last_step": 3016,
+    "metric_rows": 3016,
+    "metric_steps_continuous": true,
+    "metric_steps_unique": true,
+    "checkpoint_steps_unique": true,
+    "prior_validations_retained": [
+      800,
+      1600,
+      2400
+    ],
+    "scheduled_validations": [
+      3200,
+      4000,
+      4800,
+      5600,
+      6400,
+      7200,
+      8000,
+      8800,
+      9600,
+      10400,
+      11200,
+      12000
+    ]
+  },
+  "deadlines": {
+    "run_deadline_unix": 1789553700.0,
+    "run_deadline_utc": "2026-09-16T10:15:00Z",
+    "cleanup_deadline_unix": 1789554600.0,
+    "cleanup_deadline_utc": "2026-09-16T10:30:00Z",
+    "retrieval_reserve_seconds": 900
+  },
+  "projection": {
+    "observed_train_segments_seconds": [
+      1894.5153884887695,
+      1902.330985546112
+    ],
+    "observed_seconds_per_update": 2.373028983771801,
+    "projected_training_seconds_from_step_2920": 21547.103172647952,
+    "observed_validation_seconds_mean": 38.60176742076874,
+    "remaining_validation_count_from_3200": 12,
+    "final_test_estimate_seconds": 300,
+    "training_contingency_seconds": 1800,
+    "retrieval_reserve_seconds": 900,
+    "gpu_usd_per_hour": 0.22,
+    "projected_finish_unix": 1789550484.3243816,
+    "projected_finish_utc": "2026-09-16T09:21:24.324382+00:00",
+    "projected_gpu_cost_from_creation_usd": 1.7146673733168178,
+    "maximum_gpu_cost_through_cleanup_usd": 1.9661808833307692
+  },
+  "controller_sha256": "12377dabe2bf3ce92e022bb5084e51189873af343dbfa32a9f45812a720a5206",
+  "verified_unix": 1789528407.777739
+}

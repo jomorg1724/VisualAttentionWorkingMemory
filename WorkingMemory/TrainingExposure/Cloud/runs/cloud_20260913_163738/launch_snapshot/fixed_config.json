@@ -1,0 +1,190 @@
+{
+  "arm": "focused_50",
+  "recipe": {
+    "cells": {
+      "single_D0": {
+        "family": "orientation_single",
+        "condition": {
+          "delay": 0,
+          "spacing": "mixed"
+        }
+      },
+      "single_D4": {
+        "family": "orientation_single",
+        "condition": {
+          "delay": 4,
+          "spacing": "mixed"
+        }
+      },
+      "single_D12": {
+        "family": "orientation_single",
+        "condition": {
+          "delay": 12,
+          "spacing": "mixed"
+        }
+      },
+      "single_D24": {
+        "family": "orientation_single",
+        "condition": {
+          "delay": 24,
+          "spacing": "mixed"
+        }
+      },
+      "binding_D0": {
+        "family": "orientation_binding",
+        "condition": {
+          "delay": 0,
+          "spacing": "mixed"
+        }
+      },
+      "binding_D4": {
+        "family": "orientation_binding",
+        "condition": {
+          "delay": 4,
+          "spacing": "mixed"
+        }
+      },
+      "binding_D12": {
+        "family": "orientation_binding",
+        "condition": {
+          "delay": 12,
+          "spacing": "mixed"
+        }
+      },
+      "binding_D24": {
+        "family": "orientation_binding",
+        "condition": {
+          "delay": 24,
+          "spacing": "mixed"
+        }
+      },
+      "motion_D0": {
+        "family": "motion_direction",
+        "condition": {
+          "delay": 0,
+          "spacing": "mixed"
+        }
+      },
+      "motion_D24": {
+        "family": "motion_direction",
+        "condition": {
+          "delay": 24,
+          "spacing": "mixed"
+        }
+      }
+    },
+    "cycle": [
+      "single_D0",
+      "single_D0",
+      "single_D0",
+      "single_D0",
+      "single_D0",
+      "single_D4",
+      "single_D4",
+      "single_D4",
+      "single_D4",
+      "single_D4",
+      "single_D12",
+      "single_D12",
+      "single_D12",
+      "single_D12",
+      "single_D12",
+      "single_D24",
+      "single_D24",
+      "single_D24",
+      "single_D24",
+      "single_D24",
+      "binding_D0",
+      "binding_D0",
+      "binding_D0",
+      "binding_D0",
+      "binding_D0",
+      "binding_D4",
+      "binding_D4",
+      "binding_D4",
+      "binding_D4",
+      "binding_D4",
+      "binding_D12",
+      "binding_D12",
+      "binding_D12",
+      "binding_D12",
+      "binding_D12",
+      "binding_D24",
+      "binding_D24",
+      "binding_D24",
+      "binding_D24",
+      "binding_D24",
+      "motion_D0",
+      "motion_D0",
+      "motion_D0",
+      "motion_D0",
+      "motion_D0",
+      "motion_D0",
+      "motion_D0",
+      "motion_D0",
+      "motion_D0",
+      "motion_D0",
+      "motion_D0",
+      "motion_D0",
+      "motion_D0",
+      "motion_D0",
+      "motion_D0",
+      "motion_D0",
+      "motion_D0",
+      "motion_D0",
+      "motion_D0",
+      "motion_D0",
+      "motion_D24",
+      "motion_D24",
+      "motion_D24",
+      "motion_D24",
+      "motion_D24",
+      "motion_D24",
+      "motion_D24",
+      "motion_D24",
+      "motion_D24",
+      "motion_D24",
+      "motion_D24",
+      "motion_D24",
+      "motion_D24",
+      "motion_D24",
+      "motion_D24",
+      "motion_D24",
+      "motion_D24",
+      "motion_D24",
+      "motion_D24",
+      "motion_D24"
+    ],
+    "batch_size": 8,
+    "train_seed": 32973001,
+    "scheduler_seed": 33973001,
+    "model_seed": 41973001,
+    "new_lr": 0.0003,
+    "parent_lr": 3e-05,
+    "adam_eps": 1e-10,
+    "weight_decay": 0.0001,
+    "clip": 1.0,
+    "activation_checkpoint": true
+  },
+  "parent": "/workspace/vawm_exposure/portable/parent_checkpoint_008400.pt",
+  "parent_sha256": "e37602aa20ccfc400ea8fe9d98c11f29c508069388897c55803b97f2ccdf1bc9",
+  "parent_step": 8400,
+  "updates": 4000,
+  "episodes": 32000,
+  "targets": [
+    9200,
+    10000,
+    10800,
+    11600,
+    12400
+  ],
+  "val_seed": 53973001,
+  "test_seed": 54973001,
+  "validation_n_per_cell": 128,
+  "test_n_per_cell": 512,
+  "selection": "Allten trainedcell BA loss <=2pp vs paired parent; then best minmotionBA, meanmotionAUC, earlier; include parentfallback",
+  "stream_matching": "Exact parent family-local stream state; shared per-family evidence prefixes, not necessarily same per-delay assignment",
+  "training_estimate_seconds": 2489.624238014221,
+  "evaluation_reporting_reserve_seconds": 853.5415283203125,
+  "profile_exposure_discarded": true
+}

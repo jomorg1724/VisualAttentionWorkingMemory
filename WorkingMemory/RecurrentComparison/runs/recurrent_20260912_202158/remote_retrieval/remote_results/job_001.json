@@ -1,0 +1,189 @@
+{
+  "kind": "eval",
+  "config": {
+    "seed": 59301,
+    "common_seed": 59311,
+    "core_seed": 59312,
+    "train_seed": 593001,
+    "batch_size": 8,
+    "new_lr": 0.0003,
+    "parent_lr": 3e-05,
+    "weight_decay": 0.0001,
+    "grad_clip": 1.0,
+    "adam_eps": 1e-10,
+    "activation_checkpoint": true,
+    "task_classes": {
+      "motion_direction": 4,
+      "orientation": 2
+    },
+    "cells": {
+      "motion_anchor": {
+        "family": "motion_direction",
+        "condition": {
+          "protocol": "anchor",
+          "length": 8,
+          "delay": 0,
+          "load": 1,
+          "cue_visible": true,
+          "distractor": false,
+          "precue": false,
+          "post_delay": 2,
+          "threshold_level": null
+        }
+      },
+      "orientation_anchor": {
+        "family": "orientation",
+        "condition": {
+          "protocol": "anchor",
+          "length": 8,
+          "delay": 0,
+          "load": 1,
+          "cue_visible": true,
+          "distractor": false,
+          "precue": false,
+          "post_delay": 2,
+          "threshold_level": null
+        }
+      },
+      "motion_L2": {
+        "family": "motion_direction",
+        "condition": {
+          "protocol": "integration",
+          "length": 2,
+          "delay": 0,
+          "load": 1,
+          "cue_visible": true,
+          "distractor": false,
+          "precue": false,
+          "post_delay": 2,
+          "threshold_level": null
+        }
+      },
+      "motion_L8": {
+        "family": "motion_direction",
+        "condition": {
+          "protocol": "integration",
+          "length": 8,
+          "delay": 0,
+          "load": 1,
+          "cue_visible": true,
+          "distractor": false,
+          "precue": false,
+          "post_delay": 2,
+          "threshold_level": null
+        }
+      },
+      "orientation_recall_minimal": {
+        "family": "orientation",
+        "condition": {
+          "protocol": "recall",
+          "length": 8,
+          "delay": 0,
+          "load": 1,
+          "cue_visible": true,
+          "distractor": false,
+          "precue": false,
+          "post_delay": 0,
+          "threshold_level": null
+        }
+      },
+      "orientation_recall_D4": {
+        "family": "orientation",
+        "condition": {
+          "protocol": "recall",
+          "length": 8,
+          "delay": 4,
+          "load": 1,
+          "cue_visible": true,
+          "distractor": false,
+          "precue": false,
+          "post_delay": 2,
+          "threshold_level": null
+        }
+      }
+    },
+    "cycle": [
+      "motion_anchor",
+      "motion_L2",
+      "orientation_recall_minimal",
+      "motion_L8",
+      "orientation_recall_D4",
+      "motion_L2",
+      "orientation_recall_minimal",
+      "motion_L8",
+      "orientation_recall_D4",
+      "motion_L2",
+      "orientation_anchor",
+      "orientation_recall_minimal",
+      "motion_L8",
+      "orientation_recall_D4",
+      "motion_L2",
+      "orientation_recall_minimal",
+      "motion_L8",
+      "orientation_recall_D4",
+      "motion_L2",
+      "orientation_recall_minimal",
+      "motion_anchor",
+      "motion_L8",
+      "orientation_recall_D4",
+      "motion_L2",
+      "orientation_recall_minimal",
+      "motion_L8",
+      "orientation_recall_D4",
+      "motion_L2",
+      "orientation_recall_minimal",
+      "motion_L8",
+      "orientation_anchor",
+      "orientation_recall_D4",
+      "motion_L2",
+      "orientation_recall_minimal",
+      "motion_L8",
+      "orientation_recall_D4",
+      "motion_L2",
+      "orientation_recall_minimal",
+      "motion_L8",
+      "orientation_recall_D4"
+    ],
+    "fp32": true,
+    "amp": false,
+    "optimizer": "fresh_Adam_parameter_groups",
+    "purpose": "focused_recurrent_learning",
+    "training_protocol": "focused_six_cell_v1",
+    "generator_version": "wm_visual_sequences_v1",
+    "checkpoint_selection": "Maximum arithmetic mean six-cell OVR-AUC; exact ties earlier",
+    "arm": "ei_adaptive"
+  },
+  "out": "/workspace/vawm_recurrent/remote_results/validation_001250",
+  "deadline": 1789281280.0,
+  "result": "/workspace/vawm_recurrent/remote_results/job_001_result.json",
+  "source_hashes": {
+    "WorkingMemory/RecurrentComparison/model.py": "4de3e509d44d183694d871e06dd17aeb1e3355a963f6e9c5617089f5db27404d",
+    "WorkingMemory/RecurrentComparison/train.py": "1516e1a58863596cbb0ac0bb4b166c0a809e20a92e4f510a091d48b807e70d0c",
+    "WorkingMemory/RecurrentComparison/sweep.py": "a484e864513994deeda02d9d6dc8b72e443c203f2c5182498b5e3ed94c8bd4bb",
+    "WorkingMemory/RecurrentComparison/evaluate.py": "2b252145c90986a3b36cebdf3ec02972bf4b023d134849ce00b1539817fe0aa2",
+    "WorkingMemory/model.py": "012c538178b0bf5d61141625bc97dbfe6fdeda36722f68f6efcc692a461a48d3",
+    "WorkingMemory/train.py": "83c6b1121a11913916326284ad3056b95c3366efa74b3d9c21b73dd75f3b7eda",
+    "WorkingMemory/sweep.py": "7249060574272e169c89337dc02d8246ca1725492f7cc29990bcd437092d5203",
+    "WorkingMemory/evaluate.py": "46399d0134e569ff1da02e0fb58cb82b3db7e2bc2a855fa7adbcc462901f5a48",
+    "WorkingMemory/stimuli.py": "c5a6c6d1c2aa38e3b418e09a9d6c03bd022112d5ece4b5384c5336d9f592c127",
+    "PreAttentiveVision/models.py": "9d326177efac6aea8049aa9ca42d1a7109b34d44b02081185f3ae2d308b0e488",
+    "PreAttentiveVision/hybrid_models.py": "094a013c709f91d7f2354b0ad644db79f4dab2c1e7369b6b6d1f2412b29fa928",
+    "PreAttentiveVision/decoder.py": "234e2cd36845ce11a6f04e61dfd1c63d8168c58718eb2260fc5a3386f089c776",
+    "PreAttentiveVision/TemporalIntegration/accumulators.py": "93706e822f9d0114f544392736bb4ef830cdbe2fc580034e48c0495658f333d7",
+    "PreAttentiveVision/neuroscience_stimuli.py": "f4d3ed226b8bb4945753127651b037b0994715752258f283d10ca98c06eb8e87",
+    "PreAttentiveVision/natural_stimuli.py": "d0f5930e863b1b1997251bad5f5315e675b6d84eec5887727fdbf4025065b452",
+    "PreAttentiveVision/evaluate.py": "504d265ecc60d6cba0dec8eccabdcc3d6e862f45bf5f61f453c7e88db5ee0566",
+    "PreAttentiveVision/evaluate_multitask.py": "24339f53ba77af81535bde37b858c28c3de3f0b18649f0e11b3c520f53a95268",
+    "PreAttentiveVision/train.py": "3085e85ba8b1791846cde9a2938f819a9b899d1deff1234aed39517192ea7cdf",
+    "WorkingMemory/RecurrentComparison/remote_worker.py": "c87b0804e104cc8db9a389c7a712db452a0d91faca4b2f3ddc59fe0f6c612cef",
+    "WorkingMemory/RecurrentComparison/remote_sweep.py": "9e3c3ce4723b7fa30bf43a84ae3c6ee14a1eb3e14d1289c4cafd086aa4a6bfd1"
+  },
+  "parent_checkpoint": "/workspace/vawm_recurrent/portable/parent_checkpoint_006860.pt",
+  "parent_sha256": "122cace7698ef55df528a7eb28f470f66e1d08eb6053f0eba6d05bf678dde427",
+  "initializer_sha256": "b07d8cb42cb00f9c79fc918b144068c09bceaa645e367a05e7a2c5f66238de7e",
+  "checkpoint": "/workspace/vawm_recurrent/remote_results/ei_adaptive/checkpoint_001250.pt",
+  "split": "val",
+  "eval_seed": 1193001,
+  "n_per_cell": 128,
+  "resamples": 0
+}

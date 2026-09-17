@@ -1,0 +1,61 @@
+{
+  "status": "terminal_control_recovery_cancelled",
+  "authorized_utc": "2026-09-16T04:09:22.667Z",
+  "recorded_utc": "2026-09-16T04:10:49.682Z",
+  "terminal_control_state": {
+    "step": 3200,
+    "episodes": 128000,
+    "checkpoint": "retrieved/spatial_priority_results/spatial_priority_readout_scratch/training/checkpoint_003200.pt",
+    "checkpoint_sha256": "f796f5fb6d681b09a6ec62714b486f091c2f1302ba2b2fc2e6aea14b39afaef5",
+    "retrieval_files": 28,
+    "retrieval_checkpoints": 9,
+    "retrieval_verified": true
+  },
+  "failed_extension_handoff": {
+    "pod_id": "vsvke9kks981cm",
+    "error": "RuntimeError('Cached result job mismatch')",
+    "deleted": true,
+    "absent_http_status": 404
+  },
+  "cancelled_replacements": [
+    {
+      "pod_id": "wen73mqydbm3fy",
+      "name": "vawm-spatial-priority-control-recovery-3200",
+      "created_utc": "2026-09-16T04:09:26.496Z",
+      "gpu": "NVIDIA RTX A4500",
+      "gpu_usd_per_hour": 0.19,
+      "stop_http_status": 200,
+      "delete_http_status": 204,
+      "absent_http_status": 404,
+      "meaningful_training_exposure": false
+    },
+    {
+      "pod_id": "6otwzeiblfqs93",
+      "name": "vawm-spatial-priority-control-recovery-3200-3090",
+      "gpu": "NVIDIA GeForce RTX 3090",
+      "gpu_usd_per_hour": 0.22,
+      "stop_http_status": 200,
+      "delete_http_status": 204,
+      "absent_http_status": 404,
+      "meaningful_training_exposure": false
+    }
+  ],
+  "provider_after_cleanup": {
+    "control_pods": [],
+    "control_usd_per_hour": 0.0,
+    "remaining_pods": [
+      "6mopzgoioemdp2",
+      "629g1utqkk8non"
+    ],
+    "remaining_total_usd_per_hour": 0.44
+  },
+  "automation": {
+    "control_provisioning_forbidden": true,
+    "bounded_cancellation_guard": "control_cancellation_guard.log",
+    "active_monitor_scope": [
+      "6mopzgoioemdp2",
+      "629g1utqkk8non"
+    ]
+  },
+  "interpretation": "The verified step-3200 checkpoint is the terminal control state. No replacement control run is authorized."
+}

@@ -1,0 +1,161 @@
+{
+  "status": "training_verified_active",
+  "experiment": "prospective_query_v1",
+  "observed_utc": "2026-09-15T01:04:25.1474724+00:00",
+  "pod": {
+    "id": "dqi13o2x3qkvos",
+    "name": "vawm-prospective-query-160k",
+    "account": "jonathan@palladio.ai",
+    "cloud": "SECURE",
+    "region": "US",
+    "gpu": "NVIDIA A100-SXM4-80GB",
+    "gpu_count": 1,
+    "gpu_vram_mib": 81920,
+    "driver": "580.126.16",
+    "price_usd_per_hour": 1.59,
+    "created_utc": "2026-09-15T00:56:47.750Z",
+    "automatic_stop_utc": "2026-09-15T08:56:34Z",
+    "automatic_termination_utc": "2026-09-15T10:56:34Z"
+  },
+  "lineage": {
+    "parent": "WorkingMemory/PreUpdateAttention/runs/attention_20260913_143459/retrieved/remote_results/preupdate_attention/checkpoint_008400.pt",
+    "parent_version": "spatial_preupdate_joint_attention_v1",
+    "parent_step": 8400,
+    "parent_sha256": "e37602aa20ccfc400ea8fe9d98c11f29c508069388897c55803b97f2ccdf1bc9",
+    "new_version": "spatial_five_task_prospective_query_v1",
+    "arm": "prospective_query"
+  },
+  "intervention": {
+    "equation": "Q_t = W_Q(LN(R_{t-1}) + P + e_m + gamma * LN(H_t))",
+    "new_parameter": "attention.gamma",
+    "shape": [],
+    "initial_value": 0.0,
+    "normalization": "Reuses the existing query_norm without adding normalization parameters.",
+    "unchanged": "Keys, values, Q/K/V/O parent tensors, position/source embeddings, source/locality biases, E/I recurrence, comparator, pooling/readout, tasks, losses, optimizer hyperparameters, seeds, exposure and evaluation protocol."
+  },
+  "implementation_identity": {
+    "base_attention_model_sha256": "816f0d46e35926429560aaf98f592ecc3a06ef8c5b120defd98bd806432d5b2d",
+    "prospective_model_sha256": "1326de5b7a8c4feaa998dc08702ab56d2abc9d1b64aa9c0cd857ade4b99108aa",
+    "protocol_sha256": "4f4a1b2d0bfd84ce546c2cbe46113f333c11fbab86c519aa33e2081bae90b553",
+    "persisted_setup_script_sha256": "84d307612ed8879609756659acdbd8efb7d4cc1c31b6eb8504426989c49f8666",
+    "corrected_watcher_sha256": "1729624a927bf2d5b9e76c6d7e0f98bca8ed13688a590352c62d112ce911e6df",
+    "architecture_delta": "Relative to the inherited JointAttention query, the only forward-computation term added is attention.gamma * query_norm(current_sensory_tokens); attention.gamma is the only new attention tensor."
+  },
+  "fixed_protocol": {
+    "updates": 4000,
+    "episodes_per_update": 40,
+    "fresh_episodes": 160000,
+    "batch_size_per_task": 8,
+    "tasks_per_update": 5,
+    "validation_steps": [
+      9200,
+      10000,
+      10800,
+      11600,
+      12400
+    ],
+    "matched_historical_control_steps": [
+      9200,
+      10000,
+      10800,
+      11600
+    ]
+  },
+  "runtime": {
+    "python": "3.10.12",
+    "torch": "1.13.1+cu117",
+    "numpy": "1.23.1",
+    "scipy": "1.8.1",
+    "pillow": "9.1.1",
+    "full_bptt": true,
+    "precision": "fp32"
+  },
+  "payloads": {
+    "source_bundle_sha256": "a747feef2097a25217f068d60444a05b8fe6112df5d5e113e2be077282a9afa9",
+    "source_bundle_bytes": 6391109,
+    "runtime_dataset_bundle_sha256": "990e2bd405f6bcc4c940299f437685fc08765dcb56923ab0ab639f5f37c1883e",
+    "runtime_dataset_bundle_bytes": 36988531,
+    "bsds500_manifest_sha256": "0a85577b6dbbb5d4e8cb24bf69bb8924995ea96e23e3eb0b823de45f0e9c115c",
+    "bsds500_image_count": 500,
+    "remote_manifest_sha256": "3e64d82d9ad64078627ebd4de39e2fd61b3e8b2f036615012b8cff6e6ad1f4e0",
+    "remote_train_job_sha256": "803b27a3cc996d03762e3092a7e12112831f46b1cd5e393525722de57eee436d",
+    "remote_profile_result_sha256": "4ffeb592b35692ea72bed744584aca4afa553052e0973028362f8726c56b4474"
+  },
+  "construction_checks": {
+    "path": "WorkingMemory/ProspectiveQuery/construction_checks.json",
+    "sha256": "d9f8906a454b5e44dbab91a63a672292833efe0e4700f6d473d81f57447581bb",
+    "gamma_zero_query_max_abs_difference": 0.0,
+    "gamma_zero_attention_output_max_abs_difference": 0.0,
+    "gamma_zero_full_model_inherited_output_max_abs_difference": 0.0,
+    "gamma_gradient_at_zero": 1.9900609254837036,
+    "sensory_query_max_abs_change": 0.12569020688533783,
+    "sensory_routing_max_abs_change": 0.029035985469818115,
+    "migration_safety": "Wrong parent hashes and already migrated checkpoints are rejected."
+  },
+  "launch_evidence": {
+    "supervisor_pid": 399,
+    "worker_pid": 474,
+    "active_job": "train_9200",
+    "profile_status": "completed",
+    "profile_checkpoint_step": 8410,
+    "observed_global_step": 8419,
+    "observed_fresh_episodes": 760,
+    "observed_gamma": 0.0019889904651790857,
+    "gpu_utilization_percent": 59,
+    "gpu_memory_used_mib": 2099,
+    "initial_training_checkpoint_step": 8400,
+    "initial_training_checkpoint_sha256": "54189b0e27a9baa0080b72884de6fa47e9d027994b4fa6d47ddf2aa1b073de16",
+    "metrics_path": "/workspace/vawm_prospective_query/prospective_query_results/prospective_query/training/metrics.csv",
+    "log_path": "/workspace/vawm_prospective_query/prospective_query_results/train_9200.log"
+  },
+  "launch_incident": {
+    "training_exposure_consumed": 0,
+    "first_failure": "The uploaded setup script retained Windows CRLF line endings and was normalized in place.",
+    "profile_failure": "The source bundle omitted required BSDS500 runtime images. Profiling stopped before training, the exact fixtures were transferred and hash-verified, and the same ledger/deadline was resumed.",
+    "budget_renewed": false,
+    "scientific_configuration_changed": false,
+    "retrieval_guard_correction": "The first failed profile left terminal marker files. The watcher was stopped before any invalid retrieval, stale markers were removed while training stayed active, and the persisted watcher now requires budget.active=null and terminal budget status before retrieval."
+  },
+  "local_diagnostics": {
+    "status": "completed",
+    "completed_utc": "2026-09-15T01:08:51.2263991+00:00",
+    "analysis_only": true,
+    "summary": "WorkingMemory/ProspectiveQuery/runs/prospective_20260914_175602/diagnostic_summary.json",
+    "full_results_sha256": "b764c19667fdd93a4ce6aedcd2f6d8981c0119f5a33a3b926e7afc388e786ebd",
+    "paired_base_movies": 32,
+    "cue_only_prediction_change_rate": 0.46875,
+    "sensory_probe_test_accuracy": 0.259765625,
+    "sensory_probe_chance_accuracy": 0.25,
+    "checkpoint_unchanged": true
+  },
+  "validation_9200": {
+    "status": "completed_and_hash_mirrored",
+    "observed_utc": "2026-09-15T01:54:44.3853582+00:00",
+    "examples": 1836,
+    "paired_to_historical_control": true,
+    "result_sha256": "8b4d502bb5e93d15a731e4f8ab22a250096b194e046b57841ef0147421c41623",
+    "predictions_sha256": "53f0c0b641323945612c52d34a3a7878f1b8a17317a7887952aa84afe7547cb7",
+    "comparison": "WorkingMemory/ProspectiveQuery/runs/prospective_20260914_175602/validation_9200_comparison.json",
+    "report": "WorkingMemory/ProspectiveQuery/runs/prospective_20260914_175602/validation_9200_report.md",
+    "mirror_receipt": "WorkingMemory/ProspectiveQuery/runs/prospective_20260914_175602/validation_9200_mirror_receipt.json"
+  },
+  "retrieval": {
+    "watcher": "WorkingMemory/ProspectiveQuery/watch_remote.py",
+    "status_path": "WorkingMemory/ProspectiveQuery/runs/prospective_20260914_175602/watcher_status.json",
+    "ownership": "The coordinator must verify retrieval, then stop and delete the ephemeral pod; automatic stop/termination are backstops."
+  },
+  "shutdown": {
+    "status": "user_stopped_retrieved_deleted",
+    "logged_step": 9430,
+    "logged_fresh_episodes": 41200,
+    "durable_step": 9216,
+    "durable_fresh_episodes": 32640,
+    "verified_artifacts": 29,
+    "provider_exit_utc": "2026-09-15T02:03:36Z",
+    "pod_deleted": true,
+    "post_delete_pod_list": [],
+    "current_spend_per_hour_usd": 0,
+    "completion_receipt": "WorkingMemory/ProspectiveQuery/runs/prospective_20260914_175602/completion_receipt.json",
+    "cleanup_receipt": "WorkingMemory/ProspectiveQuery/runs/prospective_20260914_175602/cleanup_receipt.json"
+  }
+}

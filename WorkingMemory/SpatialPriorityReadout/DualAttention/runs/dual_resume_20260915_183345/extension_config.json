@@ -1,0 +1,49 @@
+{
+  "version": "dual_attention_posthoc_extension_v1",
+  "authorized_arms": [
+    "dual_attention_spatial_priority_scratch"
+  ],
+  "authorization": "post-hoc user-authorized extension motivated by fair scratch-vs-trained comparison",
+  "old_target_step": 4000,
+  "target_step": 12000,
+  "validation_steps": [
+    3200,
+    4000,
+    4800,
+    5600,
+    6400,
+    7200,
+    8000,
+    8800,
+    9600,
+    10400,
+    11200,
+    12000
+  ],
+  "inherited_validation_steps": [
+    800,
+    1600,
+    2400
+  ],
+  "takeover_tag": "train_3200",
+  "takeover_worker_pid": 3108,
+  "replaced_supervisor_pid": 465,
+  "run_deadline_unix": 1789553700.0,
+  "cleanup_deadline_unix": 1789554600.0,
+  "controller_sha256": "12377dabe2bf3ce92e022bb5084e51189873af343dbfa32a9f45812a720a5206",
+  "projection": {
+    "observed_train_segments_seconds": [
+      1894.5153884887695,
+      1902.330985546112
+    ],
+    "observed_seconds_per_update": 2.373028983771801,
+    "projected_training_seconds_from_step_2920": 21547.103172647952,
+    "observed_validation_seconds_mean": 38.60176742076874,
+    "remaining_validation_count_from_3200": 12,
+    "final_test_estimate_seconds": 300,
+    "training_contingency_seconds": 1800,
+    "retrieval_reserve_seconds": 900,
+    "gpu_usd_per_hour": 0.22
+  },
+  "created_unix": 1789528275.2662554
+}

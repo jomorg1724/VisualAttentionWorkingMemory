@@ -1,0 +1,14 @@
+{
+  "status": "interface_stable_training_live",
+  "experiment_folder": "WorkingMemory/SpatialPriorityReadout",
+  "model_version": "spatial_priority_readout_scratch_v2",
+  "model_class": "WorkingMemory.SpatialPriorityReadout.model.SpatialPriorityMemory",
+  "construction": "initialize_scratch(ARM, cfg); load only a hash-indexed checkpoint from this scratch run for a frozen diagnostic",
+  "forward": "model(images, task, diagnostic=True)",
+  "diagnostic_outputs": [
+    "diagnostics[\"terminal_fields\"] = (H_T, R_T, C_T), each [B,64,13,13]",
+    "diagnostics[\"priority\"] = [B,1,13,13]"
+  ],
+  "restriction": "Frozen spatial-field diagnostic only. Do not train locally, substitute for the cloud experiment, migrate attention8400, or introduce prospective gamma.",
+  "current_checkpoint": "Remote step-0 checkpoint exists; use a retrieved trained checkpoint when the intended diagnostic endpoint is available."
+}

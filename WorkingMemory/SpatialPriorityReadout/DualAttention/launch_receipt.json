@@ -1,0 +1,87 @@
+{
+  "status": "production_training_verified",
+  "run_id": "dual_20260914_213518",
+  "pod": {
+    "id": "f7y0zw02f4fzum",
+    "name": "vawm-dual-attention-scratch-160k",
+    "cloud": "COMMUNITY",
+    "gpu": "NVIDIA GeForce RTX 3090",
+    "vram_mib": 24576,
+    "listed_usd_per_hour": 0.22
+  },
+  "isolation": {
+    "remote_root": "/workspace/vawm_dual_attention_scratch",
+    "remote_results": "/workspace/vawm_dual_attention_scratch/dual_attention_results",
+    "local_run": "WorkingMemory/SpatialPriorityReadout/DualAttention/runs/dual_20260914_213518",
+    "control_pod_untouched": "ce00y2ooosl7wc",
+    "comparator_pod_untouched": "h1ygacz4zcsfj3",
+    "separate_supervisor_worker_watcher_lifecycle": true
+  },
+  "processes": {
+    "remote_supervisor_pid": 186,
+    "remote_worker_pid": 265,
+    "local_lifecycle_pid": 15536,
+    "local_watcher_pid": 20144,
+    "watch_cadence_seconds": 45
+  },
+  "deadline_utc": "2026-09-15T12:35:18Z",
+  "fixed_exposure": {
+    "updates": 4000,
+    "episodes": 160000,
+    "batch_size": 8,
+    "microbatches_per_update": 5,
+    "validation_steps": [800, 1600, 2400, 3200, 4000]
+  },
+  "initialization": {
+    "kind": "full_model_from_scratch",
+    "loaded_parent": false,
+    "loaded_model_tensors": 0,
+    "loaded_optimizer_states": 0,
+    "optimizer_state_empty_before_first_update": true,
+    "shared_control_tensors_equal_by_name_and_value": 119,
+    "remote_initial_model_sha256": "e2ac2db5a4175e783bbcd1acaa54381d7a4c57b01c4afbf9234c472ef94167a1",
+    "total_trainable_parameters": 549344
+  },
+  "essential_checks": {
+    "post_query_shape": [2, 169, 64],
+    "post_key_shape": [2, 507, 64],
+    "post_value_shape": [2, 507, 64],
+    "post_weights_shape": [2, 1, 169, 507],
+    "priority_field_shape": [2, 64, 13, 13],
+    "priority_normalized": true,
+    "finite_forward_backward": true,
+    "all_pre_and_post_qkv_gradients_nonzero": true,
+    "decoder_input_only": "P_T",
+    "prospective_gamma_absent": true,
+    "old_comparator_absent": true,
+    "global_pooling_bypass_absent": true
+  },
+  "profile": {
+    "updates": 3,
+    "mean_update_seconds": 2.543718417485555,
+    "peak_allocated_bytes": 991733760,
+    "peak_reserved_bytes": 1044381696
+  },
+  "first_verified_metrics": [
+    {"step": 1, "loss": 0.8572821617126465, "accuracy": 0.325, "gradient_norm": 0.45001742243766785},
+    {"step": 2, "loss": 0.8285271406173706, "accuracy": 0.475, "gradient_norm": 0.293108731508255},
+    {"step": 3, "loss": 0.8323137044906617, "accuracy": 0.5, "gradient_norm": 0.2084442377090454}
+  ],
+  "verified_live": {
+    "step": 20,
+    "episodes": 800,
+    "loss": 0.7745711028575897,
+    "accuracy": 0.55,
+    "gradient_norm": 0.6320587396621704,
+    "gpu_snapshot": "NVIDIA GeForce RTX 3090, 24576 MiB, 1736 MiB used, 67% utilization, 272.05 W"
+  },
+  "hashes": {
+    "source_bundle_sha256": "16dce9d3e683478baebe4c90f40ebf592533212434231b125fccebe64b5ce442",
+    "manifest_sha256": "015ccadf5bcf950fac1861a4d7fadaf722d281de06c268748ceba09b76ca50d3",
+    "control_checkpoint0_sha256": "97b7e6ce513592fc094724854ea1d4d329c93fd1ae0d86aa20ed50e4fd653f76",
+    "remote_construction_receipt_sha256": "f035ce27e893fe6d21dfbbc8797e49dce0439ef85f3bdfd359949d4edf630b03",
+    "remote_profile_receipt_sha256": "654f767ecd0722d0dfccd68d5cb08152a6b720a5a3d623f56ff234bdba2698ee",
+    "remote_initialization_receipt_sha256": "2a4c98c7a2d60bbabcaac6e86d535c980c75c6cf39b8415e7c94148d76c3f240"
+  },
+  "interpretation": "Live from-scratch architecture experiment; no validation or performance conclusion yet."
+}

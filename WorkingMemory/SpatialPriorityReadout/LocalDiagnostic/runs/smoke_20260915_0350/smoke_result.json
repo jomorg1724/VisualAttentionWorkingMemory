@@ -1,0 +1,80 @@
+{
+  "status": "passed",
+  "mode": "smoke",
+  "started_unix": 1789443905.23362,
+  "finished_unix": 1789443920.158519,
+  "wall_seconds": 14.924899101257324,
+  "extraction": {
+    "train": {
+      "split": "train",
+      "seed": 731091,
+      "independent_base_episodes": 8,
+      "delay_presentations": 32,
+      "per_delay": 8,
+      "shape": [
+        32,
+        192,
+        13,
+        13
+      ],
+      "dtype": "torch.float32",
+      "feature_tensor_sha256": "c19b9415c9a033545d15c5e33ae6c69967ce6f971ed2b4856de258cc04ffe54d",
+      "cache_sha256": "496b1337818e9519ba3dc2ce3f75d3b7b434eb87ab1a48d790f5457a0ef16c37",
+      "paired_motion_movie_metadata_across_delays": true,
+      "max_original_logit_reconstruction_error": 2.2351741790771484e-08,
+      "seconds": 8.736796379089355
+    },
+    "val": {
+      "split": "val",
+      "seed": 731092,
+      "independent_base_episodes": 4,
+      "delay_presentations": 16,
+      "per_delay": 4,
+      "shape": [
+        16,
+        192,
+        13,
+        13
+      ],
+      "dtype": "torch.float32",
+      "feature_tensor_sha256": "128a4c04d9762902caac8463a0d2f73013c779f91211683558413dddd1291724",
+      "cache_sha256": "b11d6f6cdc9343ec45412a0e5906536317131c9709356c5572bdc6253df1ffab",
+      "paired_motion_movie_metadata_across_delays": true,
+      "max_original_logit_reconstruction_error": 1.4901161193847656e-08,
+      "seconds": 2.8876259326934814
+    },
+    "test": {
+      "split": "test",
+      "seed": 731093,
+      "independent_base_episodes": 4,
+      "delay_presentations": 16,
+      "per_delay": 4,
+      "shape": [
+        16,
+        192,
+        13,
+        13
+      ],
+      "dtype": "torch.float32",
+      "feature_tensor_sha256": "7069ba0b492a23422b1c7b769638c7ca8f2d0630d8a4b927cacb167f4ab4f6cb",
+      "cache_sha256": "c411258b03b0a94564cf586ec44023b4dfbba6f43d379c95c997522fb277820e",
+      "paired_motion_movie_metadata_across_delays": true,
+      "max_original_logit_reconstruction_error": 1.862645149230957e-08,
+      "seconds": 2.9546406269073486
+    }
+  },
+  "checkpoint_immutable": true,
+  "frozen_model_state_immutable": true,
+  "source_hashes": {
+    "WorkingMemory/SpatialPriorityReadout/model.py": "524e5bc0bec45d85d116167c5ffd136e54bec8315f0c30a3a06f4d5c5bc24755",
+    "WorkingMemory/SpatialPriorityReadout/protocol.py": "2086c44c5dce06102cf771484cf48f3bb0fa863ac5c7a34f4e2f1db1e24b1a5b",
+    "WorkingMemory/SpatialPriorityReadout/check_model.py": "29e376675bb492c7d237342521ca58a8f0dd56b7642554c75261a0e8c2fa5727",
+    "WorkingMemory/SpatialPriorityReadout/LocalDiagnostic/model.py": "459d3902a37701efb43f9527b5d58d99a793828724ae4ca07fa5af1d67918a76",
+    "WorkingMemory/SpatialPriorityReadout/LocalDiagnostic/protocol.py": "72da3617c2e0d64fed91f4da48244b80d60eb30b40b719114ab784988721ec07",
+    "WorkingMemory/SpatialPriorityReadout/LocalDiagnostic/run.py": "9ae7cf217dda988047c28b0dbe97747f2c1e9538b0e9834e50879fb346480257",
+    "WorkingMemory/SpatialTaskBattery/BiasedTraining/model.py": "39ba88931593806482f276082b962a70661e3a3ddf9307ceda7132d5f90b058c",
+    "WorkingMemory/SpatialTaskBattery/stimuli.py": "16b7efd4575eba27b9a79329243dcce0da635008856687a9e62bda72b5ddeb37",
+    "WorkingMemory/PreUpdateAttention/model.py": "816f0d46e35926429560aaf98f592ecc3a06ef8c5b120defd98bd806432d5b2d",
+    "WorkingMemory/SpatialComparison/model.py": "6e0830f494b28e08b242075d511988aa8395677ac169ea9fcf73a7d1d32881b7"
+  }
+}

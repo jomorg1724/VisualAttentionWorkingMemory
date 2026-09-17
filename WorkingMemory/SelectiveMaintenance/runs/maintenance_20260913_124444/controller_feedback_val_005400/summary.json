@@ -1,0 +1,4841 @@
+{
+  "cells": {
+    "motion_direction/motion_D0": {
+      "family": "motion_direction",
+      "condition": "motion_D0",
+      "protocol": "motion_direction",
+      "overall": {
+        "n": 128,
+        "classes": 4,
+        "confusion_true_rows_pred_columns": [
+          [
+            17,
+            1,
+            2,
+            12
+          ],
+          [
+            13,
+            11,
+            0,
+            8
+          ],
+          [
+            4,
+            0,
+            11,
+            17
+          ],
+          [
+            3,
+            0,
+            3,
+            26
+          ]
+        ],
+        "class_counts": [
+          32,
+          32,
+          32,
+          32
+        ],
+        "recall": [
+          0.53125,
+          0.34375,
+          0.34375,
+          0.8125
+        ],
+        "recall_ci95": [
+          [
+            0.3644951711897464,
+            0.6913061289193116
+          ],
+          [
+            0.20410437924433172,
+            0.5168891202103778
+          ],
+          [
+            0.20410437924433172,
+            0.5168891202103778
+          ],
+          [
+            0.6469084479862404,
+            0.9111045531043405
+          ]
+        ],
+        "accuracy": 0.5078125,
+        "balanced_accuracy": 0.5078125,
+        "chance_accuracy": 0.25,
+        "macro_ovr_auc": 0.7985026041666666,
+        "per_class_ovr_auc": [
+          0.7138671875,
+          0.8955078125,
+          0.765625,
+          0.8190104166666666
+        ],
+        "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+        "unique_base_groups": 128,
+        "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+      },
+      "strata": {
+        "target_serial_slot": {},
+        "target_age_at_report": {},
+        "mismatch": {},
+        "binding_lure": {},
+        "difficulty": {
+          "integration/L8/D0/N1": {
+            "n": 128,
+            "classes": 4,
+            "confusion_true_rows_pred_columns": [
+              [
+                17,
+                1,
+                2,
+                12
+              ],
+              [
+                13,
+                11,
+                0,
+                8
+              ],
+              [
+                4,
+                0,
+                11,
+                17
+              ],
+              [
+                3,
+                0,
+                3,
+                26
+              ]
+            ],
+            "class_counts": [
+              32,
+              32,
+              32,
+              32
+            ],
+            "recall": [
+              0.53125,
+              0.34375,
+              0.34375,
+              0.8125
+            ],
+            "recall_ci95": [
+              [
+                0.3644951711897464,
+                0.6913061289193116
+              ],
+              [
+                0.20410437924433172,
+                0.5168891202103778
+              ],
+              [
+                0.20410437924433172,
+                0.5168891202103778
+              ],
+              [
+                0.6469084479862404,
+                0.9111045531043405
+              ]
+            ],
+            "accuracy": 0.5078125,
+            "balanced_accuracy": 0.5078125,
+            "chance_accuracy": 0.25,
+            "macro_ovr_auc": 0.7985026041666666,
+            "per_class_ovr_auc": [
+              0.7138671875,
+              0.8955078125,
+              0.765625,
+              0.8190104166666666
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "unique_base_groups": 128,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          }
+        },
+        "threshold_level": {
+          "0": {
+            "n": 80,
+            "classes": 4,
+            "confusion_true_rows_pred_columns": [
+              [
+                11,
+                1,
+                1,
+                7
+              ],
+              [
+                10,
+                6,
+                0,
+                4
+              ],
+              [
+                1,
+                0,
+                8,
+                11
+              ],
+              [
+                1,
+                0,
+                1,
+                18
+              ]
+            ],
+            "class_counts": [
+              20,
+              20,
+              20,
+              20
+            ],
+            "recall": [
+              0.55,
+              0.3,
+              0.4,
+              0.9
+            ],
+            "recall_ci95": [
+              [
+                0.34208534245034233,
+                0.7418021417443759
+              ],
+              [
+                0.1454772448676043,
+                0.5189728183535235
+              ],
+              [
+                0.21880653237281705,
+                0.6134184992377469
+              ],
+              [
+                0.6989663547715128,
+                0.9721335187862319
+              ]
+            ],
+            "accuracy": 0.5375,
+            "balanced_accuracy": 0.5375,
+            "chance_accuracy": 0.25,
+            "macro_ovr_auc": 0.82625,
+            "per_class_ovr_auc": [
+              0.74,
+              0.9225,
+              0.8066666666666666,
+              0.8358333333333333
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "unique_base_groups": 80,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          },
+          "1": {
+            "n": 48,
+            "classes": 4,
+            "confusion_true_rows_pred_columns": [
+              [
+                6,
+                0,
+                1,
+                5
+              ],
+              [
+                3,
+                5,
+                0,
+                4
+              ],
+              [
+                3,
+                0,
+                3,
+                6
+              ],
+              [
+                2,
+                0,
+                2,
+                8
+              ]
+            ],
+            "class_counts": [
+              12,
+              12,
+              12,
+              12
+            ],
+            "recall": [
+              0.5,
+              0.4166666666666667,
+              0.25,
+              0.6666666666666666
+            ],
+            "recall_ci95": [
+              [
+                0.2537815976337061,
+                0.7462184023662939
+              ],
+              [
+                0.19326031365875665,
+                0.6804886874504503
+              ],
+              [
+                0.08894166839405471,
+                0.5323053349335657
+              ],
+              [
+                0.39062208887279953,
+                0.8618799089087867
+              ]
+            ],
+            "accuracy": 0.4583333333333333,
+            "balanced_accuracy": 0.45833333333333337,
+            "chance_accuracy": 0.25,
+            "macro_ovr_auc": 0.7517361111111109,
+            "per_class_ovr_auc": [
+              0.6689814814814814,
+              0.8541666666666666,
+              0.6967592592592592,
+              0.787037037037037
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "unique_base_groups": 48,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          }
+        },
+        "count_margin": {
+          "0.125": {
+            "n": 79,
+            "classes": 4,
+            "confusion_true_rows_pred_columns": [
+              [
+                9,
+                0,
+                2,
+                10
+              ],
+              [
+                9,
+                6,
+                0,
+                5
+              ],
+              [
+                3,
+                0,
+                4,
+                13
+              ],
+              [
+                3,
+                0,
+                0,
+                15
+              ]
+            ],
+            "class_counts": [
+              21,
+              20,
+              20,
+              18
+            ],
+            "recall": [
+              0.42857142857142855,
+              0.3,
+              0.2,
+              0.8333333333333334
+            ],
+            "recall_ci95": [
+              [
+                0.2446996892537596,
+                0.6345344563069328
+              ],
+              [
+                0.1454772448676043,
+                0.5189728183535235
+              ],
+              [
+                0.08065766257979806,
+                0.41601743225189364
+              ],
+              [
+                0.6077796189608428,
+                0.9416342319413856
+              ]
+            ],
+            "accuracy": 0.43037974683544306,
+            "balanced_accuracy": 0.44047619047619047,
+            "chance_accuracy": 0.25,
+            "macro_ovr_auc": 0.7401021261455433,
+            "per_class_ovr_auc": [
+              0.6100164203612479,
+              0.8864406779661016,
+              0.714406779661017,
+              0.7495446265938069
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "unique_base_groups": 79,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          },
+          "0.25": {
+            "n": 39,
+            "classes": 4,
+            "confusion_true_rows_pred_columns": [
+              [
+                5,
+                1,
+                0,
+                2
+              ],
+              [
+                4,
+                4,
+                0,
+                3
+              ],
+              [
+                1,
+                0,
+                5,
+                4
+              ],
+              [
+                0,
+                0,
+                1,
+                9
+              ]
+            ],
+            "class_counts": [
+              8,
+              11,
+              10,
+              10
+            ],
+            "recall": [
+              0.625,
+              0.36363636363636365,
+              0.5,
+              0.9
+            ],
+            "recall_ci95": [
+              [
+                0.30574239460262737,
+                0.8631557141764026
+              ],
+              [
+                0.15166471095367573,
+                0.6461988254921511
+              ],
+              [
+                0.236593090512564,
+                0.7634069094874361
+              ],
+              [
+                0.5958499732047615,
+                0.9821237869049271
+              ]
+            ],
+            "accuracy": 0.5897435897435898,
+            "balanced_accuracy": 0.5971590909090909,
+            "chance_accuracy": 0.25,
+            "macro_ovr_auc": 0.86528014532742,
+            "per_class_ovr_auc": [
+              0.782258064516129,
+              0.8961038961038961,
+              0.8517241379310344,
+              0.9310344827586207
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "unique_base_groups": 39,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          },
+          "0.375": {
+            "n": 7,
+            "classes": 4,
+            "confusion_true_rows_pred_columns": [
+              [
+                2,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                2,
+                2
+              ]
+            ],
+            "class_counts": [
+              2,
+              0,
+              1,
+              4
+            ],
+            "recall": [
+              1.0,
+              null,
+              1.0,
+              0.5
+            ],
+            "recall_ci95": [
+              [
+                0.34238022750665303,
+                1.0
+              ],
+              null,
+              [
+                0.20654931437723745,
+                1.0
+              ],
+              [
+                0.15003898915214947,
+                0.8499610108478506
+              ]
+            ],
+            "accuracy": 0.7142857142857143,
+            "balanced_accuracy": null,
+            "chance_accuracy": 0.25,
+            "macro_ovr_auc": null,
+            "per_class_ovr_auc": [
+              1.0,
+              null,
+              0.8333333333333334,
+              0.8333333333333334
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "unique_base_groups": 7,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          },
+          "0.5": {
+            "n": 3,
+            "classes": 4,
+            "confusion_true_rows_pred_columns": [
+              [
+                1,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "class_counts": [
+              1,
+              1,
+              1,
+              0
+            ],
+            "recall": [
+              1.0,
+              1.0,
+              1.0,
+              null
+            ],
+            "recall_ci95": [
+              [
+                0.20654931437723745,
+                1.0
+              ],
+              [
+                0.20654931437723745,
+                1.0
+              ],
+              [
+                0.20654931437723745,
+                1.0
+              ],
+              null
+            ],
+            "accuracy": 1.0,
+            "balanced_accuracy": null,
+            "chance_accuracy": 0.25,
+            "macro_ovr_auc": null,
+            "per_class_ovr_auc": [
+              1.0,
+              1.0,
+              1.0,
+              null
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "unique_base_groups": 3,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          }
+        }
+      }
+    },
+    "motion_direction/motion_D24": {
+      "family": "motion_direction",
+      "condition": "motion_D24",
+      "protocol": "motion_direction",
+      "overall": {
+        "n": 128,
+        "classes": 4,
+        "confusion_true_rows_pred_columns": [
+          [
+            32,
+            0,
+            0,
+            0
+          ],
+          [
+            32,
+            0,
+            0,
+            0
+          ],
+          [
+            32,
+            0,
+            0,
+            0
+          ],
+          [
+            32,
+            0,
+            0,
+            0
+          ]
+        ],
+        "class_counts": [
+          32,
+          32,
+          32,
+          32
+        ],
+        "recall": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "recall_ci95": [
+          [
+            0.8928208017449293,
+            1.0
+          ],
+          [
+            0.0,
+            0.1071791982550706
+          ],
+          [
+            0.0,
+            0.1071791982550706
+          ],
+          [
+            0.0,
+            0.1071791982550706
+          ]
+        ],
+        "accuracy": 0.25,
+        "balanced_accuracy": 0.25,
+        "chance_accuracy": 0.25,
+        "macro_ovr_auc": 0.7357991536458333,
+        "per_class_ovr_auc": [
+          0.61962890625,
+          0.8697916666666666,
+          0.646484375,
+          0.8072916666666666
+        ],
+        "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+        "unique_base_groups": 128,
+        "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+      },
+      "strata": {
+        "target_serial_slot": {},
+        "target_age_at_report": {},
+        "mismatch": {},
+        "binding_lure": {},
+        "difficulty": {
+          "integration/L8/D24/N1": {
+            "n": 128,
+            "classes": 4,
+            "confusion_true_rows_pred_columns": [
+              [
+                32,
+                0,
+                0,
+                0
+              ],
+              [
+                32,
+                0,
+                0,
+                0
+              ],
+              [
+                32,
+                0,
+                0,
+                0
+              ],
+              [
+                32,
+                0,
+                0,
+                0
+              ]
+            ],
+            "class_counts": [
+              32,
+              32,
+              32,
+              32
+            ],
+            "recall": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "recall_ci95": [
+              [
+                0.8928208017449293,
+                1.0
+              ],
+              [
+                0.0,
+                0.1071791982550706
+              ],
+              [
+                0.0,
+                0.1071791982550706
+              ],
+              [
+                0.0,
+                0.1071791982550706
+              ]
+            ],
+            "accuracy": 0.25,
+            "balanced_accuracy": 0.25,
+            "chance_accuracy": 0.25,
+            "macro_ovr_auc": 0.7357991536458333,
+            "per_class_ovr_auc": [
+              0.61962890625,
+              0.8697916666666666,
+              0.646484375,
+              0.8072916666666666
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "unique_base_groups": 128,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          }
+        },
+        "threshold_level": {
+          "0": {
+            "n": 80,
+            "classes": 4,
+            "confusion_true_rows_pred_columns": [
+              [
+                20,
+                0,
+                0,
+                0
+              ],
+              [
+                20,
+                0,
+                0,
+                0
+              ],
+              [
+                20,
+                0,
+                0,
+                0
+              ],
+              [
+                20,
+                0,
+                0,
+                0
+              ]
+            ],
+            "class_counts": [
+              20,
+              20,
+              20,
+              20
+            ],
+            "recall": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "recall_ci95": [
+              [
+                0.8388748419471806,
+                1.0
+              ],
+              [
+                0.0,
+                0.16112515805281938
+              ],
+              [
+                0.0,
+                0.16112515805281938
+              ],
+              [
+                0.0,
+                0.16112515805281938
+              ]
+            ],
+            "accuracy": 0.25,
+            "balanced_accuracy": 0.25,
+            "chance_accuracy": 0.25,
+            "macro_ovr_auc": 0.7479166666666667,
+            "per_class_ovr_auc": [
+              0.6075,
+              0.9175,
+              0.6733333333333333,
+              0.7933333333333333
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "unique_base_groups": 80,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          },
+          "1": {
+            "n": 48,
+            "classes": 4,
+            "confusion_true_rows_pred_columns": [
+              [
+                12,
+                0,
+                0,
+                0
+              ],
+              [
+                12,
+                0,
+                0,
+                0
+              ],
+              [
+                12,
+                0,
+                0,
+                0
+              ],
+              [
+                12,
+                0,
+                0,
+                0
+              ]
+            ],
+            "class_counts": [
+              12,
+              12,
+              12,
+              12
+            ],
+            "recall": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "recall_ci95": [
+              [
+                0.7575059933447592,
+                1.0
+              ],
+              [
+                2.7755575615628914e-17,
+                0.24249400665524085
+              ],
+              [
+                2.7755575615628914e-17,
+                0.24249400665524085
+              ],
+              [
+                2.7755575615628914e-17,
+                0.24249400665524085
+              ]
+            ],
+            "accuracy": 0.25,
+            "balanced_accuracy": 0.25,
+            "chance_accuracy": 0.25,
+            "macro_ovr_auc": 0.7123842592592592,
+            "per_class_ovr_auc": [
+              0.625,
+              0.7986111111111112,
+              0.6018518518518519,
+              0.8240740740740741
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "unique_base_groups": 48,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          }
+        },
+        "count_margin": {
+          "0.125": {
+            "n": 79,
+            "classes": 4,
+            "confusion_true_rows_pred_columns": [
+              [
+                21,
+                0,
+                0,
+                0
+              ],
+              [
+                20,
+                0,
+                0,
+                0
+              ],
+              [
+                20,
+                0,
+                0,
+                0
+              ],
+              [
+                18,
+                0,
+                0,
+                0
+              ]
+            ],
+            "class_counts": [
+              21,
+              20,
+              20,
+              18
+            ],
+            "recall": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "recall_ci95": [
+              [
+                0.8453609810751531,
+                1.0
+              ],
+              [
+                0.0,
+                0.16112515805281938
+              ],
+              [
+                0.0,
+                0.16112515805281938
+              ],
+              [
+                0.0,
+                0.17587922364665765
+              ]
+            ],
+            "accuracy": 0.26582278481012656,
+            "balanced_accuracy": 0.25,
+            "chance_accuracy": 0.25,
+            "macro_ovr_auc": 0.6886409200664357,
+            "per_class_ovr_auc": [
+              0.548440065681445,
+              0.864406779661017,
+              0.5584745762711865,
+              0.7832422586520947
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "unique_base_groups": 79,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          },
+          "0.25": {
+            "n": 39,
+            "classes": 4,
+            "confusion_true_rows_pred_columns": [
+              [
+                8,
+                0,
+                0,
+                0
+              ],
+              [
+                11,
+                0,
+                0,
+                0
+              ],
+              [
+                10,
+                0,
+                0,
+                0
+              ],
+              [
+                10,
+                0,
+                0,
+                0
+              ]
+            ],
+            "class_counts": [
+              8,
+              11,
+              10,
+              10
+            ],
+            "recall": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "recall_ci95": [
+              [
+                0.6755924351161198,
+                1.0
+              ],
+              [
+                0.0,
+                0.2588329669680317
+              ],
+              [
+                0.0,
+                0.2775327998628892
+              ],
+              [
+                0.0,
+                0.2775327998628892
+              ]
+            ],
+            "accuracy": 0.20512820512820512,
+            "balanced_accuracy": 0.25,
+            "chance_accuracy": 0.25,
+            "macro_ovr_auc": 0.7845930904468167,
+            "per_class_ovr_auc": [
+              0.6854838709677419,
+              0.8701298701298701,
+              0.7241379310344828,
+              0.8586206896551724
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "unique_base_groups": 39,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          },
+          "0.375": {
+            "n": 7,
+            "classes": 4,
+            "confusion_true_rows_pred_columns": [
+              [
+                2,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                0
+              ],
+              [
+                4,
+                0,
+                0,
+                0
+              ]
+            ],
+            "class_counts": [
+              2,
+              0,
+              1,
+              4
+            ],
+            "recall": [
+              1.0,
+              null,
+              0.0,
+              0.0
+            ],
+            "recall_ci95": [
+              [
+                0.34238022750665303,
+                1.0
+              ],
+              null,
+              [
+                0.0,
+                0.7934506856227626
+              ],
+              [
+                0.0,
+                0.4898908364545973
+              ]
+            ],
+            "accuracy": 0.2857142857142857,
+            "balanced_accuracy": null,
+            "chance_accuracy": 0.25,
+            "macro_ovr_auc": null,
+            "per_class_ovr_auc": [
+              0.9,
+              null,
+              0.8333333333333334,
+              0.75
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "unique_base_groups": 7,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          },
+          "0.5": {
+            "n": 3,
+            "classes": 4,
+            "confusion_true_rows_pred_columns": [
+              [
+                1,
+                0,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "class_counts": [
+              1,
+              1,
+              1,
+              0
+            ],
+            "recall": [
+              1.0,
+              0.0,
+              0.0,
+              null
+            ],
+            "recall_ci95": [
+              [
+                0.20654931437723745,
+                1.0
+              ],
+              [
+                0.0,
+                0.7934506856227626
+              ],
+              [
+                0.0,
+                0.7934506856227626
+              ],
+              null
+            ],
+            "accuracy": 0.3333333333333333,
+            "balanced_accuracy": null,
+            "chance_accuracy": 0.25,
+            "macro_ovr_auc": null,
+            "per_class_ovr_auc": [
+              0.5,
+              1.0,
+              1.0,
+              null
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "unique_base_groups": 3,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          }
+        }
+      }
+    },
+    "orientation/single_D0": {
+      "family": "orientation",
+      "condition": "single_D0",
+      "protocol": "orientation_single",
+      "overall": {
+        "n": 128,
+        "classes": 2,
+        "confusion_true_rows_pred_columns": [
+          [
+            64,
+            0
+          ],
+          [
+            1,
+            63
+          ]
+        ],
+        "class_counts": [
+          64,
+          64
+        ],
+        "recall": [
+          1.0,
+          0.984375
+        ],
+        "recall_ci95": [
+          [
+            0.9433759402071946,
+            1.0
+          ],
+          [
+            0.9166589839990573,
+            0.9972364580766624
+          ]
+        ],
+        "accuracy": 0.9921875,
+        "balanced_accuracy": 0.9921875,
+        "chance_accuracy": 0.5,
+        "macro_ovr_auc": 0.9990234375,
+        "per_class_ovr_auc": [
+          0.9990234375,
+          0.9990234375
+        ],
+        "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+        "binary": {
+          "n": 128,
+          "signal_n": 64,
+          "noise_n": 64,
+          "hits": 63,
+          "misses": 1,
+          "false_alarms": 0,
+          "correct_rejections": 64,
+          "hit_rate": 0.984375,
+          "false_alarm_rate": 0.0,
+          "hit_rate_ci95": [
+            0.9166589839990573,
+            0.9972364580766624
+          ],
+          "false_alarm_rate_ci95": [
+            0.0,
+            0.05662405979280534
+          ],
+          "balanced_accuracy": 0.9921875,
+          "auroc": 0.9990234375,
+          "dprime": 4.417179800897086,
+          "criterion": 0.21460629456000058
+        },
+        "unique_base_groups": 128,
+        "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+      },
+      "strata": {
+        "target_serial_slot": {
+          "0": {
+            "n": 128,
+            "classes": 2,
+            "confusion_true_rows_pred_columns": [
+              [
+                64,
+                0
+              ],
+              [
+                1,
+                63
+              ]
+            ],
+            "class_counts": [
+              64,
+              64
+            ],
+            "recall": [
+              1.0,
+              0.984375
+            ],
+            "recall_ci95": [
+              [
+                0.9433759402071946,
+                1.0
+              ],
+              [
+                0.9166589839990573,
+                0.9972364580766624
+              ]
+            ],
+            "accuracy": 0.9921875,
+            "balanced_accuracy": 0.9921875,
+            "chance_accuracy": 0.5,
+            "macro_ovr_auc": 0.9990234375,
+            "per_class_ovr_auc": [
+              0.9990234375,
+              0.9990234375
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "binary": {
+              "n": 128,
+              "signal_n": 64,
+              "noise_n": 64,
+              "hits": 63,
+              "misses": 1,
+              "false_alarms": 0,
+              "correct_rejections": 64,
+              "hit_rate": 0.984375,
+              "false_alarm_rate": 0.0,
+              "hit_rate_ci95": [
+                0.9166589839990573,
+                0.9972364580766624
+              ],
+              "false_alarm_rate_ci95": [
+                0.0,
+                0.05662405979280534
+              ],
+              "balanced_accuracy": 0.9921875,
+              "auroc": 0.9990234375,
+              "dprime": 4.417179800897086,
+              "criterion": 0.21460629456000058
+            },
+            "unique_base_groups": 128,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          }
+        },
+        "target_age_at_report": {
+          "2": {
+            "n": 128,
+            "classes": 2,
+            "confusion_true_rows_pred_columns": [
+              [
+                64,
+                0
+              ],
+              [
+                1,
+                63
+              ]
+            ],
+            "class_counts": [
+              64,
+              64
+            ],
+            "recall": [
+              1.0,
+              0.984375
+            ],
+            "recall_ci95": [
+              [
+                0.9433759402071946,
+                1.0
+              ],
+              [
+                0.9166589839990573,
+                0.9972364580766624
+              ]
+            ],
+            "accuracy": 0.9921875,
+            "balanced_accuracy": 0.9921875,
+            "chance_accuracy": 0.5,
+            "macro_ovr_auc": 0.9990234375,
+            "per_class_ovr_auc": [
+              0.9990234375,
+              0.9990234375
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "binary": {
+              "n": 128,
+              "signal_n": 64,
+              "noise_n": 64,
+              "hits": 63,
+              "misses": 1,
+              "false_alarms": 0,
+              "correct_rejections": 64,
+              "hit_rate": 0.984375,
+              "false_alarm_rate": 0.0,
+              "hit_rate_ci95": [
+                0.9166589839990573,
+                0.9972364580766624
+              ],
+              "false_alarm_rate_ci95": [
+                0.0,
+                0.05662405979280534
+              ],
+              "balanced_accuracy": 0.9921875,
+              "auroc": 0.9990234375,
+              "dprime": 4.417179800897086,
+              "criterion": 0.21460629456000058
+            },
+            "unique_base_groups": 128,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          }
+        },
+        "mismatch": {
+          "0": {
+            "n": 64,
+            "classes": 2,
+            "confusion_true_rows_pred_columns": [
+              [
+                64,
+                0
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "class_counts": [
+              64,
+              0
+            ],
+            "recall": [
+              1.0,
+              null
+            ],
+            "recall_ci95": [
+              [
+                0.9433759402071946,
+                1.0
+              ],
+              null
+            ],
+            "accuracy": 1.0,
+            "balanced_accuracy": null,
+            "chance_accuracy": 0.5,
+            "macro_ovr_auc": null,
+            "per_class_ovr_auc": [
+              null,
+              null
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "binary": {
+              "n": 64,
+              "signal_n": 0,
+              "noise_n": 64,
+              "hits": 0,
+              "misses": 0,
+              "false_alarms": 0,
+              "correct_rejections": 64,
+              "hit_rate": null,
+              "false_alarm_rate": 0.0,
+              "hit_rate_ci95": null,
+              "false_alarm_rate_ci95": [
+                0.0,
+                0.05662405979280534
+              ],
+              "balanced_accuracy": null,
+              "auroc": null,
+              "dprime": null,
+              "criterion": null
+            },
+            "unique_base_groups": 64,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          },
+          "1": {
+            "n": 14,
+            "classes": 2,
+            "confusion_true_rows_pred_columns": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                14
+              ]
+            ],
+            "class_counts": [
+              0,
+              14
+            ],
+            "recall": [
+              null,
+              1.0
+            ],
+            "recall_ci95": [
+              null,
+              [
+                0.7846891972623643,
+                1.0
+              ]
+            ],
+            "accuracy": 1.0,
+            "balanced_accuracy": null,
+            "chance_accuracy": 0.5,
+            "macro_ovr_auc": null,
+            "per_class_ovr_auc": [
+              null,
+              null
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "binary": {
+              "n": 14,
+              "signal_n": 14,
+              "noise_n": 0,
+              "hits": 14,
+              "misses": 0,
+              "false_alarms": 0,
+              "correct_rejections": 0,
+              "hit_rate": 1.0,
+              "false_alarm_rate": null,
+              "hit_rate_ci95": [
+                0.7846891972623643,
+                1.0
+              ],
+              "false_alarm_rate_ci95": null,
+              "balanced_accuracy": null,
+              "auroc": null,
+              "dprime": null,
+              "criterion": null
+            },
+            "unique_base_groups": 14,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          },
+          "2": {
+            "n": 11,
+            "classes": 2,
+            "confusion_true_rows_pred_columns": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                11
+              ]
+            ],
+            "class_counts": [
+              0,
+              11
+            ],
+            "recall": [
+              null,
+              1.0
+            ],
+            "recall_ci95": [
+              null,
+              [
+                0.7411670330319684,
+                1.0
+              ]
+            ],
+            "accuracy": 1.0,
+            "balanced_accuracy": null,
+            "chance_accuracy": 0.5,
+            "macro_ovr_auc": null,
+            "per_class_ovr_auc": [
+              null,
+              null
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "binary": {
+              "n": 11,
+              "signal_n": 11,
+              "noise_n": 0,
+              "hits": 11,
+              "misses": 0,
+              "false_alarms": 0,
+              "correct_rejections": 0,
+              "hit_rate": 1.0,
+              "false_alarm_rate": null,
+              "hit_rate_ci95": [
+                0.7411670330319684,
+                1.0
+              ],
+              "false_alarm_rate_ci95": null,
+              "balanced_accuracy": null,
+              "auroc": null,
+              "dprime": null,
+              "criterion": null
+            },
+            "unique_base_groups": 11,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          },
+          "3": {
+            "n": 17,
+            "classes": 2,
+            "confusion_true_rows_pred_columns": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                17
+              ]
+            ],
+            "class_counts": [
+              0,
+              17
+            ],
+            "recall": [
+              null,
+              1.0
+            ],
+            "recall_ci95": [
+              null,
+              [
+                0.8156818649911483,
+                1.0
+              ]
+            ],
+            "accuracy": 1.0,
+            "balanced_accuracy": null,
+            "chance_accuracy": 0.5,
+            "macro_ovr_auc": null,
+            "per_class_ovr_auc": [
+              null,
+              null
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "binary": {
+              "n": 17,
+              "signal_n": 17,
+              "noise_n": 0,
+              "hits": 17,
+              "misses": 0,
+              "false_alarms": 0,
+              "correct_rejections": 0,
+              "hit_rate": 1.0,
+              "false_alarm_rate": null,
+              "hit_rate_ci95": [
+                0.8156818649911483,
+                1.0
+              ],
+              "false_alarm_rate_ci95": null,
+              "balanced_accuracy": null,
+              "auroc": null,
+              "dprime": null,
+              "criterion": null
+            },
+            "unique_base_groups": 17,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          },
+          "4": {
+            "n": 9,
+            "classes": 2,
+            "confusion_true_rows_pred_columns": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                9
+              ]
+            ],
+            "class_counts": [
+              0,
+              9
+            ],
+            "recall": [
+              null,
+              1.0
+            ],
+            "recall_ci95": [
+              null,
+              [
+                0.7008549515804559,
+                1.0
+              ]
+            ],
+            "accuracy": 1.0,
+            "balanced_accuracy": null,
+            "chance_accuracy": 0.5,
+            "macro_ovr_auc": null,
+            "per_class_ovr_auc": [
+              null,
+              null
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "binary": {
+              "n": 9,
+              "signal_n": 9,
+              "noise_n": 0,
+              "hits": 9,
+              "misses": 0,
+              "false_alarms": 0,
+              "correct_rejections": 0,
+              "hit_rate": 1.0,
+              "false_alarm_rate": null,
+              "hit_rate_ci95": [
+                0.7008549515804559,
+                1.0
+              ],
+              "false_alarm_rate_ci95": null,
+              "balanced_accuracy": null,
+              "auroc": null,
+              "dprime": null,
+              "criterion": null
+            },
+            "unique_base_groups": 9,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          },
+          "5": {
+            "n": 5,
+            "classes": 2,
+            "confusion_true_rows_pred_columns": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                5
+              ]
+            ],
+            "class_counts": [
+              0,
+              5
+            ],
+            "recall": [
+              null,
+              1.0
+            ],
+            "recall_ci95": [
+              null,
+              [
+                0.5655175352168251,
+                1.0
+              ]
+            ],
+            "accuracy": 1.0,
+            "balanced_accuracy": null,
+            "chance_accuracy": 0.5,
+            "macro_ovr_auc": null,
+            "per_class_ovr_auc": [
+              null,
+              null
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "binary": {
+              "n": 5,
+              "signal_n": 5,
+              "noise_n": 0,
+              "hits": 5,
+              "misses": 0,
+              "false_alarms": 0,
+              "correct_rejections": 0,
+              "hit_rate": 1.0,
+              "false_alarm_rate": null,
+              "hit_rate_ci95": [
+                0.5655175352168251,
+                1.0
+              ],
+              "false_alarm_rate_ci95": null,
+              "balanced_accuracy": null,
+              "auroc": null,
+              "dprime": null,
+              "criterion": null
+            },
+            "unique_base_groups": 5,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          },
+          "6": {
+            "n": 6,
+            "classes": 2,
+            "confusion_true_rows_pred_columns": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                5
+              ]
+            ],
+            "class_counts": [
+              0,
+              6
+            ],
+            "recall": [
+              null,
+              0.8333333333333334
+            ],
+            "recall_ci95": [
+              null,
+              [
+                0.43649717781352987,
+                0.9699466302516935
+              ]
+            ],
+            "accuracy": 0.8333333333333334,
+            "balanced_accuracy": null,
+            "chance_accuracy": 0.5,
+            "macro_ovr_auc": null,
+            "per_class_ovr_auc": [
+              null,
+              null
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "binary": {
+              "n": 6,
+              "signal_n": 6,
+              "noise_n": 0,
+              "hits": 5,
+              "misses": 1,
+              "false_alarms": 0,
+              "correct_rejections": 0,
+              "hit_rate": 0.8333333333333334,
+              "false_alarm_rate": null,
+              "hit_rate_ci95": [
+                0.43649717781352987,
+                0.9699466302516935
+              ],
+              "false_alarm_rate_ci95": null,
+              "balanced_accuracy": null,
+              "auroc": null,
+              "dprime": null,
+              "criterion": null
+            },
+            "unique_base_groups": 6,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          },
+          "8": {
+            "n": 2,
+            "classes": 2,
+            "confusion_true_rows_pred_columns": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                2
+              ]
+            ],
+            "class_counts": [
+              0,
+              2
+            ],
+            "recall": [
+              null,
+              1.0
+            ],
+            "recall_ci95": [
+              null,
+              [
+                0.34238022750665303,
+                1.0
+              ]
+            ],
+            "accuracy": 1.0,
+            "balanced_accuracy": null,
+            "chance_accuracy": 0.5,
+            "macro_ovr_auc": null,
+            "per_class_ovr_auc": [
+              null,
+              null
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "binary": {
+              "n": 2,
+              "signal_n": 2,
+              "noise_n": 0,
+              "hits": 2,
+              "misses": 0,
+              "false_alarms": 0,
+              "correct_rejections": 0,
+              "hit_rate": 1.0,
+              "false_alarm_rate": null,
+              "hit_rate_ci95": [
+                0.34238022750665303,
+                1.0
+              ],
+              "false_alarm_rate_ci95": null,
+              "balanced_accuracy": null,
+              "auroc": null,
+              "dprime": null,
+              "criterion": null
+            },
+            "unique_base_groups": 2,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          }
+        },
+        "binding_lure": {
+          "False": {
+            "n": 128,
+            "classes": 2,
+            "confusion_true_rows_pred_columns": [
+              [
+                64,
+                0
+              ],
+              [
+                1,
+                63
+              ]
+            ],
+            "class_counts": [
+              64,
+              64
+            ],
+            "recall": [
+              1.0,
+              0.984375
+            ],
+            "recall_ci95": [
+              [
+                0.9433759402071946,
+                1.0
+              ],
+              [
+                0.9166589839990573,
+                0.9972364580766624
+              ]
+            ],
+            "accuracy": 0.9921875,
+            "balanced_accuracy": 0.9921875,
+            "chance_accuracy": 0.5,
+            "macro_ovr_auc": 0.9990234375,
+            "per_class_ovr_auc": [
+              0.9990234375,
+              0.9990234375
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "binary": {
+              "n": 128,
+              "signal_n": 64,
+              "noise_n": 64,
+              "hits": 63,
+              "misses": 1,
+              "false_alarms": 0,
+              "correct_rejections": 64,
+              "hit_rate": 0.984375,
+              "false_alarm_rate": 0.0,
+              "hit_rate_ci95": [
+                0.9166589839990573,
+                0.9972364580766624
+              ],
+              "false_alarm_rate_ci95": [
+                0.0,
+                0.05662405979280534
+              ],
+              "balanced_accuracy": 0.9921875,
+              "auroc": 0.9990234375,
+              "dprime": 4.417179800897086,
+              "criterion": 0.21460629456000058
+            },
+            "unique_base_groups": 128,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          }
+        },
+        "difficulty": {
+          "recall/L8/D0/N1": {
+            "n": 128,
+            "classes": 2,
+            "confusion_true_rows_pred_columns": [
+              [
+                64,
+                0
+              ],
+              [
+                1,
+                63
+              ]
+            ],
+            "class_counts": [
+              64,
+              64
+            ],
+            "recall": [
+              1.0,
+              0.984375
+            ],
+            "recall_ci95": [
+              [
+                0.9433759402071946,
+                1.0
+              ],
+              [
+                0.9166589839990573,
+                0.9972364580766624
+              ]
+            ],
+            "accuracy": 0.9921875,
+            "balanced_accuracy": 0.9921875,
+            "chance_accuracy": 0.5,
+            "macro_ovr_auc": 0.9990234375,
+            "per_class_ovr_auc": [
+              0.9990234375,
+              0.9990234375
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "binary": {
+              "n": 128,
+              "signal_n": 64,
+              "noise_n": 64,
+              "hits": 63,
+              "misses": 1,
+              "false_alarms": 0,
+              "correct_rejections": 64,
+              "hit_rate": 0.984375,
+              "false_alarm_rate": 0.0,
+              "hit_rate_ci95": [
+                0.9166589839990573,
+                0.9972364580766624
+              ],
+              "false_alarm_rate_ci95": [
+                0.0,
+                0.05662405979280534
+              ],
+              "balanced_accuracy": 0.9921875,
+              "auroc": 0.9990234375,
+              "dprime": 4.417179800897086,
+              "criterion": 0.21460629456000058
+            },
+            "unique_base_groups": 128,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          }
+        },
+        "threshold_level": {},
+        "count_margin": {}
+      }
+    },
+    "orientation/single_D12": {
+      "family": "orientation",
+      "condition": "single_D12",
+      "protocol": "orientation_single",
+      "overall": {
+        "n": 128,
+        "classes": 2,
+        "confusion_true_rows_pred_columns": [
+          [
+            61,
+            3
+          ],
+          [
+            13,
+            51
+          ]
+        ],
+        "class_counts": [
+          64,
+          64
+        ],
+        "recall": [
+          0.953125,
+          0.796875
+        ],
+        "recall_ci95": [
+          [
+            0.8710034625990631,
+            0.983930983213707
+          ],
+          [
+            0.6828636426898583,
+            0.8772658218081634
+          ]
+        ],
+        "accuracy": 0.875,
+        "balanced_accuracy": 0.875,
+        "chance_accuracy": 0.5,
+        "macro_ovr_auc": 0.958251953125,
+        "per_class_ovr_auc": [
+          0.958251953125,
+          0.958251953125
+        ],
+        "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+        "binary": {
+          "n": 128,
+          "signal_n": 64,
+          "noise_n": 64,
+          "hits": 51,
+          "misses": 13,
+          "false_alarms": 3,
+          "correct_rejections": 61,
+          "hit_rate": 0.796875,
+          "false_alarm_rate": 0.046875,
+          "hit_rate_ci95": [
+            0.6828636426898583,
+            0.8772658218081634
+          ],
+          "false_alarm_rate_ci95": [
+            0.016069016786292974,
+            0.12899653740093686
+          ],
+          "balanced_accuracy": 0.875,
+          "auroc": 0.958251953125,
+          "dprime": 2.4231072043452686,
+          "criterion": 0.39709908037885133
+        },
+        "unique_base_groups": 128,
+        "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+      },
+      "strata": {
+        "target_serial_slot": {
+          "0": {
+            "n": 128,
+            "classes": 2,
+            "confusion_true_rows_pred_columns": [
+              [
+                61,
+                3
+              ],
+              [
+                13,
+                51
+              ]
+            ],
+            "class_counts": [
+              64,
+              64
+            ],
+            "recall": [
+              0.953125,
+              0.796875
+            ],
+            "recall_ci95": [
+              [
+                0.8710034625990631,
+                0.983930983213707
+              ],
+              [
+                0.6828636426898583,
+                0.8772658218081634
+              ]
+            ],
+            "accuracy": 0.875,
+            "balanced_accuracy": 0.875,
+            "chance_accuracy": 0.5,
+            "macro_ovr_auc": 0.958251953125,
+            "per_class_ovr_auc": [
+              0.958251953125,
+              0.958251953125
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "binary": {
+              "n": 128,
+              "signal_n": 64,
+              "noise_n": 64,
+              "hits": 51,
+              "misses": 13,
+              "false_alarms": 3,
+              "correct_rejections": 61,
+              "hit_rate": 0.796875,
+              "false_alarm_rate": 0.046875,
+              "hit_rate_ci95": [
+                0.6828636426898583,
+                0.8772658218081634
+              ],
+              "false_alarm_rate_ci95": [
+                0.016069016786292974,
+                0.12899653740093686
+              ],
+              "balanced_accuracy": 0.875,
+              "auroc": 0.958251953125,
+              "dprime": 2.4231072043452686,
+              "criterion": 0.39709908037885133
+            },
+            "unique_base_groups": 128,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          }
+        },
+        "target_age_at_report": {
+          "14": {
+            "n": 128,
+            "classes": 2,
+            "confusion_true_rows_pred_columns": [
+              [
+                61,
+                3
+              ],
+              [
+                13,
+                51
+              ]
+            ],
+            "class_counts": [
+              64,
+              64
+            ],
+            "recall": [
+              0.953125,
+              0.796875
+            ],
+            "recall_ci95": [
+              [
+                0.8710034625990631,
+                0.983930983213707
+              ],
+              [
+                0.6828636426898583,
+                0.8772658218081634
+              ]
+            ],
+            "accuracy": 0.875,
+            "balanced_accuracy": 0.875,
+            "chance_accuracy": 0.5,
+            "macro_ovr_auc": 0.958251953125,
+            "per_class_ovr_auc": [
+              0.958251953125,
+              0.958251953125
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "binary": {
+              "n": 128,
+              "signal_n": 64,
+              "noise_n": 64,
+              "hits": 51,
+              "misses": 13,
+              "false_alarms": 3,
+              "correct_rejections": 61,
+              "hit_rate": 0.796875,
+              "false_alarm_rate": 0.046875,
+              "hit_rate_ci95": [
+                0.6828636426898583,
+                0.8772658218081634
+              ],
+              "false_alarm_rate_ci95": [
+                0.016069016786292974,
+                0.12899653740093686
+              ],
+              "balanced_accuracy": 0.875,
+              "auroc": 0.958251953125,
+              "dprime": 2.4231072043452686,
+              "criterion": 0.39709908037885133
+            },
+            "unique_base_groups": 128,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          }
+        },
+        "mismatch": {
+          "0": {
+            "n": 64,
+            "classes": 2,
+            "confusion_true_rows_pred_columns": [
+              [
+                61,
+                3
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "class_counts": [
+              64,
+              0
+            ],
+            "recall": [
+              0.953125,
+              null
+            ],
+            "recall_ci95": [
+              [
+                0.8710034625990631,
+                0.983930983213707
+              ],
+              null
+            ],
+            "accuracy": 0.953125,
+            "balanced_accuracy": null,
+            "chance_accuracy": 0.5,
+            "macro_ovr_auc": null,
+            "per_class_ovr_auc": [
+              null,
+              null
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "binary": {
+              "n": 64,
+              "signal_n": 0,
+              "noise_n": 64,
+              "hits": 0,
+              "misses": 0,
+              "false_alarms": 3,
+              "correct_rejections": 61,
+              "hit_rate": null,
+              "false_alarm_rate": 0.046875,
+              "hit_rate_ci95": null,
+              "false_alarm_rate_ci95": [
+                0.016069016786292974,
+                0.12899653740093686
+              ],
+              "balanced_accuracy": null,
+              "auroc": null,
+              "dprime": null,
+              "criterion": null
+            },
+            "unique_base_groups": 64,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          },
+          "1": {
+            "n": 14,
+            "classes": 2,
+            "confusion_true_rows_pred_columns": [
+              [
+                0,
+                0
+              ],
+              [
+                7,
+                7
+              ]
+            ],
+            "class_counts": [
+              0,
+              14
+            ],
+            "recall": [
+              null,
+              0.5
+            ],
+            "recall_ci95": [
+              null,
+              [
+                0.26799202452413634,
+                0.7320079754758637
+              ]
+            ],
+            "accuracy": 0.5,
+            "balanced_accuracy": null,
+            "chance_accuracy": 0.5,
+            "macro_ovr_auc": null,
+            "per_class_ovr_auc": [
+              null,
+              null
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "binary": {
+              "n": 14,
+              "signal_n": 14,
+              "noise_n": 0,
+              "hits": 7,
+              "misses": 7,
+              "false_alarms": 0,
+              "correct_rejections": 0,
+              "hit_rate": 0.5,
+              "false_alarm_rate": null,
+              "hit_rate_ci95": [
+                0.26799202452413634,
+                0.7320079754758637
+              ],
+              "false_alarm_rate_ci95": null,
+              "balanced_accuracy": null,
+              "auroc": null,
+              "dprime": null,
+              "criterion": null
+            },
+            "unique_base_groups": 14,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          },
+          "2": {
+            "n": 11,
+            "classes": 2,
+            "confusion_true_rows_pred_columns": [
+              [
+                0,
+                0
+              ],
+              [
+                5,
+                6
+              ]
+            ],
+            "class_counts": [
+              0,
+              11
+            ],
+            "recall": [
+              null,
+              0.5454545454545454
+            ],
+            "recall_ci95": [
+              null,
+              [
+                0.280091537409322,
+                0.7872872837754024
+              ]
+            ],
+            "accuracy": 0.5454545454545454,
+            "balanced_accuracy": null,
+            "chance_accuracy": 0.5,
+            "macro_ovr_auc": null,
+            "per_class_ovr_auc": [
+              null,
+              null
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "binary": {
+              "n": 11,
+              "signal_n": 11,
+              "noise_n": 0,
+              "hits": 6,
+              "misses": 5,
+              "false_alarms": 0,
+              "correct_rejections": 0,
+              "hit_rate": 0.5454545454545454,
+              "false_alarm_rate": null,
+              "hit_rate_ci95": [
+                0.280091537409322,
+                0.7872872837754024
+              ],
+              "false_alarm_rate_ci95": null,
+              "balanced_accuracy": null,
+              "auroc": null,
+              "dprime": null,
+              "criterion": null
+            },
+            "unique_base_groups": 11,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          },
+          "3": {
+            "n": 17,
+            "classes": 2,
+            "confusion_true_rows_pred_columns": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                17
+              ]
+            ],
+            "class_counts": [
+              0,
+              17
+            ],
+            "recall": [
+              null,
+              1.0
+            ],
+            "recall_ci95": [
+              null,
+              [
+                0.8156818649911483,
+                1.0
+              ]
+            ],
+            "accuracy": 1.0,
+            "balanced_accuracy": null,
+            "chance_accuracy": 0.5,
+            "macro_ovr_auc": null,
+            "per_class_ovr_auc": [
+              null,
+              null
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "binary": {
+              "n": 17,
+              "signal_n": 17,
+              "noise_n": 0,
+              "hits": 17,
+              "misses": 0,
+              "false_alarms": 0,
+              "correct_rejections": 0,
+              "hit_rate": 1.0,
+              "false_alarm_rate": null,
+              "hit_rate_ci95": [
+                0.8156818649911483,
+                1.0
+              ],
+              "false_alarm_rate_ci95": null,
+              "balanced_accuracy": null,
+              "auroc": null,
+              "dprime": null,
+              "criterion": null
+            },
+            "unique_base_groups": 17,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          },
+          "4": {
+            "n": 9,
+            "classes": 2,
+            "confusion_true_rows_pred_columns": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                9
+              ]
+            ],
+            "class_counts": [
+              0,
+              9
+            ],
+            "recall": [
+              null,
+              1.0
+            ],
+            "recall_ci95": [
+              null,
+              [
+                0.7008549515804559,
+                1.0
+              ]
+            ],
+            "accuracy": 1.0,
+            "balanced_accuracy": null,
+            "chance_accuracy": 0.5,
+            "macro_ovr_auc": null,
+            "per_class_ovr_auc": [
+              null,
+              null
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "binary": {
+              "n": 9,
+              "signal_n": 9,
+              "noise_n": 0,
+              "hits": 9,
+              "misses": 0,
+              "false_alarms": 0,
+              "correct_rejections": 0,
+              "hit_rate": 1.0,
+              "false_alarm_rate": null,
+              "hit_rate_ci95": [
+                0.7008549515804559,
+                1.0
+              ],
+              "false_alarm_rate_ci95": null,
+              "balanced_accuracy": null,
+              "auroc": null,
+              "dprime": null,
+              "criterion": null
+            },
+            "unique_base_groups": 9,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          },
+          "5": {
+            "n": 5,
+            "classes": 2,
+            "confusion_true_rows_pred_columns": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                5
+              ]
+            ],
+            "class_counts": [
+              0,
+              5
+            ],
+            "recall": [
+              null,
+              1.0
+            ],
+            "recall_ci95": [
+              null,
+              [
+                0.5655175352168251,
+                1.0
+              ]
+            ],
+            "accuracy": 1.0,
+            "balanced_accuracy": null,
+            "chance_accuracy": 0.5,
+            "macro_ovr_auc": null,
+            "per_class_ovr_auc": [
+              null,
+              null
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "binary": {
+              "n": 5,
+              "signal_n": 5,
+              "noise_n": 0,
+              "hits": 5,
+              "misses": 0,
+              "false_alarms": 0,
+              "correct_rejections": 0,
+              "hit_rate": 1.0,
+              "false_alarm_rate": null,
+              "hit_rate_ci95": [
+                0.5655175352168251,
+                1.0
+              ],
+              "false_alarm_rate_ci95": null,
+              "balanced_accuracy": null,
+              "auroc": null,
+              "dprime": null,
+              "criterion": null
+            },
+            "unique_base_groups": 5,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          },
+          "6": {
+            "n": 6,
+            "classes": 2,
+            "confusion_true_rows_pred_columns": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                5
+              ]
+            ],
+            "class_counts": [
+              0,
+              6
+            ],
+            "recall": [
+              null,
+              0.8333333333333334
+            ],
+            "recall_ci95": [
+              null,
+              [
+                0.43649717781352987,
+                0.9699466302516935
+              ]
+            ],
+            "accuracy": 0.8333333333333334,
+            "balanced_accuracy": null,
+            "chance_accuracy": 0.5,
+            "macro_ovr_auc": null,
+            "per_class_ovr_auc": [
+              null,
+              null
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "binary": {
+              "n": 6,
+              "signal_n": 6,
+              "noise_n": 0,
+              "hits": 5,
+              "misses": 1,
+              "false_alarms": 0,
+              "correct_rejections": 0,
+              "hit_rate": 0.8333333333333334,
+              "false_alarm_rate": null,
+              "hit_rate_ci95": [
+                0.43649717781352987,
+                0.9699466302516935
+              ],
+              "false_alarm_rate_ci95": null,
+              "balanced_accuracy": null,
+              "auroc": null,
+              "dprime": null,
+              "criterion": null
+            },
+            "unique_base_groups": 6,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          },
+          "8": {
+            "n": 2,
+            "classes": 2,
+            "confusion_true_rows_pred_columns": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                2
+              ]
+            ],
+            "class_counts": [
+              0,
+              2
+            ],
+            "recall": [
+              null,
+              1.0
+            ],
+            "recall_ci95": [
+              null,
+              [
+                0.34238022750665303,
+                1.0
+              ]
+            ],
+            "accuracy": 1.0,
+            "balanced_accuracy": null,
+            "chance_accuracy": 0.5,
+            "macro_ovr_auc": null,
+            "per_class_ovr_auc": [
+              null,
+              null
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "binary": {
+              "n": 2,
+              "signal_n": 2,
+              "noise_n": 0,
+              "hits": 2,
+              "misses": 0,
+              "false_alarms": 0,
+              "correct_rejections": 0,
+              "hit_rate": 1.0,
+              "false_alarm_rate": null,
+              "hit_rate_ci95": [
+                0.34238022750665303,
+                1.0
+              ],
+              "false_alarm_rate_ci95": null,
+              "balanced_accuracy": null,
+              "auroc": null,
+              "dprime": null,
+              "criterion": null
+            },
+            "unique_base_groups": 2,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          }
+        },
+        "binding_lure": {
+          "False": {
+            "n": 128,
+            "classes": 2,
+            "confusion_true_rows_pred_columns": [
+              [
+                61,
+                3
+              ],
+              [
+                13,
+                51
+              ]
+            ],
+            "class_counts": [
+              64,
+              64
+            ],
+            "recall": [
+              0.953125,
+              0.796875
+            ],
+            "recall_ci95": [
+              [
+                0.8710034625990631,
+                0.983930983213707
+              ],
+              [
+                0.6828636426898583,
+                0.8772658218081634
+              ]
+            ],
+            "accuracy": 0.875,
+            "balanced_accuracy": 0.875,
+            "chance_accuracy": 0.5,
+            "macro_ovr_auc": 0.958251953125,
+            "per_class_ovr_auc": [
+              0.958251953125,
+              0.958251953125
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "binary": {
+              "n": 128,
+              "signal_n": 64,
+              "noise_n": 64,
+              "hits": 51,
+              "misses": 13,
+              "false_alarms": 3,
+              "correct_rejections": 61,
+              "hit_rate": 0.796875,
+              "false_alarm_rate": 0.046875,
+              "hit_rate_ci95": [
+                0.6828636426898583,
+                0.8772658218081634
+              ],
+              "false_alarm_rate_ci95": [
+                0.016069016786292974,
+                0.12899653740093686
+              ],
+              "balanced_accuracy": 0.875,
+              "auroc": 0.958251953125,
+              "dprime": 2.4231072043452686,
+              "criterion": 0.39709908037885133
+            },
+            "unique_base_groups": 128,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          }
+        },
+        "difficulty": {
+          "recall/L8/D12/N1": {
+            "n": 128,
+            "classes": 2,
+            "confusion_true_rows_pred_columns": [
+              [
+                61,
+                3
+              ],
+              [
+                13,
+                51
+              ]
+            ],
+            "class_counts": [
+              64,
+              64
+            ],
+            "recall": [
+              0.953125,
+              0.796875
+            ],
+            "recall_ci95": [
+              [
+                0.8710034625990631,
+                0.983930983213707
+              ],
+              [
+                0.6828636426898583,
+                0.8772658218081634
+              ]
+            ],
+            "accuracy": 0.875,
+            "balanced_accuracy": 0.875,
+            "chance_accuracy": 0.5,
+            "macro_ovr_auc": 0.958251953125,
+            "per_class_ovr_auc": [
+              0.958251953125,
+              0.958251953125
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "binary": {
+              "n": 128,
+              "signal_n": 64,
+              "noise_n": 64,
+              "hits": 51,
+              "misses": 13,
+              "false_alarms": 3,
+              "correct_rejections": 61,
+              "hit_rate": 0.796875,
+              "false_alarm_rate": 0.046875,
+              "hit_rate_ci95": [
+                0.6828636426898583,
+                0.8772658218081634
+              ],
+              "false_alarm_rate_ci95": [
+                0.016069016786292974,
+                0.12899653740093686
+              ],
+              "balanced_accuracy": 0.875,
+              "auroc": 0.958251953125,
+              "dprime": 2.4231072043452686,
+              "criterion": 0.39709908037885133
+            },
+            "unique_base_groups": 128,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          }
+        },
+        "threshold_level": {},
+        "count_margin": {}
+      }
+    },
+    "orientation/single_D24": {
+      "family": "orientation",
+      "condition": "single_D24",
+      "protocol": "orientation_single",
+      "overall": {
+        "n": 128,
+        "classes": 2,
+        "confusion_true_rows_pred_columns": [
+          [
+            15,
+            49
+          ],
+          [
+            15,
+            49
+          ]
+        ],
+        "class_counts": [
+          64,
+          64
+        ],
+        "recall": [
+          0.234375,
+          0.765625
+        ],
+        "recall_ci95": [
+          [
+            0.1474989559392414,
+            0.35133257582568644
+          ],
+          [
+            0.6486674241743136,
+            0.8525010440607586
+          ]
+        ],
+        "accuracy": 0.5,
+        "balanced_accuracy": 0.5,
+        "chance_accuracy": 0.5,
+        "macro_ovr_auc": 0.53564453125,
+        "per_class_ovr_auc": [
+          0.53564453125,
+          0.53564453125
+        ],
+        "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+        "binary": {
+          "n": 128,
+          "signal_n": 64,
+          "noise_n": 64,
+          "hits": 49,
+          "misses": 15,
+          "false_alarms": 49,
+          "correct_rejections": 15,
+          "hit_rate": 0.765625,
+          "false_alarm_rate": 0.765625,
+          "hit_rate_ci95": [
+            0.6486674241743136,
+            0.8525010440607586
+          ],
+          "false_alarm_rate_ci95": [
+            0.6486674241743136,
+            0.8525010440607586
+          ],
+          "balanced_accuracy": 0.5,
+          "auroc": 0.53564453125,
+          "dprime": 0.0,
+          "criterion": -0.7112600919034948
+        },
+        "unique_base_groups": 128,
+        "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+      },
+      "strata": {
+        "target_serial_slot": {
+          "0": {
+            "n": 128,
+            "classes": 2,
+            "confusion_true_rows_pred_columns": [
+              [
+                15,
+                49
+              ],
+              [
+                15,
+                49
+              ]
+            ],
+            "class_counts": [
+              64,
+              64
+            ],
+            "recall": [
+              0.234375,
+              0.765625
+            ],
+            "recall_ci95": [
+              [
+                0.1474989559392414,
+                0.35133257582568644
+              ],
+              [
+                0.6486674241743136,
+                0.8525010440607586
+              ]
+            ],
+            "accuracy": 0.5,
+            "balanced_accuracy": 0.5,
+            "chance_accuracy": 0.5,
+            "macro_ovr_auc": 0.53564453125,
+            "per_class_ovr_auc": [
+              0.53564453125,
+              0.53564453125
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "binary": {
+              "n": 128,
+              "signal_n": 64,
+              "noise_n": 64,
+              "hits": 49,
+              "misses": 15,
+              "false_alarms": 49,
+              "correct_rejections": 15,
+              "hit_rate": 0.765625,
+              "false_alarm_rate": 0.765625,
+              "hit_rate_ci95": [
+                0.6486674241743136,
+                0.8525010440607586
+              ],
+              "false_alarm_rate_ci95": [
+                0.6486674241743136,
+                0.8525010440607586
+              ],
+              "balanced_accuracy": 0.5,
+              "auroc": 0.53564453125,
+              "dprime": 0.0,
+              "criterion": -0.7112600919034948
+            },
+            "unique_base_groups": 128,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          }
+        },
+        "target_age_at_report": {
+          "26": {
+            "n": 128,
+            "classes": 2,
+            "confusion_true_rows_pred_columns": [
+              [
+                15,
+                49
+              ],
+              [
+                15,
+                49
+              ]
+            ],
+            "class_counts": [
+              64,
+              64
+            ],
+            "recall": [
+              0.234375,
+              0.765625
+            ],
+            "recall_ci95": [
+              [
+                0.1474989559392414,
+                0.35133257582568644
+              ],
+              [
+                0.6486674241743136,
+                0.8525010440607586
+              ]
+            ],
+            "accuracy": 0.5,
+            "balanced_accuracy": 0.5,
+            "chance_accuracy": 0.5,
+            "macro_ovr_auc": 0.53564453125,
+            "per_class_ovr_auc": [
+              0.53564453125,
+              0.53564453125
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "binary": {
+              "n": 128,
+              "signal_n": 64,
+              "noise_n": 64,
+              "hits": 49,
+              "misses": 15,
+              "false_alarms": 49,
+              "correct_rejections": 15,
+              "hit_rate": 0.765625,
+              "false_alarm_rate": 0.765625,
+              "hit_rate_ci95": [
+                0.6486674241743136,
+                0.8525010440607586
+              ],
+              "false_alarm_rate_ci95": [
+                0.6486674241743136,
+                0.8525010440607586
+              ],
+              "balanced_accuracy": 0.5,
+              "auroc": 0.53564453125,
+              "dprime": 0.0,
+              "criterion": -0.7112600919034948
+            },
+            "unique_base_groups": 128,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          }
+        },
+        "mismatch": {
+          "0": {
+            "n": 64,
+            "classes": 2,
+            "confusion_true_rows_pred_columns": [
+              [
+                15,
+                49
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "class_counts": [
+              64,
+              0
+            ],
+            "recall": [
+              0.234375,
+              null
+            ],
+            "recall_ci95": [
+              [
+                0.1474989559392414,
+                0.35133257582568644
+              ],
+              null
+            ],
+            "accuracy": 0.234375,
+            "balanced_accuracy": null,
+            "chance_accuracy": 0.5,
+            "macro_ovr_auc": null,
+            "per_class_ovr_auc": [
+              null,
+              null
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "binary": {
+              "n": 64,
+              "signal_n": 0,
+              "noise_n": 64,
+              "hits": 0,
+              "misses": 0,
+              "false_alarms": 49,
+              "correct_rejections": 15,
+              "hit_rate": null,
+              "false_alarm_rate": 0.765625,
+              "hit_rate_ci95": null,
+              "false_alarm_rate_ci95": [
+                0.6486674241743136,
+                0.8525010440607586
+              ],
+              "balanced_accuracy": null,
+              "auroc": null,
+              "dprime": null,
+              "criterion": null
+            },
+            "unique_base_groups": 64,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          },
+          "1": {
+            "n": 14,
+            "classes": 2,
+            "confusion_true_rows_pred_columns": [
+              [
+                0,
+                0
+              ],
+              [
+                5,
+                9
+              ]
+            ],
+            "class_counts": [
+              0,
+              14
+            ],
+            "recall": [
+              null,
+              0.6428571428571429
+            ],
+            "recall_ci95": [
+              null,
+              [
+                0.38764423103907397,
+                0.8365526824644587
+              ]
+            ],
+            "accuracy": 0.6428571428571429,
+            "balanced_accuracy": null,
+            "chance_accuracy": 0.5,
+            "macro_ovr_auc": null,
+            "per_class_ovr_auc": [
+              null,
+              null
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "binary": {
+              "n": 14,
+              "signal_n": 14,
+              "noise_n": 0,
+              "hits": 9,
+              "misses": 5,
+              "false_alarms": 0,
+              "correct_rejections": 0,
+              "hit_rate": 0.6428571428571429,
+              "false_alarm_rate": null,
+              "hit_rate_ci95": [
+                0.38764423103907397,
+                0.8365526824644587
+              ],
+              "false_alarm_rate_ci95": null,
+              "balanced_accuracy": null,
+              "auroc": null,
+              "dprime": null,
+              "criterion": null
+            },
+            "unique_base_groups": 14,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          },
+          "2": {
+            "n": 11,
+            "classes": 2,
+            "confusion_true_rows_pred_columns": [
+              [
+                0,
+                0
+              ],
+              [
+                3,
+                8
+              ]
+            ],
+            "class_counts": [
+              0,
+              11
+            ],
+            "recall": [
+              null,
+              0.7272727272727273
+            ],
+            "recall_ci95": [
+              null,
+              [
+                0.43435469882387084,
+                0.902539407099751
+              ]
+            ],
+            "accuracy": 0.7272727272727273,
+            "balanced_accuracy": null,
+            "chance_accuracy": 0.5,
+            "macro_ovr_auc": null,
+            "per_class_ovr_auc": [
+              null,
+              null
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "binary": {
+              "n": 11,
+              "signal_n": 11,
+              "noise_n": 0,
+              "hits": 8,
+              "misses": 3,
+              "false_alarms": 0,
+              "correct_rejections": 0,
+              "hit_rate": 0.7272727272727273,
+              "false_alarm_rate": null,
+              "hit_rate_ci95": [
+                0.43435469882387084,
+                0.902539407099751
+              ],
+              "false_alarm_rate_ci95": null,
+              "balanced_accuracy": null,
+              "auroc": null,
+              "dprime": null,
+              "criterion": null
+            },
+            "unique_base_groups": 11,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          },
+          "3": {
+            "n": 17,
+            "classes": 2,
+            "confusion_true_rows_pred_columns": [
+              [
+                0,
+                0
+              ],
+              [
+                3,
+                14
+              ]
+            ],
+            "class_counts": [
+              0,
+              17
+            ],
+            "recall": [
+              null,
+              0.8235294117647058
+            ],
+            "recall_ci95": [
+              null,
+              [
+                0.5897054143116588,
+                0.9380887336237901
+              ]
+            ],
+            "accuracy": 0.8235294117647058,
+            "balanced_accuracy": null,
+            "chance_accuracy": 0.5,
+            "macro_ovr_auc": null,
+            "per_class_ovr_auc": [
+              null,
+              null
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "binary": {
+              "n": 17,
+              "signal_n": 17,
+              "noise_n": 0,
+              "hits": 14,
+              "misses": 3,
+              "false_alarms": 0,
+              "correct_rejections": 0,
+              "hit_rate": 0.8235294117647058,
+              "false_alarm_rate": null,
+              "hit_rate_ci95": [
+                0.5897054143116588,
+                0.9380887336237901
+              ],
+              "false_alarm_rate_ci95": null,
+              "balanced_accuracy": null,
+              "auroc": null,
+              "dprime": null,
+              "criterion": null
+            },
+            "unique_base_groups": 17,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          },
+          "4": {
+            "n": 9,
+            "classes": 2,
+            "confusion_true_rows_pred_columns": [
+              [
+                0,
+                0
+              ],
+              [
+                2,
+                7
+              ]
+            ],
+            "class_counts": [
+              0,
+              9
+            ],
+            "recall": [
+              null,
+              0.7777777777777778
+            ],
+            "recall_ci95": [
+              null,
+              [
+                0.45258896910698887,
+                0.9367748928821533
+              ]
+            ],
+            "accuracy": 0.7777777777777778,
+            "balanced_accuracy": null,
+            "chance_accuracy": 0.5,
+            "macro_ovr_auc": null,
+            "per_class_ovr_auc": [
+              null,
+              null
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "binary": {
+              "n": 9,
+              "signal_n": 9,
+              "noise_n": 0,
+              "hits": 7,
+              "misses": 2,
+              "false_alarms": 0,
+              "correct_rejections": 0,
+              "hit_rate": 0.7777777777777778,
+              "false_alarm_rate": null,
+              "hit_rate_ci95": [
+                0.45258896910698887,
+                0.9367748928821533
+              ],
+              "false_alarm_rate_ci95": null,
+              "balanced_accuracy": null,
+              "auroc": null,
+              "dprime": null,
+              "criterion": null
+            },
+            "unique_base_groups": 9,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          },
+          "5": {
+            "n": 5,
+            "classes": 2,
+            "confusion_true_rows_pred_columns": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                5
+              ]
+            ],
+            "class_counts": [
+              0,
+              5
+            ],
+            "recall": [
+              null,
+              1.0
+            ],
+            "recall_ci95": [
+              null,
+              [
+                0.5655175352168251,
+                1.0
+              ]
+            ],
+            "accuracy": 1.0,
+            "balanced_accuracy": null,
+            "chance_accuracy": 0.5,
+            "macro_ovr_auc": null,
+            "per_class_ovr_auc": [
+              null,
+              null
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "binary": {
+              "n": 5,
+              "signal_n": 5,
+              "noise_n": 0,
+              "hits": 5,
+              "misses": 0,
+              "false_alarms": 0,
+              "correct_rejections": 0,
+              "hit_rate": 1.0,
+              "false_alarm_rate": null,
+              "hit_rate_ci95": [
+                0.5655175352168251,
+                1.0
+              ],
+              "false_alarm_rate_ci95": null,
+              "balanced_accuracy": null,
+              "auroc": null,
+              "dprime": null,
+              "criterion": null
+            },
+            "unique_base_groups": 5,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          },
+          "6": {
+            "n": 6,
+            "classes": 2,
+            "confusion_true_rows_pred_columns": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                5
+              ]
+            ],
+            "class_counts": [
+              0,
+              6
+            ],
+            "recall": [
+              null,
+              0.8333333333333334
+            ],
+            "recall_ci95": [
+              null,
+              [
+                0.43649717781352987,
+                0.9699466302516935
+              ]
+            ],
+            "accuracy": 0.8333333333333334,
+            "balanced_accuracy": null,
+            "chance_accuracy": 0.5,
+            "macro_ovr_auc": null,
+            "per_class_ovr_auc": [
+              null,
+              null
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "binary": {
+              "n": 6,
+              "signal_n": 6,
+              "noise_n": 0,
+              "hits": 5,
+              "misses": 1,
+              "false_alarms": 0,
+              "correct_rejections": 0,
+              "hit_rate": 0.8333333333333334,
+              "false_alarm_rate": null,
+              "hit_rate_ci95": [
+                0.43649717781352987,
+                0.9699466302516935
+              ],
+              "false_alarm_rate_ci95": null,
+              "balanced_accuracy": null,
+              "auroc": null,
+              "dprime": null,
+              "criterion": null
+            },
+            "unique_base_groups": 6,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          },
+          "8": {
+            "n": 2,
+            "classes": 2,
+            "confusion_true_rows_pred_columns": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                1
+              ]
+            ],
+            "class_counts": [
+              0,
+              2
+            ],
+            "recall": [
+              null,
+              0.5
+            ],
+            "recall_ci95": [
+              null,
+              [
+                0.09453120573423074,
+                0.9054687942657693
+              ]
+            ],
+            "accuracy": 0.5,
+            "balanced_accuracy": null,
+            "chance_accuracy": 0.5,
+            "macro_ovr_auc": null,
+            "per_class_ovr_auc": [
+              null,
+              null
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "binary": {
+              "n": 2,
+              "signal_n": 2,
+              "noise_n": 0,
+              "hits": 1,
+              "misses": 1,
+              "false_alarms": 0,
+              "correct_rejections": 0,
+              "hit_rate": 0.5,
+              "false_alarm_rate": null,
+              "hit_rate_ci95": [
+                0.09453120573423074,
+                0.9054687942657693
+              ],
+              "false_alarm_rate_ci95": null,
+              "balanced_accuracy": null,
+              "auroc": null,
+              "dprime": null,
+              "criterion": null
+            },
+            "unique_base_groups": 2,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          }
+        },
+        "binding_lure": {
+          "False": {
+            "n": 128,
+            "classes": 2,
+            "confusion_true_rows_pred_columns": [
+              [
+                15,
+                49
+              ],
+              [
+                15,
+                49
+              ]
+            ],
+            "class_counts": [
+              64,
+              64
+            ],
+            "recall": [
+              0.234375,
+              0.765625
+            ],
+            "recall_ci95": [
+              [
+                0.1474989559392414,
+                0.35133257582568644
+              ],
+              [
+                0.6486674241743136,
+                0.8525010440607586
+              ]
+            ],
+            "accuracy": 0.5,
+            "balanced_accuracy": 0.5,
+            "chance_accuracy": 0.5,
+            "macro_ovr_auc": 0.53564453125,
+            "per_class_ovr_auc": [
+              0.53564453125,
+              0.53564453125
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "binary": {
+              "n": 128,
+              "signal_n": 64,
+              "noise_n": 64,
+              "hits": 49,
+              "misses": 15,
+              "false_alarms": 49,
+              "correct_rejections": 15,
+              "hit_rate": 0.765625,
+              "false_alarm_rate": 0.765625,
+              "hit_rate_ci95": [
+                0.6486674241743136,
+                0.8525010440607586
+              ],
+              "false_alarm_rate_ci95": [
+                0.6486674241743136,
+                0.8525010440607586
+              ],
+              "balanced_accuracy": 0.5,
+              "auroc": 0.53564453125,
+              "dprime": 0.0,
+              "criterion": -0.7112600919034948
+            },
+            "unique_base_groups": 128,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          }
+        },
+        "difficulty": {
+          "recall/L8/D24/N1": {
+            "n": 128,
+            "classes": 2,
+            "confusion_true_rows_pred_columns": [
+              [
+                15,
+                49
+              ],
+              [
+                15,
+                49
+              ]
+            ],
+            "class_counts": [
+              64,
+              64
+            ],
+            "recall": [
+              0.234375,
+              0.765625
+            ],
+            "recall_ci95": [
+              [
+                0.1474989559392414,
+                0.35133257582568644
+              ],
+              [
+                0.6486674241743136,
+                0.8525010440607586
+              ]
+            ],
+            "accuracy": 0.5,
+            "balanced_accuracy": 0.5,
+            "chance_accuracy": 0.5,
+            "macro_ovr_auc": 0.53564453125,
+            "per_class_ovr_auc": [
+              0.53564453125,
+              0.53564453125
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "binary": {
+              "n": 128,
+              "signal_n": 64,
+              "noise_n": 64,
+              "hits": 49,
+              "misses": 15,
+              "false_alarms": 49,
+              "correct_rejections": 15,
+              "hit_rate": 0.765625,
+              "false_alarm_rate": 0.765625,
+              "hit_rate_ci95": [
+                0.6486674241743136,
+                0.8525010440607586
+              ],
+              "false_alarm_rate_ci95": [
+                0.6486674241743136,
+                0.8525010440607586
+              ],
+              "balanced_accuracy": 0.5,
+              "auroc": 0.53564453125,
+              "dprime": 0.0,
+              "criterion": -0.7112600919034948
+            },
+            "unique_base_groups": 128,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          }
+        },
+        "threshold_level": {},
+        "count_margin": {}
+      }
+    },
+    "orientation/single_D4": {
+      "family": "orientation",
+      "condition": "single_D4",
+      "protocol": "orientation_single",
+      "overall": {
+        "n": 128,
+        "classes": 2,
+        "confusion_true_rows_pred_columns": [
+          [
+            64,
+            0
+          ],
+          [
+            1,
+            63
+          ]
+        ],
+        "class_counts": [
+          64,
+          64
+        ],
+        "recall": [
+          1.0,
+          0.984375
+        ],
+        "recall_ci95": [
+          [
+            0.9433759402071946,
+            1.0
+          ],
+          [
+            0.9166589839990573,
+            0.9972364580766624
+          ]
+        ],
+        "accuracy": 0.9921875,
+        "balanced_accuracy": 0.9921875,
+        "chance_accuracy": 0.5,
+        "macro_ovr_auc": 0.99951171875,
+        "per_class_ovr_auc": [
+          0.99951171875,
+          0.99951171875
+        ],
+        "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+        "binary": {
+          "n": 128,
+          "signal_n": 64,
+          "noise_n": 64,
+          "hits": 63,
+          "misses": 1,
+          "false_alarms": 0,
+          "correct_rejections": 64,
+          "hit_rate": 0.984375,
+          "false_alarm_rate": 0.0,
+          "hit_rate_ci95": [
+            0.9166589839990573,
+            0.9972364580766624
+          ],
+          "false_alarm_rate_ci95": [
+            0.0,
+            0.05662405979280534
+          ],
+          "balanced_accuracy": 0.9921875,
+          "auroc": 0.99951171875,
+          "dprime": 4.417179800897086,
+          "criterion": 0.21460629456000058
+        },
+        "unique_base_groups": 128,
+        "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+      },
+      "strata": {
+        "target_serial_slot": {
+          "0": {
+            "n": 128,
+            "classes": 2,
+            "confusion_true_rows_pred_columns": [
+              [
+                64,
+                0
+              ],
+              [
+                1,
+                63
+              ]
+            ],
+            "class_counts": [
+              64,
+              64
+            ],
+            "recall": [
+              1.0,
+              0.984375
+            ],
+            "recall_ci95": [
+              [
+                0.9433759402071946,
+                1.0
+              ],
+              [
+                0.9166589839990573,
+                0.9972364580766624
+              ]
+            ],
+            "accuracy": 0.9921875,
+            "balanced_accuracy": 0.9921875,
+            "chance_accuracy": 0.5,
+            "macro_ovr_auc": 0.99951171875,
+            "per_class_ovr_auc": [
+              0.99951171875,
+              0.99951171875
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "binary": {
+              "n": 128,
+              "signal_n": 64,
+              "noise_n": 64,
+              "hits": 63,
+              "misses": 1,
+              "false_alarms": 0,
+              "correct_rejections": 64,
+              "hit_rate": 0.984375,
+              "false_alarm_rate": 0.0,
+              "hit_rate_ci95": [
+                0.9166589839990573,
+                0.9972364580766624
+              ],
+              "false_alarm_rate_ci95": [
+                0.0,
+                0.05662405979280534
+              ],
+              "balanced_accuracy": 0.9921875,
+              "auroc": 0.99951171875,
+              "dprime": 4.417179800897086,
+              "criterion": 0.21460629456000058
+            },
+            "unique_base_groups": 128,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          }
+        },
+        "target_age_at_report": {
+          "6": {
+            "n": 128,
+            "classes": 2,
+            "confusion_true_rows_pred_columns": [
+              [
+                64,
+                0
+              ],
+              [
+                1,
+                63
+              ]
+            ],
+            "class_counts": [
+              64,
+              64
+            ],
+            "recall": [
+              1.0,
+              0.984375
+            ],
+            "recall_ci95": [
+              [
+                0.9433759402071946,
+                1.0
+              ],
+              [
+                0.9166589839990573,
+                0.9972364580766624
+              ]
+            ],
+            "accuracy": 0.9921875,
+            "balanced_accuracy": 0.9921875,
+            "chance_accuracy": 0.5,
+            "macro_ovr_auc": 0.99951171875,
+            "per_class_ovr_auc": [
+              0.99951171875,
+              0.99951171875
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "binary": {
+              "n": 128,
+              "signal_n": 64,
+              "noise_n": 64,
+              "hits": 63,
+              "misses": 1,
+              "false_alarms": 0,
+              "correct_rejections": 64,
+              "hit_rate": 0.984375,
+              "false_alarm_rate": 0.0,
+              "hit_rate_ci95": [
+                0.9166589839990573,
+                0.9972364580766624
+              ],
+              "false_alarm_rate_ci95": [
+                0.0,
+                0.05662405979280534
+              ],
+              "balanced_accuracy": 0.9921875,
+              "auroc": 0.99951171875,
+              "dprime": 4.417179800897086,
+              "criterion": 0.21460629456000058
+            },
+            "unique_base_groups": 128,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          }
+        },
+        "mismatch": {
+          "0": {
+            "n": 64,
+            "classes": 2,
+            "confusion_true_rows_pred_columns": [
+              [
+                64,
+                0
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "class_counts": [
+              64,
+              0
+            ],
+            "recall": [
+              1.0,
+              null
+            ],
+            "recall_ci95": [
+              [
+                0.9433759402071946,
+                1.0
+              ],
+              null
+            ],
+            "accuracy": 1.0,
+            "balanced_accuracy": null,
+            "chance_accuracy": 0.5,
+            "macro_ovr_auc": null,
+            "per_class_ovr_auc": [
+              null,
+              null
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "binary": {
+              "n": 64,
+              "signal_n": 0,
+              "noise_n": 64,
+              "hits": 0,
+              "misses": 0,
+              "false_alarms": 0,
+              "correct_rejections": 64,
+              "hit_rate": null,
+              "false_alarm_rate": 0.0,
+              "hit_rate_ci95": null,
+              "false_alarm_rate_ci95": [
+                0.0,
+                0.05662405979280534
+              ],
+              "balanced_accuracy": null,
+              "auroc": null,
+              "dprime": null,
+              "criterion": null
+            },
+            "unique_base_groups": 64,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          },
+          "1": {
+            "n": 14,
+            "classes": 2,
+            "confusion_true_rows_pred_columns": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                14
+              ]
+            ],
+            "class_counts": [
+              0,
+              14
+            ],
+            "recall": [
+              null,
+              1.0
+            ],
+            "recall_ci95": [
+              null,
+              [
+                0.7846891972623643,
+                1.0
+              ]
+            ],
+            "accuracy": 1.0,
+            "balanced_accuracy": null,
+            "chance_accuracy": 0.5,
+            "macro_ovr_auc": null,
+            "per_class_ovr_auc": [
+              null,
+              null
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "binary": {
+              "n": 14,
+              "signal_n": 14,
+              "noise_n": 0,
+              "hits": 14,
+              "misses": 0,
+              "false_alarms": 0,
+              "correct_rejections": 0,
+              "hit_rate": 1.0,
+              "false_alarm_rate": null,
+              "hit_rate_ci95": [
+                0.7846891972623643,
+                1.0
+              ],
+              "false_alarm_rate_ci95": null,
+              "balanced_accuracy": null,
+              "auroc": null,
+              "dprime": null,
+              "criterion": null
+            },
+            "unique_base_groups": 14,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          },
+          "2": {
+            "n": 11,
+            "classes": 2,
+            "confusion_true_rows_pred_columns": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                11
+              ]
+            ],
+            "class_counts": [
+              0,
+              11
+            ],
+            "recall": [
+              null,
+              1.0
+            ],
+            "recall_ci95": [
+              null,
+              [
+                0.7411670330319684,
+                1.0
+              ]
+            ],
+            "accuracy": 1.0,
+            "balanced_accuracy": null,
+            "chance_accuracy": 0.5,
+            "macro_ovr_auc": null,
+            "per_class_ovr_auc": [
+              null,
+              null
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "binary": {
+              "n": 11,
+              "signal_n": 11,
+              "noise_n": 0,
+              "hits": 11,
+              "misses": 0,
+              "false_alarms": 0,
+              "correct_rejections": 0,
+              "hit_rate": 1.0,
+              "false_alarm_rate": null,
+              "hit_rate_ci95": [
+                0.7411670330319684,
+                1.0
+              ],
+              "false_alarm_rate_ci95": null,
+              "balanced_accuracy": null,
+              "auroc": null,
+              "dprime": null,
+              "criterion": null
+            },
+            "unique_base_groups": 11,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          },
+          "3": {
+            "n": 17,
+            "classes": 2,
+            "confusion_true_rows_pred_columns": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                17
+              ]
+            ],
+            "class_counts": [
+              0,
+              17
+            ],
+            "recall": [
+              null,
+              1.0
+            ],
+            "recall_ci95": [
+              null,
+              [
+                0.8156818649911483,
+                1.0
+              ]
+            ],
+            "accuracy": 1.0,
+            "balanced_accuracy": null,
+            "chance_accuracy": 0.5,
+            "macro_ovr_auc": null,
+            "per_class_ovr_auc": [
+              null,
+              null
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "binary": {
+              "n": 17,
+              "signal_n": 17,
+              "noise_n": 0,
+              "hits": 17,
+              "misses": 0,
+              "false_alarms": 0,
+              "correct_rejections": 0,
+              "hit_rate": 1.0,
+              "false_alarm_rate": null,
+              "hit_rate_ci95": [
+                0.8156818649911483,
+                1.0
+              ],
+              "false_alarm_rate_ci95": null,
+              "balanced_accuracy": null,
+              "auroc": null,
+              "dprime": null,
+              "criterion": null
+            },
+            "unique_base_groups": 17,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          },
+          "4": {
+            "n": 9,
+            "classes": 2,
+            "confusion_true_rows_pred_columns": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                9
+              ]
+            ],
+            "class_counts": [
+              0,
+              9
+            ],
+            "recall": [
+              null,
+              1.0
+            ],
+            "recall_ci95": [
+              null,
+              [
+                0.7008549515804559,
+                1.0
+              ]
+            ],
+            "accuracy": 1.0,
+            "balanced_accuracy": null,
+            "chance_accuracy": 0.5,
+            "macro_ovr_auc": null,
+            "per_class_ovr_auc": [
+              null,
+              null
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "binary": {
+              "n": 9,
+              "signal_n": 9,
+              "noise_n": 0,
+              "hits": 9,
+              "misses": 0,
+              "false_alarms": 0,
+              "correct_rejections": 0,
+              "hit_rate": 1.0,
+              "false_alarm_rate": null,
+              "hit_rate_ci95": [
+                0.7008549515804559,
+                1.0
+              ],
+              "false_alarm_rate_ci95": null,
+              "balanced_accuracy": null,
+              "auroc": null,
+              "dprime": null,
+              "criterion": null
+            },
+            "unique_base_groups": 9,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          },
+          "5": {
+            "n": 5,
+            "classes": 2,
+            "confusion_true_rows_pred_columns": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                5
+              ]
+            ],
+            "class_counts": [
+              0,
+              5
+            ],
+            "recall": [
+              null,
+              1.0
+            ],
+            "recall_ci95": [
+              null,
+              [
+                0.5655175352168251,
+                1.0
+              ]
+            ],
+            "accuracy": 1.0,
+            "balanced_accuracy": null,
+            "chance_accuracy": 0.5,
+            "macro_ovr_auc": null,
+            "per_class_ovr_auc": [
+              null,
+              null
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "binary": {
+              "n": 5,
+              "signal_n": 5,
+              "noise_n": 0,
+              "hits": 5,
+              "misses": 0,
+              "false_alarms": 0,
+              "correct_rejections": 0,
+              "hit_rate": 1.0,
+              "false_alarm_rate": null,
+              "hit_rate_ci95": [
+                0.5655175352168251,
+                1.0
+              ],
+              "false_alarm_rate_ci95": null,
+              "balanced_accuracy": null,
+              "auroc": null,
+              "dprime": null,
+              "criterion": null
+            },
+            "unique_base_groups": 5,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          },
+          "6": {
+            "n": 6,
+            "classes": 2,
+            "confusion_true_rows_pred_columns": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                5
+              ]
+            ],
+            "class_counts": [
+              0,
+              6
+            ],
+            "recall": [
+              null,
+              0.8333333333333334
+            ],
+            "recall_ci95": [
+              null,
+              [
+                0.43649717781352987,
+                0.9699466302516935
+              ]
+            ],
+            "accuracy": 0.8333333333333334,
+            "balanced_accuracy": null,
+            "chance_accuracy": 0.5,
+            "macro_ovr_auc": null,
+            "per_class_ovr_auc": [
+              null,
+              null
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "binary": {
+              "n": 6,
+              "signal_n": 6,
+              "noise_n": 0,
+              "hits": 5,
+              "misses": 1,
+              "false_alarms": 0,
+              "correct_rejections": 0,
+              "hit_rate": 0.8333333333333334,
+              "false_alarm_rate": null,
+              "hit_rate_ci95": [
+                0.43649717781352987,
+                0.9699466302516935
+              ],
+              "false_alarm_rate_ci95": null,
+              "balanced_accuracy": null,
+              "auroc": null,
+              "dprime": null,
+              "criterion": null
+            },
+            "unique_base_groups": 6,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          },
+          "8": {
+            "n": 2,
+            "classes": 2,
+            "confusion_true_rows_pred_columns": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                2
+              ]
+            ],
+            "class_counts": [
+              0,
+              2
+            ],
+            "recall": [
+              null,
+              1.0
+            ],
+            "recall_ci95": [
+              null,
+              [
+                0.34238022750665303,
+                1.0
+              ]
+            ],
+            "accuracy": 1.0,
+            "balanced_accuracy": null,
+            "chance_accuracy": 0.5,
+            "macro_ovr_auc": null,
+            "per_class_ovr_auc": [
+              null,
+              null
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "binary": {
+              "n": 2,
+              "signal_n": 2,
+              "noise_n": 0,
+              "hits": 2,
+              "misses": 0,
+              "false_alarms": 0,
+              "correct_rejections": 0,
+              "hit_rate": 1.0,
+              "false_alarm_rate": null,
+              "hit_rate_ci95": [
+                0.34238022750665303,
+                1.0
+              ],
+              "false_alarm_rate_ci95": null,
+              "balanced_accuracy": null,
+              "auroc": null,
+              "dprime": null,
+              "criterion": null
+            },
+            "unique_base_groups": 2,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          }
+        },
+        "binding_lure": {
+          "False": {
+            "n": 128,
+            "classes": 2,
+            "confusion_true_rows_pred_columns": [
+              [
+                64,
+                0
+              ],
+              [
+                1,
+                63
+              ]
+            ],
+            "class_counts": [
+              64,
+              64
+            ],
+            "recall": [
+              1.0,
+              0.984375
+            ],
+            "recall_ci95": [
+              [
+                0.9433759402071946,
+                1.0
+              ],
+              [
+                0.9166589839990573,
+                0.9972364580766624
+              ]
+            ],
+            "accuracy": 0.9921875,
+            "balanced_accuracy": 0.9921875,
+            "chance_accuracy": 0.5,
+            "macro_ovr_auc": 0.99951171875,
+            "per_class_ovr_auc": [
+              0.99951171875,
+              0.99951171875
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "binary": {
+              "n": 128,
+              "signal_n": 64,
+              "noise_n": 64,
+              "hits": 63,
+              "misses": 1,
+              "false_alarms": 0,
+              "correct_rejections": 64,
+              "hit_rate": 0.984375,
+              "false_alarm_rate": 0.0,
+              "hit_rate_ci95": [
+                0.9166589839990573,
+                0.9972364580766624
+              ],
+              "false_alarm_rate_ci95": [
+                0.0,
+                0.05662405979280534
+              ],
+              "balanced_accuracy": 0.9921875,
+              "auroc": 0.99951171875,
+              "dprime": 4.417179800897086,
+              "criterion": 0.21460629456000058
+            },
+            "unique_base_groups": 128,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          }
+        },
+        "difficulty": {
+          "recall/L8/D4/N1": {
+            "n": 128,
+            "classes": 2,
+            "confusion_true_rows_pred_columns": [
+              [
+                64,
+                0
+              ],
+              [
+                1,
+                63
+              ]
+            ],
+            "class_counts": [
+              64,
+              64
+            ],
+            "recall": [
+              1.0,
+              0.984375
+            ],
+            "recall_ci95": [
+              [
+                0.9433759402071946,
+                1.0
+              ],
+              [
+                0.9166589839990573,
+                0.9972364580766624
+              ]
+            ],
+            "accuracy": 0.9921875,
+            "balanced_accuracy": 0.9921875,
+            "chance_accuracy": 0.5,
+            "macro_ovr_auc": 0.99951171875,
+            "per_class_ovr_auc": [
+              0.99951171875,
+              0.99951171875
+            ],
+            "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+            "binary": {
+              "n": 128,
+              "signal_n": 64,
+              "noise_n": 64,
+              "hits": 63,
+              "misses": 1,
+              "false_alarms": 0,
+              "correct_rejections": 64,
+              "hit_rate": 0.984375,
+              "false_alarm_rate": 0.0,
+              "hit_rate_ci95": [
+                0.9166589839990573,
+                0.9972364580766624
+              ],
+              "false_alarm_rate_ci95": [
+                0.0,
+                0.05662405979280534
+              ],
+              "balanced_accuracy": 0.9921875,
+              "auroc": 0.99951171875,
+              "dprime": 4.417179800897086,
+              "criterion": 0.21460629456000058
+            },
+            "unique_base_groups": 128,
+            "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+          }
+        },
+        "threshold_level": {},
+        "count_margin": {}
+      }
+    },
+    "orientation_binding/binding_D0": {
+      "family": "orientation_binding",
+      "condition": "binding_D0",
+      "protocol": "orientation_binding",
+      "overall": {
+        "n": 128,
+        "classes": 2,
+        "confusion_true_rows_pred_columns": [
+          [
+            64,
+            0
+          ],
+          [
+            1,
+            63
+          ]
+        ],
+        "class_counts": [
+          64,
+          64
+        ],
+        "recall": [
+          1.0,
+          0.984375
+        ],
+        "recall_ci95": [
+          [
+            0.9433759402071946,
+            1.0
+          ],
+          [
+            0.9166589839990573,
+            0.9972364580766624
+          ]
+        ],
+        "accuracy": 0.9921875,
+        "balanced_accuracy": 0.9921875,
+        "chance_accuracy": 0.5,
+        "macro_ovr_auc": 1.0,
+        "per_class_ovr_auc": [
+          1.0,
+          1.0
+        ],
+        "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+        "binary": {
+          "n": 128,
+          "signal_n": 64,
+          "noise_n": 64,
+          "hits": 63,
+          "misses": 1,
+          "false_alarms": 0,
+          "correct_rejections": 64,
+          "hit_rate": 0.984375,
+          "false_alarm_rate": 0.0,
+          "hit_rate_ci95": [
+            0.9166589839990573,
+            0.9972364580766624
+          ],
+          "false_alarm_rate_ci95": [
+            0.0,
+            0.05662405979280534
+          ],
+          "balanced_accuracy": 0.9921875,
+          "auroc": 1.0,
+          "dprime": 4.417179800897086,
+          "criterion": 0.21460629456000058
+        },
+        "unique_base_groups": 128,
+        "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+      },
+      "strata": {
+        "target_serial_slot": {},
+        "target_age_at_report": {},
+        "mismatch": {},
+        "binding_lure": {},
+        "difficulty": {},
+        "threshold_level": {},
+        "count_margin": {}
+      }
+    },
+    "orientation_binding/binding_D12": {
+      "family": "orientation_binding",
+      "condition": "binding_D12",
+      "protocol": "orientation_binding",
+      "overall": {
+        "n": 128,
+        "classes": 2,
+        "confusion_true_rows_pred_columns": [
+          [
+            63,
+            1
+          ],
+          [
+            1,
+            63
+          ]
+        ],
+        "class_counts": [
+          64,
+          64
+        ],
+        "recall": [
+          0.984375,
+          0.984375
+        ],
+        "recall_ci95": [
+          [
+            0.9166589839990573,
+            0.9972364580766624
+          ],
+          [
+            0.9166589839990573,
+            0.9972364580766624
+          ]
+        ],
+        "accuracy": 0.984375,
+        "balanced_accuracy": 0.984375,
+        "chance_accuracy": 0.5,
+        "macro_ovr_auc": 0.999755859375,
+        "per_class_ovr_auc": [
+          0.999755859375,
+          0.999755859375
+        ],
+        "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+        "binary": {
+          "n": 128,
+          "signal_n": 64,
+          "noise_n": 64,
+          "hits": 63,
+          "misses": 1,
+          "false_alarms": 1,
+          "correct_rejections": 63,
+          "hit_rate": 0.984375,
+          "false_alarm_rate": 0.015625,
+          "hit_rate_ci95": [
+            0.9166589839990573,
+            0.9972364580766624
+          ],
+          "false_alarm_rate_ci95": [
+            0.002763541923337505,
+            0.08334101600094265
+          ],
+          "balanced_accuracy": 0.984375,
+          "auroc": 0.999755859375,
+          "dprime": 3.987967211777086,
+          "criterion": 2.220446049250313e-16
+        },
+        "unique_base_groups": 128,
+        "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+      },
+      "strata": {
+        "target_serial_slot": {},
+        "target_age_at_report": {},
+        "mismatch": {},
+        "binding_lure": {},
+        "difficulty": {},
+        "threshold_level": {},
+        "count_margin": {}
+      }
+    },
+    "orientation_binding/binding_D24": {
+      "family": "orientation_binding",
+      "condition": "binding_D24",
+      "protocol": "orientation_binding",
+      "overall": {
+        "n": 128,
+        "classes": 2,
+        "confusion_true_rows_pred_columns": [
+          [
+            63,
+            1
+          ],
+          [
+            3,
+            61
+          ]
+        ],
+        "class_counts": [
+          64,
+          64
+        ],
+        "recall": [
+          0.984375,
+          0.953125
+        ],
+        "recall_ci95": [
+          [
+            0.9166589839990573,
+            0.9972364580766624
+          ],
+          [
+            0.8710034625990631,
+            0.983930983213707
+          ]
+        ],
+        "accuracy": 0.96875,
+        "balanced_accuracy": 0.96875,
+        "chance_accuracy": 0.5,
+        "macro_ovr_auc": 0.992919921875,
+        "per_class_ovr_auc": [
+          0.992919921875,
+          0.992919921875
+        ],
+        "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+        "binary": {
+          "n": 128,
+          "signal_n": 64,
+          "noise_n": 64,
+          "hits": 61,
+          "misses": 3,
+          "false_alarms": 1,
+          "correct_rejections": 63,
+          "hit_rate": 0.953125,
+          "false_alarm_rate": 0.015625,
+          "hit_rate_ci95": [
+            0.8710034625990631,
+            0.983930983213707
+          ],
+          "false_alarm_rate_ci95": [
+            0.002763541923337505,
+            0.08334101600094265
+          ],
+          "balanced_accuracy": 0.96875,
+          "auroc": 0.992919921875,
+          "dprime": 3.6026362884400287,
+          "criterion": 0.19266546166852871
+        },
+        "unique_base_groups": 128,
+        "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+      },
+      "strata": {
+        "target_serial_slot": {},
+        "target_age_at_report": {},
+        "mismatch": {},
+        "binding_lure": {},
+        "difficulty": {},
+        "threshold_level": {},
+        "count_margin": {}
+      }
+    },
+    "orientation_binding/binding_D4": {
+      "family": "orientation_binding",
+      "condition": "binding_D4",
+      "protocol": "orientation_binding",
+      "overall": {
+        "n": 128,
+        "classes": 2,
+        "confusion_true_rows_pred_columns": [
+          [
+            63,
+            1
+          ],
+          [
+            0,
+            64
+          ]
+        ],
+        "class_counts": [
+          64,
+          64
+        ],
+        "recall": [
+          0.984375,
+          1.0
+        ],
+        "recall_ci95": [
+          [
+            0.9166589839990573,
+            0.9972364580766624
+          ],
+          [
+            0.9433759402071946,
+            1.0
+          ]
+        ],
+        "accuracy": 0.9921875,
+        "balanced_accuracy": 0.9921875,
+        "chance_accuracy": 0.5,
+        "macro_ovr_auc": 1.0,
+        "per_class_ovr_auc": [
+          1.0,
+          1.0
+        ],
+        "decision_rule": "Fixed argmax; no held-out calibration or threshold tuning",
+        "binary": {
+          "n": 128,
+          "signal_n": 64,
+          "noise_n": 64,
+          "hits": 64,
+          "misses": 0,
+          "false_alarms": 1,
+          "correct_rejections": 63,
+          "hit_rate": 1.0,
+          "false_alarm_rate": 0.015625,
+          "hit_rate_ci95": [
+            0.9433759402071946,
+            1.0
+          ],
+          "false_alarm_rate_ci95": [
+            0.002763541923337505,
+            0.08334101600094265
+          ],
+          "balanced_accuracy": 0.9921875,
+          "auroc": 1.0,
+          "dprime": 4.417179800897088,
+          "criterion": -0.21460629456000102
+        },
+        "unique_base_groups": 128,
+        "uncertainty_unit": "Source-image clusters when base_id exists; generated pairs otherwise; conditional on this trained model"
+      },
+      "strata": {
+        "target_serial_slot": {},
+        "target_age_at_report": {},
+        "mismatch": {},
+        "binding_lure": {},
+        "difficulty": {},
+        "threshold_level": {},
+        "count_margin": {}
+      }
+    }
+  },
+  "selection_mean_auc": 0.935638427734375,
+  "mean_normalized_ba": 0.6067708333333334,
+  "worst_cell_ba": 0.25,
+  "episodes": 1280,
+  "interpretation": "Equal six-cell mean OVR-AUC selects validation checkpoints; argmax BA and confusion matrices remain per cell. A reset removes the new recurrent history while leaving the opponent traces intact.",
+  "family_protocol_group_mean_auc": 0.8794759114583334,
+  "status": "completed",
+  "step": 5400,
+  "predictions": "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\WorkingMemory\\SelectiveMaintenance\\runs\\maintenance_20260913_124444\\controller_feedback_val_005400\\predictions.jsonl",
+  "checkpoint": "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\WorkingMemory\\SelectiveMaintenance\\runs\\maintenance_20260913_124444\\controller_feedback\\checkpoint_005400.pt",
+  "feedback_off": false
+}

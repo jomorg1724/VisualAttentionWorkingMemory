@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "/workspace/vawm_prospective_query/WorkingMemory/ProspectiveQuery/worker.py", line 487, in <module>
+    worker(read(sys.argv[1]))
+  File "/workspace/vawm_prospective_query/WorkingMemory/ProspectiveQuery/worker.py", line 280, in worker
+    value = microbatch(name, True)
+  File "/workspace/vawm_prospective_query/WorkingMemory/ProspectiveQuery/worker.py", line 212, in microbatch
+    images, labels, _ = stream.batch(
+  File "/workspace/vawm_prospective_query/WorkingMemory/SpatialTaskBattery/stimuli.py", line 147, in batch
+    label,target=self._case(task);fn={'orientation_cued':self._orientation,'spatial_binding':self._binding,'motion_duration_cued':self._motion,'image_recognition':self._recognition,'krauzlis_cued_motion':self._krauzlis}[task];frames,meta=fn(rng,label,target,cfg);label=int(meta.get('label',label));ordinal=self.counts[task];self.counts[task]+=1
+  File "/workspace/vawm_prospective_query/WorkingMemory/SpatialTaskBattery/stimuli.py", line 113, in _recognition
+    if self.photos is None:self.photos=RecognitionImages(self.split)
+  File "/workspace/vawm_prospective_query/WorkingMemory/SpatialTaskBattery/stimuli.py", line 48, in __init__
+    self.root=Path(DATA_ROOT);manifest=json.loads((self.root/'manifest.json').read_text());self.records=[r for r in manifest['images'] if r['split']==split];self.cache={}
+  File "/usr/lib/python3.10/pathlib.py", line 1134, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+  File "/usr/lib/python3.10/pathlib.py", line 1119, in open
+    return self._accessor.open(self, mode, buffering, encoding, errors,
+FileNotFoundError: [Errno 2] No such file or directory: '/workspace/vawm_prospective_query/PreAttentiveVision/data/bsds500/manifest.json'

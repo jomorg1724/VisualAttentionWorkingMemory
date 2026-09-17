@@ -1,0 +1,43 @@
+{
+  "version": "frozen_state_probe_v1",
+  "seed": 16951001,
+  "budget_seconds": 1200,
+  "movies": {
+    "train": 3072,
+    "val": 768,
+    "test": 1024
+  },
+  "canonical_pair_templates": {
+    "train": 384,
+    "val": 96,
+    "test": 128
+  },
+  "checkpoint": {
+    "path": "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\WorkingMemory\\RecurrentComparison\\runs\\recurrent_20260912_202158\\remote_retrieval\\remote_results\\ei_adaptive\\checkpoint_005000.pt",
+    "sha256": "0a1d498ca678337aac42232ad1c9e048951b64ec0c0128e68b9cf0522b0b2520"
+  },
+  "count_target": "first4 transition counts for directions0,1,2 minus1; fourth count determined by sum4",
+  "prefix_image_index": 5,
+  "final_image_index": 10,
+  "ridge_lambdas_mean_mse": [
+    0.0001,
+    0.01,
+    1.0
+  ],
+  "mlp": {
+    "hidden": 64,
+    "activation": "SiLU",
+    "epochs": 150,
+    "batch": 256,
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "val_every": 10,
+    "selection": "minimum validation MSE for counts / CE for duration"
+  },
+  "source": {
+    "WorkingMemory\\RecurrentComparison\\StateDiagnostic\\run.py": "02e98b489187ba78e5e6067bc642b705b94b81e148d72711dc18bee957a9006c",
+    "WorkingMemory\\stimuli.py": "c5a6c6d1c2aa38e3b418e09a9d6c03bd022112d5ece4b5384c5336d9f592c127",
+    "WorkingMemory\\RecurrentComparison\\model.py": "4de3e509d44d183694d871e06dd17aeb1e3355a963f6e9c5617089f5db27404d",
+    "WorkingMemory\\model.py": "012c538178b0bf5d61141625bc97dbfe6fdeda36722f68f6efcc692a461a48d3"
+  }
+}

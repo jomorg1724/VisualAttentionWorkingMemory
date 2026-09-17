@@ -1,0 +1,35 @@
+{
+  "status": "passed",
+  "seconds": 4.687999999849126,
+  "parent": "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\WorkingMemory\\runs\\wm_20260912_181219\\opponent\\checkpoint_006860.pt",
+  "parent_sha256": "122cace7698ef55df528a7eb28f470f66e1d08eb6053f0eba6d05bf678dde427",
+  "results": [
+    {
+      "arm": "lstm",
+      "parameters": 1011872,
+      "new_parameters": 603144,
+      "early_representation_grad": 0.00041638925904408097,
+      "late_representation_grad": 0.0005558743141591549,
+      "encoder_grad": 0.14115098118782043
+    },
+    {
+      "arm": "ei_adaptive",
+      "parameters": 714912,
+      "new_parameters": 306184,
+      "early_representation_grad": 9.014208626467735e-05,
+      "late_representation_grad": 0.000303196138702333,
+      "encoder_grad": 0.16188837587833405,
+      "raw_recurrent_gradient_norm": 4.5732133457931923e-07
+    }
+  ],
+  "checks": [
+    "strict unchanged parent tensors",
+    "same common new initialization",
+    "ordinary-image encoder gradients with checkpointing",
+    "early and late representation gradients",
+    "finite real-sequence state",
+    "nonzero residual",
+    "Dale column signs before and after one discarded CPU update",
+    "deterministic reset on repeated inference"
+  ]
+}

@@ -1,0 +1,205 @@
+{
+  "status": "completed",
+  "analysis_only_post_hoc": true,
+  "checkpoint": "WorkingMemory/SpatialTaskBattery/SingleTaskMotion/runs/motion_20260913_214605/training/checkpoint_012200.pt",
+  "checkpoint_sha256": "7cec4c48c3da81b4d4935c65098b58974a38a8ff3a825dfe12e4d8d16e9a0e26",
+  "checkpoint_immutable": true,
+  "frozen_model_state_immutable": true,
+  "split_seeds": {
+    "train": 731091,
+    "val": 731092,
+    "test": 731093
+  },
+  "independent_base_episodes_per_delay": {
+    "train": 512,
+    "val": 128,
+    "test": 256
+  },
+  "delay_presentations": {
+    "train": 2048,
+    "val": 512,
+    "test": 1024
+  },
+  "pooled_parameters": 74303,
+  "spatial_parameters": 74373,
+  "selected_epoch_both": 20,
+  "selected_updates_each": 640,
+  "selected_presentations_each": 40960,
+  "held_out_pooled": {
+    "n": 1024,
+    "accuracy": 0.23828125,
+    "balanced_accuracy": 0.23828125,
+    "macro_ovr_auc": 0.48054822285970056,
+    "confusion_true_rows_pred_columns": [
+      [
+        0,
+        47,
+        191,
+        18
+      ],
+      [
+        7,
+        36,
+        202,
+        11
+      ],
+      [
+        8,
+        41,
+        190,
+        17
+      ],
+      [
+        6,
+        41,
+        191,
+        18
+      ]
+    ],
+    "class_counts": [
+      256,
+      256,
+      256,
+      256
+    ],
+    "prediction_counts": [
+      21,
+      165,
+      774,
+      64
+    ]
+  },
+  "held_out_spatial": {
+    "n": 1024,
+    "accuracy": 0.2431640625,
+    "balanced_accuracy": 0.2431640625,
+    "macro_ovr_auc": 0.48319435119628906,
+    "confusion_true_rows_pred_columns": [
+      [
+        4,
+        43,
+        177,
+        32
+      ],
+      [
+        6,
+        26,
+        196,
+        28
+      ],
+      [
+        7,
+        36,
+        190,
+        23
+      ],
+      [
+        8,
+        38,
+        181,
+        29
+      ]
+    ],
+    "class_counts": [
+      256,
+      256,
+      256,
+      256
+    ],
+    "prediction_counts": [
+      25,
+      143,
+      744,
+      112
+    ]
+  },
+  "paired_overall": {
+    "point": {
+      "accuracy": 0.0048828125,
+      "balanced_accuracy": 0.0048828125,
+      "macro_ovr_auc": 0.0026461283365885047
+    },
+    "bootstrap": {
+      "valid_replicates": 2000,
+      "pooled_accuracy_ci95": [
+        0.21484375,
+        0.2626953125
+      ],
+      "spatial_accuracy_ci95": [
+        0.220703125,
+        0.2666015625
+      ],
+      "spatial_minus_pooled_accuracy_ci95": [
+        -0.017578125,
+        0.026391601562499867
+      ],
+      "pooled_balanced_accuracy_ci95": [
+        0.21484375,
+        0.2626953125
+      ],
+      "spatial_balanced_accuracy_ci95": [
+        0.220703125,
+        0.2666015625
+      ],
+      "spatial_minus_pooled_balanced_accuracy_ci95": [
+        -0.017578125,
+        0.026391601562499867
+      ],
+      "pooled_macro_ovr_auc_ci95": [
+        0.44929385185241705,
+        0.5121633211771647
+      ],
+      "spatial_macro_ovr_auc_ci95": [
+        0.4542630195617676,
+        0.5112420717875162
+      ],
+      "spatial_minus_pooled_macro_ovr_auc_ci95": [
+        -0.02142249743143723,
+        0.026574405034383002
+      ]
+    }
+  },
+  "priority_alignment": {
+    "definition": "Priority mass and argmax hit inside an evaluation-only 3x3 grid neighborhood around the linearly projected target-patch center.",
+    "uniform_expected_mass_and_hit": 0.05325443786982249,
+    "overall_mass": 0.13127920031547546,
+    "overall_peak_hit_rate": 0.2080078125,
+    "per_delay": {
+      "0": {
+        "n": 256,
+        "mass": 0.15536388754844666,
+        "peak_hit_rate": 0.17578125
+      },
+      "4": {
+        "n": 256,
+        "mass": 0.1801902949810028,
+        "peak_hit_rate": 0.3203125
+      },
+      "12": {
+        "n": 256,
+        "mass": 0.1321086287498474,
+        "peak_hit_rate": 0.30859375
+      },
+      "24": {
+        "n": 256,
+        "mass": 0.05745397508144379,
+        "peak_hit_rate": 0.02734375
+      }
+    },
+    "overall_mass_ci95": [
+      0.11881614569574594,
+      0.1456023473292589
+    ],
+    "overall_peak_hit_rate_ci95": [
+      0.17578125,
+      0.2412109375
+    ]
+  },
+  "production_wall_seconds": 414.57848358154297,
+  "total_experiment_wall_seconds": 738.5177826881409,
+  "within_1800_second_shared_cap": true,
+  "gpu_workers": 1,
+  "cpu_threads": 2,
+  "cloud_calls": 0,
+  "deployed_weight_updates": 0
+}

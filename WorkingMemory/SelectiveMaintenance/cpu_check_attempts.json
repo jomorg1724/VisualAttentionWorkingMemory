@@ -1,0 +1,16 @@
+{
+  "attempts": [
+    {
+      "phase": "before first GPU activity",
+      "status": "failed",
+      "error": "AssertionError: feedback-off logits exact identity",
+      "cause": "Initial zero rate/adaptation tensors inherited field memory layout instead of original normalized-input layout.",
+      "repair": "Initialize zeros_like(z), preserving original numerical layout."
+    },
+    {
+      "phase": "before first GPU activity",
+      "status": "passed",
+      "receipt": "model_checks.json"
+    }
+  ]
+}

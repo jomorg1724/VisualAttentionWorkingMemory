@@ -1,0 +1,86 @@
+H_T_full {"dimensions": 10816, "chosen_C": 0.1, "fit_accuracy": 1.0, "test_accuracy": 0.2265625, "test_accuracy_wilson95": [0.17954592360185193, 0.281664290620967]}
+H_T_pooled_mean_max {"dimensions": 128, "chosen_C": 0.1, "fit_accuracy": 0.51171875, "test_accuracy": 0.25390625, "test_accuracy_wilson95": [0.20449781341092277, 0.31059137938961423]}
+H_T_cued_3x3 {"dimensions": 576, "chosen_C": 0.01, "fit_accuracy": 0.4856770833333333, "test_accuracy": 0.24609375, "test_accuracy_wilson95": [0.19733985263595719, 0.30235534628523175]}
+R_T_full {"dimensions": 10816, "chosen_C": 0.01, "fit_accuracy": 1.0, "test_accuracy": 0.25, "test_accuracy_wilson95": [0.20091603931228538, 0.30647615654857757]}
+R_T_pooled_mean_max {"dimensions": 128, "chosen_C": 0.1, "fit_accuracy": 0.515625, "test_accuracy": 0.2265625, "test_accuracy_wilson95": [0.17954592360185193, 0.281664290620967]}
+R_T_cued_3x3 {"dimensions": 576, "chosen_C": 0.1, "fit_accuracy": 0.7799479166666666, "test_accuracy": 0.2421875, "test_accuracy_wilson95": [0.19376934077577512, 0.2982288612057398]}
+C_T_full {"dimensions": 10816, "chosen_C": 0.01, "fit_accuracy": 1.0, "test_accuracy": 0.23828125, "test_accuracy_wilson95": [0.19020459483719204, 0.2940966102046489]}
+C_T_pooled_mean_max {"dimensions": 128, "chosen_C": 0.1, "fit_accuracy": 0.4817708333333333, "test_accuracy": 0.2421875, "test_accuracy_wilson95": [0.19376934077577512, 0.2982288612057398]}
+C_T_cued_3x3 {"dimensions": 576, "chosen_C": 0.1, "fit_accuracy": 0.57421875, "test_accuracy": 0.28125, "test_accuracy_wilson95": [0.2297200372980578, 0.3392481340801974]}
+H_9_full {"dimensions": 10816, "chosen_C": 0.1, "fit_accuracy": 1.0, "test_accuracy": 0.23046875, "test_accuracy_wilson95": [0.1830927849243291, 0.28581442623816383]}
+H_9_pooled_mean_max {"dimensions": 128, "chosen_C": 0.01, "fit_accuracy": 0.5104166666666666, "test_accuracy": 0.25, "test_accuracy_wilson95": [0.20091603931228538, 0.30647615654857757]}
+H_9_cued_3x3 {"dimensions": 576, "chosen_C": 0.01, "fit_accuracy": 0.7643229166666666, "test_accuracy": 0.2109375, "test_accuracy_wilson95": [0.1654213514772993, 0.2650008749868235]}
+H_T+R_T_cued_3x3 {"dimensions": 1152, "chosen_C": 0.01, "fit_accuracy": 0.6966145833333334, "test_accuracy": 0.24609375, "test_accuracy_wilson95": [0.19733985263595719, 0.30235534628523175]}
+H_9+R_T_cued_3x3 {"dimensions": 1152, "chosen_C": 0.1, "fit_accuracy": 1.0, "test_accuracy": 0.19140625, "test_accuracy_wilson95": [0.1479166280119583, 0.24402061375379444]}
+{
+  "status": "completed",
+  "checkpoint": "WorkingMemory/AttentionContextComparator/SingleTaskMotion/runs/scratch_motion_20260915_194230/training/checkpoint_003200.pt",
+  "checkpoint_sha256": "a761578394c8fe512cf84b08a388190275e22ce335c32281c2b243fe849f5447",
+  "checkpoint_step": 3200,
+  "task": "motion_duration_cued",
+  "condition": "D0",
+  "fit": {
+    "seed": 71973001,
+    "split": "train",
+    "n": 768,
+    "label_counts": [
+      192,
+      192,
+      192,
+      192
+    ]
+  },
+  "test": {
+    "seed": 72973001,
+    "split": "val",
+    "n": 256,
+    "label_counts": [
+      64,
+      64,
+      64,
+      64
+    ]
+  },
+  "chance": 0.25,
+  "probe": "StandardScaler + multinomial LogisticRegression (lbfgs), C by 3-fold CV over (0.001, 0.01, 0.1)",
+  "fields": {
+    "H_T": "terminal sensory field (report frame 10, blank)",
+    "R_T": "terminal E/I firing rates",
+    "C_T": "terminal attention context (pre-W_O)",
+    "H_9": "sensory field on the last moving frame (frame 9)",
+    "cued_3x3": "the 3x3 cells around the cued patch centre (uses the cue location as a probe-side oracle)"
+  },
+  "best_probe": "C_T_cued_3x3",
+  "permuted_label_control_for_best": {
+    "dimensions": 576,
+    "cv_accuracy_by_C": {
+      "0.001": 0.2109375,
+      "0.01": 0.2421875,
+      "0.1": 0.24739583333333334
+    },
+    "chosen_C": 0.1,
+    "fit_accuracy": 0.5598958333333334,
+    "test_accuracy": 0.2578125,
+    "test_accuracy_wilson95": [
+      0.20808509106250064,
+      0.31470109867771046
+    ],
+    "test_balanced_accuracy": 0.2578125,
+    "per_class_recall": [
+      0.25,
+      0.28125,
+      0.3125,
+      0.1875
+    ],
+    "predicted_class_counts": [
+      65,
+      59,
+      75,
+      57
+    ]
+  },
+  "extraction_seconds": 60.22204065322876,
+  "wall_seconds": 175.42582535743713,
+  "device": "cuda",
+  "interpretation": "Forward-only; no model training. Above-chance decoding shows the direction information is present in that field at that time; chance decoding under these probes does not prove absence."
+}

@@ -1,0 +1,112 @@
+{
+  "protocol": {
+    "status": "fixed_before_ensemble_computation",
+    "source_run": "runs/multitask_20260912_141316",
+    "models": [
+      "convnext_grn",
+      "mobilenet_se",
+      "vone_resnet"
+    ],
+    "tasks": [
+      "motion_direction",
+      "contour"
+    ],
+    "ensembles": [
+      [
+        "convnext_grn",
+        "mobilenet_se"
+      ],
+      [
+        "convnext_grn",
+        "vone_resnet"
+      ]
+    ],
+    "weights": [
+      0.5,
+      0.5
+    ],
+    "decision_rule": "Argmax of arithmetic mean probability vector; no calibration or weight fitting",
+    "selection": "Choose pair maximizing equal-task mean one-versus-rest AUC on saved final-checkpoint validation predictions for motion and contour only; ties choose MobileNet-SE pair",
+    "test_use": "Load test predictions only after saving validation selection. Test was already inspected in the original comparison, so this is posthoc reused-test exploratory analysis, not fresh confirmation. Report both predefined pairs transparently.",
+    "comparison": "Paired correct/wrong contingency; BA and AUC of constituents and mean-probability ensemble; differences against each constituent and descriptive best heldout constituent; oracle any-constituent-correct accuracy is unattainable label-informed upper bound",
+    "uncertainty": "2000 paired generated-pair bootstrap samples per task, fixed seed 202609129; same resampled indices for all compared predictions. Conditional on saved trained models, no training-seed replication or post-selection coverage guarantee",
+    "resources": "CPU only, CUDA_VISIBLE_DEVICES=-1, numerical-library threads1; saved JSONL only; no torch/model/inference/training"
+  },
+  "choices": [
+    {
+      "first": "convnext_grn",
+      "second": "mobilenet_se",
+      "tasks": {
+        "motion_direction": {
+          "first": {
+            "balanced_accuracy": 0.8125,
+            "macro_ovr_auc": 0.9335671768707483
+          },
+          "second": {
+            "balanced_accuracy": 0.2455357142857143,
+            "macro_ovr_auc": 0.530984268707483
+          },
+          "ensemble": {
+            "balanced_accuracy": 0.7142857142857143,
+            "macro_ovr_auc": 0.9301392431972789
+          }
+        },
+        "contour": {
+          "first": {
+            "balanced_accuracy": 0.5446428571428571,
+            "macro_ovr_auc": 0.6045918367346939
+          },
+          "second": {
+            "balanced_accuracy": 0.7544642857142858,
+            "macro_ovr_auc": 0.8730070153061223
+          },
+          "ensemble": {
+            "balanced_accuracy": 0.7589285714285714,
+            "macro_ovr_auc": 0.8887117346938777
+          }
+        }
+      },
+      "selection_score": 0.9094254889455783
+    },
+    {
+      "first": "convnext_grn",
+      "second": "vone_resnet",
+      "tasks": {
+        "motion_direction": {
+          "first": {
+            "balanced_accuracy": 0.8125,
+            "macro_ovr_auc": 0.9335671768707483
+          },
+          "second": {
+            "balanced_accuracy": 0.22767857142857145,
+            "macro_ovr_auc": 0.5025244472789115
+          },
+          "ensemble": {
+            "balanced_accuracy": 0.75,
+            "macro_ovr_auc": 0.9147268282312925
+          }
+        },
+        "contour": {
+          "first": {
+            "balanced_accuracy": 0.5446428571428571,
+            "macro_ovr_auc": 0.6045918367346939
+          },
+          "second": {
+            "balanced_accuracy": 0.7455357142857143,
+            "macro_ovr_auc": 0.8425542091836735
+          },
+          "ensemble": {
+            "balanced_accuracy": 0.7678571428571429,
+            "macro_ovr_auc": 0.8692602040816327
+          }
+        }
+      },
+      "selection_score": 0.8919935161564626
+    }
+  ],
+  "selected_pair": [
+    "convnext_grn",
+    "mobilenet_se"
+  ],
+  "selection_saved_before_test_load": true
+}

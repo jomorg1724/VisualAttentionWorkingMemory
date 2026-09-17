@@ -1,0 +1,98 @@
+{
+  "status": "passed",
+  "architecture_version": "attention_context_comparator_scratch_v1",
+  "exact_deterministic_scratch_initialization": true,
+  "initial_model_sha256": "8bacf11efc8b1d35b7f9290fe132059c085c3943f74f9531622eda272c0458f9",
+  "loaded_parent": false,
+  "loaded_model_tensors": 0,
+  "inherited_optimizer_states": 0,
+  "old_comparator_absent": true,
+  "prospective_gamma_absent": true,
+  "only_training_task": "motion_duration_cued",
+  "classes": 4,
+  "canonical_delays": [
+    0,
+    4,
+    12,
+    24
+  ],
+  "canonical_renderer": {
+    "shape": [
+      1,
+      11,
+      3,
+      100,
+      100
+    ],
+    "patches": 4,
+    "cue_frames": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "moving_frames": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "report_frame": 10,
+    "motion_transitions": 8,
+    "dots_per_patch": 32
+  },
+  "full_bptt_finite": true,
+  "finite_gradient_parameter_count": 117,
+  "non_motion_head_gradients": [],
+  "attention_context_shape": [
+    1,
+    64,
+    13,
+    13
+  ],
+  "priority_shape": [
+    1,
+    1,
+    13,
+    13
+  ],
+  "scheduler_complete_delay_block": true,
+  "updates": 4000,
+  "batch_size": 8,
+  "episodes": 32000,
+  "lineage": {
+    "version": "attention_context_comparator_scratch_v1",
+    "initialization_kind": "full_model_from_scratch",
+    "loaded_parent": false,
+    "loaded_model_tensors": 0,
+    "loaded_optimizer_states": 0,
+    "initial_model_sha256": "8bacf11efc8b1d35b7f9290fe132059c085c3943f74f9531622eda272c0458f9",
+    "seeds": {
+      "global_model": 41973001,
+      "pav_common": 30312,
+      "pav_core": 30313,
+      "recurrent_common": 59311,
+      "recurrent_core": 59312,
+      "spatial_components": 31973001,
+      "spatial_comparison_output": 31973002,
+      "joint_attention": 41973001,
+      "priority_readout": 41973101,
+      "python_numpy_torch": 41973001,
+      "training_stream": 61973001,
+      "task_scheduler": 62973001
+    },
+    "prospective_gamma_absent": true,
+    "comparator": "C_t is concat_heads(sum_j A_t,h,i,j V_t,h,j) before W_O; the learned Conv([R_t-1,H_t]) comparator is absent.",
+    "attended_drive": "U_t=W_O(C_t), identical JointAttention output computation"
+  }
+}

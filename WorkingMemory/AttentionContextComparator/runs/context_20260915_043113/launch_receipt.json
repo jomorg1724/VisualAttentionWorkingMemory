@@ -1,0 +1,114 @@
+{
+  "status": "production_training_verified",
+  "observed_unix": 1789447009.6401992,
+  "account_email": "jonathan@palladio.ai",
+  "arm": {
+    "version": "attention_context_comparator_scratch_v1",
+    "name": "attention_context_comparator_scratch",
+    "intervention": "C_t is merged attention-head weighted-value context before W_O; old Conv([R_old,H]) comparator absent",
+    "attended_drive": "U_t=W_O(C_t) unchanged",
+    "terminal_readout": "identical control spatial priority readout"
+  },
+  "pairing": {
+    "control_pod_id": "ce00y2ooosl7wc",
+    "control_checkpoint0_sha256": "97b7e6ce513592fc094724854ea1d4d329c93fd1ae0d86aa20ed50e4fd653f76",
+    "shared_tensor_count": 138,
+    "all_shared_tensors_exact_control_checkpoint0": true,
+    "removed_control_tensors": [
+      "comparator.0.bias",
+      "comparator.0.weight",
+      "comparator.2.bias",
+      "comparator.2.weight"
+    ],
+    "loaded_parent": false,
+    "loaded_model_tensors": 0,
+    "loaded_optimizer_states": 0
+  },
+  "construction": {
+    "status": "passed",
+    "old_comparator_parameters_absent": true,
+    "prospective_gamma_absent": true,
+    "attention_context_shape": [
+      2,
+      64,
+      13,
+      13
+    ],
+    "priority_shape": [
+      2,
+      1,
+      13,
+      13
+    ],
+    "priority_normalized": true,
+    "attention_weight_gradient_norm": 0.054034240543842316,
+    "context_path_gradient_norms": {
+      "query.weight": 0.0005722083733417094,
+      "key.weight": 0.0005501029081642628,
+      "value.weight": 0.024785414338111877
+    },
+    "finite_full_forward_backward": true,
+    "total_parameters": 534239
+  },
+  "protocol": {
+    "updates": 4000,
+    "episodes": 160000,
+    "batch_size": 8,
+    "microbatches_per_update": 5,
+    "validation_targets": [
+      800,
+      1600,
+      2400,
+      3200,
+      4000
+    ],
+    "deadline_utc": "2026-09-15T10:56:06.615367Z"
+  },
+  "pod": {
+    "id": "h1ygacz4zcsfj3",
+    "gpu": "NVIDIA GeForce RTX 3090",
+    "vram_mib": 24576,
+    "cloud": "COMMUNITY",
+    "listed_usd_per_hour": 0.22,
+    "supervisor_pid": 280,
+    "worker_pid": 394,
+    "gpu_snapshot": "NVIDIA GeForce RTX 3090, 24576, 1874, 79, 283.11"
+  },
+  "profile": {
+    "mean_update_seconds": 2.434777577718099,
+    "peak_allocated_bytes": 1022892032,
+    "peak_reserved_bytes": 1142947840,
+    "projected_total_hours": 4.1316355246084715,
+    "projected_listed_cost_usd": 0.9089598154138637
+  },
+  "live": {
+    "step": 40,
+    "episodes": 1600,
+    "loss": 0.8300248503684997,
+    "accuracy": 0.475,
+    "gradient_norm": 0.608396589756012,
+    "validations": []
+  },
+  "monitor": {
+    "lifecycle_pid": 35716,
+    "watcher_pid": 40144,
+    "cadence_seconds": 45,
+    "deadline_unix": 1789469766.615367,
+    "cleanup": "Separate detached lifecycle retrieves/verifies this arm only, then stops and deletes pod at completion/failure or hard deadline."
+  },
+  "hashes": {
+    "bundle_sha256": "fc504b4973c11b0815e8fbbb1ba2e9416bbae12cae80e806c70ade540965845c",
+    "manifest_sha256": "c341517380fb14cf59626711dcd9d99f78a1c295f571f6fb059342ed5781f088",
+    "initial_checkpoint_sha256": "0e33335e8ec5094adc8cab6b2b248e519ccf45968d3f4cdd460780a1fea2f23b",
+    "model_source_sha256": "3b71e8f0b1b34f8b3b80aa4b100023242fe1c77d791dfc02e9fe350a4b64b0cb",
+    "protocol_source_sha256": "16c6803913413d741d25e32be019638c2982e29ff666f98b00f2a822e3be605a",
+    "worker_source_sha256": "9cae8c14ace31b7b85247d85c96b976f5f89fd17328eee7110ec16bec6c31ad5",
+    "sweep_source_sha256": "c678f204ec49a8ad1a2b6ddee12314808598b3bc6b9b836bce0ef6d4820e0a80",
+    "construction_source_sha256": "37d02c5f1f9ffce836f120581cb8b9f9df43c24e9bc399088c6922b5effa22e5"
+  },
+  "paths": {
+    "run": "WorkingMemory\\AttentionContextComparator\\runs\\context_20260915_043113",
+    "live_status": "WorkingMemory\\AttentionContextComparator\\runs\\context_20260915_043113\\live_status.json",
+    "construction_probe": "WorkingMemory\\AttentionContextComparator\\runs\\context_20260915_043113\\training_start_probe.json"
+  }
+}

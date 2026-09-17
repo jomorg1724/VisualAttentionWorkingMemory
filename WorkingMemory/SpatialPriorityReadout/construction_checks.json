@@ -1,0 +1,109 @@
+{
+  "status": "passed",
+  "version": "spatial_priority_readout_scratch_v2",
+  "initialization_kind": "full_model_from_scratch",
+  "initial_model_sha256": "8bde7f23d842ca6611c808b50e710c64b1975c06d4ded5188647345999e03908",
+  "deterministic_same_seed": true,
+  "different_model_seed_changes_initialization": true,
+  "loaded_parent": false,
+  "loaded_model_tensors": 0,
+  "loaded_optimizer_states": 0,
+  "fresh_optimizer_state_empty": true,
+  "original_joint_attention_class": true,
+  "original_spatial_ei_class": true,
+  "original_comparator_class": true,
+  "source_and_locality_trainable": true,
+  "prospective_gamma_absent": true,
+  "global_terminal_pooling_absent": true,
+  "no_terminal_classifier_bypass": true,
+  "task_output_shapes": {
+    "orientation_cued": [
+      2,
+      2
+    ],
+    "motion_duration_cued": [
+      2,
+      4
+    ],
+    "krauzlis_cued_motion": [
+      2,
+      2
+    ],
+    "spatial_binding": [
+      2,
+      2
+    ],
+    "image_recognition": [
+      2,
+      2
+    ]
+  },
+  "priority_maps_normalized": true,
+  "task_specific_selection_and_evidence": true,
+  "finite_full_forward_backward": true,
+  "full_gradient_parameter_count": 121,
+  "priority_gradient_norms": {
+    "shared.0.weight": 0.3171386122703552,
+    "shared.1.weight": 0.09710408747196198,
+    "shared.1.bias": 0.13778343796730042,
+    "shared.3.weight": 2.7290711402893066,
+    "shared.4.weight": 0.13435065746307373,
+    "shared.4.bias": 0.18064209818840027,
+    "selection.orientation_cued.weight": 0.06579776108264923,
+    "selection.orientation_cued.bias": 5.675246939063072e-10,
+    "selection.motion_duration_cued.weight": 0.036110181361436844,
+    "selection.motion_duration_cued.bias": 2.9103830456733704e-11,
+    "selection.krauzlis_cued_motion.weight": 0.05714084953069687,
+    "selection.krauzlis_cued_motion.bias": 7.566995918750763e-10,
+    "selection.spatial_binding.weight": 0.07773520797491074,
+    "selection.spatial_binding.bias": 9.065843187272549e-09,
+    "selection.image_recognition.weight": 0.01751425676047802,
+    "selection.image_recognition.bias": 2.1964297047816217e-10,
+    "evidence.orientation_cued.weight": 0.5985780954360962,
+    "evidence.orientation_cued.bias": 0.301760733127594,
+    "evidence.motion_duration_cued.weight": 0.33367130160331726,
+    "evidence.motion_duration_cued.bias": 0.16846095025539398,
+    "evidence.krauzlis_cued_motion.weight": 0.5118857026100159,
+    "evidence.krauzlis_cued_motion.bias": 0.25816699862480164,
+    "evidence.spatial_binding.weight": 0.7027571201324463,
+    "evidence.spatial_binding.bias": 0.35456645488739014,
+    "evidence.image_recognition.weight": 0.19960889220237732,
+    "evidence.image_recognition.bias": 0.10052593797445297
+  },
+  "updates": 4000,
+  "episodes": 160000,
+  "validation_targets": [
+    800,
+    1600,
+    2400,
+    3200,
+    4000
+  ],
+  "total_parameters": 579423,
+  "trainable_parameters": 579423,
+  "lineage": {
+    "version": "spatial_priority_readout_scratch_v2",
+    "initialization_kind": "full_model_from_scratch",
+    "loaded_parent": false,
+    "loaded_model_tensors": 0,
+    "loaded_optimizer_states": 0,
+    "initial_model_sha256": "8bde7f23d842ca6611c808b50e710c64b1975c06d4ded5188647345999e03908",
+    "seeds": {
+      "global_model": 41973001,
+      "pav_common": 30312,
+      "pav_core": 30313,
+      "recurrent_common": 59311,
+      "recurrent_core": 59312,
+      "spatial_components": 31973001,
+      "spatial_comparison_output": 31973002,
+      "joint_attention": 41973001,
+      "priority_readout": 41973101,
+      "python_numpy_torch": 41973001,
+      "training_stream": 61973001,
+      "task_scheduler": 62973001
+    },
+    "prospective_gamma_absent": true,
+    "attention": "Original JointAttention class and source_bias - softplus(raw_locality)*distance_squared computation, freshly initialized.",
+    "architecture": "All components train from scratch. Terminal concat[H_T,R_T,C_T] at 13x13 uses shared 1x1 192->96 and 3x3 96->64 convolutions, then per-task selection/evidence maps and spatial-softmax weighted evidence."
+  }
+}

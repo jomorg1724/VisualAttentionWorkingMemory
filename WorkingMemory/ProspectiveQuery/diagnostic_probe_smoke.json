@@ -1,0 +1,69 @@
+{
+  "status": "completed",
+  "analysis_only": true,
+  "checkpoint": "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\WorkingMemory\\SpatialTaskBattery\\BiasedTraining\\runs\\biased_20260913_194506\\retrieved\\biased_results\\spatial_biased\\training\\checkpoint_010000.pt",
+  "checkpoint_sha256": "35281f264131e01678ab5725a5b66816d47302583f78b9751f775f18adf22942",
+  "checkpoint_version": "spatial_five_task_original_attention_biases_v1",
+  "checkpoint_step": 10000,
+  "paired": {
+    "pair_count": 1,
+    "independent_base_movies": 1,
+    "presentations": 2,
+    "evidence_identity": "Raster-exact outside the union of old/new valid target cue rings; motion schedules, dots, nuisance draws and all non-cue pixels are paired",
+    "prediction_change_rate": 0.0,
+    "mean_routing_absolute_change": 0.0003363905707374215,
+    "rows": [
+      {
+        "pair_id": 0,
+        "evidence_sha256": "e29ac74b413309213803c5a092037f91a884bd5b55108c1c2ff61fecce68041c",
+        "original_target": 2,
+        "counterfactual_target": 1,
+        "original_label": 3,
+        "counterfactual_label": 2,
+        "original_prediction": 1,
+        "counterfactual_prediction": 1,
+        "original_correct_probability": 0.26272955536842346,
+        "counterfactual_correct_probability": 0.24665647745132446,
+        "prediction_changed": false,
+        "routing_mean_abs_change": 0.0003363905707374215,
+        "routing_max_abs_change": 0.6129127740859985,
+        "routing_change_by_frame": [
+          8.333565347129479e-06,
+          0.0004213586507830769,
+          0.00040858436841517687,
+          0.0004451751010492444,
+          0.0003899846924468875,
+          0.00040641947998665273,
+          0.00037930699181742966,
+          0.0003475819539744407,
+          0.0002908071328420192,
+          0.00028017154545523226,
+          0.00032257274142466486
+        ]
+      }
+    ]
+  },
+  "sensory_probe": {
+    "target": "per-patch longest-duration direction from final moving-frame H",
+    "representation": "Frozen 64-channel pre-global-pooling sensory field; local 3x3 mean at each of four patch centers",
+    "split_unit": "Independent base episode; no episode appears across splits",
+    "split_episodes": {
+      "train": 4,
+      "val": 4,
+      "test": 4
+    },
+    "split_patch_examples": {
+      "train": 16,
+      "val": 16,
+      "test": 16
+    },
+    "scaling": "Train-only channel mean/std",
+    "selection": "Ridge penalty selected on validation accuracy only",
+    "selected_penalty": 0.0001,
+    "validation_accuracy": 0.1875,
+    "test_accuracy": 0.1875,
+    "test_target_patch_accuracy": 0.0,
+    "test_foil_patch_accuracy": 0.25,
+    "chance_accuracy": 0.25
+  }
+}

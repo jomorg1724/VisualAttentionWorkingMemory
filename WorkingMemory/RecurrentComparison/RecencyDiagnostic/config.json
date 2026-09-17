@@ -1,0 +1,36 @@
+{
+  "version": "paired_recency_L8_v1",
+  "seed": 14973001,
+  "pairs": 512,
+  "variants": 2,
+  "arms": [
+    "lstm",
+    "ei_adaptive"
+  ],
+  "batch": 8,
+  "budget_seconds": 600,
+  "order": "late-minus-early",
+  "selection": "min/max winner center in count/first/last2/switch-matched groups;64 bank pairs per final-status, rotated over4classes",
+  "feasible_banks": {
+    "False": 909,
+    "True": 722
+  },
+  "checkpoint": {
+    "lstm": {
+      "path": "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\WorkingMemory\\RecurrentComparison\\runs\\recurrent_20260912_202158\\lstm\\checkpoint_005000.pt",
+      "sha256": "8afbe291aac88a3c742127f7205cae8de82014d63c2b1e535ec8754b95f5bd0d"
+    },
+    "ei_adaptive": {
+      "path": "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\WorkingMemory\\RecurrentComparison\\runs\\recurrent_20260912_202158\\remote_retrieval\\remote_results\\ei_adaptive\\checkpoint_005000.pt",
+      "sha256": "0a1d498ca678337aac42232ad1c9e048951b64ec0c0128e68b9cf0522b0b2520"
+    }
+  },
+  "source": {
+    "WorkingMemory\\RecurrentComparison\\RecencyDiagnostic\\run.py": "dc2a03c94d86d49ec4f0dbf024a238cb99ef427ab3d2998f1c420ed64ed214a4",
+    "WorkingMemory\\stimuli.py": "c5a6c6d1c2aa38e3b418e09a9d6c03bd022112d5ece4b5384c5336d9f592c127",
+    "WorkingMemory\\RecurrentComparison\\model.py": "4de3e509d44d183694d871e06dd17aeb1e3355a963f6e9c5617089f5db27404d",
+    "WorkingMemory\\model.py": "012c538178b0bf5d61141625bc97dbfe6fdeda36722f68f6efcc692a461a48d3",
+    "PreAttentiveVision\\neuroscience_stimuli.py": "f4d3ed226b8bb4945753127651b037b0994715752258f283d10ca98c06eb8e87",
+    "PreAttentiveVision\\TemporalIntegration\\accumulators.py": "93706e822f9d0114f544392736bb4ef830cdbe2fc580034e48c0495658f333d7"
+  }
+}

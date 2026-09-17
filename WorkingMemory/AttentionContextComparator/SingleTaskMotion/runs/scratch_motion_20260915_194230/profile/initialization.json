@@ -1,0 +1,39 @@
+{
+  "lineage": {
+    "version": "attention_context_comparator_scratch_v1",
+    "initialization_kind": "full_model_from_scratch",
+    "loaded_parent": false,
+    "loaded_model_tensors": 0,
+    "loaded_optimizer_states": 0,
+    "initial_model_sha256": "8bacf11efc8b1d35b7f9290fe132059c085c3943f74f9531622eda272c0458f9",
+    "seeds": {
+      "global_model": 41973001,
+      "pav_common": 30312,
+      "pav_core": 30313,
+      "recurrent_common": 59311,
+      "recurrent_core": 59312,
+      "spatial_components": 31973001,
+      "spatial_comparison_output": 31973002,
+      "joint_attention": 41973001,
+      "priority_readout": 41973101,
+      "python_numpy_torch": 41973001,
+      "training_stream": 61973001,
+      "task_scheduler": 62973001
+    },
+    "prospective_gamma_absent": true,
+    "comparator": "C_t is concat_heads(sum_j A_t,h,i,j V_t,h,j) before W_O; the learned Conv([R_t-1,H_t]) comparator is absent.",
+    "attended_drive": "U_t=W_O(C_t), identical JointAttention output computation"
+  },
+  "architecture_version": "attention_context_comparator_scratch_v1",
+  "training_task": "motion_duration_cued",
+  "full_suite_architecture_config_retained": true,
+  "loaded_parent": false,
+  "loaded_model_tensors": 0,
+  "inherited_optimizer_states": 0,
+  "optimizer_initially_empty": true,
+  "model_seed": 41973001,
+  "train_seed": 61973001,
+  "scheduler_seed": 62973001,
+  "total_parameters": 534239,
+  "trainable_parameters": 534239
+}

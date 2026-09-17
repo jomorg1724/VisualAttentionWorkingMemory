@@ -1,0 +1,189 @@
+{
+  "recipe": {
+    "cells": {
+      "single_D0": {
+        "family": "orientation_single",
+        "condition": {
+          "delay": 0,
+          "spacing": "mixed"
+        }
+      },
+      "single_D4": {
+        "family": "orientation_single",
+        "condition": {
+          "delay": 4,
+          "spacing": "mixed"
+        }
+      },
+      "single_D12": {
+        "family": "orientation_single",
+        "condition": {
+          "delay": 12,
+          "spacing": "mixed"
+        }
+      },
+      "single_D24": {
+        "family": "orientation_single",
+        "condition": {
+          "delay": 24,
+          "spacing": "mixed"
+        }
+      },
+      "binding_D0": {
+        "family": "orientation_binding",
+        "condition": {
+          "delay": 0,
+          "spacing": "mixed"
+        }
+      },
+      "binding_D4": {
+        "family": "orientation_binding",
+        "condition": {
+          "delay": 4,
+          "spacing": "mixed"
+        }
+      },
+      "binding_D12": {
+        "family": "orientation_binding",
+        "condition": {
+          "delay": 12,
+          "spacing": "mixed"
+        }
+      },
+      "binding_D24": {
+        "family": "orientation_binding",
+        "condition": {
+          "delay": 24,
+          "spacing": "mixed"
+        }
+      },
+      "motion_D0": {
+        "family": "motion_direction",
+        "condition": {
+          "delay": 0,
+          "spacing": "mixed"
+        }
+      },
+      "motion_D24": {
+        "family": "motion_direction",
+        "condition": {
+          "delay": 24,
+          "spacing": "mixed"
+        }
+      }
+    },
+    "cycle": [
+      "single_D0",
+      "single_D0",
+      "single_D0",
+      "single_D0",
+      "single_D0",
+      "single_D0",
+      "single_D0",
+      "single_D0",
+      "single_D0",
+      "single_D4",
+      "single_D4",
+      "single_D4",
+      "single_D4",
+      "single_D4",
+      "single_D4",
+      "single_D4",
+      "single_D4",
+      "single_D4",
+      "single_D12",
+      "single_D12",
+      "single_D12",
+      "single_D12",
+      "single_D12",
+      "single_D12",
+      "single_D12",
+      "single_D12",
+      "single_D12",
+      "single_D24",
+      "single_D24",
+      "single_D24",
+      "single_D24",
+      "single_D24",
+      "single_D24",
+      "single_D24",
+      "single_D24",
+      "single_D24",
+      "binding_D0",
+      "binding_D0",
+      "binding_D0",
+      "binding_D0",
+      "binding_D0",
+      "binding_D0",
+      "binding_D0",
+      "binding_D0",
+      "binding_D0",
+      "binding_D4",
+      "binding_D4",
+      "binding_D4",
+      "binding_D4",
+      "binding_D4",
+      "binding_D4",
+      "binding_D4",
+      "binding_D4",
+      "binding_D4",
+      "binding_D12",
+      "binding_D12",
+      "binding_D12",
+      "binding_D12",
+      "binding_D12",
+      "binding_D12",
+      "binding_D12",
+      "binding_D12",
+      "binding_D12",
+      "binding_D24",
+      "binding_D24",
+      "binding_D24",
+      "binding_D24",
+      "binding_D24",
+      "binding_D24",
+      "binding_D24",
+      "binding_D24",
+      "binding_D24",
+      "motion_D0",
+      "motion_D0",
+      "motion_D0",
+      "motion_D0",
+      "motion_D24",
+      "motion_D24",
+      "motion_D24",
+      "motion_D24"
+    ],
+    "batch_size": 8,
+    "train_seed": 32973001,
+    "scheduler_seed": 33973001,
+    "model_seed": 41973001,
+    "new_lr": 0.0003,
+    "parent_lr": 3e-05,
+    "adam_eps": 1e-10,
+    "weight_decay": 0.0001,
+    "clip": 1.0,
+    "activation_checkpoint": true
+  },
+  "parent": "portable/parent_checkpoint_004400.pt",
+  "parent_sha256": "9a3ffb08829246e1a3622d2658cd76aed46d89c1d84e57fa9a2b334b9a66b90b",
+  "parent_step": 4400,
+  "updates_per_arm": 4000,
+  "episodes_per_arm": 32000,
+  "targets": [
+    5400,
+    6400,
+    7400,
+    8400
+  ],
+  "val_seed": 45973001,
+  "test_seed": 46973001,
+  "validation_n_per_cell": 128,
+  "test_n_per_cell": 512,
+  "selection": "equal mean eight primary validation AUC; ties earlier",
+  "profile_exposure_not_continued": true,
+  "training_estimate_seconds": 3419.3171441555023,
+  "evaluation_reporting_reserve_seconds": 534.2209879557292,
+  "remaining_seconds_after_profile": 14118.227667093277,
+  "total_estimate_seconds": 3953.5381321112313
+}

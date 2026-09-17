@@ -1,0 +1,304 @@
+{
+  "kind": "train",
+  "arm": "attention_context_comparator_v2",
+  "config": {
+    "cells": {
+      "orientation_cued_D0": {
+        "task": "orientation_cued",
+        "condition": {
+          "delay": 0
+        }
+      },
+      "orientation_cued_D4": {
+        "task": "orientation_cued",
+        "condition": {
+          "delay": 4
+        }
+      },
+      "orientation_cued_D12": {
+        "task": "orientation_cued",
+        "condition": {
+          "delay": 12
+        }
+      },
+      "orientation_cued_D24": {
+        "task": "orientation_cued",
+        "condition": {
+          "delay": 24
+        }
+      },
+      "motion_duration_cued_D0": {
+        "task": "motion_duration_cued",
+        "condition": {
+          "delay": 0
+        }
+      },
+      "motion_duration_cued_D4": {
+        "task": "motion_duration_cued",
+        "condition": {
+          "delay": 4
+        }
+      },
+      "motion_duration_cued_D12": {
+        "task": "motion_duration_cued",
+        "condition": {
+          "delay": 12
+        }
+      },
+      "motion_duration_cued_D24": {
+        "task": "motion_duration_cued",
+        "condition": {
+          "delay": 24
+        }
+      },
+      "spatial_binding_D0": {
+        "task": "spatial_binding",
+        "condition": {
+          "delay": 0
+        }
+      },
+      "spatial_binding_D4": {
+        "task": "spatial_binding",
+        "condition": {
+          "delay": 4
+        }
+      },
+      "spatial_binding_D12": {
+        "task": "spatial_binding",
+        "condition": {
+          "delay": 12
+        }
+      },
+      "spatial_binding_D24": {
+        "task": "spatial_binding",
+        "condition": {
+          "delay": 24
+        }
+      },
+      "image_recognition_N0_H3": {
+        "task": "image_recognition",
+        "condition": {
+          "load": 0,
+          "probe_hold": 3
+        }
+      },
+      "image_recognition_N0_H4": {
+        "task": "image_recognition",
+        "condition": {
+          "load": 0,
+          "probe_hold": 4
+        }
+      },
+      "image_recognition_N0_H5": {
+        "task": "image_recognition",
+        "condition": {
+          "load": 0,
+          "probe_hold": 5
+        }
+      },
+      "image_recognition_N4_H3": {
+        "task": "image_recognition",
+        "condition": {
+          "load": 4,
+          "probe_hold": 3
+        }
+      },
+      "image_recognition_N4_H4": {
+        "task": "image_recognition",
+        "condition": {
+          "load": 4,
+          "probe_hold": 4
+        }
+      },
+      "image_recognition_N4_H5": {
+        "task": "image_recognition",
+        "condition": {
+          "load": 4,
+          "probe_hold": 5
+        }
+      },
+      "image_recognition_N12_H3": {
+        "task": "image_recognition",
+        "condition": {
+          "load": 12,
+          "probe_hold": 3
+        }
+      },
+      "image_recognition_N12_H4": {
+        "task": "image_recognition",
+        "condition": {
+          "load": 12,
+          "probe_hold": 4
+        }
+      },
+      "image_recognition_N12_H5": {
+        "task": "image_recognition",
+        "condition": {
+          "load": 12,
+          "probe_hold": 5
+        }
+      },
+      "image_recognition_N24_H3": {
+        "task": "image_recognition",
+        "condition": {
+          "load": 24,
+          "probe_hold": 3
+        }
+      },
+      "image_recognition_N24_H4": {
+        "task": "image_recognition",
+        "condition": {
+          "load": 24,
+          "probe_hold": 4
+        }
+      },
+      "image_recognition_N24_H5": {
+        "task": "image_recognition",
+        "condition": {
+          "load": 24,
+          "probe_hold": 5
+        }
+      },
+      "krauzlis_B12": {
+        "task": "krauzlis_cued_motion",
+        "condition": {
+          "baseline_transitions": 12
+        }
+      },
+      "krauzlis_B20": {
+        "task": "krauzlis_cued_motion",
+        "condition": {
+          "baseline_transitions": 20
+        }
+      },
+      "krauzlis_B28": {
+        "task": "krauzlis_cued_motion",
+        "condition": {
+          "baseline_transitions": 28
+        }
+      }
+    },
+    "cycle": [
+      "orientation_cued_D0",
+      "orientation_cued_D4",
+      "orientation_cued_D12",
+      "orientation_cued_D24",
+      "motion_duration_cued_D0",
+      "motion_duration_cued_D4",
+      "motion_duration_cued_D12",
+      "motion_duration_cued_D24",
+      "spatial_binding_D0",
+      "spatial_binding_D4",
+      "spatial_binding_D12",
+      "spatial_binding_D24",
+      "image_recognition_N0_H3",
+      "image_recognition_N0_H4",
+      "image_recognition_N0_H5",
+      "image_recognition_N4_H3",
+      "image_recognition_N4_H4",
+      "image_recognition_N4_H5",
+      "image_recognition_N12_H3",
+      "image_recognition_N12_H4",
+      "image_recognition_N12_H5",
+      "image_recognition_N24_H3",
+      "image_recognition_N24_H4",
+      "image_recognition_N24_H5",
+      "krauzlis_B12",
+      "krauzlis_B20",
+      "krauzlis_B28"
+    ],
+    "batch_size": 8,
+    "train_seed": 61973001,
+    "scheduler_seed": 62973001,
+    "model_seed": 41973001,
+    "new_lr": 0.0003,
+    "parent_lr": 0.0003,
+    "adam_eps": 1e-10,
+    "weight_decay": 0.0001,
+    "clip": 1.0,
+    "activation_checkpoint": true,
+    "battery": "spatial",
+    "updates": 12000,
+    "task_classes": {
+      "orientation_cued": 2,
+      "motion_duration_cued": 4,
+      "krauzlis_cued_motion": 2,
+      "spatial_binding": 2,
+      "image_recognition": 2
+    },
+    "train_names": {
+      "orientation_cued": [
+        "orientation_cued_D0",
+        "orientation_cued_D4",
+        "orientation_cued_D12",
+        "orientation_cued_D24"
+      ],
+      "motion_duration_cued": [
+        "motion_duration_cued_D0",
+        "motion_duration_cued_D4",
+        "motion_duration_cued_D12",
+        "motion_duration_cued_D24"
+      ],
+      "spatial_binding": [
+        "spatial_binding_D0",
+        "spatial_binding_D4",
+        "spatial_binding_D12",
+        "spatial_binding_D24"
+      ],
+      "image_recognition": [
+        "image_recognition_N0_H3",
+        "image_recognition_N0_H4",
+        "image_recognition_N0_H5",
+        "image_recognition_N4_H3",
+        "image_recognition_N4_H4",
+        "image_recognition_N4_H5",
+        "image_recognition_N12_H3",
+        "image_recognition_N12_H4",
+        "image_recognition_N12_H5",
+        "image_recognition_N24_H3",
+        "image_recognition_N24_H4",
+        "image_recognition_N24_H5"
+      ],
+      "krauzlis_cued_motion": [
+        "krauzlis_B12",
+        "krauzlis_B20",
+        "krauzlis_B28"
+      ]
+    },
+    "v2_changes": {
+      "A": true,
+      "B": true,
+      "C": true,
+      "D": true,
+      "E": true
+    }
+  },
+  "out": "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\WorkingMemory\\AttentionContextComparator\\V2\\runs\\v2_local_20260915_220124\\training",
+  "result": "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\WorkingMemory\\AttentionContextComparator\\V2\\runs\\v2_local_20260915_220124\\train_800_result.json",
+  "deadline": 1789678764.0041854,
+  "device": "cuda",
+  "source_hashes": {
+    "WorkingMemory/AttentionContextComparator/V2/model.py": "75aefc71fbbf9f517b46713f7dce6a178f98cefef72979a78bbf5f4c4b9a56b1",
+    "WorkingMemory/AttentionContextComparator/V2/protocol.py": "3d41d6be517e70d368452388f38697f0a0c25ffc556831907d1adb4beb69390b",
+    "WorkingMemory/AttentionContextComparator/V2/check.py": "bf8f2f4a651349c65500f978b9650dede60ab78ff6aa5114f6e73bbdb2b53438",
+    "WorkingMemory/AttentionContextComparator/V2/worker.py": "2423525d43eb88da6ce97e6884a813dd511ef615dc9d4978d69701ac1bd6bbd4",
+    "WorkingMemory/AttentionContextComparator/V2/run.py": "97c524ae2c5b4be3ccf174fb9176f708fdab01803329b83d40c07620e0028ec4",
+    "WorkingMemory/AttentionContextComparator/model.py": "3b71e8f0b1b34f8b3b80aa4b100023242fe1c77d791dfc02e9fe350a4b64b0cb",
+    "WorkingMemory/AttentionContextComparator/protocol.py": "16c6803913413d741d25e32be019638c2982e29ff666f98b00f2a822e3be605a",
+    "WorkingMemory/SpatialPriorityReadout/model.py": "524e5bc0bec45d85d116167c5ffd136e54bec8315f0c30a3a06f4d5c5bc24755",
+    "WorkingMemory/PreUpdateAttention/model.py": "816f0d46e35926429560aaf98f592ecc3a06ef8c5b120defd98bd806432d5b2d",
+    "WorkingMemory/SpatialComparison/model.py": "6e0830f494b28e08b242075d511988aa8395677ac169ea9fcf73a7d1d32881b7",
+    "WorkingMemory/RecurrentComparison/model.py": "4de3e509d44d183694d871e06dd17aeb1e3355a963f6e9c5617089f5db27404d",
+    "WorkingMemory/model.py": "012c538178b0bf5d61141625bc97dbfe6fdeda36722f68f6efcc692a461a48d3",
+    "PreAttentiveVision/TemporalIntegration/accumulators.py": "93706e822f9d0114f544392736bb4ef830cdbe2fc580034e48c0495658f333d7",
+    "PreAttentiveVision/decoder.py": "234e2cd36845ce11a6f04e61dfd1c63d8168c58718eb2260fc5a3386f089c776",
+    "PreAttentiveVision/hybrid_models.py": "094a013c709f91d7f2354b0ad644db79f4dab2c1e7369b6b6d1f2412b29fa928",
+    "PreAttentiveVision/models.py": "9d326177efac6aea8049aa9ca42d1a7109b34d44b02081185f3ae2d308b0e488",
+    "WorkingMemory/SpatialTaskBattery/stimuli.py": "16b7efd4575eba27b9a79329243dcce0da635008856687a9e62bda72b5ddeb37",
+    "WorkingMemory/UnbiasedAttention/protocol.py": "0e89cbf61bd7430a1b39d52f536d63414b546b6ea057a972af54b3e2f3344c22",
+    "WorkingMemory/TrainingExposure/protocol.py": "407432b0ba020a43b5ef681fb613f1ebaa63ba011a815dbd941ad51780ec1f88",
+    "PreAttentiveVision/evaluate_multitask.py": "24339f53ba77af81535bde37b858c28c3de3f0b18649f0e11b3c520f53a95268"
+  },
+  "target": 800,
+  "checkpoint": "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\WorkingMemory\\AttentionContextComparator\\V2\\runs\\v2_local_20260915_220124\\training\\checkpoint_000256.pt"
+}

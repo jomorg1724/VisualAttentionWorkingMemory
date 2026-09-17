@@ -1,0 +1,69 @@
+{
+  "lineage": {
+    "version": "attention_context_comparator_v2",
+    "base_version": "attention_context_comparator_scratch_v1",
+    "initialization_kind": "full_model_from_scratch",
+    "loaded_parent": false,
+    "loaded_model_tensors": 0,
+    "loaded_optimizer_states": 0,
+    "initial_model_sha256": "239dedae37b230511e4deba911655133f997e4f53d273f12cb1bb86aedeccc0e",
+    "changes": {
+      "A": {
+        "enabled": true,
+        "text": "opponent raw_opponent[4] + magnitude[1] channels restored; accumulator output Conv2d(77,32,1), new columns zero"
+      },
+      "B": {
+        "enabled": true,
+        "text": "mixed adaptive avg+max pooling per scale; readout.fusion ConvNormAct(192,64), max-half zero"
+      },
+      "C": {
+        "enabled": true,
+        "text": "attention head 1 lambda=0.02 (sigma=5 cells) and source-neutral; head 0 unchanged"
+      },
+      "D": {
+        "enabled": true,
+        "text": "priority selection maps xavier_uniform(gain=.5), zero bias"
+      },
+      "E": {
+        "enabled": true,
+        "text": "single learning rate new_lr for all parameters (recipe sets parent_lr = new_lr)"
+      }
+    },
+    "learning_rate_parameter_counts": {
+      "0.0003": 590015
+    },
+    "seeds": {
+      "global_model": 41973001,
+      "pav_common": 30312,
+      "pav_core": 30313,
+      "recurrent_common": 59311,
+      "recurrent_core": 59312,
+      "spatial_components": 31973001,
+      "spatial_comparison_output": 31973002,
+      "joint_attention": 41973001,
+      "priority_readout": 41973101,
+      "priority_selection_v2": 41973201,
+      "python_numpy_torch": 41973001,
+      "training_stream": 61973001,
+      "task_scheduler": 62973001
+    },
+    "prospective_gamma_absent": true,
+    "comparator": "C_t is concat_heads(sum_j A_t,h,i,j V_t,h,j) before W_O; the learned Conv([R_t-1,H_t]) comparator is absent."
+  },
+  "total_parameters": 590015,
+  "trainable_parameters": 590015,
+  "loaded_parent": false,
+  "loaded_model_tensors": 0,
+  "inherited_adam_states": 0,
+  "v2_changes": {
+    "A": true,
+    "B": true,
+    "C": true,
+    "D": true,
+    "E": true
+  },
+  "learning_rates": {
+    "new_lr": 0.0003,
+    "parent_lr": 0.0003
+  }
+}

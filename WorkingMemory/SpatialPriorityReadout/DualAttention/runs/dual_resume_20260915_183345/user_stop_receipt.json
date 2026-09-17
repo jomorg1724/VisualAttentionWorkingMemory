@@ -1,0 +1,61 @@
+{
+  "kind": "user_requested_shutdown",
+  "pod_id": "629g1utqkk8non",
+  "started_unix": 1789536212.9009814,
+  "steps": [
+    {
+      "step": "remote_processes_stopped",
+      "remaining": ""
+    }
+  ],
+  "retrieval_status": "failed",
+  "error": "CalledProcessError(1, ['ssh', '-n', '-i', 'C:/Users/jomor/.runpod/ssh/runpodctl-ssh-key', '-o', 'UserKnownHostsFile=C:/Users/jomor/Documents/VisualAttentionWorkingMemory/WorkingMemory/SpatialPriorityReadout/DualAttention/runs/dual_resume_20260915_183345/known_hosts', '-o', 'StrictHostKeyChecking=yes', '-o', 'BatchMode=yes', '-o', 'ConnectTimeout=15', '-o', 'KexAlgorithms=curve25519-sha256', '-p', '11449', 'root@64.119.209.250', 'python -c \\'\\nimport json,pathlib\\nr=pathlib.Path(\\'\"\\'\"\\'/workspace/vawm_dual_attention_resume_800/dual_attention_results\\'\"\\'\"\\')\\nout=dict(indexes=[],last_rows={})\\nfor idx in r.rglob(\\'\"\\'\"\\'checkpoint_index.jsonl\\'\"\\'\"\\'):\\n  rel=str(idx.parent.relative_to(r)).replace(\\'\"\\'\"\\'\\\\\\\\\\'\"\\'\"\\',\\'\"\\'\"\\'/\\'\"\\'\"\\')\\n  rows=[json.loads(x) for x in idx.read_text().splitlines()]\\n  out[\\'\"\\'\"\\'indexes\\'\"\\'\"\\'].append(dict(dir=rel,rows=rows))\\n  m=idx.parent/\\'\"\\'\"\\'metrics.csv\\'\"\\'\"\\'\\n  if m.is_file():\\n    lines=m.read_text().splitlines(); out[\\'\"\\'\"\\'last_rows\\'\"\\'\"\\'][rel]=lines[-1][:120] if len(lines)>1 else None\\nprint(json.dumps(out))\\n\\''])",
+  "cleanup": {
+    "stopped": {
+      "status": 200,
+      "body": {
+        "consumerUserId": "user_3G2p4Y5w08lEhM6teTR83thWCGl",
+        "containerDiskInGb": 30,
+        "costPerHr": 0.22,
+        "createdAt": "2026-09-16 01:33:46.131 +0000 UTC",
+        "desiredStatus": "EXITED",
+        "env": {
+          "PUBLIC_KEY": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCl8fkkRDv5pkdSPiEuKEADGppB8q4DyvpdV/9fDdqrP3jwP1qo9i0KXoOsbmZSG3nCJYDKI2JSIz2ScriTzKRO/717VCQvRUw8vfAKxcrAh/T3gt5iGAR3jsYooCEdQRXPSrJvhQuXW9DvU7Gubcgv2KX+NY2ew59MtpZgdqE3aWbhM7t/GQlAsOpkmGytY7kNrHhnc9JFoRXbW+u7ppk9pcfADVVwl6LrS9yyJJZW1jDdt60XvKWwyetQz7PakFn+SK54NUVyrgfF+D50f4B+WHmGDghFchOfqeIjHlYTUPf3V8I+JkR1M+QZJZStyxp4lspuvKknn2QhJjb66RHL runpodctl-ssh-key"
+        },
+        "gpuCount": 1,
+        "id": "629g1utqkk8non",
+        "imageName": "runpod/pytorch:2.1.0-py3.10-cuda11.8.0-devel-ubuntu22.04",
+        "lastStartedAt": "2026-09-16 01:33:46.125 +0000 UTC",
+        "lastStatusChange": "Exited by user: Wed Sep 16 2026 05:23:36 GMT+0000 (Coordinated Universal Time)",
+        "machine": {},
+        "machineId": "pl7w1ral8nni",
+        "memoryInGb": 41,
+        "name": "vawm-dual-attention-resume-800",
+        "ports": [
+          "22/tcp"
+        ],
+        "portMappings": {
+          "22": 11449
+        },
+        "publicIp": "64.119.209.250",
+        "templateId": "",
+        "vcpuCount": 21,
+        "volumeInGb": 10,
+        "volumeMountPath": "/workspace"
+      }
+    },
+    "deleted": {
+      "status": 204,
+      "body": null
+    },
+    "absent_check": {
+      "status": 404,
+      "body": "{\"error\":\"pod not found\",\"status\":404}\n"
+    },
+    "remaining_pods": [],
+    "retrieval_verified": false,
+    "cleaned_unix": 1789536223.2487547,
+    "reason": "user requested shutdown of all pods"
+  },
+  "completed_unix": 1789536223.2487547
+}

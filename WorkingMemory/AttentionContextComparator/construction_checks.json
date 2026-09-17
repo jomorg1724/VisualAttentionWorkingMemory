@@ -1,0 +1,80 @@
+{
+  "status": "passed",
+  "version": "attention_context_comparator_scratch_v1",
+  "control_checkpoint_sha256": "97b7e6ce513592fc094724854ea1d4d329c93fd1ae0d86aa20ed50e4fd653f76",
+  "deterministic_scratch_initialization": true,
+  "loaded_parent": false,
+  "loaded_model_tensors": 0,
+  "loaded_optimizer_states": 0,
+  "shared_tensor_count": 138,
+  "all_shared_tensors_exact_reconstructed_control": true,
+  "all_shared_tensors_exact_control_checkpoint0": false,
+  "checkpoint_equality_required": false,
+  "cross_platform_checkpoint_comparison": "Exact equality required remotely under the control runtime; local Windows construction may differ from the Linux checkpoint.",
+  "removed_control_tensors": [
+    "comparator.0.bias",
+    "comparator.0.weight",
+    "comparator.2.bias",
+    "comparator.2.weight"
+  ],
+  "old_comparator_parameters_absent": true,
+  "prospective_gamma_absent": true,
+  "attention_context_shape": [
+    2,
+    64,
+    13,
+    13
+  ],
+  "priority_shape": [
+    2,
+    1,
+    13,
+    13
+  ],
+  "priority_normalized": true,
+  "attention_weight_gradient_norm": 0.051762714982032776,
+  "context_path_gradient_norms": {
+    "query.weight": 0.0005273640854284167,
+    "key.weight": 0.0005247248336672783,
+    "value.weight": 0.02434578724205494
+  },
+  "context_path_bypasses_W_O": true,
+  "finite_full_forward_backward": true,
+  "updates": 4000,
+  "episodes": 160000,
+  "validation_targets": [
+    800,
+    1600,
+    2400,
+    3200,
+    4000
+  ],
+  "total_parameters": 534239,
+  "trainable_parameters": 534239,
+  "initial_model_sha256": "8bacf11efc8b1d35b7f9290fe132059c085c3943f74f9531622eda272c0458f9",
+  "lineage": {
+    "version": "attention_context_comparator_scratch_v1",
+    "initialization_kind": "full_model_from_scratch",
+    "loaded_parent": false,
+    "loaded_model_tensors": 0,
+    "loaded_optimizer_states": 0,
+    "initial_model_sha256": "8bacf11efc8b1d35b7f9290fe132059c085c3943f74f9531622eda272c0458f9",
+    "seeds": {
+      "global_model": 41973001,
+      "pav_common": 30312,
+      "pav_core": 30313,
+      "recurrent_common": 59311,
+      "recurrent_core": 59312,
+      "spatial_components": 31973001,
+      "spatial_comparison_output": 31973002,
+      "joint_attention": 41973001,
+      "priority_readout": 41973101,
+      "python_numpy_torch": 41973001,
+      "training_stream": 61973001,
+      "task_scheduler": 62973001
+    },
+    "prospective_gamma_absent": true,
+    "comparator": "C_t is concat_heads(sum_j A_t,h,i,j V_t,h,j) before W_O; the learned Conv([R_t-1,H_t]) comparator is absent.",
+    "attended_drive": "U_t=W_O(C_t), identical JointAttention output computation"
+  }
+}

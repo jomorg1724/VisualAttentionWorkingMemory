@@ -1,0 +1,160 @@
+{
+  "n_primary": 512,
+  "n_orientation_D0": 128,
+  "batch_size": 8,
+  "test_seed": 46973001,
+  "profile": [
+    {
+      "family": "orientation_single",
+      "delay": 0,
+      "seconds": 2.040682077407837
+    },
+    {
+      "family": "orientation_single",
+      "delay": 24,
+      "seconds": 1.0238118171691895
+    },
+    {
+      "family": "motion_direction",
+      "delay": 0,
+      "seconds": 0.324432373046875
+    },
+    {
+      "family": "motion_direction",
+      "delay": 24,
+      "seconds": 1.0822205543518066
+    }
+  ],
+  "estimated_seconds": 443.4809196472168,
+  "peak_allocated_bytes": 151035904,
+  "stages": {
+    "orientation_single_D0": {
+      "instruction": [
+        0
+      ],
+      "sample": [
+        1,
+        2
+      ],
+      "blanks": [],
+      "query": [
+        3
+      ],
+      "probe": [
+        4
+      ]
+    },
+    "orientation_single_D24": {
+      "instruction": [
+        0
+      ],
+      "sample": [
+        1,
+        2
+      ],
+      "blanks": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26
+      ],
+      "query": [
+        27
+      ],
+      "probe": [
+        28
+      ]
+    },
+    "motion_direction_D0": {
+      "instruction": [
+        0
+      ],
+      "reference": [
+        1
+      ],
+      "moving": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "blanks": [],
+      "report": [
+        10
+      ]
+    },
+    "motion_direction_D24": {
+      "instruction": [
+        0
+      ],
+      "reference": [
+        1
+      ],
+      "moving": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "blanks": [
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33
+      ],
+      "report": [
+        34
+      ]
+    }
+  },
+  "teaching": "unchanged frozen inference only",
+  "one_gpu_worker": true
+}

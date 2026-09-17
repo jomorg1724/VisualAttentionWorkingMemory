@@ -1,0 +1,41 @@
+{
+  "status": "passed",
+  "device": "CPU only; no model inference or training",
+  "elapsed_seconds": 1.0110719203948975,
+  "checks": {
+    "orientation_single": {
+      "shape_range_dtype": true,
+      "full_rng_replay": true,
+      "exact_evidence_and_probe_across_delays": true
+    },
+    "orientation_binding": {
+      "shape_range_dtype": true,
+      "full_rng_replay": true,
+      "exact_evidence_and_probe_across_delays": true
+    },
+    "motion_direction": {
+      "shape_range_dtype": true,
+      "full_rng_replay": true,
+      "exact_evidence_and_probe_across_delays": true
+    },
+    "binding_design": {
+      "exact_four_case_balance": true,
+      "label_independent_sample_probe_assignment_marginals": true,
+      "identical_orientation_inventory": true,
+      "fresh_phase_and_noise": true,
+      "raster_marginals": "Equal in distribution, not duplicated raster quartets."
+    },
+    "locations": {
+      "train_and_heldout_centers_disjoint": true,
+      "patches_outside_cue_borders": true,
+      "pair_supports_nonoverlapping": true
+    },
+    "task_local_rng_independence": true
+  },
+  "source_sha256": "abbf467e3ed435df56a8a8ad5a305bf427bb05e03f4baeb0e847b1c812813bd4",
+  "contact_sheet": "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\WorkingMemory\\SpatialComparison\\stimulus_contact_sheet.png",
+  "visual_inspection": {
+    "inspected": true,
+    "finding": "Resolved nonoverlapping Gabors, visible preserve/swap and near/far differences; cue borders unobstructed."
+  }
+}

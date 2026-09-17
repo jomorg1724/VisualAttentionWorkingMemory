@@ -1,0 +1,116 @@
+{
+  "status": "live",
+  "checked_unix": 1789449507.3705008,
+  "pod_id": "h1ygacz4zcsfj3",
+  "gpu": "NVIDIA GeForce RTX 3090, 24576, 1, 0, 25.26",
+  "remote_total_metric_rows": 1121,
+  "latest": {
+    "step": 1121,
+    "episodes": 44840,
+    "frames_total": 941288,
+    "loss": 0.7048915241030045,
+    "accuracy": 0.55,
+    "gradient_norm": 0.3578880727291107,
+    "seconds": 1.6126766204833984
+  },
+  "rolling": {
+    "20": {
+      "updates": 20,
+      "step_start": 1102,
+      "step_end": 1121,
+      "mean_loss": 0.7889430019639257,
+      "mean_accuracy": 0.47750000000000004,
+      "mean_gradient_norm": 0.39098707512021064,
+      "mean_update_seconds": 2.0126977443695067
+    },
+    "100": {
+      "updates": 100,
+      "step_start": 1022,
+      "step_end": 1121,
+      "mean_loss": 0.7930583053827577,
+      "mean_accuracy": 0.4795,
+      "mean_gradient_norm": 0.3768399702757597,
+      "mean_update_seconds": 2.0145727467536925
+    },
+    "256": {
+      "updates": 256,
+      "step_start": 866,
+      "step_end": 1121,
+      "mean_loss": 0.7974031333427664,
+      "mean_accuracy": 0.48359375000000027,
+      "mean_gradient_norm": 1.336904589785263,
+      "mean_update_seconds": 2.0308410795405507
+    }
+  },
+  "budget_status": "failed",
+  "active": null,
+  "validations": [
+    {
+      "file": "validation_800_result.json",
+      "step": 800,
+      "status": "completed",
+      "rank": [
+        -0.015625,
+        0.5408406625325123
+      ],
+      "task_scores": {
+        "image_recognition": {
+          "normalized_ba": 0.06597222222222222,
+          "mean_auc": 0.5662977430555556
+        },
+        "krauzlis_cued_motion": {
+          "normalized_ba": 0.0,
+          "mean_auc": 0.497484020127839
+        },
+        "motion_duration_cued": {
+          "normalized_ba": 0.0,
+          "mean_auc": 0.5417887369791666
+        },
+        "orientation_cued": {
+          "normalized_ba": 0.0,
+          "mean_auc": 0.61376953125
+        },
+        "spatial_binding": {
+          "normalized_ba": -0.015625,
+          "mean_auc": 0.48486328125
+        }
+      }
+    }
+  ],
+  "checkpoints": [
+    {
+      "file": "checkpoint_000000.pt",
+      "step": 0,
+      "sha256": "0e33335e8ec5094adc8cab6b2b248e519ccf45968d3f4cdd460780a1fea2f23b"
+    },
+    {
+      "file": "checkpoint_000256.pt",
+      "step": 256,
+      "sha256": "ca67acf9518a3a7f250ee8901a45ef964c14247366eb449d60dee83181398123"
+    },
+    {
+      "file": "checkpoint_000512.pt",
+      "step": 512,
+      "sha256": "720bd4a354a73197b063f2a8d1a05489847a92e5bde3e4d0a7b70d381dd6d3e3"
+    },
+    {
+      "file": "checkpoint_000768.pt",
+      "step": 768,
+      "sha256": "09c96b6077890f9dc9c2522a8dd45f5b3afaeb824ecf9076419bdef9f1e60741"
+    },
+    {
+      "file": "checkpoint_000800.pt",
+      "step": 800,
+      "sha256": "3e986162f6575e27ebc6785bd9f6e4c4b8f6a1d0c903e0bcbca7c7f2db12e265"
+    },
+    {
+      "file": "checkpoint_001024.pt",
+      "step": 1024,
+      "sha256": "c0e51019677c0b0003ba147f91a9077296a3e7d134c8f4392a4ef6ba555c642b"
+    }
+  ],
+  "deadline_unix": 1789469766.615367,
+  "seconds_to_deadline": 20259.244866132736,
+  "cadence_seconds": 45,
+  "cleanup_owner": "Separate detached lifecycle retrieves/verifies this arm only, then stops and deletes pod at completion/failure or hard deadline."
+}

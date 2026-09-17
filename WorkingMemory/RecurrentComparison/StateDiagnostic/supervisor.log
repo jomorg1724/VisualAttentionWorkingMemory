@@ -1,0 +1,29 @@
+{"stage": "extract", "split": "train", "movies": 8, "elapsed": 7.963601350784302}
+{"stage": "extract", "split": "train", "movies": 264, "elapsed": 15.031474590301514}
+{"stage": "extract", "split": "train", "movies": 520, "elapsed": 21.896968841552734}
+{"stage": "extract", "split": "train", "movies": 776, "elapsed": 28.703330993652344}
+{"stage": "extract", "split": "train", "movies": 1032, "elapsed": 35.499464988708496}
+{"stage": "extract", "split": "train", "movies": 1288, "elapsed": 42.466334104537964}
+{"stage": "extract", "split": "train", "movies": 1544, "elapsed": 49.48991060256958}
+{"stage": "extract", "split": "train", "movies": 1800, "elapsed": 56.21204710006714}
+{"stage": "extract", "split": "train", "movies": 2056, "elapsed": 63.60531830787659}
+{"stage": "extract", "split": "train", "movies": 2312, "elapsed": 70.43094110488892}
+{"stage": "extract", "split": "train", "movies": 2568, "elapsed": 77.88578987121582}
+{"stage": "extract", "split": "train", "movies": 2824, "elapsed": 85.08046507835388}
+{"stage": "extract", "split": "val", "movies": 8, "elapsed": 93.83625769615173}
+{"stage": "extract", "split": "val", "movies": 264, "elapsed": 101.03660893440247}
+{"stage": "extract", "split": "val", "movies": 520, "elapsed": 108.52152180671692}
+Traceback (most recent call last):
+  File "C:\Users\jomor\Documents\VisualAttentionWorkingMemory\WorkingMemory\RecurrentComparison\StateDiagnostic\run.py", line 153, in <module>
+    if __name__=='__main__':main()
+  File "C:\Users\jomor\Documents\VisualAttentionWorkingMemory\WorkingMemory\RecurrentComparison\StateDiagnostic\run.py", line 134, in main
+    fits['duration_mlp']=mlp(train,val,'sensory_r','y','duration_mlp')
+  File "C:\Users\jomor\Documents\VisualAttentionWorkingMemory\WorkingMemory\RecurrentComparison\StateDiagnostic\run.py", line 98, in mlp
+    optimizer.zero_grad();loss=criterion(net(x[ix]),y[ix]);loss.backward();optimizer.step()
+  File "C:\Python310\lib\site-packages\torch\nn\modules\module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "C:\Python310\lib\site-packages\torch\nn\modules\loss.py", line 1174, in forward
+    return F.cross_entropy(input, target, weight=self.weight,
+  File "C:\Python310\lib\site-packages\torch\nn\functional.py", line 3026, in cross_entropy
+    return torch._C._nn.cross_entropy_loss(input, target, weight, _Reduction.get_enum(reduction), ignore_index, label_smoothing)
+RuntimeError: expected scalar type Long but found Int

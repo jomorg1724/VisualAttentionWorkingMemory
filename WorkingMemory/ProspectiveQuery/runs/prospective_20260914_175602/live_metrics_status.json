@@ -1,0 +1,162 @@
+{
+  "status": "user_stopped_final_snapshot",
+  "checked_unix": 1789437756.403526,
+  "remote_metrics": "/workspace/vawm_prospective_query/prospective_query_results/prospective_query/training/metrics.csv",
+  "locally_mirrored_tail": "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\WorkingMemory\\ProspectiveQuery\\runs\\prospective_20260914_175602\\live_metrics_tail.csv",
+  "remote_total_metric_rows": 1030,
+  "remote_budget_status": "failed",
+  "remote_active": null,
+  "latest": {
+    "step": 9430,
+    "episodes": 41200,
+    "frames_total": 865104,
+    "loss": 0.625168713927269,
+    "accuracy": 0.575,
+    "gradient_norm": 1.7071372270584106,
+    "clipped": 1,
+    "frames": 72,
+    "seconds": 2.3332629203796387,
+    "gamma": -0.018503211438655853,
+    "gamma_gradient_preclip": 6.542560004163533e-05
+  },
+  "progress": {
+    "parent_step": 8400,
+    "target_step": 12400,
+    "completed_updates": 1030,
+    "remaining_updates": 2970,
+    "fraction": 0.2575
+  },
+  "rolling": {
+    "20": {
+      "updates": 20,
+      "step_start": 9411,
+      "step_end": 9430,
+      "mean_loss": 0.6733755150833167,
+      "mean_accuracy": 0.57625,
+      "mean_gradient_norm_preclip": 1.6435802698135376,
+      "clip_fraction": 1.0,
+      "mean_update_seconds": 3.3565059900283813,
+      "mean_gamma_gradient_preclip": 0.0009911914596159477
+    },
+    "100": {
+      "updates": 100,
+      "step_start": 9331,
+      "step_end": 9430,
+      "mean_loss": 0.6721324982729275,
+      "mean_accuracy": 0.5907499999999999,
+      "mean_gradient_norm_preclip": 1.963708719611168,
+      "clip_fraction": 0.89,
+      "mean_update_seconds": 3.327914197444916,
+      "mean_gamma_gradient_preclip": 0.00017017814694554546
+    },
+    "256": {
+      "updates": 256,
+      "step_start": 9175,
+      "step_end": 9430,
+      "mean_loss": 0.6867597554605706,
+      "mean_accuracy": 0.5842773437499997,
+      "mean_gradient_norm_preclip": 2.1831439443631098,
+      "clip_fraction": 0.9375,
+      "mean_update_seconds": 3.343163004145026,
+      "mean_gamma_gradient_preclip": 0.0001161019311552991
+    }
+  },
+  "gamma": {
+    "mirrored_tail_updates": 256,
+    "mirrored_tail_minimum": -0.020582063123583794,
+    "mirrored_tail_maximum": -0.01742550916969776,
+    "current": -0.018503211438655853
+  },
+  "termination": {
+    "reason": "User-stopped after the negative primary step-9200 validation result.",
+    "worker_sigterm_utc": "2026-09-15T02:02:05Z",
+    "provider_exit_utc": "2026-09-15T02:03:36Z",
+    "pod_deleted": true,
+    "current_spend_per_hour_usd": 0
+  },
+  "latest_checkpoint": {
+    "file": "checkpoint_009216.pt",
+    "step": 9216,
+    "sha256": "c1fc95c30296ed97eb4637865f9d658409c58aa5c3b21547eb4d03592bed8258"
+  },
+  "latest_task_gradient_diagnostic": {
+    "step": 9345,
+    "task_gradients": {
+      "orientation_cued": {
+        "gamma": -0.018165284767746925,
+        "gamma_gradient_cumulative_preclip": -7.6751530286856e-06,
+        "attention_gradient_norm_cumulative_preclip": 0.04533977061510086,
+        "encoder_gradient_norm_cumulative_preclip": 0.0811915397644043,
+        "current_task_first_sensory_field_gradient_norm_preclip": 0.0016954443417489529
+      },
+      "motion_duration_cued": {
+        "gamma": -0.018165284767746925,
+        "gamma_gradient_cumulative_preclip": 0.0005179079598747194,
+        "attention_gradient_norm_cumulative_preclip": 0.1884259730577469,
+        "encoder_gradient_norm_cumulative_preclip": 0.10434656590223312,
+        "current_task_first_sensory_field_gradient_norm_preclip": 0.01690554991364479
+      },
+      "krauzlis_cued_motion": {
+        "gamma": -0.018165284767746925,
+        "gamma_gradient_cumulative_preclip": 0.0005074142245575786,
+        "attention_gradient_norm_cumulative_preclip": 0.19399161636829376,
+        "encoder_gradient_norm_cumulative_preclip": 0.1008477658033371,
+        "current_task_first_sensory_field_gradient_norm_preclip": 0.0006015609833411872
+      },
+      "spatial_binding": {
+        "gamma": -0.018165284767746925,
+        "gamma_gradient_cumulative_preclip": -0.006869800854474306,
+        "attention_gradient_norm_cumulative_preclip": 0.39250776171684265,
+        "encoder_gradient_norm_cumulative_preclip": 1.3700755834579468,
+        "current_task_first_sensory_field_gradient_norm_preclip": 0.005945143755525351
+      },
+      "image_recognition": {
+        "gamma": -0.018165284767746925,
+        "gamma_gradient_cumulative_preclip": -0.0064046746119856834,
+        "attention_gradient_norm_cumulative_preclip": 0.4709060788154602,
+        "encoder_gradient_norm_cumulative_preclip": 1.4169797897338867,
+        "current_task_first_sensory_field_gradient_norm_preclip": 0.0016741460422053933
+      }
+    }
+  },
+  "metric_scope": "Each CSV row stores the mean loss and accuracy over the five task microbatches in one optimizer update. Individual per-task losses are computed during training but are not persisted.",
+  "validation_status": {
+    "completed_steps": [
+      9200
+    ],
+    "latest": {
+      "status": "completed",
+      "step": 9200,
+      "gamma": -0.018547162413597107,
+      "rank": [
+        -0.026041666666666668,
+        0.6421557248635761
+      ],
+      "task_scores": {
+        "image_recognition": {
+          "normalized_ba": 0.2013888888888889,
+          "mean_auc": 0.6745876736111112
+        },
+        "krauzlis_cued_motion": {
+          "normalized_ba": 0.0,
+          "mean_auc": 0.4963960288317693
+        },
+        "motion_duration_cued": {
+          "normalized_ba": -0.026041666666666668,
+          "mean_auc": 0.49462890625
+        },
+        "orientation_cued": {
+          "normalized_ba": 0.0703125,
+          "mean_auc": 0.560302734375
+        },
+        "spatial_binding": {
+          "normalized_ba": 0.8046875,
+          "mean_auc": 0.98486328125
+        }
+      },
+      "comparison_status": "matched_historical_control_validation"
+    },
+    "next_scheduled_step": 10000,
+    "note": "Validation summaries are read from immutable completed result files; final held-out evaluation is separate."
+  }
+}

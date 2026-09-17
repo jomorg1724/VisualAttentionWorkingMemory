@@ -1,0 +1,50 @@
+{
+  "device": "cpu",
+  "threads": 2,
+  "parent": "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\PreAttentiveVision\\runs\\allocation_20260912_160414\\contour_focus_seed20271\\checkpoint_002268.pt",
+  "parent_step": 2268,
+  "models": {
+    "spatial_kda": {
+      "stream_equals_unroll": true,
+      "reset_isolation": true,
+      "reset_before_second_equals_current_only": true,
+      "encoder_two_separate_calls": true,
+      "encoder_frozen_after_optimizer": true,
+      "finite_nonzero_new_gradients": true,
+      "trainable_parameters": 209222,
+      "core_parameters": 74262,
+      "state_elements_per_example": 843264,
+      "state_bytes_per_example": 3373056
+    },
+    "convgru": {
+      "stream_equals_unroll": true,
+      "reset_isolation": true,
+      "reset_before_second_equals_current_only": true,
+      "encoder_two_separate_calls": true,
+      "encoder_frozen_after_optimizer": true,
+      "finite_nonzero_new_gradients": true,
+      "trainable_parameters": 301136,
+      "core_parameters": 166176,
+      "state_elements_per_example": 105408,
+      "state_bytes_per_example": 421632
+    },
+    "opponent": {
+      "stream_equals_unroll": true,
+      "reset_isolation": true,
+      "reset_before_second_equals_current_only": true,
+      "encoder_two_separate_calls": true,
+      "encoder_frozen_after_optimizer": true,
+      "finite_nonzero_new_gradients": true,
+      "trainable_parameters": 141968,
+      "core_parameters": 7008,
+      "state_elements_per_example": 210816,
+      "state_bytes_per_example": 843264
+    }
+  },
+  "common_initialization_sha256": "61651137060a3abd9c8a991460f9304ece1ff18a1d2d199090c5efad1597cf2f",
+  "kda_matches_independent_matrix_equation": true,
+  "all_cores_backpropagate_through_both_steps": true,
+  "opponent_static_zero_and_swap_sign_reversal": true,
+  "status": "passed",
+  "wall_seconds": 1.125
+}

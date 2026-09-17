@@ -1,0 +1,182 @@
+{
+  "status": "completed",
+  "count_recovery": {
+    "counts_ridge_prefix_r": {
+      "mse": 0.12079595986712395,
+      "r2": 0.8422256850715115,
+      "paired_difference_r2": 0.8752787944524867
+    },
+    "counts_ridge_prefix_ra": {
+      "mse": 0.12016166639050307,
+      "r2": 0.8430541500205674,
+      "paired_difference_r2": 0.8756718599393046
+    },
+    "counts_ridge_final_r": {
+      "mse": 0.18475932875230652,
+      "r2": 0.7586816930582119,
+      "paired_difference_r2": 0.8002957521176584
+    },
+    "counts_ridge_final_ra": {
+      "mse": 0.16113645400300805,
+      "r2": 0.7895360600777037,
+      "paired_difference_r2": 0.8273569894595152
+    },
+    "counts_ridge_sensory": {
+      "mse": 0.76901211014911,
+      "r2": -0.004423980602919153,
+      "paired_difference_r2": 0.0016615438987042097
+    },
+    "counts_ridge_sensory_r": {
+      "mse": 0.18878476593011584,
+      "r2": 0.753423979193318,
+      "paired_difference_r2": 0.8001563772832102
+    },
+    "counts_mlp_prefix_ra": {
+      "mse": 0.13130667235613558,
+      "r2": 0.8284974075348434,
+      "paired_difference_r2": 0.872968329545685
+    },
+    "counts_mlp_final_ra": {
+      "mse": 0.18229446869492238,
+      "r2": 0.7619011021127544,
+      "paired_difference_r2": 0.8001974875059221
+    }
+  },
+  "duration": {
+    "duration_ridge": {
+      "ba": 0.78125,
+      "macro_ovr_auc": 0.9293314615885416,
+      "confusion": [
+        [
+          212,
+          21,
+          12,
+          11
+        ],
+        [
+          23,
+          211,
+          8,
+          14
+        ],
+        [
+          28,
+          27,
+          175,
+          26
+        ],
+        [
+          24,
+          13,
+          17,
+          202
+        ]
+      ],
+      "delta_ba_vs_existing": 0.0947265625,
+      "delta_ci95": [
+        0.068359375,
+        0.12109375
+      ],
+      "ba_ci95": [
+        0.7548583984375,
+        0.806640625
+      ]
+    },
+    "duration_mlp": {
+      "ba": 0.7763671875,
+      "macro_ovr_auc": 0.9141324361165365,
+      "confusion": [
+        [
+          213,
+          16,
+          17,
+          10
+        ],
+        [
+          25,
+          209,
+          9,
+          13
+        ],
+        [
+          25,
+          26,
+          182,
+          23
+        ],
+        [
+          29,
+          13,
+          23,
+          191
+        ]
+      ],
+      "delta_ba_vs_existing": 0.08984375,
+      "delta_ci95": [
+        0.0615234375,
+        0.1181640625
+      ],
+      "ba_ci95": [
+        0.7470703125,
+        0.8046875
+      ]
+    },
+    "existing": {
+      "ba": 0.6865234375,
+      "macro_ovr_auc": 0.8959210713704427,
+      "confusion": [
+        [
+          133,
+          70,
+          25,
+          28
+        ],
+        [
+          8,
+          231,
+          7,
+          10
+        ],
+        [
+          8,
+          64,
+          154,
+          30
+        ],
+        [
+          16,
+          36,
+          19,
+          185
+        ]
+      ],
+      "delta_ba_vs_existing": 0.0,
+      "delta_ci95": [
+        0.0,
+        0.0
+      ],
+      "ba_ci95": [
+        0.6562255859375,
+        0.71484375
+      ]
+    }
+  },
+  "base_movies": 1024,
+  "heldout_independent_template_clusters": 128,
+  "interpretation": "Paired count-difference R2 controls identical suffix; sensory path still contains opponent history. Adaptation is diagnostic-only. Duration probes use r+sensory. Failed probes do not establish erasure.",
+  "bootstrap": "1000 canonical-pair-template cluster draws; all4rotations and paired movies remain together",
+  "wall_seconds": 246.8704047203064,
+  "frozen_parent_optimizer_steps": 0,
+  "fitted_candidates": {
+    "ridge": 21,
+    "mlp_architectures": 1,
+    "mlp_target_feature_fits": 3,
+    "mlp_epochs_each": 150
+  },
+  "platform": {
+    "torch": "1.13.1+cu117",
+    "gpu": "NVIDIA GeForce RTX 3070 Laptop GPU",
+    "fp32": true,
+    "tf32": false
+  }
+}
