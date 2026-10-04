@@ -1,0 +1,4557 @@
+{
+  "observed": 1790973110.4937253,
+  "live_status.json": {
+    "phase": "finished",
+    "pid": 419,
+    "utc": "2026-10-02T20:31:28.195199+00:00",
+    "architecture": "three_sequence_patch_kda_cls",
+    "initialization": "fresh",
+    "step": 2615,
+    "episodes": 83680,
+    "optimizer_seconds": 7473.313279165886,
+    "deadline": 1790993405.521299,
+    "latest_checkpoint": {
+      "path": "/workspace/vawm_sequence_kda3_01/run/terminal.pt",
+      "bytes": 3993347,
+      "sha256": "7b2768b5f4344b09a532b970a9e8c3b070263d5662da9a5203fb7922a47f0884",
+      "verified": true,
+      "step": 2615
+    },
+    "best_step": 2108,
+    "stop_reason": "signal",
+    "failure": null,
+    "final_coverage_complete": false
+  },
+  "latest_checkpoint.json": {
+    "path": "/workspace/vawm_sequence_kda3_01/run/terminal.pt",
+    "bytes": 3993347,
+    "sha256": "7b2768b5f4344b09a532b970a9e8c3b070263d5662da9a5203fb7922a47f0884",
+    "verified": true,
+    "step": 2615
+  },
+  "allocation.json": {
+    "max_steps": 4216,
+    "target_requested": 4216,
+    "minimum_useful_updates": 1000,
+    "exposure_reduced": false,
+    "total_episodes": 134912,
+    "validation_steps": [
+      2108,
+      4216
+    ],
+    "checkpoint_every": 100,
+    "planned_exposure": {
+      "B12": {
+        "updates": 1405,
+        "episodes": 44960
+      },
+      "B20": {
+        "updates": 1405,
+        "episodes": 44960
+      },
+      "B28": {
+        "updates": 1406,
+        "episodes": 44992
+      }
+    },
+    "estimated_optimizer_seconds": 12004.401014355943,
+    "estimated_total_remaining_seconds": 15953.963432739023,
+    "slower_150pct_seconds": 18955.06368632801,
+    "estimated_validation_seconds": 8.077027465682477,
+    "estimated_one_test_seconds": 16.154054931364954,
+    "final_reserve_seconds": 220.38513732841238,
+    "update_estimate_seconds": 4.642805971670896,
+    "method": "discard3nativewarmupupdates; next6nativebatch32micro4updates two/cell; steadypercellmax; exactseededschedule; train1.25eval1.35; two val100+two test200/cell+900s; separate600sretrieval"
+  },
+  "profile/profile.json": {
+    "complete": true,
+    "architecture": "three_sequence_patch_kda_cls",
+    "rows": [
+      {
+        "utc": "2026-10-02T18:25:21.529664+00:00",
+        "step": 4,
+        "task": "krauzlis_cued_motion",
+        "cell": "B20",
+        "loss": 0.7064136266708374,
+        "seconds": 2.8080512452870607,
+        "episodes": 32,
+        "frames": 1184,
+        "grad_norm": 1.444213734037344,
+        "gradient_norms": {
+          "row_embedding": 0.002750672995809592,
+          "column_embedding": 0.002609712559528104,
+          "cls_token": 0.06600871021691064,
+          "patch_projection.weight": 0.04840882754389691,
+          "patch_projection.bias": 0.17362243290912838,
+          "patch_norm.weight": 0.005583920708703986,
+          "patch_norm.bias": 0.005340842853427255,
+          "kda_norms.0.weight": 0.0048526967679976786,
+          "kda_norms.0.bias": 0.005111815678878567,
+          "kda_norms.1.weight": 0.005120322788042373,
+          "kda_norms.1.bias": 0.004673477265677884,
+          "kda_norms.2.weight": 0.003911385661963681,
+          "kda_norms.2.bias": 0.003717338199941978,
+          "kda_layers.0.q_proj.weight": 0.060443281951400106,
+          "kda_layers.0.q_proj.bias": 0.0053244878059914786,
+          "kda_layers.0.k_proj.weight": 0.06761381042240774,
+          "kda_layers.0.k_proj.bias": 0.006233571928322614,
+          "kda_layers.0.v_proj.weight": 0.0637690335264542,
+          "kda_layers.0.v_proj.bias": 0.0049775378956895345,
+          "kda_layers.0.decay_proj.weight": 0.011384252505855147,
+          "kda_layers.0.decay_proj.bias": 0.0010964114838502093,
+          "kda_layers.0.write_proj.weight": 0.005441602639021691,
+          "kda_layers.0.write_proj.bias": 0.000551583276390484,
+          "kda_layers.0.out_proj.weight": 0.07758237628294398,
+          "kda_layers.0.out_proj.bias": 0.06610049655200465,
+          "kda_layers.1.q_proj.weight": 0.04386037193999262,
+          "kda_layers.1.q_proj.bias": 0.003906335680737193,
+          "kda_layers.1.k_proj.weight": 0.04107290480340068,
+          "kda_layers.1.k_proj.bias": 0.003714170790414905,
+          "kda_layers.1.v_proj.weight": 0.062468912171415245,
+          "kda_layers.1.v_proj.bias": 0.005017962751072418,
+          "kda_layers.1.decay_proj.weight": 0.0063598302869618175,
+          "kda_layers.1.decay_proj.bias": 0.0006109552731847356,
+          "kda_layers.1.write_proj.weight": 0.011865521258743843,
+          "kda_layers.1.write_proj.bias": 0.0011213235636720524,
+          "kda_layers.1.out_proj.weight": 0.06184382501012601,
+          "kda_layers.1.out_proj.bias": 0.06571974088939421,
+          "kda_layers.2.q_proj.weight": 0.05328134267203251,
+          "kda_layers.2.q_proj.bias": 0.0047098497763310805,
+          "kda_layers.2.k_proj.weight": 0.055609245245745446,
+          "kda_layers.2.k_proj.bias": 0.004832538685977975,
+          "kda_layers.2.v_proj.weight": 0.041948097114636276,
+          "kda_layers.2.v_proj.bias": 0.002562859154328354,
+          "kda_layers.2.decay_proj.weight": 0.009589793851920717,
+          "kda_layers.2.decay_proj.bias": 0.0009227387646077727,
+          "kda_layers.2.write_proj.weight": 0.007349165512180354,
+          "kda_layers.2.write_proj.bias": 0.0006490760705128124,
+          "kda_layers.2.out_proj.weight": 0.041463801698352884,
+          "kda_layers.2.out_proj.bias": 0.06515798807684696,
+          "final_norm.weight": 0.03243678695087011,
+          "final_norm.bias": 0.040377270078911995,
+          "classifier.0.weight": 0.8728456884098152,
+          "classifier.0.bias": 0.07715219778240534,
+          "classifier.2.weight": 1.078619415141426,
+          "classifier.2.bias": 0.24922110248519655
+        },
+        "cumulative_episodes": 128,
+        "cumulative_frames": 4736,
+        "optimizer_seconds": 11.5112444749102,
+        "per_task_exposure": {
+          "krauzlis_cued_motion": {
+            "updates": 4,
+            "episodes": 128,
+            "frames": 4736,
+            "cells": {
+              "B12": 32,
+              "B20": 64,
+              "B28": 32
+            }
+          }
+        },
+        "initialization": "fresh",
+        "clipping": null
+      },
+      {
+        "utc": "2026-10-02T18:25:25.250352+00:00",
+        "step": 5,
+        "task": "krauzlis_cued_motion",
+        "cell": "B28",
+        "loss": 0.6669680997729301,
+        "seconds": 3.7142447773367167,
+        "episodes": 32,
+        "frames": 1440,
+        "grad_norm": 1.0522923966439393,
+        "gradient_norms": {
+          "row_embedding": 0.0019234744503041584,
+          "column_embedding": 0.0020547408347847424,
+          "cls_token": 0.04402287314458575,
+          "patch_projection.weight": 0.03296458938410993,
+          "patch_projection.bias": 0.1381461763439063,
+          "patch_norm.weight": 0.004049108206868621,
+          "patch_norm.bias": 0.00434373746005174,
+          "kda_norms.0.weight": 0.005123837835839325,
+          "kda_norms.0.bias": 0.005404402596255938,
+          "kda_norms.1.weight": 0.0026422940578720317,
+          "kda_norms.1.bias": 0.0029279081335270634,
+          "kda_norms.2.weight": 0.0023905876042330447,
+          "kda_norms.2.bias": 0.00212775746928136,
+          "kda_layers.0.q_proj.weight": 0.07006370050446482,
+          "kda_layers.0.q_proj.bias": 0.006120863341493758,
+          "kda_layers.0.k_proj.weight": 0.07649682497934304,
+          "kda_layers.0.k_proj.bias": 0.007201611217974836,
+          "kda_layers.0.v_proj.weight": 0.04161134445899154,
+          "kda_layers.0.v_proj.bias": 0.0035057817623352374,
+          "kda_layers.0.decay_proj.weight": 0.013587501321362803,
+          "kda_layers.0.decay_proj.bias": 0.0013158338444445219,
+          "kda_layers.0.write_proj.weight": 0.002773691866372922,
+          "kda_layers.0.write_proj.bias": 0.0001565832056094834,
+          "kda_layers.0.out_proj.weight": 0.04016946717718684,
+          "kda_layers.0.out_proj.bias": 0.04365590217560313,
+          "kda_layers.1.q_proj.weight": 0.03530140718627179,
+          "kda_layers.1.q_proj.bias": 0.0031132851064349554,
+          "kda_layers.1.k_proj.weight": 0.03627079636909976,
+          "kda_layers.1.k_proj.bias": 0.0029059741208074604,
+          "kda_layers.1.v_proj.weight": 0.025290956104133993,
+          "kda_layers.1.v_proj.bias": 0.0016837641314419063,
+          "kda_layers.1.decay_proj.weight": 0.005844462623488559,
+          "kda_layers.1.decay_proj.bias": 0.0005648411385402165,
+          "kda_layers.1.write_proj.weight": 0.0066634468606417765,
+          "kda_layers.1.write_proj.bias": 0.0007639083074997337,
+          "kda_layers.1.out_proj.weight": 0.025791626074058136,
+          "kda_layers.1.out_proj.bias": 0.04321223732621498,
+          "kda_layers.2.q_proj.weight": 0.027994615855515097,
+          "kda_layers.2.q_proj.bias": 0.0024744257730752763,
+          "kda_layers.2.k_proj.weight": 0.029987106885284682,
+          "kda_layers.2.k_proj.bias": 0.0027494557896748156,
+          "kda_layers.2.v_proj.weight": 0.022741679203354303,
+          "kda_layers.2.v_proj.bias": 0.001269338723861382,
+          "kda_layers.2.decay_proj.weight": 0.0025618941561828344,
+          "kda_layers.2.decay_proj.bias": 0.0002463433937366253,
+          "kda_layers.2.write_proj.weight": 0.004089373705951392,
+          "kda_layers.2.write_proj.bias": 0.00039706037541395586,
+          "kda_layers.2.out_proj.weight": 0.024171825536262414,
+          "kda_layers.2.out_proj.bias": 0.04268928157166133,
+          "final_norm.weight": 0.025051342036788552,
+          "final_norm.bias": 0.027390304171853366,
+          "classifier.0.weight": 0.5700682548179775,
+          "classifier.0.bias": 0.050390905094846845,
+          "classifier.2.weight": 0.8404892680693103,
+          "classifier.2.bias": 0.15159663990760022
+        },
+        "cumulative_episodes": 160,
+        "cumulative_frames": 6176,
+        "optimizer_seconds": 15.225489252246916,
+        "per_task_exposure": {
+          "krauzlis_cued_motion": {
+            "updates": 5,
+            "episodes": 160,
+            "frames": 6176,
+            "cells": {
+              "B12": 32,
+              "B20": 64,
+              "B28": 64
+            }
+          }
+        },
+        "initialization": "fresh",
+        "clipping": null
+      },
+      {
+        "utc": "2026-10-02T18:25:27.268474+00:00",
+        "step": 6,
+        "task": "krauzlis_cued_motion",
+        "cell": "B12",
+        "loss": 0.6854171752929688,
+        "seconds": 2.0134795056656003,
+        "episodes": 32,
+        "frames": 928,
+        "grad_norm": 0.11596734781132288,
+        "gradient_norms": {
+          "row_embedding": 0.0004450061542829217,
+          "column_embedding": 0.00041039767820579844,
+          "cls_token": 0.0050335512233781535,
+          "patch_projection.weight": 0.009210527893435775,
+          "patch_projection.bias": 0.01821814747541154,
+          "patch_norm.weight": 0.0007230861712641965,
+          "patch_norm.bias": 0.0005790481263253593,
+          "kda_norms.0.weight": 0.00039644575845996957,
+          "kda_norms.0.bias": 0.0003113791369048307,
+          "kda_norms.1.weight": 0.0005403160489992848,
+          "kda_norms.1.bias": 0.0005940032031674162,
+          "kda_norms.2.weight": 0.000506577291598754,
+          "kda_norms.2.bias": 0.0003150778649346312,
+          "kda_layers.0.q_proj.weight": 0.004389539837687259,
+          "kda_layers.0.q_proj.bias": 0.000385084515674185,
+          "kda_layers.0.k_proj.weight": 0.004113346245747803,
+          "kda_layers.0.k_proj.bias": 0.0002164690860896302,
+          "kda_layers.0.v_proj.weight": 0.0044541871209114224,
+          "kda_layers.0.v_proj.bias": 0.0002773019988784677,
+          "kda_layers.0.decay_proj.weight": 0.00044790864420844907,
+          "kda_layers.0.decay_proj.bias": 4.244172865372953e-05,
+          "kda_layers.0.write_proj.weight": 0.0012102138817633426,
+          "kda_layers.0.write_proj.bias": 6.117709067125257e-05,
+          "kda_layers.0.out_proj.weight": 0.005397940185579,
+          "kda_layers.0.out_proj.bias": 0.0051015949830359964,
+          "kda_layers.1.q_proj.weight": 0.0030008128796083413,
+          "kda_layers.1.q_proj.bias": 0.00027103885574391516,
+          "kda_layers.1.k_proj.weight": 0.0031163024052474836,
+          "kda_layers.1.k_proj.bias": 0.00019904632670073418,
+          "kda_layers.1.v_proj.weight": 0.00862804581154362,
+          "kda_layers.1.v_proj.bias": 0.0008436120609853099,
+          "kda_layers.1.decay_proj.weight": 0.00043907534106213056,
+          "kda_layers.1.decay_proj.bias": 4.145544287252226e-05,
+          "kda_layers.1.write_proj.weight": 0.0010987750886807522,
+          "kda_layers.1.write_proj.bias": 4.972931195857582e-05,
+          "kda_layers.1.out_proj.weight": 0.009594358356462567,
+          "kda_layers.1.out_proj.bias": 0.005045331748427269,
+          "kda_layers.2.q_proj.weight": 0.004221199966695566,
+          "kda_layers.2.q_proj.bias": 0.0003726286754854375,
+          "kda_layers.2.k_proj.weight": 0.005161479056785943,
+          "kda_layers.2.k_proj.bias": 0.00025411724328163734,
+          "kda_layers.2.v_proj.weight": 0.005683483518231195,
+          "kda_layers.2.v_proj.bias": 0.00037286764014693105,
+          "kda_layers.2.decay_proj.weight": 0.0004860703488765741,
+          "kda_layers.2.decay_proj.bias": 4.594011321039094e-05,
+          "kda_layers.2.write_proj.weight": 0.0013464881708577466,
+          "kda_layers.2.write_proj.bias": 0.00013316101858917094,
+          "kda_layers.2.out_proj.weight": 0.005213377688789958,
+          "kda_layers.2.out_proj.bias": 0.004962852237114583,
+          "final_norm.weight": 0.0027550130823964874,
+          "final_norm.bias": 0.0031119228822948652,
+          "classifier.0.weight": 0.06236404107560113,
+          "classifier.0.bias": 0.005501801270158877,
+          "classifier.2.weight": 0.09112769582211801,
+          "classifier.2.bias": 0.017486806937834998
+        },
+        "cumulative_episodes": 192,
+        "cumulative_frames": 7104,
+        "optimizer_seconds": 17.238968757912517,
+        "per_task_exposure": {
+          "krauzlis_cued_motion": {
+            "updates": 6,
+            "episodes": 192,
+            "frames": 7104,
+            "cells": {
+              "B12": 64,
+              "B20": 64,
+              "B28": 64
+            }
+          }
+        },
+        "initialization": "fresh",
+        "clipping": null
+      },
+      {
+        "utc": "2026-10-02T18:25:30.088956+00:00",
+        "step": 7,
+        "task": "krauzlis_cued_motion",
+        "cell": "B20",
+        "loss": 0.681327186524868,
+        "seconds": 2.8136897878721356,
+        "episodes": 32,
+        "frames": 1184,
+        "grad_norm": 1.677660476416469,
+        "gradient_norms": {
+          "row_embedding": 0.003198542761646954,
+          "column_embedding": 0.0028669727765399497,
+          "cls_token": 0.0771017295347788,
+          "patch_projection.weight": 0.055358310515613046,
+          "patch_projection.bias": 0.18290383999617038,
+          "patch_norm.weight": 0.005939655142227121,
+          "patch_norm.bias": 0.005621005285572968,
+          "kda_norms.0.weight": 0.005134728827808068,
+          "kda_norms.0.bias": 0.005312059425613503,
+          "kda_norms.1.weight": 0.00552224501479436,
+          "kda_norms.1.bias": 0.00507785660723341,
+          "kda_norms.2.weight": 0.004274272321843445,
+          "kda_norms.2.bias": 0.003939478886829298,
+          "kda_layers.0.q_proj.weight": 0.06293445327585717,
+          "kda_layers.0.q_proj.bias": 0.005550840365643205,
+          "kda_layers.0.k_proj.weight": 0.07053286736006784,
+          "kda_layers.0.k_proj.bias": 0.006392170125907941,
+          "kda_layers.0.v_proj.weight": 0.06973509669502052,
+          "kda_layers.0.v_proj.bias": 0.005295223891069776,
+          "kda_layers.0.decay_proj.weight": 0.012349876048599264,
+          "kda_layers.0.decay_proj.bias": 0.0011896308269503273,
+          "kda_layers.0.write_proj.weight": 0.006333294770424084,
+          "kda_layers.0.write_proj.bias": 0.0006312815468886857,
+          "kda_layers.0.out_proj.weight": 0.08458953004759931,
+          "kda_layers.0.out_proj.bias": 0.07715733694100436,
+          "kda_layers.1.q_proj.weight": 0.049934442576937944,
+          "kda_layers.1.q_proj.bias": 0.004421234953701677,
+          "kda_layers.1.k_proj.weight": 0.04784485224949711,
+          "kda_layers.1.k_proj.bias": 0.004324080924473409,
+          "kda_layers.1.v_proj.weight": 0.06382438657474615,
+          "kda_layers.1.v_proj.bias": 0.005026074283825806,
+          "kda_layers.1.decay_proj.weight": 0.006491483349957155,
+          "kda_layers.1.decay_proj.bias": 0.0006233218587669657,
+          "kda_layers.1.write_proj.weight": 0.012860100383602727,
+          "kda_layers.1.write_proj.bias": 0.001210196549808988,
+          "kda_layers.1.out_proj.weight": 0.0625500664748476,
+          "kda_layers.1.out_proj.bias": 0.07675695079096523,
+          "kda_layers.2.q_proj.weight": 0.057816725653789376,
+          "kda_layers.2.q_proj.bias": 0.005110798052597056,
+          "kda_layers.2.k_proj.weight": 0.0604912767940312,
+          "kda_layers.2.k_proj.bias": 0.005140317658529787,
+          "kda_layers.2.v_proj.weight": 0.043001830036167185,
+          "kda_layers.2.v_proj.bias": 0.00216321117140718,
+          "kda_layers.2.decay_proj.weight": 0.010168909701636043,
+          "kda_layers.2.decay_proj.bias": 0.000978676758281039,
+          "kda_layers.2.write_proj.weight": 0.008729721535132112,
+          "kda_layers.2.write_proj.bias": 0.0008110504216529543,
+          "kda_layers.2.out_proj.weight": 0.04291535034179644,
+          "kda_layers.2.out_proj.bias": 0.07614094460782538,
+          "final_norm.weight": 0.037860398181498015,
+          "final_norm.bias": 0.04708576008269736,
+          "classifier.0.weight": 1.0175495399955792,
+          "classifier.0.bias": 0.08994338999495866,
+          "classifier.2.weight": 1.2560160347862592,
+          "classifier.2.bias": 0.2902838447890958
+        },
+        "cumulative_episodes": 224,
+        "cumulative_frames": 8288,
+        "optimizer_seconds": 20.052658545784652,
+        "per_task_exposure": {
+          "krauzlis_cued_motion": {
+            "updates": 7,
+            "episodes": 224,
+            "frames": 8288,
+            "cells": {
+              "B12": 64,
+              "B20": 96,
+              "B28": 64
+            }
+          }
+        },
+        "initialization": "fresh",
+        "clipping": null
+      },
+      {
+        "utc": "2026-10-02T18:25:32.049208+00:00",
+        "step": 8,
+        "task": "krauzlis_cued_motion",
+        "cell": "B12",
+        "loss": 0.6859899088740349,
+        "seconds": 1.9529446149244905,
+        "episodes": 32,
+        "frames": 928,
+        "grad_norm": 0.18543286615114757,
+        "gradient_norms": {
+          "row_embedding": 0.0004899584463215747,
+          "column_embedding": 0.0005340431681875254,
+          "cls_token": 0.008054858610283287,
+          "patch_projection.weight": 0.009314553794013873,
+          "patch_projection.bias": 0.030407101936242978,
+          "patch_norm.weight": 0.0010935953294793545,
+          "patch_norm.bias": 0.0010104944453094037,
+          "kda_norms.0.weight": 0.00048735914121118856,
+          "kda_norms.0.bias": 0.0005241901807434406,
+          "kda_norms.1.weight": 0.000819833269056528,
+          "kda_norms.1.bias": 0.0009509565550124814,
+          "kda_norms.2.weight": 0.0007490443212591342,
+          "kda_norms.2.bias": 0.000595289273938434,
+          "kda_layers.0.q_proj.weight": 0.006006153926178051,
+          "kda_layers.0.q_proj.bias": 0.0005277858251308913,
+          "kda_layers.0.k_proj.weight": 0.006149780050555712,
+          "kda_layers.0.k_proj.bias": 0.0004924473275005558,
+          "kda_layers.0.v_proj.weight": 0.0065378096465504715,
+          "kda_layers.0.v_proj.bias": 0.0005582197708568338,
+          "kda_layers.0.decay_proj.weight": 0.0007693886866795373,
+          "kda_layers.0.decay_proj.bias": 7.362801416725875e-05,
+          "kda_layers.0.write_proj.weight": 0.001322519785598768,
+          "kda_layers.0.write_proj.bias": 1.812883960921204e-05,
+          "kda_layers.0.out_proj.weight": 0.008117281395072633,
+          "kda_layers.0.out_proj.bias": 0.008169450071647797,
+          "kda_layers.1.q_proj.weight": 0.0037661716872517442,
+          "kda_layers.1.q_proj.bias": 0.0003377571339606746,
+          "kda_layers.1.k_proj.weight": 0.004262482750414219,
+          "kda_layers.1.k_proj.bias": 0.00036652558935431554,
+          "kda_layers.1.v_proj.weight": 0.013948192643787563,
+          "kda_layers.1.v_proj.bias": 0.0013785446362022708,
+          "kda_layers.1.decay_proj.weight": 0.0006422384957960817,
+          "kda_layers.1.decay_proj.bias": 6.09750599960187e-05,
+          "kda_layers.1.write_proj.weight": 0.001948533829665925,
+          "kda_layers.1.write_proj.bias": 0.00020896461896598262,
+          "kda_layers.1.out_proj.weight": 0.015261870073161916,
+          "kda_layers.1.out_proj.bias": 0.008049305914957916,
+          "kda_layers.2.q_proj.weight": 0.007083820667217773,
+          "kda_layers.2.q_proj.bias": 0.0006257359085044473,
+          "kda_layers.2.k_proj.weight": 0.00850711744841897,
+          "kda_layers.2.k_proj.bias": 0.0006811624646476402,
+          "kda_layers.2.v_proj.weight": 0.008148616161878253,
+          "kda_layers.2.v_proj.bias": 0.0005927855699819888,
+          "kda_layers.2.decay_proj.weight": 0.0007967256171191296,
+          "kda_layers.2.decay_proj.bias": 7.606903700953412e-05,
+          "kda_layers.2.write_proj.weight": 0.0017784007318394507,
+          "kda_layers.2.write_proj.bias": 0.00017250652064332905,
+          "kda_layers.2.out_proj.weight": 0.007673214953271268,
+          "kda_layers.2.out_proj.bias": 0.00791999688977277,
+          "final_norm.weight": 0.0044587704327670894,
+          "final_norm.bias": 0.005006191217837453,
+          "classifier.0.weight": 0.10001955008883709,
+          "classifier.0.bias": 0.008832962202473135,
+          "classifier.2.weight": 0.14590534209187278,
+          "classifier.2.bias": 0.028090143873589834
+        },
+        "cumulative_episodes": 256,
+        "cumulative_frames": 9216,
+        "optimizer_seconds": 22.005603160709143,
+        "per_task_exposure": {
+          "krauzlis_cued_motion": {
+            "updates": 8,
+            "episodes": 256,
+            "frames": 9216,
+            "cells": {
+              "B12": 96,
+              "B20": 96,
+              "B28": 64
+            }
+          }
+        },
+        "initialization": "fresh",
+        "clipping": null
+      },
+      {
+        "utc": "2026-10-02T18:25:35.769076+00:00",
+        "step": 9,
+        "task": "krauzlis_cued_motion",
+        "cell": "B28",
+        "loss": 0.6933170184493065,
+        "seconds": 3.7121281968429685,
+        "episodes": 32,
+        "frames": 1440,
+        "grad_norm": 0.3018139509777517,
+        "gradient_norms": {
+          "row_embedding": 0.0006079201820231536,
+          "column_embedding": 0.0006995982794067164,
+          "cls_token": 0.012543776855510684,
+          "patch_projection.weight": 0.011994621467859783,
+          "patch_projection.bias": 0.037028950200313444,
+          "patch_norm.weight": 0.0011389500827155982,
+          "patch_norm.bias": 0.0011603361717467584,
+          "kda_norms.0.weight": 0.0014387072388956617,
+          "kda_norms.0.bias": 0.0014487395833101258,
+          "kda_norms.1.weight": 0.0007826972938477665,
+          "kda_norms.1.bias": 0.0008854641985999057,
+          "kda_norms.2.weight": 0.0006689664420740511,
+          "kda_norms.2.bias": 0.0006104735070092623,
+          "kda_layers.0.q_proj.weight": 0.018969412105119054,
+          "kda_layers.0.q_proj.bias": 0.0016599742513753494,
+          "kda_layers.0.k_proj.weight": 0.020813308500807818,
+          "kda_layers.0.k_proj.bias": 0.0018869522426520173,
+          "kda_layers.0.v_proj.weight": 0.01157400021650891,
+          "kda_layers.0.v_proj.bias": 0.0009950318778321422,
+          "kda_layers.0.decay_proj.weight": 0.003940938156173353,
+          "kda_layers.0.decay_proj.bias": 0.0003810215343644993,
+          "kda_layers.0.write_proj.weight": 0.001222886706701153,
+          "kda_layers.0.write_proj.bias": 8.408449969913667e-05,
+          "kda_layers.0.out_proj.weight": 0.011551366920188036,
+          "kda_layers.0.out_proj.bias": 0.012497368597057067,
+          "kda_layers.1.q_proj.weight": 0.010626171156862497,
+          "kda_layers.1.q_proj.bias": 0.000935980358911844,
+          "kda_layers.1.k_proj.weight": 0.010496646072390016,
+          "kda_layers.1.k_proj.bias": 0.0007849088336039534,
+          "kda_layers.1.v_proj.weight": 0.0075557070868235866,
+          "kda_layers.1.v_proj.bias": 0.00055954590375508,
+          "kda_layers.1.decay_proj.weight": 0.0018368282291090269,
+          "kda_layers.1.decay_proj.bias": 0.00017731442146086982,
+          "kda_layers.1.write_proj.weight": 0.0018684293163369744,
+          "kda_layers.1.write_proj.bias": 0.00018581732474231115,
+          "kda_layers.1.out_proj.weight": 0.007507073196618383,
+          "kda_layers.1.out_proj.bias": 0.012333815919702815,
+          "kda_layers.2.q_proj.weight": 0.008041566415944853,
+          "kda_layers.2.q_proj.bias": 0.000710600325546212,
+          "kda_layers.2.k_proj.weight": 0.008485949046082405,
+          "kda_layers.2.k_proj.bias": 0.0007732883793140681,
+          "kda_layers.2.v_proj.weight": 0.0068859160993153205,
+          "kda_layers.2.v_proj.bias": 0.000316201792247544,
+          "kda_layers.2.decay_proj.weight": 0.000735375120883215,
+          "kda_layers.2.decay_proj.bias": 7.0557714197319e-05,
+          "kda_layers.2.write_proj.weight": 0.0013996285064357913,
+          "kda_layers.2.write_proj.bias": 0.00012578399835019892,
+          "kda_layers.2.out_proj.weight": 0.007900731666722532,
+          "kda_layers.2.out_proj.bias": 0.012203685778903642,
+          "final_norm.weight": 0.007172086376576717,
+          "final_norm.bias": 0.007831483832067722,
+          "classifier.0.weight": 0.16342352573069138,
+          "classifier.0.bias": 0.014440547457897305,
+          "classifier.2.weight": 0.2415503766076088,
+          "classifier.2.bias": 0.04355017452636828
+        },
+        "cumulative_episodes": 288,
+        "cumulative_frames": 10656,
+        "optimizer_seconds": 25.71773135755211,
+        "per_task_exposure": {
+          "krauzlis_cued_motion": {
+            "updates": 9,
+            "episodes": 288,
+            "frames": 10656,
+            "cells": {
+              "B12": 96,
+              "B20": 96,
+              "B28": 96
+            }
+          }
+        },
+        "initialization": "fresh",
+        "clipping": null
+      }
+    ],
+    "warmup_rows": [
+      {
+        "utc": "2026-10-02T18:25:11.683674+00:00",
+        "step": 1,
+        "task": "krauzlis_cued_motion",
+        "cell": "B12",
+        "loss": 0.6811854615807533,
+        "seconds": 2.4321975260972977,
+        "episodes": 32,
+        "frames": 928,
+        "grad_norm": 0.9151092611491582,
+        "gradient_norms": {
+          "row_embedding": 0.001977303927513574,
+          "column_embedding": 0.0019046765922799615,
+          "cls_token": 0.03993841931896089,
+          "patch_projection.weight": 0.027057286024399,
+          "patch_projection.bias": 0.14518422751283624,
+          "patch_norm.weight": 0.004715141351759495,
+          "patch_norm.bias": 0.004808567193333812,
+          "kda_norms.0.weight": 0.0021449951266318164,
+          "kda_norms.0.bias": 0.002470611441695984,
+          "kda_norms.1.weight": 0.004281887443839687,
+          "kda_norms.1.bias": 0.005008250432278805,
+          "kda_norms.2.weight": 0.0027010107366648582,
+          "kda_norms.2.bias": 0.00240705583810397,
+          "kda_layers.0.q_proj.weight": 0.025920565605505874,
+          "kda_layers.0.q_proj.bias": 0.002306975821305706,
+          "kda_layers.0.k_proj.weight": 0.02549864528126214,
+          "kda_layers.0.k_proj.bias": 0.001978562571794347,
+          "kda_layers.0.v_proj.weight": 0.032501009371791297,
+          "kda_layers.0.v_proj.bias": 0.00317237535913535,
+          "kda_layers.0.decay_proj.weight": 0.0026223492931818715,
+          "kda_layers.0.decay_proj.bias": 0.00025086053488001533,
+          "kda_layers.0.write_proj.weight": 0.003722983057788611,
+          "kda_layers.0.write_proj.bias": 0.0002271405306904618,
+          "kda_layers.0.out_proj.weight": 0.03673910042479681,
+          "kda_layers.0.out_proj.bias": 0.04069735589575538,
+          "kda_layers.1.q_proj.weight": 0.019699497795010235,
+          "kda_layers.1.q_proj.bias": 0.001718538516546109,
+          "kda_layers.1.k_proj.weight": 0.022047807736481434,
+          "kda_layers.1.k_proj.bias": 0.002050571434465167,
+          "kda_layers.1.v_proj.weight": 0.07589089091542815,
+          "kda_layers.1.v_proj.bias": 0.007194445216264302,
+          "kda_layers.1.decay_proj.weight": 0.0028043402590761986,
+          "kda_layers.1.decay_proj.bias": 0.00026588529038228673,
+          "kda_layers.1.write_proj.weight": 0.004134467773677107,
+          "kda_layers.1.write_proj.bias": 0.00039897778482694064,
+          "kda_layers.1.out_proj.weight": 0.08596984568836763,
+          "kda_layers.1.out_proj.bias": 0.04020694681994651,
+          "kda_layers.2.q_proj.weight": 0.02734069296232918,
+          "kda_layers.2.q_proj.bias": 0.0024166470354056446,
+          "kda_layers.2.k_proj.weight": 0.03199781527875199,
+          "kda_layers.2.k_proj.bias": 0.0030366278146622475,
+          "kda_layers.2.v_proj.weight": 0.027381735413532553,
+          "kda_layers.2.v_proj.bias": 0.001535022652722112,
+          "kda_layers.2.decay_proj.weight": 0.0038526830072943196,
+          "kda_layers.2.decay_proj.bias": 0.0003676078956719574,
+          "kda_layers.2.write_proj.weight": 0.0033067465666510288,
+          "kda_layers.2.write_proj.bias": 0.00011876311475377762,
+          "kda_layers.2.out_proj.weight": 0.025467562338791105,
+          "kda_layers.2.out_proj.bias": 0.03975979887377278,
+          "final_norm.weight": 0.02140712531981928,
+          "final_norm.bias": 0.02494147909358417,
+          "classifier.0.weight": 0.4940679293146592,
+          "classifier.0.bias": 0.043671008841023734,
+          "classifier.2.weight": 0.7222167457063188,
+          "classifier.2.bias": 0.1388091361691553
+        },
+        "cumulative_episodes": 32,
+        "cumulative_frames": 928,
+        "optimizer_seconds": 2.4321975260972977,
+        "per_task_exposure": {
+          "krauzlis_cued_motion": {
+            "updates": 1,
+            "episodes": 32,
+            "frames": 928,
+            "cells": {
+              "B12": 32,
+              "B20": 0,
+              "B28": 0
+            }
+          }
+        },
+        "initialization": "fresh",
+        "clipping": null
+      },
+      {
+        "utc": "2026-10-02T18:25:15.420910+00:00",
+        "step": 2,
+        "task": "krauzlis_cued_motion",
+        "cell": "B28",
+        "loss": 0.7110693156719208,
+        "seconds": 3.567491814494133,
+        "episodes": 32,
+        "frames": 1440,
+        "grad_norm": 0.983871270625648,
+        "gradient_norms": {
+          "row_embedding": 0.001754212812210331,
+          "column_embedding": 0.0019349977851301169,
+          "cls_token": 0.04073602167756724,
+          "patch_projection.weight": 0.03256741619603121,
+          "patch_projection.bias": 0.12494003824686979,
+          "patch_norm.weight": 0.003817675858154064,
+          "patch_norm.bias": 0.003906743104179837,
+          "kda_norms.0.weight": 0.004636306693016463,
+          "kda_norms.0.bias": 0.004850707454236412,
+          "kda_norms.1.weight": 0.0025195092688142695,
+          "kda_norms.1.bias": 0.00281035636919936,
+          "kda_norms.2.weight": 0.002152751364727537,
+          "kda_norms.2.bias": 0.0020290455976690485,
+          "kda_layers.0.q_proj.weight": 0.06354150384480821,
+          "kda_layers.0.q_proj.bias": 0.005553844199519485,
+          "kda_layers.0.k_proj.weight": 0.06993359222480292,
+          "kda_layers.0.k_proj.bias": 0.006587101336836343,
+          "kda_layers.0.v_proj.weight": 0.039095078234593655,
+          "kda_layers.0.v_proj.bias": 0.0030194193357139156,
+          "kda_layers.0.decay_proj.weight": 0.012395845117662709,
+          "kda_layers.0.decay_proj.bias": 0.0012007009137767883,
+          "kda_layers.0.write_proj.weight": 0.0024426624672265348,
+          "kda_layers.0.write_proj.bias": 0.00021184124692920706,
+          "kda_layers.0.out_proj.weight": 0.041457270619315895,
+          "kda_layers.0.out_proj.bias": 0.04043256638822729,
+          "kda_layers.1.q_proj.weight": 0.030954446932928134,
+          "kda_layers.1.q_proj.bias": 0.002740589532005382,
+          "kda_layers.1.k_proj.weight": 0.03197371386140275,
+          "kda_layers.1.k_proj.bias": 0.002559446710961428,
+          "kda_layers.1.v_proj.weight": 0.028841953036663797,
+          "kda_layers.1.v_proj.bias": 0.002083384980835734,
+          "kda_layers.1.decay_proj.weight": 0.005669132355053006,
+          "kda_layers.1.decay_proj.bias": 0.0005479869384152977,
+          "kda_layers.1.write_proj.weight": 0.006184891977329893,
+          "kda_layers.1.write_proj.bias": 0.0007005607321851342,
+          "kda_layers.1.out_proj.weight": 0.02985887511489667,
+          "kda_layers.1.out_proj.bias": 0.04002528564176146,
+          "kda_layers.2.q_proj.weight": 0.025418379863625763,
+          "kda_layers.2.q_proj.bias": 0.0022467119740252617,
+          "kda_layers.2.k_proj.weight": 0.027539303284803137,
+          "kda_layers.2.k_proj.bias": 0.002654827866641314,
+          "kda_layers.2.v_proj.weight": 0.023049736805005234,
+          "kda_layers.2.v_proj.bias": 0.0014221583307784818,
+          "kda_layers.2.decay_proj.weight": 0.00225869915080823,
+          "kda_layers.2.decay_proj.bias": 0.0002171033300743218,
+          "kda_layers.2.write_proj.weight": 0.0033753247568305404,
+          "kda_layers.2.write_proj.bias": 0.0002819438435929333,
+          "kda_layers.2.out_proj.weight": 0.024002609926003848,
+          "kda_layers.2.out_proj.bias": 0.03969041875559337,
+          "final_norm.weight": 0.02366719960829544,
+          "final_norm.bias": 0.025621140355828072,
+          "classifier.0.weight": 0.5315419404697792,
+          "classifier.0.bias": 0.04698275310865034,
+          "classifier.2.weight": 0.7874189198852279,
+          "classifier.2.bias": 0.1414583073472274
+        },
+        "cumulative_episodes": 64,
+        "cumulative_frames": 2368,
+        "optimizer_seconds": 5.999689340591431,
+        "per_task_exposure": {
+          "krauzlis_cued_motion": {
+            "updates": 2,
+            "episodes": 64,
+            "frames": 2368,
+            "cells": {
+              "B12": 32,
+              "B20": 0,
+              "B28": 32
+            }
+          }
+        },
+        "initialization": "fresh",
+        "clipping": null
+      },
+      {
+        "utc": "2026-10-02T18:25:18.385845+00:00",
+        "step": 3,
+        "task": "krauzlis_cued_motion",
+        "cell": "B20",
+        "loss": 0.6884063929319382,
+        "seconds": 2.7035038890317082,
+        "episodes": 32,
+        "frames": 1184,
+        "grad_norm": 0.9411424389259364,
+        "gradient_norms": {
+          "row_embedding": 0.0017946023490679596,
+          "column_embedding": 0.0016314781810123648,
+          "cls_token": 0.04314023715331565,
+          "patch_projection.weight": 0.0319712597536762,
+          "patch_projection.bias": 0.10609051431207783,
+          "patch_norm.weight": 0.00342133927412756,
+          "patch_norm.bias": 0.0032812238605538784,
+          "kda_norms.0.weight": 0.003009494704754957,
+          "kda_norms.0.bias": 0.003165606075569481,
+          "kda_norms.1.weight": 0.0030686195772635224,
+          "kda_norms.1.bias": 0.002803394391728503,
+          "kda_norms.2.weight": 0.002409778185302657,
+          "kda_norms.2.bias": 0.0022646613654702307,
+          "kda_layers.0.q_proj.weight": 0.03747025647616733,
+          "kda_layers.0.q_proj.bias": 0.0033030037376114854,
+          "kda_layers.0.k_proj.weight": 0.04158103032114655,
+          "kda_layers.0.k_proj.bias": 0.0038395351989345345,
+          "kda_layers.0.v_proj.weight": 0.041195709682910475,
+          "kda_layers.0.v_proj.bias": 0.003149592848257101,
+          "kda_layers.0.decay_proj.weight": 0.006944197461713396,
+          "kda_layers.0.decay_proj.bias": 0.000668520615357047,
+          "kda_layers.0.write_proj.weight": 0.004507731292756435,
+          "kda_layers.0.write_proj.bias": 0.0004756474554628058,
+          "kda_layers.0.out_proj.weight": 0.04996023478099544,
+          "kda_layers.0.out_proj.bias": 0.04318396359806766,
+          "kda_layers.1.q_proj.weight": 0.025882155061521986,
+          "kda_layers.1.q_proj.bias": 0.002306086646027018,
+          "kda_layers.1.k_proj.weight": 0.024326661544122597,
+          "kda_layers.1.k_proj.bias": 0.0022112616684518186,
+          "kda_layers.1.v_proj.weight": 0.039087494661783254,
+          "kda_layers.1.v_proj.bias": 0.0031126299282459293,
+          "kda_layers.1.decay_proj.weight": 0.0037094634578932113,
+          "kda_layers.1.decay_proj.bias": 0.0003560764916454578,
+          "kda_layers.1.write_proj.weight": 0.0066732464702902675,
+          "kda_layers.1.write_proj.bias": 0.0005941767454849343,
+          "kda_layers.1.out_proj.weight": 0.0389481405318975,
+          "kda_layers.1.out_proj.bias": 0.04298791133022989,
+          "kda_layers.2.q_proj.weight": 0.03206501371898931,
+          "kda_layers.2.q_proj.bias": 0.0028343399632450076,
+          "kda_layers.2.k_proj.weight": 0.033832603168091,
+          "kda_layers.2.k_proj.bias": 0.002994827541942182,
+          "kda_layers.2.v_proj.weight": 0.024824284242803227,
+          "kda_layers.2.v_proj.bias": 0.0013895897128353664,
+          "kda_layers.2.decay_proj.weight": 0.005755326444838279,
+          "kda_layers.2.decay_proj.bias": 0.000553641002039104,
+          "kda_layers.2.write_proj.weight": 0.004678041895616267,
+          "kda_layers.2.write_proj.bias": 0.0004326722964759891,
+          "kda_layers.2.out_proj.weight": 0.024755965134810463,
+          "kda_layers.2.out_proj.bias": 0.04264955194690439,
+          "final_norm.weight": 0.02114211774637566,
+          "final_norm.bias": 0.026390015027742138,
+          "classifier.0.weight": 0.5702787938020928,
+          "classifier.0.bias": 0.05040663078702897,
+          "classifier.2.weight": 0.7038106118791635,
+          "classifier.2.bias": 0.16266314588105005
+        },
+        "cumulative_episodes": 96,
+        "cumulative_frames": 3552,
+        "optimizer_seconds": 8.703193229623139,
+        "per_task_exposure": {
+          "krauzlis_cued_motion": {
+            "updates": 3,
+            "episodes": 96,
+            "frames": 3552,
+            "cells": {
+              "B12": 32,
+              "B20": 32,
+              "B28": 32
+            }
+          }
+        },
+        "initialization": "fresh",
+        "clipping": null
+      }
+    ],
+    "timing_policy": "discard first native full three-condition cycle; use next two cycles only",
+    "evaluation_cells": [
+      {
+        "task": "krauzlis_cued_motion",
+        "cell": "B12",
+        "n": 20,
+        "confusion": [
+          [
+            0,
+            9
+          ],
+          [
+            0,
+            11
+          ]
+        ],
+        "class_recall": [
+          0.0,
+          1.0
+        ],
+        "accuracy": 0.55,
+        "balanced_accuracy": 0.5,
+        "auc": 0.3939393939393939,
+        "auc_ovr": [
+          0.3939393939393939,
+          0.3939393939393939
+        ],
+        "specificity": 0.0,
+        "false_positive_rate": 1.0,
+        "events": {
+          "target": {
+            "n": 11,
+            "positive_rate": 1.0,
+            "target_side_counts": {
+              "0": 5,
+              "1": 6
+            },
+            "confusion": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                11
+              ]
+            ],
+            "hit_rate": 1.0,
+            "specificity": null,
+            "false_positive_rate": null
+          },
+          "foil": {
+            "n": 5,
+            "positive_rate": 1.0,
+            "target_side_counts": {
+              "0": 1,
+              "1": 4
+            },
+            "confusion": [
+              [
+                0,
+                5
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "hit_rate": null,
+            "specificity": 0.0,
+            "false_positive_rate": 1.0
+          },
+          "catch": {
+            "n": 4,
+            "positive_rate": 1.0,
+            "target_side_counts": {
+              "0": 0,
+              "1": 4
+            },
+            "confusion": [
+              [
+                0,
+                4
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "hit_rate": null,
+            "specificity": 0.0,
+            "false_positive_rate": 1.0
+          }
+        },
+        "target_hit_rate": 1.0,
+        "foil_false_alarm_rate": 1.0,
+        "catch_false_positive_rate": 1.0,
+        "strata": {
+          "baseline_transitions": {
+            "12": {
+              "n": 20,
+              "accuracy": 0.55,
+              "positive_rate": 1.0
+            }
+          },
+          "event_type": {
+            "\"target\"": {
+              "n": 11,
+              "accuracy": 1.0,
+              "positive_rate": 1.0
+            },
+            "\"catch\"": {
+              "n": 4,
+              "accuracy": 0.0,
+              "positive_rate": 1.0
+            },
+            "\"foil\"": {
+              "n": 5,
+              "accuracy": 0.0,
+              "positive_rate": 1.0
+            }
+          },
+          "event_magnitude_degrees": {
+            "28": {
+              "n": 10,
+              "accuracy": 0.5,
+              "positive_rate": 1.0
+            },
+            "26": {
+              "n": 10,
+              "accuracy": 0.6,
+              "positive_rate": 1.0
+            }
+          },
+          "target_location": {
+            "0": {
+              "n": 6,
+              "accuracy": 0.8333333333333334,
+              "positive_rate": 1.0
+            },
+            "1": {
+              "n": 14,
+              "accuracy": 0.42857142857142855,
+              "positive_rate": 1.0
+            }
+          }
+        },
+        "seconds": 0.35729014594107866,
+        "trial_ids": [
+          "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/0",
+          "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/1",
+          "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/2",
+          "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/3",
+          "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/4",
+          "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/5",
+          "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/6",
+          "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/7",
+          "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/8",
+          "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/9",
+          "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/10",
+          "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/11",
+          "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/12",
+          "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/13",
+          "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/14",
+          "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/15",
+          "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/16",
+          "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/17",
+          "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/18",
+          "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/19"
+        ],
+        "labels": [
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "probabilities": [
+          [
+            0.41160550713539124,
+            0.5883944630622864
+          ],
+          [
+            0.41096752882003784,
+            0.5890324711799622
+          ],
+          [
+            0.41078346967697144,
+            0.5892165899276733
+          ],
+          [
+            0.410867840051651,
+            0.5891321301460266
+          ],
+          [
+            0.4105622172355652,
+            0.5894377827644348
+          ],
+          [
+            0.41166508197784424,
+            0.5883349776268005
+          ],
+          [
+            0.40943899750709534,
+            0.590561032295227
+          ],
+          [
+            0.41095104813575745,
+            0.5890489220619202
+          ],
+          [
+            0.41086041927337646,
+            0.5891395807266235
+          ],
+          [
+            0.4113348424434662,
+            0.5886651277542114
+          ],
+          [
+            0.41140490770339966,
+            0.5885950922966003
+          ],
+          [
+            0.4110843241214752,
+            0.5889157056808472
+          ],
+          [
+            0.4102807641029358,
+            0.5897191762924194
+          ],
+          [
+            0.4112185835838318,
+            0.5887814164161682
+          ],
+          [
+            0.4094831049442291,
+            0.5905169248580933
+          ],
+          [
+            0.4107080399990082,
+            0.5892919898033142
+          ],
+          [
+            0.41030433773994446,
+            0.5896956324577332
+          ],
+          [
+            0.4113433063030243,
+            0.5886566638946533
+          ],
+          [
+            0.4107666611671448,
+            0.5892333984375
+          ],
+          [
+            0.4114472270011902,
+            0.588552713394165
+          ]
+        ]
+      },
+      {
+        "task": "krauzlis_cued_motion",
+        "cell": "B20",
+        "n": 20,
+        "confusion": [
+          [
+            0,
+            10
+          ],
+          [
+            0,
+            10
+          ]
+        ],
+        "class_recall": [
+          0.0,
+          1.0
+        ],
+        "accuracy": 0.5,
+        "balanced_accuracy": 0.5,
+        "auc": 0.43,
+        "auc_ovr": [
+          0.43,
+          0.43
+        ],
+        "specificity": 0.0,
+        "false_positive_rate": 1.0,
+        "events": {
+          "target": {
+            "n": 10,
+            "positive_rate": 1.0,
+            "target_side_counts": {
+              "0": 6,
+              "1": 4
+            },
+            "confusion": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                10
+              ]
+            ],
+            "hit_rate": 1.0,
+            "specificity": null,
+            "false_positive_rate": null
+          },
+          "foil": {
+            "n": 8,
+            "positive_rate": 1.0,
+            "target_side_counts": {
+              "0": 5,
+              "1": 3
+            },
+            "confusion": [
+              [
+                0,
+                8
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "hit_rate": null,
+            "specificity": 0.0,
+            "false_positive_rate": 1.0
+          },
+          "catch": {
+            "n": 2,
+            "positive_rate": 1.0,
+            "target_side_counts": {
+              "0": 1,
+              "1": 1
+            },
+            "confusion": [
+              [
+                0,
+                2
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "hit_rate": null,
+            "specificity": 0.0,
+            "false_positive_rate": 1.0
+          }
+        },
+        "target_hit_rate": 1.0,
+        "foil_false_alarm_rate": 1.0,
+        "catch_false_positive_rate": 1.0,
+        "strata": {
+          "baseline_transitions": {
+            "20": {
+              "n": 20,
+              "accuracy": 0.5,
+              "positive_rate": 1.0
+            }
+          },
+          "event_type": {
+            "\"foil\"": {
+              "n": 8,
+              "accuracy": 0.0,
+              "positive_rate": 1.0
+            },
+            "\"target\"": {
+              "n": 10,
+              "accuracy": 1.0,
+              "positive_rate": 1.0
+            },
+            "\"catch\"": {
+              "n": 2,
+              "accuracy": 0.0,
+              "positive_rate": 1.0
+            }
+          },
+          "event_magnitude_degrees": {
+            "26": {
+              "n": 10,
+              "accuracy": 0.5,
+              "positive_rate": 1.0
+            },
+            "28": {
+              "n": 10,
+              "accuracy": 0.5,
+              "positive_rate": 1.0
+            }
+          },
+          "target_location": {
+            "0": {
+              "n": 12,
+              "accuracy": 0.5,
+              "positive_rate": 1.0
+            },
+            "1": {
+              "n": 8,
+              "accuracy": 0.5,
+              "positive_rate": 1.0
+            }
+          }
+        },
+        "seconds": 0.37837089877575636,
+        "trial_ids": [
+          "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/0",
+          "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/1",
+          "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/2",
+          "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/3",
+          "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/4",
+          "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/5",
+          "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/6",
+          "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/7",
+          "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/8",
+          "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/9",
+          "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/10",
+          "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/11",
+          "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/12",
+          "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/13",
+          "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/14",
+          "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/15",
+          "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/16",
+          "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/17",
+          "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/18",
+          "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/19"
+        ],
+        "labels": [
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0
+        ],
+        "probabilities": [
+          [
+            0.47067490220069885,
+            0.5293250679969788
+          ],
+          [
+            0.470763236284256,
+            0.5292367339134216
+          ],
+          [
+            0.4717790186405182,
+            0.5282209515571594
+          ],
+          [
+            0.47177138924598694,
+            0.5282286405563354
+          ],
+          [
+            0.4713234007358551,
+            0.5286766290664673
+          ],
+          [
+            0.47089752554893494,
+            0.5291024446487427
+          ],
+          [
+            0.47074970602989197,
+            0.5292502641677856
+          ],
+          [
+            0.47151878476142883,
+            0.5284811854362488
+          ],
+          [
+            0.47040820121765137,
+            0.5295917987823486
+          ],
+          [
+            0.47011613845825195,
+            0.529883861541748
+          ],
+          [
+            0.47045382857322693,
+            0.5295462012290955
+          ],
+          [
+            0.47115233540534973,
+            0.5288476347923279
+          ],
+          [
+            0.4702305197715759,
+            0.5297694802284241
+          ],
+          [
+            0.4705199599266052,
+            0.5294800400733948
+          ],
+          [
+            0.47131794691085815,
+            0.5286819934844971
+          ],
+          [
+            0.47023746371269226,
+            0.5297625660896301
+          ],
+          [
+            0.4694119691848755,
+            0.5305880308151245
+          ],
+          [
+            0.47055837512016296,
+            0.5294415950775146
+          ],
+          [
+            0.4708857238292694,
+            0.529114305973053
+          ],
+          [
+            0.47064411640167236,
+            0.5293558835983276
+          ]
+        ]
+      },
+      {
+        "task": "krauzlis_cued_motion",
+        "cell": "B28",
+        "n": 20,
+        "confusion": [
+          [
+            0,
+            8
+          ],
+          [
+            0,
+            12
+          ]
+        ],
+        "class_recall": [
+          0.0,
+          1.0
+        ],
+        "accuracy": 0.6,
+        "balanced_accuracy": 0.5,
+        "auc": 0.4583333333333333,
+        "auc_ovr": [
+          0.4583333333333333,
+          0.4583333333333333
+        ],
+        "specificity": 0.0,
+        "false_positive_rate": 1.0,
+        "events": {
+          "target": {
+            "n": 12,
+            "positive_rate": 1.0,
+            "target_side_counts": {
+              "0": 9,
+              "1": 3
+            },
+            "confusion": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                12
+              ]
+            ],
+            "hit_rate": 1.0,
+            "specificity": null,
+            "false_positive_rate": null
+          },
+          "foil": {
+            "n": 5,
+            "positive_rate": 1.0,
+            "target_side_counts": {
+              "0": 4,
+              "1": 1
+            },
+            "confusion": [
+              [
+                0,
+                5
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "hit_rate": null,
+            "specificity": 0.0,
+            "false_positive_rate": 1.0
+          },
+          "catch": {
+            "n": 3,
+            "positive_rate": 1.0,
+            "target_side_counts": {
+              "0": 2,
+              "1": 1
+            },
+            "confusion": [
+              [
+                0,
+                3
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "hit_rate": null,
+            "specificity": 0.0,
+            "false_positive_rate": 1.0
+          }
+        },
+        "target_hit_rate": 1.0,
+        "foil_false_alarm_rate": 1.0,
+        "catch_false_positive_rate": 1.0,
+        "strata": {
+          "baseline_transitions": {
+            "28": {
+              "n": 20,
+              "accuracy": 0.6,
+              "positive_rate": 1.0
+            }
+          },
+          "event_type": {
+            "\"target\"": {
+              "n": 12,
+              "accuracy": 1.0,
+              "positive_rate": 1.0
+            },
+            "\"catch\"": {
+              "n": 3,
+              "accuracy": 0.0,
+              "positive_rate": 1.0
+            },
+            "\"foil\"": {
+              "n": 5,
+              "accuracy": 0.0,
+              "positive_rate": 1.0
+            }
+          },
+          "event_magnitude_degrees": {
+            "28": {
+              "n": 9,
+              "accuracy": 0.4444444444444444,
+              "positive_rate": 1.0
+            },
+            "26": {
+              "n": 11,
+              "accuracy": 0.7272727272727273,
+              "positive_rate": 1.0
+            }
+          },
+          "target_location": {
+            "0": {
+              "n": 15,
+              "accuracy": 0.6,
+              "positive_rate": 1.0
+            },
+            "1": {
+              "n": 5,
+              "accuracy": 0.6,
+              "positive_rate": 1.0
+            }
+          }
+        },
+        "seconds": 0.4609356168657541,
+        "trial_ids": [
+          "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/0",
+          "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/1",
+          "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/2",
+          "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/3",
+          "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/4",
+          "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/5",
+          "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/6",
+          "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/7",
+          "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/8",
+          "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/9",
+          "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/10",
+          "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/11",
+          "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/12",
+          "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/13",
+          "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/14",
+          "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/15",
+          "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/16",
+          "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/17",
+          "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/18",
+          "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/19"
+        ],
+        "labels": [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "probabilities": [
+          [
+            0.4358823597431183,
+            0.5641176104545593
+          ],
+          [
+            0.43531081080436707,
+            0.5646891593933105
+          ],
+          [
+            0.43527257442474365,
+            0.5647274255752563
+          ],
+          [
+            0.43618080019950867,
+            0.563819169998169
+          ],
+          [
+            0.4362683594226837,
+            0.5637316107749939
+          ],
+          [
+            0.43519219756126404,
+            0.5648078322410583
+          ],
+          [
+            0.43574073910713196,
+            0.5642592906951904
+          ],
+          [
+            0.4363992512226105,
+            0.5636007785797119
+          ],
+          [
+            0.43500837683677673,
+            0.5649915933609009
+          ],
+          [
+            0.4365454316139221,
+            0.5634545683860779
+          ],
+          [
+            0.4359867572784424,
+            0.5640132427215576
+          ],
+          [
+            0.435838907957077,
+            0.5641610622406006
+          ],
+          [
+            0.43568384647369385,
+            0.5643161535263062
+          ],
+          [
+            0.4348244071006775,
+            0.5651756525039673
+          ],
+          [
+            0.4361293613910675,
+            0.5638706684112549
+          ],
+          [
+            0.43600335717201233,
+            0.5639966726303101
+          ],
+          [
+            0.4361105263233185,
+            0.5638894438743591
+          ],
+          [
+            0.4356776773929596,
+            0.564322292804718
+          ],
+          [
+            0.43582314252853394,
+            0.5641768574714661
+          ],
+          [
+            0.4357549548149109,
+            0.5642450451850891
+          ]
+        ]
+      }
+    ],
+    "disposable": true,
+    "discard_all_state": true,
+    "verification": {
+      "verified": true,
+      "step": 9,
+      "episodes": 288,
+      "checkpoint": {
+        "path": "/workspace/vawm_sequence_kda3_01/run/profile/profile_terminal.pt",
+        "bytes": 3991939,
+        "sha256": "6b6d05f9ffa2926e635a2f28e4d3ae7c7b763940839a70c011ecb25872f8b991",
+        "verified": true,
+        "step": 9
+      },
+      "parameter_count": 324488,
+      "changed_parameters": 55,
+      "changed_by_module": {
+        "patch_projection.": [
+          "patch_projection.weight",
+          "patch_projection.bias"
+        ],
+        "patch_norm.": [
+          "patch_norm.weight",
+          "patch_norm.bias"
+        ],
+        "row_embedding": [
+          "row_embedding"
+        ],
+        "column_embedding": [
+          "column_embedding"
+        ],
+        "cls_token": [
+          "cls_token"
+        ],
+        "final_norm.": [
+          "final_norm.weight",
+          "final_norm.bias"
+        ],
+        "classifier.": [
+          "classifier.0.weight",
+          "classifier.0.bias",
+          "classifier.2.weight",
+          "classifier.2.bias"
+        ],
+        "kda_norms.0.": [
+          "kda_norms.0.weight",
+          "kda_norms.0.bias"
+        ],
+        "kda_norms.1.": [
+          "kda_norms.1.weight",
+          "kda_norms.1.bias"
+        ],
+        "kda_norms.2.": [
+          "kda_norms.2.weight",
+          "kda_norms.2.bias"
+        ],
+        "kda_layers.0.q_proj.": [
+          "kda_layers.0.q_proj.weight",
+          "kda_layers.0.q_proj.bias"
+        ],
+        "kda_layers.0.k_proj.": [
+          "kda_layers.0.k_proj.weight",
+          "kda_layers.0.k_proj.bias"
+        ],
+        "kda_layers.0.v_proj.": [
+          "kda_layers.0.v_proj.weight",
+          "kda_layers.0.v_proj.bias"
+        ],
+        "kda_layers.0.decay_proj.": [
+          "kda_layers.0.decay_proj.weight",
+          "kda_layers.0.decay_proj.bias"
+        ],
+        "kda_layers.0.write_proj.": [
+          "kda_layers.0.write_proj.weight",
+          "kda_layers.0.write_proj.bias"
+        ],
+        "kda_layers.0.out_proj.": [
+          "kda_layers.0.out_proj.weight",
+          "kda_layers.0.out_proj.bias"
+        ],
+        "kda_layers.1.q_proj.": [
+          "kda_layers.1.q_proj.weight",
+          "kda_layers.1.q_proj.bias"
+        ],
+        "kda_layers.1.k_proj.": [
+          "kda_layers.1.k_proj.weight",
+          "kda_layers.1.k_proj.bias"
+        ],
+        "kda_layers.1.v_proj.": [
+          "kda_layers.1.v_proj.weight",
+          "kda_layers.1.v_proj.bias"
+        ],
+        "kda_layers.1.decay_proj.": [
+          "kda_layers.1.decay_proj.weight",
+          "kda_layers.1.decay_proj.bias"
+        ],
+        "kda_layers.1.write_proj.": [
+          "kda_layers.1.write_proj.weight",
+          "kda_layers.1.write_proj.bias"
+        ],
+        "kda_layers.1.out_proj.": [
+          "kda_layers.1.out_proj.weight",
+          "kda_layers.1.out_proj.bias"
+        ],
+        "kda_layers.2.q_proj.": [
+          "kda_layers.2.q_proj.weight",
+          "kda_layers.2.q_proj.bias"
+        ],
+        "kda_layers.2.k_proj.": [
+          "kda_layers.2.k_proj.weight",
+          "kda_layers.2.k_proj.bias"
+        ],
+        "kda_layers.2.v_proj.": [
+          "kda_layers.2.v_proj.weight",
+          "kda_layers.2.v_proj.bias"
+        ],
+        "kda_layers.2.decay_proj.": [
+          "kda_layers.2.decay_proj.weight",
+          "kda_layers.2.decay_proj.bias"
+        ],
+        "kda_layers.2.write_proj.": [
+          "kda_layers.2.write_proj.weight",
+          "kda_layers.2.write_proj.bias"
+        ],
+        "kda_layers.2.out_proj.": [
+          "kda_layers.2.out_proj.weight",
+          "kda_layers.2.out_proj.bias"
+        ]
+      },
+      "all_active_parameters_changed": true,
+      "stream_counts": {
+        "B12": 96,
+        "B20": 96,
+        "B28": 96
+      },
+      "optimizer_seconds": 25.71773135755211,
+      "fresh_initial_optimizer_empty": true,
+      "persisted_constructor_equality": true
+    },
+    "torch_version": "2.8.0+cu128",
+    "peak_cuda_bytes": 3884383232
+  },
+  "persisted_progress_verification.json": {
+    "verified": true,
+    "step": 2615,
+    "episodes": 83680,
+    "checkpoint": {
+      "path": "/workspace/vawm_sequence_kda3_01/run/terminal.pt",
+      "bytes": 3993347,
+      "sha256": "7b2768b5f4344b09a532b970a9e8c3b070263d5662da9a5203fb7922a47f0884",
+      "verified": true,
+      "step": 2615
+    },
+    "parameter_count": 324488,
+    "changed_parameters": 55,
+    "changed_by_module": {
+      "patch_projection.": [
+        "patch_projection.weight",
+        "patch_projection.bias"
+      ],
+      "patch_norm.": [
+        "patch_norm.weight",
+        "patch_norm.bias"
+      ],
+      "row_embedding": [
+        "row_embedding"
+      ],
+      "column_embedding": [
+        "column_embedding"
+      ],
+      "cls_token": [
+        "cls_token"
+      ],
+      "final_norm.": [
+        "final_norm.weight",
+        "final_norm.bias"
+      ],
+      "classifier.": [
+        "classifier.0.weight",
+        "classifier.0.bias",
+        "classifier.2.weight",
+        "classifier.2.bias"
+      ],
+      "kda_norms.0.": [
+        "kda_norms.0.weight",
+        "kda_norms.0.bias"
+      ],
+      "kda_norms.1.": [
+        "kda_norms.1.weight",
+        "kda_norms.1.bias"
+      ],
+      "kda_norms.2.": [
+        "kda_norms.2.weight",
+        "kda_norms.2.bias"
+      ],
+      "kda_layers.0.q_proj.": [
+        "kda_layers.0.q_proj.weight",
+        "kda_layers.0.q_proj.bias"
+      ],
+      "kda_layers.0.k_proj.": [
+        "kda_layers.0.k_proj.weight",
+        "kda_layers.0.k_proj.bias"
+      ],
+      "kda_layers.0.v_proj.": [
+        "kda_layers.0.v_proj.weight",
+        "kda_layers.0.v_proj.bias"
+      ],
+      "kda_layers.0.decay_proj.": [
+        "kda_layers.0.decay_proj.weight",
+        "kda_layers.0.decay_proj.bias"
+      ],
+      "kda_layers.0.write_proj.": [
+        "kda_layers.0.write_proj.weight",
+        "kda_layers.0.write_proj.bias"
+      ],
+      "kda_layers.0.out_proj.": [
+        "kda_layers.0.out_proj.weight",
+        "kda_layers.0.out_proj.bias"
+      ],
+      "kda_layers.1.q_proj.": [
+        "kda_layers.1.q_proj.weight",
+        "kda_layers.1.q_proj.bias"
+      ],
+      "kda_layers.1.k_proj.": [
+        "kda_layers.1.k_proj.weight",
+        "kda_layers.1.k_proj.bias"
+      ],
+      "kda_layers.1.v_proj.": [
+        "kda_layers.1.v_proj.weight",
+        "kda_layers.1.v_proj.bias"
+      ],
+      "kda_layers.1.decay_proj.": [
+        "kda_layers.1.decay_proj.weight",
+        "kda_layers.1.decay_proj.bias"
+      ],
+      "kda_layers.1.write_proj.": [
+        "kda_layers.1.write_proj.weight",
+        "kda_layers.1.write_proj.bias"
+      ],
+      "kda_layers.1.out_proj.": [
+        "kda_layers.1.out_proj.weight",
+        "kda_layers.1.out_proj.bias"
+      ],
+      "kda_layers.2.q_proj.": [
+        "kda_layers.2.q_proj.weight",
+        "kda_layers.2.q_proj.bias"
+      ],
+      "kda_layers.2.k_proj.": [
+        "kda_layers.2.k_proj.weight",
+        "kda_layers.2.k_proj.bias"
+      ],
+      "kda_layers.2.v_proj.": [
+        "kda_layers.2.v_proj.weight",
+        "kda_layers.2.v_proj.bias"
+      ],
+      "kda_layers.2.decay_proj.": [
+        "kda_layers.2.decay_proj.weight",
+        "kda_layers.2.decay_proj.bias"
+      ],
+      "kda_layers.2.write_proj.": [
+        "kda_layers.2.write_proj.weight",
+        "kda_layers.2.write_proj.bias"
+      ],
+      "kda_layers.2.out_proj.": [
+        "kda_layers.2.out_proj.weight",
+        "kda_layers.2.out_proj.bias"
+      ]
+    },
+    "all_active_parameters_changed": true,
+    "stream_counts": {
+      "B12": 27872,
+      "B20": 27904,
+      "B28": 27904
+    },
+    "optimizer_seconds": 7473.313279165886,
+    "fresh_initial_optimizer_empty": true,
+    "persisted_constructor_equality": true
+  },
+  "first_cycle_timing.json": {
+    "updates": 3,
+    "matched_profile_ratio": 1.082667810638945,
+    "material_slowdown": false,
+    "production_rows": [
+      {
+        "utc": "2026-10-02T18:25:47.830193+00:00",
+        "step": 1,
+        "task": "krauzlis_cued_motion",
+        "cell": "B12",
+        "loss": 0.6811854615807533,
+        "seconds": 2.6455521462485194,
+        "episodes": 32,
+        "frames": 928,
+        "grad_norm": 0.9151092611491582,
+        "gradient_norms": {
+          "row_embedding": 0.001977303927513574,
+          "column_embedding": 0.0019046765922799615,
+          "cls_token": 0.03993841931896089,
+          "patch_projection.weight": 0.027057286024399,
+          "patch_projection.bias": 0.14518422751283624,
+          "patch_norm.weight": 0.004715141351759495,
+          "patch_norm.bias": 0.004808567193333812,
+          "kda_norms.0.weight": 0.0021449951266318164,
+          "kda_norms.0.bias": 0.002470611441695984,
+          "kda_norms.1.weight": 0.004281887443839687,
+          "kda_norms.1.bias": 0.005008250432278805,
+          "kda_norms.2.weight": 0.0027010107366648582,
+          "kda_norms.2.bias": 0.00240705583810397,
+          "kda_layers.0.q_proj.weight": 0.025920565605505874,
+          "kda_layers.0.q_proj.bias": 0.002306975821305706,
+          "kda_layers.0.k_proj.weight": 0.02549864528126214,
+          "kda_layers.0.k_proj.bias": 0.001978562571794347,
+          "kda_layers.0.v_proj.weight": 0.032501009371791297,
+          "kda_layers.0.v_proj.bias": 0.00317237535913535,
+          "kda_layers.0.decay_proj.weight": 0.0026223492931818715,
+          "kda_layers.0.decay_proj.bias": 0.00025086053488001533,
+          "kda_layers.0.write_proj.weight": 0.003722983057788611,
+          "kda_layers.0.write_proj.bias": 0.0002271405306904618,
+          "kda_layers.0.out_proj.weight": 0.03673910042479681,
+          "kda_layers.0.out_proj.bias": 0.04069735589575538,
+          "kda_layers.1.q_proj.weight": 0.019699497795010235,
+          "kda_layers.1.q_proj.bias": 0.001718538516546109,
+          "kda_layers.1.k_proj.weight": 0.022047807736481434,
+          "kda_layers.1.k_proj.bias": 0.002050571434465167,
+          "kda_layers.1.v_proj.weight": 0.07589089091542815,
+          "kda_layers.1.v_proj.bias": 0.007194445216264302,
+          "kda_layers.1.decay_proj.weight": 0.0028043402590761986,
+          "kda_layers.1.decay_proj.bias": 0.00026588529038228673,
+          "kda_layers.1.write_proj.weight": 0.004134467773677107,
+          "kda_layers.1.write_proj.bias": 0.00039897778482694064,
+          "kda_layers.1.out_proj.weight": 0.08596984568836763,
+          "kda_layers.1.out_proj.bias": 0.04020694681994651,
+          "kda_layers.2.q_proj.weight": 0.02734069296232918,
+          "kda_layers.2.q_proj.bias": 0.0024166470354056446,
+          "kda_layers.2.k_proj.weight": 0.03199781527875199,
+          "kda_layers.2.k_proj.bias": 0.0030366278146622475,
+          "kda_layers.2.v_proj.weight": 0.027381735413532553,
+          "kda_layers.2.v_proj.bias": 0.001535022652722112,
+          "kda_layers.2.decay_proj.weight": 0.0038526830072943196,
+          "kda_layers.2.decay_proj.bias": 0.0003676078956719574,
+          "kda_layers.2.write_proj.weight": 0.0033067465666510288,
+          "kda_layers.2.write_proj.bias": 0.00011876311475377762,
+          "kda_layers.2.out_proj.weight": 0.025467562338791105,
+          "kda_layers.2.out_proj.bias": 0.03975979887377278,
+          "final_norm.weight": 0.02140712531981928,
+          "final_norm.bias": 0.02494147909358417,
+          "classifier.0.weight": 0.4940679293146592,
+          "classifier.0.bias": 0.043671008841023734,
+          "classifier.2.weight": 0.7222167457063188,
+          "classifier.2.bias": 0.1388091361691553
+        },
+        "cumulative_episodes": 32,
+        "cumulative_frames": 928,
+        "optimizer_seconds": 2.6455521462485194,
+        "per_task_exposure": {
+          "krauzlis_cued_motion": {
+            "updates": 1,
+            "episodes": 32,
+            "frames": 928,
+            "cells": {
+              "B12": 32,
+              "B20": 0,
+              "B28": 0
+            }
+          }
+        },
+        "initialization": "fresh",
+        "clipping": null
+      },
+      {
+        "utc": "2026-10-02T18:25:51.915890+00:00",
+        "step": 2,
+        "task": "krauzlis_cued_motion",
+        "cell": "B28",
+        "loss": 0.7110693156719208,
+        "seconds": 3.75410589389503,
+        "episodes": 32,
+        "frames": 1440,
+        "grad_norm": 0.983871270625648,
+        "gradient_norms": {
+          "row_embedding": 0.001754212812210331,
+          "column_embedding": 0.0019349977851301169,
+          "cls_token": 0.04073602167756724,
+          "patch_projection.weight": 0.03256741619603121,
+          "patch_projection.bias": 0.12494003824686979,
+          "patch_norm.weight": 0.003817675858154064,
+          "patch_norm.bias": 0.003906743104179837,
+          "kda_norms.0.weight": 0.004636306693016463,
+          "kda_norms.0.bias": 0.004850707454236412,
+          "kda_norms.1.weight": 0.0025195092688142695,
+          "kda_norms.1.bias": 0.00281035636919936,
+          "kda_norms.2.weight": 0.002152751364727537,
+          "kda_norms.2.bias": 0.0020290455976690485,
+          "kda_layers.0.q_proj.weight": 0.06354150384480821,
+          "kda_layers.0.q_proj.bias": 0.005553844199519485,
+          "kda_layers.0.k_proj.weight": 0.06993359222480292,
+          "kda_layers.0.k_proj.bias": 0.006587101336836343,
+          "kda_layers.0.v_proj.weight": 0.039095078234593655,
+          "kda_layers.0.v_proj.bias": 0.0030194193357139156,
+          "kda_layers.0.decay_proj.weight": 0.012395845117662709,
+          "kda_layers.0.decay_proj.bias": 0.0012007009137767883,
+          "kda_layers.0.write_proj.weight": 0.0024426624672265348,
+          "kda_layers.0.write_proj.bias": 0.00021184124692920706,
+          "kda_layers.0.out_proj.weight": 0.041457270619315895,
+          "kda_layers.0.out_proj.bias": 0.04043256638822729,
+          "kda_layers.1.q_proj.weight": 0.030954446932928134,
+          "kda_layers.1.q_proj.bias": 0.002740589532005382,
+          "kda_layers.1.k_proj.weight": 0.03197371386140275,
+          "kda_layers.1.k_proj.bias": 0.002559446710961428,
+          "kda_layers.1.v_proj.weight": 0.028841953036663797,
+          "kda_layers.1.v_proj.bias": 0.002083384980835734,
+          "kda_layers.1.decay_proj.weight": 0.005669132355053006,
+          "kda_layers.1.decay_proj.bias": 0.0005479869384152977,
+          "kda_layers.1.write_proj.weight": 0.006184891977329893,
+          "kda_layers.1.write_proj.bias": 0.0007005607321851342,
+          "kda_layers.1.out_proj.weight": 0.02985887511489667,
+          "kda_layers.1.out_proj.bias": 0.04002528564176146,
+          "kda_layers.2.q_proj.weight": 0.025418379863625763,
+          "kda_layers.2.q_proj.bias": 0.0022467119740252617,
+          "kda_layers.2.k_proj.weight": 0.027539303284803137,
+          "kda_layers.2.k_proj.bias": 0.002654827866641314,
+          "kda_layers.2.v_proj.weight": 0.023049736805005234,
+          "kda_layers.2.v_proj.bias": 0.0014221583307784818,
+          "kda_layers.2.decay_proj.weight": 0.00225869915080823,
+          "kda_layers.2.decay_proj.bias": 0.0002171033300743218,
+          "kda_layers.2.write_proj.weight": 0.0033753247568305404,
+          "kda_layers.2.write_proj.bias": 0.0002819438435929333,
+          "kda_layers.2.out_proj.weight": 0.024002609926003848,
+          "kda_layers.2.out_proj.bias": 0.03969041875559337,
+          "final_norm.weight": 0.02366719960829544,
+          "final_norm.bias": 0.025621140355828072,
+          "classifier.0.weight": 0.5315419404697792,
+          "classifier.0.bias": 0.04698275310865034,
+          "classifier.2.weight": 0.7874189198852279,
+          "classifier.2.bias": 0.1414583073472274
+        },
+        "cumulative_episodes": 64,
+        "cumulative_frames": 2368,
+        "optimizer_seconds": 6.399658040143549,
+        "per_task_exposure": {
+          "krauzlis_cued_motion": {
+            "updates": 2,
+            "episodes": 64,
+            "frames": 2368,
+            "cells": {
+              "B12": 32,
+              "B20": 0,
+              "B28": 32
+            }
+          }
+        },
+        "initialization": "fresh",
+        "clipping": null
+      },
+      {
+        "utc": "2026-10-02T18:25:55.078247+00:00",
+        "step": 3,
+        "task": "krauzlis_cued_motion",
+        "cell": "B20",
+        "loss": 0.6884063929319382,
+        "seconds": 2.847856031730771,
+        "episodes": 32,
+        "frames": 1184,
+        "grad_norm": 0.9411424389259364,
+        "gradient_norms": {
+          "row_embedding": 0.0017946023490679596,
+          "column_embedding": 0.0016314781810123648,
+          "cls_token": 0.04314023715331565,
+          "patch_projection.weight": 0.0319712597536762,
+          "patch_projection.bias": 0.10609051431207783,
+          "patch_norm.weight": 0.00342133927412756,
+          "patch_norm.bias": 0.0032812238605538784,
+          "kda_norms.0.weight": 0.003009494704754957,
+          "kda_norms.0.bias": 0.003165606075569481,
+          "kda_norms.1.weight": 0.0030686195772635224,
+          "kda_norms.1.bias": 0.002803394391728503,
+          "kda_norms.2.weight": 0.002409778185302657,
+          "kda_norms.2.bias": 0.0022646613654702307,
+          "kda_layers.0.q_proj.weight": 0.03747025647616733,
+          "kda_layers.0.q_proj.bias": 0.0033030037376114854,
+          "kda_layers.0.k_proj.weight": 0.04158103032114655,
+          "kda_layers.0.k_proj.bias": 0.0038395351989345345,
+          "kda_layers.0.v_proj.weight": 0.041195709682910475,
+          "kda_layers.0.v_proj.bias": 0.003149592848257101,
+          "kda_layers.0.decay_proj.weight": 0.006944197461713396,
+          "kda_layers.0.decay_proj.bias": 0.000668520615357047,
+          "kda_layers.0.write_proj.weight": 0.004507731292756435,
+          "kda_layers.0.write_proj.bias": 0.0004756474554628058,
+          "kda_layers.0.out_proj.weight": 0.04996023478099544,
+          "kda_layers.0.out_proj.bias": 0.04318396359806766,
+          "kda_layers.1.q_proj.weight": 0.025882155061521986,
+          "kda_layers.1.q_proj.bias": 0.002306086646027018,
+          "kda_layers.1.k_proj.weight": 0.024326661544122597,
+          "kda_layers.1.k_proj.bias": 0.0022112616684518186,
+          "kda_layers.1.v_proj.weight": 0.039087494661783254,
+          "kda_layers.1.v_proj.bias": 0.0031126299282459293,
+          "kda_layers.1.decay_proj.weight": 0.0037094634578932113,
+          "kda_layers.1.decay_proj.bias": 0.0003560764916454578,
+          "kda_layers.1.write_proj.weight": 0.0066732464702902675,
+          "kda_layers.1.write_proj.bias": 0.0005941767454849343,
+          "kda_layers.1.out_proj.weight": 0.0389481405318975,
+          "kda_layers.1.out_proj.bias": 0.04298791133022989,
+          "kda_layers.2.q_proj.weight": 0.03206501371898931,
+          "kda_layers.2.q_proj.bias": 0.0028343399632450076,
+          "kda_layers.2.k_proj.weight": 0.033832603168091,
+          "kda_layers.2.k_proj.bias": 0.002994827541942182,
+          "kda_layers.2.v_proj.weight": 0.024824284242803227,
+          "kda_layers.2.v_proj.bias": 0.0013895897128353664,
+          "kda_layers.2.decay_proj.weight": 0.005755326444838279,
+          "kda_layers.2.decay_proj.bias": 0.000553641002039104,
+          "kda_layers.2.write_proj.weight": 0.004678041895616267,
+          "kda_layers.2.write_proj.bias": 0.0004326722964759891,
+          "kda_layers.2.out_proj.weight": 0.024755965134810463,
+          "kda_layers.2.out_proj.bias": 0.04264955194690439,
+          "final_norm.weight": 0.02114211774637566,
+          "final_norm.bias": 0.026390015027742138,
+          "classifier.0.weight": 0.5702787938020928,
+          "classifier.0.bias": 0.05040663078702897,
+          "classifier.2.weight": 0.7038106118791635,
+          "classifier.2.bias": 0.16266314588105005
+        },
+        "cumulative_episodes": 96,
+        "cumulative_frames": 3552,
+        "optimizer_seconds": 9.24751407187432,
+        "per_task_exposure": {
+          "krauzlis_cued_motion": {
+            "updates": 3,
+            "episodes": 96,
+            "frames": 3552,
+            "cells": {
+              "B12": 32,
+              "B20": 32,
+              "B28": 32
+            }
+          }
+        },
+        "initialization": "fresh",
+        "clipping": null
+      }
+    ]
+  },
+  "progress": {
+    "utc": "2026-10-02T20:31:27.981840+00:00",
+    "step": 2615,
+    "task": "krauzlis_cued_motion",
+    "cell": "B20",
+    "loss": 0.714451253414154,
+    "seconds": 2.707350756973028,
+    "episodes": 32,
+    "frames": 1184,
+    "grad_norm": 0.7737851439502316,
+    "gradient_norms": {
+      "row_embedding": 0.0001956680322170925,
+      "column_embedding": 0.00022999108508007385,
+      "cls_token": 0.03126233945056616,
+      "patch_projection.weight": 0.005169974461285066,
+      "patch_projection.bias": 0.0048881803005431474,
+      "patch_norm.weight": 0.0002494663383018578,
+      "patch_norm.bias": 0.00014871162975144803,
+      "kda_norms.0.weight": 0.0002094348955498701,
+      "kda_norms.0.bias": 0.00018525446739532767,
+      "kda_norms.1.weight": 0.00029857529527699836,
+      "kda_norms.1.bias": 0.00015401667207891857,
+      "kda_norms.2.weight": 0.00018740887064399488,
+      "kda_norms.2.bias": 0.00012091816251865416,
+      "kda_layers.0.q_proj.weight": 0.0018614909181643904,
+      "kda_layers.0.q_proj.bias": 0.0001630685588818386,
+      "kda_layers.0.k_proj.weight": 0.0020776675422124052,
+      "kda_layers.0.k_proj.bias": 0.0001424573330524787,
+      "kda_layers.0.v_proj.weight": 0.0040067125726099264,
+      "kda_layers.0.v_proj.bias": 0.00025549159537585105,
+      "kda_layers.0.decay_proj.weight": 0.00026077524589247466,
+      "kda_layers.0.decay_proj.bias": 2.4501759634280945e-05,
+      "kda_layers.0.write_proj.weight": 0.0007237929036232685,
+      "kda_layers.0.write_proj.bias": 8.075264133171339e-05,
+      "kda_layers.0.out_proj.weight": 0.00440250131786309,
+      "kda_layers.0.out_proj.bias": 0.03127632299072238,
+      "kda_layers.1.q_proj.weight": 0.0024179755468818976,
+      "kda_layers.1.q_proj.bias": 0.00021300938847792667,
+      "kda_layers.1.k_proj.weight": 0.003040302652317323,
+      "kda_layers.1.k_proj.bias": 5.302253618555843e-05,
+      "kda_layers.1.v_proj.weight": 0.004634949012129121,
+      "kda_layers.1.v_proj.bias": 0.0001425878963747173,
+      "kda_layers.1.decay_proj.weight": 0.0003708376827104708,
+      "kda_layers.1.decay_proj.bias": 3.47140452371484e-05,
+      "kda_layers.1.write_proj.weight": 0.001247374653786779,
+      "kda_layers.1.write_proj.bias": 0.0001272059407808344,
+      "kda_layers.1.out_proj.weight": 0.005371474732086807,
+      "kda_layers.1.out_proj.bias": 0.03127519515742407,
+      "kda_layers.2.q_proj.weight": 0.0021699046887226087,
+      "kda_layers.2.q_proj.bias": 0.000191960568772226,
+      "kda_layers.2.k_proj.weight": 0.0020436232609173537,
+      "kda_layers.2.k_proj.bias": 7.506214688331415e-05,
+      "kda_layers.2.v_proj.weight": 0.002948037776866878,
+      "kda_layers.2.v_proj.bias": 7.875136670565229e-05,
+      "kda_layers.2.decay_proj.weight": 0.0004209795003127121,
+      "kda_layers.2.decay_proj.bias": 4.0096577164221476e-05,
+      "kda_layers.2.write_proj.weight": 0.0013495632231258568,
+      "kda_layers.2.write_proj.bias": 0.00013793633308697344,
+      "kda_layers.2.out_proj.weight": 0.0035655833213737555,
+      "kda_layers.2.out_proj.bias": 0.0313040296067979,
+      "final_norm.weight": 0.016983050220407993,
+      "final_norm.bias": 0.019964782937915777,
+      "classifier.0.weight": 0.46337160641353964,
+      "classifier.0.bias": 0.04115907950919386,
+      "classifier.2.weight": 0.5953981212809288,
+      "classifier.2.bias": 0.1517960533359375
+    },
+    "cumulative_episodes": 83680,
+    "cumulative_frames": 3096416,
+    "optimizer_seconds": 7473.313279165886,
+    "per_task_exposure": {
+      "krauzlis_cued_motion": {
+        "updates": 2615,
+        "episodes": 83680,
+        "frames": 3096416,
+        "cells": {
+          "B12": 27872,
+          "B20": 27904,
+          "B28": 27904
+        }
+      }
+    },
+    "initialization": "fresh",
+    "clipping": null
+  },
+  "evaluations": [
+    {
+      "file": "validation_002108.json",
+      "complete": true,
+      "summary": {
+        "selection_key": [
+          0.49938800489596086,
+          0.5
+        ]
+      },
+      "cells": [
+        {
+          "task": "krauzlis_cued_motion",
+          "cell": "B12",
+          "n": 100,
+          "confusion": [
+            [
+              0,
+              43
+            ],
+            [
+              0,
+              57
+            ]
+          ],
+          "class_recall": [
+            0.0,
+            1.0
+          ],
+          "accuracy": 0.57,
+          "balanced_accuracy": 0.5,
+          "auc": 0.5002039983680131,
+          "auc_ovr": [
+            0.5002039983680131,
+            0.5002039983680131
+          ],
+          "specificity": 0.0,
+          "false_positive_rate": 1.0,
+          "events": {
+            "target": {
+              "n": 57,
+              "positive_rate": 1.0,
+              "target_side_counts": {
+                "0": 29,
+                "1": 28
+              },
+              "confusion": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  57
+                ]
+              ],
+              "hit_rate": 1.0,
+              "specificity": null,
+              "false_positive_rate": null
+            },
+            "foil": {
+              "n": 29,
+              "positive_rate": 1.0,
+              "target_side_counts": {
+                "0": 14,
+                "1": 15
+              },
+              "confusion": [
+                [
+                  0,
+                  29
+                ],
+                [
+                  0,
+                  0
+                ]
+              ],
+              "hit_rate": null,
+              "specificity": 0.0,
+              "false_positive_rate": 1.0
+            },
+            "catch": {
+              "n": 14,
+              "positive_rate": 1.0,
+              "target_side_counts": {
+                "0": 7,
+                "1": 7
+              },
+              "confusion": [
+                [
+                  0,
+                  14
+                ],
+                [
+                  0,
+                  0
+                ]
+              ],
+              "hit_rate": null,
+              "specificity": 0.0,
+              "false_positive_rate": 1.0
+            }
+          },
+          "target_hit_rate": 1.0,
+          "foil_false_alarm_rate": 1.0,
+          "catch_false_positive_rate": 1.0,
+          "strata": {
+            "baseline_transitions": {
+              "12": {
+                "n": 100,
+                "accuracy": 0.57,
+                "positive_rate": 1.0
+              }
+            },
+            "event_type": {
+              "\"target\"": {
+                "n": 57,
+                "accuracy": 1.0,
+                "positive_rate": 1.0
+              },
+              "\"catch\"": {
+                "n": 14,
+                "accuracy": 0.0,
+                "positive_rate": 1.0
+              },
+              "\"foil\"": {
+                "n": 29,
+                "accuracy": 0.0,
+                "positive_rate": 1.0
+              }
+            },
+            "event_magnitude_degrees": {
+              "28": {
+                "n": 53,
+                "accuracy": 0.5471698113207547,
+                "positive_rate": 1.0
+              },
+              "26": {
+                "n": 47,
+                "accuracy": 0.5957446808510638,
+                "positive_rate": 1.0
+              }
+            },
+            "target_location": {
+              "0": {
+                "n": 50,
+                "accuracy": 0.58,
+                "positive_rate": 1.0
+              },
+              "1": {
+                "n": 50,
+                "accuracy": 0.56,
+                "positive_rate": 1.0
+              }
+            }
+          },
+          "seconds": 1.5648821983486414,
+          "trial_ids": [
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/0",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/1",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/2",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/3",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/4",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/5",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/6",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/7",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/8",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/9",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/10",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/11",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/12",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/13",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/14",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/15",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/16",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/17",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/18",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/19",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/20",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/21",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/22",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/23",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/24",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/25",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/26",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/27",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/28",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/29",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/30",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/31",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/32",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/33",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/34",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/35",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/36",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/37",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/38",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/39",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/40",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/41",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/42",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/43",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/44",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/45",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/46",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/47",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/48",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/49",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/50",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/51",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/52",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/53",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/54",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/55",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/56",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/57",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/58",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/59",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/60",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/61",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/62",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/63",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/64",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/65",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/66",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/67",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/68",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/69",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/70",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/71",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/72",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/73",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/74",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/75",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/76",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/77",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/78",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/79",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/80",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/81",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/82",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/83",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/84",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/85",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/86",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/87",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/88",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/89",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/90",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/91",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/92",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/93",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/94",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/95",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/96",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/97",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/98",
+            "krauzlis_cued_motion/B12/SpatialBattery/val/15859276311000/krauzlis_cued_motion/99"
+          ],
+          "labels": [
+            1,
+            1,
+            1,
+            0,
+            0,
+            1,
+            1,
+            1,
+            0,
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            1,
+            1,
+            0,
+            0,
+            1,
+            1,
+            1,
+            1,
+            1,
+            0,
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            1,
+            0,
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            1,
+            1,
+            0,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            1,
+            1,
+            0,
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            1,
+            1,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            1
+          ],
+          "probabilities": [
+            [
+              0.43070414662361145,
+              0.5692958235740662
+            ],
+            [
+              0.4310115873813629,
+              0.5689883828163147
+            ],
+            [
+              0.43092381954193115,
+              0.5690762400627136
+            ],
+            [
+              0.4306596517562866,
+              0.5693403482437134
+            ],
+            [
+              0.4305660128593445,
+              0.5694339871406555
+            ],
+            [
+              0.4307366609573364,
+              0.5692633390426636
+            ],
+            [
+              0.430428683757782,
+              0.569571316242218
+            ],
+            [
+              0.43064263463020325,
+              0.5693573355674744
+            ],
+            [
+              0.43048399686813354,
+              0.5695160031318665
+            ],
+            [
+              0.43072953820228577,
+              0.5692704916000366
+            ],
+            [
+              0.43072694540023804,
+              0.5692731142044067
+            ],
+            [
+              0.4309098422527313,
+              0.5690901279449463
+            ],
+            [
+              0.4307548403739929,
+              0.5692451596260071
+            ],
+            [
+              0.4307229816913605,
+              0.5692770481109619
+            ],
+            [
+              0.4305860102176666,
+              0.569413959980011
+            ],
+            [
+              0.4306207001209259,
+              0.5693792700767517
+            ],
+            [
+              0.430549293756485,
+              0.5694507360458374
+            ],
+            [
+              0.4307885468006134,
+              0.5692114233970642
+            ],
+            [
+              0.4305315613746643,
+              0.5694684386253357
+            ],
+            [
+              0.4308438003063202,
+              0.5691562294960022
+            ],
+            [
+              0.43104085326194763,
+              0.5689591765403748
+            ],
+            [
+              0.43060052394866943,
+              0.5693994760513306
+            ],
+            [
+              0.43057769536972046,
+              0.5694222450256348
+            ],
+            [
+              0.43074798583984375,
+              0.5692520141601562
+            ],
+            [
+              0.4307410418987274,
+              0.569258987903595
+            ],
+            [
+              0.4306963086128235,
+              0.5693036913871765
+            ],
+            [
+              0.43084287643432617,
+              0.5691571235656738
+            ],
+            [
+              0.4310758411884308,
+              0.5689241290092468
+            ],
+            [
+              0.4309350252151489,
+              0.5690649747848511
+            ],
+            [
+              0.43082180619239807,
+              0.5691781640052795
+            ],
+            [
+              0.43060630559921265,
+              0.5693936347961426
+            ],
+            [
+              0.43105605244636536,
+              0.5689439177513123
+            ],
+            [
+              0.4305493235588074,
+              0.5694507360458374
+            ],
+            [
+              0.43035706877708435,
+              0.569642961025238
+            ],
+            [
+              0.43039268255233765,
+              0.5696073174476624
+            ],
+            [
+              0.430596262216568,
+              0.5694037079811096
+            ],
+            [
+              0.4307474195957184,
+              0.5692525506019592
+            ],
+            [
+              0.4306856095790863,
+              0.5693144202232361
+            ],
+            [
+              0.4306575357913971,
+              0.5693424940109253
+            ],
+            [
+              0.430802583694458,
+              0.569197416305542
+            ],
+            [
+              0.4309033751487732,
+              0.5690966248512268
+            ],
+            [
+              0.43048548698425293,
+              0.5695145130157471
+            ],
+            [
+              0.4304811954498291,
+              0.5695188045501709
+            ],
+            [
+              0.43062183260917664,
+              0.569378137588501
+            ],
+            [
+              0.4303216338157654,
+              0.5696783661842346
+            ],
+            [
+              0.4309558570384979,
+              0.5690441131591797
+            ],
+            [
+              0.4305271506309509,
+              0.5694728493690491
+            ],
+            [
+              0.4305392801761627,
+              0.5694606900215149
+            ],
+            [
+              0.430583119392395,
+              0.5694168210029602
+            ],
+            [
+              0.4305504262447357,
+              0.5694495439529419
+            ],
+            [
+              0.4307800233364105,
+              0.5692200064659119
+            ],
+            [
+              0.43076059222221375,
+              0.5692394375801086
+            ],
+            [
+              0.43045035004615784,
+              0.5695496201515198
+            ],
+            [
+              0.430427223443985,
+              0.5695728063583374
+            ],
+            [
+              0.43071696162223816,
+              0.5692830681800842
+            ],
+            [
+              0.4308052659034729,
+              0.5691947340965271
+            ],
+            [
+              0.43036991357803345,
+              0.5696300864219666
+            ],
+            [
+              0.4308026134967804,
+              0.569197416305542
+            ],
+            [
+              0.4309810400009155,
+              0.5690189599990845
+            ],
+            [
+              0.43103498220443726,
+              0.5689650774002075
+            ],
+            [
+              0.4306432604789734,
+              0.5693567395210266
+            ],
+            [
+              0.4307437837123871,
+              0.5692561864852905
+            ],
+            [
+              0.43095359206199646,
+              0.5690464377403259
+            ],
+            [
+              0.4306744337081909,
+              0.5693255662918091
+            ],
+            [
+              0.43076521158218384,
+              0.5692347884178162
+            ],
+            [
+              0.43084073066711426,
+              0.5691592693328857
+            ],
+            [
+              0.43094751238822937,
+              0.5690524578094482
+            ],
+            [
+              0.4305095076560974,
+              0.5694905519485474
+            ],
+            [
+              0.4309748411178589,
+              0.5690251588821411
+            ],
+            [
+              0.43047264218330383,
+              0.5695273280143738
+            ],
+            [
+              0.4306589365005493,
+              0.5693410038948059
+            ],
+            [
+              0.4306713044643402,
+              0.5693287253379822
+            ],
+            [
+              0.4305177330970764,
+              0.5694822669029236
+            ],
+            [
+              0.43114718794822693,
+              0.5688528418540955
+            ],
+            [
+              0.4306333065032959,
+              0.5693666934967041
+            ],
+            [
+              0.43078935146331787,
+              0.5692106485366821
+            ],
+            [
+              0.43081700801849365,
+              0.5691830515861511
+            ],
+            [
+              0.430803507566452,
+              0.5691965222358704
+            ],
+            [
+              0.43093377351760864,
+              0.5690661668777466
+            ],
+            [
+              0.4308336675167084,
+              0.569166362285614
+            ],
+            [
+              0.4304298460483551,
+              0.5695701837539673
+            ],
+            [
+              0.43059441447257996,
+              0.5694055557250977
+            ],
+            [
+              0.4308561086654663,
+              0.5691438913345337
+            ],
+            [
+              0.43053820729255676,
+              0.5694618225097656
+            ],
+            [
+              0.43082234263420105,
+              0.5691776275634766
+            ],
+            [
+              0.43072184920310974,
+              0.5692781805992126
+            ],
+            [
+              0.4307214617729187,
+              0.5692784786224365
+            ],
+            [
+              0.4307207465171814,
+              0.5692792534828186
+            ],
+            [
+              0.430329829454422,
+              0.5696701407432556
+            ],
+            [
+              0.4306736886501312,
+              0.5693262815475464
+            ],
+            [
+              0.43044084310531616,
+              0.5695591568946838
+            ],
+            [
+              0.43075546622276306,
+              0.5692445039749146
+            ],
+            [
+              0.4307820200920105,
+              0.5692179799079895
+            ],
+            [
+              0.4307526648044586,
+              0.5692473649978638
+            ],
+            [
+              0.4308537542819977,
+              0.5691462755203247
+            ],
+            [
+              0.4309525489807129,
+              0.5690474510192871
+            ],
+            [
+              0.43102431297302246,
+              0.5689756870269775
+            ],
+            [
+              0.4306893050670624,
+              0.5693106651306152
+            ],
+            [
+              0.43062835931777954,
+              0.5693716406822205
+            ],
+            [
+              0.43060824275016785,
+              0.5693917870521545
+            ]
+          ]
+        },
+        {
+          "task": "krauzlis_cued_motion",
+          "cell": "B20",
+          "n": 100,
+          "confusion": [
+            [
+              0,
+              43
+            ],
+            [
+              0,
+              57
+            ]
+          ],
+          "class_recall": [
+            0.0,
+            1.0
+          ],
+          "accuracy": 0.57,
+          "balanced_accuracy": 0.5,
+          "auc": 0.5426356589147286,
+          "auc_ovr": [
+            0.5426356589147286,
+            0.5426356589147286
+          ],
+          "specificity": 0.0,
+          "false_positive_rate": 1.0,
+          "events": {
+            "target": {
+              "n": 57,
+              "positive_rate": 1.0,
+              "target_side_counts": {
+                "0": 29,
+                "1": 28
+              },
+              "confusion": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  57
+                ]
+              ],
+              "hit_rate": 1.0,
+              "specificity": null,
+              "false_positive_rate": null
+            },
+            "foil": {
+              "n": 29,
+              "positive_rate": 1.0,
+              "target_side_counts": {
+                "0": 14,
+                "1": 15
+              },
+              "confusion": [
+                [
+                  0,
+                  29
+                ],
+                [
+                  0,
+                  0
+                ]
+              ],
+              "hit_rate": null,
+              "specificity": 0.0,
+              "false_positive_rate": 1.0
+            },
+            "catch": {
+              "n": 14,
+              "positive_rate": 1.0,
+              "target_side_counts": {
+                "0": 7,
+                "1": 7
+              },
+              "confusion": [
+                [
+                  0,
+                  14
+                ],
+                [
+                  0,
+                  0
+                ]
+              ],
+              "hit_rate": null,
+              "specificity": 0.0,
+              "false_positive_rate": 1.0
+            }
+          },
+          "target_hit_rate": 1.0,
+          "foil_false_alarm_rate": 1.0,
+          "catch_false_positive_rate": 1.0,
+          "strata": {
+            "baseline_transitions": {
+              "20": {
+                "n": 100,
+                "accuracy": 0.57,
+                "positive_rate": 1.0
+              }
+            },
+            "event_type": {
+              "\"foil\"": {
+                "n": 29,
+                "accuracy": 0.0,
+                "positive_rate": 1.0
+              },
+              "\"target\"": {
+                "n": 57,
+                "accuracy": 1.0,
+                "positive_rate": 1.0
+              },
+              "\"catch\"": {
+                "n": 14,
+                "accuracy": 0.0,
+                "positive_rate": 1.0
+              }
+            },
+            "event_magnitude_degrees": {
+              "26": {
+                "n": 40,
+                "accuracy": 0.625,
+                "positive_rate": 1.0
+              },
+              "28": {
+                "n": 60,
+                "accuracy": 0.5333333333333333,
+                "positive_rate": 1.0
+              }
+            },
+            "target_location": {
+              "0": {
+                "n": 50,
+                "accuracy": 0.58,
+                "positive_rate": 1.0
+              },
+              "1": {
+                "n": 50,
+                "accuracy": 0.56,
+                "positive_rate": 1.0
+              }
+            }
+          },
+          "seconds": 1.9869078565388918,
+          "trial_ids": [
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/0",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/1",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/2",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/3",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/4",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/5",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/6",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/7",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/8",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/9",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/10",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/11",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/12",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/13",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/14",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/15",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/16",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/17",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/18",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/19",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/20",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/21",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/22",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/23",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/24",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/25",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/26",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/27",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/28",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/29",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/30",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/31",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/32",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/33",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/34",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/35",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/36",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/37",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/38",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/39",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/40",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/41",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/42",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/43",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/44",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/45",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/46",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/47",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/48",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/49",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/50",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/51",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/52",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/53",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/54",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/55",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/56",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/57",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/58",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/59",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/60",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/61",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/62",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/63",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/64",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/65",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/66",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/67",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/68",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/69",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/70",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/71",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/72",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/73",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/74",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/75",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/76",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/77",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/78",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/79",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/80",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/81",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/82",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/83",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/84",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/85",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/86",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/87",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/88",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/89",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/90",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/91",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/92",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/93",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/94",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/95",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/96",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/97",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/98",
+            "krauzlis_cued_motion/B20/SpatialBattery/val/15859276311001/krauzlis_cued_motion/99"
+          ],
+          "labels": [
+            0,
+            0,
+            0,
+            1,
+            1,
+            1,
+            0,
+            1,
+            1,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            1,
+            0,
+            0,
+            1,
+            1,
+            1,
+            0,
+            1,
+            1,
+            1,
+            1,
+            0,
+            1,
+            1,
+            1,
+            0,
+            1,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            1,
+            1,
+            1,
+            1,
+            0,
+            1,
+            1,
+            1,
+            0,
+            0,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            0,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            0,
+            1,
+            0,
+            1,
+            1,
+            0
+          ],
+          "probabilities": [
+            [
+              0.42028698325157166,
+              0.579712986946106
+            ],
+            [
+              0.42012733221054077,
+              0.579872727394104
+            ],
+            [
+              0.4206581115722656,
+              0.5793419480323792
+            ],
+            [
+              0.42066487669944763,
+              0.57933509349823
+            ],
+            [
+              0.42062655091285706,
+              0.5793734788894653
+            ],
+            [
+              0.42045924067497253,
+              0.5795407891273499
+            ],
+            [
+              0.4202808737754822,
+              0.5797191262245178
+            ],
+            [
+              0.4205106794834137,
+              0.5794893503189087
+            ],
+            [
+              0.4200499951839447,
+              0.5799500346183777
+            ],
+            [
+              0.41989946365356445,
+              0.5801005363464355
+            ],
+            [
+              0.42026036977767944,
+              0.5797396302223206
+            ],
+            [
+              0.42057111859321594,
+              0.5794288516044617
+            ],
+            [
+              0.4202967584133148,
+              0.5797032117843628
+            ],
+            [
+              0.42056384682655334,
+              0.5794361233711243
+            ],
+            [
+              0.42036888003349304,
+              0.5796310901641846
+            ],
+            [
+              0.4199352562427521,
+              0.5800647139549255
+            ],
+            [
+              0.42001017928123474,
+              0.5799898505210876
+            ],
+            [
+              0.4205511808395386,
+              0.5794488787651062
+            ],
+            [
+              0.4206159710884094,
+              0.5793840289115906
+            ],
+            [
+              0.42026352882385254,
+              0.5797364711761475
+            ],
+            [
+              0.4205901622772217,
+              0.5794098377227783
+            ],
+            [
+              0.42032018303871155,
+              0.5796797871589661
+            ],
+            [
+              0.420472651720047,
+              0.5795273184776306
+            ],
+            [
+              0.4201415777206421,
+              0.5798584222793579
+            ],
+            [
+              0.4206514060497284,
+              0.5793485641479492
+            ],
+            [
+              0.4203658998012543,
+              0.5796341300010681
+            ],
+            [
+              0.42046311497688293,
+              0.5795368552207947
+            ],
+            [
+              0.42033064365386963,
+              0.5796693563461304
+            ],
+            [
+              0.420431524515152,
+              0.5795684456825256
+            ],
+            [
+              0.42060109972953796,
+              0.5793989300727844
+            ],
+            [
+              0.4199812114238739,
+              0.5800187587738037
+            ],
+            [
+              0.4205497205257416,
+              0.5794503092765808
+            ],
+            [
+              0.4203244745731354,
+              0.579675555229187
+            ],
+            [
+              0.4207840859889984,
+              0.5792158842086792
+            ],
+            [
+              0.4203176498413086,
+              0.5796823501586914
+            ],
+            [
+              0.4204385280609131,
+              0.5795615315437317
+            ],
+            [
+              0.4204809069633484,
+              0.5795190930366516
+            ],
+            [
+              0.420219749212265,
+              0.5797802805900574
+            ],
+            [
+              0.4201035499572754,
+              0.5798964500427246
+            ],
+            [
+              0.42021021246910095,
+              0.5797898173332214
+            ],
+            [
+              0.42043212056159973,
+              0.5795678496360779
+            ],
+            [
+              0.42036524415016174,
+              0.5796347260475159
+            ],
+            [
+              0.42073944211006165,
+              0.579260528087616
+            ],
+            [
+              0.420335978269577,
+              0.5796640515327454
+            ],
+            [
+              0.4205312430858612,
+              0.5794687271118164
+            ],
+            [
+              0.42006951570510864,
+              0.5799305438995361
+            ],
+            [
+              0.4202536344528198,
+              0.5797463655471802
+            ],
+            [
+              0.4199705123901367,
+              0.5800294876098633
+            ],
+            [
+              0.42086994647979736,
+              0.5791301131248474
+            ],
+            [
+              0.4200245440006256,
+              0.5799754858016968
+            ],
+            [
+              0.420592337846756,
+              0.5794076323509216
+            ],
+            [
+              0.42022037506103516,
+              0.5797796249389648
+            ],
+            [
+              0.42020854353904724,
+              0.5797914266586304
+            ],
+            [
+              0.4201466143131256,
+              0.5798534154891968
+            ],
+            [
+              0.420613557100296,
+              0.5793864130973816
+            ],
+            [
+              0.420590341091156,
+              0.5794095993041992
+            ],
+            [
+              0.4205343723297119,
+              0.5794655680656433
+            ],
+            [
+              0.4205467998981476,
+              0.57945317029953
+            ],
+            [
+              0.4200914800167084,
+              0.5799084901809692
+            ],
+            [
+              0.4203147888183594,
+              0.5796851515769958
+            ],
+            [
+              0.4200959801673889,
+              0.5799040794372559
+            ],
+            [
+              0.42063212394714355,
+              0.5793678760528564
+            ],
+            [
+              0.42021462321281433,
+              0.5797854065895081
+            ],
+            [
+              0.4202550947666168,
+              0.5797449350357056
+            ],
+            [
+              0.4201165735721588,
+              0.5798833966255188
+            ],
+            [
+              0.420348584651947,
+              0.579651415348053
+            ],
+            [
+              0.42027905583381653,
+              0.5797209739685059
+            ],
+            [
+              0.4203142821788788,
+              0.5796857476234436
+            ],
+            [
+              0.4206336438655853,
+              0.5793663859367371
+            ],
+            [
+              0.4201650321483612,
+              0.5798349380493164
+            ],
+            [
+              0.4202636480331421,
+              0.5797363519668579
+            ],
+            [
+              0.42021244764328003,
+              0.5797874927520752
+            ],
+            [
+              0.42010366916656494,
+              0.5798963308334351
+            ],
+            [
+              0.4200884699821472,
+              0.5799115300178528
+            ],
+            [
+              0.4203779399394989,
+              0.5796220302581787
+            ],
+            [
+              0.42047998309135437,
+              0.579520046710968
+            ],
+            [
+              0.42034250497817993,
+              0.5796574950218201
+            ],
+            [
+              0.42038071155548096,
+              0.579619288444519
+            ],
+            [
+              0.42048195004463196,
+              0.5795180797576904
+            ],
+            [
+              0.42039793729782104,
+              0.5796020030975342
+            ],
+            [
+              0.42049694061279297,
+              0.579503059387207
+            ],
+            [
+              0.4201861321926117,
+              0.5798138976097107
+            ],
+            [
+              0.4202471971511841,
+              0.5797528028488159
+            ],
+            [
+              0.42066308856010437,
+              0.579336941242218
+            ],
+            [
+              0.42000845074653625,
+              0.5799915194511414
+            ],
+            [
+              0.42054471373558044,
+              0.5794553160667419
+            ],
+            [
+              0.42044177651405334,
+              0.5795581936836243
+            ],
+            [
+              0.42003175616264343,
+              0.579968273639679
+            ],
+            [
+              0.42040911316871643,
+              0.579590916633606
+            ],
+            [
+              0.42046719789505005,
+              0.5795328617095947
+            ],
+            [
+              0.4203915297985077,
+              0.5796085000038147
+            ],
+            [
+              0.4200071692466736,
+              0.5799928307533264
+            ],
+            [
+              0.4201231300830841,
+              0.5798768997192383
+            ],
+            [
+              0.4201354384422302,
+              0.5798645615577698
+            ],
+            [
+              0.42050331830978394,
+              0.5794966220855713
+            ],
+            [
+              0.42029041051864624,
+              0.5797095894813538
+            ],
+            [
+              0.420181542634964,
+              0.5798184275627136
+            ],
+            [
+              0.42042291164398193,
+              0.5795771479606628
+            ],
+            [
+              0.42079195380210876,
+              0.5792080163955688
+            ],
+            [
+              0.4205590784549713,
+              0.5794409513473511
+            ]
+          ]
+        },
+        {
+          "task": "krauzlis_cued_motion",
+          "cell": "B28",
+          "n": 100,
+          "confusion": [
+            [
+              0,
+              43
+            ],
+            [
+              0,
+              57
+            ]
+          ],
+          "class_recall": [
+            0.0,
+            1.0
+          ],
+          "accuracy": 0.57,
+          "balanced_accuracy": 0.5,
+          "auc": 0.45532435740514077,
+          "auc_ovr": [
+            0.45532435740514077,
+            0.45532435740514077
+          ],
+          "specificity": 0.0,
+          "false_positive_rate": 1.0,
+          "events": {
+            "target": {
+              "n": 57,
+              "positive_rate": 1.0,
+              "target_side_counts": {
+                "0": 29,
+                "1": 28
+              },
+              "confusion": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  57
+                ]
+              ],
+              "hit_rate": 1.0,
+              "specificity": null,
+              "false_positive_rate": null
+            },
+            "foil": {
+              "n": 29,
+              "positive_rate": 1.0,
+              "target_side_counts": {
+                "0": 14,
+                "1": 15
+              },
+              "confusion": [
+                [
+                  0,
+                  29
+                ],
+                [
+                  0,
+                  0
+                ]
+              ],
+              "hit_rate": null,
+              "specificity": 0.0,
+              "false_positive_rate": 1.0
+            },
+            "catch": {
+              "n": 14,
+              "positive_rate": 1.0,
+              "target_side_counts": {
+                "0": 7,
+                "1": 7
+              },
+              "confusion": [
+                [
+                  0,
+                  14
+                ],
+                [
+                  0,
+                  0
+                ]
+              ],
+              "hit_rate": null,
+              "specificity": 0.0,
+              "false_positive_rate": 1.0
+            }
+          },
+          "target_hit_rate": 1.0,
+          "foil_false_alarm_rate": 1.0,
+          "catch_false_positive_rate": 1.0,
+          "strata": {
+            "baseline_transitions": {
+              "28": {
+                "n": 100,
+                "accuracy": 0.57,
+                "positive_rate": 1.0
+              }
+            },
+            "event_type": {
+              "\"target\"": {
+                "n": 57,
+                "accuracy": 1.0,
+                "positive_rate": 1.0
+              },
+              "\"catch\"": {
+                "n": 14,
+                "accuracy": 0.0,
+                "positive_rate": 1.0
+              },
+              "\"foil\"": {
+                "n": 29,
+                "accuracy": 0.0,
+                "positive_rate": 1.0
+              }
+            },
+            "event_magnitude_degrees": {
+              "28": {
+                "n": 49,
+                "accuracy": 0.5102040816326531,
+                "positive_rate": 1.0
+              },
+              "26": {
+                "n": 51,
+                "accuracy": 0.6274509803921569,
+                "positive_rate": 1.0
+              }
+            },
+            "target_location": {
+              "0": {
+                "n": 50,
+                "accuracy": 0.58,
+                "positive_rate": 1.0
+              },
+              "1": {
+                "n": 50,
+                "accuracy": 0.56,
+                "positive_rate": 1.0
+              }
+            }
+          },
+          "seconds": 2.376208145171404,
+          "trial_ids": [
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/0",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/1",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/2",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/3",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/4",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/5",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/6",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/7",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/8",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/9",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/10",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/11",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/12",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/13",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/14",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/15",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/16",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/17",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/18",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/19",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/20",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/21",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/22",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/23",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/24",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/25",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/26",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/27",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/28",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/29",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/30",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/31",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/32",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/33",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/34",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/35",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/36",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/37",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/38",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/39",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/40",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/41",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/42",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/43",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/44",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/45",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/46",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/47",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/48",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/49",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/50",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/51",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/52",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/53",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/54",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/55",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/56",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/57",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/58",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/59",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/60",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/61",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/62",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/63",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/64",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/65",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/66",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/67",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/68",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/69",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/70",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/71",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/72",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/73",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/74",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/75",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/76",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/77",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/78",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/79",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/80",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/81",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/82",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/83",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/84",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/85",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/86",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/87",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/88",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/89",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/90",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/91",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/92",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/93",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/94",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/95",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/96",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/97",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/98",
+            "krauzlis_cued_motion/B28/SpatialBattery/val/15859276311002/krauzlis_cued_motion/99"
+          ],
+          "labels": [
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            0,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            1,
+            0,
+            1,
+            1,
+            1,
+            0,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            1,
+            1,
+            1,
+            1,
+            0,
+            1,
+            1,
+            0,
+            0,
+            1,
+            1,
+            0,
+            1,
+            0,
+            0,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0
+          ],
+          "probabilities": [
+            [
+              0.42626258730888367,
+              0.5737374424934387
+            ],
+            [
+              0.4260043203830719,
+              0.5739956498146057
+            ],
+            [
+              0.4263952076435089,
+              0.5736048221588135
+            ],
+            [
+              0.4265745282173157,
+              0.5734254717826843
+            ],
+            [
+              0.42637184262275696,
+              0.5736281871795654
+            ],
+            [
+              0.42641347646713257,
+              0.5735865235328674
+            ],
+            [
+              0.42636266350746155,
+              0.5736373662948608
+            ],
+            [
+              0.42647624015808105,
+              0.5735237002372742
+            ],
+            [
+              0.4258621633052826,
+              0.5741378664970398
+            ],
+            [
+              0.42650431394577026,
+              0.573495626449585
+            ],
+            [
+              0.42631492018699646,
+              0.5736851096153259
+            ],
+            [
+              0.42646321654319763,
+              0.57353675365448
+            ],
+            [
+              0.42611777782440186,
+              0.5738821625709534
+            ],
+            [
+              0.4262135624885559,
+              0.5737863779067993
+            ],
+            [
+              0.42651137709617615,
+              0.5734886527061462
+            ],
+            [
+              0.4264788329601288,
+              0.5735211968421936
+            ],
+            [
+              0.4263724386692047,
+              0.5736275911331177
+            ],
+            [
+              0.4261414408683777,
+              0.5738585591316223
+            ],
+            [
+              0.4262935221195221,
+              0.5737064480781555
+            ],
+            [
+              0.4262194335460663,
+              0.5737805962562561
+            ],
+            [
+              0.4265085458755493,
+              0.5734914541244507
+            ],
+            [
+              0.42640548944473267,
+              0.5735944509506226
+            ],
+            [
+              0.42622238397598267,
+              0.5737776160240173
+            ],
+            [
+              0.4262933135032654,
+              0.5737066864967346
+            ],
+            [
+              0.42641401290893555,
+              0.5735859870910645
+            ],
+            [
+              0.42652031779289246,
+              0.5734796524047852
+            ],
+            [
+              0.4259951710700989,
+              0.5740048289299011
+            ],
+            [
+              0.4264613687992096,
+              0.573538601398468
+            ],
+            [
+              0.42631182074546814,
+              0.5736881494522095
+            ],
+            [
+              0.4264501929283142,
+              0.573549747467041
+            ],
+            [
+              0.42607513070106506,
+              0.5739248394966125
+            ],
+            [
+              0.42604905366897583,
+              0.5739509463310242
+            ],
+            [
+              0.42612603306770325,
+              0.5738739371299744
+            ],
+            [
+              0.42602184414863586,
+              0.5739781260490417
+            ],
+            [
+              0.4263497292995453,
+              0.5736502408981323
+            ],
+            [
+              0.42640796303749084,
+              0.5735920071601868
+            ],
+            [
+              0.4262981116771698,
+              0.5737018585205078
+            ],
+            [
+              0.42681175470352173,
+              0.5731882452964783
+            ],
+            [
+              0.42659807205200195,
+              0.573401927947998
+            ],
+            [
+              0.42608025670051575,
+              0.5739197731018066
+            ],
+            [
+              0.4260746240615845,
+              0.5739253759384155
+            ],
+            [
+              0.42619559168815613,
+              0.5738043785095215
+            ],
+            [
+              0.4263676106929779,
+              0.5736324191093445
+            ],
+            [
+              0.4266093671321869,
+              0.5733906030654907
+            ],
+            [
+              0.42629867792129517,
+              0.5737013220787048
+            ],
+            [
+              0.4261488616466522,
+              0.5738511681556702
+            ],
+            [
+              0.42645373940467834,
+              0.5735462307929993
+            ],
+            [
+              0.42641404271125793,
+              0.5735859274864197
+            ],
+            [
+              0.42634791135787964,
+              0.5736520290374756
+            ],
+            [
+              0.4263007342815399,
+              0.5736992955207825
+            ],
+            [
+              0.42605406045913696,
+              0.573945939540863
+            ],
+            [
+              0.4263480603694916,
+              0.573651909828186
+            ],
+            [
+              0.4264313876628876,
+              0.57356858253479
+            ],
+            [
+              0.4263612627983093,
+              0.5736387372016907
+            ],
+            [
+              0.42635372281074524,
+              0.5736463069915771
+            ],
+            [
+              0.42652273178100586,
+              0.5734772682189941
+            ],
+            [
+              0.42627760767936707,
+              0.5737223625183105
+            ],
+            [
+              0.4263266623020172,
+              0.5736733078956604
+            ],
+            [
+              0.4266369938850403,
+              0.5733630061149597
+            ],
+            [
+              0.42597076296806335,
+              0.574029266834259
+            ],
+            [
+              0.42628467082977295,
+              0.5737152695655823
+            ],
+            [
+              0.42639467120170593,
+              0.5736053586006165
+            ],
+            [
+              0.42622110247612,
+              0.5737789273262024
+            ],
+            [
+              0.42646870017051697,
+              0.5735312700271606
+            ],
+            [
+              0.4261572062969208,
+              0.5738428235054016
+            ],
+            [
+              0.4261626899242401,
+              0.5738373398780823
+            ],
+            [
+              0.4262995719909668,
+              0.573700487613678
+            ],
+            [
+              0.4261070191860199,
+              0.5738930106163025
+            ],
+            [
+              0.4265574812889099,
+              0.5734424591064453
+            ],
+            [
+              0.4262980818748474,
+              0.5737019777297974
+            ],
+            [
+              0.4261924624443054,
+              0.5738075375556946
+            ],
+            [
+              0.42620840668678284,
+              0.5737915635108948
+            ],
+            [
+              0.4261590838432312,
+              0.5738409757614136
+            ],
+            [
+              0.4262911081314087,
+              0.5737088322639465
+            ],
+            [
+              0.42600080370903015,
+              0.5739992260932922
+            ],
+            [
+              0.42676296830177307,
+              0.5732370018959045
+            ],
+            [
+              0.42623811960220337,
+              0.5737618803977966
+            ],
+            [
+              0.4263118803501129,
+              0.5736881494522095
+            ],
+            [
+              0.42625507712364197,
+              0.5737448930740356
+            ],
+            [
+              0.42638397216796875,
+              0.5736160278320312
+            ],
+            [
+              0.4263409972190857,
+              0.5736590027809143
+            ],
+            [
+              0.4265163540840149,
+              0.5734836459159851
+            ],
+            [
+              0.42623504996299744,
+              0.573764979839325
+            ],
+            [
+              0.4263642430305481,
+              0.5736357569694519
+            ],
+            [
+              0.4260392189025879,
+              0.5739607810974121
+            ],
+            [
+              0.4259188771247864,
+              0.5740811228752136
+            ],
+            [
+              0.42638784646987915,
+              0.5736122131347656
+            ],
+            [
+              0.4260690212249756,
+              0.5739309787750244
+            ],
+            [
+              0.42624688148498535,
+              0.5737531185150146
+            ],
+            [
+              0.42634209990501404,
+              0.5736578702926636
+            ],
+            [
+              0.4260804057121277,
+              0.5739195942878723
+            ],
+            [
+              0.42635607719421387,
+              0.5736439228057861
+            ],
+            [
+              0.4260282814502716,
+              0.573971688747406
+            ],
+            [
+              0.42645424604415894,
+              0.5735457539558411
+            ],
+            [
+              0.4261622130870819,
+              0.5738378167152405
+            ],
+            [
+              0.42609333992004395,
+              0.573906660079956
+            ],
+            [
+              0.4263796806335449,
+              0.5736202597618103
+            ],
+            [
+              0.42631638050079346,
+              0.5736836194992065
+            ],
+            [
+              0.4261776804924011,
+              0.5738223791122437
+            ],
+            [
+              0.42636746168136597,
+              0.573632538318634
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}

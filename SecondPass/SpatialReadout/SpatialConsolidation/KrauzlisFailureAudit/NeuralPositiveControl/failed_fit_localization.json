@@ -1,0 +1,98 @@
+{
+  "initial": {
+    "loss_first8": 0.594328835606575,
+    "activation_statistics": {
+      "motion": {
+        "mean": 0.0026476019993424416,
+        "std": 0.08035773038864136,
+        "min": -0.6166119575500488,
+        "max": 0.5409383773803711,
+        "fraction_below_minus5": 0.0,
+        "fraction_exact_zero": 0.0
+      },
+      "patch": {
+        "mean": -0.003051004372537136,
+        "std": 0.06063805893063545,
+        "min": -0.12826533615589142,
+        "max": 0.11660794913768768,
+        "fraction_below_minus5": 0.0,
+        "fraction_exact_zero": 0.0
+      },
+      "readout_pre_GELU": {
+        "mean": -0.0026522870175540447,
+        "std": 0.5543281435966492,
+        "min": -1.2944626808166504,
+        "max": 1.6219221353530884,
+        "fraction_below_minus5": 0.0,
+        "fraction_exact_zero": 0.0
+      },
+      "readout_post_GELU": {
+        "mean": 0.10542982816696167,
+        "std": 0.3264675438404083,
+        "min": -0.16995006799697876,
+        "max": 1.5369172096252441,
+        "fraction_below_minus5": 0.0,
+        "fraction_exact_zero": 0.0
+      }
+    },
+    "gradient_group_norms": {
+      "space_pos": 0.439470112790144,
+      "time_pos": 0.12877966705660163,
+      "motion": 0.04510689270693436,
+      "patch": 0.6863536706207547,
+      "temporal": 0.8357358242634515,
+      "spatial": 0.6291945012689094,
+      "pool": 0.0001620153748737974,
+      "readout": 5.017193182834666
+    }
+  },
+  "failed_fit": {
+    "loss_first8": 0.6932186260819435,
+    "activation_statistics": {
+      "motion": {
+        "mean": -0.0009214465389959514,
+        "std": 0.081334188580513,
+        "min": -0.5306695103645325,
+        "max": 0.6965254545211792,
+        "fraction_below_minus5": 0.0,
+        "fraction_exact_zero": 0.0
+      },
+      "patch": {
+        "mean": 0.00037224640254862607,
+        "std": 0.07869357615709305,
+        "min": -0.17118947207927704,
+        "max": 0.16445483267307281,
+        "fraction_below_minus5": 0.0,
+        "fraction_exact_zero": 0.0
+      },
+      "readout_pre_GELU": {
+        "mean": -11.670021057128906,
+        "std": 4.471517562866211,
+        "min": -27.989023208618164,
+        "max": 0.003910004161298275,
+        "fraction_below_minus5": 0.9375,
+        "fraction_exact_zero": 0.0
+      },
+      "readout_post_GELU": {
+        "mean": -4.942848590872018e-06,
+        "std": 0.00012614626029971987,
+        "min": -0.001388796721585095,
+        "max": 0.0019611013121902943,
+        "fraction_below_minus5": 0.0,
+        "fraction_exact_zero": 0.9375
+      }
+    },
+    "gradient_group_norms": {
+      "space_pos": 2.0503121961781562e-05,
+      "time_pos": 1.252627741115628e-05,
+      "motion": 8.856682771708849e-06,
+      "patch": 8.146841850831822e-05,
+      "temporal": 0.0003098835765521976,
+      "spatial": 0.0003090399730849049,
+      "pool": 2.3306626564768963e-08,
+      "readout": 0.35365944117729126
+    }
+  },
+  "elapsed_seconds": 788.4990329742432,
+  "hypothesis": "Excessive early AdamW step drives dense GELU head negative, suppressing sensory credit; compare readout preactivations and group gradient norms rather than assuming disconnected gradients."
+}

@@ -1,0 +1,106 @@
+{
+  "owner_stage.json": {
+    "stage": "fresh_epoch2_production",
+    "observed": 1791068079.6564438
+  },
+  "latest_checkpoint.json": {
+    "path": "/workspace/vawm_weighted_mean_rvit_01/run/latest.pt",
+    "step": 3,
+    "bytes": 87529499,
+    "sha256": "c2a5476caf7506c57ae0e52a4f585ff272d470877016f9799641616a070bf469",
+    "verified": true
+  },
+  "persisted_progress_verification.json": {
+    "verified": true,
+    "step": 3,
+    "checkpoint": {
+      "path": "/workspace/vawm_weighted_mean_rvit_01/run/latest.pt",
+      "step": 3,
+      "bytes": 87529499,
+      "sha256": "c2a5476caf7506c57ae0e52a4f585ff272d470877016f9799641616a070bf469",
+      "verified": true
+    },
+    "episodes": 96,
+    "parameter_count": 7269426,
+    "changed_parameter_tensors": 92,
+    "all_trainable_parameters_changed": true,
+    "all_named_adam_steps_verified": true,
+    "direct_constructor_equality": true,
+    "empty_initial_adam": true,
+    "fresh_streams": true,
+    "replay_epochs": 2,
+    "updates_per_pool": 66
+  },
+  "live_status.json": {
+    "phase": "training",
+    "pid": 10876,
+    "utc": "2026-10-03T22:55:31.409938+00:00",
+    "architecture": "weighted_raw_mean_0p5_0p4_0p1_fresh_cnn_rvit",
+    "step": 5,
+    "episodes": 160,
+    "optimizer_seconds": 28.584002778865397,
+    "deadline": 1791089334.23731,
+    "latest_checkpoint": {
+      "path": "/workspace/vawm_weighted_mean_rvit_01/run/latest.pt",
+      "step": 3,
+      "bytes": 87529499,
+      "sha256": "c2a5476caf7506c57ae0e52a4f585ff272d470877016f9799641616a070bf469",
+      "verified": true
+    },
+    "best_step": null,
+    "best_key": null,
+    "pool_index": 0,
+    "epoch": 0,
+    "unique_episodes_generated": 1000,
+    "latest_validation": null,
+    "last_loss": 0.740765780210495
+  },
+  "owner_claim.json": {
+    "pid": 10843,
+    "observed": 1791067982.835469,
+    "fresh_model": true,
+    "replay_epochs": 2,
+    "same_pod": true,
+    "cap_extended": false
+  },
+  "run_supervisor.json": {
+    "pid": 10870,
+    "worker_pid": 10876,
+    "deadline": 1791089334.23731,
+    "command": [
+      "/usr/bin/python3",
+      "-u",
+      "-m",
+      "SecondPass.WeightedMeanRViTEpoch2.cloud_worker",
+      "run",
+      "/workspace/vawm_weighted_mean_rvit_01/run"
+    ]
+  },
+  "progress": {
+    "utc": "2026-10-03T22:55:31.389043+00:00",
+    "step": 5,
+    "task": "krauzlis_cued_motion",
+    "cell": "B28",
+    "loss": 0.740765780210495,
+    "seconds": 6.754682254977524,
+    "episodes": 32,
+    "frames": 1440,
+    "grad_norm": 1.17649085947472,
+    "cumulative_episodes": 160,
+    "pool_index": 0,
+    "epoch": 0,
+    "unique_episodes_generated": 1000,
+    "unique_episodes_presented": 160,
+    "pool_generation_seconds": 0.0,
+    "partial_batch": false
+  },
+  "owner_claim.json_alive": true,
+  "live_status.json_alive": true,
+  "owner_log_tail": [
+    "{\"utc\": \"2026-10-03T22:55:04.502357+00:00\", \"step\": 1, \"task\": \"krauzlis_cued_motion\", \"cell\": \"B20\", \"loss\": 0.6921041756868362, \"seconds\": 5.841471687890589, \"episodes\": 32, \"frames\": 1184, \"grad_norm\": 0.46566850601801835, \"cumulative_episodes\": 32, \"pool_index\": 0, \"epoch\": 0, \"unique_episodes_generated\": 1000, \"unique_episodes_presented\": 32, \"pool_generation_seconds\": 13.80321925971657, \"partial_batch\": false}",
+    "{\"utc\": \"2026-10-03T22:55:12.597725+00:00\", \"step\": 2, \"task\": \"krauzlis_cued_motion\", \"cell\": \"B28\", \"loss\": 0.7836866825819016, \"seconds\": 6.625811197794974, \"episodes\": 32, \"frames\": 1440, \"grad_norm\": 2.8318961502978914, \"cumulative_episodes\": 64, \"pool_index\": 0, \"epoch\": 0, \"unique_episodes_generated\": 1000, \"unique_episodes_presented\": 64, \"pool_generation_seconds\": 0.0, \"partial_batch\": false}",
+    "{\"utc\": \"2026-10-03T22:55:18.108673+00:00\", \"step\": 3, \"task\": \"krauzlis_cued_motion\", \"cell\": \"B12\", \"loss\": 0.6732768788933754, \"seconds\": 4.296827427111566, \"episodes\": 32, \"frames\": 928, \"grad_norm\": 0.7497605993943665, \"cumulative_episodes\": 96, \"pool_index\": 0, \"epoch\": 0, \"unique_episodes_generated\": 1000, \"unique_episodes_presented\": 96, \"pool_generation_seconds\": 0.0, \"partial_batch\": false}",
+    "{\"utc\": \"2026-10-03T22:55:24.543569+00:00\", \"step\": 4, \"task\": \"krauzlis_cued_motion\", \"cell\": \"B20\", \"loss\": 0.6424277350306511, \"seconds\": 5.0652102110907435, \"episodes\": 32, \"frames\": 1184, \"grad_norm\": 0.6246448112082832, \"cumulative_episodes\": 128, \"pool_index\": 0, \"epoch\": 0, \"unique_episodes_generated\": 1000, \"unique_episodes_presented\": 128, \"pool_generation_seconds\": 0.0, \"partial_batch\": false}",
+    "{\"utc\": \"2026-10-03T22:55:31.389043+00:00\", \"step\": 5, \"task\": \"krauzlis_cued_motion\", \"cell\": \"B28\", \"loss\": 0.740765780210495, \"seconds\": 6.754682254977524, \"episodes\": 32, \"frames\": 1440, \"grad_norm\": 1.17649085947472, \"cumulative_episodes\": 160, \"pool_index\": 0, \"epoch\": 0, \"unique_episodes_generated\": 1000, \"unique_episodes_presented\": 160, \"pool_generation_seconds\": 0.0, \"partial_batch\": false}"
+  ]
+}

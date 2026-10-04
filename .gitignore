@@ -24,3 +24,13 @@ WorkingMemory/PlainBaseline/runs/*/bundle.tar.gz
 WorkingMemory/PlainBaseline/runs/*/*.tar.gz
 WorkingMemory/PlainBaseline/runs/*/known_hosts
 SecondPass/papers/pdf/
+
+# Local tool state and generated platform/browser dependencies.
+.DS_Store
+.flash/
+**/.deps/
+**/.qa-chrome/
+**/sensory_swift_cache/
+**/.test-tmp*/
+# Worker stdout duplicates the structured progress/result files retained in Git.
+**/*.stdout.log

@@ -1,0 +1,62 @@
+SpatialReadout: architecture and decision logic
+Source-audited technical paper
+5
+What KDA remembers—and what its coeﬃcients mean
+5.1
+Error correction rather than indiscriminate accumulation
+For a unit-norm key, the prediction at the just-written key satisﬁes
+ST
+t kt = (1 −βt) ¯ST
+t kt + βtvt.
+(8)
+This follows directly from Eq. (5), not from a behavioral experiment. It explains the attraction of a delta rule:
+repeated evidence for the same key corrects a prediction rather than simply adding the full value repeatedly. The
+identity assumes a unit key; the epsilon safeguard can yield a smaller norm for nearly zero packed vectors. For a
+general key, the eﬀective correction along that key includes ∥kt∥2.
+The channelwise gate allows the eight key rows of one head to retain diﬀerent fractions of their previous contents.
+It does not select a spatial location by normalizing against other locations. A gate map can vary spatially because
+it is generated from spatial features, while the state update remains an 8 × 16 operation at each site. Two heads
+provide two independently parameterized association/read paths before their emissions are mixed. Whether two
+heads, eight keys, or sixteen values are optimal is not established by this audit.
+5.2
+Signed temporal coeﬃcients
+For zero initial state, unrolling Eq. (7) yields
+St =
+t
+∑
+τ=0
+Pt,τ βτkτvT
+τ ,
+(9)
+Pt,τ = AtAt−1 · · · Aτ+1,
+Pt,t = I,
+(10)
+ot =
+t
+∑
+τ=0
+ct,τvτ,
+ct,τ = βτqT
+t Pt,τkτ.
+(11)
+Queries, keys, and transition products can generate either sign for ct,τ. These coeﬃcients need not sum to one.
+They express how earlier values at one head/site contribute to the current pre-output read along the observed
+computation, not a probability distribution over source patches. The output convolution subsequently mixes the
+heads and channels; deeper processing and the ﬁnal task head further transform the result.
+The expansion is an exact conditional decomposition given the realized gates, queries, keys, and values. It is not
+a claim that changing an input value while holding all other quantities ﬁxed reproduces a full counterfactual trial.
+In particular, later-scale inputs depend on earlier recurrent emissions. A coeﬃcient is neither an input-independent
+causal inﬂuence nor automatic attribution of the ﬁnal choice.
+5.3
+State footprint and spatial interpretation
+At each scale there are 2 · 8 · 16 = 256 stored scalars per spatial site. The three memories hold 160,000, 43,264,
+and 12,544 scalars per episode, respectively. These are activation-state sizes, not trainable parameter counts. They
+remain ﬁxed as sequence length grows, but the unrolled training graph need not have constant memory cost. The
+Python sequence loop carries diﬀerentiable state across the full episode.
+Convolutions allow neighboring inputs to inﬂuence the packed local variables; multiscale concatenation allows lower-
+scale memory emissions to aﬀect deeper memories. GroupNorm further couples spatial statistics. Thus it is accurate
+to call the recurrence site-indexed, but inaccurate to portray an individual cell as an isolated image pixel or a spatially
+segregated biological neuron.
+Takeaway. Learned retention gates are positive; implicit read coeﬃcients can be signed. Neither is a global spatial
+softmax.
+5

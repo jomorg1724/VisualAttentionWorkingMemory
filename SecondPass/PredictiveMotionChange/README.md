@@ -1,0 +1,15 @@
+# Predictive representation → simple motion-change FFN
+
+The user requested two representations of before/after motion and a simple change decision, then explicitly authorized local training.
+
+Each input contains two ordered three-frame clips from one continuous six-frame, 100×100 RGB dot movie. All dot identities persist, with periodic wrapping and the same rendering, density and three speeds (0.375, 1, 2 pixels/frame) as predictive pretraining. Base direction is uniform. Half of trials maintain direction; half turn by +/−26° or +/−28°. Both clips always contain moving dots. The second clip begins at the position reached by three steps of before velocity; its two internal transitions use after velocity. This isolates a stable direction in each clip. No cue, distractor, gap, or dot reinitialization.
+
+Adjacent no-change/change trials share dot positions, count, base direction, turn sign, speed, and the entire before clip; their after clips share the first frame. The label changes only the direction of the second clip. Train/validation/test namespaces185101/185102/185103 are independent; paired nuisance examples stay inside a split. This new synthetic comparison is not the full native Krauzlis task.
+
+Use the predictive model's validation-selected update50,000, loading only its CNN, vector_features and mu_head into the frozen encoder. Each clip gives its deterministic512-dimensional mean vector. Decoder/logvar are omitted. All encoder parameters are frozen and evaluated without gradients. This explicitly tests a readout of the trained representation; it does not test end-to-end fine-tuning.
+
+The fresh classifier concatenates before/after (1024) → LayerNorm → Linear256/GELU → Linear64/GELU → Linear2. It has281,026 trainable parameters in8 tensors. Ordinary two-class cross-entropy, Adam1e-3, no clipping, FP32, one local MPS worker/two CPU threads; no pretrained classifier/optimizer state.
+
+Train on1,000 fresh balanced trials, cache their two frozen vectors in RAM, train two shuffled epochs (batch64, 16updates/epoch with a40-sample tail), and replace with a fresh pool. No pixels/features are serialized. Target10,240 classifier updates =320pools =320,000 unique trials/640,000 presentations. Eight-hour ceiling includes encoding, training and evaluation; finish on target or deadline, with no automatic extension. Preserve predictive model and all prior retained checkpoints.
+
+Validation768 trials (128 per speed/angle cell), first32updates then every512updates; select by mean cell AUC, then balanced accuracy. Fixed argmax decision threshold; report sensitivity/specificity and loss for every cell. Final independent test3072trials (512/cell). Only classifier best.pt/latest.pt are retained and overwritten, referencing the unchanged encoder checkpoint instead of copying it. Independent deadline guard/caffeinate and the exclusive local accelerator lock are active. Initial paired-dataset check and disposable FFN gradient/update check passed; production Adam evidence is in LocalRuntime/production_verified.json.

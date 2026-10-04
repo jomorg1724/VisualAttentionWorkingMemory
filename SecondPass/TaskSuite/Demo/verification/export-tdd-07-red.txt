@@ -1,0 +1,26 @@
+F
+=================================== FAILURES ===================================
+_____ test_validator_rejects_forged_photometric_measurements_and_timeline ______
+
+tmp_path = PosixPath('/Users/jonathanmorgan/Desktop/VisualAttentionWorkingMemory/SecondPass/TaskSuite/Demo/.test-tmp-export/test_validator_rejects_forged_0')
+
+    def test_validator_rejects_forged_photometric_measurements_and_timeline(tmp_path):
+        e = exporter()
+        from SecondPass.TaskSuite.Demo import validate_assets as v
+        from PIL import Image, ImageSequence
+        import hashlib
+        stream=e.DemoStream('image_recognition','N0_H3')
+        raw,label,meta=stream.next()
+        episode=e.export_episode(tmp_path,stream,raw,label,meta,'test')
+        metadata_path=tmp_path/'dist'/episode['metadata_path']
+        bad=copy.deepcopy(episode); bad['gif_quantization_error']['mean_abs']=999
+        e.atomic_json(metadata_path,bad)
+        with pytest.raises(ValueError,match='quantization'):
+>           v.validate_episode(bad,tmp_path)
+E           Failed: DID NOT RAISE <class 'ValueError'>
+
+SecondPass/TaskSuite/Demo/tests/test_export.py:143: Failed
+=========================== short test summary info ============================
+FAILED SecondPass/TaskSuite/Demo/tests/test_export.py::test_validator_rejects_forged_photometric_measurements_and_timeline
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed, 12 deselected in 0.72s

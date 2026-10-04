@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>EnvironmentVariables</key>
+	<dict>
+		<key>MKL_NUM_THREADS</key>
+		<string>2</string>
+		<key>OMP_NUM_THREADS</key>
+		<string>2</string>
+		<key>OPENBLAS_NUM_THREADS</key>
+		<string>2</string>
+		<key>PYTHONUNBUFFERED</key>
+		<string>1</string>
+		<key>VECLIB_MAXIMUM_THREADS</key>
+		<string>2</string>
+	</dict>
+	<key>KeepAlive</key>
+	<false/>
+	<key>Label</key>
+	<string>org.vawm.spatialreadout.cpu-probe-87464</string>
+	<key>ProcessType</key>
+	<string>Background</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/private/tmp/vawm-task-suite-venv/bin/python</string>
+		<string>-u</string>
+		<string>-m</string>
+		<string>SecondPass.SpatialReadout.checks.launchd_probe</string>
+		<string>worker</string>
+		<string>/Users/jonathanmorgan/Desktop/VisualAttentionWorkingMemory/SecondPass/SpatialReadout/checks/launchd_cpu_01</string>
+	</array>
+	<key>RunAtLoad</key>
+	<true/>
+	<key>StandardErrorPath</key>
+	<string>/Users/jonathanmorgan/Desktop/VisualAttentionWorkingMemory/SecondPass/SpatialReadout/checks/launchd_cpu_01/launchd.stderr.log</string>
+	<key>StandardOutPath</key>
+	<string>/Users/jonathanmorgan/Desktop/VisualAttentionWorkingMemory/SecondPass/SpatialReadout/checks/launchd_cpu_01/launchd.stdout.log</string>
+	<key>WorkingDirectory</key>
+	<string>/Users/jonathanmorgan/Desktop/VisualAttentionWorkingMemory</string>
+</dict>
+</plist>

@@ -1,0 +1,1678 @@
+[
+  {
+    "id": "orientation_ring",
+    "title": "Ring-cued orientation",
+    "group": "selection",
+    "question": "Did the ring-cued Gabor undergo a positive or negative axial-angle change?",
+    "intro": "Four small gratings change orientation, but only one location determines the answer. A bright ring identifies that location before and during the sample; it disappears when the probe arrives. This is a location-selection comparison, not the later plus/minus rule and not a delayed-memory experiment: the suite contains only D0 for this task.",
+    "sections": {
+      "appears": [
+        "Four achromatic Gabor patches occupy the fixed corners of an interior square on a mid-gray field. Each patch has a compact Gaussian envelope, a sinusoidal carrier and a randomly chosen initial axial angle. A thin bright ring surrounds one patch during instruction and sampling. The small top-corner pictograms mark the recall protocol and current phase; no local plus/minus symbol is drawn. Pixel noise, carrier phase, common wavelength and common amplitude are freshly sampled whenever the Gabor array is rendered. [spatial-ring-code] [spatial-cue-code]",
+        "The word orientation names an axis, not an arrow. The generator’s angle is the cosine carrier wavevector; the visible bars run perpendicular to it. Both axes are periodic modulo 180°, and their signed axial changes agree when expressed in a consistent image-coordinate convention. Legacy metadata calls positive change counter-clockwise; the atlas deliberately reports the numerical sign rather than treating that wording as a verified screen rotation. [spatial-ring-code]"
+      ],
+      "sequence": [
+        "Frame indices are zero-based. Frame 0 is the ring cue on an otherwise blank field with recall/sample corner glyphs. Frames 1 and 2 show the same four orientation values with newly sampled rendering nuisance and the same ring. Frame 3 shows the full probe array with a report glyph and without the ring. Thus there are four presented frames, no inserted delay frames, and only one probe/report observation. [spatial-ring-code]",
+        "Although VariantStream accepts a delay argument, the official catalog restricts orientation_ring to D0. The two sample frames repeat the orientation evidence, not the exact pixel raster. The viewer’s loop restart is another presentation of the illustration, not a fifth frame of the native trial. [spatial-suite-code]"
+      ],
+      "rules": [
+        "Class 0 means the selected patch changed by a negative signed axial angle; class 1 means positive. Each trial draws one magnitude from 15°, 30° or 45°, shared by all four patches. The target sign is set by the class, while each foil sign is independently sampled from −1 and +1. There are no unchanged targets, and the absence of a sign glyph means there is no instruction-relative reversal of the label. [spatial-ring-code]",
+        "For the selected example, read target_location and rotations_degrees[target_location]. Its sign is the answer; rotation_magnitude supplies the absolute change. A foil that rotates oppositely is irrelevant even if it appears more salient. The recorded sample_angles_radians and probe_angles_radians can verify the result with the doubled-angle wrapped difference, avoiding an incorrect subtraction across the 0/π boundary. [spatial-ring-code]"
+      ],
+      "ignore": [
+        "Ignore the three uncued orientation comparisons, the arbitrary starting angles and nuisance phase changes. A bright stripe moving locally between sample images is not itself the labeled rotation: phase is deliberately redrawn. A global average of the four signs can disagree with the target, and the presence of a change somewhere in the image cannot distinguish the classes because all four angles change. [spatial-ring-code]"
+      ],
+      "implementation": [
+        "The suite dispatches this task to VariantStream, whose _variant method constructs signs and angles and whose _gabors_subset method renders all four locations for this rung. It reuses SpatialBatteryStream.local_cue and blank, which in turn call WorkingMemory.stimuli.visual_cues. The eight-case shuffled pending queue contains every label × target-location combination once per cycle, so exact balance is a cycle property rather than a guarantee for an arbitrarily curated subset. [spatial-ring-code] [spatial-code] [spatial-cue-code]",
+        "All imported nuisance defaults are retained: per-frame shared wavelength/amplitude, per-patch independent phase, per-pixel Gaussian noise, fixed support and clipping. The native metadata includes cue_sign=1 for this rung, but that is a constant internal convention, not a visible plus glyph. Neither that field nor the target index is supplied to the sensory computation. Cell-local deterministic stream identity establishes reproducibility, not replay of an earlier model experiment. [spatial-ring-code] [spatial-suite-code]"
+      ],
+      "neuroscience": [
+        "The motivating scientific distinction is between detecting a feature change and selecting which feature-bearing location is relevant. In Arcizet and Krauzlis’s primary motion-change experiment, a peripheral ring designated the relevant location and an equally real event at another patch had to be rejected. That directly supports the relevance of spatial selection among competing local signals, but their stimuli were moving dots, not four Gabor arrays. [spatial-arcizet-2018]",
+        "This ring task is therefore a project-specific computational simplification. It preserves the functional question “which location should govern the decision?” while removing the signed instruction and inserted retention interval. It is not a separately validated biological paradigm, and no neuronal localization or attentional mechanism is inferred from the resemblance of the cue. [spatial-ring-code] [spatial-arcizet-2018]"
+      ],
+      "network": [
+        "The logical demand is to bind a visible location cue to an ordered local feature comparison. A solution must retain enough sample orientation information to distinguish the probe’s positive from negative change despite a new phase and noise realization. It could select the cued region first or compute four local comparisons and select afterward; the rule does not require a unique attention architecture.",
+        "D0 supplies no clean test of retention over blank frames. In a causal three-frame stack, the final input window can include the two sample frames and probe, with the ring still present in the samples. That observation is a temporal-information boundary, not a claim about the model’s actual strategy. Relative to the single central sensory orientation task, the added problem is location selection; relative to orientation_cued, the missing problem is interpreting a plus/minus relevance rule."
+      ],
+      "boundary": [
+        "A correct response would demonstrate the specified cued signed comparison on the sampled images; it would not establish biological working-memory capacity, a long-delay store, novel-location generalization or the acquisition of the full location-plus-sign rule. Four fixed positions are reused, and a cue-conditioned feedforward comparison over a suitable temporal window remains a legitimate alternative solution.",
+        "All displayed examples are curated illustrations, not a random evaluation sample. The explanatory overlays and metadata are not additional sensory evidence. Demonstration playback is deliberately readable rather than a biological clock, and independent condition streams must not be described as paired delay interventions."
+      ],
+      "metrics": [
+        "Accuracy is the fraction of correct episode labels; class recall conditions on each true class. Balanced accuracy is the mean of the two class recalls. Binary AUC is the probability that a positive episode receives a higher positive-class score than a negative one, with half credit for ties; it needs both classes and continuous scores. Random class guessing has accuracy and balanced accuracy 0.5, and a label-independent ranking has expected AUC 0.5. These are definitions, not measured results.",
+        "Report confusion and denominators, then stratify by magnitude and target location. The eight-case sampling cycle balances label and location, but illustrations are chosen for explanatory coverage. Do not assign extra official delay conditions, infer a curriculum from the task’s precursor role, or borrow scores from another orientation head. [spatial-ring-code] [spatial-suite-code]"
+      ],
+      "adaptation": [
+        "Adapted here: ring-based spatial relevance is motivated by a primary target-versus-foil selection paradigm, while the four compact Gabors, independent foil signs, 15°/30°/45° magnitudes, numerical sign report, corner vocabulary and D0 timeline are project choices. No timing or physiological result from the source is transferred. The excluded orientation_single and orientation_sign diagnostic rungs are not additional tasks in this atlas. [spatial-arcizet-2018] [spatial-ring-code] [spatial-suite-code]"
+      ]
+    },
+    "properties": [
+      {
+        "name": "Native input",
+        "value": "T × 3 × 100 × 100; float32 in [0,1]",
+        "units": "frames × channels × pixels",
+        "sampling": "Fixed shape per condition; no added padding observations",
+        "role": "All native frames, including delays, are observations",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:blank, batch; SecondPass/TaskSuite/suite.py:batch",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Background and display",
+        "value": "0.5 gray; RGB channels identical for synthetic stimuli",
+        "units": "digital intensity",
+        "sampling": "Fixed; not calibrated luminance",
+        "role": "A numerical image domain, not cd/m² or an observer-calibrated monitor",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:blank; Demo/CONTRACT.md",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Condition streams",
+        "value": "Independent stream per task × condition × split",
+        "units": "stream identity",
+        "sampling": "Native NumPy Generator states; suite seed = split_seed × 100000 + task_stream_id × 1000 + cell_index",
+        "role": "Changing delay selects a separate stream, not a paired copy of one trial",
+        "provenance": "SecondPass/TaskSuite/suite.py:stream_seed, _make_stream",
+        "visibility": "Analysis-only stream configuration; not an image token"
+      },
+      {
+        "name": "Task identity and metadata",
+        "value": "Task ID selects a supervised head; labels, angles, schedules, hashes and source IDs are not sensory inputs",
+        "units": "interface",
+        "sampling": "Explicit task dispatch; no unrestricted verbal instruction",
+        "role": "Website explanations and answers are outside the native raster",
+        "provenance": "SecondPass/TaskSuite/suite.py:task_classes, batch",
+        "visibility": "External task-head selection; analysis-only metadata"
+      },
+      {
+        "name": "Reserved corner masks",
+        "value": "10 × 10 at x,y ∈ {0,90}; reset to 0.5 before glyphs",
+        "units": "pixels",
+        "sampling": "Applied to each frame that calls visual_cues",
+        "role": "Prevents underlying content in the reserved cue areas",
+        "provenance": "WorkingMemory/stimuli.py:visual_cues lines 58–83",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Protocol / phase glyphs",
+        "value": "recall=3; sample=4, ignore=5, query=6, report=7",
+        "units": "binary pictogram code",
+        "sampling": "Top-left protocol and top-right phase; three possible 2 × 2 bright strokes at value 0.95 and a 2 × 6 dark base at 0.12",
+        "role": "These small pixels are visible learned visual vocabulary, not oracle phase flags",
+        "provenance": "WorkingMemory/stimuli.py:CUE_CODES, visual_cues",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Unused glyph channels",
+        "value": "No identity glyph or threshold bar in these task calls",
+        "units": "not applicable",
+        "sampling": "Default sign=None, threshold=None, identity=None unless locally stated",
+        "role": "Do not import the older cumulative threshold task",
+        "provenance": "WorkingMemory/stimuli.py:visual_cues; WorkingMemory/SpatialTaskBattery/stimuli.py:local_cue",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Patch centers / indexing",
+        "value": "0=(27,27), 1=(73,27), 2=(27,73), 3=(73,73)",
+        "units": "pixel (x,y)",
+        "sampling": "Fixed; image y increases downward",
+        "role": "Location is part of the feature relation; no held-out-position manipulation",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:CENTERS",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Gabor envelope",
+        "value": "exp(−r²/(2 × 4.5²)), set to zero when r > 12",
+        "units": "pixel radius / digital gain",
+        "sampling": "Fixed circular truncation and Gaussian width at every patch",
+        "role": "Localizes the grating without changing its labeled angle",
+        "provenance": "WorkingMemory/PlainBaseline/variants.py:_gabors_subset lines 34–41",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Carrier wavelength",
+        "value": "Uniform[5,7)",
+        "units": "pixels per carrier cycle",
+        "sampling": "One draw per rendered Gabor frame; shared by its four patches, redrawn between sample frames and probe",
+        "role": "Nuisance spatial frequency; the sample frames are not identical images",
+        "provenance": "WorkingMemory/PlainBaseline/variants.py:_gabors_subset lines 34–41",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Carrier modulation amplitude",
+        "value": "Uniform[0.28,0.36)",
+        "units": "digital intensity amplitude",
+        "sampling": "One draw per rendered Gabor frame, shared across patches; redrawn at each rendering",
+        "role": "Not a calibrated Michelson contrast, because envelope/noise/clipping remain",
+        "provenance": "WorkingMemory/PlainBaseline/variants.py:_gabors_subset lines 34–41",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Carrier phase",
+        "value": "Uniform[0,2π)",
+        "units": "radians",
+        "sampling": "Independently drawn per patch and per rendered frame",
+        "role": "Prevents literal pixel correspondence from being the orientation rule",
+        "provenance": "WorkingMemory/PlainBaseline/variants.py:_gabors_subset lines 34–41",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Pixel noise",
+        "value": "Independent Normal(0,0.008²)",
+        "units": "digital intensity",
+        "sampling": "Fresh 100 × 100 scalar field per Gabor frame; same field repeated into RGB",
+        "role": "Adds achromatic nuisance; cue-only and blank fields do not receive this noise",
+        "provenance": "WorkingMemory/PlainBaseline/variants.py:_gabors_subset lines 34–41",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Gabor composition / clipping",
+        "value": "0.5 + noise + sum of four envelope-weighted cosine carriers; clip to [0,1]",
+        "units": "digital intensity",
+        "sampling": "No per-frame normalization; clipped scalar field repeated across 3 channels and cast float32",
+        "role": "Orientation is a carrier-axis variable modulo π; visible stripes are perpendicular to its wavevector",
+        "provenance": "WorkingMemory/PlainBaseline/variants.py:_gabors_subset lines 34–41",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Local ring",
+        "value": "|distance − 14| < 0.8; overwrite with 0.95",
+        "units": "pixel radius / digital intensity",
+        "sampling": "Fixed annulus centered on the selected patch; no anti-aliasing step",
+        "role": "Location-only cue; no sign information",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:local_cue lines 34–43",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Primary condition",
+        "value": "D0 only; total T=4",
+        "units": "frames",
+        "sampling": "Catalog-fixed delay=0",
+        "role": "No inserted retention interval",
+        "provenance": "SecondPass/TaskSuite/catalog.json:orientation_ring",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Sample angles",
+        "value": "4 independent Uniform[0,π)",
+        "units": "radians",
+        "sampling": "One vector per trial, held across the two sample renderings",
+        "role": "Roving base orientation",
+        "provenance": "WorkingMemory/PlainBaseline/variants.py:_variant",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Rotation magnitude",
+        "value": "15, 30, 45 with equal probability",
+        "units": "degrees",
+        "sampling": "Single draw shared by all four patches",
+        "role": "Discrete difficulty; all rotations nonzero",
+        "provenance": "WorkingMemory/PlainBaseline/variants.py:__init__, _variant",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Target and foil signs",
+        "value": "Target: −1 for class 0, +1 for class 1; foils: independent equiprobable ±1",
+        "units": "sign",
+        "sampling": "Foil draws independent of the target answer; all use shared magnitude",
+        "role": "Location selection is required",
+        "provenance": "WorkingMemory/PlainBaseline/variants.py:_variant",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Label / target cycle",
+        "value": "All 2 labels × 4 locations once per 8-trial cycle",
+        "units": "episodes",
+        "sampling": "Uniform random permutation; consume without replacement within cycle",
+        "role": "Counterbalance; small subsequences need not be balanced",
+        "provenance": "WorkingMemory/PlainBaseline/variants.py:_case",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Cue presence",
+        "value": "Frames 0,1,2 only; absent at probe 3",
+        "units": "zero-based indices",
+        "sampling": "Fixed",
+        "role": "There is no local sign glyph",
+        "provenance": "WorkingMemory/PlainBaseline/variants.py:_variant",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      }
+    ],
+    "equations": [
+      "Δθq = ½ atan2(sin(2(θprobe,q − θsample,q)), cos(2(θprobe,q − θsample,q)))",
+      "y = 1[Δθq > 0]; |Δθq| ∈ {15°,30°,45°}"
+    ],
+    "references": [
+      "spatial-ring-code",
+      "spatial-code",
+      "spatial-cue-code",
+      "spatial-suite-code",
+      "spatial-arcizet-2018"
+    ],
+    "worked_example": {
+      "metadata_fields": [
+        "target_location",
+        "rotations_degrees",
+        "rotation_magnitude",
+        "sample_angles_radians",
+        "probe_angles_radians"
+      ],
+      "rule": "Use rotations_degrees[target_location]: positive→1; negative→0. Never infer a local plus symbol from cue_sign=1.",
+      "alternative": "The foil signs do not determine the answer.",
+      "binding": "Must be populated from the selected manifest episode; no fabricated numerical trial supplied."
+    }
+  },
+  {
+    "id": "orientation_cued",
+    "title": "Location × sign × orientation",
+    "group": "selection",
+    "question": "Did the selected Gabor rotate in the sign requested by its plus/minus cue?",
+    "intro": "A tiny plus or minus above one of four gratings tells you both where to look and which sign of rotation counts. Compare that location across the sample and probe: an aligned change is positive, while an unchanged or opposite change is negative. Across the whole array, aligned, opposite and unchanged orientations occur in every trial, so merely detecting a change cannot answer the question.",
+    "sections": {
+      "appears": [
+        "The four Gabor locations and rendering law are shared with the ring comparison, but the target cue is a translated 10 × 10 plus/minus glyph rather than a ring. Its horizontal dark stroke means that negative axial change is relevant; a vertical stroke adds the plus sign, meaning positive change is relevant. The glyph appears above the selected patch, keeping the grating itself intact. Recall and phase pictograms remain in the top corners. [spatial-code] [spatial-cue-code]",
+        "The two sample arrays have identical angle values but independently redrawn carrier phases, amplitude, wavelength and Gaussian noise. At probe, orientation changes are assigned to all locations under a class-controlled target rule and a class-independent global change inventory. The field remains achromatic, with the scalar image copied into all three channels after clipping. Numerical angle signs, rather than ambiguous clockwise wording, define the answer. [spatial-code]"
+      ],
+      "sequence": [
+        "Frame 0 contains the location/sign glyph and recall/sample markers on gray. Frames 1 and 2 contain the sample array and the same location/sign glyph. Frames 3 through D+2 are D gray delay frames carrying recall/ignore corner glyphs, with no local target cue. Frame D+3 is the probe array and report marker, again without the local glyph. Total length is D+4, with D fixed to 0,4,12 or 24 by the selected condition. [spatial-code]",
+        "The cue is not merely a one-frame flash: its three visible presentations include both samples. The delay is counted in native frames, not milliseconds, and its “blank” field is not entirely blank because the corner vocabulary remains. At D0 the last sample is immediately followed by the probe; choosing another delay cell selects an independently generated episode, not an automatically matched extension of the same evidence. [spatial-cue-code] [spatial-suite-code]"
+      ],
+      "rules": [
+        "Let q denote target_location, c denote cue_sign in {−1,+1}, and Δθq the signed shortest axial sample-to-probe difference. The label is 1 exactly when c × Δθq > 0. On positive trials Δθq=c×m; on negative trials it is either 0 or −c×m, chosen equiprobably, with m drawn from 15°,30°,45°. An unchanged target is therefore a genuine negative, not a third response class. [spatial-code]",
+        "The selected-trial explanation should multiply cue_sign by rotations_degrees[target_location]. A positive product is aligned; zero is unchanged; a negative product is opposite. The metadata’s rotation_magnitude records the nonzero step size used in the trial, so it must not be described as the target’s actual rotation when that target stayed unchanged. Those three cases explain why both an “any change” rule and a cue-blind sign rule can give the wrong answer. [spatial-code]"
+      ],
+      "ignore": [
+        "Ignore aligned changes at uncued locations and ignore the opposite sign even when it produces an obvious local rotation at the target. Every trial starts from the sign-relative multiset [−1,0,+1,r], where r is another equiprobable −1/0/+1 draw. This inventory is generated before target assignment; the label changes which entry belongs to the target, not whether an aligned or opposite event exists anywhere. A global histogram of orientation changes is thus deliberately uninformative about the label. [spatial-code]",
+        "Literal pixel differences are also a nuisance: sample frames and probe use fresh phases and noise, so an unchanged orientation need not have an unchanged raster. The relevant comparison is of axes at the cued position, not stripe-by-stripe pixel identity, average orientation of the array, or the brighter of two images. [spatial-code]"
+      ],
+      "implementation": [
+        "SpatialBatteryStream._case consumes a shuffled 16-case cycle spanning both labels, all four target locations and both cue signs. _orientation first draws initial angles and a common magnitude, creates the sign-relative change multiset, chooses the requested target category and randomly assigns the remaining entries to foils. On a negative draw, opposite versus unchanged is a fresh equiprobable choice, not separately forced into an exact finite-cycle count. An assertion checks the target sign rule before returning the episode. [spatial-code]",
+        "local_cue calls visual_cues for ordinary protocol/phase markers, obtains the original bottom-left sign glyph from a separate blank image, and pastes those exact pixels into a local rectangle whose origin is (x−5,y−23). It does not leave a second sign in the lower corner, and it does not add the older threshold bar or identity code. _gabors supplies the full nuisance law; the native angles, preassignment inventory and rotations are explanatory metadata only. [spatial-code] [spatial-cue-code]"
+      ],
+      "neuroscience": [
+        "This task separates relevant location, task rule and sensory comparison. Mante and colleagues trained monkeys to use a context cue to select whether motion or color should guide a decision about the same random-dot display. Their verified task description motivates the distinction between physical evidence and context-dependent relevance, not the specific use of a plus/minus glyph or orientation-change judgment. [spatial-mante-2013]",
+        "Spatial selection supplies a second, distinct motivation: Arcizet and Krauzlis required a response to change at a precued patch but not at a competing foil. The present assay combines that functional location-selection idea with an engineered signed rule and, in delayed cells, a demand to preserve useful information until a later comparison. It is not a joint replication of those studies or evidence that the same neural circuitry implements all three operations. [spatial-arcizet-2018] [spatial-mante-2013]"
+      ],
+      "network": [
+        "An adequate representation must preserve the relation among cue location, cue sign, sample orientation and later probe orientation. It can retain the selected sample and rule, maintain all four samples and select later, or encode a distributed comparison-ready state. These are possible computations, not a prescription for a particular recurrent module or proof that information is stored in symbolic slots.",
+        "Potential failures are computationally distinguishable: failing to read the tiny glyph, losing the sign across blanks, comparing the wrong location, or obtaining the signed angle correctly but failing to apply the instruction. D0 can be solved from a sufficiently wide temporal window containing cued samples and probe, whereas inserted blanks remove that immediate co-visibility. These are logical information constraints; the atlas contains no measured evidence that a current network has any particular bottleneck."
+      ],
+      "boundary": [
+        "Success would support the complete instruction-relative decision on these fixed locations, nuisance distributions and sampled delays. It would not establish human-like executive control, a specific prefrontal mechanism, novel-position transfer or a biological retention duration. Conversely, a wrong answer cannot by itself identify whether encoding, retention, cue use or final comparison failed.",
+        "All displayed examples are curated illustrations, not a random evaluation sample. The explanatory overlays and metadata are not additional sensory evidence. Demonstration playback is deliberately readable rather than a biological clock, and independent condition streams must not be described as paired delay interventions."
+      ],
+      "metrics": [
+        "Accuracy is the fraction of correct episode labels; class recall conditions on each true class. Balanced accuracy is the mean of the two class recalls. Binary AUC is the probability that a positive episode receives a higher positive-class score than a negative one, with half credit for ties; it needs both classes and continuous scores. Random class guessing has accuracy and balanced accuracy 0.5, and a label-independent ranking has expected AUC 0.5. These are definitions, not measured results.",
+        "Report each delay separately and stratify by target location, cue sign and nominal magnitude. Split negative recall into unchanged and opposite cases, because a change-only shortcut can treat them differently. Confusion, class counts and subgroup denominators are necessary; a balanced positive/negative cycle does not guarantee equal numbers of the two negative subtypes in a small sample. No numerical performance is supplied here. [spatial-code]"
+      ],
+      "adaptation": [
+        "Adapted here: the spatially translated plus/minus glyph, four Gabor positions, common 15°/30°/45° rotation magnitude, sign-relative inventory control, two nuisance-redrawn sample frames and D0/D4/D12/D24 intervals are project-specific choices. Primary work motivates context-dependent relevance and spatial selection; it does not validate these exact glyph semantics, labels or timing. [spatial-mante-2013] [spatial-arcizet-2018] [spatial-code]"
+      ]
+    },
+    "properties": [
+      {
+        "name": "Native input",
+        "value": "T × 3 × 100 × 100; float32 in [0,1]",
+        "units": "frames × channels × pixels",
+        "sampling": "Fixed shape per condition; no added padding observations",
+        "role": "All native frames, including delays, are observations",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:blank, batch; SecondPass/TaskSuite/suite.py:batch",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Background and display",
+        "value": "0.5 gray; RGB channels identical for synthetic stimuli",
+        "units": "digital intensity",
+        "sampling": "Fixed; not calibrated luminance",
+        "role": "A numerical image domain, not cd/m² or an observer-calibrated monitor",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:blank; Demo/CONTRACT.md",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Condition streams",
+        "value": "Independent stream per task × condition × split",
+        "units": "stream identity",
+        "sampling": "Native NumPy Generator states; suite seed = split_seed × 100000 + task_stream_id × 1000 + cell_index",
+        "role": "Changing delay selects a separate stream, not a paired copy of one trial",
+        "provenance": "SecondPass/TaskSuite/suite.py:stream_seed, _make_stream",
+        "visibility": "Analysis-only stream configuration; not an image token"
+      },
+      {
+        "name": "Task identity and metadata",
+        "value": "Task ID selects a supervised head; labels, angles, schedules, hashes and source IDs are not sensory inputs",
+        "units": "interface",
+        "sampling": "Explicit task dispatch; no unrestricted verbal instruction",
+        "role": "Website explanations and answers are outside the native raster",
+        "provenance": "SecondPass/TaskSuite/suite.py:task_classes, batch",
+        "visibility": "External task-head selection; analysis-only metadata"
+      },
+      {
+        "name": "Reserved corner masks",
+        "value": "10 × 10 at x,y ∈ {0,90}; reset to 0.5 before glyphs",
+        "units": "pixels",
+        "sampling": "Applied to each frame that calls visual_cues",
+        "role": "Prevents underlying content in the reserved cue areas",
+        "provenance": "WorkingMemory/stimuli.py:visual_cues lines 58–83",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Protocol / phase glyphs",
+        "value": "recall=3; sample=4, ignore=5, query=6, report=7",
+        "units": "binary pictogram code",
+        "sampling": "Top-left protocol and top-right phase; three possible 2 × 2 bright strokes at value 0.95 and a 2 × 6 dark base at 0.12",
+        "role": "These small pixels are visible learned visual vocabulary, not oracle phase flags",
+        "provenance": "WorkingMemory/stimuli.py:CUE_CODES, visual_cues",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Unused glyph channels",
+        "value": "No identity glyph or threshold bar in these task calls",
+        "units": "not applicable",
+        "sampling": "Default sign=None, threshold=None, identity=None unless locally stated",
+        "role": "Do not import the older cumulative threshold task",
+        "provenance": "WorkingMemory/stimuli.py:visual_cues; WorkingMemory/SpatialTaskBattery/stimuli.py:local_cue",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Patch centers / indexing",
+        "value": "0=(27,27), 1=(73,27), 2=(27,73), 3=(73,73)",
+        "units": "pixel (x,y)",
+        "sampling": "Fixed; image y increases downward",
+        "role": "Location is part of the feature relation; no held-out-position manipulation",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:CENTERS",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Gabor envelope",
+        "value": "exp(−r²/(2 × 4.5²)), set to zero when r > 12",
+        "units": "pixel radius / digital gain",
+        "sampling": "Fixed circular truncation and Gaussian width at every patch",
+        "role": "Localizes the grating without changing its labeled angle",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_gabors lines 79–84",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Carrier wavelength",
+        "value": "Uniform[5,7)",
+        "units": "pixels per carrier cycle",
+        "sampling": "One draw per rendered Gabor frame; shared by its four patches, redrawn between sample frames and probe",
+        "role": "Nuisance spatial frequency; the sample frames are not identical images",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_gabors lines 79–84",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Carrier modulation amplitude",
+        "value": "Uniform[0.28,0.36)",
+        "units": "digital intensity amplitude",
+        "sampling": "One draw per rendered Gabor frame, shared across patches; redrawn at each rendering",
+        "role": "Not a calibrated Michelson contrast, because envelope/noise/clipping remain",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_gabors lines 79–84",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Carrier phase",
+        "value": "Uniform[0,2π)",
+        "units": "radians",
+        "sampling": "Independently drawn per patch and per rendered frame",
+        "role": "Prevents literal pixel correspondence from being the orientation rule",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_gabors lines 79–84",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Pixel noise",
+        "value": "Independent Normal(0,0.008²)",
+        "units": "digital intensity",
+        "sampling": "Fresh 100 × 100 scalar field per Gabor frame; same field repeated into RGB",
+        "role": "Adds achromatic nuisance; cue-only and blank fields do not receive this noise",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_gabors lines 79–84",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Gabor composition / clipping",
+        "value": "0.5 + noise + sum of four envelope-weighted cosine carriers; clip to [0,1]",
+        "units": "digital intensity",
+        "sampling": "No per-frame normalization; clipped scalar field repeated across 3 channels and cast float32",
+        "role": "Orientation is a carrier-axis variable modulo π; visible stripes are perpendicular to its wavevector",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_gabors lines 79–84",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Delay / length",
+        "value": "D ∈ {0,4,12,24}; T=D+4",
+        "units": "native frames",
+        "sampling": "Condition-fixed; delay defaults to 0 in the renderer",
+        "role": "Retention interval; no assigned biological duration",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:frame_count, _orientation",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Initial angle vector",
+        "value": "4 independent Uniform[0,π)",
+        "units": "radians",
+        "sampling": "One draw per trial; held across sample frames",
+        "role": "Roves all local orientations",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_orientation",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Magnitude",
+        "value": "15,30,45; equal-probability draw",
+        "units": "degrees",
+        "sampling": "One magnitude shared across nonzero target and foil changes",
+        "role": "Nominal trial difficulty, not necessarily target change size",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_orientation",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Change inventory",
+        "value": "[−1,0,+1,r], r uniform over {−1,0,+1}; then × cue_sign × magnitude",
+        "units": "signed degrees",
+        "sampling": "Inventory sampled before target assignment",
+        "role": "All trials have aligned, opposite and unchanged sites",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_orientation",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Target assignment",
+        "value": "Aligned for label 1; opposite or unchanged with probability 1/2 each for label 0",
+        "units": "category",
+        "sampling": "Uniform choice among matching inventory entries; remaining entries randomly permuted onto foils",
+        "role": "Removes global inventory / any-change shortcut",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_orientation",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Label/location/sign cycle",
+        "value": "2 × 4 × 2 combinations once per 16 trials",
+        "units": "episodes",
+        "sampling": "Shuffled queue; one code consumed per episode",
+        "role": "Exact balance only on whole cycles",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_case",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Local glyph geometry",
+        "value": "10 × 10 source mask; origin (x−5,y−23); minus 2 × 6 stroke, plus adds 6 × 2 stroke; stroke value 0.1",
+        "units": "pixels / intensity",
+        "sampling": "Exact translated original visual_cues sign mask",
+        "role": "Position indicates target; shape indicates relevant sign",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:local_cue; WorkingMemory/stimuli.py:visual_cues",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Cue visibility",
+        "value": "0,1,2; no local cue in delay or probe",
+        "units": "frame indices",
+        "sampling": "Fixed",
+        "role": "Samples remain precued",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_orientation",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Probe angles",
+        "value": "(sample_angles + radians(rotations_degrees)) mod π",
+        "units": "radians",
+        "sampling": "Derived, not independently sampled",
+        "role": "Ordered axial comparison",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_orientation",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      }
+    ],
+    "equations": [
+      "Δθq = ½ atan2(sin(2(θprobe,q − θsample,q)), cos(2(θprobe,q − θsample,q)))",
+      "y = 1[c × Δθq > 0]",
+      "T = D + 4; D ∈ {0,4,12,24}"
+    ],
+    "references": [
+      "spatial-code",
+      "spatial-cue-code",
+      "spatial-suite-code",
+      "spatial-mante-2013",
+      "spatial-arcizet-2018"
+    ],
+    "worked_example": {
+      "metadata_fields": [
+        "target_location",
+        "cue_sign",
+        "rotations_degrees",
+        "rotation_magnitude",
+        "rotation_multiset_before_target_assignment"
+      ],
+      "rule": "Product cue_sign × rotations_degrees[target_location]: >0 aligned→1; =0 unchanged→0; <0 opposite→0.",
+      "alternative": "An aligned foil or any global change cannot make the target answer positive.",
+      "binding": "Use actual selected episode values, not paired counterfactuals."
+    }
+  },
+  {
+    "id": "motion_duration_cued",
+    "title": "Which direction lasted longest?",
+    "group": "selection",
+    "question": "Which direction occupied the most transitions in the ring-cued dot patch?",
+    "intro": "Four dot patches change direction over eight transitions. Follow the ring-marked patch and report the direction that occurs most often—not the last direction and not the overall drift of the dots. After motion ends, the selected answer must remain available through the chosen number of blank frames until the report frame.",
+    "sections": {
+      "appears": [
+        "Four small circular clouds each contain 32 latent dot positions, centered at the same four interior locations used for the Gabor tasks. Dots are bright one-pixel marks on gray after their continuous coordinates are rounded to the nearest raster point. A thin ring identifies the target, and integration/sample glyphs occupy the top corners. All four patches have independent direction schedules and may have different count winners. [spatial-code] [spatial-directions-code]",
+        "A patch’s dots share its scheduled cardinal displacement on a transition, but not every dot survives to reveal that displacement: exactly 16 randomly chosen dot identities are replaced, and any boundary exits are also replaced. The visible number of bright pixels can be less than 32 because rounded positions may overlap. There is no 10-frame age rule and no 16° Gaussian directional dispersion here; those belong to the separate Krauzlis task. [spatial-code]"
+      ],
+      "sequence": [
+        "Frame 0 is the target ring on a gray instruction field. Frame 1 is the initial dot-position reference, which does not yet contain a motion transition. Frames 2–9 are the results of the eight successive transitions. The ring is visible in every frame from 0 through 9. Frames 10 through D+9 are D delay frames with integration/ignore markers, and frame D+10 is a gray report frame with the integration/report marker. Total length is D+11 for D=0,4,12,24. [spatial-code]",
+        "There are nine dot images but eight direction observations, each defined by an ordered adjacent pair. The report frame does not show dots or a target ring. Even D0 still asks about earlier motion transitions rather than only the final raster. The demonstration’s slow animation helps a reader inspect these transitions but assigns no physical frame clock to this task. [spatial-code]"
+      ],
+      "rules": [
+        "Count the target patch’s directions across all eight transitions and choose the unique largest count. The class order is 0=right, 1=up, 2=left, 3=down, with image-coordinate vectors (1,0), (0,−1), (−1,0), (0,1). The generator enforces a winning margin of at least one transition, so no tie-breaking convention is part of the task. “Longest duration” means greatest total count, not the longest uninterrupted run. [spatial-cue-code] [spatial-directions-code]",
+        "In the selected episode, directions_by_patch[target_location] supplies the eight ground-truth steps and duration_counts_by_patch[target_location] gives the four totals. The winning count explains the label. Comparing its last entry with the winner shows why a final-direction shortcut can be wrong; comparing winner_by_patch at the foils shows why pooling votes across locations is wrong. The advancing count bars are analysis displays computed from this metadata, not a decoded network state. [spatial-code]"
+      ],
+      "ignore": [
+        "Ignore every uncued patch’s winner and ignore the final direction as a privileged cue. Within the target, opposing displacements can cancel in a net vector even when one direction occurs more often than every other individual direction. Tracking one dot’s final position is additionally unreliable because random rebirth and boundary resets break long identity trajectories. Neither net displacement nor the total brightness of the last frame is the supervised rule. [spatial-code]",
+        "The winning count is not necessarily a strict majority of all eight steps; it is a plurality larger than each competitor. Likewise, no claim is made that every possible schedule is equally likely. The native helper deliberately conditions a stochastic sequence on a preselected winner while preserving initially drawn endpoints. [spatial-cue-code]"
+      ],
+      "implementation": [
+        "SpatialBatteryStream._motion chooses independent foil winners, sets the target winner to its balanced class label, and calls WorkingMemory.stimuli._motion_schedule once per patch. For length eight, the helper first draws the first and last directions independently and uniformly, fixes those endpoints, then tries up to 2048 independent uniform candidate sequences whose interior yields the requested unique winner. If rejection exhausts the bound, it fills the six middle steps with the requested winner while preserving both endpoints. This is a bounded, endpoint-conditioned schedule law, not eight unconstrained independent labels. [spatial-code] [spatial-cue-code]",
+        "Dots are born uniformly by area within a radius-11.5 disk using r=R√u and a uniform angle. Each transition moves every latent position by a common trial step of 0.8,1.2 or 1.6 pixels along its patch’s current direction; the union of boundary exits and 16 selected identities is then reborn. _dots_raster rounds coordinates with np.rint and writes intensity 0.92, rather than adding overlapping intensities. duration_oracle independently checks the unique count winner. [spatial-code] [spatial-cue-code]"
+      ],
+      "neuroscience": [
+        "The motivating question is how a decision can depend on evidence distributed over time rather than on one terminal snapshot. Roitman and Shadlen studied monkeys discriminating random-dot motion under reaction-time and fixed-duration conditions; the fixed-duration version separated the viewing period from a delayed report. Their work directly motivates distinguishing sensory evidence accumulation from storage of a completed decision. [spatial-roitman-2002]",
+        "That experiment manipulated coherent motion strength and used a two-choice direction judgment, not a plurality of eight discrete cardinal directions in one of four patches. The present task adds spatial relevance and an engineered count objective to make the correct summary explicit. It is an evidence-integration assay motivated by the primary work, not a reproduction of its stimulus statistics or a test of its specific LIP interpretation. [spatial-roitman-2002] [spatial-code]"
+      ],
+      "network": [
+        "A successful computation must extract ordered local displacement evidence, associate it with the selected patch, combine observations across direction switches and retain enough of that combination until report. Four accumulated counts are one transparent sufficient statistic, but distributed evidence, normalized directional channels or another finite-state representation could support the same choice without an explicit symbolic counter.",
+        "Selection may occur before accumulation or after retaining separate patch summaries. By contrast, pooling the four spatial streams before preserving which count belongs to the target can destroy the needed association. A terminal-direction heuristic discards earlier evidence; a velocity average can conflate opposing counts. These describe possible failure modes and alternative strategies, not measured deficiencies of any trained model."
+      ],
+      "boundary": [
+        "Correct task behavior would support selective temporal summarization and delayed report under this short fixed-length schedule law. It would not show integration over arbitrary durations, a continuous-time accumulator, a particular evidence variable in neurons, or biological time constants. The 32 latent dots, discrete endpoint-conditioned schedule and fixed patch positions remain substantial engineering simplifications.",
+        "All displayed examples are curated illustrations, not a random evaluation sample. The explanatory overlays and metadata are not additional sensory evidence. Demonstration playback is deliberately readable rather than a biological clock, and independent condition streams must not be described as paired delay interventions."
+      ],
+      "metrics": [
+        "For the four-class decision, accuracy counts correctly labeled episodes and balanced accuracy is the mean of the four class recalls. Uniform class guessing gives expected accuracy and balanced accuracy 0.25. One-versus-rest AUC, when all required classes are present, evaluates how each class score ranks its own examples against the rest; a label-independent ranking has expected AUC 0.5, not 0.25. These definitions must not be conflated with results.",
+        "Report each delay, target location, step size, count margin and target direction. Distinguish episodes whose final direction agrees with the winner from those that disagree, and show foil-winner disagreement where relevant. Record confusion and actual counts; a uniform label/location cycle does not make the curated example bank an empirical frequency estimate. [spatial-code] [spatial-cue-code]"
+      ],
+      "adaptation": [
+        "Adapted here: four spatial streams, persistent location ring, eight cardinal transitions, conditioned unique-count winner, 32 dots per patch, half-identity random replacement plus boundary rebirth, fixed pixel steps and D0/D4/D12/D24 final-report blanks are project choices. Roitman and Shadlen anchor the accumulation-versus-report question but do not supply this objective or a biological interpretation of the frame counts. [spatial-roitman-2002] [spatial-code] [spatial-cue-code]"
+      ]
+    },
+    "properties": [
+      {
+        "name": "Native input",
+        "value": "T × 3 × 100 × 100; float32 in [0,1]",
+        "units": "frames × channels × pixels",
+        "sampling": "Fixed shape per condition; no added padding observations",
+        "role": "All native frames, including delays, are observations",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:blank, batch; SecondPass/TaskSuite/suite.py:batch",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Background and display",
+        "value": "0.5 gray; RGB channels identical for synthetic stimuli",
+        "units": "digital intensity",
+        "sampling": "Fixed; not calibrated luminance",
+        "role": "A numerical image domain, not cd/m² or an observer-calibrated monitor",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:blank; Demo/CONTRACT.md",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Condition streams",
+        "value": "Independent stream per task × condition × split",
+        "units": "stream identity",
+        "sampling": "Native NumPy Generator states; suite seed = split_seed × 100000 + task_stream_id × 1000 + cell_index",
+        "role": "Changing delay selects a separate stream, not a paired copy of one trial",
+        "provenance": "SecondPass/TaskSuite/suite.py:stream_seed, _make_stream",
+        "visibility": "Analysis-only stream configuration; not an image token"
+      },
+      {
+        "name": "Task identity and metadata",
+        "value": "Task ID selects a supervised head; labels, angles, schedules, hashes and source IDs are not sensory inputs",
+        "units": "interface",
+        "sampling": "Explicit task dispatch; no unrestricted verbal instruction",
+        "role": "Website explanations and answers are outside the native raster",
+        "provenance": "SecondPass/TaskSuite/suite.py:task_classes, batch",
+        "visibility": "External task-head selection; analysis-only metadata"
+      },
+      {
+        "name": "Reserved corner masks",
+        "value": "10 × 10 at x,y ∈ {0,90}; reset to 0.5 before glyphs",
+        "units": "pixels",
+        "sampling": "Applied to each frame that calls visual_cues",
+        "role": "Prevents underlying content in the reserved cue areas",
+        "provenance": "WorkingMemory/stimuli.py:visual_cues lines 58–83",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Protocol / phase glyphs",
+        "value": "integration=2; sample=4, ignore=5, query=6, report=7",
+        "units": "binary pictogram code",
+        "sampling": "Top-left protocol and top-right phase; three possible 2 × 2 bright strokes at value 0.95 and a 2 × 6 dark base at 0.12",
+        "role": "These small pixels are visible learned visual vocabulary, not oracle phase flags",
+        "provenance": "WorkingMemory/stimuli.py:CUE_CODES, visual_cues",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Unused glyph channels",
+        "value": "No identity glyph or threshold bar in these task calls",
+        "units": "not applicable",
+        "sampling": "Default sign=None, threshold=None, identity=None unless locally stated",
+        "role": "Do not import the older cumulative threshold task",
+        "provenance": "WorkingMemory/stimuli.py:visual_cues; WorkingMemory/SpatialTaskBattery/stimuli.py:local_cue",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Patch centers",
+        "value": "(27,27),(73,27),(27,73),(73,73)",
+        "units": "pixel (x,y)",
+        "sampling": "Fixed ordering 0–3",
+        "role": "Select one spatial stream",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:CENTERS",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Local ring",
+        "value": "|distance − 14| < 0.8; overwrite with 0.95",
+        "units": "pixel radius / digital intensity",
+        "sampling": "Fixed annulus centered on the selected patch; no anti-aliasing step",
+        "role": "Location-only cue; no sign information",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:local_cue lines 34–43",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Delay / sequence",
+        "value": "D ∈ {0,4,12,24}; T=D+11",
+        "units": "native frames",
+        "sampling": "Condition-fixed; renderer default D=0",
+        "role": "Inserted blanks after the moving evidence",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:frame_count, _motion",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Direction order",
+        "value": "0:right (1,0); 1:up (0,−1); 2:left (−1,0); 3:down (0,1)",
+        "units": "pixel-axis unit vector",
+        "sampling": "Fixed",
+        "role": "y increases down the image",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:DIRECTION_VECTORS line 22",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Motion evidence length",
+        "value": "1 reference + 8 transitions = 9 dot frames",
+        "units": "frames / transitions",
+        "sampling": "Fixed; moving results at indices 2–9",
+        "role": "No transition is counted at the reference",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_motion",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Latent dots / aperture",
+        "value": "32 per patch; radius 11.5",
+        "units": "identities / pixels",
+        "sampling": "Fixed counts; disk is implemented by position/reset law, not a drawn outline",
+        "role": "Overlapping raster dots can reduce visible bright-pixel count",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_motion, _dots_raster",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Birth position",
+        "value": "angle Uniform[0,2π); radius=11.5√U, U Uniform[0,1)",
+        "units": "radians / pixels",
+        "sampling": "Independent area-uniform disk draw at initialization and rebirth",
+        "role": "No edge wrapping or fixed age/lifetime schedule",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_disk_positions",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Step size",
+        "value": "0.8,1.2,1.6 with equal probability",
+        "units": "pixels per transition",
+        "sampling": "One draw per trial shared across all patches and transitions",
+        "role": "Discrete difficulty; not a calibrated speed",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_motion",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Dot survival / replacement",
+        "value": "16 of 32 randomly selected without replacement, plus any exit with norm > 11.5",
+        "units": "dot identities per transition",
+        "sampling": "Reset set is the union, so total replacements can exceed 16",
+        "role": "Persistent subset carries correspondence; rebirth breaks individual trajectories",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_motion",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Dot raster",
+        "value": "np.rint(position+center); intensity 0.5+0.42=0.92",
+        "units": "pixels / digital intensity",
+        "sampling": "Nearest-even rounding on exact halves; no anti-aliasing; overlaps overwrite the same value",
+        "role": "Subpixel latent movement need not move every bright pixel every frame",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_dots_raster",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Target / foil winner law",
+        "value": "Target label from balanced queue; three foil winners independent Uniform{0,1,2,3}",
+        "units": "direction class",
+        "sampling": "One winner per patch per trial",
+        "role": "Foils need not disagree, but do not determine the target answer",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_case, _motion",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Endpoint law",
+        "value": "First and last directions independent Uniform{0,1,2,3}",
+        "units": "direction class",
+        "sampling": "Drawn before candidate rejection and kept fixed",
+        "role": "Last direction is not set to the winner",
+        "provenance": "WorkingMemory/stimuli.py:_motion_schedule lines 98–111",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Schedule interior law",
+        "value": "Up to 2048 uniform candidates; accept when requested count exceeds each alternative by ≥1",
+        "units": "direction counts",
+        "sampling": "Endpoints overwritten with their fixed draws; six-middle-winner fallback if exhausted",
+        "role": "No ties; law not uniform over all feasible eight-step sequences",
+        "provenance": "WorkingMemory/stimuli.py:_motion_schedule",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Class / location balancing",
+        "value": "4 directions × 4 target positions once per 16-trial cycle",
+        "units": "episodes",
+        "sampling": "Uniform random permutation of cases",
+        "role": "Finite-cycle balance",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_case",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Cue visibility",
+        "value": "Frames 0–9 inclusive; not delay/report",
+        "units": "frame indices",
+        "sampling": "Fixed ring",
+        "role": "Selection stays visible throughout evidence",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_motion",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Noise / clipping",
+        "value": "No additive pixel Gaussian noise; no lifetime Gaussian angle offsets",
+        "units": "not applicable",
+        "sampling": "Only position randomness, replacement and integer rasterization",
+        "role": "Do not inherit Gabor or Krauzlis nuisance laws",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_dots_raster, _motion",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      }
+    ],
+    "equations": [
+      "nk = Σt=1…8 1[dt = k]",
+      "y = argmaxk nk, with ny − maxk≠y nk ≥ 1",
+      "T = D + 11"
+    ],
+    "references": [
+      "spatial-code",
+      "spatial-cue-code",
+      "spatial-directions-code",
+      "spatial-suite-code",
+      "spatial-roitman-2002"
+    ],
+    "worked_example": {
+      "metadata_fields": [
+        "target_location",
+        "directions_by_patch",
+        "duration_counts_by_patch",
+        "winner_by_patch",
+        "step_pixels"
+      ],
+      "rule": "Take argmax of target row of duration_counts_by_patch and verify counts against all eight target directions.",
+      "alternative": "Compare final target direction and foil winners to the count winner; do not imply they always differ.",
+      "binding": "Bars and counts must be derived from the selected native schedule and marked ground truth."
+    }
+  },
+  {
+    "id": "krauzlis_cued_motion",
+    "title": "A change at the relevant patch",
+    "group": "selection",
+    "question": "Did mean motion direction change at the briefly precued patch?",
+    "intro": "A ring briefly marks the left or right dot patch before either cloud appears. Later, one patch may change its mean direction—or neither may change. Answer yes only for a change at the cued location; a visible change at the other patch is a negative trial. The three conditions vary the amount of baseline motion evidence, not a blank memory delay.",
+    "sections": {
+      "appears": [
+        "Two achromatic dot clouds sit at (20,50) and (80,50) around a central dark fixation cross. Each patch has 16 latent dots within a radius-8.125-pixel disk. A bright ring surrounds the selected location during the initial cue only. Unlike the other spatial tasks, this renderer draws no corner protocol/phase pictograms: fixation, ring and dots are the native vocabulary. [spatial-code]",
+        "Each cloud has a mean direction and each dot has its own Gaussian angular offset with SD 16°. The two baseline means differ by 90°, while the global baseline direction varies continuously between trials. This is angular dispersion, not a mixture in which a stated percentage of dots is coherent and the remainder uniformly random. Fractional positions are rendered by bilinear intensity splats, so the 0.375-pixel step can alter the raster without rounding the dot to a stationary integer pixel. [spatial-code]"
+      ],
+      "sequence": [
+        "Frames 0–1 contain fixation and the target ring. Frames 2–6 contain fixation alone; frame 7 is the initial dot reference. For baseline count B, frames 8 through B+7 are B unchanged-mean transitions; frames B+8 through B+15 are eight postevent transitions. The final frame B+16 contains fixation alone and serves as report. Thus T=B+17, with B=12,20,28. The cue is absent during every motion frame. [spatial-code]",
+        "At the first postevent transition, the event patch’s mean direction changes before the position update. A catch has the same virtual event index but no mean change. No pixel marker announces that boundary. These are B12/B20/B28 conditions, not D12/D20/D28 retention blanks. The declared source clock is 100 Hz, or 10 ms per native frame: two cue frames and five fixation-only frames represent 20 and 50 ms in the compressed recipe, with 120/200/280 ms of baseline transitions and 80 ms postevent evidence. Browser playback is a labeled slowdown, not calibrated 100-Hz stimulation. [spatial-code]"
+      ],
+      "rules": [
+        "The class is defined by event relevance: 1=target change; 0=foil-only change or catch. At most one patch changes its mean. On an event trial the change is a randomly signed 26° or 28° increment, held for the remaining postevent transitions. A catch draws nuisance sign/magnitude values internally but its signed_change_degrees is zero and changed_patch is null; those unused draws must not be displayed as a physical catch event. [spatial-code]",
+        "For the selected example, compare changed_patch with target_location and read event_type. Equality means target and class 1; the opposite patch means foil and class 0; null means catch and class 0. baseline_means_degrees and postevent_means_degrees explain the direction shift. The event line, target/foil tags and change sign are explanation-only: showing them in an unassisted observer view would reveal information not explicitly announced in the raster. [spatial-code]"
+      ],
+      "ignore": [
+        "Reject a foil event even though it is a real direction change of the same possible sizes as a target event. Also ignore ordinary changes in individual dot trajectories caused by direction offsets, deaths and rebirths. A global “something moved differently” detector cannot distinguish the two event locations, and any-change detection would mislabel foil trials. [spatial-code]",
+        "Do not interpret the random dot count pattern at the event as an intended onset flash. Positions and angular offsets persist across the mean shift unless a dot simultaneously reaches its lifetime or exits the disk. Likewise, the disappearance of all dots on the final report frame is fixed across outcomes and is not a target change. [spatial-code]"
+      ],
+      "implementation": [
+        "SpatialBatteryStream._krauzlis implements the full recipe locally. Dot coordinates are area-uniform at birth; initial ages are independently permuted copies of arange(16) modulo 10, so ages are staggered but not uniformly represented. On each transition every dot advances at a fixed 0.375-pixel step along mean-plus-offset, its age increments, and it is reborn if age reaches 10 or distance exceeds 8.125. Rebirth resets age to zero and redraws both position and Gaussian direction offset. This differs fundamentally from replacing a random half of the identities every transition. [spatial-code]",
+        "The renderer splats each dot onto four neighboring pixels with bilinear weights using additive density. It adds 0.48 × density to the fixation/background field and clips to [0,1]; overlapping splats can therefore saturate. Event scheduling uses shuffled 100-trial blocks containing exactly 57 target, 29 foil and 14 catch cases. Side assignment is parity-based within the block and reverses on the next block: one whole block balances total sides, while two whole blocks balance side within each odd-sized event category. A curated bank must not be mistaken for that native mixture. [spatial-code]"
+      ],
+      "neuroscience": [
+        "Arcizet and Krauzlis’s “Motion-direction CD task” methods and Figure 1 directly define the source paradigm: a ring cues the relevant peripheral patch, another patch appears opposite it, and the monkey responds to direction change at the cued location while withholding for foil changes and catches. The primary methods specify patch means separated by 90°, 16° angular SD, 10-frame/100-ms dot lifetime and 15°/s speed, as well as the 57/29/14 event mixture. These facts were verified in the primary full text, not inferred from another Krauzlis-laboratory experiment. [spatial-arcizet-2018]",
+        "The scientific question concerns selecting a relevant visual event independently of the mere occurrence of an event elsewhere. The paper records caudate activity during covert selection, but this atlas does not reproduce those recordings, identify a basal-ganglia computation in a network or establish a causal circuit correspondence. It preserves a behavioral relevance distinction, which is narrower than the neuroscience interpretation of the original study. [spatial-arcizet-2018]"
+      ],
+      "network": [
+        "The brief cue is gone before motion begins, so its location must remain available while baseline and postevent evidence arrive. A solution must estimate enough of the baseline and later directional distributions at the relevant patch to detect a mean shift, while rejecting equally sized changes at the other patch. It may retain separate patch summaries and select late or select a stream early and update only that summary.",
+        "The target’s mean need not align with a cardinal axis, and the sign of the event is irrelevant to the yes/no class. Temporal pooling must therefore preserve change information rather than only an overall direction. Lifetimes and rebirths make exact long dot tracking unnecessary and unreliable, but local motion-energy statistics or correspondence over surviving dots are legitimate alternatives. None of these possibilities implies that the model actually learned such a strategy."
+      ],
+      "boundary": [
+        "This is a compressed final-classification adaptation, not joystick withholding, a reaction-time task or a human/primate psychophysical threshold measurement. The primary study used a 0.2-s cue, a 0.5-s cue-to-motion gap and a variable event time 1.0–4.3 s after motion onset; it adjusted changes around each monkey’s threshold, with 26° and 28° reported as medians rather than two exhaustive stimulus levels. The project instead fixes those two values, shortens the intervals and reports only after the final evidence frame. [spatial-arcizet-2018] [spatial-code]",
+        "The original cue location was blocked for 68 trials and stimulus parameters could depend on the neuron/session; here target side is interleaved by a balancing schedule, geometry is fixed and a global direction is redrawn per trial. Sixteen dots is an explicit raster choice, not a derived replication of the source’s printed density of 25 dots/deg²/s. Digital intensity values are not the original calibrated luminance. Only this task has a stated physical frame conversion; it must not be exported to the other suite tasks. [spatial-arcizet-2018] [spatial-code]"
+      ],
+      "metrics": [
+        "Report target hit rate as positive responses among target events, foil false-alarm rate as positive responses among foil events, and catch false-positive rate as positive responses among catches. Include each denominator, target side and actual event count. Those three rates preserve the scientific distinction that an overall binary confusion matrix combines in its negative class. This final-report task cannot measure anticipatory false alarms or response latency. [spatial-code]",
+        "Binary balanced accuracy averages positive-class recall and combined negative-class recall; binary AUC ranks target-event scores above foil/catch scores when both classes are present. Their label-independent expectations are 0.5. Overall accuracy reflects the unequal 57/43 class prior: always predicting positive gives 0.57 accuracy, which is a distributional baseline, not a measured score or successful event detection. Stratify by B, event type, side, and event magnitude/sign on actual event trials; do not assign catches a physical 26°/28° difficulty. [spatial-code]"
+      ],
+      "adaptation": [
+        "Adapted here from Arcizet and Krauzlis (2018), not a blend of Lovejoy or Zénon stimulus recipes: retain target-versus-foil semantics, 90° mean separation, Gaussian 16° dispersion, 10-frame lifetime, 15°/s nominal speed and the native event mixture. Change raster size, dot count, display intensities, exact births/resets, parameter randomization, cue blocking and trial durations, and replace continuous joystick behavior with one final binary label. The 100-Hz clock supports the conversion 15 deg/s × 0.01 s/frame × 2.5 px/deg = 0.375 px/frame, but does not make the browser a calibrated stimulus apparatus. [spatial-arcizet-2018] [spatial-code]"
+      ]
+    },
+    "properties": [
+      {
+        "name": "Native input",
+        "value": "T × 3 × 100 × 100; float32 in [0,1]",
+        "units": "frames × channels × pixels",
+        "sampling": "Fixed shape per condition; no added padding observations",
+        "role": "All native frames, including delays, are observations",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:blank, batch; SecondPass/TaskSuite/suite.py:batch",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Background and display",
+        "value": "0.5 gray; RGB channels identical for synthetic stimuli",
+        "units": "digital intensity",
+        "sampling": "Fixed; not calibrated luminance",
+        "role": "A numerical image domain, not cd/m² or an observer-calibrated monitor",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:blank; Demo/CONTRACT.md",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Condition streams",
+        "value": "Independent stream per task × condition × split",
+        "units": "stream identity",
+        "sampling": "Native NumPy Generator states; suite seed = split_seed × 100000 + task_stream_id × 1000 + cell_index",
+        "role": "Changing delay selects a separate stream, not a paired copy of one trial",
+        "provenance": "SecondPass/TaskSuite/suite.py:stream_seed, _make_stream",
+        "visibility": "Analysis-only stream configuration; not an image token"
+      },
+      {
+        "name": "Task identity and metadata",
+        "value": "Task ID selects a supervised head; labels, angles, schedules, hashes and source IDs are not sensory inputs",
+        "units": "interface",
+        "sampling": "Explicit task dispatch; no unrestricted verbal instruction",
+        "role": "Website explanations and answers are outside the native raster",
+        "provenance": "SecondPass/TaskSuite/suite.py:task_classes, batch",
+        "visibility": "External task-head selection; analysis-only metadata"
+      },
+      {
+        "name": "Baseline condition",
+        "value": "B ∈ {12,20,28}; T=B+17",
+        "units": "transitions / frames",
+        "sampling": "Condition-fixed; default B=20",
+        "role": "Varies pre-event evidence, not memory delay",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:frame_count, _krauzlis",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Nominal frame clock",
+        "value": "100 Hz; 0.01 s per frame",
+        "units": "Hz / seconds",
+        "sampling": "Explicit only for this task",
+        "role": "Physical conversion separate from slowed illustration",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_krauzlis metadata; WorkingMemory/SpatialTaskBattery/PROTOCOL.md:compressed timing",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Centers / geometry",
+        "value": "(20,50),(80,50); radius 8.125; center-to-fixation distance 30",
+        "units": "pixels",
+        "sampling": "Fixed",
+        "role": "Two opposite patches",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_krauzlis",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Angular scale",
+        "value": "2.5 px/deg; radius 3.25°; eccentricity 12°",
+        "units": "nominal visual degrees",
+        "sampling": "Declared renderer adaptation",
+        "role": "Not a browser viewing-distance calibration",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_krauzlis metadata",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Latent dots",
+        "value": "16 per patch",
+        "units": "identities",
+        "sampling": "Fixed; overlaps possible",
+        "role": "Not a literal conversion of the source’s density",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_krauzlis",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Birth positions",
+        "value": "r=8.125√U; angle Uniform[0,2π)",
+        "units": "pixels / radians",
+        "sampling": "Independent area-uniform draws at initialization and reset",
+        "role": "No wrapping; aperture exits trigger rebirth",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_disk_positions, _krauzlis",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Baseline means",
+        "value": "θ~Uniform[0,2π); second mean θ+π/2",
+        "units": "radians",
+        "sampling": "Global mean redrawn per trial; means stored without modulo normalization",
+        "role": "Patch baseline directions differ by 90°",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_krauzlis",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Angular dispersion",
+        "value": "Independent Normal(0,(16°)²) offsets",
+        "units": "degrees",
+        "sampling": "One draw per dot on birth; fixed for its lifetime and normally preserved across event",
+        "role": "Dispersion, not a coherent-dot percentage",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_krauzlis",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Speed / step",
+        "value": "15 deg/s; 0.375 px per transition",
+        "units": "nominal angular speed / pixels",
+        "sampling": "Fixed using 100 Hz and 2.5 px/deg",
+        "role": "Subpixel motion rendered by bilinear splats",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_krauzlis",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Lifetime / age initialization",
+        "value": "10 transitions; independently permuted arange(16)%10",
+        "units": "frames / integer age",
+        "sampling": "Initial ages 0–5 occur twice and 6–9 once per patch",
+        "role": "Staggered deaths; initial dot ages are not all zero",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_krauzlis",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Reset law",
+        "value": "age≥10 OR radius>8.125; age←0, redraw position and angular offset",
+        "units": "condition",
+        "sampling": "After movement and age increment each transition",
+        "role": "No random half-dot replacements",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_krauzlis",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Dot density raster",
+        "value": "Bilinear four-neighbor weights; additive 0.48 × density; clip to [0,1]",
+        "units": "digital intensity",
+        "sampling": "Floor/fraction splatting with np.add.at; no per-frame normalization",
+        "role": "Overlaps add and may saturate",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_krauzlis.image",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Fixation cross",
+        "value": "Rows 48:52 / cols 49:51 plus rows 49:51 / cols 48:52 at 0.1",
+        "units": "pixels / intensity",
+        "sampling": "Drawn on 0.5 field in every frame",
+        "role": "No fixation enforcement on the browser user",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_krauzlis.fixation",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Cue ring",
+        "value": "Radius 8.125+1.8; |distance−radius|<0.7; value 0.95",
+        "units": "pixels / intensity",
+        "sampling": "Selected patch; frames 0,1 only",
+        "role": "No corner glyphs or event markers",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_krauzlis",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Event magnitude / sign",
+        "value": "26° or 28° equiprobable; sign ±1 equiprobable",
+        "units": "degrees",
+        "sampling": "Independent draws; effective change only on target/foil events",
+        "role": "Source medians converted to two engineering levels",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_krauzlis",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Event mixture",
+        "value": "57 target / 29 foil / 14 catch per 100-trial cycle",
+        "units": "episodes",
+        "sampling": "Randomly permuted fixed event codes",
+        "role": "Class 1 only for target",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_case",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Target side assignment",
+        "value": "Parity(event_index + completed_cycle_count); flips next cycle",
+        "units": "side 0/1",
+        "sampling": "50 per side per complete 100-trial block; event-specific balance over two blocks",
+        "role": "Not an unconstrained Bernoulli side draw",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_case",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Cue/reference/event/report indices",
+        "value": "Cue 0–1; fixation-only 2–6; reference 7; first postevent B+8; report B+16",
+        "units": "zero-based frame indices",
+        "sampling": "Same virtual event index on catch",
+        "role": "No physical event on catch despite equal temporal layout",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_krauzlis",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "No other photometric nuisance",
+        "value": "No Gabor noise, color variation or per-frame normalization",
+        "units": "not applicable",
+        "sampling": "Only dot-state stochasticity and clipping",
+        "role": "Keep this rendering law separate from duration task",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_krauzlis",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      }
+    ],
+    "equations": [
+      "y = 1[event_type = target]",
+      "T = B + 17; first postevent frame = B + 8",
+      "step = 15 deg/s × 0.01 s/frame × 2.5 px/deg = 0.375 px/frame"
+    ],
+    "references": [
+      "spatial-code",
+      "spatial-suite-code",
+      "spatial-arcizet-2018"
+    ],
+    "worked_example": {
+      "metadata_fields": [
+        "target_location",
+        "event_type",
+        "changed_patch",
+        "baseline_transitions",
+        "baseline_means_degrees",
+        "postevent_means_degrees",
+        "signed_change_degrees",
+        "first_postchange_frame"
+      ],
+      "rule": "target→1; foil or catch→0. Catch: no changed_patch and actual signed change=0.",
+      "alternative": "A foil change is a real event but not a positive answer.",
+      "binding": "Actual first_postchange_frame is a virtual event boundary on catch; do not announce it as native pixels."
+    }
+  },
+  {
+    "id": "spatial_binding",
+    "title": "Which orientation was where?",
+    "group": "retention",
+    "question": "Did the orientation at the retrospectively queried location participate in the swap?",
+    "intro": "Remember the arrangement of four orientations before you know which location will matter. After the delay a ring names one location, then the complete array returns with exactly one pair exchanged. Answer yes if the queried location was in that pair; answer no if two other locations exchanged while the queried orientation stayed put.",
+    "sections": {
+      "appears": [
+        "Four Gabor patches occupy the fixed interior square. Their orientation inventory is generated from a random axial base plus 0°,45°,90°,135°, modulo 180°, and is randomly assigned to the four locations. This makes all four values distinct and regularly spaced in orientation without fixing which value belongs at which location. The familiar recall/sample glyphs are visible, but no ring or local sign identifies the eventual target during sampling. [spatial-code] [spatial-cue-code]",
+        "After retention, a ring appears around the location to be judged on a gray query frame. The probe contains the full Gabor array, not a single isolated item. Its inventory is exactly preserved while two assignments are exchanged; fresh phase, noise, wavelength and amplitude mean that the unchanged location need not be pixel-identical. The ring is absent at the probe itself. [spatial-code]"
+      ],
+      "sequence": [
+        "Frame 0 is an instruction field with recall/sample markers and no target highlight. Frames 1 and 2 show the sample orientations with independent Gabor nuisance renderings. Frames 3 through D+2 provide D delay frames with recall/ignore markers. Frame D+3 is a ring-only spatial query with a recall/query marker. Frame D+4 shows the full probe array and report marker. Total length is D+5 for D=0,4,12,24. [spatial-code]",
+        "The queried location is selected internally before rendering, but it is not visually disclosed until after the sample and delay. This timing makes the cue retrospective from the observer’s perspective. There are no inserted postquery delay frames, and the query does not itself show the remembered orientation. “D0” removes the retention blanks but does not remove the query frame or turn it into a precue. [spatial-code]"
+      ],
+      "rules": [
+        "Class 1 means that target_location is one of swapped_locations; class 0 means the exchanged pair contains two of the three foils. On a positive, one foil is chosen uniformly to exchange with the target. On a negative, two distinct foils are chosen without replacement. Exactly two locations change orientation in either class, and the target itself stays unchanged only in the negative class. There are no no-swap negatives. [spatial-code]",
+        "For the selected example, mark the two native swapped_locations only after revealing the answer, and test whether the ring query’s target_location belongs to that pair. The stored sample/probe angles then show the actual correspondence: the same two orientation values traded locations. The alternative “anything changed” answer is wrong on every foil-only negative, because those trials deliberately include a real exchange. [spatial-code]"
+      ],
+      "ignore": [
+        "Ignore the mere presence of an exchange, the unordered list of orientations and the total number of changed sites. Both classes preserve the global inventory and both change two locations. Remembering only the set of feature values therefore removes the feature-to-location information required by the rule. A whole-image difference magnitude can also be contaminated by fresh Gabor nuisance rather than isolate the queried relation. [spatial-code]",
+        "Before the ring query there is no privileged target patch to attend in the displayed pixels. Explanatory graphics must not add an advance highlight, because that would transform a retrospective selection task into a different precued task. At report, an orientation found elsewhere in the sample is not by itself a mismatch answer; the relevant question is whether the orientation at the queried position changed assignment. [spatial-code]"
+      ],
+      "implementation": [
+        "SpatialBatteryStream._binding draws a uniform random base angle and a random permutation of the four regular offsets. The balanced eight-case queue supplies label and queried position. It constructs the exchange conditional on that label, swaps two entries of a copied angle vector and asserts both inventory preservation and agreement of target change with the class. The swap is a manipulation of orientation values, not a copy-and-paste of Gabor pixels. [spatial-code]",
+        "The same _gabors and local_cue helpers supply the nuisance and visual vocabulary used by the other Gabor tasks. _binding explicitly passes visible=False during instruction, samples and delay, enabling the location ring only at query. Its query phase is not an identity glyph: visual_cues still receives no identity or threshold parameter. Only images enter the sensory stream; target, pair and angle arrays remain analysis metadata. [spatial-code] [spatial-cue-code]"
+      ],
+      "neuroscience": [
+        "The central scientific distinction is between retaining features and retaining which features belong at which locations. Luck and Vogel’s primary feature/conjunction memory study motivates the broader importance of object-level combinations, but it is not a retrospective exchange experiment. Only its abstract was verified here, and no quantitative capacity result or detailed methods claim is transferred to this assay. [spatial-luck-1997]",
+        "For the retrospective part, Griffin and Nobre directly compared spatial pre-cues, retro-cues and neutral cues. Their verified abstract describes directing attention after a multi-item array and reports behavioral cueing effects, providing a specific primary anchor for selecting within an internal representation. Full-text access was restricted in this verification, so the atlas limits attribution to that abstract-level finding rather than supplying unverified timing or ERP mechanisms. Their colored-item comparisons are not this project’s exact orientation-swap rule. [spatial-griffin-2003]"
+      ],
+      "network": [
+        "The useful memory is a feature–location relation, not just an inventory. Because the eventual query is not announced during the sample, a general solution must retain enough arrangement information to support more than one possible location query, then relate the selected sample feature to the full-array probe. That information can be compressed or distributed; successful behavior does not require an explicit symbolic array of four slots.",
+        "The regular 45° inventory is a simplification that may permit specialized encodings, and partial-memory strategies can perform above chance without perfectly preserving every item. At D0, a three-frame temporal window can include the last sample, query and probe, so even correct D0 behavior is not a clean demonstration of delay-spanning recurrent retention. At longer D, failures still need not identify whether storage, query reading or correspondence computation was responsible."
+      ],
+      "boundary": [
+        "Success would support sensitivity to retrospectively selected feature–location correspondence under the specified permutation law and nuisance distribution. It would not establish four biological slots, a human memory-capacity number, a uniquely identified binding mechanism or generalization to new positions and arbitrary orientation sets. Equal orientation inventories are a control against an inventory-only solution, not a proof that every conceivable raster shortcut has been ruled out.",
+        "All displayed examples are curated illustrations, not a random evaluation sample. The explanatory overlays and metadata are not additional sensory evidence. Demonstration playback is deliberately readable rather than a biological clock, and independent condition streams must not be described as paired delay interventions."
+      ],
+      "metrics": [
+        "Accuracy is the fraction of correct episode labels; class recall conditions on each true class. Balanced accuracy is the mean of the two class recalls. Binary AUC is the probability that a positive episode receives a higher positive-class score than a negative one, with half credit for ties; it needs both classes and continuous scores. Random class guessing has accuracy and balanced accuracy 0.5, and a label-independent ranking has expected AUC 0.5. These are definitions, not measured results.",
+        "Report each delay, queried location and target-involved versus foil-only exchange, with actual case counts and confusion. The swapped pair can be shown as an analysis stratum, but its order in the metadata is not a third semantic class. Comparing independent delay-cell outcomes would not itself be a paired causal test of retention. This atlas defines those reports without producing model measurements. [spatial-code] [spatial-suite-code]"
+      ],
+      "adaptation": [
+        "Adapted here: combine feature/conjunction-memory motivation with retrospective spatial selection, then impose a four-orientation regular inventory, fixed quadrants and an always-one-pair-exchange control. Neither cited primary paper is represented as the source of the exact target-versus-foil labels, ring timing, Gaussian Gabor nuisance or frame delays. The custom control specifically prevents treating the presence or global extent of change as the desired answer. [spatial-luck-1997] [spatial-griffin-2003] [spatial-code]"
+      ]
+    },
+    "properties": [
+      {
+        "name": "Native input",
+        "value": "T × 3 × 100 × 100; float32 in [0,1]",
+        "units": "frames × channels × pixels",
+        "sampling": "Fixed shape per condition; no added padding observations",
+        "role": "All native frames, including delays, are observations",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:blank, batch; SecondPass/TaskSuite/suite.py:batch",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Background and display",
+        "value": "0.5 gray; RGB channels identical for synthetic stimuli",
+        "units": "digital intensity",
+        "sampling": "Fixed; not calibrated luminance",
+        "role": "A numerical image domain, not cd/m² or an observer-calibrated monitor",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:blank; Demo/CONTRACT.md",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Condition streams",
+        "value": "Independent stream per task × condition × split",
+        "units": "stream identity",
+        "sampling": "Native NumPy Generator states; suite seed = split_seed × 100000 + task_stream_id × 1000 + cell_index",
+        "role": "Changing delay selects a separate stream, not a paired copy of one trial",
+        "provenance": "SecondPass/TaskSuite/suite.py:stream_seed, _make_stream",
+        "visibility": "Analysis-only stream configuration; not an image token"
+      },
+      {
+        "name": "Task identity and metadata",
+        "value": "Task ID selects a supervised head; labels, angles, schedules, hashes and source IDs are not sensory inputs",
+        "units": "interface",
+        "sampling": "Explicit task dispatch; no unrestricted verbal instruction",
+        "role": "Website explanations and answers are outside the native raster",
+        "provenance": "SecondPass/TaskSuite/suite.py:task_classes, batch",
+        "visibility": "External task-head selection; analysis-only metadata"
+      },
+      {
+        "name": "Reserved corner masks",
+        "value": "10 × 10 at x,y ∈ {0,90}; reset to 0.5 before glyphs",
+        "units": "pixels",
+        "sampling": "Applied to each frame that calls visual_cues",
+        "role": "Prevents underlying content in the reserved cue areas",
+        "provenance": "WorkingMemory/stimuli.py:visual_cues lines 58–83",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Protocol / phase glyphs",
+        "value": "recall=3; sample=4, ignore=5, query=6, report=7",
+        "units": "binary pictogram code",
+        "sampling": "Top-left protocol and top-right phase; three possible 2 × 2 bright strokes at value 0.95 and a 2 × 6 dark base at 0.12",
+        "role": "These small pixels are visible learned visual vocabulary, not oracle phase flags",
+        "provenance": "WorkingMemory/stimuli.py:CUE_CODES, visual_cues",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Unused glyph channels",
+        "value": "No identity glyph or threshold bar in these task calls",
+        "units": "not applicable",
+        "sampling": "Default sign=None, threshold=None, identity=None unless locally stated",
+        "role": "Do not import the older cumulative threshold task",
+        "provenance": "WorkingMemory/stimuli.py:visual_cues; WorkingMemory/SpatialTaskBattery/stimuli.py:local_cue",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Patch centers / indexing",
+        "value": "0=(27,27), 1=(73,27), 2=(27,73), 3=(73,73)",
+        "units": "pixel (x,y)",
+        "sampling": "Fixed; image y increases downward",
+        "role": "Location is part of the feature relation; no held-out-position manipulation",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:CENTERS",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Gabor envelope",
+        "value": "exp(−r²/(2 × 4.5²)), set to zero when r > 12",
+        "units": "pixel radius / digital gain",
+        "sampling": "Fixed circular truncation and Gaussian width at every patch",
+        "role": "Localizes the grating without changing its labeled angle",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_gabors lines 79–84",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Carrier wavelength",
+        "value": "Uniform[5,7)",
+        "units": "pixels per carrier cycle",
+        "sampling": "One draw per rendered Gabor frame; shared by its four patches, redrawn between sample frames and probe",
+        "role": "Nuisance spatial frequency; the sample frames are not identical images",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_gabors lines 79–84",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Carrier modulation amplitude",
+        "value": "Uniform[0.28,0.36)",
+        "units": "digital intensity amplitude",
+        "sampling": "One draw per rendered Gabor frame, shared across patches; redrawn at each rendering",
+        "role": "Not a calibrated Michelson contrast, because envelope/noise/clipping remain",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_gabors lines 79–84",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Carrier phase",
+        "value": "Uniform[0,2π)",
+        "units": "radians",
+        "sampling": "Independently drawn per patch and per rendered frame",
+        "role": "Prevents literal pixel correspondence from being the orientation rule",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_gabors lines 79–84",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Pixel noise",
+        "value": "Independent Normal(0,0.008²)",
+        "units": "digital intensity",
+        "sampling": "Fresh 100 × 100 scalar field per Gabor frame; same field repeated into RGB",
+        "role": "Adds achromatic nuisance; cue-only and blank fields do not receive this noise",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_gabors lines 79–84",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Gabor composition / clipping",
+        "value": "0.5 + noise + sum of four envelope-weighted cosine carriers; clip to [0,1]",
+        "units": "digital intensity",
+        "sampling": "No per-frame normalization; clipped scalar field repeated across 3 channels and cast float32",
+        "role": "Orientation is a carrier-axis variable modulo π; visible stripes are perpendicular to its wavevector",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_gabors lines 79–84",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Local ring",
+        "value": "|distance − 14| < 0.8; overwrite with 0.95",
+        "units": "pixel radius / digital intensity",
+        "sampling": "Fixed annulus centered on the selected patch; no anti-aliasing step",
+        "role": "Location-only cue; no sign information",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:local_cue lines 34–43",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Delay / length",
+        "value": "D ∈ {0,4,12,24}; T=D+5",
+        "units": "native frames",
+        "sampling": "Condition-fixed; renderer default D=0",
+        "role": "Blank retention before retrospective cue",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:frame_count, _binding",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Orientation inventory",
+        "value": "(α + {0,π/4,π/2,3π/4}) mod π, α~Uniform[0,π)",
+        "units": "radians",
+        "sampling": "One random base per trial; offsets fixed",
+        "role": "Four distinct equally spaced axial orientations",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_binding",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Location assignment",
+        "value": "Uniform random permutation of the four inventory entries",
+        "units": "permutation",
+        "sampling": "One assignment per trial, independent of target query",
+        "role": "Encodes where each feature was",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_binding",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Positive exchange",
+        "value": "Target paired with one of the three other sites, uniform choice",
+        "units": "locations",
+        "sampling": "Conditional on label 1",
+        "role": "Queried item participates",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_binding",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Negative exchange",
+        "value": "Two of the three non-target sites sampled without replacement",
+        "units": "locations",
+        "sampling": "Conditional on label 0; three unordered pairs equally likely",
+        "role": "Queried item stays; a genuine foil exchange still occurs",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_binding",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Changed count / inventory",
+        "value": "Exactly 2 changed orientation assignments; full inventory preserved",
+        "units": "locations / invariant",
+        "sampling": "Assertion checked in code",
+        "role": "Any-change, change-count and inventory controls",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_binding",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Query visibility",
+        "value": "Only frame D+3; no ring during instruction, samples, delay or probe",
+        "units": "zero-based index",
+        "sampling": "Fixed retrospective disclosure",
+        "role": "Internal sampling of target does not imply a visible precue",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_binding",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Case cycle",
+        "value": "2 labels × 4 queried locations once per 8-trial cycle",
+        "units": "episodes",
+        "sampling": "Uniform random permutation",
+        "role": "Target and class balance over whole cycles",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_case",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Query-to-probe gap",
+        "value": "No inserted blank: query immediately followed by full-array probe",
+        "units": "frames",
+        "sampling": "Fixed",
+        "role": "Query frame itself remains a separate observation",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_binding",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      }
+    ],
+    "equations": [
+      "Θ = {(α + kπ/4) mod π : k ∈ {0,1,2,3}}",
+      "y = 1[q ∈ swapped_locations] = 1[θprobe,q ≠ θsample,q]",
+      "|{j : θprobe,j ≠ θsample,j}| = 2 for both labels",
+      "T = D + 5"
+    ],
+    "references": [
+      "spatial-code",
+      "spatial-cue-code",
+      "spatial-suite-code",
+      "spatial-luck-1997",
+      "spatial-griffin-2003"
+    ],
+    "worked_example": {
+      "metadata_fields": [
+        "target_location",
+        "swapped_locations",
+        "sample_angles_radians",
+        "probe_angles_radians",
+        "changed_location_count",
+        "inventory_preserved"
+      ],
+      "rule": "Target in swapped_locations→1; target absent→0. Verify angle exchange and preserved inventory.",
+      "alternative": "Two locations change in either class; there are no no-change negatives.",
+      "binding": "Do not highlight target before native query frame, even though metadata records it in advance."
+    }
+  },
+  {
+    "id": "image_recognition",
+    "title": "Was this image in the list?",
+    "group": "retention",
+    "question": "Is the probe raster an exact member of the preceding study-image list?",
+    "intro": "A sequence of distinct photographs is followed by three blank frames and one photograph repeated for several frames. Answer whether that exact image was in the preceding list. The list may be empty, in which case the answer is always no; repeated probe frames are one continuing observation within one episode, not additional study items or independent trials.",
+    "sections": {
+      "appears": [
+        "Natural RGB photographs fill the complete 100 × 100 image. Each source has one canonical, centrally cropped square raster resized with bicubic interpolation. Unlike the natural-spectrum task, recognition does not convert photographs to linear luminance, take a random native crop, modify Fourier amplitudes or impose a shared RMS. The source’s ordinary decoded RGB values remain, scaled from uint8 to float32 in [0,1]. [spatial-code] [spatial-photo-code]",
+        "Only the initial gray instruction frame has recall/sample corner glyphs. Study images have no glyph overlays, the three intervening blanks are plain gray, and every probe repeat is an untouched copy of the same RGB raster. No serial-position number, list-length numeral, membership symbol or answer cue is painted into a photograph. Those labels belong to the explanatory interface, not the native input. [spatial-code] [spatial-cue-code]"
+      ],
+      "sequence": [
+        "Frame 0 is the instruction. Frames 1 through N contain N distinct study photographs, one frame each and with no interleaved blanks. Frames N+1 through N+3 are the three blank observations after the entire list. Frames N+4 through N+H+3 are H bit-identical probe presentations. The judgment is made after the last repeat, giving T=N+4+H. For N0 the study segment is empty but instruction, all three blanks and all H probe frames remain. [spatial-code]",
+        "The catalog crosses N∈{0,4,12,24} with H∈{3,4,5}, producing all 12 official cells. H is a condition control, not an independently resampled holding time within that cell. A longer hold repeats one query image, not new recognition questions. Frame counts here do not have an assigned biological time scale; the viewer must preserve the full N24 list rather than abbreviate it to improve the animation. [spatial-suite-code] [spatial-code]"
+      ],
+      "rules": [
+        "Class 1 means exact raster membership in the immediately preceding study list; class 0 means the probe is distinct from every study raster. For a nonempty positive trial, a study position is drawn uniformly and its existing float32 image is copied as the probe. For a negative, the probe comes from a source identity outside the current list and is processed by exactly the same canonical rule. Source identity and raster-hash assertions enforce uniqueness and the intended membership. Every N0 label is overridden to 0. [spatial-code]",
+        "To explain the selected episode, compare probe_raster_sha256 with the entries of study_raster_sha256. On a positive, seen_study_index gives the zero-based list index: the corresponding native study frame is one plus that index. Reveal the matching filmstrip entry only after the answer. On a negative no hash matches; for N0 the absence of any study item is decisive regardless of the probe’s visual familiarity. [spatial-code]"
+      ],
+      "ignore": [
+        "Do not answer from semantic category resemblance, scene familiarity across earlier episodes, or whether a photograph appeared somewhere else in the atlas. The target relation is membership in this episode’s list. Two different photographs of similar content are still negative if the probe is not one of the stored rasters. Conversely, a positive does not require recognizing an object category because the image is an exact copy. [spatial-code]",
+        "Do not count H identical probe frames as H independent samples or allow the probe to make itself a member by being seen on its preceding repeat. Membership refers only to the study segment before the blanks. The instruction is also not a study item, and the three gray frames do not introduce negative source images into the list. [spatial-code]"
+      ],
+      "implementation": [
+        "RecognitionImages reads the official split-specific source records and caches one canonical image per source. Before first decoding a source it checks the file SHA256 against the manifest. Pillow ImageOps.fit receives an RGB image, output size (100,100) and explicit BICUBIC resampling; its default bleed=0 and centering=(0.5,0.5) produce a central aspect-ratio crop with no extra trimmed border. The resulting uint8 array is transposed to CHW, converted to float32 and divided by 255. There is no stochastic image augmentation. [spatial-code]",
+        "_recognition samples N+1 distinct source indices without replacement, uses the first N for study, and reserves the final index for a negative probe. Even a positive draw samples that unused spare index before selecting a study copy. SHA256 hashes are computed from contiguous float32 rasters; the code asserts N unique study hashes and equivalence between membership and the class. The balanced eight-case queue supplies four occurrences of each nonempty-list label per cycle; its location code is irrelevant to this nonspatial family, and N0 overrides every sampled label. [spatial-code]",
+        "The suite keeps official train/validation/test source identities separate and records dataset identity when materialized photo streams are serialized. Source preparation validates 200/100/200 counts from the official archive; RecognitionImages itself checks a minimum pool size and globally unique file hashes rather than reimplementing every preparation check. The demo is restricted to train photographs. Missing data is a blocker, not permission to substitute synthetic images, and the native sampler never downloads the dataset on import. [spatial-photo-code] [spatial-suite-code]"
+      ],
+      "neuroscience": [
+        "Recognition asks whether a current visual input has been encountered in the relevant past, a different question from reconstructing a feature or comparing two spectral statistics. Brady and colleagues used both an ongoing repeat-detection stream and later recognition tests pairing a studied object image with a foil. Their full methods directly motivate studying prior occurrence and intervening items, while distinguishing recognition of an image from verbal or semantic description of it. [spatial-brady-2008]",
+        "That primary study concerns long-term memory for object photographs with a very different exposure regime and test structure. It is not a source for this project’s small list lengths, single-frame study images, three blank frames or repeated probes. Here serial position and list length are computational handles on recency and interference; no human capacity number, long-term-memory mechanism or recognition fidelity is imported from the paper. [spatial-brady-2008] [spatial-code]"
+      ],
+      "network": [
+        "A general solution must keep enough information about multiple preceding inputs to decide whether the query belongs to their set. An exact or approximate collection of image signatures could suffice; semantic labeling is not logically required. Reusing finite source identities across episodes can also make source-specific encodings possible, so source-held-out validation matters when testing generalization rather than simply episode-level recollection.",
+        "Early positive items are followed by more intervening study images than late items. A limited recent-frame strategy can therefore treat positions differently even at fixed N, while a compressed familiarity representation may trade memory size against false matches. The repeated probe may give a recurrent computation more opportunities to process the same evidence, but contributes no newly independent image information. A valid strategy must preserve the phase distinction so that its first probe presentation does not contaminate its own membership decision."
+      ],
+      "boundary": [
+        "Success would support exact-image set membership under this finite photograph pool, preprocessing and episode structure. It would not establish abstract object recognition, viewpoint invariance, semantic understanding, unrestricted long-term recall or biological memory capacity. Different list lengths also change sequence length and interference; they are not isolated matched manipulations of one mechanism. The atlas’s handpicked early/middle/late examples are illustrations, not a serial-position curve.",
+        "BSDS500 was collected for segmentation and boundary research, and this task uses only its photographs, not segmentation annotations or the original benchmark objectives. The official resource page provides provenance and requested attribution but no blanket new redistribution permission was established in this audit. This deliverable is local; image rights must be rechecked before any later public hosting. [spatial-bsds500]"
+      ],
+      "metrics": [
+        "For N>0, define accuracy, positive/negative recall, balanced accuracy as their mean, and binary AUC from continuous membership scores when both classes are present. Balanced class guessing and a label-independent ranking have expectations of 0.5 for their respective metrics. Stratify by N, H and positive serial position; report source identities, confusion and actual denominators. Correlation from reused photographs and items shared across episode lists must not be mistaken for independent new photographic evidence.",
+        "For N0, report specificity (negative responses divided by all empty-list episodes) and false-positive rate (positive responses divided by that same denominator). Balanced accuracy and AUC are undefined in this single-class cell and must be null/not applicable, excluded from those aggregates and any corresponding selection rule. Do not assign an N0 chance BA, invent an AUC, or treat a correct negative as proof of storing zero items. Repeated probe frames count as one episode for every metric. [spatial-suite-code] [spatial-code]"
+      ],
+      "adaptation": [
+        "Adapted here: use BSDS500 source photographs as exact fixed rasters in a list-membership assay, with N0/4/12/24, a postlist three-blank segment and H3/4/5 repeated queries. Brady and colleagues anchor the recognition/repeat-detection question, not this recipe or a human-equivalent load. The central RGB fit, byte-identical positives, distinct-source negatives, untouched photo pixels and separate empty-list specificity control are explicit implementation choices. [spatial-brady-2008] [spatial-bsds500] [spatial-code]"
+      ]
+    },
+    "properties": [
+      {
+        "name": "Native input",
+        "value": "T × 3 × 100 × 100; float32 in [0,1]",
+        "units": "frames × channels × pixels",
+        "sampling": "Fixed shape per condition; no added padding observations",
+        "role": "All native frames, including delays, are observations",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:blank, batch; SecondPass/TaskSuite/suite.py:batch",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Instruction / delay background",
+        "value": "0.5 gray for instruction and blank frames; photographs retain RGB channel differences",
+        "units": "digital intensity",
+        "sampling": "Fixed blank; no imposed photo mean or RMS",
+        "role": "Do not apply achromatic Gabor or spectral preprocessing",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:blank, RecognitionImages.image, _recognition",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Condition streams",
+        "value": "Independent stream per task × condition × split",
+        "units": "stream identity",
+        "sampling": "Native NumPy Generator states; suite seed = split_seed × 100000 + task_stream_id × 1000 + cell_index",
+        "role": "Changing delay selects a separate stream, not a paired copy of one trial",
+        "provenance": "SecondPass/TaskSuite/suite.py:stream_seed, _make_stream",
+        "visibility": "Analysis-only stream configuration; not an image token"
+      },
+      {
+        "name": "Task identity and metadata",
+        "value": "Task ID selects a supervised head; labels, angles, schedules, hashes and source IDs are not sensory inputs",
+        "units": "interface",
+        "sampling": "Explicit task dispatch; no unrestricted verbal instruction",
+        "role": "Website explanations and answers are outside the native raster",
+        "provenance": "SecondPass/TaskSuite/suite.py:task_classes, batch",
+        "visibility": "External task-head selection; analysis-only metadata"
+      },
+      {
+        "name": "Reserved corner masks",
+        "value": "10 × 10 at x,y ∈ {0,90}; reset to 0.5 before glyphs",
+        "units": "pixels",
+        "sampling": "Applied only to the instruction frame by visual_cues; no masking on study, delay or probe frames",
+        "role": "Prevents underlying content in the reserved cue areas",
+        "provenance": "WorkingMemory/stimuli.py:visual_cues lines 58–83",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Protocol / phase glyphs",
+        "value": "Instruction frame only: recall=3 / sample=4; no study, delay or probe glyphs",
+        "units": "binary pictogram code",
+        "sampling": "One initial instruction image; photographs and three plain gray blanks bypass visual_cues",
+        "role": "These small pixels are visible learned visual vocabulary, not oracle phase flags",
+        "provenance": "WorkingMemory/stimuli.py:CUE_CODES, visual_cues",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Unused glyph channels",
+        "value": "No identity glyph or threshold bar in these task calls",
+        "units": "not applicable",
+        "sampling": "Default sign=None, threshold=None, identity=None unless locally stated",
+        "role": "Do not import the older cumulative threshold task",
+        "provenance": "WorkingMemory/stimuli.py:visual_cues; WorkingMemory/SpatialTaskBattery/stimuli.py:local_cue",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "List × hold conditions",
+        "value": "N ∈ {0,4,12,24}; H ∈ {3,4,5}; all 12 combinations",
+        "units": "images / frames",
+        "sampling": "Catalog-fixed; defaults N=4,H=4 in native call",
+        "role": "Memory load and repeated query exposure",
+        "provenance": "SecondPass/TaskSuite/catalog.json:image_recognition; WorkingMemory/SpatialTaskBattery/stimuli.py:_recognition",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Sequence length / delays",
+        "value": "T=N+4+H; exactly 3 blanks after the complete list",
+        "units": "native frames",
+        "sampling": "No interleaved study blanks; no trailing separate report frame",
+        "role": "Final probe repeat is the final observation",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_recognition",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Source pool / split",
+        "value": "BSDS500 official train 200 / val 100 / test 200; train only in demo",
+        "units": "photograph identities",
+        "sampling": "Preparation validates counts; sampler filters manifest by split",
+        "role": "Finite pool shared with natural-spectrum task without crossing official split boundaries",
+        "provenance": "PreAttentiveVision/natural_stimuli.py:prepare_dataset; WorkingMemory/SpatialTaskBattery/stimuli.py:RecognitionImages",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Canonical crop / resize",
+        "value": "RGB conversion → central square fit → bicubic 100 × 100",
+        "units": "pixels",
+        "sampling": "Pillow ImageOps.fit: centering=(0.5,0.5), bleed=0 by default; BICUBIC explicit",
+        "role": "Deterministic source raster; no random crops or augmentations",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:RecognitionImages.image; PIL.ImageOps.fit defaults",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Photo photometry",
+        "value": "uint8 RGB → float32 CHW /255",
+        "units": "digital RGB intensity",
+        "sampling": "No sRGB-to-linear conversion, grayscale transform, added noise or mean/RMS normalization",
+        "role": "Different preprocessing from natural_spectrum",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:RecognitionImages.image",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Within-list identity sampling",
+        "value": "N+1 distinct source records without replacement",
+        "units": "source indices",
+        "sampling": "Uniform subset/order by rng.choice; first N form study, final is a reserved negative candidate",
+        "role": "Unique source identities; unused spare still drawn on positive trials",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_recognition",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Positive serial position",
+        "value": "Uniform integer j ∈ {0,…,N−1}; native study frame j+1",
+        "units": "zero-based index",
+        "sampling": "Fresh draw on each nonempty positive",
+        "role": "Positive probe is a copied study raster",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_recognition",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Negative probe",
+        "value": "Source ids[N], outside the list; same split and preprocessing",
+        "units": "identity",
+        "sampling": "Available on every negative, including N0",
+        "role": "No alternate photometric law for nonmembers",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_recognition",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Positive / negative cycle",
+        "value": "Four sampled labels of each class per 8 cases; N0 overrides all to 0",
+        "units": "episodes",
+        "sampling": "Shuffled label×unused-location case queue",
+        "role": "Balanced nonempty cycles, single-class empty cells",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_case, _recognition",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Raster exactness",
+        "value": "Unique study hashes; probe hash in study hashes iff label=1",
+        "units": "SHA256 / invariant",
+        "sampling": "Hash contiguous float32 bytes; assertion checked",
+        "role": "Hash values are explanatory provenance, never model inputs",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:raster_hash, _recognition",
+        "visibility": "Analysis-only hashes; actual RGB rasters are visible"
+      },
+      {
+        "name": "Source integrity",
+        "value": "File SHA256 checked before first image decode; globally unique manifest file hashes",
+        "units": "SHA256 / invariant",
+        "sampling": "Canonical raster cached by split-specific record index",
+        "role": "Source byte identity distinguished from float32 raster identity",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:RecognitionImages.__init__, image",
+        "visibility": "Analysis-only metadata"
+      },
+      {
+        "name": "Probe repeats",
+        "value": "H copies of exactly the same raster",
+        "units": "frames",
+        "sampling": "Bit-identical within trial",
+        "role": "Not independent queries or extra study items",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_recognition",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Study/probe overlays",
+        "value": "None; full native photographs retain all corners",
+        "units": "pixels",
+        "sampling": "visual_cues used only on instruction",
+        "role": "No corner phase code on probe or study",
+        "provenance": "WorkingMemory/SpatialTaskBattery/stimuli.py:_recognition",
+        "visibility": "Model-visible pixels; numerical parameter/metadata is analysis-only"
+      },
+      {
+        "name": "Source root / download boundary",
+        "value": "PreAttentiveVision/data/bsds500; official Berkeley archive",
+        "units": "repository path",
+        "sampling": "DATA_ROOT imported; download only through explicit preparation function",
+        "role": "Missing data cannot trigger synthetic fallback",
+        "provenance": "PreAttentiveVision/natural_stimuli.py:DATA_ROOT, SOURCE_URL, prepare_dataset",
+        "visibility": "Configuration; not sensory input"
+      },
+      {
+        "name": "Empty-set eligibility",
+        "value": "Always class 0; selection_eligible=false for N0_H3/H4/H5",
+        "units": "reporting constraint",
+        "sampling": "Fixed catalog rule",
+        "role": "Specificity/FPR only; BA/AUC undefined",
+        "provenance": "SecondPass/TaskSuite/catalog.json:image_recognition",
+        "visibility": "Analysis-only reporting policy"
+      }
+    ],
+    "equations": [
+      "y = 1[probe ∈ {study1,…,studyN}]",
+      "N = 0 ⇒ y = 0",
+      "T = N + 4 + H",
+      "positive serial age at final observation = N + H + 2 − j (frame-index difference, j zero-based)"
+    ],
+    "references": [
+      "spatial-code",
+      "spatial-cue-code",
+      "spatial-suite-code",
+      "spatial-photo-code",
+      "spatial-brady-2008",
+      "spatial-bsds500"
+    ],
+    "worked_example": {
+      "metadata_fields": [
+        "study_load",
+        "probe_hold",
+        "study_raster_sha256",
+        "probe_raster_sha256",
+        "seen_study_index",
+        "study_source_ids",
+        "probe_source_id",
+        "study_frames",
+        "probe_frames"
+      ],
+      "rule": "Exact probe hash in study hash list→1, otherwise→0; N0 always0. seen_study_index is zero-based; display ordinal is index+1.",
+      "alternative": "Semantic similarity or an earlier probe repeat does not create membership in the study list.",
+      "binding": "Reveal actual matching filmstrip item only after answer; do not make up source names or image similarity."
+    }
+  }
+]

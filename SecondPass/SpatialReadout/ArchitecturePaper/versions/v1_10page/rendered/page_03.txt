@@ -1,0 +1,77 @@
+SpatialReadout: architecture and decision logic
+Source-audited technical paper
+3
+Sensory interface and the multiscale encoder
+3.1
+Causal frame stacking has a speciﬁc boundary condition
+The suite supplies ﬂoat32 images in [0, 1], laid out as B × T × 3 × 100 × 100. Centering subtracts 0.5; it does not
+divide by 0.5. For zero-based t, deﬁne
+¯Xt =
+{
+Xt −0.5,
+t ≥0,
+0,
+t < 0,
+xt = ¯Xt−2 ∥¯Xt−1 ∥¯Xt.
+(1)
+Here ∥concatenates channels in oldest-to-current order. Padding is created after centering, so missing history is
+zero in centered coordinates (equivalent to raw midgray), not centered black. The ﬁrst input is [0, 0, X0 −0.5] and
+the second is [0, X0 −0.5, X1 −0.5]. No future image enters an earlier update.[S2,S6]
+Stacking supplies a short explicit temporal window, useful in principle for local changes and motion without requir-
+ing recurrence to reconstruct every adjacent-frame diﬀerence. This is a computational rationale, not a measured
+contribution here. It also changes the interpretation of a delay: the ﬁrst two nominal blank updates can still expose
+earlier stimulus images. Clean recurrent retention must be distinguished from access through this window.
+3.2
+Four blocks, three interleaved memories
+Each block is a biased convolution followed by GroupNorm with eight groups and ReLU. The veriﬁed GroupNorm
+epsilon is 10−5 and the normalization has learned per-channel scale and shift. The ﬁrst convolution has kernel 5,
+stride 2, padding 2; all remaining block convolutions use kernel 3, stride 2, padding 1. There is no pooling.[S2]
+Stage
+Input channels
+Output ﬁeld
+Parameters
+Block 1: Conv5/GN/ReLU
+9
+32 × 50 × 50
+7,296
+Block 2: Conv3/GN/ReLU
+32
+64 × 25 × 25
+18,624
+Projection 1; KDA 1
+64 →32
+32 × 25 × 25
+2, 080 + 24, 754
+Block 3: Conv3/GN/ReLU
+64 + 32 = 96
+96 × 13 × 13
+83,232
+Projection 2; KDA 2
+96 →32
+32 × 13 × 13
+3, 104 + 24, 754
+Block 4: Conv3/GN/ReLU
+96 + 32 = 128
+128 × 7 × 7
+147,840
+Projection 3; KDA 3
+128 →32
+32 × 7 × 7
+4, 128 + 24, 754
+Table 1: Constructor-veriﬁed counts; output sizes are analytically propagated from the actual convolution attributes.
+Each projection is a biased 1 × 1 convolution. No trained forward pass was needed.
+For each memory-bearing scale, U s
+t = PsHs
+t drives a KDA update and the next block receives Hs
+t ∥Os
+t . Consequently
+the next scale sees both contemporary CNN features and a learned memory emission, not only a memory-compressed
+replacement. At the deepest scale the same concatenation gives 160×7×7. The three modules have distinct weights
+and states; they are neither weight-tied nor three successive global token-mixing layers.
+GroupNorm avoids batch-dependent normalization statistics, consistent with the small physical microbatch used in
+training [4]. It does, however, aggregate within channel groups over spatial positions. Therefore “local KDA state”
+does not mean the entire encoder is strictly spatially isolated: convolutional neighborhoods, GroupNorm statistics,
+and subsequent layers couple information across the ﬁeld.
+Takeaway. Spatial organization survives the encoder, but resolution and channels are already compressed. “Com-
+pression after recurrence” means postponing the large global ﬂatten/projection, not eliminating every bottleneck.
+3

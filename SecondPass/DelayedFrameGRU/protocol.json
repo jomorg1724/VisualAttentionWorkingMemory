@@ -1,0 +1,77 @@
+{
+  "architecture": "independent_delayed_frame_stride1_residual_cnn_gru",
+  "protocol": "independent_delayed_frame_stride1_residual_cnn_gru_wholemodel_fresh_native_v1",
+  "implementation_status": "local MPS training running; persisted optimizer verified",
+  "parameter_count": 21293770,
+  "parameter_tensors": 86,
+  "encoders": {
+    "shared_weights": false,
+    "channels": 32,
+    "residual_blocks": 5,
+    "dilations": [
+      1,
+      1,
+      2,
+      4,
+      1
+    ],
+    "all_convolution_strides": 1,
+    "pooling": false,
+    "spatial_shape": [
+      100,
+      100
+    ],
+    "readout_channels": 4,
+    "embedding_width": 256
+  },
+  "pairing": {
+    "order": [
+      "current",
+      "previous"
+    ],
+    "delay_frames": 1,
+    "initial_previous": "zero representation",
+    "detach": false
+  },
+  "gru": {
+    "type": "torch.nn.GRU",
+    "input_size": 512,
+    "hidden_size": 256,
+    "num_layers": 1
+  },
+  "task": "krauzlis_cued_motion",
+  "conditions": [
+    "B12",
+    "B20",
+    "B28"
+  ],
+  "native_changes_degrees": [
+    26,
+    28
+  ],
+  "target_foil_catch_per100": [
+    57,
+    29,
+    14
+  ],
+  "optimization": {
+    "optimizer": "Adam",
+    "lr": 0.0001,
+    "clip": null,
+    "effective_batch": 32,
+    "microbatch": 4,
+    "precision": "fp32",
+    "full_temporal_gradients": true,
+    "tf32": false
+  },
+  "initialization": "fresh whole model/Adam/RNG/scheduler/streams/counters; all parameters train; no inherited or profile weights",
+  "prospective_target_updates": 4216,
+  "profile": "3 native warmup updates discarded, 6 steady updates; discard all profile state",
+  "training_launched": true,
+  "execution_placement": "local",
+  "pinned_updates": 2631,
+  "pinned_episodes": 84192,
+  "local_microbatch": 1,
+  "local_eval_microbatch": 1,
+  "local_run_status": "RUN_STATUS.md"
+}

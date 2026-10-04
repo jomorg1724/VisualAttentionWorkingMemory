@@ -1,0 +1,56 @@
+"""Launch a single bounded local VAE9900-encoder RViT classification experiment."""
+import json, os, plistlib, shutil, subprocess, sys, time
+from pathlib import Path
+
+REPO=Path(__file__).resolve().parents[3]
+BASE=Path('/Users/jonathanmorgan/VAWMRuntime/vae_rvit_local01')
+PYTHON='/Users/jonathanmorgan/VAWMRuntime/recurrent_transformer_cpu_env/bin/python'
+ENCODER=Path('/Users/jonathanmorgan/VAWMRuntime/three_frame_conv_vae_local01/resume01/latest.pt')
+MODULE='SecondPass.VAERViT.worker'
+LABEL='org.vawm.vae-rvit-local01'
+
+
+def main():
+    sys.path.insert(0,str(REPO))
+    from SecondPass.ThreeFrameConvVAE import bundle as source_bundle
+    from SecondPass.SingleStimulusRViT.worker import clone
+    from SecondPass.VAERViT import worker
+    # AST source closure, without copying weights, datasets, or prior run artifacts.
+    sources=clone(source_bundle.dependency_sources,__file__=str(REPO/'SecondPass/VAERViT/worker.py'))()
+    encoder_sha=worker.digest(ENCODER)
+    encoder=worker.load_verified(dict(path=str(ENCODER),bytes=ENCODER.stat().st_size,sha256=encoder_sha))
+    assert encoder['state']['step']==9900, 'Only the user-selected terminal VAE9900 encoder is authorized'
+    del encoder
+    BASE.mkdir(exist_ok=False); runtime=BASE/'repo'; runtime.mkdir(); hashes={}
+    for relative,source in sources.items():
+        assert source.suffix not in ('.pt','.pth','.ckpt')
+        target=runtime/relative; target.parent.mkdir(parents=True,exist_ok=True); shutil.copy2(source,target)
+        hashes[str(target)]=worker.digest(target); target.chmod(0o444)
+    manifest=runtime/'runtime_manifest.json'
+    manifest.write_text(json.dumps(dict(source_repository=str(REPO),source_hashes=hashes,
+        encoder_checkpoint=str(ENCODER),encoder_sha256=encoder_sha,encoder_source_step=9900,
+        checkpoint_files_copied=False,classification_namespaces=dict(train=worker.TRAIN_NAMESPACE,val=worker.VAL_NAMESPACE,test=worker.FINAL_NAMESPACE)),indent=2))
+    manifest.chmod(0o444)
+    guard=BASE/'guard.py'; shutil.copy2(Path(__file__).with_name('guard.py'),guard); guard.chmod(0o444)
+    run=BASE/'run'; run.mkdir()
+    jobs=[('guard',LABEL+'-guard',[PYTHON,'-u',str(guard),str(run)]),
+        ('supervise',LABEL,[PYTHON,'-u','-m',MODULE,'local-supervise',str(run)])]
+    paths=[]
+    for mode,label,command in jobs:
+        spec=dict(Label=label,ProgramArguments=command,WorkingDirectory=str(runtime),RunAtLoad=True,KeepAlive=False,ProcessType='Interactive',
+            EnvironmentVariables={key:'2' for key in ('OMP_NUM_THREADS','OPENBLAS_NUM_THREADS','MKL_NUM_THREADS','VECLIB_MAXIMUM_THREADS')},
+            StandardOutPath=str(run/(mode+'.stdout.log')),StandardErrorPath=str(run/(mode+'.stderr.log')))
+        path=BASE/(mode+'.plist'); path.write_bytes(plistlib.dumps(spec)); paths.append(path)
+    domain='gui/'+str(os.getuid()); subprocess.run(['launchctl','bootstrap',domain,str(paths[0])],check=True)
+    try: subprocess.run(['launchctl','bootstrap',domain,str(paths[1])],check=True)
+    except BaseException:
+        subprocess.run(['launchctl','bootout',domain,str(paths[0])],check=False); raise
+    receipt=dict(runtime=str(runtime),run=str(run),sources=len(hashes),labels=[label for _,label,_ in jobs],launched=time.time(),
+        device='mps',effective_batch=32,microbatch=1,encoder_checkpoint=str(ENCODER),encoder_sha256=encoder_sha,
+        initialization='VAE9900 encoder+mu only; fresh recurrent/classifier; fresh Adam/RNG/streams and zero classification counters',
+        phase='native disposable profile then pinned production; only best/latest checkpoint files')
+    (BASE/'launch.json').write_text(json.dumps(receipt,indent=2)+'\n')
+    (Path(__file__).parent/'launch.json').write_text(json.dumps(receipt,indent=2)+'\n')
+    print(json.dumps(receipt,indent=2))
+
+if __name__=='__main__': main()

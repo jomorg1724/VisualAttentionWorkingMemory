@@ -1,0 +1,21 @@
+{
+  "decision": "Is native pixel motion comparison accessible while fixed early neural and final-memory probes remain weak, and does matched external pre/post access help? Not a remedy selection or causal lesion test.",
+  "checkpoint": "selected2297 only, frozen CPU",
+  "fresh_test_seed": 81006173,
+  "fresh_test_groups": 300,
+  "cue_variants_per_group": 2,
+  "native_baseline_schedule": [12,20,28],
+  "reuse": "425 train groups and 100 validation groups from FrozenDiagnostic; validation is exploratory because reused across prior diagnostics. Previous test is never used for fitting or selection.",
+  "sites": ["cnn25","kda25","kda7","memory"],
+  "access": ["phases","final"],
+  "fixed_capacity": "Two 32-dimensional fixed random projections of baseline/post versus two permutations of final representation, expanded into 64 linear plus 2080 quadratic coordinates. Same groups, output targets, alpha candidates, scaler and coefficient counts across sites/access. Separate train-only standardization.",
+  "targets": "Joint cos/sin of actual circular post-minus-pre movement angle for both physical patches (4 outputs); any-event binary (2); left/right binary fitted and scored on actual events only (2). Metadata provides training/evaluation targets only, never feature selection or operational input.",
+  "alpha_candidates": [1,100,10000],
+  "selection": "validation minimum joint circular MAE for change; validation BA for classifiers; first wins ties; no refit; all fits and pixel thresholds hash frozen before fresh test generation",
+  "controls": "Entire physical-group target shuffle for each target; same validation candidate selection; zero-change baseline; reused full-dimensional per-phase direction fits evaluated on fresh test without new selection; final-only removal/NaN invariance",
+  "pixel": "Reuse isolated bilinear-dot centroid matching, known mass .48 and speed .375+/- .015, geometry, onset/event timing from sequence length, decoded visible cue. Full history versus last two transitions pre/post (stack3-matched instantaneous temporal window). No true dot IDs or directions enter observer. Pixel-derived flow sums/counts saved for numerical replay.",
+  "pixel_thresholds": "1..40 degrees, max validation BA separately for any-event and target-report, full and endpoint windows. Side by greatest absolute signed estimated change, independent of cue. No true cue selection.",
+  "uncertainty": "500 independent fresh-group bootstrap resamples, native-original rows only for headline metrics; cue variants not independent samples. Matched resamples for gains. Report event/catch counts and errors separately.",
+  "limits": "External pre/post access not a deployed head. Spatial ROIs versus full memory remain unequal before capacity matching. KDA recurrence has history unlike instantaneous CNN. Failure does not prove erasure; no pooling attenuation claim. Finite sample, feature projection and quadratic probe limitations remain.",
+  "budget": "existing immutable budget.json, 1200 seconds total, threads<=2 one worker, including reporting; no renewal"
+}

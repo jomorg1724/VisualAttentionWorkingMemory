@@ -1,0 +1,53 @@
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{float}
+\usepackage{needspace}
+\definecolor{ink}{HTML}{163B4A}
+\definecolor{muted}{HTML}{54717B}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\sffamily\scriptsize\color{muted} VISUAL ATTENTION AND WORKING MEMORY}
+\fancyhead[R]{\sffamily\scriptsize\color{muted} TEXTBOOK COMPANION}
+\fancyfoot[R]{\sffamily\small\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+\setlength{\headheight}{15pt}
+\titleformat{\section}{\sffamily\Large\bfseries\color{ink}}{}{0pt}{}
+\titleformat{\subsection}{\sffamily\large\bfseries\color{ink}}{}{0pt}{}
+\titlespacing*{\section}{0pt}{8pt}{14pt}
+\titlespacing*{\subsection}{0pt}{15pt}{7pt}
+\setlength{\parskip}{6pt}
+\setlength{\parindent}{0pt}
+\setlength{\emergencystretch}{3em}
+\setlength{\tabcolsep}{5pt}
+\renewcommand{\arraystretch}{1.15}
+\floatplacement{figure}{H}
+\widowpenalty=10000
+\clubpenalty=10000
+\AtBeginEnvironment{longtable}{\small}
+\let\oldsubsection\subsection
+\renewcommand{\subsection}{\Needspace{6\baselineskip}\oldsubsection}
+\AtBeginDocument{\hypersetup{colorlinks=true,linkcolor=ink,urlcolor=ink}}
+\renewcommand{\maketitle}{%
+\hypersetup{pageanchor=false}
+\begin{titlepage}
+\thispagestyle{empty}
+\vspace*{18mm}
+{\sffamily\small\color{muted} VISUAL ATTENTION / PROJECT READING EDITION\par}
+\vspace{14mm}
+{\sffamily\fontsize{32}{38}\selectfont\bfseries\color{ink} Visual attention\par and working memory\par}
+\vspace{9mm}
+{\sffamily\Large A textbook companion\par}
+\vspace{8mm}
+{\large KDA, spatial associative memory,\par recurrent readout, and all thirteen training tasks\par}
+\vspace{14mm}
+{\color{muted}\hrule height 0.7pt}
+\vspace{8mm}
+{\large Step-by-step derivations. Worked examples.\par Architecture diagrams. Trial walkthroughs.\par Exercises with answers.\par}
+\vfill
+{\sffamily\small\color{muted} 24 SEPTEMBER 2026\par}
+\vspace{4mm}
+{\small The joint KDA architecture is implemented. The new final ConvGRU is described as a planned design under construction. This edition contains no new model experiments.\par}
+\end{titlepage}
+\hypersetup{pageanchor=true}}
+\let\oldtableofcontents\tableofcontents
+\renewcommand{\tableofcontents}{\oldtableofcontents\clearpage}

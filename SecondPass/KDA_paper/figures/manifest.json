@@ -1,0 +1,340 @@
+{
+  "source_commit": "ac351be944fc698e52578b64995f38b083b579f7",
+  "figure_count": 29,
+  "figures": [
+    {
+      "id": "01_architecture",
+      "title": "Architecture / spatial memory inside the encoder",
+      "caption": "Schematic of the implemented KDA arm. Each accumulator output is concatenated with its convolutional feature map before the next block (or final flatten). All learned parameters were trainable. This is not a spatial attention visualization.",
+      "category": "Overview",
+      "source": "PlainBaseline/accum.py; TemporalIntegration/accumulators.py",
+      "png": "01_architecture.png",
+      "svg": "01_architecture.svg",
+      "pdf": "01_architecture.pdf"
+    },
+    {
+      "id": "02_trial_timeline",
+      "title": "Trial structure / what each time index means",
+      "caption": "Frame 0 is cue-only; frames 1\u20132 contain samples and cue; frames 3 through D+2 are blanks; frame D+3 is the probe. The rolling three-frame input still contains sample images at the first two nominal blank frames. Colored bars describe the current frame only and are schematic, not saved stimuli.",
+      "category": "Overview",
+      "source": "analysis/psych_stream.py, lines 50\u201357",
+      "png": "02_trial_timeline.png",
+      "svg": "02_trial_timeline.svg",
+      "pdf": "02_trial_timeline.pdf"
+    },
+    {
+      "id": "03_cloud_comparison",
+      "title": "Original comparison / both model seeds",
+      "caption": "Terminal delay-C tests, 512 trials per delay. Separate panels and dashed second-seed traces keep overlapping ceiling results visible. These are cloud-run results, not the later local checkpoint used for the diagnostic sweeps.",
+      "category": "Training",
+      "source": "cloud_20260917_010358 / eight delayC receipts",
+      "png": "03_cloud_comparison.png",
+      "svg": "03_cloud_comparison.svg",
+      "pdf": "03_cloud_comparison.pdf"
+    },
+    {
+      "id": "04_local_terminal_results",
+      "title": "Local rerun / the full curriculum result",
+      "caption": "Each cell is a recorded terminal-checkpoint test (512 trials). Dashes mean that delay was not tested in that stage. The ring-cue task in the first row differs from the signed-cue task in later rows.",
+      "category": "Training",
+      "source": "local rerun / five receipt.json files",
+      "png": "04_local_terminal_results.png",
+      "svg": "04_local_terminal_results.svg",
+      "pdf": "04_local_terminal_results.pdf"
+    },
+    {
+      "id": "05_training_loss",
+      "title": "Training / cross-entropy loss",
+      "caption": "All recorded updates are shown faintly; the dark line is a trailing 50-update arithmetic mean. Stage episode counts restart at zero. Log plots floor recorded zeros at 1e\u22126 for display only; source CSVs retain the recorded values.",
+      "category": "Training",
+      "source": "local rerun / five metrics.csv files",
+      "png": "05_training_loss.png",
+      "svg": "05_training_loss.svg",
+      "pdf": "05_training_loss.pdf"
+    },
+    {
+      "id": "06_training_accuracy",
+      "title": "Training / minibatch accuracy",
+      "caption": "All recorded updates are shown faintly; the dark line is a trailing 50-update arithmetic mean. Stage episode counts restart at zero. Log plots floor recorded zeros at 1e\u22126 for display only; source CSVs retain the recorded values.",
+      "category": "Training",
+      "source": "local rerun / five metrics.csv files",
+      "png": "06_training_accuracy.png",
+      "svg": "06_training_accuracy.svg",
+      "pdf": "06_training_accuracy.pdf"
+    },
+    {
+      "id": "07_training_grad_norm",
+      "title": "Training / gradient norms",
+      "caption": "All recorded updates are shown faintly; the dark line is a trailing 50-update arithmetic mean. Stage episode counts restart at zero. Log plots floor recorded zeros at 1e\u22126 for display only; source CSVs retain the recorded values.",
+      "category": "Training",
+      "source": "local rerun / five metrics.csv files",
+      "png": "07_training_grad_norm.png",
+      "svg": "07_training_grad_norm.svg",
+      "pdf": "07_training_grad_norm.pdf"
+    },
+    {
+      "id": "08_validation_balanced_accuracy",
+      "title": "Validation / acquisition and retention",
+      "caption": "Recorded validation looks, 256 trials per cell; lines connect evaluations, not inferred intermediate measurements. Coincident curves can overlap. These are validation results, separate from terminal tests and the psychometric stream.",
+      "category": "Training",
+      "source": "local rerun / five validation.json files",
+      "png": "08_validation_balanced_accuracy.png",
+      "svg": "08_validation_balanced_accuracy.svg",
+      "pdf": "08_validation_balanced_accuracy.pdf"
+    },
+    {
+      "id": "09_validation_loss",
+      "title": "Validation / cross-entropy by delay",
+      "caption": "Recorded validation looks, 256 trials per cell; lines connect evaluations, not inferred intermediate measurements. Coincident curves can overlap. These are validation results, separate from terminal tests and the psychometric stream.",
+      "category": "Training",
+      "source": "local rerun / five validation.json files",
+      "png": "09_validation_loss.png",
+      "svg": "09_validation_loss.svg",
+      "pdf": "09_validation_loss.pdf"
+    },
+    {
+      "id": "10_final_confusions",
+      "title": "Final local checkpoint / confusion matrices",
+      "caption": "Terminal delay-C checkpoint, 512 trials per cell, 256 of each label. Label 1 denotes a target rotation aligned with the sign cue; label 0 includes unchanged or oppositely rotated targets. No errors occurred on these finite test sets.",
+      "category": "Training",
+      "source": "local rerun / delayC/receipt.json \u2192 final.terminal.test",
+      "png": "10_final_confusions.png",
+      "svg": "10_final_confusions.svg",
+      "pdf": "10_final_confusions.pdf"
+    },
+    {
+      "id": "11_psychometric_magnitude",
+      "title": "Psychometrics / rotation sensitivity",
+      "caption": "512 trials per point; whiskers are the saved 95% trial-bootstrap intervals. Lines use the saved cumulative-Gaussian parameters without refitting. Gray region contains untrained small rotations (2.5\u00b0\u201310\u00b0); training magnitudes were 15\u00b0, 30\u00b0, 45\u00b0. Fits are descriptive, not human-data fits.",
+      "category": "Psychometrics",
+      "source": "analysis/psychometric/psychometric.json \u2192 magnitude",
+      "png": "11_psychometric_magnitude.png",
+      "svg": "11_psychometric_magnitude.svg",
+      "pdf": "11_psychometric_magnitude.pdf"
+    },
+    {
+      "id": "12_small_rotation_detail",
+      "title": "Psychometrics / the small-angle detail",
+      "caption": "Same saved observations as the full curves, zoomed to previously untrained rotation magnitudes. AUC confidence intervals were not saved and are not invented here. Delay curves share a stimulus seed; this figure does not establish a significant benefit of longer delays.",
+      "category": "Psychometrics",
+      "source": "analysis/psychometric/psychometric.json \u2192 magnitude",
+      "png": "12_small_rotation_detail.png",
+      "svg": "12_small_rotation_detail.svg",
+      "pdf": "12_small_rotation_detail.pdf"
+    },
+    {
+      "id": "13_fit_parameters",
+      "title": "Psychometrics / fitted sensitivity parameters",
+      "caption": "Parameters are taken directly from the saved fits. The source calls 1/spread a slope; it is not the derivative of the response curve. No fit-parameter confidence intervals were saved. Threshold estimates below 2.5\u00b0 extend below the smallest tested rotation.",
+      "category": "Psychometrics",
+      "source": "analysis/psychometric/psychometric.json \u2192 magnitude fits",
+      "png": "13_fit_parameters.png",
+      "svg": "13_fit_parameters.svg",
+      "pdf": "13_fit_parameters.pdf"
+    },
+    {
+      "id": "14_retention_sweep",
+      "title": "Psychometrics / retention out to 48 blanks",
+      "caption": "Rotation magnitude 15\u00b0; 512 trials per point. All observed balanced accuracies are 1.000. The saved exponential fit is degenerate: its time constant is not identifiable and is not plotted as a biological forgetting rate. Collapsed bootstrap intervals at ceiling do not imply zero population uncertainty.",
+      "category": "Psychometrics",
+      "source": "analysis/psychometric/psychometric.json \u2192 delay",
+      "png": "14_retention_sweep.png",
+      "svg": "14_retention_sweep.svg",
+      "pdf": "14_retention_sweep.pdf"
+    },
+    {
+      "id": "15_cue_heatmaps",
+      "title": "Psychometrics / cue visibility and position",
+      "caption": "D4, 512 trials per point. These are condition-grid heatmaps, not spatial attention maps. Jitter means independent integer offsets sampled within \u00b12 or \u00b14 pixels on each axis, not a fixed displacement. The original glyph defines contrast 1\u00d7.",
+      "category": "Psychometrics",
+      "source": "analysis/psychometric/psychometric.json \u2192 cue",
+      "png": "15_cue_heatmaps.png",
+      "svg": "15_cue_heatmaps.svg",
+      "pdf": "15_cue_heatmaps.pdf"
+    },
+    {
+      "id": "16_cue_curves",
+      "title": "Psychometrics / cue degradation with uncertainty",
+      "caption": "Saved 95% trial-bootstrap intervals. Tiny horizontal offsets separate overlapping error bars and do not change the jitter conditions. Cue scale and jitter were changed together in the factorial sweep; the results alone do not locate a unique failure mechanism.",
+      "category": "Psychometrics",
+      "source": "analysis/psychometric/psychometric.json \u2192 cue",
+      "png": "16_cue_curves.png",
+      "svg": "16_cue_curves.svg",
+      "pdf": "16_cue_curves.pdf"
+    },
+    {
+      "id": "17_distraction",
+      "title": "Psychometrics / uncued-Gabor interference",
+      "caption": "D12, 512 trials per point. Zoomed y axes show the small differences near ceiling. No AUC intervals were saved. These are simultaneous uncued Gabors, not new distractors inserted during retention; absence of an observed cost here is not a general interference-capacity claim.",
+      "category": "Psychometrics",
+      "source": "analysis/psychometric/psychometric.json \u2192 distraction",
+      "png": "17_distraction.png",
+      "svg": "17_distraction.svg",
+      "pdf": "17_distraction.pdf"
+    },
+    {
+      "id": "18_memory_interventions",
+      "title": "Memory probes / perturbing the stored state",
+      "caption": "128 trials per delay. Reset affects all KDA scales, not the GRU. \u03b2=0 removes writes and delta correction; \u03b1=1 removes diagonal decay, not all possible forgetting. Blank clamps are absent at D0. No paired outcomes or uncertainty were saved. Reset shows dependence under perturbation, not exclusive memory localization.",
+      "category": "Memory probes",
+      "source": "analysis/kda_probe/kda_probe.json \u2192 interventions",
+      "png": "18_memory_interventions.png",
+      "svg": "18_memory_interventions.svg",
+      "pdf": "18_memory_interventions.pdf"
+    },
+    {
+      "id": "19_gate_means_scale0",
+      "title": "Gates / 25 \u00d7 25 spatial scale",
+      "caption": "Phase means pooled over trials, masked sites and heads; alpha is also averaged over key dimensions. Color range is fixed 0\u20131 across every panel. D0 has no blank phase. These summaries do not retain per-frame gate dynamics, per-head differences or individual spatial maps.",
+      "category": "Memory probes",
+      "source": "analysis/kda_probe/kda_probe.json \u2192 scales.gates",
+      "png": "19_gate_means_scale0.png",
+      "svg": "19_gate_means_scale0.svg",
+      "pdf": "19_gate_means_scale0.pdf"
+    },
+    {
+      "id": "20_gate_means_scale1",
+      "title": "Gates / 13 \u00d7 13 spatial scale",
+      "caption": "Phase means pooled over trials, masked sites and heads; alpha is also averaged over key dimensions. Color range is fixed 0\u20131 across every panel. D0 has no blank phase. These summaries do not retain per-frame gate dynamics, per-head differences or individual spatial maps.",
+      "category": "Memory probes",
+      "source": "analysis/kda_probe/kda_probe.json \u2192 scales.gates",
+      "png": "20_gate_means_scale1.png",
+      "svg": "20_gate_means_scale1.svg",
+      "pdf": "20_gate_means_scale1.pdf"
+    },
+    {
+      "id": "21_gate_means_scale2",
+      "title": "Gates / 7 \u00d7 7 spatial scale",
+      "caption": "Phase means pooled over trials, masked sites and heads; alpha is also averaged over key dimensions. Color range is fixed 0\u20131 across every panel. D0 has no blank phase. These summaries do not retain per-frame gate dynamics, per-head differences or individual spatial maps.",
+      "category": "Memory probes",
+      "source": "analysis/kda_probe/kda_probe.json \u2192 scales.gates",
+      "png": "21_gate_means_scale2.png",
+      "svg": "21_gate_means_scale2.svg",
+      "pdf": "21_gate_means_scale2.pdf"
+    },
+    {
+      "id": "22_attention_profiles_scale0",
+      "title": "Implicit attention / 25 \u00d7 25 spatial scale",
+      "caption": "Read at final probe; x is the source frame. Green: samples; gray: blanks; amber: first two blanks still contain samples in the three-frame input; red line: probe. Values are mean absolute coefficients over trials, sites and heads\u2014not probabilities, signed contributions or decision attribution. No spatial maps are reconstructed.",
+      "category": "Attention",
+      "source": "analysis/kda_probe/kda_probe.json \u2192 attention_abs_mean",
+      "png": "22_attention_profiles_scale0.png",
+      "svg": "22_attention_profiles_scale0.svg",
+      "pdf": "22_attention_profiles_scale0.pdf"
+    },
+    {
+      "id": "23_attention_profiles_scale1",
+      "title": "Implicit attention / 13 \u00d7 13 spatial scale",
+      "caption": "Read at final probe; x is the source frame. Green: samples; gray: blanks; amber: first two blanks still contain samples in the three-frame input; red line: probe. Values are mean absolute coefficients over trials, sites and heads\u2014not probabilities, signed contributions or decision attribution. No spatial maps are reconstructed.",
+      "category": "Attention",
+      "source": "analysis/kda_probe/kda_probe.json \u2192 attention_abs_mean",
+      "png": "23_attention_profiles_scale1.png",
+      "svg": "23_attention_profiles_scale1.svg",
+      "pdf": "23_attention_profiles_scale1.pdf"
+    },
+    {
+      "id": "24_attention_profiles_scale2",
+      "title": "Implicit attention / 7 \u00d7 7 spatial scale",
+      "caption": "Read at final probe; x is the source frame. Green: samples; gray: blanks; amber: first two blanks still contain samples in the three-frame input; red line: probe. Values are mean absolute coefficients over trials, sites and heads\u2014not probabilities, signed contributions or decision attribution. No spatial maps are reconstructed.",
+      "category": "Attention",
+      "source": "analysis/kda_probe/kda_probe.json \u2192 attention_abs_mean",
+      "png": "24_attention_profiles_scale2.png",
+      "svg": "24_attention_profiles_scale2.svg",
+      "pdf": "24_attention_profiles_scale2.pdf"
+    },
+    {
+      "id": "25_temporal_attention_heatmaps",
+      "title": "Implicit attention / D24 temporal coefficient heatmaps",
+      "caption": "Rows are region averages, columns are time\u2014not image coordinates. All panels share the same absolute color scale. Boundaries separate the sample/cue prefix, blank interval and probe. Signed coefficients, individual trials and pixel/site maps are unavailable in this checkout.",
+      "category": "Attention",
+      "source": "analysis/kda_probe/kda_probe.json \u2192 D24 attention_abs_mean",
+      "png": "25_temporal_attention_heatmaps.png",
+      "svg": "25_temporal_attention_heatmaps.svg",
+      "pdf": "25_temporal_attention_heatmaps.pdf"
+    },
+    {
+      "id": "26_state_decoding",
+      "title": "Memory probes / sample orientation decodable over time",
+      "caption": "Exploratory same-time least-squares fits: 64 fit / 64 held-out trials, 257 features with intercept; underdetermined, no regularization or intervals. Amber frames still include samples in stacked input, so are not pure recurrent retention. Open final markers follow the probe and may reflect sample\u2013probe correlation.",
+      "category": "Memory probes",
+      "source": "analysis/kda_probe/kda_probe.json \u2192 state_probe_r2_by_frame",
+      "png": "26_state_decoding.png",
+      "svg": "26_state_decoding.svg",
+      "pdf": "26_state_decoding.pdf"
+    },
+    {
+      "id": "27_preprobe_decoding",
+      "title": "Memory probes / the last state before the probe",
+      "caption": "Last pre-probe frame is the second sample at D0 and the last blank at other delays. Each cell is a separately fitted, same-time held-out decoder of cos(2\u03b8), sin(2\u03b8); it is not a cross-time generalization test or an angular-error estimate.",
+      "category": "Memory probes",
+      "source": "analysis/kda_probe/kda_probe.json \u2192 penultimate R\u00b2 entries",
+      "png": "27_preprobe_decoding.png",
+      "svg": "27_preprobe_decoding.svg",
+      "pdf": "27_preprobe_decoding.pdf"
+    },
+    {
+      "id": "28_cue_gate_contrasts",
+      "title": "Gates / cued minus uncued during the samples",
+      "caption": "Differences are computed from saved phase means, separately at every scale. Each panel uses its own labeled symmetric color range. No trial-level variation remains, so these contrasts cannot establish significance or prove that cue selection happens only downstream.",
+      "category": "Memory probes",
+      "source": "analysis/kda_probe/kda_probe.json \u2192 sample gate means (derived difference)",
+      "png": "28_cue_gate_contrasts.png",
+      "svg": "28_cue_gate_contrasts.svg",
+      "pdf": "28_cue_gate_contrasts.pdf"
+    },
+    {
+      "id": "29_compute_context",
+      "title": "Compute context / original cloud comparison",
+      "caption": "Delay-C stage receipts: 200,000 training episodes per arm and seed, plus each stage\u2019s recorded overhead. Cloud programs used two concurrent lanes on one GPU, so wall times are contextual observations\u2014not isolated throughput benchmarks or GPU-only timings.",
+      "category": "Training",
+      "source": "cloud_20260917_010358 / eight delayC receipts",
+      "png": "29_compute_context.png",
+      "svg": "29_compute_context.svg",
+      "pdf": "29_compute_context.pdf"
+    }
+  ],
+  "sources": {
+    "WorkingMemory/PlainBaseline/runs/local_kda_program_20260917/analysis/kda_probe/kda_probe.json": "e818241e5109a53f267b05c8495522c6a5123cb6f90114055f3b27bdc80cb017",
+    "WorkingMemory/PlainBaseline/runs/local_kda_program_20260917/analysis/psychometric/psychometric.json": "1ad1deb3e833edc9a40cab223cc98e5360a3fd03758ae3a883755d6cc3221d39",
+    "WorkingMemory/PlainBaseline/runs/local_kda_program_20260917/program_receipt.json": "b9eb467453bcf76dbbc41fff193a561998f510c1a182ebfe722320dbb9e65bae",
+    "WorkingMemory/PlainBaseline/runs/local_kda_program_20260917/kda_s1/ring/receipt.json": "3f3b7c0f7fb14de4e4f96b719e82e5d708f775eeb8d38545fc37ee1205d1331c",
+    "WorkingMemory/PlainBaseline/runs/local_kda_program_20260917/kda_s1/cued/receipt.json": "80657ab327b77f3aab0faa8ec8ec69e3132f92ff6fbddd5bae560aa5f78cf94c",
+    "WorkingMemory/PlainBaseline/runs/local_kda_program_20260917/kda_s1/delayA/receipt.json": "6d5e8dd5182e2656b9a1c373b2252ac24cebd2305436e3d4a8f95ec78e903481",
+    "WorkingMemory/PlainBaseline/runs/local_kda_program_20260917/kda_s1/delayB/receipt.json": "a8e673af751772fc0249649813ee6b66644182db53d3b60865a0c4cab1995d00",
+    "WorkingMemory/PlainBaseline/runs/local_kda_program_20260917/kda_s1/delayC/receipt.json": "bde4c8b93dd9b38ee0ab19fa7723ec035e18b4265fb7c6907e69b92870fbbb91",
+    "WorkingMemory/PlainBaseline/runs/local_kda_program_20260917/kda_s1/ring/metrics.csv": "d5510f63d88c51187fbf6534d01c0935810aab73a1d11944ed72cea6e9951d68",
+    "WorkingMemory/PlainBaseline/runs/local_kda_program_20260917/kda_s1/cued/metrics.csv": "c724d8d209a9b9fe54387a12011e26519c76f929b9da92497767279ab4d4a749",
+    "WorkingMemory/PlainBaseline/runs/local_kda_program_20260917/kda_s1/delayA/metrics.csv": "6a0293d62f84a7605431c58db89a1ab105d2e2f17a2ff38f648140fef1028263",
+    "WorkingMemory/PlainBaseline/runs/local_kda_program_20260917/kda_s1/delayB/metrics.csv": "d7c3d314b816d9be5262a8059d7e4809114cc41c1bc48401adfbca512f8c2902",
+    "WorkingMemory/PlainBaseline/runs/local_kda_program_20260917/kda_s1/delayC/metrics.csv": "5ebd9c4014813d40c1919310a6557475c03e590d32fa43a4b62ec6eb9fb48206",
+    "WorkingMemory/PlainBaseline/runs/local_kda_program_20260917/kda_s1/ring/validation.json": "af7c13e5341967faa9403afe84637b0894af6467eac49176190f85ae0c6c6021",
+    "WorkingMemory/PlainBaseline/runs/local_kda_program_20260917/kda_s1/cued/validation.json": "92a88ed56727ef8914f9ad5d2aa159c54361605b350800cd9127e0e3a445ee25",
+    "WorkingMemory/PlainBaseline/runs/local_kda_program_20260917/kda_s1/delayA/validation.json": "6213c70e7e06cf858649aa9261e09acd9fdd4eb41576abb0ee1919b3dd88ccf7",
+    "WorkingMemory/PlainBaseline/runs/local_kda_program_20260917/kda_s1/delayB/validation.json": "5d4932c3d804f98023c79954ffc379681d0fa433cfca86d4d9f642f15d0c2119",
+    "WorkingMemory/PlainBaseline/runs/local_kda_program_20260917/kda_s1/delayC/validation.json": "e5d733f33e4100aeff8bf97e5038f85eeb69c8c448a4f877a03dfe07fa509f59",
+    "WorkingMemory/PlainBaseline/runs/cloud_20260917_010358/pulled/results/lane1/convgru_s1/delayC/receipt.json": "53a4d0c51f77f9dcf78fd88b3b6ecc3fcb73ddb8d27fe2feab04c6b57707669e",
+    "WorkingMemory/PlainBaseline/runs/cloud_20260917_010358/pulled/results/lane1/convgru_s2/delayC/receipt.json": "79ccbeb307a6b68f21b87a3a9186107e49768f644788e88ffe9d99ad937fb3b7",
+    "WorkingMemory/PlainBaseline/runs/cloud_20260917_010358/pulled/results/lane1/plain_s1/delayC/receipt.json": "29d1763aa039d05acabdde5b993f34d9c034791b5d93d9e8d5a173b144289a43",
+    "WorkingMemory/PlainBaseline/runs/cloud_20260917_010358/pulled/results/lane1/plain_s2/delayC/receipt.json": "d25309c512359ee938a4920ea1deeb1f86c72b2ad39264d6aea1b453965afe56",
+    "WorkingMemory/PlainBaseline/runs/cloud_20260917_010358/pulled/results/lane2/kda_s1/delayC/receipt.json": "d628dcfd3173a6a74e6fd3243886786d41bddb3b7e8196b1b3dc0e24c8f31323",
+    "WorkingMemory/PlainBaseline/runs/cloud_20260917_010358/pulled/results/lane2/kda_s2/delayC/receipt.json": "12419b4f3288e75804a693b3f90888fc66457c16a3b9d3315fa066540e3b579a",
+    "WorkingMemory/PlainBaseline/runs/cloud_20260917_010358/pulled/results/lane2/opponent_s1/delayC/receipt.json": "c4d21ca602aadef102aef397f072af9ac24dcbc031ecc8084973abfe2f9082fe",
+    "WorkingMemory/PlainBaseline/runs/cloud_20260917_010358/pulled/results/lane2/opponent_s2/delayC/receipt.json": "26516b4f28319cb4c1193fecae90cccb86eee989a8c73b15bd4d54ce9fdc1d1c",
+    "WorkingMemory/PlainBaseline/analysis/kda_probe.py": "80f873e5590ad189c43a1bdfeaa2e2f16ac96673a351b8d168b1ae4079c84159",
+    "WorkingMemory/PlainBaseline/analysis/psychometric.py": "6b0c70b07ee7a186695c5b70162bfc7987d135322d170b88ea9c63c9892c904c",
+    "WorkingMemory/PlainBaseline/analysis/psych_stream.py": "fc13b814722905765062be00c27adc043ac36582c3328c38ed0300f3923251e0",
+    "WorkingMemory/PlainBaseline/accum.py": "a51d0466b7c3f79790536cfbc6eb3294be292e2c6aa957c94600d5d6458d1508",
+    "PreAttentiveVision/TemporalIntegration/accumulators.py": "93706e822f9d0114f544392736bb4ef830cdbe2fc580034e48c0495658f333d7"
+  },
+  "missing": [
+    "Per-trial spatial gates_D*_scale*.npz arrays",
+    "Trained terminal.pt weights",
+    "Per-trial predictions for paired intervention uncertainty"
+  ],
+  "limits": [
+    "Only orientation family for current analysis; one local seed",
+    "No inference or training was performed to generate these graphics",
+    "Temporal attention plots are region/head/trial aggregates, not spatial maps",
+    "No regenerated stimulus examples are presented as recorded trials"
+  ]
+}

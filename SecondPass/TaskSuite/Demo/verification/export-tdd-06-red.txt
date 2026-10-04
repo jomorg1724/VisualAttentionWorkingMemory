@@ -1,0 +1,18 @@
+F
+=================================== FAILURES ===================================
+________ test_complete_native_bank_and_deliberate_manifest_corruptions _________
+
+tmp_path = PosixPath('/Users/jonathanmorgan/Desktop/VisualAttentionWorkingMemory/SecondPass/TaskSuite/Demo/.test-tmp-export/test_complete_native_bank_and_0')
+
+    def test_complete_native_bank_and_deliberate_manifest_corruptions(tmp_path):
+        v = validator()
+>       assert hasattr(v, 'validate_manifest'), 'Comprehensive manifest validator is missing'
+E       AssertionError: Comprehensive manifest validator is missing
+E       assert False
+E        +  where False = hasattr(<module 'SecondPass.TaskSuite.Demo.validate_assets' from '/Users/jonathanmorgan/Desktop/VisualAttentionWorkingMemory/SecondPass/TaskSuite/Demo/validate_assets.py'>, 'validate_manifest')
+
+SecondPass/TaskSuite/Demo/tests/test_manifest.py:68: AssertionError
+=========================== short test summary info ============================
+FAILED SecondPass/TaskSuite/Demo/tests/test_manifest.py::test_complete_native_bank_and_deliberate_manifest_corruptions
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed, 2 deselected in 0.06s

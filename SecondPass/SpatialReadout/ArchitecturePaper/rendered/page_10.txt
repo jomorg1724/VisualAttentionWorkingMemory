@@ -1,0 +1,50 @@
+SpatialReadout: architecture and decision logic
+Source-audited technical paper
+10
+Final spatial recurrence: reset and write are diﬀerent
+Reader question: how does the last recurrent ﬁeld decide what to reuse or replace? KDA has supplied
+associations inside the encoder. The ﬁnal ConvGRU instead retains a feature ﬁeld with 64 channels at each of 49
+sites. Its convolutions can combine neighboring old-state sites, not merely update a matrix at the same site.
+10.1
+The exact ConvGRU convention
+Let Ft = H3
+t ∥O3
+t ∈R160×7×7 denote the deepest concatenation (the three memory-bearing scales are indexed
+s = 1, 2, 3). At each site, zt = WinFt + bin, where Win ∈R64×160 and bin ∈R64, gives a 64 × 7 × 7 ﬁeld without
+activation or extra normalization. The gate kernel Wg has shape 128 × 128 × 3 × 3, with bg ∈R128; the candidate
+kernel Wc is 64 × 128 × 3 × 3, with bc ∈R64. Their biases broadcast over sites. The candidate ˜ht, like the hidden
+ﬁeld, is 64 × 7 × 7. With h−1 = 0, the ﬁnal recurrent cell is
+[wt, rt] = σ(Wg ∗[zt ∥ht−1] + bg) ,
+(36)
+˜ht = tanh(Wc ∗[zt ∥(rt ⊙ht−1)] + bc) ,
+(37)
+ht = (1 −wt) ⊙ht−1 + wt ⊙˜ht.
+(38)
+The ﬁrst 64 channels of the gate output are write, and the next 64 are reset. A large wt replaces old state with the
+candidate; it is not the retention coeﬃcient. Reset is applied to the old hidden ﬁeld before the candidate convolution.
+Both convolutions have kernel 3, padding 1, stride 1. The gate convolution maps 128 →128 channels; the candidate
+maps 128 →64.[S1]
+The reset ﬁeld rt controls how much old state is oﬀered to the candidate computation. The write ﬁeld wt controls the
+ﬁnal interpolation between old state and candidate. At one illustrative scalar entry, suppose ht−1 = 4/5, rt = 1/4,
+and wt = 1/4. Reset supplies rtht−1 = 1/5 to the candidate convolution. If that convolution and tanh produce
+˜ht = −2/5, then
+ht = (3/4)(4/5) + (1/4)(−2/5) = 1/2.
+(39)
+These are chosen arithmetic values, not measured gates. The candidate cannot be obtained from that scalar alone:
+its convolution also sees the input and neighboring entries. A small reset can hide old content from the candidate
+while a small write still preserves old content through the direct (1 −wt)ht−1 path. Thus resetting the candidate
+input is not equivalent to erasing the hidden state.
+Gated recurrent units provide learned retention and update paths [2]; convolutional variants replace dense spatial
+connectivity with spatially shared kernels [3]. Those precedents motivate the operation, but the local source is the
+authority for this particular reset placement and write convention. There is no separate state-to-encoder feedback
+connection. The ﬁnal hidden ﬁeld inﬂuences its own next update, not the upstream CNN or KDA modules.
+Both recurrent biases are explicitly zero. Conv/Linear weights use the ordinary PyTorch reset convention docu-
+mented in the model (Kaiming-uniform with a =
+√
+5); projection and readout biases retain their default fan-in-
+uniform initialization. Zero gate bias alone does not mean all initial gates equal 0.5, since their weights and inputs
+are nonzero. This diﬀers from the explicit zero gate weights used in KDA.
+Takeaway.
+Reset controls the old evidence used to propose a candidate; write controls replacement by that
+candidate. This cell preserves a spatial ﬁeld until all frames have been processed.
+10

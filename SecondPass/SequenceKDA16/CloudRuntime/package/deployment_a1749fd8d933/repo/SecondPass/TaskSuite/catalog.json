@@ -1,0 +1,521 @@
+{
+  "version": "unified_visual_task_suite_v1",
+  "training_authorized": false,
+  "future_initialization": "all_weights_fresh",
+  "split_seeds": {
+    "train": 731001,
+    "val": 732001,
+    "test": 733001
+  },
+  "input": {
+    "layout": "BTCHW",
+    "channels": 3,
+    "height": 100,
+    "width": 100,
+    "dtype": "float32",
+    "range": [
+      0,
+      1
+    ],
+    "sensory_frames": 2
+  },
+  "tasks": [
+    {
+      "id": "motion_direction",
+      "stream_id": 1,
+      "group": "sensory",
+      "classes": 4,
+      "labels": [
+        "right",
+        "up",
+        "left",
+        "down"
+      ],
+      "question": "Which cardinal direction links the two random-dot frames?",
+      "renderer": "PreAttentiveVision.neuroscience_stimuli.TaskStream",
+      "requires_bsds500": false,
+      "report_by": [
+        "displacement_pixels"
+      ],
+      "conditions": [
+        {
+          "id": "mixed",
+          "kwargs": {},
+          "selection_eligible": true
+        }
+      ]
+    },
+    {
+      "id": "orientation",
+      "stream_id": 2,
+      "group": "sensory",
+      "classes": 2,
+      "labels": [
+        "negative axial angle change",
+        "positive axial angle change"
+      ],
+      "question": "What is the sign of the grating orientation change from frame 0 to frame 1?",
+      "renderer": "PreAttentiveVision.neuroscience_stimuli.TaskStream",
+      "requires_bsds500": false,
+      "report_by": [
+        "signed_orientation_degrees"
+      ],
+      "conditions": [
+        {
+          "id": "mixed",
+          "kwargs": {},
+          "selection_eligible": true
+        }
+      ]
+    },
+    {
+      "id": "contrast",
+      "stream_id": 3,
+      "group": "sensory",
+      "classes": 2,
+      "labels": [
+        "frame 0",
+        "frame 1"
+      ],
+      "question": "Which frame contains the higher-contrast grating?",
+      "renderer": "PreAttentiveVision.neuroscience_stimuli.TaskStream",
+      "requires_bsds500": false,
+      "report_by": [
+        "contrast_increment",
+        "pedestal"
+      ],
+      "conditions": [
+        {
+          "id": "mixed",
+          "kwargs": {},
+          "selection_eligible": true
+        }
+      ]
+    },
+    {
+      "id": "spatial_frequency",
+      "stream_id": 4,
+      "group": "sensory",
+      "classes": 2,
+      "labels": [
+        "frame 0",
+        "frame 1"
+      ],
+      "question": "Which frame contains the higher-spatial-frequency grating?",
+      "renderer": "PreAttentiveVision.neuroscience_stimuli.TaskStream",
+      "requires_bsds500": false,
+      "report_by": [
+        "frequency_octave_increment"
+      ],
+      "conditions": [
+        {
+          "id": "mixed",
+          "kwargs": {},
+          "selection_eligible": true
+        }
+      ]
+    },
+    {
+      "id": "chromatic_increment",
+      "stream_id": 5,
+      "group": "sensory",
+      "classes": 2,
+      "labels": [
+        "frame 0",
+        "frame 1"
+      ],
+      "question": "Which frame has the positive increment along the defined isoluminant linear-RGB axis?",
+      "renderer": "PreAttentiveVision.neuroscience_stimuli.TaskStream",
+      "requires_bsds500": false,
+      "report_by": [
+        "chromatic_increment"
+      ],
+      "conditions": [
+        {
+          "id": "mixed",
+          "kwargs": {},
+          "selection_eligible": true
+        }
+      ]
+    },
+    {
+      "id": "contour",
+      "stream_id": 6,
+      "group": "sensory",
+      "classes": 2,
+      "labels": [
+        "frame 0",
+        "frame 1"
+      ],
+      "question": "Which frame contains the aligned Gabor contour?",
+      "renderer": "PreAttentiveVision.neuroscience_stimuli.TaskStream",
+      "requires_bsds500": false,
+      "report_by": [
+        "alignment_jitter_degrees"
+      ],
+      "conditions": [
+        {
+          "id": "mixed",
+          "kwargs": {},
+          "selection_eligible": true
+        }
+      ]
+    },
+    {
+      "id": "natural_spectrum",
+      "stream_id": 7,
+      "group": "sensory",
+      "classes": 2,
+      "labels": [
+        "frame 0",
+        "frame 1"
+      ],
+      "question": "Which frame has greater relative high-frequency detail (smaller spectral beta)?",
+      "renderer": "PreAttentiveVision.neuroscience_stimuli.TaskStream",
+      "requires_bsds500": true,
+      "report_by": [
+        "beta_delta",
+        "base_id"
+      ],
+      "conditions": [
+        {
+          "id": "mixed",
+          "kwargs": {},
+          "selection_eligible": true
+        }
+      ]
+    },
+    {
+      "id": "orientation_ring",
+      "stream_id": 8,
+      "group": "orientation_auxiliary",
+      "classes": 2,
+      "labels": [
+        "negative axial angle change",
+        "positive axial angle change"
+      ],
+      "question": "What is the sign of rotation at the ring-cued Gabor location?",
+      "renderer": "WorkingMemory.PlainBaseline.variants.VariantStream",
+      "requires_bsds500": false,
+      "report_by": [
+        "rotation_magnitude",
+        "target_location"
+      ],
+      "conditions": [
+        {
+          "id": "D0",
+          "kwargs": {
+            "delay": 0
+          },
+          "selection_eligible": true
+        }
+      ]
+    },
+    {
+      "id": "orientation_cued",
+      "stream_id": 9,
+      "group": "spatial",
+      "classes": 2,
+      "labels": [
+        "unchanged or opposite to cue sign",
+        "rotation in cue sign"
+      ],
+      "question": "Did the target Gabor rotate in the direction requested by its location/sign glyph?",
+      "renderer": "WorkingMemory.SpatialTaskBattery.stimuli.SpatialBatteryStream",
+      "requires_bsds500": false,
+      "report_by": [
+        "delay",
+        "rotation_magnitude",
+        "target_location",
+        "cue_sign"
+      ],
+      "conditions": [
+        {
+          "id": "D0",
+          "kwargs": {
+            "delay": 0
+          },
+          "selection_eligible": true
+        },
+        {
+          "id": "D4",
+          "kwargs": {
+            "delay": 4
+          },
+          "selection_eligible": true
+        },
+        {
+          "id": "D12",
+          "kwargs": {
+            "delay": 12
+          },
+          "selection_eligible": true
+        },
+        {
+          "id": "D24",
+          "kwargs": {
+            "delay": 24
+          },
+          "selection_eligible": true
+        }
+      ]
+    },
+    {
+      "id": "motion_duration_cued",
+      "stream_id": 10,
+      "group": "spatial",
+      "classes": 4,
+      "labels": [
+        "right",
+        "up",
+        "left",
+        "down"
+      ],
+      "question": "Which direction occupied the most of eight transitions in the cued patch?",
+      "renderer": "WorkingMemory.SpatialTaskBattery.stimuli.SpatialBatteryStream",
+      "requires_bsds500": false,
+      "report_by": [
+        "delay",
+        "step_pixels",
+        "target_location",
+        "duration_counts_by_patch"
+      ],
+      "conditions": [
+        {
+          "id": "D0",
+          "kwargs": {
+            "delay": 0
+          },
+          "selection_eligible": true
+        },
+        {
+          "id": "D4",
+          "kwargs": {
+            "delay": 4
+          },
+          "selection_eligible": true
+        },
+        {
+          "id": "D12",
+          "kwargs": {
+            "delay": 12
+          },
+          "selection_eligible": true
+        },
+        {
+          "id": "D24",
+          "kwargs": {
+            "delay": 24
+          },
+          "selection_eligible": true
+        }
+      ]
+    },
+    {
+      "id": "krauzlis_cued_motion",
+      "stream_id": 11,
+      "group": "spatial",
+      "classes": 2,
+      "labels": [
+        "foil-only change or catch",
+        "target change"
+      ],
+      "question": "Did mean motion direction change in the precued patch rather than the foil?",
+      "renderer": "WorkingMemory.SpatialTaskBattery.stimuli.SpatialBatteryStream",
+      "requires_bsds500": false,
+      "report_by": [
+        "baseline_transitions",
+        "event_type",
+        "event_magnitude_degrees",
+        "target_location"
+      ],
+      "conditions": [
+        {
+          "id": "B12",
+          "kwargs": {
+            "baseline_transitions": 12
+          },
+          "selection_eligible": true
+        },
+        {
+          "id": "B20",
+          "kwargs": {
+            "baseline_transitions": 20
+          },
+          "selection_eligible": true
+        },
+        {
+          "id": "B28",
+          "kwargs": {
+            "baseline_transitions": 28
+          },
+          "selection_eligible": true
+        }
+      ]
+    },
+    {
+      "id": "spatial_binding",
+      "stream_id": 12,
+      "group": "spatial",
+      "classes": 2,
+      "labels": [
+        "foil-only exchange",
+        "target participates in exchange"
+      ],
+      "question": "Was the orientation at the retrospectively queried location exchanged with another location?",
+      "renderer": "WorkingMemory.SpatialTaskBattery.stimuli.SpatialBatteryStream",
+      "requires_bsds500": false,
+      "report_by": [
+        "delay",
+        "target_location"
+      ],
+      "conditions": [
+        {
+          "id": "D0",
+          "kwargs": {
+            "delay": 0
+          },
+          "selection_eligible": true
+        },
+        {
+          "id": "D4",
+          "kwargs": {
+            "delay": 4
+          },
+          "selection_eligible": true
+        },
+        {
+          "id": "D12",
+          "kwargs": {
+            "delay": 12
+          },
+          "selection_eligible": true
+        },
+        {
+          "id": "D24",
+          "kwargs": {
+            "delay": 24
+          },
+          "selection_eligible": true
+        }
+      ]
+    },
+    {
+      "id": "image_recognition",
+      "stream_id": 13,
+      "group": "spatial",
+      "classes": 2,
+      "labels": [
+        "not in study set",
+        "in study set"
+      ],
+      "question": "Is the repeated probe raster an exact member of the preceding study-image set?",
+      "renderer": "WorkingMemory.SpatialTaskBattery.stimuli.SpatialBatteryStream",
+      "requires_bsds500": true,
+      "report_by": [
+        "load",
+        "probe_hold",
+        "seen_study_index",
+        "study_source_ids"
+      ],
+      "conditions": [
+        {
+          "id": "N0_H3",
+          "kwargs": {
+            "load": 0,
+            "probe_hold": 3
+          },
+          "selection_eligible": false
+        },
+        {
+          "id": "N0_H4",
+          "kwargs": {
+            "load": 0,
+            "probe_hold": 4
+          },
+          "selection_eligible": false
+        },
+        {
+          "id": "N0_H5",
+          "kwargs": {
+            "load": 0,
+            "probe_hold": 5
+          },
+          "selection_eligible": false
+        },
+        {
+          "id": "N4_H3",
+          "kwargs": {
+            "load": 4,
+            "probe_hold": 3
+          },
+          "selection_eligible": true
+        },
+        {
+          "id": "N4_H4",
+          "kwargs": {
+            "load": 4,
+            "probe_hold": 4
+          },
+          "selection_eligible": true
+        },
+        {
+          "id": "N4_H5",
+          "kwargs": {
+            "load": 4,
+            "probe_hold": 5
+          },
+          "selection_eligible": true
+        },
+        {
+          "id": "N12_H3",
+          "kwargs": {
+            "load": 12,
+            "probe_hold": 3
+          },
+          "selection_eligible": true
+        },
+        {
+          "id": "N12_H4",
+          "kwargs": {
+            "load": 12,
+            "probe_hold": 4
+          },
+          "selection_eligible": true
+        },
+        {
+          "id": "N12_H5",
+          "kwargs": {
+            "load": 12,
+            "probe_hold": 5
+          },
+          "selection_eligible": true
+        },
+        {
+          "id": "N24_H3",
+          "kwargs": {
+            "load": 24,
+            "probe_hold": 3
+          },
+          "selection_eligible": true
+        },
+        {
+          "id": "N24_H4",
+          "kwargs": {
+            "load": 24,
+            "probe_hold": 4
+          },
+          "selection_eligible": true
+        },
+        {
+          "id": "N24_H5",
+          "kwargs": {
+            "load": 24,
+            "probe_hold": 5
+          },
+          "selection_eligible": true
+        }
+      ]
+    }
+  ]
+}

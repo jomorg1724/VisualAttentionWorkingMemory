@@ -1,0 +1,113 @@
+{
+  "protocol": "weighted_mean_cnn_standard_gru_fresh_pool1000_epoch10_cuda_v1",
+  "native_benchmark": false,
+  "architecture": "Fixed causal pixel mean feeding one shared CNN; flatten16x13x13 directly to one standard GRU256; terminal classifier2561282",
+  "parameter_count": 6999474,
+  "parameter_tensors": 70,
+  "initialization": "fresh whole model, Adam, RNG, streams and counters; no inherited/profile state",
+  "stimulus": {
+    "task": "single stimulus change/no-change",
+    "compatibility_task_id": "krauzlis_cued_motion",
+    "conditions": [
+      "B12",
+      "B20",
+      "B28"
+    ],
+    "frames": [
+      29,
+      37,
+      45
+    ],
+    "centers": [
+      [
+        20,
+        50
+      ],
+      [
+        80,
+        50
+      ]
+    ],
+    "cue": false,
+    "second_stimulus": false,
+    "positive_probability": 0.57,
+    "negative_probability": 0.43,
+    "actual_foil_count": 0,
+    "source_event_type_preserved": true,
+    "event_semantics": {
+      "target": "change",
+      "catch": "no change",
+      "foil": "absent"
+    }
+  },
+  "training": {
+    "device": "single CUDA A40",
+    "precision": "fp32",
+    "tf32": false,
+    "bptt": "full",
+    "effective_batch": 32,
+    "microbatch": 4,
+    "cpu_threads": 2,
+    "optimizer": "Adam",
+    "lr": 0.0001,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "eps": 1e-08,
+    "weight_decay": 0,
+    "clipping": null,
+    "replay_pool_size": 1000,
+    "replay_epochs": 10,
+    "updates_per_epoch": 33,
+    "updates_per_pool": 330,
+    "target_updates": 2310,
+    "target_presentations": 70000,
+    "target_unique_movies": 7000,
+    "pinning": "Complete330-update pools prospectively measured within original cap"
+  },
+  "profiling": {
+    "warmup_updates": 3,
+    "steady_updates": 6,
+    "evaluation_per_condition": 20,
+    "disposable": true
+  },
+  "validation": {
+    "steps": "100,250,every500,terminal",
+    "n_per_condition": 100,
+    "selection": "meanAUC thenBA, earlier ties, validation only"
+  },
+  "final_test": {
+    "n_per_condition": 200,
+    "event_counts": {
+      "target": 114,
+      "catch": 86,
+      "foil": 0
+    },
+    "paired_selected_terminal": true,
+    "independent_split": true
+  },
+  "budget": {
+    "wall_cap_seconds": 28800,
+    "retrieval_reserve_seconds": 600,
+    "max_usd": 5,
+    "start": "pod creation",
+    "automatic_extension": false
+  },
+  "frontend": {
+    "weights": [
+      0.5,
+      0.4,
+      0.1
+    ],
+    "lags": [
+      0,
+      1,
+      2
+    ],
+    "startup": "repeat first frame for missing prior frames",
+    "fixed": true,
+    "causal": true
+  },
+  "status": "Implemented queued candidate; no training or provisioning performed"
+}

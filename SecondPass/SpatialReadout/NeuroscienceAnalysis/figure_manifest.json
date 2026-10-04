@@ -1,0 +1,206 @@
+[
+  {
+    "id": "01_signed_psychometrics",
+    "title": "Does the observer use target rather than foil evidence?",
+    "caption": "Empirical final positive choices with 95% Wilson intervals. Negative = opposite-sign or unchanged target. Blue: target rotation. Amber: designated next-location foil, conditioning target unchanged. Zero is the all-zero catch sweep only. 0/3/6/10 degrees are analysis-only OOD magnitudes; 15/30/45 are native. Native pattern couples foil rotations; these are conditional descriptions, not independently randomized evidence weights.",
+    "source": "data/psychometric_points.csv; trial_scores.csv"
+  },
+  {
+    "id": "02_matched_cue",
+    "title": "Matched sensory scenes; cue identity changes the requested report",
+    "caption": "Only cue overlays change, with raw pre-overlay scenes and all rotations held fixed. New labels are recomputed. Left conditions the newly cued target to be unchanged; the same old-target physical evidence is now irrelevant. Right uses all matched pairs at each magnitude; 95% paired trial bootstrap. This is target reassignment, NOT an invalid-cue benefit or a cue-validity experiment.",
+    "source": "data/matched_cue_pairs.csv"
+  },
+  {
+    "id": "03_native_sensory",
+    "title": "Native sensory competence at checkpoint 35039",
+    "caption": "All seven sensory tasks use native generators and native difficulty draws. Points are empirical accuracy with Wilson 95% intervals and saved cell denominators. At a ceiling these data cannot identify thresholds or lapses. Binary interval labels mean frame0/frame1 for stronger evidence, not generic change/no-change. No cued/uncued allocation comparator is fabricated.",
+    "source": "data/native_sensory_difficulty.csv"
+  },
+  {
+    "id": "04_delay_ring",
+    "title": "Retention and ring-cue response",
+    "caption": "Cued orientation and binding: native D0/4/12/24, matched renderer seed across delays. Ring: ONLY D0 is trained; dashed D4/12/24 are supplemental OOD native-renderer delays, not solved-task validation. Right shows trained ring D0 signed rotation, without a sign glyph. First two nominal blanks overlap samples in stack-three inputs; only later blanks are stimulus-free. No decay constant is fitted at a ceiling.",
+    "source": "data/condition_summary.csv"
+  },
+  {
+    "id": "05_binding_subthreshold_delay",
+    "title": "Target swaps and below-native orientation difficulty",
+    "caption": "Binding requires only the subsequently queried location to swap; every trial contains two exchanged items. The query is AFTER retention, not a pre-cue. Right: 6-degree orientation is an explicit analysis-only OOD magnitude, useful for measuring non-ceiling behavior without modifying training. Curves are observed choices, not fitted thresholds.",
+    "source": "data/binding_swaps_delay.csv; trials.jsonl"
+  },
+  {
+    "id": "06_orientation_cued_trial_beta_s0",
+    "title": "orientation cued \u2014 real trial, scale 0",
+    "caption": "Trial0, not a trial average. Top: actual scene, blue target/eventual-query site and amber foils. Bottom: head-separated beta write/correction gates, fixed scale0\u20131. Maps cover actual 25/13/7 grids, not reconstructed regional values. Frame4 remains stack-overlap; frame5 is first pure blank. Every trial/frame and alpha/coefficient/ConvGRU map is selectable offline. Binding target is unknown to observer until query.",
+    "source": "maps/orientation_cued_D12.npz; viewer.html"
+  },
+  {
+    "id": "07_orientation_cued_trial_beta_s1",
+    "title": "orientation cued \u2014 real trial, scale 1",
+    "caption": "Trial0, not a trial average. Top: actual scene, blue target/eventual-query site and amber foils. Bottom: head-separated beta write/correction gates, fixed scale0\u20131. Maps cover actual 25/13/7 grids, not reconstructed regional values. Frame4 remains stack-overlap; frame5 is first pure blank. Every trial/frame and alpha/coefficient/ConvGRU map is selectable offline. Binding target is unknown to observer until query.",
+    "source": "maps/orientation_cued_D12.npz; viewer.html"
+  },
+  {
+    "id": "08_orientation_cued_trial_beta_s2",
+    "title": "orientation cued \u2014 real trial, scale 2",
+    "caption": "Trial0, not a trial average. Top: actual scene, blue target/eventual-query site and amber foils. Bottom: head-separated beta write/correction gates, fixed scale0\u20131. Maps cover actual 25/13/7 grids, not reconstructed regional values. Frame4 remains stack-overlap; frame5 is first pure blank. Every trial/frame and alpha/coefficient/ConvGRU map is selectable offline. Binding target is unknown to observer until query.",
+    "source": "maps/orientation_cued_D12.npz; viewer.html"
+  },
+  {
+    "id": "09_orientation_cued_alpha_signed",
+    "title": "Retention gates and signed local temporal coefficients",
+    "caption": "Actual trial0 arrays. Alpha is the mean over 8 retention rows WITHIN each separate head. Signed coefficients can be negative and are neither spatial softmax probabilities nor final-decision attribution. Final-read arrays retain every source frame; fixed-source2 arrays retain every read frame. Stable range per quantity across saved trials/times. Exact weighted-value reconstruction was verified before output convolution.",
+    "source": "maps/orientation_cued_D12.npz"
+  },
+  {
+    "id": "10_orientation_cued_convgru",
+    "title": "Downstream 7\u00d77 recurrent readout \u2014 distinct measurements",
+    "caption": "Actual trial0 at frame14. These are ConvGRU write/reset gates and state energy, not KDA gates, implicit coefficients or attention probabilities. Channel averaging is stated explicitly. Full per-timestep arrays retained; no intermediate head is scored as an in-distribution decision.",
+    "source": "maps/orientation_cued_D12.npz"
+  },
+  {
+    "id": "11_orientation_cued_allocation_beta",
+    "title": "orientation cued \u2014 beta allocation",
+    "caption": "16 independent native D12 trials; each foil separate. Matched translated kernels have equal support/mass at each scale; plotted means are per-mask-mass, not regional totals. Shading is95% trial-bootstrap uncertainty, never pixels/heads as replicates. Amber phase marks two stack-overlap blanks. For binding, target is only a retrospective eventual-query grouping before the query. Signed coefficient panel preserves sign; separate mean-absolute values are in source CSV.",
+    "source": "data/allocation_per_trial.csv; maps/orientation_cued_D12.npz"
+  },
+  {
+    "id": "12_orientation_cued_allocation_alpha_mean8",
+    "title": "orientation cued \u2014 alpha mean8 allocation",
+    "caption": "16 independent native D12 trials; each foil separate. Matched translated kernels have equal support/mass at each scale; plotted means are per-mask-mass, not regional totals. Shading is95% trial-bootstrap uncertainty, never pixels/heads as replicates. Amber phase marks two stack-overlap blanks. For binding, target is only a retrospective eventual-query grouping before the query. Signed coefficient panel preserves sign; separate mean-absolute values are in source CSV.",
+    "source": "data/allocation_per_trial.csv; maps/orientation_cued_D12.npz"
+  },
+  {
+    "id": "13_orientation_cued_allocation_coeff_final_read",
+    "title": "orientation cued \u2014 coeff final read allocation",
+    "caption": "16 independent native D12 trials; each foil separate. Matched translated kernels have equal support/mass at each scale; plotted means are per-mask-mass, not regional totals. Shading is95% trial-bootstrap uncertainty, never pixels/heads as replicates. Amber phase marks two stack-overlap blanks. For binding, target is only a retrospective eventual-query grouping before the query. Signed coefficient panel preserves sign; separate mean-absolute values are in source CSV.",
+    "source": "data/allocation_per_trial.csv; maps/orientation_cued_D12.npz"
+  },
+  {
+    "id": "14_orientation_cued_allocation_coeff_source2_all_reads",
+    "title": "orientation cued \u2014 coeff source2 all reads allocation",
+    "caption": "16 independent native D12 trials; each foil separate. Matched translated kernels have equal support/mass at each scale; plotted means are per-mask-mass, not regional totals. Shading is95% trial-bootstrap uncertainty, never pixels/heads as replicates. Amber phase marks two stack-overlap blanks. For binding, target is only a retrospective eventual-query grouping before the query. Signed coefficient panel preserves sign; separate mean-absolute values are in source CSV.",
+    "source": "data/allocation_per_trial.csv; maps/orientation_cued_D12.npz"
+  },
+  {
+    "id": "15_orientation_cued_absolute_coeff",
+    "title": "Absolute coefficient magnitude is not signed allocation",
+    "caption": "Mean of absolute local coefficients (not absolute of the signed mean). Heads remain separate; source time is not read time. The corresponding signed maps and all-read source2 maps remain in raw arrays and the offline viewer. These quantities describe local memory reads, not patch-to-patch attention or behavioral importance.",
+    "source": "data/allocation_per_trial.csv"
+  },
+  {
+    "id": "16_spatial_binding_trial_beta_s0",
+    "title": "spatial binding \u2014 real trial, scale 0",
+    "caption": "Trial0, not a trial average. Top: actual scene, blue target/eventual-query site and amber foils. Bottom: head-separated beta write/correction gates, fixed scale0\u20131. Maps cover actual 25/13/7 grids, not reconstructed regional values. Frame4 remains stack-overlap; frame5 is first pure blank. Every trial/frame and alpha/coefficient/ConvGRU map is selectable offline. Binding target is unknown to observer until query.",
+    "source": "maps/spatial_binding_D12.npz; viewer.html"
+  },
+  {
+    "id": "17_spatial_binding_trial_beta_s1",
+    "title": "spatial binding \u2014 real trial, scale 1",
+    "caption": "Trial0, not a trial average. Top: actual scene, blue target/eventual-query site and amber foils. Bottom: head-separated beta write/correction gates, fixed scale0\u20131. Maps cover actual 25/13/7 grids, not reconstructed regional values. Frame4 remains stack-overlap; frame5 is first pure blank. Every trial/frame and alpha/coefficient/ConvGRU map is selectable offline. Binding target is unknown to observer until query.",
+    "source": "maps/spatial_binding_D12.npz; viewer.html"
+  },
+  {
+    "id": "18_spatial_binding_trial_beta_s2",
+    "title": "spatial binding \u2014 real trial, scale 2",
+    "caption": "Trial0, not a trial average. Top: actual scene, blue target/eventual-query site and amber foils. Bottom: head-separated beta write/correction gates, fixed scale0\u20131. Maps cover actual 25/13/7 grids, not reconstructed regional values. Frame4 remains stack-overlap; frame5 is first pure blank. Every trial/frame and alpha/coefficient/ConvGRU map is selectable offline. Binding target is unknown to observer until query.",
+    "source": "maps/spatial_binding_D12.npz; viewer.html"
+  },
+  {
+    "id": "19_spatial_binding_alpha_signed",
+    "title": "Retention gates and signed local temporal coefficients",
+    "caption": "Actual trial0 arrays. Alpha is the mean over 8 retention rows WITHIN each separate head. Signed coefficients can be negative and are neither spatial softmax probabilities nor final-decision attribution. Final-read arrays retain every source frame; fixed-source2 arrays retain every read frame. Stable range per quantity across saved trials/times. Exact weighted-value reconstruction was verified before output convolution.",
+    "source": "maps/spatial_binding_D12.npz"
+  },
+  {
+    "id": "20_spatial_binding_convgru",
+    "title": "Downstream 7\u00d77 recurrent readout \u2014 distinct measurements",
+    "caption": "Actual trial0 at frame15. These are ConvGRU write/reset gates and state energy, not KDA gates, implicit coefficients or attention probabilities. Channel averaging is stated explicitly. Full per-timestep arrays retained; no intermediate head is scored as an in-distribution decision.",
+    "source": "maps/spatial_binding_D12.npz"
+  },
+  {
+    "id": "21_spatial_binding_allocation_beta",
+    "title": "spatial binding \u2014 beta allocation",
+    "caption": "16 independent native D12 trials; each foil separate. Matched translated kernels have equal support/mass at each scale; plotted means are per-mask-mass, not regional totals. Shading is95% trial-bootstrap uncertainty, never pixels/heads as replicates. Amber phase marks two stack-overlap blanks. For binding, target is only a retrospective eventual-query grouping before the query. Signed coefficient panel preserves sign; separate mean-absolute values are in source CSV.",
+    "source": "data/allocation_per_trial.csv; maps/spatial_binding_D12.npz"
+  },
+  {
+    "id": "22_spatial_binding_allocation_alpha_mean8",
+    "title": "spatial binding \u2014 alpha mean8 allocation",
+    "caption": "16 independent native D12 trials; each foil separate. Matched translated kernels have equal support/mass at each scale; plotted means are per-mask-mass, not regional totals. Shading is95% trial-bootstrap uncertainty, never pixels/heads as replicates. Amber phase marks two stack-overlap blanks. For binding, target is only a retrospective eventual-query grouping before the query. Signed coefficient panel preserves sign; separate mean-absolute values are in source CSV.",
+    "source": "data/allocation_per_trial.csv; maps/spatial_binding_D12.npz"
+  },
+  {
+    "id": "23_spatial_binding_allocation_coeff_final_read",
+    "title": "spatial binding \u2014 coeff final read allocation",
+    "caption": "16 independent native D12 trials; each foil separate. Matched translated kernels have equal support/mass at each scale; plotted means are per-mask-mass, not regional totals. Shading is95% trial-bootstrap uncertainty, never pixels/heads as replicates. Amber phase marks two stack-overlap blanks. For binding, target is only a retrospective eventual-query grouping before the query. Signed coefficient panel preserves sign; separate mean-absolute values are in source CSV.",
+    "source": "data/allocation_per_trial.csv; maps/spatial_binding_D12.npz"
+  },
+  {
+    "id": "24_spatial_binding_allocation_coeff_source2_all_reads",
+    "title": "spatial binding \u2014 coeff source2 all reads allocation",
+    "caption": "16 independent native D12 trials; each foil separate. Matched translated kernels have equal support/mass at each scale; plotted means are per-mask-mass, not regional totals. Shading is95% trial-bootstrap uncertainty, never pixels/heads as replicates. Amber phase marks two stack-overlap blanks. For binding, target is only a retrospective eventual-query grouping before the query. Signed coefficient panel preserves sign; separate mean-absolute values are in source CSV.",
+    "source": "data/allocation_per_trial.csv; maps/spatial_binding_D12.npz"
+  },
+  {
+    "id": "25_spatial_binding_absolute_coeff",
+    "title": "Absolute coefficient magnitude is not signed allocation",
+    "caption": "Mean of absolute local coefficients (not absolute of the signed mean). Heads remain separate; source time is not read time. The corresponding signed maps and all-read source2 maps remain in raw arrays and the offline viewer. These quantities describe local memory reads, not patch-to-patch attention or behavioral importance.",
+    "source": "data/allocation_per_trial.csv"
+  },
+  {
+    "id": "26_inhibit_site_epoch",
+    "title": "Local suppression \u2014 site, timing and dose",
+    "caption": "64 paired independent base trials per condition, a prespecified orientation magnitude mixture at D12. One update per pulse. Masks are matched in support/mass, not necessarily removed activation energy; achieved RMS is saved. Error bars95% paired trial bootstrap; zero-width bars do not prove zero future effect (finite flip bounds in CSV). Binding encoding/retention cued means eventual target, not available cue. Underlying finest-scale KDA state is untouched; downstream recurrence can carry effects.",
+    "source": "data/paired_causal_effects.csv; achieved_interventions.jsonl"
+  },
+  {
+    "id": "27_inhibit_psychometric",
+    "title": "Suppression psychometrics",
+    "caption": "Probe-update dose1 versus the identical sham trials. Left target evidence; right designated foil while target unchanged. Empirical fractions with Wilson95% intervals. Small denominators per magnitude are explicit in trial records:64 TOTAL per condition, not64 per point. No threshold fit or universal benefit is inferred from sparse points. Feature direction is absolute sin(2theta), not a learned rotation/decision direction.",
+    "source": "data/trial_scores.csv; paired_causal_effects.csv"
+  },
+  {
+    "id": "28_stimulate_site_epoch",
+    "title": "Calibrated feature pulses \u2014 site, timing and dose",
+    "caption": "64 paired independent base trials per condition, a prespecified orientation magnitude mixture at D12. One update per pulse. Masks are matched in support/mass, not necessarily removed activation energy; achieved RMS is saved. Error bars95% paired trial bootstrap; zero-width bars do not prove zero future effect (finite flip bounds in CSV). Binding encoding/retention cued means eventual target, not available cue. Underlying finest-scale KDA state is untouched; downstream recurrence can carry effects.",
+    "source": "data/paired_causal_effects.csv; achieved_interventions.jsonl"
+  },
+  {
+    "id": "29_stimulate_psychometric",
+    "title": "Positive feature stimulation psychometrics",
+    "caption": "Probe-update dose1 versus the identical sham trials. Left target evidence; right designated foil while target unchanged. Empirical fractions with Wilson95% intervals. Small denominators per magnitude are explicit in trial records:64 TOTAL per condition, not64 per point. No threshold fit or universal benefit is inferred from sparse points. Feature direction is absolute sin(2theta), not a learned rotation/decision direction.",
+    "source": "data/trial_scores.csv; paired_causal_effects.csv"
+  },
+  {
+    "id": "30_stimulation_controls",
+    "title": "Opposite pulses and matched random-direction controls",
+    "caption": "Solid circles: independently calibrated absolute-orientation direction. Dashed squares: orthogonal random direction with identical channel RMS. Positive/negative doses and three matched sites are measured, not inferred.95% paired bootstrap. A null mean shift can mask opposing sign/location effects; a shift is not necessarily a sensitivity improvement. Physical current, neural cell type and milliseconds are not specified by model units.",
+    "source": "calibration.json; data/calibration.npz; paired_causal_effects.csv"
+  },
+  {
+    "id": "31_sensitivity_criterion",
+    "title": "Sensitivity and report criterion must be distinguished",
+    "caption": "Signal: aligned target rotation. Noise: unchanged or opposite target, pooled explicitly here; separate subtype response rates saved. d\u2032 = Z(hit)\u2212Z(false alarm); criterion = \u2212[Z(hit)+Z(false alarm)]/2. All rates use loglinear(k+.5)/(n+1) correction, including ceiling cells.95% paired trial bootstrap; one checkpoint, exploratory multiple contrasts, no familywise significance claim.",
+    "source": "data/paired_causal_effects.csv; causal_response_subtypes.csv"
+  },
+  {
+    "id": "32_tested_spatial_sites",
+    "title": "Spatial effects: only locations actually perturbed",
+    "caption": "Top: finest KDA emitted-field suppression1. Bottom: positive feature stimulation1RMS. Probe update, orientation D12. Each circle is a tested mask center approximately mapped to image pixels; no interpolation over unmeasured locations. Labels are paired accuracy differences and actual denominators. Smaller physical-location strata are descriptive; relative-site uncertainty is in the paired table.",
+    "source": "data/tested_spatial_sites.csv"
+  },
+  {
+    "id": "33_calibration_limits",
+    "title": "What the feature pulse does\u2014and does not\u2014identify",
+    "caption": "OLS encoding localizer uses actual cos(2theta)/sin(2theta) orientation on independent native sample frames; trial split precedes pooling locations. Cue location/sign and task label are not calibration targets. Absolute sample orientation is independently drawn from the task label/cue rule. Positive validation confirms feature preference, not a signed rotation comparator or universal behavioral enhancement.",
+    "source": "calibration.json; data/calibration.npz; REFERENCE_GUIDE.md"
+  },
+  {
+    "id": "34_sensory_order_controls",
+    "title": "Direction and interval-order controls at native difficulty",
+    "caption": "Native observational strata, not synthetic reversals. Motion classes are right/up/left/down; orientation is signed change. Other binary tasks report which frame contains the stronger quantity or structured contour. Points show empirical accuracy and95% Wilson intervals. These sensory tasks have no spatial cue and cannot establish selective attention by themselves.",
+    "source": "data/sensory_direction_interval_order.csv"
+  }
+]

@@ -1,0 +1,77 @@
+{
+  "verified": true,
+  "observed": 1790967649.927228,
+  "checkpoint": "/Users/jonathanmorgan/VAWMRuntime/delayed_frame_gru_local01/run/checkpoint_000003.pt",
+  "sha256": "8d085ef62165dfd99606b662836fecb86fc167ec69de2065a077e4d220c358f6",
+  "step": 3,
+  "episodes": 96,
+  "active_adam_states": 86,
+  "changed_parameters": 86,
+  "fresh_initialization_verified": true,
+  "mps_rng_persisted": true,
+  "device": "mps",
+  "effective_batch": 32,
+  "microbatch": 1,
+  "supervisor_pid": 54824,
+  "guard_pid": 54822,
+  "hard_deadline": 1790996271.068054,
+  "plan": {
+    "max_steps": 2631,
+    "target_requested": 4216,
+    "minimum_useful_updates": 3,
+    "exposure_reduced": true,
+    "total_episodes": 84192,
+    "validation_steps": [
+      1315,
+      2631
+    ],
+    "checkpoint_every": 100,
+    "planned_exposure": {
+      "B12": {
+        "updates": 877,
+        "episodes": 28064
+      },
+      "B20": {
+        "updates": 877,
+        "episodes": 28064
+      },
+      "B28": {
+        "updates": 877,
+        "episodes": 28064
+      }
+    },
+    "estimated_optimizer_seconds": 21494.654126713984,
+    "estimated_total_remaining_seconds": 28051.842095080996,
+    "slower_150pct_seconds": 33425.50562675949,
+    "estimated_validation_seconds": 47.25407278141939,
+    "estimated_one_test_seconds": 94.50814556283878,
+    "final_reserve_seconds": 416.2703639070969,
+    "update_estimate_seconds": 12.52571760371211,
+    "method": "discard3nativewarmupupdates; next6nativebatch32micro4updates two/cell; steadypercellmax; exactseededschedule; train1.25eval1.35; two val100+two test200/cell+900s; separate600sretrieval"
+  },
+  "live": {
+    "phase": "training",
+    "pid": 55539,
+    "utc": "2026-10-02T19:00:37.693008+00:00",
+    "architecture": "independent_delayed_frame_stride1_residual_cnn_gru",
+    "initialization": "fresh",
+    "step": 8,
+    "episodes": 256,
+    "optimizer_seconds": 75.71418062411249,
+    "deadline": 1790995671.068054,
+    "latest_checkpoint": {
+      "path": "/Users/jonathanmorgan/VAWMRuntime/delayed_frame_gru_local01/run/checkpoint_000003.pt",
+      "bytes": 255661387,
+      "sha256": "8d085ef62165dfd99606b662836fecb86fc167ec69de2065a077e4d220c358f6",
+      "verified": true,
+      "step": 3
+    },
+    "best_step": null,
+    "last_update": {
+      "task": "krauzlis_cued_motion",
+      "cell": "B12",
+      "loss": 0.690805472433567,
+      "seconds": 8.055401207995601
+    }
+  }
+}

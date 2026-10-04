@@ -1,0 +1,88 @@
+{
+  "cpu_only": true,
+  "threads": 2,
+  "native": true,
+  "effective_batch": 32,
+  "microbatch": 4,
+  "directory": "/var/folders/0l/m0l9y4b57ks7m23qmx7jp6m80000gn/T/sequence-kda-native-batch32-al776vsf",
+  "result": {
+    "verified": true,
+    "step": 3,
+    "episodes": 96,
+    "checkpoint": {
+      "path": "/private/var/folders/0l/m0l9y4b57ks7m23qmx7jp6m80000gn/T/sequence-kda-native-batch32-al776vsf/checkpoint_000003.pt",
+      "bytes": 1959013,
+      "sha256": "e842616875ca01cfb156c95b6e61f5bfd0cb6d163b0d78ff0b67628f2faeed6e",
+      "verified": true,
+      "step": 3
+    },
+    "parameter_count": 158340,
+    "changed_parameters": 27,
+    "changed_by_module": {
+      "patch_projection.": [
+        "patch_projection.weight",
+        "patch_projection.bias"
+      ],
+      "patch_norm.": [
+        "patch_norm.weight",
+        "patch_norm.bias"
+      ],
+      "row_embedding": [
+        "row_embedding"
+      ],
+      "column_embedding": [
+        "column_embedding"
+      ],
+      "cls_token": [
+        "cls_token"
+      ],
+      "kda_norm.": [
+        "kda_norm.weight",
+        "kda_norm.bias"
+      ],
+      "kda.q_proj.": [
+        "kda.q_proj.weight",
+        "kda.q_proj.bias"
+      ],
+      "kda.k_proj.": [
+        "kda.k_proj.weight",
+        "kda.k_proj.bias"
+      ],
+      "kda.v_proj.": [
+        "kda.v_proj.weight",
+        "kda.v_proj.bias"
+      ],
+      "kda.decay_proj.": [
+        "kda.decay_proj.weight",
+        "kda.decay_proj.bias"
+      ],
+      "kda.write_proj.": [
+        "kda.write_proj.weight",
+        "kda.write_proj.bias"
+      ],
+      "kda.out_proj.": [
+        "kda.out_proj.weight",
+        "kda.out_proj.bias"
+      ],
+      "final_norm.": [
+        "final_norm.weight",
+        "final_norm.bias"
+      ],
+      "classifier.": [
+        "classifier.0.weight",
+        "classifier.0.bias",
+        "classifier.2.weight",
+        "classifier.2.bias"
+      ]
+    },
+    "all_active_parameters_changed": true,
+    "stream_counts": {
+      "B12": 32,
+      "B20": 32,
+      "B28": 32
+    },
+    "optimizer_seconds": 45.47330204106402,
+    "fresh_initial_optimizer_empty": true,
+    "persisted_constructor_equality": true
+  }
+}

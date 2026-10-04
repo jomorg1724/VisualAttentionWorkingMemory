@@ -71,3 +71,12 @@ Different experiments often reevaluate the same parent on different fresh draws.
 State reset, attention exclusion and feedback interruption are acute interventions outside ordinary training. A rescue implicates the altered computation but does not prove a trainable permanent change will help. A failed readout is not proof of absent information. Perfect empirical bootstrap intervals can collapse at 100%; they do not guarantee zero population error.
 
 Current Stage1 uses fresh validation 53973001 and test 54973001. Its 2 pp validation screen is an engineering preservation rule, not proof of equivalence. Final simultaneous one-sided bounds provide a different, explicitly statistical assessment; uncertainty may remain with 512 examples per cell.
+
+
+## October 4 motion representation benchmarks
+
+The new four-frame predictive task measures balanced support/background RGB reconstruction MSE, against copy-last and gray-image baselines. It has no classification output. Prediction improvement does not establish an operational direction/change readout.
+
+The simple before/after task takes two internally constant-direction three-frame clips from a continuous six-frame movie. Same/change labels differ by 0° versus ±26°/28°; report each speed(.375/1/2) × angle cell. Adjacent no-change/change presentations share nuisance variables and the complete before clip. Thus 3,072 final presentations correspond to 1,536 paired contexts. BA averages sensitivity and specificity; AUC evaluates score ranking without choosing a test threshold.
+
+Angular contrastive training uses independent clip layouts/counts/speeds and known simulator directions. The loss is a supervised metric-learning objective, not self-supervision or a biological motion label. Angular loss/correlation describe geometry. Operational change accuracy uses representation distance and one validation-fitted threshold on fresh continuous movies. The simplified distribution differs from the native Krauzlis task. See the [technical report](../SecondPass/AngularContrastiveMotion/TECHNICAL_REPORT.md).

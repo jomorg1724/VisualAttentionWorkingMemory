@@ -1,0 +1,29 @@
+F
+=================================== FAILURES ===================================
+_______ test_native_equality_and_isolated_json_resume[orientation-mixed] _______
+
+task = 'orientation', cell = 'mixed'
+
+    @pytest.mark.parametrize('task,cell', [('orientation','mixed'), ('motion_direction','mixed'),
+        ('orientation_ring','D0'), ('orientation_cued','D24'), ('natural_spectrum','mixed'),
+        ('image_recognition','N24_H5')])
+    def test_native_equality_and_isolated_json_resume(task, cell):
+>       e = exporter()
+
+SecondPass/TaskSuite/Demo/tests/test_export.py:25: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def exporter():
+        name = 'SecondPass.TaskSuite.Demo.export_assets'
+>       assert importlib.util.find_spec(name) is not None, 'Native atlas exporter is missing'
+E       AssertionError: Native atlas exporter is missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x109ea10d0>('SecondPass.TaskSuite.Demo.export_assets')
+E        +    where <function find_spec at 0x109ea10d0> = <module 'importlib.util' from '/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/importlib/util.py'>.find_spec
+E        +      where <module 'importlib.util' from '/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/importlib/util.py'> = importlib.util
+
+SecondPass/TaskSuite/Demo/tests/test_export.py:17: AssertionError
+=========================== short test summary info ============================
+FAILED SecondPass/TaskSuite/Demo/tests/test_export.py::test_native_equality_and_isolated_json_resume[orientation-mixed]
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed in 0.02s

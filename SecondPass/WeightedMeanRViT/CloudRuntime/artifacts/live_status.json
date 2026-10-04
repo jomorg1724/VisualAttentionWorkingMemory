@@ -1,0 +1,2335 @@
+{
+  "phase": "finished",
+  "pid": 430,
+  "utc": "2026-10-03T22:53:07.528684+00:00",
+  "architecture": "weighted_raw_mean_0p5_0p4_0p1_fresh_cnn_rvit",
+  "step": 1304,
+  "episodes": 39544,
+  "optimizer_seconds": 6446.047212728299,
+  "deadline": 1791089334.23731,
+  "latest_checkpoint": {
+    "path": "/workspace/vawm_weighted_mean_rvit_01/run/latest.pt",
+    "step": 1304,
+    "bytes": 87764251,
+    "sha256": "03baaecdaa043b413efe34e4d8b0e69ff81c020559587d3871a7299e17228f5a",
+    "verified": true
+  },
+  "best_step": 100,
+  "best_key": [
+    0.5060519515843873,
+    0.5
+  ],
+  "pool_index": 3,
+  "epoch": 9,
+  "unique_episodes_generated": 4000,
+  "latest_validation": {
+    "step": 1000,
+    "key": [
+      0.49626002991976065,
+      0.5
+    ],
+    "cells": [
+      {
+        "task": "krauzlis_cued_motion",
+        "cell": "B12",
+        "n": 100,
+        "confusion": [
+          [
+            0,
+            43
+          ],
+          [
+            0,
+            57
+          ]
+        ],
+        "class_recall": [
+          0.0,
+          1.0
+        ],
+        "accuracy": 0.57,
+        "balanced_accuracy": 0.5,
+        "auc": 0.49367605059159525,
+        "auc_ovr": [
+          0.49367605059159525,
+          0.49367605059159525
+        ],
+        "specificity": 0.0,
+        "false_positive_rate": 1.0,
+        "events": {
+          "target": {
+            "n": 57,
+            "positive_rate": 1.0,
+            "target_side_counts": {
+              "0": 29,
+              "1": 28
+            },
+            "confusion": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                57
+              ]
+            ],
+            "hit_rate": 1.0,
+            "specificity": null,
+            "false_positive_rate": null
+          },
+          "foil": {
+            "n": 0,
+            "positive_rate": null,
+            "target_side_counts": {
+              "0": 0,
+              "1": 0
+            },
+            "confusion": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "hit_rate": null,
+            "specificity": null,
+            "false_positive_rate": null
+          },
+          "catch": {
+            "n": 43,
+            "positive_rate": 1.0,
+            "target_side_counts": {
+              "0": 21,
+              "1": 22
+            },
+            "confusion": [
+              [
+                0,
+                43
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "hit_rate": null,
+            "specificity": 0.0,
+            "false_positive_rate": 1.0
+          }
+        },
+        "target_hit_rate": 1.0,
+        "catch_false_positive_rate": 1.0,
+        "strata": {
+          "baseline_transitions": {
+            "12": {
+              "n": 100,
+              "accuracy": 0.57,
+              "positive_rate": 1.0
+            }
+          },
+          "event_type": {
+            "\"catch\"": {
+              "n": 43,
+              "accuracy": 0.0,
+              "positive_rate": 1.0
+            },
+            "\"target\"": {
+              "n": 57,
+              "accuracy": 1.0,
+              "positive_rate": 1.0
+            }
+          },
+          "event_magnitude_degrees": {
+            "0": {
+              "n": 43,
+              "accuracy": 0.0,
+              "positive_rate": 1.0
+            },
+            "28": {
+              "n": 20,
+              "accuracy": 1.0,
+              "positive_rate": 1.0
+            },
+            "26": {
+              "n": 37,
+              "accuracy": 1.0,
+              "positive_rate": 1.0
+            }
+          },
+          "target_location": {
+            "1": {
+              "n": 50,
+              "accuracy": 0.56,
+              "positive_rate": 1.0
+            },
+            "0": {
+              "n": 50,
+              "accuracy": 0.58,
+              "positive_rate": 1.0
+            }
+          }
+        },
+        "change_hit_rate": 1.0,
+        "no_change_false_positive_rate": 1.0,
+        "stimulus_task": "single_stimulus_change_detection",
+        "native_benchmark": false,
+        "event_semantics": {
+          "target": "change",
+          "catch": "no change",
+          "foil": "absent"
+        },
+        "source_event_counts": {
+          "target": 57,
+          "foil": 29,
+          "catch": 14
+        },
+        "seconds": 3.076785944402218,
+        "trial_ids": [
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/0",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/1",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/2",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/3",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/4",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/5",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/6",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/7",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/8",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/9",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/10",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/11",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/12",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/13",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/14",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/15",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/16",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/17",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/18",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/19",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/20",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/21",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/22",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/23",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/24",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/25",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/26",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/27",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/28",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/29",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/30",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/31",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/32",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/33",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/34",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/35",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/36",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/37",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/38",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/39",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/40",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/41",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/42",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/43",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/44",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/45",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/46",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/47",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/48",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/49",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/50",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/51",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/52",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/53",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/54",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/55",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/56",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/57",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/58",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/59",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/60",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/61",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/62",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/63",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/64",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/65",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/66",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/67",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/68",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/69",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/70",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/71",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/72",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/73",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/74",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/75",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/76",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/77",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/78",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/79",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/80",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/81",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/82",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/83",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/84",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/85",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/86",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/87",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/88",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/89",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/90",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/91",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/92",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/93",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/94",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/95",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/96",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/97",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/98",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B12/SpatialBattery/val/18320211000/krauzlis_cued_motion/99"
+        ],
+        "labels": [
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1
+        ],
+        "probabilities": [
+          [
+            0.4233042597770691,
+            0.5766957402229309
+          ],
+          [
+            0.40858790278434753,
+            0.5914120674133301
+          ],
+          [
+            0.4385858476161957,
+            0.5614141821861267
+          ],
+          [
+            0.42879101634025574,
+            0.5712089538574219
+          ],
+          [
+            0.4347192049026489,
+            0.5652807950973511
+          ],
+          [
+            0.4557787775993347,
+            0.5442212820053101
+          ],
+          [
+            0.4347569942474365,
+            0.5652430057525635
+          ],
+          [
+            0.42153990268707275,
+            0.5784600377082825
+          ],
+          [
+            0.41494590044021606,
+            0.5850541591644287
+          ],
+          [
+            0.4386442303657532,
+            0.5613557696342468
+          ],
+          [
+            0.43470901250839233,
+            0.5652910470962524
+          ],
+          [
+            0.4343426823616028,
+            0.5656573176383972
+          ],
+          [
+            0.43408113718032837,
+            0.5659188032150269
+          ],
+          [
+            0.39706605672836304,
+            0.602933943271637
+          ],
+          [
+            0.4241580665111542,
+            0.5758419036865234
+          ],
+          [
+            0.42061299085617065,
+            0.5793869495391846
+          ],
+          [
+            0.4283679723739624,
+            0.5716320276260376
+          ],
+          [
+            0.4138113558292389,
+            0.5861886143684387
+          ],
+          [
+            0.40907156467437744,
+            0.5909284949302673
+          ],
+          [
+            0.43595606088638306,
+            0.5640439391136169
+          ],
+          [
+            0.4167655408382416,
+            0.583234429359436
+          ],
+          [
+            0.430022269487381,
+            0.5699777603149414
+          ],
+          [
+            0.4441692531108856,
+            0.5558307766914368
+          ],
+          [
+            0.43025580048561096,
+            0.5697441697120667
+          ],
+          [
+            0.4329662024974823,
+            0.5670337677001953
+          ],
+          [
+            0.43109333515167236,
+            0.5689066648483276
+          ],
+          [
+            0.4317336082458496,
+            0.5682663321495056
+          ],
+          [
+            0.44746121764183044,
+            0.5525387525558472
+          ],
+          [
+            0.44196760654449463,
+            0.5580323934555054
+          ],
+          [
+            0.43626654148101807,
+            0.5637335181236267
+          ],
+          [
+            0.4586923122406006,
+            0.5413076877593994
+          ],
+          [
+            0.40843117237091064,
+            0.5915688276290894
+          ],
+          [
+            0.442512571811676,
+            0.557487428188324
+          ],
+          [
+            0.4341655671596527,
+            0.5658344030380249
+          ],
+          [
+            0.43785589933395386,
+            0.5621441006660461
+          ],
+          [
+            0.41694375872612,
+            0.5830562114715576
+          ],
+          [
+            0.4327523708343506,
+            0.5672476291656494
+          ],
+          [
+            0.4355506896972656,
+            0.5644492506980896
+          ],
+          [
+            0.4279460310935974,
+            0.5720539093017578
+          ],
+          [
+            0.4409494996070862,
+            0.5590505599975586
+          ],
+          [
+            0.435055673122406,
+            0.564944326877594
+          ],
+          [
+            0.4344992935657501,
+            0.5655006766319275
+          ],
+          [
+            0.42774850130081177,
+            0.5722514986991882
+          ],
+          [
+            0.43944719433784485,
+            0.5605528354644775
+          ],
+          [
+            0.4232385754585266,
+            0.5767614245414734
+          ],
+          [
+            0.41765516996383667,
+            0.5823448896408081
+          ],
+          [
+            0.43441104888916016,
+            0.5655889511108398
+          ],
+          [
+            0.43255531787872314,
+            0.5674447417259216
+          ],
+          [
+            0.43392160534858704,
+            0.5660783648490906
+          ],
+          [
+            0.4336927533149719,
+            0.5663072466850281
+          ],
+          [
+            0.4235551953315735,
+            0.5764448046684265
+          ],
+          [
+            0.43539488315582275,
+            0.5646051168441772
+          ],
+          [
+            0.43480902910232544,
+            0.5651910305023193
+          ],
+          [
+            0.4361129403114319,
+            0.5638870596885681
+          ],
+          [
+            0.4439762234687805,
+            0.5560238361358643
+          ],
+          [
+            0.4216935634613037,
+            0.5783064365386963
+          ],
+          [
+            0.43135926127433777,
+            0.5686407089233398
+          ],
+          [
+            0.3991914689540863,
+            0.6008085608482361
+          ],
+          [
+            0.4298616051673889,
+            0.5701383948326111
+          ],
+          [
+            0.43207213282585144,
+            0.5679278373718262
+          ],
+          [
+            0.4365402162075043,
+            0.5634598135948181
+          ],
+          [
+            0.4265991747379303,
+            0.5734007954597473
+          ],
+          [
+            0.44240128993988037,
+            0.5575987100601196
+          ],
+          [
+            0.43054449558258057,
+            0.5694555044174194
+          ],
+          [
+            0.43489840626716614,
+            0.5651016235351562
+          ],
+          [
+            0.43345385789871216,
+            0.5665461421012878
+          ],
+          [
+            0.4289776384830475,
+            0.5710223913192749
+          ],
+          [
+            0.4331721365451813,
+            0.5668278932571411
+          ],
+          [
+            0.4151318371295929,
+            0.5848681926727295
+          ],
+          [
+            0.4332192838191986,
+            0.566780686378479
+          ],
+          [
+            0.4207623600959778,
+            0.579237699508667
+          ],
+          [
+            0.4224587678909302,
+            0.5775412917137146
+          ],
+          [
+            0.4324503242969513,
+            0.5675497055053711
+          ],
+          [
+            0.4359375536441803,
+            0.5640624165534973
+          ],
+          [
+            0.4342760443687439,
+            0.5657239556312561
+          ],
+          [
+            0.4269774854183197,
+            0.5730224847793579
+          ],
+          [
+            0.4340265989303589,
+            0.5659734010696411
+          ],
+          [
+            0.430586576461792,
+            0.569413423538208
+          ],
+          [
+            0.4453226625919342,
+            0.5546773672103882
+          ],
+          [
+            0.43397191166877747,
+            0.5660280585289001
+          ],
+          [
+            0.43620699644088745,
+            0.5637930631637573
+          ],
+          [
+            0.450623095035553,
+            0.549376904964447
+          ],
+          [
+            0.4152580499649048,
+            0.5847419500350952
+          ],
+          [
+            0.4358081519603729,
+            0.5641918778419495
+          ],
+          [
+            0.4176470935344696,
+            0.582352876663208
+          ],
+          [
+            0.4333767890930176,
+            0.5666232109069824
+          ],
+          [
+            0.4344334900379181,
+            0.5655664801597595
+          ],
+          [
+            0.436093807220459,
+            0.563906192779541
+          ],
+          [
+            0.42254775762557983,
+            0.5774522423744202
+          ],
+          [
+            0.4349835216999054,
+            0.565016508102417
+          ],
+          [
+            0.4339134693145752,
+            0.5660865306854248
+          ],
+          [
+            0.42803922295570374,
+            0.5719608068466187
+          ],
+          [
+            0.40321606397628784,
+            0.5967838764190674
+          ],
+          [
+            0.4362814724445343,
+            0.5637184977531433
+          ],
+          [
+            0.43106287717819214,
+            0.5689371228218079
+          ],
+          [
+            0.41937533020973206,
+            0.5806246399879456
+          ],
+          [
+            0.4379810392856598,
+            0.5620189905166626
+          ],
+          [
+            0.4302104711532593,
+            0.5697895288467407
+          ],
+          [
+            0.42707499861717224,
+            0.5729249715805054
+          ],
+          [
+            0.4367637634277344,
+            0.5632361769676208
+          ]
+        ]
+      },
+      {
+        "task": "krauzlis_cued_motion",
+        "cell": "B20",
+        "n": 100,
+        "confusion": [
+          [
+            0,
+            43
+          ],
+          [
+            0,
+            57
+          ]
+        ],
+        "class_recall": [
+          0.0,
+          1.0
+        ],
+        "accuracy": 0.57,
+        "balanced_accuracy": 0.5,
+        "auc": 0.47817217462260303,
+        "auc_ovr": [
+          0.47817217462260303,
+          0.47817217462260303
+        ],
+        "specificity": 0.0,
+        "false_positive_rate": 1.0,
+        "events": {
+          "target": {
+            "n": 57,
+            "positive_rate": 1.0,
+            "target_side_counts": {
+              "0": 29,
+              "1": 28
+            },
+            "confusion": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                57
+              ]
+            ],
+            "hit_rate": 1.0,
+            "specificity": null,
+            "false_positive_rate": null
+          },
+          "foil": {
+            "n": 0,
+            "positive_rate": null,
+            "target_side_counts": {
+              "0": 0,
+              "1": 0
+            },
+            "confusion": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "hit_rate": null,
+            "specificity": null,
+            "false_positive_rate": null
+          },
+          "catch": {
+            "n": 43,
+            "positive_rate": 1.0,
+            "target_side_counts": {
+              "0": 21,
+              "1": 22
+            },
+            "confusion": [
+              [
+                0,
+                43
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "hit_rate": null,
+            "specificity": 0.0,
+            "false_positive_rate": 1.0
+          }
+        },
+        "target_hit_rate": 1.0,
+        "catch_false_positive_rate": 1.0,
+        "strata": {
+          "baseline_transitions": {
+            "20": {
+              "n": 100,
+              "accuracy": 0.57,
+              "positive_rate": 1.0
+            }
+          },
+          "event_type": {
+            "\"catch\"": {
+              "n": 43,
+              "accuracy": 0.0,
+              "positive_rate": 1.0
+            },
+            "\"target\"": {
+              "n": 57,
+              "accuracy": 1.0,
+              "positive_rate": 1.0
+            }
+          },
+          "event_magnitude_degrees": {
+            "0": {
+              "n": 43,
+              "accuracy": 0.0,
+              "positive_rate": 1.0
+            },
+            "28": {
+              "n": 27,
+              "accuracy": 1.0,
+              "positive_rate": 1.0
+            },
+            "26": {
+              "n": 30,
+              "accuracy": 1.0,
+              "positive_rate": 1.0
+            }
+          },
+          "target_location": {
+            "0": {
+              "n": 50,
+              "accuracy": 0.58,
+              "positive_rate": 1.0
+            },
+            "1": {
+              "n": 50,
+              "accuracy": 0.56,
+              "positive_rate": 1.0
+            }
+          }
+        },
+        "change_hit_rate": 1.0,
+        "no_change_false_positive_rate": 1.0,
+        "stimulus_task": "single_stimulus_change_detection",
+        "native_benchmark": false,
+        "event_semantics": {
+          "target": "change",
+          "catch": "no change",
+          "foil": "absent"
+        },
+        "source_event_counts": {
+          "target": 57,
+          "foil": 29,
+          "catch": 14
+        },
+        "seconds": 3.5128614958375692,
+        "trial_ids": [
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/0",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/1",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/2",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/3",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/4",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/5",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/6",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/7",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/8",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/9",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/10",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/11",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/12",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/13",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/14",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/15",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/16",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/17",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/18",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/19",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/20",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/21",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/22",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/23",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/24",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/25",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/26",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/27",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/28",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/29",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/30",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/31",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/32",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/33",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/34",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/35",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/36",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/37",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/38",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/39",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/40",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/41",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/42",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/43",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/44",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/45",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/46",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/47",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/48",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/49",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/50",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/51",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/52",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/53",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/54",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/55",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/56",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/57",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/58",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/59",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/60",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/61",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/62",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/63",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/64",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/65",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/66",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/67",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/68",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/69",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/70",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/71",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/72",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/73",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/74",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/75",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/76",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/77",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/78",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/79",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/80",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/81",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/82",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/83",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/84",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/85",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/86",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/87",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/88",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/89",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/90",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/91",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/92",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/93",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/94",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/95",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/96",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/97",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/98",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B20/SpatialBattery/val/18320211001/krauzlis_cued_motion/99"
+        ],
+        "labels": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          0
+        ],
+        "probabilities": [
+          [
+            0.43371903896331787,
+            0.5662810206413269
+          ],
+          [
+            0.43072131276130676,
+            0.5692787170410156
+          ],
+          [
+            0.43323659896850586,
+            0.5667634010314941
+          ],
+          [
+            0.43091100454330444,
+            0.5690889358520508
+          ],
+          [
+            0.44329139590263367,
+            0.5567086338996887
+          ],
+          [
+            0.4097997546195984,
+            0.5902002453804016
+          ],
+          [
+            0.4150312542915344,
+            0.5849686861038208
+          ],
+          [
+            0.40745264291763306,
+            0.5925473570823669
+          ],
+          [
+            0.43336763978004456,
+            0.5666323900222778
+          ],
+          [
+            0.4332212805747986,
+            0.5667787790298462
+          ],
+          [
+            0.43564802408218384,
+            0.5643519759178162
+          ],
+          [
+            0.4325074851512909,
+            0.5674924850463867
+          ],
+          [
+            0.42579418420791626,
+            0.5742058157920837
+          ],
+          [
+            0.44579702615737915,
+            0.5542029738426208
+          ],
+          [
+            0.44984087347984314,
+            0.5501591563224792
+          ],
+          [
+            0.4363931715488434,
+            0.563606858253479
+          ],
+          [
+            0.4284888505935669,
+            0.5715111494064331
+          ],
+          [
+            0.4336983263492584,
+            0.566301703453064
+          ],
+          [
+            0.45563000440597534,
+            0.5443699955940247
+          ],
+          [
+            0.430517315864563,
+            0.569482684135437
+          ],
+          [
+            0.41673585772514343,
+            0.583264172077179
+          ],
+          [
+            0.4373921751976013,
+            0.5626077651977539
+          ],
+          [
+            0.431052029132843,
+            0.568947970867157
+          ],
+          [
+            0.43159398436546326,
+            0.5684060454368591
+          ],
+          [
+            0.41441211104393005,
+            0.5855879187583923
+          ],
+          [
+            0.4273669123649597,
+            0.5726330876350403
+          ],
+          [
+            0.43255215883255005,
+            0.5674477815628052
+          ],
+          [
+            0.44445544481277466,
+            0.5555445551872253
+          ],
+          [
+            0.43750911951065063,
+            0.5624908804893494
+          ],
+          [
+            0.43517041206359863,
+            0.5648295879364014
+          ],
+          [
+            0.4386124908924103,
+            0.5613874793052673
+          ],
+          [
+            0.4055251479148865,
+            0.5944748520851135
+          ],
+          [
+            0.43726515769958496,
+            0.562734842300415
+          ],
+          [
+            0.4328218102455139,
+            0.5671781301498413
+          ],
+          [
+            0.4276445508003235,
+            0.5723554491996765
+          ],
+          [
+            0.44334128499031067,
+            0.5566586852073669
+          ],
+          [
+            0.46572673320770264,
+            0.5342732667922974
+          ],
+          [
+            0.3937992453575134,
+            0.6062006950378418
+          ],
+          [
+            0.43509966135025024,
+            0.5649003386497498
+          ],
+          [
+            0.43597108125686646,
+            0.5640289187431335
+          ],
+          [
+            0.43367263674736023,
+            0.5663273930549622
+          ],
+          [
+            0.4397701323032379,
+            0.5602298974990845
+          ],
+          [
+            0.41663187742233276,
+            0.5833681225776672
+          ],
+          [
+            0.4422972798347473,
+            0.5577027797698975
+          ],
+          [
+            0.43261781334877014,
+            0.5673821568489075
+          ],
+          [
+            0.3924400508403778,
+            0.6075599193572998
+          ],
+          [
+            0.44597628712654114,
+            0.5540236830711365
+          ],
+          [
+            0.4314022660255432,
+            0.5685977339744568
+          ],
+          [
+            0.4188590943813324,
+            0.5811408758163452
+          ],
+          [
+            0.4341411292552948,
+            0.5658588409423828
+          ],
+          [
+            0.4299268126487732,
+            0.5700731873512268
+          ],
+          [
+            0.4327388107776642,
+            0.5672612190246582
+          ],
+          [
+            0.4087112545967102,
+            0.5912888050079346
+          ],
+          [
+            0.429312527179718,
+            0.570687472820282
+          ],
+          [
+            0.43353089690208435,
+            0.566469132900238
+          ],
+          [
+            0.4373630881309509,
+            0.5626369118690491
+          ],
+          [
+            0.43263643980026245,
+            0.5673636198043823
+          ],
+          [
+            0.4303324222564697,
+            0.5696675777435303
+          ],
+          [
+            0.43314337730407715,
+            0.5668566823005676
+          ],
+          [
+            0.41250526905059814,
+            0.5874947309494019
+          ],
+          [
+            0.4290551245212555,
+            0.5709448456764221
+          ],
+          [
+            0.4333004653453827,
+            0.5666995644569397
+          ],
+          [
+            0.42540282011032104,
+            0.5745971202850342
+          ],
+          [
+            0.42487964034080505,
+            0.5751203894615173
+          ],
+          [
+            0.42129582166671753,
+            0.5787041783332825
+          ],
+          [
+            0.4315606355667114,
+            0.5684394240379333
+          ],
+          [
+            0.43651169538497925,
+            0.5634883046150208
+          ],
+          [
+            0.4424615204334259,
+            0.5575385093688965
+          ],
+          [
+            0.43078094720840454,
+            0.5692191123962402
+          ],
+          [
+            0.43532925844192505,
+            0.564670741558075
+          ],
+          [
+            0.4172392785549164,
+            0.5827606916427612
+          ],
+          [
+            0.43322113156318665,
+            0.566778838634491
+          ],
+          [
+            0.4503238797187805,
+            0.5496761202812195
+          ],
+          [
+            0.41934359073638916,
+            0.5806563496589661
+          ],
+          [
+            0.43951961398124695,
+            0.5604804158210754
+          ],
+          [
+            0.41850709915161133,
+            0.5814929008483887
+          ],
+          [
+            0.43506669998168945,
+            0.5649333000183105
+          ],
+          [
+            0.40033891797065735,
+            0.599661111831665
+          ],
+          [
+            0.4414790868759155,
+            0.5585209131240845
+          ],
+          [
+            0.41039326786994934,
+            0.5896067023277283
+          ],
+          [
+            0.43446609377861023,
+            0.5655339360237122
+          ],
+          [
+            0.43348661065101624,
+            0.5665134191513062
+          ],
+          [
+            0.4096972346305847,
+            0.5903027057647705
+          ],
+          [
+            0.43204355239868164,
+            0.5679564476013184
+          ],
+          [
+            0.44031256437301636,
+            0.5596873760223389
+          ],
+          [
+            0.43469521403312683,
+            0.5653047561645508
+          ],
+          [
+            0.43666374683380127,
+            0.563336193561554
+          ],
+          [
+            0.4385097920894623,
+            0.5614902377128601
+          ],
+          [
+            0.4324394464492798,
+            0.5675604939460754
+          ],
+          [
+            0.4090726375579834,
+            0.5909273028373718
+          ],
+          [
+            0.4342357814311981,
+            0.5657642483711243
+          ],
+          [
+            0.42743825912475586,
+            0.5725617408752441
+          ],
+          [
+            0.4337269961833954,
+            0.566273033618927
+          ],
+          [
+            0.43312084674835205,
+            0.566879153251648
+          ],
+          [
+            0.43229740858078003,
+            0.5677026510238647
+          ],
+          [
+            0.4382742941379547,
+            0.5617256760597229
+          ],
+          [
+            0.4334925711154938,
+            0.5665074586868286
+          ],
+          [
+            0.43584558367729187,
+            0.5641543865203857
+          ],
+          [
+            0.4403148889541626,
+            0.5596851110458374
+          ],
+          [
+            0.4332639276981354,
+            0.5667360424995422
+          ]
+        ]
+      },
+      {
+        "task": "krauzlis_cued_motion",
+        "cell": "B28",
+        "n": 100,
+        "confusion": [
+          [
+            0,
+            43
+          ],
+          [
+            0,
+            57
+          ]
+        ],
+        "class_recall": [
+          0.0,
+          1.0
+        ],
+        "accuracy": 0.57,
+        "balanced_accuracy": 0.5,
+        "auc": 0.5169318645450837,
+        "auc_ovr": [
+          0.5169318645450837,
+          0.5169318645450837
+        ],
+        "specificity": 0.0,
+        "false_positive_rate": 1.0,
+        "events": {
+          "target": {
+            "n": 57,
+            "positive_rate": 1.0,
+            "target_side_counts": {
+              "0": 29,
+              "1": 28
+            },
+            "confusion": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                57
+              ]
+            ],
+            "hit_rate": 1.0,
+            "specificity": null,
+            "false_positive_rate": null
+          },
+          "foil": {
+            "n": 0,
+            "positive_rate": null,
+            "target_side_counts": {
+              "0": 0,
+              "1": 0
+            },
+            "confusion": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "hit_rate": null,
+            "specificity": null,
+            "false_positive_rate": null
+          },
+          "catch": {
+            "n": 43,
+            "positive_rate": 1.0,
+            "target_side_counts": {
+              "0": 21,
+              "1": 22
+            },
+            "confusion": [
+              [
+                0,
+                43
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "hit_rate": null,
+            "specificity": 0.0,
+            "false_positive_rate": 1.0
+          }
+        },
+        "target_hit_rate": 1.0,
+        "catch_false_positive_rate": 1.0,
+        "strata": {
+          "baseline_transitions": {
+            "28": {
+              "n": 100,
+              "accuracy": 0.57,
+              "positive_rate": 1.0
+            }
+          },
+          "event_type": {
+            "\"target\"": {
+              "n": 57,
+              "accuracy": 1.0,
+              "positive_rate": 1.0
+            },
+            "\"catch\"": {
+              "n": 43,
+              "accuracy": 0.0,
+              "positive_rate": 1.0
+            }
+          },
+          "event_magnitude_degrees": {
+            "28": {
+              "n": 28,
+              "accuracy": 1.0,
+              "positive_rate": 1.0
+            },
+            "0": {
+              "n": 43,
+              "accuracy": 0.0,
+              "positive_rate": 1.0
+            },
+            "26": {
+              "n": 29,
+              "accuracy": 1.0,
+              "positive_rate": 1.0
+            }
+          },
+          "target_location": {
+            "0": {
+              "n": 50,
+              "accuracy": 0.58,
+              "positive_rate": 1.0
+            },
+            "1": {
+              "n": 50,
+              "accuracy": 0.56,
+              "positive_rate": 1.0
+            }
+          }
+        },
+        "change_hit_rate": 1.0,
+        "no_change_false_positive_rate": 1.0,
+        "stimulus_task": "single_stimulus_change_detection",
+        "native_benchmark": false,
+        "event_semantics": {
+          "target": "change",
+          "catch": "no change",
+          "foil": "absent"
+        },
+        "source_event_counts": {
+          "target": 57,
+          "foil": 29,
+          "catch": 14
+        },
+        "seconds": 4.1523068677634,
+        "trial_ids": [
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/0",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/1",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/2",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/3",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/4",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/5",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/6",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/7",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/8",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/9",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/10",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/11",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/12",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/13",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/14",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/15",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/16",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/17",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/18",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/19",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/20",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/21",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/22",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/23",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/24",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/25",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/26",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/27",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/28",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/29",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/30",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/31",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/32",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/33",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/34",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/35",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/36",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/37",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/38",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/39",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/40",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/41",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/42",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/43",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/44",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/45",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/46",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/47",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/48",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/49",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/50",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/51",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/52",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/53",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/54",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/55",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/56",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/57",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/58",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/59",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/60",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/61",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/62",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/63",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/64",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/65",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/66",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/67",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/68",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/69",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/70",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/71",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/72",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/73",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/74",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/75",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/76",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/77",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/78",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/79",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/80",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/81",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/82",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/83",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/84",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/85",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/86",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/87",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/88",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/89",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/90",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/91",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/92",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/93",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/94",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/95",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/96",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/97",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/98",
+          "single_stimulus_no_cue_native_target_projection_v1/krauzlis_cued_motion/B28/SpatialBattery/val/18320211002/krauzlis_cued_motion/99"
+        ],
+        "labels": [
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          1
+        ],
+        "probabilities": [
+          [
+            0.43165484070777893,
+            0.5683451890945435
+          ],
+          [
+            0.4308202564716339,
+            0.5691797137260437
+          ],
+          [
+            0.42510244250297546,
+            0.5748975872993469
+          ],
+          [
+            0.41350263357162476,
+            0.5864973068237305
+          ],
+          [
+            0.426677942276001,
+            0.5733219981193542
+          ],
+          [
+            0.43077969551086426,
+            0.5692203044891357
+          ],
+          [
+            0.43377622961997986,
+            0.5662237405776978
+          ],
+          [
+            0.4310004711151123,
+            0.5689994692802429
+          ],
+          [
+            0.4360032081604004,
+            0.5639967322349548
+          ],
+          [
+            0.3782607913017273,
+            0.6217392086982727
+          ],
+          [
+            0.42920926213264465,
+            0.5707907676696777
+          ],
+          [
+            0.43925678730010986,
+            0.5607432126998901
+          ],
+          [
+            0.4105049669742584,
+            0.5894950032234192
+          ],
+          [
+            0.4429638981819153,
+            0.5570361018180847
+          ],
+          [
+            0.402235746383667,
+            0.5977641940116882
+          ],
+          [
+            0.4402485489845276,
+            0.5597514510154724
+          ],
+          [
+            0.42995715141296387,
+            0.5700428485870361
+          ],
+          [
+            0.4330669641494751,
+            0.5669330358505249
+          ],
+          [
+            0.4257057309150696,
+            0.5742942690849304
+          ],
+          [
+            0.4333280920982361,
+            0.5666719675064087
+          ],
+          [
+            0.46676692366600037,
+            0.533233106136322
+          ],
+          [
+            0.4316137135028839,
+            0.5683862566947937
+          ],
+          [
+            0.43161264061927795,
+            0.5683873295783997
+          ],
+          [
+            0.42349836230278015,
+            0.5765016078948975
+          ],
+          [
+            0.44632989168167114,
+            0.5536701083183289
+          ],
+          [
+            0.41155728697776794,
+            0.5884426832199097
+          ],
+          [
+            0.4190550744533539,
+            0.5809449553489685
+          ],
+          [
+            0.4350191652774811,
+            0.5649808049201965
+          ],
+          [
+            0.4346294105052948,
+            0.5653705596923828
+          ],
+          [
+            0.3938885033130646,
+            0.6061115264892578
+          ],
+          [
+            0.4154203236103058,
+            0.5845796465873718
+          ],
+          [
+            0.43571001291275024,
+            0.564289927482605
+          ],
+          [
+            0.42340561747550964,
+            0.5765944123268127
+          ],
+          [
+            0.4313284456729889,
+            0.5686715245246887
+          ],
+          [
+            0.4268479645252228,
+            0.5731520056724548
+          ],
+          [
+            0.430493026971817,
+            0.5695069432258606
+          ],
+          [
+            0.4118076264858246,
+            0.5881924033164978
+          ],
+          [
+            0.4272986650466919,
+            0.5727012753486633
+          ],
+          [
+            0.42474421858787537,
+            0.5752557516098022
+          ],
+          [
+            0.4076049029827118,
+            0.5923951268196106
+          ],
+          [
+            0.404611736536026,
+            0.5953882932662964
+          ],
+          [
+            0.435819149017334,
+            0.564180850982666
+          ],
+          [
+            0.4343554675579071,
+            0.5656445622444153
+          ],
+          [
+            0.4346613883972168,
+            0.565338671207428
+          ],
+          [
+            0.434330016374588,
+            0.5656699538230896
+          ],
+          [
+            0.4328380525112152,
+            0.5671619772911072
+          ],
+          [
+            0.41895610094070435,
+            0.5810438990592957
+          ],
+          [
+            0.4330872893333435,
+            0.5669127702713013
+          ],
+          [
+            0.4371870756149292,
+            0.562812864780426
+          ],
+          [
+            0.43732598423957825,
+            0.5626739859580994
+          ],
+          [
+            0.41602304577827454,
+            0.5839769244194031
+          ],
+          [
+            0.4533098340034485,
+            0.5466901659965515
+          ],
+          [
+            0.4337903559207916,
+            0.566209614276886
+          ],
+          [
+            0.4401931166648865,
+            0.5598068833351135
+          ],
+          [
+            0.40758082270622253,
+            0.5924191474914551
+          ],
+          [
+            0.43441081047058105,
+            0.5655892491340637
+          ],
+          [
+            0.4276144802570343,
+            0.5723854899406433
+          ],
+          [
+            0.4590168595314026,
+            0.5409831404685974
+          ],
+          [
+            0.43439069390296936,
+            0.5656092762947083
+          ],
+          [
+            0.42224428057670593,
+            0.5777556896209717
+          ],
+          [
+            0.4358357787132263,
+            0.5641641616821289
+          ],
+          [
+            0.43220579624176025,
+            0.567794144153595
+          ],
+          [
+            0.41852858662605286,
+            0.5814714431762695
+          ],
+          [
+            0.40079277753829956,
+            0.5992072224617004
+          ],
+          [
+            0.4227682650089264,
+            0.577231764793396
+          ],
+          [
+            0.4343818128108978,
+            0.5656181573867798
+          ],
+          [
+            0.43527236580848694,
+            0.5647276639938354
+          ],
+          [
+            0.4318809509277344,
+            0.5681190490722656
+          ],
+          [
+            0.4028264880180359,
+            0.5971734523773193
+          ],
+          [
+            0.44221895933151245,
+            0.5577811002731323
+          ],
+          [
+            0.4295922815799713,
+            0.5704077482223511
+          ],
+          [
+            0.4379923343658447,
+            0.5620076060295105
+          ],
+          [
+            0.43363481760025024,
+            0.5663651823997498
+          ],
+          [
+            0.4344404637813568,
+            0.5655595064163208
+          ],
+          [
+            0.46300971508026123,
+            0.5369902849197388
+          ],
+          [
+            0.4311901032924652,
+            0.5688098669052124
+          ],
+          [
+            0.4120914936065674,
+            0.5879085063934326
+          ],
+          [
+            0.42060282826423645,
+            0.5793972015380859
+          ],
+          [
+            0.41495487093925476,
+            0.5850451588630676
+          ],
+          [
+            0.42923614382743835,
+            0.570763885974884
+          ],
+          [
+            0.4080878496170044,
+            0.5919121503829956
+          ],
+          [
+            0.4362792372703552,
+            0.5637207627296448
+          ],
+          [
+            0.42303285002708435,
+            0.576967179775238
+          ],
+          [
+            0.43620505928993225,
+            0.5637949705123901
+          ],
+          [
+            0.42759737372398376,
+            0.5724026560783386
+          ],
+          [
+            0.4360017776489258,
+            0.5639982223510742
+          ],
+          [
+            0.4334101378917694,
+            0.566589891910553
+          ],
+          [
+            0.43277525901794434,
+            0.5672247409820557
+          ],
+          [
+            0.4608226716518402,
+            0.5391772985458374
+          ],
+          [
+            0.41432440280914307,
+            0.5856755971908569
+          ],
+          [
+            0.4317655563354492,
+            0.5682344436645508
+          ],
+          [
+            0.435072660446167,
+            0.564927339553833
+          ],
+          [
+            0.4309469163417816,
+            0.569053053855896
+          ],
+          [
+            0.42980828881263733,
+            0.5701917409896851
+          ],
+          [
+            0.43067625164985657,
+            0.5693237781524658
+          ],
+          [
+            0.4299253523349762,
+            0.5700746774673462
+          ],
+          [
+            0.4317900538444519,
+            0.5682098865509033
+          ],
+          [
+            0.43403714895248413,
+            0.5659628510475159
+          ],
+          [
+            0.4286455810070038,
+            0.5713544487953186
+          ],
+          [
+            0.43280816078186035,
+            0.5671918392181396
+          ]
+        ]
+      }
+    ],
+    "complete": true
+  },
+  "stop_reason": "signal",
+  "final_coverage_complete": false
+}

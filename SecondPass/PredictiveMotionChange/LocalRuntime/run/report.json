@@ -1,0 +1,98 @@
+{
+  "stop_reason": "planned_complete",
+  "step": 10240,
+  "presentations": 640000,
+  "unique_trials": 320000,
+  "best_step": 5632,
+  "best_key": [
+    0.5214640299479166,
+    0.4986979166666667
+  ],
+  "final": {
+    "n": 3072,
+    "loss": 0.6931650042533875,
+    "cells": [
+      {
+        "speed": 0.375,
+        "angle": 26,
+        "n": 512,
+        "auc": 0.49799346923828125,
+        "balanced_accuracy": 0.5,
+        "sensitivity": 0.0,
+        "specificity": 1.0,
+        "loss": 0.6931673288345337
+      },
+      {
+        "speed": 0.375,
+        "angle": 28,
+        "n": 512,
+        "auc": 0.5055999755859375,
+        "balanced_accuracy": 0.5,
+        "sensitivity": 0.0,
+        "specificity": 1.0,
+        "loss": 0.6931403279304504
+      },
+      {
+        "speed": 1.0,
+        "angle": 26,
+        "n": 512,
+        "auc": 0.4848480224609375,
+        "balanced_accuracy": 0.5,
+        "sensitivity": 0.0,
+        "specificity": 1.0,
+        "loss": 0.6931397914886475
+      },
+      {
+        "speed": 1.0,
+        "angle": 28,
+        "n": 512,
+        "auc": 0.48076629638671875,
+        "balanced_accuracy": 0.5,
+        "sensitivity": 0.0,
+        "specificity": 1.0,
+        "loss": 0.693180501461029
+      },
+      {
+        "speed": 2.0,
+        "angle": 26,
+        "n": 512,
+        "auc": 0.48909759521484375,
+        "balanced_accuracy": 0.5,
+        "sensitivity": 0.0,
+        "specificity": 1.0,
+        "loss": 0.6931774020195007
+      },
+      {
+        "speed": 2.0,
+        "angle": 28,
+        "n": 512,
+        "auc": 0.5128402709960938,
+        "balanced_accuracy": 0.5,
+        "sensitivity": 0.0,
+        "specificity": 1.0,
+        "loss": 0.6931845545768738
+      }
+    ],
+    "mean_auc": 0.49519093831380206,
+    "mean_balanced_accuracy": 0.5
+  },
+  "encoder_frozen_verified": true,
+  "config": {
+    "encoder_checkpoint": "/Users/jonathanmorgan/Desktop/VisualAttentionWorkingMemory/SecondPass/VariationalMotionPredictor/LocalRuntime/attempt01/run/best.pt",
+    "encoder_sha256": "a8b86cdbad7caceecd07f6f056f2106e9cfe867dd5454841f090dfc383791b42",
+    "encoder_step": 50000,
+    "frozen_encoder": true,
+    "classifier": "concat1024 -> LayerNorm -> 256 GELU -> 64 GELU -> 2 logits",
+    "classifier_parameters": 281026,
+    "batch_size": 64,
+    "pool_size": 1000,
+    "pool_epochs": 2,
+    "target_updates": 10240,
+    "learning_rate": 0.001,
+    "precision": "fp32",
+    "cpu_threads": 2,
+    "validation_samples": 768,
+    "final_test_samples": 3072,
+    "hard_deadline": 1791153767.446601
+  }
+}

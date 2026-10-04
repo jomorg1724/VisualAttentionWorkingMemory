@@ -1,0 +1,66 @@
+SpatialReadout: architecture and decision logic
+Source-audited technical paper
+5
+One KDA update: prepare, decay, correct, read
+Reader question: how can a matrix act as an associative memory? Fix one scale s, site p, and head j,
+and suppress these indices. Think of S ∈R8×16 as a table that maps a key direction to a predicted value via STk.
+This is an analogy to an addressable notebook, not a claim that a key is an object identity or a value is an angle.
+The channels are learned features; their semantic content is not established by the architecture.
+5.1
+First generate the instructions for this update
+The projected 32-channel ﬁeld enters a biased 3 × 3 convolution with padding 1: 82 output channels, reshaped to
+B × Ls × Ls × 2 × 41. Each head’s 41 numbers split into raw query ˜qt ∈R8, raw key ˜kt ∈R8, value vt ∈R16,
+raw retention ˜αt ∈R8, and raw write strength ˜βt ∈R. Tildes here mark the values before normalization or a
+sigmoid.[S3]
+qt =
+˜qt
+max(∥˜qt∥2, 10−6),
+kt =
+˜kt
+max(∥˜kt∥2, 10−6),
+αt = σ(˜αt),
+βt = σ(˜βt).
+(3)
+The key speciﬁes the direction whose stored prediction is corrected; the value supplies the desired new feature vector
+in that direction. The query speciﬁes the direction read after correction, and need not equal the key. Normalized
+queries/keys have length one except near zero, where the safeguard permits a shorter vector. Values are neither
+normalized nor restricted to be positive.
+5.2
+Then execute four operations in a ﬁxed order
+All states start at S−1 = 0. Deﬁne Dt = diag(αt) ∈R8×8. The decayed state ¯St, prediction bvt, error et, and read
+ot are computed as follows:
+¯St = DtSt−1,
+¯St ∈R8×16,
+(4)
+bvt = ¯ST
+t kt,
+et = vt −bvt,
+bvt, et ∈R16,
+(5)
+St = ¯St + βtkteT
+t ,
+St ∈R8×16,
+(6)
+ot = ST
+t qt,
+ot ∈R16.
+(7)
+Decay: row i is multiplied by αt,i, leaving its 16 columns scaled together. Predict: the key weights those rows
+and sums them to predict 16 values. Correct: the outer product distributes the error across rows in proportion to
+the key, with strength βt. Read: the query weights the updated rows. There is no spatial softmax or summation
+over other sites in these four lines.
+For explicit indices, with key row i = 1, . . . , 8 and value column m = 1, . . . , 16,
+bvt,m =
+8
+X
+i=1
+αt,iSt−1,imkt,i,
+St,im = αt,iSt−1,im + βtkt,iet,m.
+(8)
+The two heads’ reads concatenate into 32 channels. A biased 1 × 1 output convolution mixes them to form Os
+t ;
+there is no extra output normalization or nonlinearity. Its weight is 32 × 32 at each site, with a 32-vector bias. The
+packed convolution has 23,698 parameters and the output convolution 1,056, totaling 24,754 per module.
+Takeaway. KDA writes a prediction error, not the whole incoming value unconditionally. The next page computes
+every operation with small numbers.
+5

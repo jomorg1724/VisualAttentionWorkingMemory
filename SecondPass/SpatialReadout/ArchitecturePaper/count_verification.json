@@ -1,0 +1,695 @@
+{
+  "method": "Fresh CPU constructor and analytical convolution shape propagation; no forward/backward, no checkpoints, no data",
+  "torch_version": "2.8.0",
+  "threads": 2,
+  "inter_op_threads": 2,
+  "total_parameters": 1383028,
+  "trainable_parameters": 1383028,
+  "groups": {
+    "blocks": 256992,
+    "proj": 9312,
+    "acc": 74262,
+    "heads": 7710,
+    "spatial_input": 10304,
+    "spatial_gru": 221376,
+    "readout": 803072
+  },
+  "blocks": [
+    {
+      "index": 1,
+      "in_channels": 9,
+      "out_channels": 32,
+      "kernel": 5,
+      "stride": 2,
+      "padding": 2,
+      "side": 50,
+      "parameters": 7296,
+      "norm_groups": 8,
+      "norm_epsilon": 1e-05
+    },
+    {
+      "index": 2,
+      "in_channels": 32,
+      "out_channels": 64,
+      "kernel": 3,
+      "stride": 2,
+      "padding": 1,
+      "side": 25,
+      "parameters": 18624,
+      "norm_groups": 8,
+      "norm_epsilon": 1e-05
+    },
+    {
+      "index": 3,
+      "in_channels": 96,
+      "out_channels": 96,
+      "kernel": 3,
+      "stride": 2,
+      "padding": 1,
+      "side": 13,
+      "parameters": 83232,
+      "norm_groups": 8,
+      "norm_epsilon": 1e-05
+    },
+    {
+      "index": 4,
+      "in_channels": 128,
+      "out_channels": 128,
+      "kernel": 3,
+      "stride": 2,
+      "padding": 1,
+      "side": 7,
+      "parameters": 147840,
+      "norm_groups": 8,
+      "norm_epsilon": 1e-05
+    }
+  ],
+  "projection_counts": [
+    2080,
+    3104,
+    4128
+  ],
+  "kda_counts": [
+    24754,
+    24754,
+    24754
+  ],
+  "kda_input_count": 23698,
+  "kda_output_count": 1056,
+  "convgru_gate_count": 147584,
+  "convgru_candidate_count": 73792,
+  "heads": {
+    "motion_direction": {
+      "classes": 4,
+      "parameters": 1028
+    },
+    "orientation": {
+      "classes": 2,
+      "parameters": 514
+    },
+    "contrast": {
+      "classes": 2,
+      "parameters": 514
+    },
+    "spatial_frequency": {
+      "classes": 2,
+      "parameters": 514
+    },
+    "chromatic_increment": {
+      "classes": 2,
+      "parameters": 514
+    },
+    "contour": {
+      "classes": 2,
+      "parameters": 514
+    },
+    "natural_spectrum": {
+      "classes": 2,
+      "parameters": 514
+    },
+    "orientation_ring": {
+      "classes": 2,
+      "parameters": 514
+    },
+    "orientation_cued": {
+      "classes": 2,
+      "parameters": 514
+    },
+    "motion_duration_cued": {
+      "classes": 4,
+      "parameters": 1028
+    },
+    "krauzlis_cued_motion": {
+      "classes": 2,
+      "parameters": 514
+    },
+    "spatial_binding": {
+      "classes": 2,
+      "parameters": 514
+    },
+    "image_recognition": {
+      "classes": 2,
+      "parameters": 514
+    }
+  },
+  "tasks": 13,
+  "conditions": 35,
+  "labels": {
+    "motion_direction": [
+      "right",
+      "up",
+      "left",
+      "down"
+    ],
+    "orientation": [
+      "negative axial angle change",
+      "positive axial angle change"
+    ],
+    "contrast": [
+      "frame 0",
+      "frame 1"
+    ],
+    "spatial_frequency": [
+      "frame 0",
+      "frame 1"
+    ],
+    "chromatic_increment": [
+      "frame 0",
+      "frame 1"
+    ],
+    "contour": [
+      "frame 0",
+      "frame 1"
+    ],
+    "natural_spectrum": [
+      "frame 0",
+      "frame 1"
+    ],
+    "orientation_ring": [
+      "negative axial angle change",
+      "positive axial angle change"
+    ],
+    "orientation_cued": [
+      "unchanged or opposite to cue sign",
+      "rotation in cue sign"
+    ],
+    "motion_duration_cued": [
+      "right",
+      "up",
+      "left",
+      "down"
+    ],
+    "krauzlis_cued_motion": [
+      "foil-only change or catch",
+      "target change"
+    ],
+    "spatial_binding": [
+      "foil-only exchange",
+      "target participates in exchange"
+    ],
+    "image_recognition": [
+      "not in study set",
+      "in study set"
+    ]
+  },
+  "kda_state_scalars": [
+    160000,
+    43264,
+    12544
+  ],
+  "convgru_state_scalars": 3136,
+  "parameter_tensors": {
+    "blocks.0.0.weight": {
+      "shape": [
+        32,
+        9,
+        5,
+        5
+      ],
+      "numel": 7200
+    },
+    "blocks.0.0.bias": {
+      "shape": [
+        32
+      ],
+      "numel": 32
+    },
+    "blocks.0.1.weight": {
+      "shape": [
+        32
+      ],
+      "numel": 32
+    },
+    "blocks.0.1.bias": {
+      "shape": [
+        32
+      ],
+      "numel": 32
+    },
+    "blocks.1.0.weight": {
+      "shape": [
+        64,
+        32,
+        3,
+        3
+      ],
+      "numel": 18432
+    },
+    "blocks.1.0.bias": {
+      "shape": [
+        64
+      ],
+      "numel": 64
+    },
+    "blocks.1.1.weight": {
+      "shape": [
+        64
+      ],
+      "numel": 64
+    },
+    "blocks.1.1.bias": {
+      "shape": [
+        64
+      ],
+      "numel": 64
+    },
+    "blocks.2.0.weight": {
+      "shape": [
+        96,
+        96,
+        3,
+        3
+      ],
+      "numel": 82944
+    },
+    "blocks.2.0.bias": {
+      "shape": [
+        96
+      ],
+      "numel": 96
+    },
+    "blocks.2.1.weight": {
+      "shape": [
+        96
+      ],
+      "numel": 96
+    },
+    "blocks.2.1.bias": {
+      "shape": [
+        96
+      ],
+      "numel": 96
+    },
+    "blocks.3.0.weight": {
+      "shape": [
+        128,
+        128,
+        3,
+        3
+      ],
+      "numel": 147456
+    },
+    "blocks.3.0.bias": {
+      "shape": [
+        128
+      ],
+      "numel": 128
+    },
+    "blocks.3.1.weight": {
+      "shape": [
+        128
+      ],
+      "numel": 128
+    },
+    "blocks.3.1.bias": {
+      "shape": [
+        128
+      ],
+      "numel": 128
+    },
+    "proj.0.weight": {
+      "shape": [
+        32,
+        64,
+        1,
+        1
+      ],
+      "numel": 2048
+    },
+    "proj.0.bias": {
+      "shape": [
+        32
+      ],
+      "numel": 32
+    },
+    "proj.1.weight": {
+      "shape": [
+        32,
+        96,
+        1,
+        1
+      ],
+      "numel": 3072
+    },
+    "proj.1.bias": {
+      "shape": [
+        32
+      ],
+      "numel": 32
+    },
+    "proj.2.weight": {
+      "shape": [
+        32,
+        128,
+        1,
+        1
+      ],
+      "numel": 4096
+    },
+    "proj.2.bias": {
+      "shape": [
+        32
+      ],
+      "numel": 32
+    },
+    "acc.0.inputs.weight": {
+      "shape": [
+        82,
+        32,
+        3,
+        3
+      ],
+      "numel": 23616
+    },
+    "acc.0.inputs.bias": {
+      "shape": [
+        82
+      ],
+      "numel": 82
+    },
+    "acc.0.output.weight": {
+      "shape": [
+        32,
+        32,
+        1,
+        1
+      ],
+      "numel": 1024
+    },
+    "acc.0.output.bias": {
+      "shape": [
+        32
+      ],
+      "numel": 32
+    },
+    "acc.1.inputs.weight": {
+      "shape": [
+        82,
+        32,
+        3,
+        3
+      ],
+      "numel": 23616
+    },
+    "acc.1.inputs.bias": {
+      "shape": [
+        82
+      ],
+      "numel": 82
+    },
+    "acc.1.output.weight": {
+      "shape": [
+        32,
+        32,
+        1,
+        1
+      ],
+      "numel": 1024
+    },
+    "acc.1.output.bias": {
+      "shape": [
+        32
+      ],
+      "numel": 32
+    },
+    "acc.2.inputs.weight": {
+      "shape": [
+        82,
+        32,
+        3,
+        3
+      ],
+      "numel": 23616
+    },
+    "acc.2.inputs.bias": {
+      "shape": [
+        82
+      ],
+      "numel": 82
+    },
+    "acc.2.output.weight": {
+      "shape": [
+        32,
+        32,
+        1,
+        1
+      ],
+      "numel": 1024
+    },
+    "acc.2.output.bias": {
+      "shape": [
+        32
+      ],
+      "numel": 32
+    },
+    "heads.motion_direction.weight": {
+      "shape": [
+        4,
+        256
+      ],
+      "numel": 1024
+    },
+    "heads.motion_direction.bias": {
+      "shape": [
+        4
+      ],
+      "numel": 4
+    },
+    "heads.orientation.weight": {
+      "shape": [
+        2,
+        256
+      ],
+      "numel": 512
+    },
+    "heads.orientation.bias": {
+      "shape": [
+        2
+      ],
+      "numel": 2
+    },
+    "heads.contrast.weight": {
+      "shape": [
+        2,
+        256
+      ],
+      "numel": 512
+    },
+    "heads.contrast.bias": {
+      "shape": [
+        2
+      ],
+      "numel": 2
+    },
+    "heads.spatial_frequency.weight": {
+      "shape": [
+        2,
+        256
+      ],
+      "numel": 512
+    },
+    "heads.spatial_frequency.bias": {
+      "shape": [
+        2
+      ],
+      "numel": 2
+    },
+    "heads.chromatic_increment.weight": {
+      "shape": [
+        2,
+        256
+      ],
+      "numel": 512
+    },
+    "heads.chromatic_increment.bias": {
+      "shape": [
+        2
+      ],
+      "numel": 2
+    },
+    "heads.contour.weight": {
+      "shape": [
+        2,
+        256
+      ],
+      "numel": 512
+    },
+    "heads.contour.bias": {
+      "shape": [
+        2
+      ],
+      "numel": 2
+    },
+    "heads.natural_spectrum.weight": {
+      "shape": [
+        2,
+        256
+      ],
+      "numel": 512
+    },
+    "heads.natural_spectrum.bias": {
+      "shape": [
+        2
+      ],
+      "numel": 2
+    },
+    "heads.orientation_ring.weight": {
+      "shape": [
+        2,
+        256
+      ],
+      "numel": 512
+    },
+    "heads.orientation_ring.bias": {
+      "shape": [
+        2
+      ],
+      "numel": 2
+    },
+    "heads.orientation_cued.weight": {
+      "shape": [
+        2,
+        256
+      ],
+      "numel": 512
+    },
+    "heads.orientation_cued.bias": {
+      "shape": [
+        2
+      ],
+      "numel": 2
+    },
+    "heads.motion_duration_cued.weight": {
+      "shape": [
+        4,
+        256
+      ],
+      "numel": 1024
+    },
+    "heads.motion_duration_cued.bias": {
+      "shape": [
+        4
+      ],
+      "numel": 4
+    },
+    "heads.krauzlis_cued_motion.weight": {
+      "shape": [
+        2,
+        256
+      ],
+      "numel": 512
+    },
+    "heads.krauzlis_cued_motion.bias": {
+      "shape": [
+        2
+      ],
+      "numel": 2
+    },
+    "heads.spatial_binding.weight": {
+      "shape": [
+        2,
+        256
+      ],
+      "numel": 512
+    },
+    "heads.spatial_binding.bias": {
+      "shape": [
+        2
+      ],
+      "numel": 2
+    },
+    "heads.image_recognition.weight": {
+      "shape": [
+        2,
+        256
+      ],
+      "numel": 512
+    },
+    "heads.image_recognition.bias": {
+      "shape": [
+        2
+      ],
+      "numel": 2
+    },
+    "spatial_input.weight": {
+      "shape": [
+        64,
+        160,
+        1,
+        1
+      ],
+      "numel": 10240
+    },
+    "spatial_input.bias": {
+      "shape": [
+        64
+      ],
+      "numel": 64
+    },
+    "spatial_gru.gates.weight": {
+      "shape": [
+        128,
+        128,
+        3,
+        3
+      ],
+      "numel": 147456
+    },
+    "spatial_gru.gates.bias": {
+      "shape": [
+        128
+      ],
+      "numel": 128
+    },
+    "spatial_gru.candidate.weight": {
+      "shape": [
+        64,
+        128,
+        3,
+        3
+      ],
+      "numel": 73728
+    },
+    "spatial_gru.candidate.bias": {
+      "shape": [
+        64
+      ],
+      "numel": 64
+    },
+    "readout.weight": {
+      "shape": [
+        256,
+        3136
+      ],
+      "numel": 802816
+    },
+    "readout.bias": {
+      "shape": [
+        256
+      ],
+      "numel": 256
+    }
+  },
+  "source_sha256": {
+    "SecondPass/SpatialReadout/model.py": "4f88ba0a0cf6abede416f1260a71bc13bfab5cfa51eb00d17e11369301f4d503",
+    "WorkingMemory/PlainBaseline/accum.py": "a51d0466b7c3f79790536cfbc6eb3294be292e2c6aa957c94600d5d6458d1508",
+    "PreAttentiveVision/TemporalIntegration/accumulators.py": "93706e822f9d0114f544392736bb4ef830cdbe2fc580034e48c0495658f333d7",
+    "SecondPass/SpatialReadout/FreshRun/worker.py": "fd31d0e5e5e39a2b6761e4032aa276163cfb0394349ce0595a5a6bb6114bd71f",
+    "SecondPass/SpatialReadout/ContinuationRun/worker.py": "f7d1079b20bb9d91f31c5f92db26821fdb7ff158823bd25252fff953b838d755",
+    "SecondPass/SpatialReadout/ContinuationRun/README.md": "7f68f54c29a7d99e2b646900c07e9b5c092b678d1d4df0a0f4a7b205e18480ba",
+    "SecondPass/SpatialReadout/README.md": "add6acb1245ba887c2d6b7a09663995e5812ef6bea6eee89090369571b2aa23d",
+    "SecondPass/SpatialReadout/BRIEF.md": "ece2f8923a12e1ece38198956928f93ca214da4a1d83f55e2b64d5b160ce706b",
+    "LabJournal/spatial-readout-convgru.md": "0f4b0bafe5db56baa7361389b3e185c73218fad6a5186fdf3f56dbe2bb69b812",
+    "SecondPass/TaskSuite/catalog.json": "e4a342024c9bed16aa04ea741499e49c30232670b14da61cb82c02ccbf64d69a",
+    "SecondPass/TaskSuite/suite.py": "22eaaa3bac77efc95beda13014ca2de012f735afe78a023ccea3951c0767f04f",
+    "SecondPass/JointTraining/worker.py": "2c5bb915a76e936979e5c6f0dd576061203f16532b4920c899e640d20603876c",
+    "SecondPass/JointTraining/core.py": "28313e648dd2289b2edd9e6d697e5898210fd9b297961a364fcf0620c4b57214",
+    "SecondPass/SpatialComparisonReadout/CloudRun/worker.py": "e2e0517c9ff931c7a5068b477899cd58e7e8f55b465bd56f50d2105c6b476745",
+    "ANALYSIS_SOP.md": "24a8e4e7dec6376bf38aa03070128e0aa926da0485b92d33f6641173cca12b58"
+  },
+  "git_head": "ac351be944fc698e52578b64995f38b083b579f7",
+  "all_cpu": true,
+  "no_removed_modules": true,
+  "gate_bias_zero": true,
+  "candidate_bias_zero": true
+}

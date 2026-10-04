@@ -1,0 +1,196 @@
+{
+  "task": "motion_direction",
+  "n": 2,
+  "metadata": [
+    {
+      "task": "motion_direction",
+      "family": "motion_direction",
+      "protocol": "cardinal_motion_v2",
+      "direction": "left",
+      "label": 2,
+      "displacement_pixels": 1.0,
+      "difficulty": "displacement_1px",
+      "coherence": 1.0,
+      "coherence_definition": "fraction of surviving dots following the selected direction",
+      "survivor_count_domain": 128,
+      "reborn_count_domain": 128,
+      "base_id": null,
+      "split": "test",
+      "trial_id": "test/986529830/0"
+    },
+    {
+      "task": "motion_direction",
+      "family": "motion_direction",
+      "protocol": "cardinal_motion_v2",
+      "direction": "up",
+      "label": 1,
+      "displacement_pixels": 1.0,
+      "difficulty": "displacement_1px",
+      "coherence": 1.0,
+      "coherence_definition": "fraction of surviving dots following the selected direction",
+      "survivor_count_domain": 128,
+      "reborn_count_domain": 128,
+      "base_id": null,
+      "split": "test",
+      "trial_id": "test/986529830/1"
+    }
+  ],
+  "arrays": {
+    "s0_beta": [
+      2,
+      2,
+      25,
+      25,
+      2
+    ],
+    "s0_alpha_mean8": [
+      2,
+      2,
+      25,
+      25,
+      2
+    ],
+    "s0_coeff_final_read": [
+      2,
+      2,
+      25,
+      25,
+      2
+    ],
+    "s0_coeff_source2_all_reads": [
+      2,
+      2,
+      25,
+      25,
+      2
+    ],
+    "s0_reconstruction_error": [
+      2
+    ],
+    "s0_source_frame": [],
+    "s0_read_frame": [],
+    "s0_masks": [
+      5,
+      25,
+      25
+    ],
+    "s1_beta": [
+      2,
+      2,
+      13,
+      13,
+      2
+    ],
+    "s1_alpha_mean8": [
+      2,
+      2,
+      13,
+      13,
+      2
+    ],
+    "s1_coeff_final_read": [
+      2,
+      2,
+      13,
+      13,
+      2
+    ],
+    "s1_coeff_source2_all_reads": [
+      2,
+      2,
+      13,
+      13,
+      2
+    ],
+    "s1_reconstruction_error": [
+      2
+    ],
+    "s1_source_frame": [],
+    "s1_read_frame": [],
+    "s1_masks": [
+      5,
+      13,
+      13
+    ],
+    "s2_beta": [
+      2,
+      2,
+      7,
+      7,
+      2
+    ],
+    "s2_alpha_mean8": [
+      2,
+      2,
+      7,
+      7,
+      2
+    ],
+    "s2_coeff_final_read": [
+      2,
+      2,
+      7,
+      7,
+      2
+    ],
+    "s2_coeff_source2_all_reads": [
+      2,
+      2,
+      7,
+      7,
+      2
+    ],
+    "s2_reconstruction_error": [
+      2
+    ],
+    "s2_source_frame": [],
+    "s2_read_frame": [],
+    "s2_masks": [
+      5,
+      7,
+      7
+    ],
+    "gru_write": [
+      2,
+      2,
+      7,
+      7
+    ],
+    "gru_reset": [
+      2,
+      2,
+      7,
+      7
+    ],
+    "gru_state_energy": [
+      2,
+      2,
+      7,
+      7
+    ],
+    "logits": [
+      2,
+      4
+    ],
+    "images": [
+      2,
+      2,
+      3,
+      100,
+      100
+    ],
+    "labels": [
+      2
+    ],
+    "targets": [
+      2
+    ],
+    "cue_sign": [
+      2
+    ]
+  },
+  "axes": "trial,time,y,x,head; final_read coefficient time is SOURCE; source2 coefficient time is READ",
+  "maximum_reconstruction_error": 4.76837158203125e-07,
+  "spatial_coordinate_note": "Cell centers mapped over 100px approximate receptive-field positions; not biological coordinates",
+  "allocation_comparator": "N/A: no spatial cue"
+}

@@ -1,0 +1,71 @@
+{
+  "phase": "training",
+  "pid": 492,
+  "utc": "2026-10-03T05:21:47.254279+00:00",
+  "architecture": "single_stimulus_full_bptt_rvit",
+  "initialization": "fresh",
+  "step": 1726,
+  "episodes": 52320,
+  "optimizer_seconds": 6390.456058389507,
+  "deadline": 1791026282.439784,
+  "latest_checkpoint": {
+    "path": "/workspace/vawm_single_stimulus_rvit_01/run/checkpoint_001700.pt",
+    "bytes": 87559195,
+    "sha256": "8dd8542c5419bf22ff08032f5ce7c60a5ab25865d8a6bf0b34d7d37736240a8a",
+    "verified": true,
+    "step": 1700
+  },
+  "best_step": 500,
+  "best_key": [
+    0.5429076567387461,
+    0.5
+  ],
+  "latest_validation": {
+    "step": 1500,
+    "key": [
+      0.458860329117367,
+      0.5
+    ],
+    "complete": true,
+    "cells": [
+      {
+        "cell": "B12",
+        "n": 100,
+        "balanced_accuracy": 0.5,
+        "auc": 0.45369237046103633,
+        "target_hit_rate": 1.0,
+        "foil_false_alarm_rate": null,
+        "catch_false_positive_rate": 1.0
+      },
+      {
+        "cell": "B20",
+        "n": 100,
+        "balanced_accuracy": 0.5,
+        "auc": 0.4851081191350469,
+        "target_hit_rate": 1.0,
+        "foil_false_alarm_rate": null,
+        "catch_false_positive_rate": 1.0
+      },
+      {
+        "cell": "B28",
+        "n": 100,
+        "balanced_accuracy": 0.5,
+        "auc": 0.43778049775601796,
+        "target_hit_rate": 1.0,
+        "foil_false_alarm_rate": null,
+        "catch_false_positive_rate": 1.0
+      }
+    ]
+  },
+  "pool_index": 5,
+  "epoch": 2,
+  "unique_episodes_generated": 6000,
+  "unique_episodes_presented": 6000,
+  "replay_presentations": 52320,
+  "last_update": {
+    "task": "krauzlis_cued_motion",
+    "cell": "B20",
+    "loss": 0.6832549721002579,
+    "seconds": 3.98191428091377
+  }
+}

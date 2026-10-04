@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "command": "/Users/jonathanmorgan/VAWMRuntime/recurrent_transformer_cpu_env/bin/python -m pytest SecondPass/SpatialReadout/SpatialConsolidation/KrauzlisOnly/test_worker.py -q",
+  "runtime_torch": "2.8.0",
+  "red_result": "1 failed: Krauzlis-only fresh adapter missing",
+  "green_result": "1 passed in 3.52s",
+  "exit_code": 0,
+  "evidence_source": "Executed terminal calls before launch; no accelerator work in this test",
+  "coverage": ["checkpoint-loading prohibited during construction", "all initial model tensors equal direct seeded constructor", "empty Adam and fresh streams/counters", "all learned parameters trainable", "all three native Krauzlis condition updates", "used module and named Adam changes", "inactive other heads unchanged", "native pixel/label/metadata equality", "separate split seed namespaces", "three-cell evaluation and event subgroup confusion"]
+}

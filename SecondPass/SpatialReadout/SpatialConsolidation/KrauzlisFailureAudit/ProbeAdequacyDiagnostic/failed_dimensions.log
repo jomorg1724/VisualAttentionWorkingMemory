@@ -1,0 +1,18 @@
+EXTRACT train 100 elapsed 224.7
+EXTRACT train 200 elapsed 226.7
+EXTRACT train 300 elapsed 228.6
+EXTRACT train 400 elapsed 230.4
+EXTRACT train 500 elapsed 232.3
+EXTRACT train 600 elapsed 234.2
+EXTRACT val 100 elapsed 236.2
+Traceback (most recent call last):
+  File "/Users/jonathanmorgan/Desktop/VisualAttentionWorkingMemory/SecondPass/SpatialReadout/SpatialConsolidation/KrauzlisFailureAudit/ProbeAdequacyDiagnostic/run_adequacy.py", line 145, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/Users/jonathanmorgan/Desktop/VisualAttentionWorkingMemory/SecondPass/SpatialReadout/SpatialConsolidation/KrauzlisFailureAudit/ProbeAdequacyDiagnostic/run_adequacy.py", line 47, in main
+    x=representation(train,rep,mode,projections);v=representation(val,rep,mode,projections)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jonathanmorgan/Desktop/VisualAttentionWorkingMemory/SecondPass/SpatialReadout/SpatialConsolidation/KrauzlisFailureAudit/ProbeAdequacyDiagnostic/adequacy.py", line 53, in representation
+    x=np.concatenate([x[:,:half]@p,x[:,half:]@p],1)
+                      ~~~~~~~~~~^~
+ValueError: matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 1587 is different from 3174)

@@ -1,0 +1,87 @@
+{
+  "checks": {
+    "final/cue": {
+      "scaler_group_mean_and_std_verified": true,
+      "normal_equation_relative_residual": 6.303131017177049e-12,
+      "validation_ba_replayed": 0.52
+    },
+    "final/event": {
+      "scaler_group_mean_and_std_verified": true,
+      "normal_equation_relative_residual": 5.409612113669591e-13,
+      "validation_ba_replayed": 0.5299003322259136
+    },
+    "final/side": {
+      "scaler_group_mean_and_std_verified": true,
+      "normal_equation_relative_residual": 5.324559866619205e-13,
+      "validation_ba_replayed": 0.4296536796536796
+    },
+    "final/joint": {
+      "scaler_group_mean_and_std_verified": true,
+      "normal_equation_relative_residual": 6.724811123078475e-13,
+      "validation_ba_replayed": 0.3214285714285714
+    },
+    "final/label": {
+      "scaler_group_mean_and_std_verified": true,
+      "normal_equation_relative_residual": 1.76397181715932e-14,
+      "validation_ba_replayed": 0.5053039575683395
+    },
+    "final/shuffled_label": {
+      "scaler_group_mean_and_std_verified": true,
+      "normal_equation_relative_residual": 3.4146035061680088e-12,
+      "validation_ba_replayed": 0.5226438188494492
+    },
+    "final/calibrator": {
+      "scaler_group_mean_and_std_verified": true,
+      "normal_equation_relative_residual": 2.810386840460957e-15,
+      "validation_ba_replayed": 0.5058139534883721
+    },
+    "phases/cue": {
+      "scaler_group_mean_and_std_verified": true,
+      "normal_equation_relative_residual": 5.648040447040519e-14,
+      "validation_ba_replayed": 1.0
+    },
+    "phases/event": {
+      "scaler_group_mean_and_std_verified": true,
+      "normal_equation_relative_residual": 6.118916120762462e-11,
+      "validation_ba_replayed": 0.5066445182724253
+    },
+    "phases/side": {
+      "scaler_group_mean_and_std_verified": true,
+      "normal_equation_relative_residual": 4.025191165038046e-11,
+      "validation_ba_replayed": 0.601461038961039
+    },
+    "phases/joint": {
+      "scaler_group_mean_and_std_verified": true,
+      "normal_equation_relative_residual": 2.5635255770834102e-12,
+      "validation_ba_replayed": 0.3416305916305917
+    },
+    "phases/label": {
+      "scaler_group_mean_and_std_verified": true,
+      "normal_equation_relative_residual": 3.5394248477555243e-10,
+      "validation_ba_replayed": 0.5147898816809466
+    },
+    "phases/shuffled_label": {
+      "scaler_group_mean_and_std_verified": true,
+      "normal_equation_relative_residual": 2.2927169730321948e-10,
+      "validation_ba_replayed": 0.5427376580987352
+    },
+    "phases/calibrator": {
+      "scaler_group_mean_and_std_verified": true,
+      "normal_equation_relative_residual": 2.6024255066220215e-15,
+      "validation_ba_replayed": 0.5303957568339454
+    }
+  },
+  "max_normal_equation_relative_residual": 3.5394248477555243e-10,
+  "component_calibrator_groups_disjoint": true,
+  "scalers_bound_to_exact_fit_groups": true,
+  "calibration_uses_only_out_of_fit_group_predictions": true,
+  "numpy_runtime_config": "{\n  \"Compilers\": {\n    \"c\": {\n      \"name\": \"clang\",\n      \"linker\": \"ld64\",\n      \"version\": \"15.0.0\",\n      \"commands\": \"cc\"\n    },\n    \"cython\": {\n      \"name\": \"cython\",\n      \"linker\": \"cython\",\n      \"version\": \"3.2.4\",\n      \"commands\": \"cython\"\n    },\n    \"c++\": {\n      \"name\": \"clang\",\n      \"linker\": \"ld64\",\n      \"version\": \"15.0.0\",\n      \"commands\": \"c++\"\n    }\n  },\n  \"Machine Information\": {\n    \"host\": {\n      \"cpu\": \"aarch64\",\n      \"family\": \"aarch64\",\n      \"endian\": \"little\",\n      \"system\": \"darwin\"\n    },\n    \"build\": {\n      \"cpu\": \"aarch64\",\n      \"family\": \"aarch64\",\n      \"endian\": \"little\",\n      \"system\": \"darwin\"\n    }\n  },\n  \"Build Dependencies\": {\n    \"blas\": {\n      \"name\": \"accelerate\",\n      \"found\": true,\n      \"version\": \"unknown\",\n      \"detection method\": \"system\",\n      \"include directory\": \"unknown\",\n      \"lib directory\": \"unknown\",\n      \"openblas configuration\": \"unknown\",\n      \"pc file directory\": \"unknown\"\n    },\n    \"lapack\": {\n      \"name\": \"accelerate\",\n      \"found\": true,\n      \"version\": \"unknown\",\n      \"detection method\": \"system\",\n      \"include directory\": \"unknown\",\n      \"lib directory\": \"unknown\",\n      \"openblas configuration\": \"unknown\",\n      \"pc file directory\": \"unknown\"\n    }\n  },\n  \"Python Information\": {\n    \"path\": \"/private/var/folders/k4/_09nqs851t35bpkk8lr_p43c0000gn/T/build-env-rubp05cr/bin/python\",\n    \"version\": \"3.11\"\n  },\n  \"SIMD Extensions\": {\n    \"baseline\": [\n      \"NEON\",\n      \"NEON_FP16\",\n      \"NEON_VFPV4\",\n      \"ASIMD\"\n    ],\n    \"found\": [\n      \"ASIMDHP\",\n      \"ASIMDDP\"\n    ],\n    \"not found\": [\n      \"ASIMDFHM\"\n    ]\n  }\n}\n",
+  "thread_environment": {
+    "OMP_NUM_THREADS": "2",
+    "OPENBLAS_NUM_THREADS": "2",
+    "MKL_NUM_THREADS": "2",
+    "VECLIB_MAXIMUM_THREADS": "2",
+    "NUMEXPR_NUM_THREADS": "2"
+  },
+  "elapsed_from_first_fit": 84.14248585700989
+}

@@ -1,0 +1,196 @@
+{
+  "verified_counts": {
+    "duration": 128,
+    "calibration": 100,
+    "test": 200
+  },
+  "prediction_replay_verified": 428,
+  "native_raster_replay_verified": 6,
+  "source_hashes_unchanged": true,
+  "unique_rasters": true,
+  "calibration_test_rasters_disjoint": true,
+  "duration_accuracy_wilson95": [
+    0.9708630437264916,
+    1.0
+  ],
+  "krauzlis_accuracy_wilson95": [
+    0.8448196800887696,
+    0.9302925120731899
+  ],
+  "krauzlis_calibration_cue_correct": 100,
+  "krauzlis_flow_matches_per_patch_transition": {
+    "mean": 1.7833928571428572,
+    "minimum": 0,
+    "zero_count": 1828,
+    "n": 11200
+  },
+  "controls": {
+    "duration_last_direction": {
+      "n": 128,
+      "correct": 26,
+      "accuracy": 0.203125,
+      "balanced_accuracy": 0.203125,
+      "confusion": [
+        [
+          8,
+          11,
+          9,
+          4
+        ],
+        [
+          7,
+          6,
+          9,
+          10
+        ],
+        [
+          7,
+          11,
+          7,
+          7
+        ],
+        [
+          3,
+          7,
+          17,
+          5
+        ]
+      ],
+      "class_n": [
+        32,
+        32,
+        32,
+        32
+      ]
+    },
+    "duration_fixed_patch_zero": {
+      "n": 128,
+      "correct": 53,
+      "accuracy": 0.4140625,
+      "balanced_accuracy": 0.4140625,
+      "confusion": [
+        [
+          12,
+          7,
+          5,
+          8
+        ],
+        [
+          7,
+          13,
+          8,
+          4
+        ],
+        [
+          5,
+          4,
+          13,
+          10
+        ],
+        [
+          5,
+          6,
+          6,
+          15
+        ]
+      ],
+      "class_n": [
+        32,
+        32,
+        32,
+        32
+      ]
+    },
+    "krauzlis_wrong_cue": {
+      "n": 200,
+      "correct": 43,
+      "accuracy": 0.215,
+      "balanced_accuracy": 0.22715218278253774,
+      "confusion": [
+        [
+          27,
+          59
+        ],
+        [
+          98,
+          16
+        ]
+      ],
+      "class_n": [
+        86,
+        114
+      ]
+    },
+    "krauzlis_any_patch": {
+      "n": 200,
+      "correct": 132,
+      "accuracy": 0.66,
+      "balanced_accuracy": 0.6146470828233375,
+      "confusion": [
+        [
+          25,
+          61
+        ],
+        [
+          7,
+          107
+        ]
+      ],
+      "class_n": [
+        86,
+        114
+      ]
+    }
+  },
+  "duration_strata": {
+    "step_pixels": {
+      "0.8": {
+        "transition_correct": 272,
+        "transition_n": 272,
+        "class_coverage": 4
+      },
+      "1.2": {
+        "transition_correct": 280,
+        "transition_n": 280,
+        "class_coverage": 4
+      },
+      "1.6": {
+        "transition_correct": 472,
+        "transition_n": 472,
+        "class_coverage": 4
+      }
+    },
+    "true_count_margin": {
+      "1": {
+        "transition_correct": 600,
+        "transition_n": 600,
+        "class_coverage": 4
+      },
+      "2": {
+        "transition_correct": 312,
+        "transition_n": 312,
+        "class_coverage": 4
+      },
+      "3": {
+        "transition_correct": 88,
+        "transition_n": 88,
+        "class_coverage": 4
+      },
+      "4": {
+        "transition_correct": 16,
+        "transition_n": 16,
+        "class_coverage": 1
+      },
+      "5": {
+        "transition_correct": 8,
+        "transition_n": 8,
+        "class_coverage": 1
+      }
+    }
+  },
+  "limitations": [
+    "margin-4/5 strata contain only one observed class: BA is macro recall of represented classes, not four-class BA",
+    "temporal raster differences include ordinary motion/resets, not isolated event-causal differences",
+    "average-pooling surrogate is not measured CNN information loss"
+  ]
+}

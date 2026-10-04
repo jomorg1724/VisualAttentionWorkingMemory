@@ -1,0 +1,70 @@
+{
+  "verified": true,
+  "verified_at": 1791059398.5521579,
+  "checkpoint": {
+    "path": "/Users/jonathanmorgan/VAWMRuntime/vae_rvit_local01/run/latest.pt",
+    "step": 3,
+    "bytes": 88339851,
+    "sha256": "0e9efe38cd94c74cba5be6ff0e870ff4e6272226635254c669ad648ac1cebcab",
+    "verified": true
+  },
+  "step": 3,
+  "episodes": 96,
+  "all94_adam_steps_verified": true,
+  "all94_parameter_tensors_changed": true,
+  "parameter_count": 7336946,
+  "transferred_parameters": 4754912,
+  "new_parameters": 2582034,
+  "encoder_source_step": 9900,
+  "fresh_optimizer_rng_streams": true,
+  "only_best_latest_policy": true,
+  "allocation": {
+    "max_steps": 990,
+    "target_requested": 2310,
+    "exposure_reduced": true,
+    "total_episodes": 30000,
+    "planned_unique_movies": 3000,
+    "validation_steps": [
+      100,
+      250,
+      500,
+      990
+    ],
+    "estimated_total_remaining_seconds": 26432.142331308452,
+    "estimated_validation_seconds": 75.57918834651353,
+    "estimated_one_test_seconds": 151.15837669302707,
+    "final_reserve_seconds": 557.8959417325677,
+    "update_estimate_seconds": 33.23651742708171
+  },
+  "initialization": {
+    "architecture": "vae9900_mu_sliding_triplet_rvit",
+    "initialization": "VAE9900 encoder and mu head transferred; whole recurrence and decoder fresh",
+    "encoder_checkpoint": "/Users/jonathanmorgan/VAWMRuntime/three_frame_conv_vae_local01/resume01/latest.pt",
+    "encoder_sha256": "bf92d8c908eb5f1e10188d4ed2b220e352a0b7b1d9435fc11cef0c5c754b1690",
+    "encoder_source_step": 9900,
+    "inherited_encoder": true,
+    "inherited_recurrent": false,
+    "inherited_classifier": false,
+    "inherited_optimizer": false,
+    "inherited_rng": false,
+    "inherited_stream": false,
+    "profile_state_inherited": false,
+    "all_trainable": true,
+    "initialization_seed": 158192763,
+    "train_namespace": 183101,
+    "validation_namespace": 183102,
+    "final_namespace": 183103,
+    "training": "1000 fresh movies, ten shuffled epochs, then replace; final binary crossentropy only",
+    "stimulus": "existing no-cue single-stimulus29/37/45frames, native26/28changes; change57/nochange43",
+    "checkpoint_policy": "only best.pt and latest.pt"
+  },
+  "budget": {
+    "cap_started": 1791059173.039737,
+    "deadline": 1791087373.039737,
+    "hard_deadline": 1791087973.039737,
+    "retrieval_reserve_seconds": 600,
+    "wall_cap_seconds": 28800,
+    "execution_placement": "local"
+  },
+  "run": "/Users/jonathanmorgan/VAWMRuntime/vae_rvit_local01/run"
+}

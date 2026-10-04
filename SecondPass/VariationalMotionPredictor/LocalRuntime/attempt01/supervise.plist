@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>EnvironmentVariables</key>
+	<dict>
+		<key>MKL_NUM_THREADS</key>
+		<string>2</string>
+		<key>OMP_NUM_THREADS</key>
+		<string>2</string>
+		<key>OPENBLAS_NUM_THREADS</key>
+		<string>2</string>
+		<key>VECLIB_MAXIMUM_THREADS</key>
+		<string>2</string>
+	</dict>
+	<key>KeepAlive</key>
+	<false/>
+	<key>Label</key>
+	<string>org.vawm.variational-motion-predictor-local01</string>
+	<key>ProcessType</key>
+	<string>Interactive</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/Users/jonathanmorgan/VAWMRuntime/recurrent_transformer_cpu_env/bin/python</string>
+		<string>-u</string>
+		<string>-m</string>
+		<string>SecondPass.VariationalMotionPredictor.worker</string>
+		<string>local-supervise</string>
+		<string>/Users/jonathanmorgan/Desktop/VisualAttentionWorkingMemory/SecondPass/VariationalMotionPredictor/LocalRuntime/attempt01/run</string>
+	</array>
+	<key>RunAtLoad</key>
+	<true/>
+	<key>StandardErrorPath</key>
+	<string>/Users/jonathanmorgan/Desktop/VisualAttentionWorkingMemory/SecondPass/VariationalMotionPredictor/LocalRuntime/attempt01/run/supervise.stderr.log</string>
+	<key>StandardOutPath</key>
+	<string>/Users/jonathanmorgan/Desktop/VisualAttentionWorkingMemory/SecondPass/VariationalMotionPredictor/LocalRuntime/attempt01/run/supervise.stdout.log</string>
+	<key>WorkingDirectory</key>
+	<string>/Users/jonathanmorgan/Desktop/VisualAttentionWorkingMemory/SecondPass/VariationalMotionPredictor/LocalRuntime/attempt01/repo</string>
+</dict>
+</plist>

@@ -1,0 +1,56 @@
+{
+  "status": "passed",
+  "primary_condition_counts": {
+    "native_D0": 128,
+    "native_D24": 128,
+    "cue_retarget_D0": 128,
+    "native_B20": 200,
+    "cue_swap_B20": 200,
+    "native_anchor": 32
+  },
+  "supplement_condition_counts": {
+    "OOD_time_reversal_D0": 128,
+    "native_B20_replicate": 200,
+    "native_law_event_removed_B20": 200,
+    "native_B12": 100,
+    "native_B28": 100
+  },
+  "all_trial_ids_unique_within_condition": true,
+  "all_task_labels_recomputed": true,
+  "primary_summary_recomputed_exact": true,
+  "krauzlis_replication_logits_exact": true,
+  "checkpoint_and_source_hashes_verified": true,
+  "auc_bootstrap_replicates": 1500,
+  "uncertainty": {
+    "native_D0_auc95": [
+      0.567139318520223,
+      0.691331035257097
+    ],
+    "native_D24_auc95": [
+      0.5606724183304872,
+      0.6915376584537738
+    ],
+    "native_B20_auc95": [
+      0.447228635878184,
+      0.6108736838701642
+    ],
+    "duration_majority_minus_last_agreement": {
+      "mean": 0.1171875,
+      "bootstrap95": [
+        0.0,
+        0.2265625
+      ],
+      "n": 128
+    },
+    "duration_cued_minus_mean_uncued_agreement": {
+      "mean": 0.0963541666666667,
+      "bootstrap95": [
+        0.005208333333333343,
+        0.19270833333333337
+      ],
+      "n": 128
+    }
+  },
+  "verified_unix": 1790689213.162975,
+  "elapsed_from_original_budget": 252.31097292900085
+}

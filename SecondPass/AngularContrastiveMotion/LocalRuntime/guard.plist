@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>EnvironmentVariables</key>
+	<dict>
+		<key>MKL_NUM_THREADS</key>
+		<string>2</string>
+		<key>OMP_NUM_THREADS</key>
+		<string>2</string>
+		<key>OPENBLAS_NUM_THREADS</key>
+		<string>2</string>
+		<key>VECLIB_MAXIMUM_THREADS</key>
+		<string>2</string>
+	</dict>
+	<key>KeepAlive</key>
+	<false/>
+	<key>Label</key>
+	<string>org.vawm.angular-contrastive-motion-local01-guard</string>
+	<key>ProcessType</key>
+	<string>Interactive</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/Users/jonathanmorgan/VAWMRuntime/recurrent_transformer_cpu_env/bin/python</string>
+		<string>-u</string>
+		<string>/Users/jonathanmorgan/Desktop/VisualAttentionWorkingMemory/SecondPass/AngularContrastiveMotion/LocalRuntime/guard.py</string>
+		<string>/Users/jonathanmorgan/Desktop/VisualAttentionWorkingMemory/SecondPass/AngularContrastiveMotion/LocalRuntime/run</string>
+	</array>
+	<key>RunAtLoad</key>
+	<true/>
+	<key>StandardErrorPath</key>
+	<string>/Users/jonathanmorgan/Desktop/VisualAttentionWorkingMemory/SecondPass/AngularContrastiveMotion/LocalRuntime/run/guard.stderr.log</string>
+	<key>StandardOutPath</key>
+	<string>/Users/jonathanmorgan/Desktop/VisualAttentionWorkingMemory/SecondPass/AngularContrastiveMotion/LocalRuntime/run/guard.stdout.log</string>
+	<key>WorkingDirectory</key>
+	<string>/Users/jonathanmorgan/Desktop/VisualAttentionWorkingMemory</string>
+</dict>
+</plist>

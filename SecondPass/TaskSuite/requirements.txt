@@ -1,0 +1,6 @@
+-r ../../requirements.txt
+# Existing sensory renderers import scipy.ndimage.
+scipy>=1.9
+pytest>=7
+# Compatible with the existing PyTorch 1.x / 2.2 NumPy bridge.
+numpy>=1.23,<2

@@ -1,0 +1,65 @@
+SpatialReadout: architecture and decision logic
+Source-audited technical paper
+9
+Retention, initialization, and the size of memory
+Reader question: does a retention gate of 0.9 specify a memory lifetime? No. At initialization, the packed
+convolution’s gate weights are explicitly zero. The eight retention biases per head are log 9 and the write bias is zero,
+so α = 0.9 and β = 0.5 everywhere. Unlike the other packed channels, these initial gates are input-independent.
+Their weights and biases remain trainable. Even initially, the full transition is (I8 −βtktkT
+t )Dt, not just 0.9I8. Later
+keys correct old associations and new values continue entering.[S3]
+9.1
+Optional mathematical check: old contributions cannot grow freely
+Here ∥M∥2 for a matrix is the largest length ampliﬁcation it can apply to a unit vector; it is not the sum of its
+entries. Let Mt = I8 −βtktkT
+t , the correction factor in At = MtDt. Assume the implemented ranges 0 ≤βt ≤1,
+0 ≤αt,i ≤1, and ∥kt∥2 ≤1.
+For a nonzero key, split any vector u into the component u∥along kt and the
+perpendicular component u⊥. Then
+Mtu = (1 −βt∥kt∥2
+2)u∥+ u⊥.
+(34)
+The perpendicular part is unchanged; the parallel part is multiplied by a number between zero and one. Orthog-
+onality means their squared lengths add, so ∥Mtu∥2 ≤∥u∥2. If kt = 0, Mt = I8 and the same inequality holds.
+Diagonal decay also cannot amplify more than its largest retention. Combining the two operations gives
+∥At∥2 ≤max
+i
+αt,i,
+∥Tt←τ∥2 ≤
+tY
+ν=τ+1
+max
+i
+αν,i.
+(35)
+The index ν runs over intervening update times.
+The product bound follows by applying the one-step bound
+successively. It bounds the direct survival of an old term given the realized trajectory. It does not bound the entire
+state while arbitrary new values enter, the sensitivity of all gates to an input perturbation, or behavioral accuracy.
+A hypothetical constant gate supplies a mathematical attenuation bound, not an identiﬁed biological time constant
+or task-level retention span.
+9.2
+A parameter is not a stored state entry
+A convolution’s learned kernel is shared across sites and time. Its parameter count therefore does not grow with
+the number of sites visited. In contrast, each site/head has its own episode-speciﬁc 8 × 16 matrix. Two heads store
+2 · 8 · 16 = 256 scalars per site:
+Scale grid
+State scalars per episode
+Module parameters
+25 × 25
+160,000
+24,754
+13 × 13
+43,264
+24,754
+7 × 7
+12,544
+24,754
+The state size is ﬁxed as the episode grows, but storing the diﬀerentiable unrolled training graph can cost more
+for longer episodes.
+These site-indexed states are not isolated pixels: packed convolutions mix neighborhoods,
+GroupNorm mixes spatial statistics, and lower-scale emissions feed deeper memories. None identiﬁes a biological
+neuron or synapse.
+Takeaway. The update constrains how a past contribution is carried, but input-dependent correction and new
+writes prevent reading a behavioral lifetime directly from the initial gate.
+9

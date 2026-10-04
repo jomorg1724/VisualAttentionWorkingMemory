@@ -1,0 +1,68 @@
+{
+  "phase": "finished",
+  "pid": 433,
+  "utc": "2026-10-03T04:42:11.884047+00:00",
+  "architecture": "random_frame_gated_structured_motion_rvit",
+  "initialization": "fresh",
+  "step": 3960,
+  "episodes": 120000,
+  "optimizer_seconds": 6542.552199184895,
+  "deadline": 1791023396.820999,
+  "latest_checkpoint": {
+    "path": "/workspace/vawm_random_frame_rvit_01/run/terminal.pt",
+    "bytes": 89432053,
+    "sha256": "1429476b656d5daba8bb547e90d19647ef47479b434b15ebc80c5e790777133f",
+    "verified": true,
+    "step": 3960
+  },
+  "best_step": 3500,
+  "best_key": [
+    0.5375016999864002,
+    0.5
+  ],
+  "latest_validation": {
+    "step": 3960,
+    "key": [
+      0.46158030735754113,
+      0.5
+    ],
+    "complete": true,
+    "cells": [
+      {
+        "cell": "B12",
+        "n": 100,
+        "balanced_accuracy": 0.5,
+        "auc": 0.4985720114239086,
+        "target_hit_rate": 1.0,
+        "foil_false_alarm_rate": 1.0,
+        "catch_false_positive_rate": 1.0
+      },
+      {
+        "cell": "B20",
+        "n": 100,
+        "balanced_accuracy": 0.5,
+        "auc": 0.408812729498164,
+        "target_hit_rate": 1.0,
+        "foil_false_alarm_rate": 1.0,
+        "catch_false_positive_rate": 1.0
+      },
+      {
+        "cell": "B28",
+        "n": 100,
+        "balanced_accuracy": 0.5,
+        "auc": 0.4773561811505508,
+        "target_hit_rate": 1.0,
+        "foil_false_alarm_rate": 1.0,
+        "catch_false_positive_rate": 1.0
+      }
+    ]
+  },
+  "pool_index": 11,
+  "epoch": 9,
+  "unique_episodes_generated": 12000,
+  "unique_episodes_presented": 12000,
+  "replay_presentations": 120000,
+  "stop_reason": "planned_complete",
+  "failure": null,
+  "final_coverage_complete": true
+}
