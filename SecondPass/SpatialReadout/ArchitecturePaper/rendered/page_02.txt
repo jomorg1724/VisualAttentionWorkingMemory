@@ -1,0 +1,51 @@
+SpatialReadout: architecture and decision logic
+Source-audited technical paper
+2
+A reading key: indices, shapes, and kinds of quantity
+Reader question: which symbols are learned, and which are computed anew? A model has learned
+weights that persist across episodes and activation states that are recomputed during each episode. A memory
+matrix here belongs to the second category. Its entries are not additional trainable weights. Finally, we will derive
+diagnostic matrices from the actual updates; these are algebraic bookkeeping, not extra network layers.
+Indices. An episode has T frames, with time t = 0, . . . , T −1 and initial recurrent state at t = −1. B is the number
+of episodes in a batch. We omit the batch index when explaining one episode. The three memory-bearing scales
+have s = 1, 2, 3, corresponding to CNN blocks 2, 3, 4, respectively. At scale s, p is a spatial grid site and j ∈{1, 2}
+is a KDA head. A head is one parallel association mechanism, not an output task head. The task identiﬁer is a; its
+classiﬁer has Ka output classes. Later, τ will denote an earlier source time, not a diﬀerent episode.
+Quantity
+Shape and status (one episode)
+Xt, ¯Xt, xt
+Raw RGB frame, centered frame: 3 × 100 × 100; stacked input: 9 × 100 × 100. Input-derived.
+Hs
+t
+CNN ﬁeld: Cs × Ls × Ls, with (Cs, Ls) = (64, 25), (96, 13), (128, 7). Computed activation.
+U s
+t , Os
+t
+Projected input and emitted memory ﬁeld: 32 × Ls × Ls. Computed activations.
+Ss,p,j
+t
+8 × 16 recurrent matrix. Rows are key coordinates, columns value coordinates. Starts at zero.
+qt, kt, vt
+Column query/key vectors in R8, value in R16, generated from current features at one
+scale/site/head.
+αt, βt
+Generated gates: an eight-vector of row retentions and one scalar write fraction, respectively.
+zt, ht, wt, rt
+Final projected ﬁeld, hidden state, write/reset gates: each 64 × 7 × 7.
+W·, b·
+Learned weights and biases; dimensions are speciﬁed at their operations. Shared across time and
+(for convolutions) sites.
+Operations.
+Superscript T means transpose, not a time index.
+For column vectors u, v of the same length,
+uTv = P
+i uivi is a dot product: one number. In contrast, uvT is an outer product: a matrix whose entry (i, m) is
+uivm. Ordinary juxtaposition denotes matrix multiplication. ⊙is elementwise multiplication of equal-shaped ﬁelds
+(or explicitly broadcast gates); ∥joins channel lists. ∗denotes a spatial convolution, not any of these three products.
+Id is the d × d identity matrix; diag(u) puts vector entries on a diagonal and zeros elsewhere.
+ReLU replaces negative entries by zero; σ(x) = 1/(1 + e−x) maps each real entry to (0, 1); tanh maps each to
+(−1, 1). A vector’s ∥·∥2 is its Euclidean length. Flattening, written vec, lists all entries in a ﬁxed order without ﬁrst
+averaging them.
+Takeaway. Weights deﬁne the rule; inputs generate queries, values, and gates; recurrent states carry the episode.
+The transport matrix introduced later is derived from these quantities, never separately learned.
+2

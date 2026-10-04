@@ -1,0 +1,357 @@
+{
+  "arm": "cnn",
+  "root": "/Users/jonathanmorgan/VAWMRuntime/cloud_krauzlis90_fresh02/clean_extract/repo",
+  "torch": "2.8.0",
+  "threads": 1,
+  "tests": {
+    "causal_renderer": {
+      "passed": true,
+      "cases": [
+        {
+          "target": 0,
+          "baseline": 12,
+          "event": "target",
+          "first_changed_frame": 20,
+          "changed_pixels_first": 61,
+          "counterfactual_other_patch_pixels_first": 0
+        },
+        {
+          "target": 0,
+          "baseline": 12,
+          "event": "foil",
+          "first_changed_frame": 20,
+          "changed_pixels_first": 80,
+          "counterfactual_other_patch_pixels_first": 0
+        },
+        {
+          "target": 0,
+          "baseline": 20,
+          "event": "target",
+          "first_changed_frame": 28,
+          "changed_pixels_first": 88,
+          "counterfactual_other_patch_pixels_first": 8
+        },
+        {
+          "target": 0,
+          "baseline": 20,
+          "event": "foil",
+          "first_changed_frame": 28,
+          "changed_pixels_first": 58,
+          "counterfactual_other_patch_pixels_first": 0
+        },
+        {
+          "target": 0,
+          "baseline": 28,
+          "event": "target",
+          "first_changed_frame": 36,
+          "changed_pixels_first": 103,
+          "counterfactual_other_patch_pixels_first": 23
+        },
+        {
+          "target": 0,
+          "baseline": 28,
+          "event": "foil",
+          "first_changed_frame": 36,
+          "changed_pixels_first": 79,
+          "counterfactual_other_patch_pixels_first": 0
+        },
+        {
+          "target": 1,
+          "baseline": 12,
+          "event": "target",
+          "first_changed_frame": 20,
+          "changed_pixels_first": 80,
+          "counterfactual_other_patch_pixels_first": 0
+        },
+        {
+          "target": 1,
+          "baseline": 12,
+          "event": "foil",
+          "first_changed_frame": 20,
+          "changed_pixels_first": 61,
+          "counterfactual_other_patch_pixels_first": 0
+        },
+        {
+          "target": 1,
+          "baseline": 20,
+          "event": "target",
+          "first_changed_frame": 28,
+          "changed_pixels_first": 58,
+          "counterfactual_other_patch_pixels_first": 0
+        },
+        {
+          "target": 1,
+          "baseline": 20,
+          "event": "foil",
+          "first_changed_frame": 28,
+          "changed_pixels_first": 88,
+          "counterfactual_other_patch_pixels_first": 8
+        },
+        {
+          "target": 1,
+          "baseline": 28,
+          "event": "target",
+          "first_changed_frame": 36,
+          "changed_pixels_first": 79,
+          "counterfactual_other_patch_pixels_first": 0
+        },
+        {
+          "target": 1,
+          "baseline": 28,
+          "event": "foil",
+          "first_changed_frame": 36,
+          "changed_pixels_first": 103,
+          "counterfactual_other_patch_pixels_first": 23
+        }
+      ],
+      "no_pre_event_or_report_label_difference": true
+    },
+    "labels_streams": {
+      "passed": true,
+      "events": {
+        "target": 57,
+        "foil": 29,
+        "catch": 14
+      },
+      "split_cell_seeds": [
+        12849276311000,
+        12849276311001,
+        12849276311002,
+        12859276311000,
+        12859276311001,
+        12859276311002,
+        12869276311000,
+        12869276311001,
+        12869276311002
+      ],
+      "split_raster_hashes": {
+        "train": "ab2f0482d39a7b14e57b85200282a20cd94f4035ad9f37ad729422d4b2b181d2",
+        "val": "cce50b4f29508b5a58b4e3db73f06f05da69249fa89817220bdd3d05f1dc406e",
+        "test": "42a76e2db0ae3d623b5735275dc87fba4ba18f3dcddc0d36bd433956ac2a5658"
+      },
+      "batch_chunk_order_equal": true,
+      "adapter_native_exact": true
+    },
+    "cue_label_counterfactual": {
+      "passed": true,
+      "changed_patches": [
+        0,
+        1
+      ],
+      "opposite_labels_identical_motion_only_cue_differs": true
+    },
+    "constructor_optimizer_frames": {
+      "passed": true,
+      "parameter_tensors": 76,
+      "parameter_count": 1433396,
+      "optimizer_group_count": 1,
+      "ordered_centered_stack": true
+    },
+    "native_bptt": {
+      "passed": true,
+      "shape": [
+        2,
+        29,
+        3,
+        100,
+        100
+      ],
+      "loss": 0.7098496556282043,
+      "labels": [
+        0,
+        1
+      ],
+      "logits": [
+        [
+          0.4017702341079712,
+          -0.06187396124005318
+        ],
+        [
+          0.3648624122142792,
+          -0.06622166931629181
+        ]
+      ],
+      "per_frame_input_grad_norm": [
+        [
+          0.0003985751827713102,
+          0.00030636711744591594,
+          0.0003137437452096492,
+          0.0003093509003520012,
+          0.0003071309474762529,
+          0.00033124443143606186,
+          0.0003840693971142173,
+          0.00043006858322769403,
+          0.0004554672632366419,
+          0.0004999885568395257,
+          0.0005498632090166211,
+          0.000620239123236388,
+          0.0006799175753258169,
+          0.0007560077938251197,
+          0.0008420638623647392,
+          0.0009505991474725306,
+          0.001073763007298112,
+          0.0012794100912287831,
+          0.0015890543581917882,
+          0.002127122599631548,
+          0.0031558647751808167,
+          0.0050264159217476845,
+          0.008425867184996605,
+          0.015028214082121849,
+          0.027278626337647438,
+          0.05189036577939987,
+          0.1054014340043068,
+          0.10147023946046829,
+          0.09252014011144638
+        ],
+        [
+          0.0006161975325085223,
+          0.00047135972999967635,
+          0.0004958396893925965,
+          0.0005017255316488445,
+          0.0005064750439487398,
+          0.0005048307939432561,
+          0.0005635451525449753,
+          0.0006254002801142633,
+          0.0006830327911302447,
+          0.0007419350440613925,
+          0.0008382395608350635,
+          0.0009457734995521605,
+          0.0010954610770568252,
+          0.0012620423221960664,
+          0.00136432028375566,
+          0.0015493588289245963,
+          0.001746230642311275,
+          0.002070097252726555,
+          0.002528163604438305,
+          0.0033781302627176046,
+          0.005022657569497824,
+          0.008101539686322212,
+          0.013633949682116508,
+          0.023880425840616226,
+          0.043754734098911285,
+          0.08343087881803513,
+          0.17364461719989777,
+          0.1668803095817566,
+          0.153900608420372
+        ]
+      ],
+      "all_active_parameter_gradients_present": true,
+      "nonzero_gradient_tensors": 52
+    },
+    "exact_worker_microbatch": {
+      "passed": true,
+      "max_gradient_absolute_difference": 5.289912223815918e-07,
+      "loss_difference": 5.960464477539063e-08,
+      "unweighted_mean_ce": true
+    },
+    "finite_difference": {
+      "passed": true,
+      "precision": "float64",
+      "entries": [
+        {
+          "parameter": "blocks.0.0.weight",
+          "index": 2269,
+          "analytic": -0.01060323639812394,
+          "numeric": -0.010603227751371234,
+          "relative_error": 8.154824038190696e-07
+        },
+        {
+          "parameter": "spatial_gru.gates.weight",
+          "index": 11617,
+          "analytic": 0.000535486086684336,
+          "numeric": 0.0005354860888040491,
+          "relative_error": 3.958484067064168e-09
+        },
+        {
+          "parameter": "heads.krauzlis_cued_motion.weight",
+          "index": 311,
+          "analytic": -0.15222449651908468,
+          "numeric": -0.1522244965190822,
+          "relative_error": 1.6227652488778467e-14
+        }
+      ]
+    },
+    "adam_step": {
+      "passed": true,
+      "changed_active_tensors": 52,
+      "before_ce": 0.7098496556282043,
+      "after_ce": 0.7433193922042847,
+      "ce_decreased": false
+    },
+    "adam_direction_scale": {
+      "tenth_step_ce": 0.6938108801841736,
+      "original_ce": 0.7098496556282043,
+      "full_step_ce": 0.7433193922042847,
+      "tenth_step_descends": true
+    },
+    "permutation_reset_resume": {
+      "passed": true,
+      "logit_max_difference": 0.0,
+      "state_reset_exact": true,
+      "stream_resume_exact": true
+    },
+    "class_index_scoring": {
+      "passed": true,
+      "balanced_accuracy": 1.0,
+      "auc": 1.0
+    },
+    "diagnostic_group_names": {
+      "active_parameters_reported_as_inactive": [
+        "spatial_input.weight",
+        "spatial_input.bias",
+        "spatial_gru.gates.weight",
+        "spatial_gru.gates.bias",
+        "spatial_gru.candidate.weight",
+        "spatial_gru.candidate.bias",
+        "readout.weight",
+        "readout.bias",
+        "consolidation.attention_norm.weight",
+        "consolidation.ffn_norm.weight",
+        "consolidation.final_norm.weight",
+        "consolidation.qkv.weight",
+        "consolidation.attention_out.weight",
+        "consolidation.gate.weight",
+        "consolidation.up.weight",
+        "consolidation.down.weight"
+      ],
+      "affects_optimizer": false
+    }
+  },
+  "manifest_verification": {
+    "imported_files": 27,
+    "missing": [],
+    "mismatched": [],
+    "source_version": "3b03e9c28947f77e2bfd551cf5fcd92d93fc5afa97c86b305fedab03128df943"
+  },
+  "imported_source_sha256": {
+    "SecondPass/SpatialReadout/SpatialConsolidation/Krauzlis90Fresh/__init__.py": "cfa4a7e2b26ba6f1c7bb6374fe758f4857165defafb24655135ef7a11793a6da",
+    "PreAttentiveVision/neuroscience_stimuli.py": "f4d3ed226b8bb4945753127651b037b0994715752258f283d10ca98c06eb8e87",
+    "PreAttentiveVision/natural_stimuli.py": "d0f5930e863b1b1997251bad5f5315e675b6d84eec5887727fdbf4025065b452",
+    "WorkingMemory/stimuli.py": "c5a6c6d1c2aa38e3b418e09a9d6c03bd022112d5ece4b5384c5336d9f592c127",
+    "WorkingMemory/SpatialTaskBattery/stimuli.py": "16b7efd4575eba27b9a79329243dcce0da635008856687a9e62bda72b5ddeb37",
+    "WorkingMemory/PlainBaseline/variants.py": "46735e87f30fdf4966a8467a18cacd803c2e508870048f23bd5425c493ee871f",
+    "SecondPass/TaskSuite/suite.py": "22eaaa3bac77efc95beda13014ca2de012f735afe78a023ccea3951c0767f04f",
+    "PreAttentiveVision/decoder.py": "234e2cd36845ce11a6f04e61dfd1c63d8168c58718eb2260fc5a3386f089c776",
+    "PreAttentiveVision/TemporalIntegration/accumulators.py": "93706e822f9d0114f544392736bb4ef830cdbe2fc580034e48c0495658f333d7",
+    "WorkingMemory/PlainBaseline/accum.py": "a51d0466b7c3f79790536cfbc6eb3294be292e2c6aa957c94600d5d6458d1508",
+    "SecondPass/JointTraining/core.py": "28313e648dd2289b2edd9e6d697e5898210fd9b297961a364fcf0620c4b57214",
+    "SecondPass/JointTraining/worker.py": "2c5bb915a76e936979e5c6f0dd576061203f16532b4920c899e640d20603876c",
+    "SecondPass/SpatialReadout/model.py": "4f88ba0a0cf6abede416f1260a71bc13bfab5cfa51eb00d17e11369301f4d503",
+    "SecondPass/SpatialReadout/state.py": "6f2d013aab9c100297c215e3b5681e4874d3d5b0fe19f5628e6e524a8776cdaa",
+    "SecondPass/JointTraining/continuation_v3.py": "70729c2888473c0c39e67aea0f7b1cb4be1b830a7dd719c866d050f19624b211",
+    "SecondPass/SpatialReadout/protocol.py": "384c6b1adb9125669a8090a90757756898629fd54bdeba85a2b91703019e6028",
+    "SecondPass/SpatialReadout/worker.py": "4e60dd74b41c1192c628a266433c4a95b2d6ba7af74af22d65208ee4691ec82d",
+    "SecondPass/SpatialReadout/continuation_v2.py": "6e874e5cdb65521aa7ce06c270835c8af7aa3b6e5ca1fa0bd5615cff29e6c779",
+    "SecondPass/SpatialComparisonReadout/experiment.py": "2fc6c0e287bec55ba5f3105569ff20a6390d277520fe6ae6290b2ee6189c5dd3",
+    "SecondPass/SpatialComparisonReadout/CloudRun/worker.py": "e2e0517c9ff931c7a5068b477899cd58e7e8f55b465bd56f50d2105c6b476745",
+    "SecondPass/SpatialReadout/FreshRun/worker.py": "fd31d0e5e5e39a2b6761e4032aa276163cfb0394349ce0595a5a6bb6114bd71f",
+    "SecondPass/SpatialReadout/SpatialConsolidation/model.py": "37a199d9b9e51484c7cbeab9e0babaf321c4deb4161fae23daef579d7df1ce1c",
+    "SecondPass/SpatialReadout/SpatialConsolidation/worker.py": "532054e4e61544a8f5ad55074b77ffc7023ea47cb325db9c88d1038e1b9ac61b",
+    "SecondPass/SpatialReadout/SpatialConsolidation/KrauzlisOnly/worker.py": "ba42e48a0bbb60ebf1c4f87652d8fe3f3f93d65a51d9cdf77d8abb81e7b57b83",
+    "SecondPass/SpatialReadout/SpatialConsolidation/Krauzlis90Fresh/stimuli.py": "b800e04e5891a37fd42ef403e9c223c7e7ae38dfbe81a5b7f3e1018294ebed2a",
+    "SecondPass/SpatialReadout/SpatialConsolidation/Krauzlis90Fresh/worker.py": "c6f0357001a137e23bee02a6a208e5a2ab3724275bfa7c75a1377e20b2ca5c95",
+    "WorkingMemory/BatteryAudit/observers.py": "aec78e894e4f0ecee116e32421e7ee4e75ac8cc70fd4f7af803a5aa9253a48c3"
+  },
+  "wall_seconds": 4.079203958972357,
+  "complete": true
+}

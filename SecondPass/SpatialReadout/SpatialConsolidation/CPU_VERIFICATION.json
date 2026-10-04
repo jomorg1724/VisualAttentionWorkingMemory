@@ -1,0 +1,22 @@
+{
+  "status": "cpu_verified_ready_for_parent_profile",
+  "cloud_provisioned": false,
+  "gpu_used": false,
+  "production_launched": false,
+  "old_run_touched": false,
+  "torch_version": "2.8.0",
+  "cpu_python": "/Users/jonathanmorgan/VAWMRuntime/recurrent_transformer_cpu_env/bin/python",
+  "source_tests": {"passed": 15, "seconds": 8.00},
+  "dependency_closed_deployment_tests": {"passed": 15, "seconds": 7.89},
+  "parameters": {"baseline": 1383028, "new_model": 1433396, "added": 50368, "learned_tensors": 76},
+  "native_cpu_smokes": {"effective_batch32_micro4_updates": 1, "all_task_cycle_batch2_micro2_updates": 13, "every_learned_tensor_changed_across_cycle": true},
+  "archive": "artifacts/deployment_5ff54908a2c3.tar.gz",
+  "archive_sha256": "78f6ece2287af5e29e62174ac2d4e8592c6eaba616dfb758bf0ea7b1e0803306",
+  "archive_bytes": 37169854,
+  "verified_archive_files": 536,
+  "official_bsds_images": 500,
+  "identity_splits": {"train": 200, "val": 100, "test": 200},
+  "archive_checkpoints": 0,
+  "remaining_parent_checks": ["single A40 price and storage fit $8", "independent immutable pod-creation billing guard and retrieval contract", "actual production-path CUDA profile", "pin fixed whole13task exposure", "production and final artifact verification"],
+  "limitations": ["CPU smoke, not learning evidence", "No GPU timing or memory measurement", "Proposed46800 is not guaranteed and not exposure-matched to111739 baseline", "One fresh seed; added capacity confound"]
+}

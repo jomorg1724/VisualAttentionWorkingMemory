@@ -1,0 +1,551 @@
+{
+  "owner_stage.json": {
+    "stage": "supervise-run",
+    "observed": 1790965540.3311844
+  },
+  "latest_checkpoint.json": {
+    "path": "/workspace/vawm_sequence_kda3_01/run/checkpoint_000003.pt",
+    "bytes": 3993155,
+    "sha256": "41890f91d9d7985fc299a4c2c9880bd4cb3832aa0a76e7b9bd6078d6e4ccadf1",
+    "verified": true,
+    "step": 3
+  },
+  "persisted_progress_verification.json": {
+    "verified": true,
+    "step": 3,
+    "episodes": 96,
+    "checkpoint": {
+      "path": "/workspace/vawm_sequence_kda3_01/run/checkpoint_000003.pt",
+      "bytes": 3993155,
+      "sha256": "41890f91d9d7985fc299a4c2c9880bd4cb3832aa0a76e7b9bd6078d6e4ccadf1",
+      "verified": true,
+      "step": 3
+    },
+    "parameter_count": 324488,
+    "changed_parameters": 55,
+    "changed_by_module": {
+      "patch_projection.": [
+        "patch_projection.weight",
+        "patch_projection.bias"
+      ],
+      "patch_norm.": [
+        "patch_norm.weight",
+        "patch_norm.bias"
+      ],
+      "row_embedding": [
+        "row_embedding"
+      ],
+      "column_embedding": [
+        "column_embedding"
+      ],
+      "final_norm.": [
+        "final_norm.weight",
+        "final_norm.bias"
+      ],
+      "classifier.": [
+        "classifier.0.weight",
+        "classifier.0.bias",
+        "classifier.2.weight",
+        "classifier.2.bias"
+      ],
+      "kda_norms.0.": [
+        "kda_norms.0.weight",
+        "kda_norms.0.bias"
+      ],
+      "kda_norms.1.": [
+        "kda_norms.1.weight",
+        "kda_norms.1.bias"
+      ],
+      "kda_norms.2.": [
+        "kda_norms.2.weight",
+        "kda_norms.2.bias"
+      ],
+      "kda_layers.0.q_proj.": [
+        "kda_layers.0.q_proj.weight",
+        "kda_layers.0.q_proj.bias"
+      ],
+      "kda_layers.0.k_proj.": [
+        "kda_layers.0.k_proj.weight",
+        "kda_layers.0.k_proj.bias"
+      ],
+      "kda_layers.0.v_proj.": [
+        "kda_layers.0.v_proj.weight",
+        "kda_layers.0.v_proj.bias"
+      ],
+      "kda_layers.0.decay_proj.": [
+        "kda_layers.0.decay_proj.weight",
+        "kda_layers.0.decay_proj.bias"
+      ],
+      "kda_layers.0.write_proj.": [
+        "kda_layers.0.write_proj.weight",
+        "kda_layers.0.write_proj.bias"
+      ],
+      "kda_layers.0.out_proj.": [
+        "kda_layers.0.out_proj.weight",
+        "kda_layers.0.out_proj.bias"
+      ],
+      "kda_layers.1.q_proj.": [
+        "kda_layers.1.q_proj.weight",
+        "kda_layers.1.q_proj.bias"
+      ],
+      "kda_layers.1.k_proj.": [
+        "kda_layers.1.k_proj.weight",
+        "kda_layers.1.k_proj.bias"
+      ],
+      "kda_layers.1.v_proj.": [
+        "kda_layers.1.v_proj.weight",
+        "kda_layers.1.v_proj.bias"
+      ],
+      "kda_layers.1.decay_proj.": [
+        "kda_layers.1.decay_proj.weight",
+        "kda_layers.1.decay_proj.bias"
+      ],
+      "kda_layers.1.write_proj.": [
+        "kda_layers.1.write_proj.weight",
+        "kda_layers.1.write_proj.bias"
+      ],
+      "kda_layers.1.out_proj.": [
+        "kda_layers.1.out_proj.weight",
+        "kda_layers.1.out_proj.bias"
+      ],
+      "kda_layers.2.q_proj.": [
+        "kda_layers.2.q_proj.weight",
+        "kda_layers.2.q_proj.bias"
+      ],
+      "kda_layers.2.k_proj.": [
+        "kda_layers.2.k_proj.weight",
+        "kda_layers.2.k_proj.bias"
+      ],
+      "kda_layers.2.v_proj.": [
+        "kda_layers.2.v_proj.weight",
+        "kda_layers.2.v_proj.bias"
+      ],
+      "kda_layers.2.decay_proj.": [
+        "kda_layers.2.decay_proj.weight",
+        "kda_layers.2.decay_proj.bias"
+      ],
+      "kda_layers.2.write_proj.": [
+        "kda_layers.2.write_proj.weight",
+        "kda_layers.2.write_proj.bias"
+      ],
+      "kda_layers.2.out_proj.": [
+        "kda_layers.2.out_proj.weight",
+        "kda_layers.2.out_proj.bias"
+      ]
+    },
+    "all_active_parameters_changed": true,
+    "stream_counts": {
+      "B12": 32,
+      "B20": 32,
+      "B28": 32
+    },
+    "optimizer_seconds": 9.24751407187432,
+    "fresh_initial_optimizer_empty": true,
+    "persisted_constructor_equality": true
+  },
+  "first_cycle_timing.json": {
+    "updates": 3,
+    "matched_profile_ratio": 1.082667810638945,
+    "material_slowdown": false,
+    "production_rows": [
+      {
+        "utc": "2026-10-02T18:25:47.830193+00:00",
+        "step": 1,
+        "task": "krauzlis_cued_motion",
+        "cell": "B12",
+        "loss": 0.6811854615807533,
+        "seconds": 2.6455521462485194,
+        "episodes": 32,
+        "frames": 928,
+        "grad_norm": 0.9151092611491582,
+        "gradient_norms": {
+          "row_embedding": 0.001977303927513574,
+          "column_embedding": 0.0019046765922799615,
+          "patch_projection.weight": 0.027057286024399,
+          "patch_projection.bias": 0.14518422751283624,
+          "patch_norm.weight": 0.004715141351759495,
+          "patch_norm.bias": 0.004808567193333812,
+          "kda_norms.0.weight": 0.0021449951266318164,
+          "kda_norms.0.bias": 0.002470611441695984,
+          "kda_norms.1.weight": 0.004281887443839687,
+          "kda_norms.1.bias": 0.005008250432278805,
+          "kda_norms.2.weight": 0.0027010107366648582,
+          "kda_norms.2.bias": 0.00240705583810397,
+          "kda_layers.0.q_proj.weight": 0.025920565605505874,
+          "kda_layers.0.q_proj.bias": 0.002306975821305706,
+          "kda_layers.0.k_proj.weight": 0.02549864528126214,
+          "kda_layers.0.k_proj.bias": 0.001978562571794347,
+          "kda_layers.0.v_proj.weight": 0.032501009371791297,
+          "kda_layers.0.v_proj.bias": 0.00317237535913535,
+          "kda_layers.0.decay_proj.weight": 0.0026223492931818715,
+          "kda_layers.0.decay_proj.bias": 0.00025086053488001533,
+          "kda_layers.0.write_proj.weight": 0.003722983057788611,
+          "kda_layers.0.write_proj.bias": 0.0002271405306904618,
+          "kda_layers.0.out_proj.weight": 0.03673910042479681,
+          "kda_layers.0.out_proj.bias": 0.04069735589575538,
+          "kda_layers.1.q_proj.weight": 0.019699497795010235,
+          "kda_layers.1.q_proj.bias": 0.001718538516546109,
+          "kda_layers.1.k_proj.weight": 0.022047807736481434,
+          "kda_layers.1.k_proj.bias": 0.002050571434465167,
+          "kda_layers.1.v_proj.weight": 0.07589089091542815,
+          "kda_layers.1.v_proj.bias": 0.007194445216264302,
+          "kda_layers.1.decay_proj.weight": 0.0028043402590761986,
+          "kda_layers.1.decay_proj.bias": 0.00026588529038228673,
+          "kda_layers.1.write_proj.weight": 0.004134467773677107,
+          "kda_layers.1.write_proj.bias": 0.00039897778482694064,
+          "kda_layers.1.out_proj.weight": 0.08596984568836763,
+          "kda_layers.1.out_proj.bias": 0.04020694681994651,
+          "kda_layers.2.q_proj.weight": 0.02734069296232918,
+          "kda_layers.2.q_proj.bias": 0.0024166470354056446,
+          "kda_layers.2.k_proj.weight": 0.03199781527875199,
+          "kda_layers.2.k_proj.bias": 0.0030366278146622475,
+          "kda_layers.2.v_proj.weight": 0.027381735413532553,
+          "kda_layers.2.v_proj.bias": 0.001535022652722112,
+          "kda_layers.2.decay_proj.weight": 0.0038526830072943196,
+          "kda_layers.2.decay_proj.bias": 0.0003676078956719574,
+          "kda_layers.2.write_proj.weight": 0.0033067465666510288,
+          "kda_layers.2.write_proj.bias": 0.00011876311475377762,
+          "kda_layers.2.out_proj.weight": 0.025467562338791105,
+          "kda_layers.2.out_proj.bias": 0.03975979887377278,
+          "final_norm.weight": 0.02140712531981928,
+          "final_norm.bias": 0.02494147909358417,
+          "classifier.0.weight": 0.4940679293146592,
+          "classifier.0.bias": 0.043671008841023734,
+          "classifier.2.weight": 0.7222167457063188,
+          "classifier.2.bias": 0.1388091361691553
+        },
+        "cumulative_episodes": 32,
+        "cumulative_frames": 928,
+        "optimizer_seconds": 2.6455521462485194,
+        "per_task_exposure": {
+          "krauzlis_cued_motion": {
+            "updates": 1,
+            "episodes": 32,
+            "frames": 928,
+            "cells": {
+              "B12": 32,
+              "B20": 0,
+              "B28": 0
+            }
+          }
+        },
+        "initialization": "fresh",
+        "clipping": null
+      },
+      {
+        "utc": "2026-10-02T18:25:51.915890+00:00",
+        "step": 2,
+        "task": "krauzlis_cued_motion",
+        "cell": "B28",
+        "loss": 0.7110693156719208,
+        "seconds": 3.75410589389503,
+        "episodes": 32,
+        "frames": 1440,
+        "grad_norm": 0.983871270625648,
+        "gradient_norms": {
+          "row_embedding": 0.001754212812210331,
+          "column_embedding": 0.0019349977851301169,
+          "patch_projection.weight": 0.03256741619603121,
+          "patch_projection.bias": 0.12494003824686979,
+          "patch_norm.weight": 0.003817675858154064,
+          "patch_norm.bias": 0.003906743104179837,
+          "kda_norms.0.weight": 0.004636306693016463,
+          "kda_norms.0.bias": 0.004850707454236412,
+          "kda_norms.1.weight": 0.0025195092688142695,
+          "kda_norms.1.bias": 0.00281035636919936,
+          "kda_norms.2.weight": 0.002152751364727537,
+          "kda_norms.2.bias": 0.0020290455976690485,
+          "kda_layers.0.q_proj.weight": 0.06354150384480821,
+          "kda_layers.0.q_proj.bias": 0.005553844199519485,
+          "kda_layers.0.k_proj.weight": 0.06993359222480292,
+          "kda_layers.0.k_proj.bias": 0.006587101336836343,
+          "kda_layers.0.v_proj.weight": 0.039095078234593655,
+          "kda_layers.0.v_proj.bias": 0.0030194193357139156,
+          "kda_layers.0.decay_proj.weight": 0.012395845117662709,
+          "kda_layers.0.decay_proj.bias": 0.0012007009137767883,
+          "kda_layers.0.write_proj.weight": 0.0024426624672265348,
+          "kda_layers.0.write_proj.bias": 0.00021184124692920706,
+          "kda_layers.0.out_proj.weight": 0.041457270619315895,
+          "kda_layers.0.out_proj.bias": 0.04043256638822729,
+          "kda_layers.1.q_proj.weight": 0.030954446932928134,
+          "kda_layers.1.q_proj.bias": 0.002740589532005382,
+          "kda_layers.1.k_proj.weight": 0.03197371386140275,
+          "kda_layers.1.k_proj.bias": 0.002559446710961428,
+          "kda_layers.1.v_proj.weight": 0.028841953036663797,
+          "kda_layers.1.v_proj.bias": 0.002083384980835734,
+          "kda_layers.1.decay_proj.weight": 0.005669132355053006,
+          "kda_layers.1.decay_proj.bias": 0.0005479869384152977,
+          "kda_layers.1.write_proj.weight": 0.006184891977329893,
+          "kda_layers.1.write_proj.bias": 0.0007005607321851342,
+          "kda_layers.1.out_proj.weight": 0.02985887511489667,
+          "kda_layers.1.out_proj.bias": 0.04002528564176146,
+          "kda_layers.2.q_proj.weight": 0.025418379863625763,
+          "kda_layers.2.q_proj.bias": 0.0022467119740252617,
+          "kda_layers.2.k_proj.weight": 0.027539303284803137,
+          "kda_layers.2.k_proj.bias": 0.002654827866641314,
+          "kda_layers.2.v_proj.weight": 0.023049736805005234,
+          "kda_layers.2.v_proj.bias": 0.0014221583307784818,
+          "kda_layers.2.decay_proj.weight": 0.00225869915080823,
+          "kda_layers.2.decay_proj.bias": 0.0002171033300743218,
+          "kda_layers.2.write_proj.weight": 0.0033753247568305404,
+          "kda_layers.2.write_proj.bias": 0.0002819438435929333,
+          "kda_layers.2.out_proj.weight": 0.024002609926003848,
+          "kda_layers.2.out_proj.bias": 0.03969041875559337,
+          "final_norm.weight": 0.02366719960829544,
+          "final_norm.bias": 0.025621140355828072,
+          "classifier.0.weight": 0.5315419404697792,
+          "classifier.0.bias": 0.04698275310865034,
+          "classifier.2.weight": 0.7874189198852279,
+          "classifier.2.bias": 0.1414583073472274
+        },
+        "cumulative_episodes": 64,
+        "cumulative_frames": 2368,
+        "optimizer_seconds": 6.399658040143549,
+        "per_task_exposure": {
+          "krauzlis_cued_motion": {
+            "updates": 2,
+            "episodes": 64,
+            "frames": 2368,
+            "cells": {
+              "B12": 32,
+              "B20": 0,
+              "B28": 32
+            }
+          }
+        },
+        "initialization": "fresh",
+        "clipping": null
+      },
+      {
+        "utc": "2026-10-02T18:25:55.078247+00:00",
+        "step": 3,
+        "task": "krauzlis_cued_motion",
+        "cell": "B20",
+        "loss": 0.6884063929319382,
+        "seconds": 2.847856031730771,
+        "episodes": 32,
+        "frames": 1184,
+        "grad_norm": 0.9411424389259364,
+        "gradient_norms": {
+          "row_embedding": 0.0017946023490679596,
+          "column_embedding": 0.0016314781810123648,
+          "patch_projection.weight": 0.0319712597536762,
+          "patch_projection.bias": 0.10609051431207783,
+          "patch_norm.weight": 0.00342133927412756,
+          "patch_norm.bias": 0.0032812238605538784,
+          "kda_norms.0.weight": 0.003009494704754957,
+          "kda_norms.0.bias": 0.003165606075569481,
+          "kda_norms.1.weight": 0.0030686195772635224,
+          "kda_norms.1.bias": 0.002803394391728503,
+          "kda_norms.2.weight": 0.002409778185302657,
+          "kda_norms.2.bias": 0.0022646613654702307,
+          "kda_layers.0.q_proj.weight": 0.03747025647616733,
+          "kda_layers.0.q_proj.bias": 0.0033030037376114854,
+          "kda_layers.0.k_proj.weight": 0.04158103032114655,
+          "kda_layers.0.k_proj.bias": 0.0038395351989345345,
+          "kda_layers.0.v_proj.weight": 0.041195709682910475,
+          "kda_layers.0.v_proj.bias": 0.003149592848257101,
+          "kda_layers.0.decay_proj.weight": 0.006944197461713396,
+          "kda_layers.0.decay_proj.bias": 0.000668520615357047,
+          "kda_layers.0.write_proj.weight": 0.004507731292756435,
+          "kda_layers.0.write_proj.bias": 0.0004756474554628058,
+          "kda_layers.0.out_proj.weight": 0.04996023478099544,
+          "kda_layers.0.out_proj.bias": 0.04318396359806766,
+          "kda_layers.1.q_proj.weight": 0.025882155061521986,
+          "kda_layers.1.q_proj.bias": 0.002306086646027018,
+          "kda_layers.1.k_proj.weight": 0.024326661544122597,
+          "kda_layers.1.k_proj.bias": 0.0022112616684518186,
+          "kda_layers.1.v_proj.weight": 0.039087494661783254,
+          "kda_layers.1.v_proj.bias": 0.0031126299282459293,
+          "kda_layers.1.decay_proj.weight": 0.0037094634578932113,
+          "kda_layers.1.decay_proj.bias": 0.0003560764916454578,
+          "kda_layers.1.write_proj.weight": 0.0066732464702902675,
+          "kda_layers.1.write_proj.bias": 0.0005941767454849343,
+          "kda_layers.1.out_proj.weight": 0.0389481405318975,
+          "kda_layers.1.out_proj.bias": 0.04298791133022989,
+          "kda_layers.2.q_proj.weight": 0.03206501371898931,
+          "kda_layers.2.q_proj.bias": 0.0028343399632450076,
+          "kda_layers.2.k_proj.weight": 0.033832603168091,
+          "kda_layers.2.k_proj.bias": 0.002994827541942182,
+          "kda_layers.2.v_proj.weight": 0.024824284242803227,
+          "kda_layers.2.v_proj.bias": 0.0013895897128353664,
+          "kda_layers.2.decay_proj.weight": 0.005755326444838279,
+          "kda_layers.2.decay_proj.bias": 0.000553641002039104,
+          "kda_layers.2.write_proj.weight": 0.004678041895616267,
+          "kda_layers.2.write_proj.bias": 0.0004326722964759891,
+          "kda_layers.2.out_proj.weight": 0.024755965134810463,
+          "kda_layers.2.out_proj.bias": 0.04264955194690439,
+          "final_norm.weight": 0.02114211774637566,
+          "final_norm.bias": 0.026390015027742138,
+          "classifier.0.weight": 0.5702787938020928,
+          "classifier.0.bias": 0.05040663078702897,
+          "classifier.2.weight": 0.7038106118791635,
+          "classifier.2.bias": 0.16266314588105005
+        },
+        "cumulative_episodes": 96,
+        "cumulative_frames": 3552,
+        "optimizer_seconds": 9.24751407187432,
+        "per_task_exposure": {
+          "krauzlis_cued_motion": {
+            "updates": 3,
+            "episodes": 96,
+            "frames": 3552,
+            "cells": {
+              "B12": 32,
+              "B20": 32,
+              "B28": 32
+            }
+          }
+        },
+        "initialization": "fresh",
+        "clipping": null
+      }
+    ]
+  },
+  "live_status.json": {
+    "phase": "training",
+    "pid": 419,
+    "utc": "2026-10-02T18:25:58.422763+00:00",
+    "architecture": "three_sequence_patch_kda_cls",
+    "initialization": "fresh",
+    "step": 4,
+    "episodes": 128,
+    "optimizer_seconds": 12.119649900123477,
+    "deadline": 1790993405.521299,
+    "latest_checkpoint": {
+      "path": "/workspace/vawm_sequence_kda3_01/run/checkpoint_000003.pt",
+      "bytes": 3993155,
+      "sha256": "41890f91d9d7985fc299a4c2c9880bd4cb3832aa0a76e7b9bd6078d6e4ccadf1",
+      "verified": true,
+      "step": 3
+    },
+    "best_step": null,
+    "last_update": {
+      "task": "krauzlis_cued_motion",
+      "cell": "B20",
+      "loss": 0.7064136266708374,
+      "seconds": 2.8721358282491565
+    }
+  },
+  "owner_claim.json": {
+    "pid": 271,
+    "observed": 1790965501.0987077,
+    "restart": false
+  },
+  "run_supervisor.json": {
+    "pid": 404,
+    "worker_pid": 419,
+    "deadline": 1790993405.521299
+  },
+  "profile/profile_supervisor.json": {
+    "pid": 306,
+    "worker_pid": 322,
+    "deadline": 1790967303.4970663
+  },
+  "progress": {
+    "utc": "2026-10-02T18:25:58.414920+00:00",
+    "step": 4,
+    "task": "krauzlis_cued_motion",
+    "cell": "B20",
+    "loss": 0.7064136266708374,
+    "seconds": 2.8721358282491565,
+    "episodes": 32,
+    "frames": 1184,
+    "grad_norm": 1.444213734037344,
+    "gradient_norms": {
+      "row_embedding": 0.002750672995809592,
+      "column_embedding": 0.002609712559528104,
+      "patch_projection.weight": 0.04840882754389691,
+      "patch_projection.bias": 0.17362243290912838,
+      "patch_norm.weight": 0.005583920708703986,
+      "patch_norm.bias": 0.005340842853427255,
+      "kda_norms.0.weight": 0.0048526967679976786,
+      "kda_norms.0.bias": 0.005111815678878567,
+      "kda_norms.1.weight": 0.005120322788042373,
+      "kda_norms.1.bias": 0.004673477265677884,
+      "kda_norms.2.weight": 0.003911385661963681,
+      "kda_norms.2.bias": 0.003717338199941978,
+      "kda_layers.0.q_proj.weight": 0.060443281951400106,
+      "kda_layers.0.q_proj.bias": 0.0053244878059914786,
+      "kda_layers.0.k_proj.weight": 0.06761381042240774,
+      "kda_layers.0.k_proj.bias": 0.006233571928322614,
+      "kda_layers.0.v_proj.weight": 0.0637690335264542,
+      "kda_layers.0.v_proj.bias": 0.0049775378956895345,
+      "kda_layers.0.decay_proj.weight": 0.011384252505855147,
+      "kda_layers.0.decay_proj.bias": 0.0010964114838502093,
+      "kda_layers.0.write_proj.weight": 0.005441602639021691,
+      "kda_layers.0.write_proj.bias": 0.000551583276390484,
+      "kda_layers.0.out_proj.weight": 0.07758237628294398,
+      "kda_layers.0.out_proj.bias": 0.06610049655200465,
+      "kda_layers.1.q_proj.weight": 0.04386037193999262,
+      "kda_layers.1.q_proj.bias": 0.003906335680737193,
+      "kda_layers.1.k_proj.weight": 0.04107290480340068,
+      "kda_layers.1.k_proj.bias": 0.003714170790414905,
+      "kda_layers.1.v_proj.weight": 0.062468912171415245,
+      "kda_layers.1.v_proj.bias": 0.005017962751072418,
+      "kda_layers.1.decay_proj.weight": 0.0063598302869618175,
+      "kda_layers.1.decay_proj.bias": 0.0006109552731847356,
+      "kda_layers.1.write_proj.weight": 0.011865521258743843,
+      "kda_layers.1.write_proj.bias": 0.0011213235636720524,
+      "kda_layers.1.out_proj.weight": 0.06184382501012601,
+      "kda_layers.1.out_proj.bias": 0.06571974088939421,
+      "kda_layers.2.q_proj.weight": 0.05328134267203251,
+      "kda_layers.2.q_proj.bias": 0.0047098497763310805,
+      "kda_layers.2.k_proj.weight": 0.055609245245745446,
+      "kda_layers.2.k_proj.bias": 0.004832538685977975,
+      "kda_layers.2.v_proj.weight": 0.041948097114636276,
+      "kda_layers.2.v_proj.bias": 0.002562859154328354,
+      "kda_layers.2.decay_proj.weight": 0.009589793851920717,
+      "kda_layers.2.decay_proj.bias": 0.0009227387646077727,
+      "kda_layers.2.write_proj.weight": 0.007349165512180354,
+      "kda_layers.2.write_proj.bias": 0.0006490760705128124,
+      "kda_layers.2.out_proj.weight": 0.041463801698352884,
+      "kda_layers.2.out_proj.bias": 0.06515798807684696,
+      "final_norm.weight": 0.03243678695087011,
+      "final_norm.bias": 0.040377270078911995,
+      "classifier.0.weight": 0.8728456884098152,
+      "classifier.0.bias": 0.07715219778240534,
+      "classifier.2.weight": 1.078619415141426,
+      "classifier.2.bias": 0.24922110248519655
+    },
+    "cumulative_episodes": 128,
+    "cumulative_frames": 4736,
+    "optimizer_seconds": 12.119649900123477,
+    "per_task_exposure": {
+      "krauzlis_cued_motion": {
+        "updates": 4,
+        "episodes": 128,
+        "frames": 4736,
+        "cells": {
+          "B12": 32,
+          "B20": 64,
+          "B28": 32
+        }
+      }
+    },
+    "initialization": "fresh",
+    "clipping": null
+  },
+  "owner_claim.json_alive": true,
+  "live_status.json_alive": true,
+  "owner_log_tail": [
+    "STAGE prepare",
+    "STAGE supervise-profile",
+    "{\"utc\": \"2026-10-02T18:25:11.683674+00:00\", \"step\": 1, \"task\": \"krauzlis_cued_motion\", \"cell\": \"B12\", \"loss\": 0.6811854615807533, \"seconds\": 2.4321975260972977, \"cumulative_episodes\": 32}",
+    "{\"utc\": \"2026-10-02T18:25:15.420910+00:00\", \"step\": 2, \"task\": \"krauzlis_cued_motion\", \"cell\": \"B28\", \"loss\": 0.7110693156719208, \"seconds\": 3.567491814494133, \"cumulative_episodes\": 64}",
+    "{\"utc\": \"2026-10-02T18:25:18.385845+00:00\", \"step\": 3, \"task\": \"krauzlis_cued_motion\", \"cell\": \"B20\", \"loss\": 0.6884063929319382, \"seconds\": 2.7035038890317082, \"cumulative_episodes\": 96}",
+    "{\"utc\": \"2026-10-02T18:25:21.529664+00:00\", \"step\": 4, \"task\": \"krauzlis_cued_motion\", \"cell\": \"B20\", \"loss\": 0.7064136266708374, \"seconds\": 2.8080512452870607, \"cumulative_episodes\": 128}",
+    "{\"utc\": \"2026-10-02T18:25:25.250352+00:00\", \"step\": 5, \"task\": \"krauzlis_cued_motion\", \"cell\": \"B28\", \"loss\": 0.6669680997729301, \"seconds\": 3.7142447773367167, \"cumulative_episodes\": 160}",
+    "{\"utc\": \"2026-10-02T18:25:27.268474+00:00\", \"step\": 6, \"task\": \"krauzlis_cued_motion\", \"cell\": \"B12\", \"loss\": 0.6854171752929688, \"seconds\": 2.0134795056656003, \"cumulative_episodes\": 192}",
+    "{\"utc\": \"2026-10-02T18:25:30.088956+00:00\", \"step\": 7, \"task\": \"krauzlis_cued_motion\", \"cell\": \"B20\", \"loss\": 0.681327186524868, \"seconds\": 2.8136897878721356, \"cumulative_episodes\": 224}",
+    "{\"utc\": \"2026-10-02T18:25:32.049208+00:00\", \"step\": 8, \"task\": \"krauzlis_cued_motion\", \"cell\": \"B12\", \"loss\": 0.6859899088740349, \"seconds\": 1.9529446149244905, \"cumulative_episodes\": 256}",
+    "{\"utc\": \"2026-10-02T18:25:35.769076+00:00\", \"step\": 9, \"task\": \"krauzlis_cued_motion\", \"cell\": \"B28\", \"loss\": 0.6933170184493065, \"seconds\": 3.7121281968429685, \"cumulative_episodes\": 288}",
+    "STAGE pin",
+    "{\"max_steps\": 4216, \"target_requested\": 4216, \"minimum_useful_updates\": 1000, \"exposure_reduced\": false, \"total_episodes\": 134912, \"validation_steps\": [2108, 4216], \"checkpoint_every\": 100, \"planned_exposure\": {\"B12\": {\"updates\": 1405, \"episodes\": 44960}, \"B20\": {\"updates\": 1405, \"episodes\": 44960}, \"B28\": {\"updates\": 1406, \"episodes\": 44992}}, \"estimated_optimizer_seconds\": 12004.401014355943, \"estimated_total_remaining_seconds\": 15953.963432739023, \"slower_150pct_seconds\": 18955.06368632801, \"",
+    "STAGE supervise-run",
+    "{\"utc\": \"2026-10-02T18:25:47.830193+00:00\", \"step\": 1, \"task\": \"krauzlis_cued_motion\", \"cell\": \"B12\", \"loss\": 0.6811854615807533, \"seconds\": 2.6455521462485194, \"cumulative_episodes\": 32}",
+    "{\"utc\": \"2026-10-02T18:25:51.915890+00:00\", \"step\": 2, \"task\": \"krauzlis_cued_motion\", \"cell\": \"B28\", \"loss\": 0.7110693156719208, \"seconds\": 3.75410589389503, \"cumulative_episodes\": 64}",
+    "{\"utc\": \"2026-10-02T18:25:55.078247+00:00\", \"step\": 3, \"task\": \"krauzlis_cued_motion\", \"cell\": \"B20\", \"loss\": 0.6884063929319382, \"seconds\": 2.847856031730771, \"cumulative_episodes\": 96}",
+    "{\"utc\": \"2026-10-02T18:25:58.414920+00:00\", \"step\": 4, \"task\": \"krauzlis_cued_motion\", \"cell\": \"B20\", \"loss\": 0.7064136266708374, \"seconds\": 2.8721358282491565, \"cumulative_episodes\": 128}"
+  ]
+}

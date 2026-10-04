@@ -1,0 +1,20 @@
+{
+  "pdf_sha256": "7ebd658388046676c37a98088b72f52c1cd6c6da00495c21743c0186605c692b",
+  "status": "passed",
+  "method": "Direct visual inspection of rendered page images, with reinspection after diagram and table-flow corrections.",
+  "pages_inspected": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+  "checks": [
+    "Title/abstract and prose legible; 10 scientific content pages including references, not a separate blank title page.",
+    "Architecture diagram nodes, state loops and concatenation connections legible and uncropped.",
+    "Stack boundary, KDA recurrence, temporal coefficient and ConvGRU equations have intact mathematical glyphs and numbering.",
+    "Encoder shapes, parameter totals, 13 task-head rows and rationale table fit with no visible overlap.",
+    "Source paths, complete model hash and five references fit on final page.",
+    "No visible clipped text, overlapping body elements, orphan spill pages or missing glyphs."
+  ],
+  "corrections_made": [
+    "Reduced base typography from 11pt to standard 10pt to remove two nearly-empty spillover pages.",
+    "Made long source paths breakable and table text ragged-right; eliminated every TeX box warning.",
+    "Replaced degenerate same-endpoint TikZ curves with distinct visible state-loop paths.",
+    "Ended the encoder paragraph explicitly before its table to prevent a split 'For each' sentence."
+  ]
+}

@@ -1,0 +1,44 @@
+SpatialReadout: Multiscale Delta-Rule Memory
+and a Final Spatial ConvGRU
+A step-by-step guide to the computation and its limits
+Visual Attention and Working Memory project
+•
+Local source snapshot, 29 September 2026
+Abstract
+This paper speciﬁes the current SpatialReadout model, rather than its historical global-GRU predecessor or an
+isolated KDA module. Centered, three-frame RGB stacks pass through four convolutional blocks. Three spatial
+Kimi Delta Attention (KDA) accumulators, interleaved at 25×25, 13×13, and 7×7, contribute local associative
+memory to the feedforward hierarchy. The deepest 160 × 7 × 7 ﬁeld is projected to 64 channels and integrated
+by a ﬁnal convolutional gated recurrent unit (ConvGRU). Only its terminal 64 × 7 × 7 state is ﬂattened and
+projected to 256 features for a task-speciﬁc linear head. An independent CPU constructor audit gives 1,383,028
+trainable parameters. We derive the exact decay–correction–read update, its signed temporal coeﬃcients,
+and the implemented write/reset convention. The principal design decision is to postpone global compression
+until after ﬁnal recurrence, while retaining spatially organized encoder memory. This supplies an inductive bias,
+not proof of better retention, comparison learning, or biological equivalence. We distinguish documented design
+intent from plausible but untested explanations, and separate the current fresh-origin training lineage from an
+earlier warm-start branch. No training, trained-model inference, or new behavioral experiment was performed
+for this paper.
+1
+Scope and scientiﬁc question
+Reader question: what does this model make possible, and what has actually been shown? Visual
+working-memory tasks require an observer to encode evidence, retain task-relevant information, and convert that
+information into a report. These requirements are not interchangeable: a representation may contain a cue without
+applying its meaning, or retain sensory information without learning the required comparison. An architecture
+description should therefore explain what computations are available without treating their availability as evidence
+that training discovered them.
+The present observer combines two kinds of recurrence. The encoder carries matrix-valued associative states at three
+spatial scales; a ﬁnal ConvGRU carries a feature ﬁeld at the coarsest scale. The motivating question is whether
+a spatially structured ﬁnal recurrent substrate is a more suitable place to integrate the encoder’s output than a
+small vector produced by ﬂattening and projecting before recurrence. The implementation makes this substitution
+without adding a controller, top-down feedback, a hand-designed comparator, a transformer, or spatial softmax
+attention.[S1,S2]
+The source authority is the current model and its imported deﬁnitions, not the older September KDA report. His-
+torical README.md, BRIEF.md, and journal entries record the original warm-start experiment; the current FreshRun
+worker constructs every learned tensor anew, and ContinuationRun restores that same fresh-origin model at update
+7,739. Retained Python member names support historical migration but do not imply old learned-weight inheritance
+in the fresh run.[S1,S4,S5,S8]
+This is an architecture paper, not a report of the paused neuroscience study. Source inspection, algebra, parameter
+counting, and PDF checks are the evidence presented here. No validation score is treated as current live status, and
+the authorized continuation target is not represented as completed training.
+Takeaway. This paper explains the available computation, not a demonstrated cognitive ability. Read the diagram
+as a dataﬂow map, then follow a single memory update before interpreting its history.

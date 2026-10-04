@@ -1,0 +1,64 @@
+{
+  "protocol": "random_frame_gated_structured_motion_rvit_fresh_native_pool1000_epoch10_cuda_v1",
+  "architecture": "RandomFrameRViT: fresh analytic Simoncelli-Heeger frontend plus learned CNN and gated recurrent visual transformer",
+  "parameter_count": 7428978,
+  "parameter_tensors": 94,
+  "initialization": "whole-model fresh constructor; no inherited weights, optimizer, RNG, streams, counters or disposable profile state",
+  "training": {
+    "device": "single CUDA A40",
+    "precision": "fp32",
+    "tf32": false,
+    "effective_batch": 32,
+    "microbatch": 4,
+    "cpu_threads": 2,
+    "optimizer": "Adam",
+    "lr": 0.0001,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "eps": 1e-08,
+    "weight_decay": 0,
+    "clipping": null,
+    "gradient_policy": "Independent uniform timestep per movie; T-scaled local parameter derivative, no prefix graph, detached-parameter differentiable suffix preserving every memory Jacobian; ordinary terminal decoder cross entropy",
+    "observations": "unchanged complete native B12/B20/B28 Krauzlis movies, cue included; binary terminal label only",
+    "replay_pool_size": 1000,
+    "replay_epochs": 10,
+    "updates_per_epoch": 33,
+    "updates_per_pool": 330,
+    "target_updates": 4216,
+    "pinning": "Prospective measured feasibility; round down to complete330-update pools. No post-start extension or inherited profile state."
+  },
+  "profiling": {
+    "warmup_updates": 3,
+    "steady_updates": 6,
+    "native_effective_batch": 32,
+    "eval_per_condition": 20,
+    "disposable": true
+  },
+  "validation": {
+    "steps": "100,250,every500,terminal",
+    "n_per_condition": 100,
+    "selection": "three-condition mean AUC then balanced accuracy; earlier ties"
+  },
+  "final_test": {
+    "n_per_condition": 200,
+    "paired_selected_and_terminal": true,
+    "split": "fresh test independent from train/validation"
+  },
+  "budget": {
+    "wall_cap_seconds": 28800,
+    "retrieval_reserve_seconds": 600,
+    "usd_cap": 5,
+    "start": "pod creation",
+    "automatic_extension": false
+  },
+  "evidence": {
+    "persisted_adam_all94": true,
+    "fresh_constructor_equality": true,
+    "fixed_analytic_buffers_unchanged": true,
+    "selected_frame_histogram_by_condition": true,
+    "immutable_hashed_checkpoints": true,
+    "off_pod_mirror": true
+  }
+}

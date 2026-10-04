@@ -1,0 +1,191 @@
+<html>
+<head>
+    <META name="keywords" content="UC Berkeley Computer Vision Group - Contour Detection and Image Segmentation - Resources">
+    <META name="description" content="UC Berkeley Computer Vision Group - Contour Detection and Image Segmentation - Resources">
+    <title>
+        UC Berkeley Computer Vision Group - Contour Detection and Image Segmentation - Resources
+    </title>
+    <link rel="STYLESHEET" href="../visiongroup.css" type="text/css">
+</head>
+
+<center>
+    <img src="../ucberkeley.jpg"><br>
+</center>
+<body bgcolor="#ffffee" text="#000000" link="#0000df" vlink="#8000a6" alink="FFFFFF">
+<center>
+<table width=800 border=0>
+<tr><td>
+        <hr>
+        <H1 align=center>Contour Detection and Image Segmentation<BR>Resources<br></H1>
+        <hr>
+        
+        <!--======================================================================================================-->
+        <h1>Overview</h1>
+        <p align="justify">
+            The goal of this work is to provide an empirical basis for research on image segmentation and boundary detection.  
+            In order to promote scientific progress in the study of visual grouping, we provide the following resources:
+            <ul>
+                <li>
+                    A large <b><a href="#bsds500">dataset</a></b> of natural images that have been manually segmented. The human annotations serve
+                    as ground truth for learning grouping cues as well as a benchmark for comparing different segmentation and boundary detection algorithms.
+                </li><br>
+                <li>
+                    The most recent <b><a href="#algorithms">algorithms</a></b> our group has developed for contour detection and image segmentation.
+                </li><br>
+                  <li>
+                    <b><a href="#bench">Performance evaluation</a></b> of the leading computational approaches to grouping.
+                </li><br>
+          </ul>
+	    The <b><font color="red">complete resources</font></b> available in this page can be downloaded as a single <b><a href="http://www2.eecs.berkeley.edu/Research/Projects/CS/vision/grouping/BSR/BSR_full.tgz">file</a></b>. (Updated Jan. 2013) <br><br>
+            Details and individual downloads are available below.
+        </p>
+        
+        If you use the resources in this page, please cite the paper:<br>
+            <p align="center"><b>
+                Contour Detection and Hierarchical Image Segmentation<br>
+                P. Arbelaez, M. Maire, C. Fowlkes and J. Malik.<br>
+                IEEE TPAMI, Vol. 33, No. 5, pp. 898-916, May 2011.<br>
+		<a href="papers/amfm_pami2010.pdf">[PDF]</a> <a href="papers/amfm_pami2011.bib">[BibTex]</a>
+        </b></p>
+        <br>
+        
+        <hr>
+        <!--======================================================================================================-->
+        <a name='bsds500'><h1>Berkeley Segmentation Data Set and Benchmarks 500 (BSDS500)</h1></a>
+        <p align="justify">
+            This new dataset is an extension of the <a href="http://www2.eecs.berkeley.edu/Research/Projects/CS/vision/grouping/segbench">BSDS300</a>,
+            where the original 300 images are used for training / validation and 200 fresh images, together with human annotations, are added for testing.
+            Each image was segmented by five different subjects on average.
+            Performance is evaluated by measuring Precision / Recall on detected boundaries and three additional region-based metrics. 
+        </p>
+        
+        <table cellspacing="20" align="center"><tbody>
+                <tr align="center">
+                    <td><img src="files/175083_img.jpg" align="LEFT" border="2" height="180"></td>
+                    <td><img src="files/175083_1108.png" align="LEFT" border="2" height="180"></td>
+                    <td><img src="files/175083_1119.png" align="LEFT" border="2" height="180"></td>
+                    <td><img src="files/175083_1121.png" align="LEFT" border="2" height="180"></td>
+                </tr>
+                <tr>
+                    <td align="CENTER">Original Image</td>
+                    <td align="CENTER">Subject 1</td>
+                    <td align="CENTER">Subject 2</td>
+                    <td align="CENTER">Subject 3</td>
+                </tr>
+        </tbody></table>
+        
+      <p> <b><font color="red">Best Practice Guidelines:</font></b> The dataset consists of 500 natural images, ground-truth human annotations and benchmarking code. The data is explicitly separated into disjoint train, validation and test subsets. In order to preserve the integrity of the evaluation and obtain a direct and fair comparison of your results with existing methods, the guidelines below must be followed:</p>
+        
+        <ul>
+            <li>
+                <b>Train only on trainval:</b> All the learning, parameter tuning, model selection, etc. should be done <b>exclusively</b> on the train and validation subsets of the data.
+            </li><br>
+            <li>
+                <b>Run once on test:</b> After training, your algorithm should be run only once with fixed parameters on the test subset of the data. The images and ground-truth segmentations of the test set <b>cannot</b> be used for tuning your algorithm.
+            </li><br>
+            <li>
+                <b>Report all the evaluation results:</b> Evaluate your results on the test subset with the benchmarking code. In order to assess quantitatively different aspects of performance of contour detection and segmentation algorithms, the BSDS500 provides a suite of evaluation measures. Please report <b>all</b> the scores and curves returned by the evaluation script <em>boundaryBench</em> (contour detection methods) or <em>allBench</em> (segmentation methods).
+            </li><br>
+            <li>
+                <b>Evaluate also on the BSDS300:</b> In order to make your results comparable with methods that were evaluated on the original BSDS300, you should repeat the three steps above, but making sure to <em>train only on the train subset of the data and test on the validation subset</em>.
+            </li><br>
+        </ul>
+        <p>
+            <b><font color="red">Download </font></b> the <b><a href="http://www2.eecs.berkeley.edu/Research/Projects/CS/vision/grouping/BSR/BSR_bsds500.tgz">BSDS500</a>:</b> images, ground-truth data and benchmarks.
+        </p>
+        <hr>
+        <!--======================================================================================================-->
+        <a name='algorithms'><h1>Algorithms</h1></a>
+        <p> The most recent methods our group has developed.</p>
+        
+        <ul>
+            <li>
+                <b>Contour Detection</b>. The contour detector globalPb combines multiple local cues into a globalization
+                framework based on spectral clustering.
+            </li><br>
+            <li>
+                <b>Hierarchical Image Segmentation</b>. The generic segmentation algorithm owt-ucm transforms the output of
+                any contour detector into a hierarchical region tree.
+            </li><br>
+            <li>
+                <b>Interactive Segmentation Tool</b>. A Matlab interface to produce high-quality user-specified segmentations
+                from our automatic results.
+            </li><br>
+        </ul>
+        <p align="center">
+            <table cellspacing="20"><tbody>
+                    <tr>
+                        <td><img src="files/orig.png" width="200" align="LEFT" border="2" height="300"></td>
+                        <td><img src="files/pb.png" width="200" align="LEFT" border="2" height="300"></td>
+                        <td><img src="files/ucm.png" width="200" align="LEFT" border="2" height="300"></td>
+                        <td><img src="files/seg.png" width="200" align="LEFT" border="2" height="300"></td>
+                    </tr>
+                    <tr>
+                        <td align="CENTER">Original Image</td><td align="CENTER">globalPb</td>
+                        <td align="CENTER">Ultrametric Contour Map</td><td align="CENTER">Automatic Segmentation</td>
+                    </tr>
+            </tbody></table>
+        </p>
+        
+        <p>
+           <b><font color="red">Downloads: </font>
+       <ul>
+            <li>
+                <a href="http://www2.eecs.berkeley.edu/Research/Projects/CS/vision/grouping/BSR/BSR_code.tgz">Pre-compiled Matlab package</a>.
+            </li><br>
+            <li>
+                <a href="http://www2.eecs.berkeley.edu/Research/Projects/CS/vision/grouping/BSR/BSR_source.tgz">Source code (for Linux/Mac, 32/64 bits)</a>.
+            </li><br>
+            <li>
+                <a href="http://www2.eecs.berkeley.edu/Research/Projects/CS/vision/grouping/BSR/BSR_ucm2.tgz">Pre-computed results on the BSDS500</a>.
+            </li><br>
+            <li>
+                <a href="ftp://ftp.cs.berkeley.edu/pub/projects/vision/ucm2_voc2012.tgz">Pre-computed results on PASCAL VOC 2012</a> (1.4Gb).
+            </li><br>
+
+        </ul>
+ 	</b>
+	<p><em> <b>Note:</b> All the downloads in this page can be safely uncompressed in the same folder.</em></p>
+       <br>
+        <hr>
+<!--======================================================================================================-->
+        <a name='bench'><h1>Performance Evaluation</h1></a>
+        <p>
+            Click on the plot below for comparative results of the leading approaches to grouping.
+        </p>
+        <br>
+        <p align="center"> <a href="performance.html"><img src="files/bench_bsds300.png" width="75%""></a></p>
+        
+        <br><br>
+        <hr>
+<!--======================================================================================================-->
+        <h1>Links</h1>
+        <ul>
+            <li>
+                The previous version of the Berkeley Segmentation Data Set (BSDS300) is still available 
+                <a href="http://www2.eecs.berkeley.edu/Research/Projects/CS/vision/grouping/segbench">[here]</a>.
+            </li><br>
+            <li>
+                A parallel implementation of the globalPb contour detector on the 
+                <a href="http://www.cs.berkeley.edu/~catanzar/Damascene/">GPU</a>.
+            </li><br>
+            <li>
+                Back to the Berkeley <a href="http://www.eecs.berkeley.edu/Research/Projects/CS/vision/">Computer Vision Group</a> page.
+            </li><br>
+            <li>
+                Back to the Berkeley <a href="http://www.eecs.berkeley.edu/Research/Projects/CS/vision/grouping/">Reorganization</a> page.
+            </li><br>
+        </ul>
+        <br>
+        
+        
+        Back to <a href="../">Berkeley Computer Vision page</a>
+        <br>
+        <em>Questions --></em> <a href=mailto:arbelaezateecsberkeleyedu>Pablo Arbelaez</a>
+
+    </tr></td>
+</table>
+</center>
+</body>
+</html>
+

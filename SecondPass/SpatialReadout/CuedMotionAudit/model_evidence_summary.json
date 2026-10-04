@@ -1,0 +1,299 @@
+{
+  "conditions": [
+    {
+      "condition": "OOD_time_reversal_D0",
+      "n": 128,
+      "accuracy": 0.2421875,
+      "accuracy_wilson95": [
+        0.17618737999242146,
+        0.3232113630861063
+      ],
+      "balanced_accuracy": 0.2421875,
+      "auc_macro": 0.5064290364583334,
+      "confusion": [
+        [
+          2,
+          11,
+          12,
+          7
+        ],
+        [
+          5,
+          12,
+          7,
+          8
+        ],
+        [
+          2,
+          13,
+          8,
+          9
+        ],
+        [
+          3,
+          14,
+          6,
+          9
+        ]
+      ],
+      "recall": [
+        0.0625,
+        0.375,
+        0.25,
+        0.28125
+      ],
+      "prediction_counts": [
+        12,
+        50,
+        33,
+        33
+      ],
+      "mean_probabilities": [
+        0.23124175208803768,
+        0.2569065150704457,
+        0.262449470745616,
+        0.24940226209590058
+      ]
+    },
+    {
+      "condition": "native_B20_replicate",
+      "n": 200,
+      "accuracy": 0.57,
+      "accuracy_wilson95": [
+        0.5007048776415268,
+        0.6366567766656557
+      ],
+      "balanced_accuracy": 0.5,
+      "auc_macro": 0.5307017543859649,
+      "confusion": [
+        [
+          0,
+          86
+        ],
+        [
+          0,
+          114
+        ]
+      ],
+      "recall": [
+        0.0,
+        1.0
+      ],
+      "prediction_counts": [
+        0,
+        200
+      ],
+      "mean_probabilities": [
+        0.4220231311707703,
+        0.5779768688292295
+      ]
+    },
+    {
+      "condition": "native_law_event_removed_B20",
+      "n": 200,
+      "accuracy": 0.0,
+      "balanced_accuracy": null,
+      "auc_macro": null,
+      "prediction_counts": [
+        0,
+        200
+      ],
+      "reason": "All-negative counterfactual: BA/AUC undefined; report specificity/accuracy instead"
+    },
+    {
+      "condition": "native_B12",
+      "n": 100,
+      "accuracy": 0.57,
+      "accuracy_wilson95": [
+        0.47215389549212305,
+        0.6626670147588988
+      ],
+      "balanced_accuracy": 0.5,
+      "auc_macro": 0.5136678906568748,
+      "confusion": [
+        [
+          0,
+          43
+        ],
+        [
+          0,
+          57
+        ]
+      ],
+      "recall": [
+        0.0,
+        1.0
+      ],
+      "prediction_counts": [
+        0,
+        100
+      ],
+      "mean_probabilities": [
+        0.4205108859208665,
+        0.5794891140791332
+      ]
+    },
+    {
+      "condition": "native_B28",
+      "n": 100,
+      "accuracy": 0.57,
+      "accuracy_wilson95": [
+        0.47215389549212305,
+        0.6626670147588988
+      ],
+      "balanced_accuracy": 0.5,
+      "auc_macro": 0.5609955120359037,
+      "confusion": [
+        [
+          0,
+          43
+        ],
+        [
+          0,
+          57
+        ]
+      ],
+      "recall": [
+        0.0,
+        1.0
+      ],
+      "prediction_counts": [
+        0,
+        100
+      ],
+      "mean_probabilities": [
+        0.42256276390742914,
+        0.5774372360925708
+      ]
+    }
+  ],
+  "event_present_minus_removed_p1": {
+    "target": {
+      "pre_event": {
+        "mean": 0.0,
+        "bootstrap95": [
+          0.0,
+          0.0
+        ],
+        "n": 114
+      },
+      "first_postevent": {
+        "mean": -3.4347214043557606e-05,
+        "bootstrap95": [
+          -0.00039980134533730614,
+          0.00032864495525427196
+        ],
+        "n": 114
+      },
+      "last_moving": {
+        "mean": 0.003163112262972104,
+        "bootstrap95": [
+          0.0003947341039448141,
+          0.006117150991597255
+        ],
+        "n": 114
+      },
+      "report": {
+        "mean": 0.001414129119159829,
+        "bootstrap95": [
+          3.968306171825753e-06,
+          0.0028207771388542024
+        ],
+        "n": 114
+      }
+    },
+    "foil": {
+      "pre_event": {
+        "mean": 0.0,
+        "bootstrap95": [
+          0.0,
+          0.0
+        ],
+        "n": 58
+      },
+      "first_postevent": {
+        "mean": -0.00023232253472560034,
+        "bootstrap95": [
+          -0.0007696105125587138,
+          0.00033375828309188313
+        ],
+        "n": 58
+      },
+      "last_moving": {
+        "mean": -0.0025180827196829895,
+        "bootstrap95": [
+          -0.007779439025899582,
+          0.0021812331076880294
+        ],
+        "n": 58
+      },
+      "report": {
+        "mean": 0.0022281109191699964,
+        "bootstrap95": [
+          0.00020078147624150852,
+          0.004679073560969253
+        ],
+        "n": 58
+      }
+    },
+    "catch": {
+      "pre_event": {
+        "mean": 0.0,
+        "bootstrap95": [
+          0.0,
+          0.0
+        ],
+        "n": 28
+      },
+      "first_postevent": {
+        "mean": 0.0,
+        "bootstrap95": [
+          0.0,
+          0.0
+        ],
+        "n": 28
+      },
+      "last_moving": {
+        "mean": 0.0,
+        "bootstrap95": [
+          0.0,
+          0.0
+        ],
+        "n": 28
+      },
+      "report": {
+        "mean": 0.0,
+        "bootstrap95": [
+          0.0,
+          0.0
+        ],
+        "n": 28
+      }
+    }
+  },
+  "event_removal_argmax_changes": 0,
+  "duration_reversal_pair": {
+    "label_changes": 128,
+    "argmax_changes": 81,
+    "mean_abs_centered_logit_change": 0.23106421694683377,
+    "mean_abs_probability_change": 0.05646781121323714,
+    "max_abs_probability_change": 0.2784565623499164,
+    "paired_accuracy_difference": -0.1015625,
+    "paired_accuracy_difference_bootstrap95": [
+      -0.21875,
+      0.0078125
+    ],
+    "changed_label_margin_shift_mean": 0.15215336692381243,
+    "changed_label_margin_shift_positive_fraction": 0.5625,
+    "both_correct_on_label_changed": 8
+  },
+  "original_deadline": 1790690160.8520021,
+  "elapsed_from_original_start": 184.83024191856384,
+  "all_weights_bitwise_unchanged": true,
+  "checkpoint_hash_unchanged": true,
+  "max_wrapper_parity_error": 0.0,
+  "native_replicate_logits_exact": true,
+  "training_updates": 0,
+  "probe_fits": 0,
+  "completed_unix": 1790689145.682247
+}

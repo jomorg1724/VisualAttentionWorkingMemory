@@ -1,0 +1,178 @@
+{
+  "updates": 3,
+  "matched_profile_ratio": 1.014775853401985,
+  "material_slowdown": false,
+  "production_rows": [
+    {
+      "utc": "2026-10-02T20:35:19.896613+00:00",
+      "step": 1,
+      "task": "krauzlis_cued_motion",
+      "cell": "B12",
+      "loss": 0.6809337958693504,
+      "seconds": 3.619687759783119,
+      "episodes": 32,
+      "frames": 928,
+      "grad_norm": 0.9509137781664546,
+      "gradient_norms": {
+        "row_embedding": 0.0010832796278145802,
+        "column_embedding": 0.0011090100112522794,
+        "cls_token": 0.044111710336248375,
+        "patch_projection.weight": 0.018493474512535676,
+        "patch_projection.bias": 0.07304825220492715,
+        "patch_norm.weight": 0.0023039062228181395,
+        "patch_norm.bias": 0.002327889313717469,
+        "kda_norm.weight": 0.0032080742170117974,
+        "kda_norm.bias": 0.0033069120003690147,
+        "kda.q_proj.weight": 0.03925863734844849,
+        "kda.q_proj.bias": 0.003470053002051771,
+        "kda.k_proj.weight": 0.0386285067869477,
+        "kda.k_proj.bias": 0.0034490665015265865,
+        "kda.v_proj.weight": 0.040479784371586315,
+        "kda.v_proj.bias": 0.003447793156660145,
+        "kda.decay_proj.weight": 0.005571199171074948,
+        "kda.decay_proj.bias": 0.0005333860040133391,
+        "kda.write_proj.weight": 0.004467567519878026,
+        "kda.write_proj.bias": 0.00044884985581105594,
+        "kda.out_proj.weight": 0.1181000307476753,
+        "kda.out_proj.bias": 0.04362215992324972,
+        "final_norm.weight": 0.0304790014587593,
+        "final_norm.bias": 0.026904412665697777,
+        "classifier.0.weight": 0.5435431755730226,
+        "classifier.0.bias": 0.04804375306895908,
+        "classifier.2.weight": 0.7467380158644383,
+        "classifier.2.bias": 0.13766283639788626
+      },
+      "cumulative_episodes": 32,
+      "cumulative_frames": 928,
+      "optimizer_seconds": 3.619687759783119,
+      "per_task_exposure": {
+        "krauzlis_cued_motion": {
+          "updates": 1,
+          "episodes": 32,
+          "frames": 928,
+          "cells": {
+            "B12": 32,
+            "B20": 0,
+            "B28": 0
+          }
+        }
+      },
+      "initialization": "fresh",
+      "clipping": null
+    },
+    {
+      "utc": "2026-10-02T20:35:26.962063+00:00",
+      "step": 2,
+      "task": "krauzlis_cued_motion",
+      "cell": "B28",
+      "loss": 0.6977183371782303,
+      "seconds": 6.644642719067633,
+      "episodes": 32,
+      "frames": 1440,
+      "grad_norm": 0.5637009497239067,
+      "gradient_norms": {
+        "row_embedding": 0.0008831283890445737,
+        "column_embedding": 0.0007987653650418732,
+        "cls_token": 0.025684860646074115,
+        "patch_projection.weight": 0.015041485794785859,
+        "patch_projection.bias": 0.049724476868671555,
+        "patch_norm.weight": 0.001641320184135649,
+        "patch_norm.bias": 0.0016990334929899947,
+        "kda_norm.weight": 0.0024792711390918235,
+        "kda_norm.bias": 0.0025756647659580852,
+        "kda.q_proj.weight": 0.030317633807973723,
+        "kda.q_proj.bias": 0.0026797588177353256,
+        "kda.k_proj.weight": 0.02843612389195561,
+        "kda.k_proj.bias": 0.0027114896272484802,
+        "kda.v_proj.weight": 0.023195858870894176,
+        "kda.v_proj.bias": 0.0019231518284972499,
+        "kda.decay_proj.weight": 0.005343708414074019,
+        "kda.decay_proj.bias": 0.0005176770150693146,
+        "kda.write_proj.weight": 0.0030137664114959673,
+        "kda.write_proj.bias": 0.00025619747363423887,
+        "kda.out_proj.weight": 0.06929790770224602,
+        "kda.out_proj.bias": 0.02527079595310199,
+        "final_norm.weight": 0.0149879256530148,
+        "final_norm.bias": 0.015670887799038608,
+        "classifier.0.weight": 0.3045798135850659,
+        "classifier.0.bias": 0.026920568068533494,
+        "classifier.2.weight": 0.4540726519169789,
+        "classifier.2.bias": 0.08044808976672468
+      },
+      "cumulative_episodes": 64,
+      "cumulative_frames": 2368,
+      "optimizer_seconds": 10.264330478850752,
+      "per_task_exposure": {
+        "krauzlis_cued_motion": {
+          "updates": 2,
+          "episodes": 64,
+          "frames": 2368,
+          "cells": {
+            "B12": 32,
+            "B20": 0,
+            "B28": 32
+          }
+        }
+      },
+      "initialization": "fresh",
+      "clipping": null
+    },
+    {
+      "utc": "2026-10-02T20:35:31.911822+00:00",
+      "step": 3,
+      "task": "krauzlis_cued_motion",
+      "cell": "B20",
+      "loss": 0.6818035244941711,
+      "seconds": 4.73243765393272,
+      "episodes": 32,
+      "frames": 1184,
+      "grad_norm": 1.044867300456854,
+      "gradient_norms": {
+        "row_embedding": 0.0011270387439392623,
+        "column_embedding": 0.0010699581953045607,
+        "cls_token": 0.044059411910413834,
+        "patch_projection.weight": 0.021018116512586695,
+        "patch_projection.bias": 0.06659798430733938,
+        "patch_norm.weight": 0.002208456768612826,
+        "patch_norm.bias": 0.0021316978358362926,
+        "kda_norm.weight": 0.002746544943665073,
+        "kda_norm.bias": 0.0031735432707895904,
+        "kda.q_proj.weight": 0.03767116593508826,
+        "kda.q_proj.bias": 0.0033298129762476566,
+        "kda.k_proj.weight": 0.03648917757513228,
+        "kda.k_proj.bias": 0.0031979697519576348,
+        "kda.v_proj.weight": 0.040896352985349015,
+        "kda.v_proj.bias": 0.0035040292835799066,
+        "kda.decay_proj.weight": 0.0066216986013849025,
+        "kda.decay_proj.bias": 0.0006376561839251862,
+        "kda.write_proj.weight": 0.005939405853604897,
+        "kda.write_proj.bias": 0.0006074389096287679,
+        "kda.out_proj.weight": 0.12114463014106305,
+        "kda.out_proj.bias": 0.04379782165212975,
+        "final_norm.weight": 0.026939153332598893,
+        "final_norm.bias": 0.026893556202491207,
+        "classifier.0.weight": 0.5650962676684284,
+        "classifier.0.bias": 0.04994782980126381,
+        "classifier.2.weight": 0.8489348792520324,
+        "classifier.2.bias": 0.1407163839643232
+      },
+      "cumulative_episodes": 96,
+      "cumulative_frames": 3552,
+      "optimizer_seconds": 14.996768132783473,
+      "per_task_exposure": {
+        "krauzlis_cued_motion": {
+          "updates": 3,
+          "episodes": 96,
+          "frames": 3552,
+          "cells": {
+            "B12": 32,
+            "B20": 32,
+            "B28": 32
+          }
+        }
+      },
+      "initialization": "fresh",
+      "clipping": null
+    }
+  ]
+}

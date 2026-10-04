@@ -1,0 +1,56 @@
+SpatialReadout: architecture and decision logic
+Source-audited technical paper
+2
+End-to-end computation and notation
+RGB sequence B × T × 3 × 100 × 100
+center, causal stack3 →9 × 100 × 100
+Block 1: 32 × 50 × 50
+Block 2: 64 × 25 × 25
+1 × 1: 64 →32
+KDA at 25 × 25
+Concat 96 channels →Block 3
+96 × 13 × 13
+1 × 1: 96 →32
+KDA at 13 × 13
+Concat 128 channels →Block 4
+128 × 7 × 7
+1 × 1: 128 →32
+KDA at 7 × 7
+Concat →160 × 7 × 7
+1 × 1: 160 →64 (no activation)
+Final ConvGRU: 64 × 7 × 7
+3 × 3 write/reset and
+candidate convolutions
+Terminal state only: ﬂatten
+3136
+→
+256 ReLU
+known-task linear head 256 →Ka
+St−1
+St−1
+St−1
+ht−1
+Figure 1: One causal time step, repeated for every presented frame. Side branches emit 32 channels and retain
+separate matrix states; they are not global attention layers. Loops indicate state carried from the preceding update.
+The last readout is applied only after the ﬁnal step. Batch dimensions are omitted within the diagram.
+Symbol
+Meaning and dimensions (one episode unless shown)
+Xt, xt
+Raw RGB frame; centered three-frame input, 9 × 100 × 100.
+Hs
+t , U s
+t , Os
+t
+CNN block ﬁeld, 32-channel projection, and 32-channel KDA emission.
+Ss,p,j
+t
+Local memory at scale s, site p, head j: 8 × 16.
+qt, kt, vt
+Query/key vectors in R8 and value vector in R16, per site/head.
+αt, βt
+Eight row-decay gates and one write-strength gate per site/head.
+zt, ht, wt, rt
+Projected ﬁeld, ConvGRU state, write and reset ﬁelds: 64 × 7 × 7.
+a, Ka
+Externally supplied task identiﬁer and its number of output classes.
+2

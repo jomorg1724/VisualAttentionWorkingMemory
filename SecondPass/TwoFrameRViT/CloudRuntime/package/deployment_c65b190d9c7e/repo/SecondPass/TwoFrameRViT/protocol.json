@@ -1,0 +1,162 @@
+{
+  "version": "two_frame_cnn_visual_query_rvit_v1",
+  "status": "cloud_training_authorized_launch_preparation",
+  "training_launched": false,
+  "new_compute_authorization": true,
+  "task": {
+    "id": "krauzlis_cued_motion",
+    "native_rgb": [
+      3,
+      100,
+      100
+    ],
+    "conditions": [
+      "B12",
+      "B20",
+      "B28"
+    ],
+    "changes_degrees": [
+      26,
+      28
+    ],
+    "teaching": "unchanged native cues, labels, rendering, proportions and streams"
+  },
+  "pair": {
+    "order": [
+      "previous",
+      "current"
+    ],
+    "input_channels": 6,
+    "first_previous": "repeat first current frame",
+    "centering": "subtract0.5",
+    "causal": true
+  },
+  "cnn": {
+    "channels": [
+      32,
+      64,
+      128,
+      256
+    ],
+    "spatial_sizes": [
+      100,
+      50,
+      25,
+      13
+    ],
+    "residual_blocks_per_stage": 2,
+    "normalization": "GroupNorm8",
+    "activation": "GELU",
+    "all_convolution_strides": 1,
+    "compression": "PixelUnshuffle2 then learned3x3 projection",
+    "odd_size_padding": "replicate bottom/right25->26 before final unshuffle",
+    "pooling": false
+  },
+  "tokens": {
+    "grid": [
+      13,
+      13
+    ],
+    "count": 169,
+    "d_model": 256,
+    "position": "learned row and column embeddings"
+  },
+  "recurrence": {
+    "blocks": 1,
+    "shared_across_time": true,
+    "attention_heads": 8,
+    "head_width": 32,
+    "queries": "current visual X for both attention branches",
+    "visual_keys_values": "current X",
+    "memory_keys_values": "previous H",
+    "separate_qkv_parameters": true,
+    "separate_softmax": true,
+    "merge": "X+(self_attention+memory_attention)/sqrt2",
+    "ffn": [
+      256,
+      1024,
+      256
+    ],
+    "normalization": "pre-LayerNorm",
+    "dropout": 0,
+    "state": [
+      169,
+      256
+    ],
+    "initial_memory": "fixed zero",
+    "detach": false
+  },
+  "readout": {
+    "source": "terminal updated memory grid",
+    "token_projection": [
+      256,
+      16
+    ],
+    "activation": "GELU",
+    "flatten": 2704,
+    "ffn": [
+      2704,
+      512,
+      256,
+      2
+    ],
+    "cls_token": false
+  },
+  "execution": {
+    "precision": "FP32",
+    "full_bptt": true,
+    "cnn_activation_checkpoint": "nonreentrant during gradient-enabled training",
+    "streaming": "explicit previous raw frame and recurrent memory; no internal cache"
+  },
+  "initialization": "fresh whole model; never inherit predecessor weights without explicit user instruction",
+  "future_training": {
+    "optimizer": "Adam",
+    "lr": 0.0001,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "eps": 1e-08,
+    "weight_decay": 0,
+    "clip": null,
+    "all_trainable": true,
+    "tf32": false,
+    "exposure": "requires native profiling and user launch authorization",
+    "placement": "separate singleA40 concurrently with exact16headKDApodpa0ko8f2qirisy",
+    "budget": {
+      "wall_seconds_from_creation": 28800,
+      "maximum_total_dollars": 5,
+      "retrieval_reserve_seconds": 600
+    },
+    "effective_batch": 32,
+    "microbatch": 4,
+    "target_updates": 4216
+  },
+  "parameter_count": 7270290,
+  "parameter_tensors": 92,
+  "verification": {
+    "model_cpu": "verification/model_cpu.json",
+    "native_cpu": "verification/native_movie_cpu.json",
+    "focused_tests": 3,
+    "native_movie_frames": 45,
+    "gpu_profiled": false,
+    "trained": false
+  },
+  "protocol": "two_frame_cnn_visual_query_rvit_wholemodel_fresh_native_v1",
+  "architecture": "two_frame_cnn_visual_query_rvit",
+  "validation": {
+    "trials_per_condition": 100,
+    "schedule": "update100, every250updates thereafter, terminal",
+    "selection": "mean3conditionAUC thenBA thenearlier",
+    "repeat_draws": true,
+    "cost": "all plannedlooks included in measuredexposure pin"
+  },
+  "final": {
+    "trials_per_condition": 200,
+    "models": [
+      "selected",
+      "terminal"
+    ],
+    "fresh_paired_draws": true
+  }
+}

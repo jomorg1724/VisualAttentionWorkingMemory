@@ -1,0 +1,63 @@
+SpatialReadout: architecture and decision logic
+Source-audited technical paper
+4
+Exact spatial KDA: decay, corrective write, and read
+4.1
+What is parameterized at each scale
+The 32-channel projected ﬁeld passes through a biased 3 × 3 convolution with padding 1, producing 82 channels.
+These are reshaped to B × H × W × 2 × 41. For each head, the packed components are q8, k8, v16, α8, β1. Queries
+and keys are normalized by
+N(u) = u/ max(∥u∥2, 10−6),
+qt = N(˜qt),
+kt = N(˜kt).
+(2)
+The value is unconstrained; αt = σ(˜αt) and βt = σ(˜βt). Thus αt and βt are nonnegative sigmoid gates, not the
+signed coeﬃcients discussed below. Each head stores St ∈R8×16; the complete tensor is B × H × W × 2 × 8 × 16.
+All three scales begin with zero state in every call to the sequence model.[S1–S3]
+Suppress scale, site, head, and episode indices. With column vectors and Dt = diag(αt), the implementation is
+exactly
+¯St = DtSt−1,
+decay each key row,
+(3)
+et = vt −¯ST
+t kt,
+current-key prediction error,
+(4)
+St = ¯St + βtkteT
+t ,
+rank-one corrective write,
+(5)
+ot = ST
+t qt,
+read the updated state.
+(6)
+The two 16-dimensional reads are concatenated into 32 channels and passed through a biased 1 × 1 convolution,
+producing Os
+t . There is no softmax, output normalization, or extra nonlinearity within this emission. The 3 × 3
+packed-input convolution has 23,698 parameters, and the output convolution has 1,056: 24,754 per KDA module.[S3]
+4.2
+Connection to Kimi Delta Attention, without importing another model
+Expanding the error in Eq. (5) gives
+St = AtSt−1 + βtktvT
+t ,
+At = (I −βtktkT
+t )Dt.
+(7)
+This is the diagonal-gated delta-rule recurrence of Kimi Linear, Eq. 1 [1]. The ordering matters: decay precedes
+error correction, and the read uses the updated state.
+In general Dt and ktkT
+t do not commute.
+Describing a
+scalar-decay DeltaNet or moving decay after the correction would not specify this implementation.
+The relationship is mathematical, not architectural identity.
+This observer does not instantiate Kimi Linear’s
+language model, hybrid full-attention layers, mixture of experts, or chunkwise accelerator kernel. It uses a small,
+explicit, per-location spatial adaptation with two heads and sequential updates. The word “attention” in its name
+is not evidence for patch-to-patch competition.
+Initialization makes the nine gate outputs per head input-independent: gate convolution weights are zero, the eight
+decay biases are log 9, and the write bias is zero. Hence initially α = 0.9 and β = 0.5 everywhere. These parameters
+remain trainable; a ﬁxed initial retention is not a ﬁxed lifetime throughout learning. Other packed channels use
+ordinary constructor initialization.
+Takeaway. The memory stores local channel associations, writes the discrepancy from its current prediction, and
+reads after that correction.
+4

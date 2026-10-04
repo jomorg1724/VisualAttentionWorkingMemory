@@ -1,0 +1,67 @@
+SpatialReadout: architecture and decision logic
+Source-audited technical paper
+6
+Final spatial recurrence and terminal compression
+6.1
+The exact ConvGRU convention
+Let Ft = H3
+t ∥O3
+t ∈R160×7×7 denote the deepest concatenation (the three memory-bearing scales are indexed
+s = 1, 2, 3). A biased 1 × 1 projection gives zt ∈R64×7×7, with no activation or extra normalization. With h−1 = 0,
+the ﬁnal recurrent cell is
+[wt, rt] = σ(Wg ∗[zt ∥ht−1] + bg) ,
+(12)
+˜ht = tanh(Wc ∗[zt ∥(rt ⊙ht−1)] + bc) ,
+(13)
+ht = (1 −wt) ⊙ht−1 + wt ⊙˜ht.
+(14)
+The ﬁrst 64 channels of the gate output are write, and the next 64 are reset. A large wt replaces old state with the
+candidate; it is not the retention coeﬃcient. Reset is applied to the old hidden ﬁeld before the candidate convolution.
+Both convolutions have kernel 3, padding 1, stride 1. The gate convolution maps 128 →128 channels; the candidate
+maps 128 →64.[S1]
+Gated recurrent units provide learned retention and update paths [2]; convolutional variants replace dense spatial
+connectivity with spatially shared kernels [3]. Those precedents motivate the operation, but the local source is the
+authority for this particular reset placement and write convention. There is no separate state-to-encoder feedback
+connection. The ﬁnal hidden ﬁeld inﬂuences its own next update, not the upstream CNN or KDA modules.
+Both recurrent biases are explicitly zero. Conv/Linear weights use the ordinary PyTorch reset convention docu-
+mented in the model (Kaiming-uniform with a =
+√
+5); projection and readout biases retain their default fan-in-
+uniform initialization. Zero gate bias alone does not mean all initial gates equal 0.5, since their weights and inputs
+are nonzero. This diﬀers from the explicit zero gate weights used in KDA.
+6.2
+Compression occurs after the ﬁnal recurrent update
+After all T updates, the sole reported output is
+f = ReLU(Wf vec(hT −1) + bf),
+ℓa = Waf + ba,
+f ∈R256.
+(15)
+There is no temporal average, pooled spatial mean, intermediate classiﬁcation loss, dropout, ﬁnal LayerNorm, or
+ﬁnal global GRU. Flattening retains coordinate-speciﬁc inputs to a dense map, rather than making the decision
+translation-invariant. Only the linear head selected by the supplied task name is executed.
+Module
+Weight operation
+Parameters
+Spatial input
+Conv1, 160 →64
+10,304
+Gate convolution
+Conv3, 128 →128
+147,584
+Candidate convolution
+Conv3, 128 →64
+73,792
+Terminal readout
+Linear, 3136 →256
+803,072
+All 13 task heads
+Linear, 256 →Ka
+7,710
+All CNN blocks / KDA projections / KDA
+256, 992/9, 312/74, 262
+Complete model
+All trainable
+1,383,028
+Table 2: All biases and normalization aﬃne parameters are included. The ConvGRU has 221,376 parameters and
+a 3,136-scalar hidden state per episode.
+6

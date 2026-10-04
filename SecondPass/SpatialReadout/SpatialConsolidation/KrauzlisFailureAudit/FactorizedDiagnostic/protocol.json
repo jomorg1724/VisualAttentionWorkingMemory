@@ -1,0 +1,29 @@
+{
+  "status": "exploratory reused-test; no new independent confirmation",
+  "access": [
+    "final",
+    "phases"
+  ],
+  "features": "96 fixed projected coordinates plus quadratic upper triangle =4752",
+  "alphas": [
+    1.0,
+    100.0,
+    10000.0
+  ],
+  "selection": "validation paired balanced accuracy, first tie; no test choices",
+  "component_groups": 300,
+  "calibrator_groups": 125,
+  "targets": [
+    "event",
+    "side conditional on event",
+    "joint left/right/catch",
+    "cue",
+    "label"
+  ],
+  "bootstrap": 500,
+  "seed": 92401,
+  "control": "whole component group-pair label permutation",
+  "calibrator": "7 multilinear predicted cue/event/side terms, fitted only on independent 125 train groups",
+  "capacity": "matched final/phases; factorized auxiliary supervision differs from direct label-only",
+  "no_neural_extraction": true
+}

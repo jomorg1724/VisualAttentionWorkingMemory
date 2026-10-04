@@ -1,0 +1,61 @@
+SpatialReadout: architecture and decision logic
+Source-audited technical paper
+15
+Reproducibility and source map
+Reader question: how can a reader check the computation without running a trained model? The
+editable source, constructor audit, complete SHA-256 manifest, and PDF veriﬁcation receipts are colocated in this repository
+directory:
+SecondPass/SpatialReadout/ArchitecturePaper/
+Counts were obtained with PyTorch 2.8.0 on CPU with intra/inter-op threads limited to two. No checkpoint was loaded;
+no model forward/backward, dataset download, optimizer update, or accelerator operation was used. Shapes in Tables 1–2
+follow the actual constructor attributes and convolution output formula. Biases and GroupNorm aﬃne tensors are included;
+temporary inherited modules deleted by the subclass are excluded.
+Code
+Repository-relative authority and relevant content
+S1
+SecondPass/SpatialReadout/model.py, lines 13–51: ﬁnal cell, subclass, sequence reset, terminal head.
+S2
+WorkingMemory/PlainBaseline/accum.py, lines 40–75: blocks, projections, stacking, encoder; old vector readout.
+S3
+PreAttentiveVision/TemporalIntegration/accumulators.py, lines 19–66: KDA update, packing, initialization,
+states.
+S4
+SecondPass/SpatialReadout/FreshRun/worker.py: fresh constructor/provenance, Adam, precision, namespaces.
+S5
+SecondPass/SpatialReadout/ContinuationRun/worker.py and README.md in that directory: exact restore,
+source7739, authorized horizon.
+S6
+SecondPass/TaskSuite/catalog.json and suite.py: input contract, conditions, labels, head sizes.
+S7
+SecondPass/JointTraining/worker.py, update lines 51–90; core.py scheduler;
+SecondPass/SpatialComparisonReadout/CloudRun/worker.py, line65: reused update adapter, not a diﬀerent
+model.
+S8
+SecondPass/SpatialReadout/BRIEF.md, README.md; LabJournal/spatial-readout-convgru.md: historical intent
+and warm-start caveats.
+S9
+ANALYSIS_SOP.md: computational-observer interpretation and analysis safeguards.
+Identity and scope. The worktree was dirty at audit time, so a commit alone cannot identify the model. The full hash of S1
+is given below; source_manifest.json contains complete hashes of all 15 inspected authority ﬁles, and count_verification.
+json records every named tensor and count. This binds the paper to local ﬁles; it is not a claim that advancing cloud
+deployment ﬁles were independently rechecked.
+4f88ba0a0cf6abede416f1260a71bc13bfab5cfa51eb00d17e11369301f4d503
+Teaching checks. The original ten-page version is preserved in versions/v1_10page/. The revised transport notation
+replaces the formerly overloaded projection/propagator letter. toy_verification.json records exact rational decay, predic-
+tion, residual, correction, read, transition, and three-step unrolling checks. These are teaching calculations, not new model
+results.
+Build. Run python3 build.py here (Tectonic is conﬁgurable via TECTONIC). Run the CPU interpreter on verify_counts.py
+to refresh counts; run python3 verify_pdf.py for text, bounds, font, page, and rendering checks. The original model/training
+sources are not modiﬁed. The PDF receipt distinguishes automated checks from visual inspection. The local source snapshot,
+rather than an asserted latest checkpoint score, deﬁnes the report’s freshness.
+References
+[1] Kimi Team. Kimi Linear: An Expressive, Eﬃcient Attention Architecture. 2025. arXiv:2510.26692v2, Eq. 1. https://
+arxiv.org/html/2510.26692v2.
+[2] K. Cho, B. van Merrienboer, C. Gulcehre, D. Bahdanau, F. Bougares, H. Schwenk, and Y. Bengio. Learning Phrase
+Representations using RNN Encoder-Decoder for Statistical Machine Translation. EMNLP, 2014. https://arxiv.org/
+abs/1406.1078.
+[3] N. Ballas, L. Yao, C. Pal, and A. Courville. Delving Deeper into Convolutional Networks for Learning Video Representa-
+tions. ICLR, 2016. https://arxiv.org/abs/1511.06432.
+[4] Y. Wu and K. He. Group Normalization. 2018. https://arxiv.org/abs/1803.08494.
+[5] D. P. Kingma and J. Ba. Adam: A Method for Stochastic Optimization. ICLR, 2015. https://arxiv.org/abs/1412.6980.
+15

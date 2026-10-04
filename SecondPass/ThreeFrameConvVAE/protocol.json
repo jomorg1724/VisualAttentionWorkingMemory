@@ -1,0 +1,166 @@
+{
+  "architecture": "three_frame_convolutional_vae",
+  "status": "fresh model implemented; production evidence belongs to runtime receipts",
+  "parameter_count": 9507913,
+  "parameter_tensors": 126,
+  "initialization": "whole fresh model; no inherited learned weights, optimizer, RNG, streams or counters",
+  "input": {
+    "shape": [
+      "batch",
+      3,
+      3,
+      100,
+      100
+    ],
+    "dtype": "float32",
+    "ordering": "frame-major nine RGB channels; consecutive original frames",
+    "temporal_averaging": false
+  },
+  "encoder": {
+    "channels": [
+      32,
+      64,
+      128,
+      256
+    ],
+    "spatial_sizes": [
+      100,
+      50,
+      25,
+      13
+    ],
+    "residual_blocks_per_stage": 2,
+    "convolution_stride": 1,
+    "compression": "PixelUnshuffle2 plus learned3x3 projection",
+    "normalization": "GroupNorm8",
+    "activation": "GELU",
+    "padding": "replicate bottom/right25to26 before last compression"
+  },
+  "posterior": {
+    "distribution": "diagonal Gaussian",
+    "latent_shape": [
+      256,
+      13,
+      13
+    ],
+    "latent_elements": 43264,
+    "heads": "separate learned1x1 mu/logvar",
+    "logvar_bounds": [
+      -8,
+      4
+    ],
+    "training": "reparameterized standard-normal sample",
+    "evaluation": "deterministic mu by default"
+  },
+  "decoder": {
+    "input": "latent only; no input/encoder skip connection",
+    "upsampling": "learned3x3 convolution then PixelShuffle2",
+    "spatial_sizes": [
+      13,
+      26,
+      25,
+      50,
+      100
+    ],
+    "channels": [
+      256,
+      128,
+      64,
+      32
+    ],
+    "residual_blocks_per_stage": 2,
+    "output_channels": 9,
+    "output_activation": "sigmoid",
+    "output_shape": [
+      "batch",
+      3,
+      3,
+      100,
+      100
+    ]
+  },
+  "objective": {
+    "reconstruction": "per-trial/per-frame equally balanced foreground/background mean RGB-pixel MSE",
+    "foreground": "max_RGB(abs(target-0.5)) > 1/255",
+    "empty_region": "available region receives full weight",
+    "kl": "mean diagonal Gaussian KL per latent element",
+    "beta": 0.0001,
+    "beta_warmup": false,
+    "full_image_mse": "reported separately",
+    "standard_unweighted_pixel_ELBO": false,
+    "additional_motion_or_response_loss": false
+  },
+  "learned_groups": [
+    "encoder.",
+    "mu_head.",
+    "logvar_head.",
+    "decoder."
+  ],
+  "features": {
+    "method": "encode(triplets,sample=False)",
+    "shape": [
+      "batch",
+      256,
+      13,
+      13
+    ],
+    "purpose": "candidate input for later response architecture, not yet tested"
+  },
+  "implementation": {
+    "precision": "fp32",
+    "autocast": false,
+    "checkpoint_encoder": true,
+    "checkpoint_decoder": true,
+    "checkpoint_use_reentrant": false
+  },
+  "data": {
+    "source": "SecondPass.SingleStimulusRViT.stimuli.SingleStimulusStream",
+    "cue": false,
+    "second_stimulus": false,
+    "original_movie_lengths": [
+      29,
+      37,
+      45
+    ],
+    "response_labels_used": false,
+    "consecutive_window_policy": "Each movie presentation draws one uniform consecutive triplet wholly within active frames7..T-2; evaluation uses3 independent distinct windows per movie"
+  },
+  "execution": {
+    "placement": "one local MPS worker, parent-owned",
+    "cpu_threads_max": 2,
+    "exposure": "prospectively pinned from disposable native profile; see immutable runtime allocation",
+    "accelerator_launch_from_model_agent": false
+  },
+  "protocol": "three_frame_conv_vae_spatial256x13x13_fresh_single_stimulus_pool1000_epoch10_local_v1",
+  "training": {
+    "target_requested_updates": 10000,
+    "effective_batch": 32,
+    "microbatch": 4,
+    "optimizer": "Adam",
+    "lr": 0.0001,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "eps": 1e-08,
+    "weight_decay": 0,
+    "clipping": null,
+    "replay_pool_movies": 1000,
+    "replay_epochs": 10,
+    "updates_per_pool": 330,
+    "profile_state_discarded": true,
+    "pinning": "Complete330-update pools prospectively measured within fixed local cap"
+  },
+  "validation": {
+    "movies_per_condition": 64,
+    "windows_per_movie": 3,
+    "selection": "validation reconstruction loss; grouped by movie",
+    "deterministic_mu": true
+  },
+  "final_test": {
+    "movies_per_condition": 128,
+    "windows_per_movie": 3,
+    "paired_selected_terminal": true,
+    "deterministic_mu": true
+  }
+}

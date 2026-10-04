@@ -1,0 +1,22 @@
+{
+  "protocol": "single_sequence_patch_kda_cls_wholemodel_fresh_native_v1",
+  "architecture": "single_sequence_patch_kda_cls",
+  "kda_layers": 1,
+  "parameter_count": 158340,
+  "task": "krauzlis_cued_motion",
+  "renderer": "unchanged WorkingMemory.SpatialTaskBattery.stimuli.SpatialBatteryStream",
+  "conditions": ["B12", "B20", "B28"],
+  "native_changes_degrees": [26, 28],
+  "frames": [29, 37, 45],
+  "target_foil_catch_per100": [57, 29, 14],
+  "initialization": "fresh wholemodel, Adam, model RNG, scheduler and task-local streams; zero counters; no profile transfer",
+  "optimization": {"optimizer": "Adam", "lr": 0.0001, "betas": [0.9, 0.999], "eps": 1e-8, "weight_decay": 0, "clip": null, "effective_batch": 32, "microbatch": 4, "precision": "fp32", "tf32": false, "full_temporal_gradients": true},
+  "target_updates": 10000,
+  "minimum_useful_updates": 1000,
+  "pin": "before production from six native updates and20evaltrials percondition, with measured margins and bothfinaltests",
+  "validation": {"looks": ["midpoint", "terminal"], "trials_per_condition": 100, "selection": "mean threecondition AUC; then balancedaccuracy; earlier checkpoint ties"},
+  "final": {"trials_per_condition": 200, "models": ["selected", "terminal"], "pairing": "identical fresh tasklocal final streams"},
+  "cloud_cap": {"wall_seconds_from_creation": 28800, "maximum_total_dollars": 5, "retrieval_reserve_seconds": 600},
+  "safety": "parent owns cloud APIs, absolute independent stop guard, offpod status, artifact mirror; no renewals or restarts",
+  "readiness": "persisted checkpoint3 after fresh directconstructor equality, allparameters changed, named Adamsteps, native streams and scheduler advanced"
+}

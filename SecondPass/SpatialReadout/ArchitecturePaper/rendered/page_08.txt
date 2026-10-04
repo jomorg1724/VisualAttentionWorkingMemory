@@ -1,0 +1,74 @@
+SpatialReadout: architecture and decision logic
+Source-audited technical paper
+8
+From three updates to a temporal read decomposition
+Reader question: how can an earlier value still contribute now? Start at zero and substitute the preceding
+state, one update at a time:
+S−1 = 0,
+(24)
+S0 = A0 0 + J0 = J0,
+(25)
+S1 = A1S0 + J1 = A1J0 + J1,
+(26)
+S2 = A2S1 + J2 = A2(A1J0 + J1) + J2
+(27)
+= A2A1J0 + A2J1 + J2.
+(28)
+The value introduced at time 0 passes through transitions 1 and 2; the value introduced at time 1 passes only
+through transition 2. The current write has no later transition to pass through. This pattern, not an independently
+assumed matrix, motivates a name for the intervening product.
+Deﬁnition after the expansion. For source time τ ≤t, deﬁne the retention transport Tt←τ ∈R8×8:
+Tt←τ = AtAt−1 · · · Aτ+1
+(τ < t),
+Tt←t = I8.
+(29)
+The rightmost transition acts ﬁrst. An empty product means identity: a current write is included unchanged, not
+multiplied by At again and not acted on by future transitions. T is a derived diagnostic along an observed episode,
+not a learned weight; T remains the sequence length.
+St =
+t
+X
+τ=0
+Tt←τJτ =
+t
+X
+τ=0
+Tt←τβτkτvT
+τ .
+(30)
+The sum merely groups the terms visible at t = 2. Substitution proves the same pattern at the next time: multiply
+every existing term by At+1 and append Jt+1.
+8.1
+Transpose the state to obtain a scalar coeﬃcient
+The read is ot = ST
+t qt. For one source term, reversing order on transposition gives
+(Tt←τβτkτvT
+τ )Tqt = vτ βτkT
+τ TT
+t←τqt
+(31)
+= vτ βτqT
+t Tt←τkτ
+|
+{z
+}
+ct,τ is one scalar
+.
+(32)
+The last equality uses the fact that a scalar equals its transpose. Shapes are 1 × 8, 8 × 8, and 8 × 1, yielding one
+number. Therefore
+ot =
+t
+X
+τ=0
+ct,τvτ,
+ct,τ = βτqT
+t Tt←τkτ.
+(33)
+In the worked example, c1,0 = −3/50 and c1,1 = 2/5, giving (−3/50)(2, 4)T + (2/5)(2, 0)T = (17/25, −6/25)T. A
+negative coeﬃcient is legal, and these coeﬃcients do not sum to one. They are not attention probabilities over
+patches or an attribution of the ﬁnal decision: they decompose one head/site’s pre-output read, conditional on the
+realized features and gates. Changing an image can change all those quantities, including later-scale inputs.
+Takeaway. Transport is just the product of the transitions that a past write encounters. The coeﬃcients explain
+a realized local read, not a full counterfactual observer.
+8

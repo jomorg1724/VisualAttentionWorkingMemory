@@ -1,23 +1,33 @@
 # Visual Attention and Working Memory
 
-[Next-agent handoff](HANDOFF.md).
+A research project on visual representations, motion, attention and working memory. Jeremy Wolfe's Guided Search 6.0 is a functional scaffold; the diffuser is omitted. Treating activated long-term memory as synaptic weights is a modeling approximation. Individual successful components do not establish a complete biological implementation.
 
-A fresh component-by-component project using [Jeremy Wolfe's Guided Search6.0](https://pmc.ncbi.nlm.nih.gov/articles/PMC8965574/) as a functional scaffold.
+## Current result — October 4, 2026
 
-- **PreAttentiveVision:** first component; compare convolutional encoders on two-frame sensory tasks, starting with four-way random-dot motion direction classification.
-- **Sensory temporal integration:** completed comparison of three causal accumulators; the opponent model is the current sensory reference. See [design and execution allocation](PreAttentiveVision/TemporalIntegration/README.md).
-- **Memory capacity battery:** completed with the opponent model and all learned weights unfrozen. See [results](WorkingMemory/report.md). New sequence rules were weak even at minimal delays, so this run did not cleanly isolate memory capacity.
-- **Visual working memory:** the LSTM/E/I comparison is complete. Frozen-state diagnostics, readout refitting and retention training followed; a spatial E/I competitor then substantially improved feature-location binding while exposing a motion trade-off. See the [lab journal chronology](LabJournal/CHRONOLOGY.md) for the evidence and decisions.
-- **Visual attention:** pre-update joint sensory/memory attention is implemented and trained. It substantially improved delayed orientation, with motion regressions that prompted targeted diagnostics and the current training-allocation comparison. This is a component experiment, not a complete visual-search system.
-- **Current state (2026-09-16):** the lineage is closed as a failure. Every
-  from-scratch arm on the five-task battery stayed at chance, including on
-  tasks the warm-started models had solved; the warm starts had hidden that
-  the stack could not learn end to end. Nothing is training. The next phase
-  keeps the tasks as benchmarks, audits the environments and training logic,
-  and rebuilds from first principles with all weights trainable. See
-  [HANDOFF.md](HANDOFF.md) and [current status](LabJournal/CURRENT_STATUS.md).
-- **Integration:** later, as components become useful.
+A **fresh angular-contrastive CNN solved the simplified before/after motion comparison**: 100% balanced accuracy and AUC 1.000 on 3,072 held-out test presentations, spanning three speeds and 26°/28° direction changes. Those presentations contain 1,536 paired nuisance contexts. The network receives three ordered frames per clip, encodes them to a 128-dimensional vector, and learns an angularly graded distance objective from simulator-provided direction labels. At test time, embedding distance and one validation-selected threshold determine the change decision.
 
-The diffuser is excluded. Activated long-term memory is provisionally represented by synaptic weights, as requested by the user. These choices do not claim a complete implementation or neuroscientific validation of GS6.
+This is **not a result on the original cued, distractor-containing Krauzlis task**. The successful task uses full-field, persistent, constant-velocity dots with periodic wrapping. One training seed was run. Earlier native-task failures, the successful next-frame predictor, and the failed frozen-encoder FFN are preserved in the research record.
 
-Sensory work and results belong in [PreAttentiveVision](PreAttentiveVision/); memory experiments belong in [WorkingMemory](WorkingMemory/). The previous repository, including Git history, was deleted; this is a new repository.
+All current local training has finished. The latest cloud jobs were retrieved and deleted. Documentation and repository publication do not authorize a new training run.
+
+| Start here | Purpose |
+|---|---|
+| [Latest technical report](SecondPass/AngularContrastiveMotion/TECHNICAL_REPORT.md) | Architecture, exact loss/force, dataset, training, selection, results and limits |
+| [Latest result](SecondPass/AngularContrastiveMotion/FINAL_REPORT.md) | Compact final tables and saved evidence |
+| [Research history](LabJournal/RESEARCH_HISTORY.md) | What was explored, what failed, what changed and what is supported |
+| [Experiment catalog](LabJournal/EXPERIMENT_CATALOG.md) | Linked inventory of experiments, diagnostics, plans and lineages |
+| [Current status](LabJournal/CURRENT_STATUS.md) | Authoritative present state |
+| [Lab journal](LabJournal/README.md) | Detailed experiment pages and chronology |
+| [Artifacts and reproduction](LabJournal/ARTIFACTS.md) | What is versioned, what remains local and how to reproduce the current model |
+| [Second-pass implementations](SecondPass/README.md) | CNN, KDA, recurrent, motion-energy, predictive and contrastive models |
+
+## Repository organization
+
+- [PreAttentiveVision](PreAttentiveVision/README.md): two-frame sensory encoders, the seven-task comparison and temporal accumulation.
+- [WorkingMemory](WorkingMemory/TASK_BATTERY.md): memory/attention comparisons and diagnostic studies.
+- [SecondPass](SecondPass/README.md): post-reset baselines, the unified task suite, later Krauzlis experiments and the new motion-learning sequence.
+- [LabJournal](LabJournal/README.md): evidence-grounded history, including negative, interrupted and design-only experiments.
+
+The reset is a boundary: deleted predecessor implementations/results are not reconstructed. The earlier [handoff](HANDOFF.md) remains a dated record of the failed lineage, rather than the current conclusion about every new architecture. Fresh initialization is the default for new architectures; trained weights are used only where explicitly requested and documented.
+
+Research code, documentation, figures, saved scalar results and run receipts are versioned. Model checkpoints remain local under the existing `*.pt` exclusion. Browser binaries, compiler caches and disposable test directories are excluded; no research checkpoint was deleted for this publication.

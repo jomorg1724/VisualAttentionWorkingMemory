@@ -1,0 +1,11 @@
+# October 4 research-record publication
+
+User requested a complete record of the latest contrastive trial, a consolidation of everything tried/explored in the preserved project, then commit/push/merge of the repository.
+
+The latest report documents architecture, simulator-angle supervision, force mathematics, splits/pairing, optimization, exposures, validation-only threshold, selected versus latest checkpoints, six final cells, limitations and saved learning curves. The catalog and research history cover all retained numbered experiments and later native-motion/reconstruction/predictive/contrastive branches, distinguishing fresh initialization, transferred weights, cancellations, diagnostics, plans and unbound endpoints.
+
+Current indexes/status/architecture/open questions were rewritten; superseded text is archived. Negative results and source/result artifacts remain. All nonignored research files are included, including stimulus/demo data, report archives and source-only deployment snapshots. Only generated browser/compiler/test caches, duplicate stdout and existing checkpoint/feature exclusions are omitted from Git; their local files are not deleted.
+
+A focused read-only review found no actual test-threshold leak in the completed contrastive run. Two entry-point guards were added after training: reject an existing FFN attempt and reject a missing test threshold. Both executable behavioral tests pass. All780 newly staged Python source files compiled without syntax errors. Active documentation links and saved-result denominators were checked. Credential-pattern scans reported no candidates; values were never printed. No GPU inference, model training, cloud provision or checkpoint deletion ran during documentation. Matplotlib was installed only to generate plots from saved scalar logs.
+
+Reference [publication check](publication_check_20261004.json), [technical report](../SecondPass/AngularContrastiveMotion/TECHNICAL_REPORT.md), [catalog](EXPERIMENT_CATALOG.md), [history](RESEARCH_HISTORY.md) and [artifacts](ARTIFACTS.md). These checks support this research-record publication; they are not a claim that every historical architecture was rerun or that the native Krauzlis problem is solved.

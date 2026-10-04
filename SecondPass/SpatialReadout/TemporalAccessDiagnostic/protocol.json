@@ -1,0 +1,107 @@
+{
+  "checkpoint": "/Users/jonathanmorgan/VAWMRuntime/final_convgru_01/run_continuation_v2/terminal.pt",
+  "checkpoint_sha256": "1826a67acdebcf2f979f614c09131afefdf1920b5dff914784a34bf150c9a841",
+  "step": 6760,
+  "tasks": [
+    "orientation_cued",
+    "spatial_binding"
+  ],
+  "layers": [
+    "gru",
+    "readout",
+    "early"
+  ],
+  "access": [
+    "final_only",
+    "time_separated"
+  ],
+  "train": 1024,
+  "decoder_fit": [
+    0,
+    512
+  ],
+  "calibration_fit": [
+    512,
+    1024
+  ],
+  "validation": 256,
+  "fresh_test_per_task": 512,
+  "test_seeds": {
+    "orientation_cued": 993170000,
+    "spatial_binding": 993270000
+  },
+  "alphas": [
+    0.1,
+    1.0,
+    10.0,
+    100.0
+  ],
+  "threshold": 0.5,
+  "bootstrap": {
+    "seed": 7319501,
+    "resamples": 2000,
+    "method": "paired label-stratified whole-episode percentile"
+  },
+  "cap_seconds": 1200,
+  "renewable": false,
+  "main_updates": 0,
+  "source_hashes": {
+    "/Users/jonathanmorgan/Desktop/VisualAttentionWorkingMemory/SecondPass/SpatialReadout/model.py": "4f88ba0a0cf6abede416f1260a71bc13bfab5cfa51eb00d17e11369301f4d503",
+    "/Users/jonathanmorgan/Desktop/VisualAttentionWorkingMemory/WorkingMemory/PlainBaseline/accum.py": "a51d0466b7c3f79790536cfbc6eb3294be292e2c6aa957c94600d5d6458d1508",
+    "/Users/jonathanmorgan/Desktop/VisualAttentionWorkingMemory/PreAttentiveVision/TemporalIntegration/accumulators.py": "93706e822f9d0114f544392736bb4ef830cdbe2fc580034e48c0495658f333d7",
+    "/Users/jonathanmorgan/Desktop/VisualAttentionWorkingMemory/WorkingMemory/SpatialTaskBattery/stimuli.py": "16b7efd4575eba27b9a79329243dcce0da635008856687a9e62bda72b5ddeb37",
+    "/Users/jonathanmorgan/Desktop/VisualAttentionWorkingMemory/WorkingMemory/stimuli.py": "c5a6c6d1c2aa38e3b418e09a9d6c03bd022112d5ece4b5384c5336d9f592c127",
+    "/Users/jonathanmorgan/Desktop/VisualAttentionWorkingMemory/SecondPass/TaskSuite/suite.py": "22eaaa3bac77efc95beda13014ca2de012f735afe78a023ccea3951c0767f04f",
+    "/Users/jonathanmorgan/Desktop/VisualAttentionWorkingMemory/SecondPass/TaskSuite/catalog.json": "e4a342024c9bed16aa04ea741499e49c30232670b14da61cb82c02ccbf64d69a",
+    "/Users/jonathanmorgan/Desktop/VisualAttentionWorkingMemory/SecondPass/SpatialReadout/FeatureDiagnostic/run.py": "e8e035da0789da9ef15d9ee061d732f84542256f973405f4386ad70e1c585695",
+    "/Users/jonathanmorgan/Desktop/VisualAttentionWorkingMemory/SecondPass/SpatialReadout/TemporalAccessDiagnostic/run.py": "07e01f76592f25d687cf3982e95cfd5ec40b8684ff0fd8792c6bba2d8f62e6db",
+    "/Users/jonathanmorgan/Desktop/VisualAttentionWorkingMemory/SecondPass/SpatialReadout/TemporalAccessDiagnostic/verify.py": "a98b38090c1595398f4144b57414cdddec6f9652db6624660f139addd0a6b333",
+    "/Users/jonathanmorgan/Desktop/VisualAttentionWorkingMemory/SecondPass/SpatialReadout/TemporalAccessDiagnostic/test_access.py": "d2f5058cc30aeb56e32d537f4b6814cb0a9c3d6b1dfc6d4832319d1f0894265d"
+  },
+  "train_val_feature_records": [
+    {
+      "task": "orientation_cued",
+      "split": "train",
+      "n": 1024,
+      "seed": 88000000,
+      "path": "/Users/jonathanmorgan/Desktop/VisualAttentionWorkingMemory/SecondPass/SpatialReadout/FeatureDiagnostic/features/orientation_cued_train.npz",
+      "sha256": "b62edbc2da80fadc8bdd0f1514ba164a17d5488acb62d33fa58453d2821bbc3b",
+      "parity": [
+        0.0
+      ]
+    },
+    {
+      "task": "orientation_cued",
+      "split": "val",
+      "n": 256,
+      "seed": 88001000,
+      "path": "/Users/jonathanmorgan/Desktop/VisualAttentionWorkingMemory/SecondPass/SpatialReadout/FeatureDiagnostic/features/orientation_cued_val.npz",
+      "sha256": "dd40a66106f0add7d0e08241fdfa4505db9f0401869a0815d1cb69dc15c76cbf",
+      "parity": [
+        0.0
+      ]
+    },
+    {
+      "task": "spatial_binding",
+      "split": "train",
+      "n": 1024,
+      "seed": 88100000,
+      "path": "/Users/jonathanmorgan/Desktop/VisualAttentionWorkingMemory/SecondPass/SpatialReadout/FeatureDiagnostic/features/spatial_binding_train.npz",
+      "sha256": "3c1b95ce78c156804d59abed74f527eb1a82b9cdd569ebfcd347cc12b2f88b34",
+      "parity": [
+        0.0
+      ]
+    },
+    {
+      "task": "spatial_binding",
+      "split": "val",
+      "n": 256,
+      "seed": 88101000,
+      "path": "/Users/jonathanmorgan/Desktop/VisualAttentionWorkingMemory/SecondPass/SpatialReadout/FeatureDiagnostic/features/spatial_binding_val.npz",
+      "sha256": "6127c615f890ab1f0c2d92cbeaa6887f8bc717abbdb9e9ea50af2f9b2900a002",
+      "parity": [
+        0.0
+      ]
+    }
+  ]
+}

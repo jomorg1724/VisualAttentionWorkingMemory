@@ -1,0 +1,25 @@
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{needspace}
+\definecolor{ink}{HTML}{163B4A}
+\definecolor{muted}{HTML}{54717B}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\sffamily\scriptsize\color{muted} NEUROSCIENCE RESEARCH COMPANION}
+\fancyhead[R]{\sffamily\scriptsize\color{muted} HYPOTHESES, NOT MODEL RESULTS}
+\fancyfoot[R]{\sffamily\small\thepage}
+\setlength{\headheight}{15pt}
+\titleformat{\section}{\sffamily\Large\bfseries\color{ink}}{}{0pt}{}
+\titleformat{\subsection}{\sffamily\large\bfseries\color{ink}}{}{0pt}{}
+\titlespacing*{\section}{0pt}{18pt}{10pt}
+\titlespacing*{\subsection}{0pt}{12pt}{6pt}
+\setlength{\parskip}{6pt}\setlength{\parindent}{0pt}
+\setlength{\emergencystretch}{3em}
+\renewcommand{\arraystretch}{1.15}
+\AtBeginEnvironment{longtable}{\small}
+\widowpenalty=10000\clubpenalty=10000
+\let\oldsection\section
+\renewcommand{\section}{\Needspace{8\baselineskip}\oldsection}
+\let\oldsubsection\subsection
+\renewcommand{\subsection}{\Needspace{6\baselineskip}\oldsubsection}
+\let\oldtableofcontents\tableofcontents
+\renewcommand{\tableofcontents}{\oldtableofcontents\clearpage}

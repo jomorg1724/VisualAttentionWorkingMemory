@@ -1,0 +1,35 @@
+EXTRACT train pixels 100 elapsed 216.7
+EXTRACT train pixels 200 elapsed 218.3
+EXTRACT train pixels 300 elapsed 220.0
+EXTRACT train pixels 400 elapsed 221.5
+EXTRACT train pixels 500 elapsed 223.1
+EXTRACT train pixels 600 elapsed 224.7
+EXTRACT val pixels 100 elapsed 226.3
+Traceback (most recent call last):
+  File "/Users/jonathanmorgan/Desktop/VisualAttentionWorkingMemory/SecondPass/SpatialReadout/SpatialConsolidation/KrauzlisFailureAudit/MotionReadoutDiagnostic/run_motion.py", line 159, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/Users/jonathanmorgan/Desktop/VisualAttentionWorkingMemory/SecondPass/SpatialReadout/SpatialConsolidation/KrauzlisFailureAudit/MotionReadoutDiagnostic/run_motion.py", line 108, in main
+    gate=all(tests.values());d.dump(OUT/'adequacy_gate.json',dict(passed=gate,tests=tests,paired_gain_ci95=gainci.tolist(),metric_order=['event_ba','event_auc','side_ba','side_auc'],time=time.time(),neural_features_extracted=False));print('GATE',gate,tests,real,flush=True)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jonathanmorgan/Desktop/VisualAttentionWorkingMemory/SecondPass/SpatialReadout/SpatialConsolidation/KrauzlisFailureAudit/FrozenDiagnostic/diagnostic.py", line 20, in dump
+    def dump(p,x):Path(p).write_text(json.dumps(x,indent=2,allow_nan=False)+'\n')
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jonathanmorgan/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/Users/jonathanmorgan/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/Users/jonathanmorgan/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/json/encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "/Users/jonathanmorgan/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/Users/jonathanmorgan/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/Users/jonathanmorgan/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/Users/jonathanmorgan/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type bool is not JSON serializable

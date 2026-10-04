@@ -1,0 +1,23 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+____ test_inventory_rejects_missing_duplicate_extra_and_invented_ring_delay ____
+
+    def test_inventory_rejects_missing_duplicate_extra_and_invented_ring_delay():
+>       v = validator()
+
+SecondPass/TaskSuite/Demo/tests/test_manifest.py:25: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def validator():
+        name = 'SecondPass.TaskSuite.Demo.validate_assets'
+>       assert importlib.util.find_spec(name) is not None, 'Atlas coverage validator is missing'
+E       AssertionError: Atlas coverage validator is missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x1035610d0>('SecondPass.TaskSuite.Demo.validate_assets')
+E        +    where <function find_spec at 0x1035610d0> = <module 'importlib.util' from '/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/importlib/util.py'>.find_spec
+E        +      where <module 'importlib.util' from '/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/importlib/util.py'> = importlib.util
+
+SecondPass/TaskSuite/Demo/tests/test_manifest.py:14: AssertionError
+=========================== short test summary info ============================
+FAILED SecondPass/TaskSuite/Demo/tests/test_manifest.py::test_inventory_rejects_missing_duplicate_extra_and_invented_ring_delay
+1 failed in 0.02s

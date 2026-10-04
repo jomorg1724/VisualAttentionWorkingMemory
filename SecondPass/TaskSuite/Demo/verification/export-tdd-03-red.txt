@@ -1,0 +1,15 @@
+.F                                                                       [100%]
+=================================== FAILURES ===================================
+___ test_explicit_native_requirements_and_coverage_do_not_trust_claimed_tags ___
+
+    def test_explicit_native_requirements_and_coverage_do_not_trust_claimed_tags():
+        v = validator()
+>       assert hasattr(v, 'coverage_map'), 'Native variant coverage map is missing'
+E       AssertionError: Native variant coverage map is missing
+E       assert False
+E        +  where False = hasattr(<module 'SecondPass.TaskSuite.Demo.validate_assets' from '/Users/jonathanmorgan/Desktop/VisualAttentionWorkingMemory/SecondPass/TaskSuite/Demo/validate_assets.py'>, 'coverage_map')
+
+SecondPass/TaskSuite/Demo/tests/test_manifest.py:44: AssertionError
+=========================== short test summary info ============================
+FAILED SecondPass/TaskSuite/Demo/tests/test_manifest.py::test_explicit_native_requirements_and_coverage_do_not_trust_claimed_tags
+1 failed, 1 passed in 0.02s

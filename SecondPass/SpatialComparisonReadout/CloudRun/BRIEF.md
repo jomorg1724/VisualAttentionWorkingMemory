@@ -1,0 +1,13 @@
+# Cloud candidate training, v1
+
+Authorization supersedes the canceled local two-arm run only for the candidate. Train the existing `ComparisonReadout` on one cloud GPU, not the canceled control or local GPU. No new model architecture, stimuli, labels, cues, loss, curriculum or optimization recipe.
+
+- Immutable parent: terminal6760, SHA256 `1826a67acdebcf2f979f614c09131afefdf1920b5dff914784a34bf150c9a841`.
+- Candidate adds the existing 12,416-parameter spatial comparison residual. Carry remains native ConvGRU hidden state. Initialize residual output to zero. Inherit named Adam, scheduler, native streams, CPU/NumPy/Python RNG; retain source MPS RNG as provenance and initialize CUDA generator with seed95492763. Save/restore all CUDA RNG state thereafter; no bitwise MPS/CUDA equivalence claim.
+- All learned parameters trainable, original single-group Adam1e-4, effective batch32/micro4, fp32 full BPTT, no clipping, TF32 disabled. All13 tasks/35 cells unchanged.
+- Target2600 additional updates (83,200episodes;200 updates/6,400episodes per task), prospectively reduced only by complete13-update cycles if measured finite-budget fit requires. Profile state is entirely discarded.
+- One bounded disposable13-task cycle through the actual CUDA launcher; validation8 timing across all35 cells. Prior5070-update per-cell timings are scaled by matched per-task CUDA ratios. Train margin1.25, evaluation margin1.35,900s overhead,600s retrieval reserve. Pin allocation before production; no extension.
+- Parent provisions RTX4090 24GB because cheaper24GB cards unavailable: pod creation2026-09-27T09:34:36.695Z;8h hard deadline17:34:36.695Z, compute supervisor ends17:24:36.695Z. GPU rate$0.74/h ($5.92 maximum GPU plus storage); parent owns independent infrastructure stop/retrieval/cleanup.
+- Selection: reused verified baseline validation (namespace95192763; no new peek), scheduled midpoint/terminal only, target8 mean AUC then suite mean AUC, earlier ties; parent remains fallback. Fresh final draws relative to completed ConvGRU use existing comparison namespace95292763. Terminal and selected final tests all35 cells at128/cell,200/Krauzlis; exact-model deduplication allowed. Empty recognition specificity and Krauzlis event strata separate.
+
+This is a single-arm warm-start acquisition experiment, not a controlled architecture comparison, causal mechanism test, fresh-weight learnability test, or biological attention claim. Preserve every older run and frozen source digest. `cloud_completion.json` records actual/pinned/requested exposure and a SHA256 artifact manifest, including terminal/selected/latest state and reports. Partial coverage/errors are explicit; no auto-restart.

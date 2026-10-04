@@ -1,0 +1,68 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyperFirstAtBeginDocument{\AtBeginDocument}
+\HyperFirstAtBeginDocument{\ifx\hyper@anchor\@undefined
+\global\let\oldcontentsline\contentsline
+\gdef\contentsline#1#2#3#4{\oldcontentsline{#1}{#2}{#3}}
+\global\let\oldnewlabel\newlabel
+\gdef\newlabel#1#2{\newlabelxx{#1}#2}
+\gdef\newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
+\AtEndDocument{\ifx\hyper@anchor\@undefined
+\let\contentsline\oldcontentsline
+\let\newlabel\oldnewlabel
+\fi}
+\fi}
+\global\let\hyper@last\relax 
+\gdef\HyperFirstAtBeginDocument#1{#1}
+\providecommand*\HyPL@Entry[1]{}
+\HyPL@Entry{0<</S/D>>}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Scope and scientific question}{1}{section.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}End-to-end computation and notation}{2}{section.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces One causal time step, repeated for every presented frame. Side branches emit 32 channels and retain separate matrix states; they are not global attention layers. Loops indicate state carried from the preceding update. The last readout is applied only after the final step. Batch dimensions are omitted within the diagram.}}{2}{figure.1}\protected@file@percent }
+\citation{gn}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Sensory interface and the multiscale encoder}{3}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Causal frame stacking has a specific boundary condition}{3}{subsection.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Four blocks, three interleaved memories}{3}{subsection.3.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Constructor-verified counts; output sizes are analytically propagated from the actual convolution attributes. Each projection is a biased $1\times 1$ convolution. No trained forward pass was needed.}}{3}{table.1}\protected@file@percent }
+\citation{kda}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Exact spatial KDA: decay, corrective write, and read}{4}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}What is parameterized at each scale}{4}{subsection.4.1}\protected@file@percent }
+\newlabel{eq:decay}{{3}{4}{What is parameterized at each scale}{equation.4.3}{}}
+\newlabel{eq:write}{{5}{4}{What is parameterized at each scale}{equation.4.5}{}}
+\newlabel{eq:read}{{6}{4}{What is parameterized at each scale}{equation.4.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Connection to Kimi Delta Attention, without importing another model}{4}{subsection.4.2}\protected@file@percent }
+\newlabel{eq:transition}{{7}{4}{Connection to Kimi Delta Attention, without importing another model}{equation.4.7}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}What KDA remembers---and what its coefficients mean}{5}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Error correction rather than indiscriminate accumulation}{5}{subsection.5.1}\protected@file@percent }
+\newlabel{eq:interpolation}{{8}{5}{Error correction rather than indiscriminate accumulation}{equation.5.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Signed temporal coefficients}{5}{subsection.5.2}\protected@file@percent }
+\newlabel{eq:coeff}{{11}{5}{Signed temporal coefficients}{equation.5.11}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}State footprint and spatial interpretation}{5}{subsection.5.3}\protected@file@percent }
+\citation{gru}
+\citation{convgru}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Final spatial recurrence and terminal compression}{6}{section.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}The exact ConvGRU convention}{6}{subsection.6.1}\protected@file@percent }
+\newlabel{eq:gates}{{12}{6}{The exact ConvGRU convention}{equation.6.12}{}}
+\newlabel{eq:convgru}{{14}{6}{The exact ConvGRU convention}{equation.6.14}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Compression occurs after the final recurrent update}{6}{subsection.6.2}\protected@file@percent }
+\newlabel{eq:head}{{15}{6}{Compression occurs after the final recurrent update}{equation.6.15}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces All biases and normalization affine parameters are included. The ConvGRU has 221,376 parameters and a 3,136-scalar hidden state per episode.}}{6}{table.2}\protected@file@percent }
+\citation{adam}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Task interface and current training lineage}{7}{section.7}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Exact catalog identifiers and class counts. Binary heads do not all mean ``change versus no change.'' The 13 tasks comprise 35 catalog conditions.\leavevmode {\color  {accent}\textsf  {[S6]}}}}{7}{table.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8}Design decisions: intended problem and evidential limit}{8}{section.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.1}Why move recurrence ahead of global compression?}{8}{subsection.8.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.2}A decision ledger}{8}{subsection.8.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces The retained/replaced modules are documented decisions. Mechanistic purposes in the middle column are computational interpretations unless explicitly described as scope; the right column prevents those interpretations becoming causal claims.}}{8}{table.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.3}Why the two recurrent mechanisms are not redundant by definition}{8}{subsection.8.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {9}Interpretation, limitations, and discriminating tests}{9}{section.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.1}An approximate computational observer, not a primate circuit}{9}{subsection.9.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.2}What the architecture audit can and cannot establish}{9}{subsection.9.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.3}Tests that would resolve specific design uncertainties}{9}{subsection.9.3}\protected@file@percent }
+\bibcite{kda}{1}
+\bibcite{gru}{2}
+\bibcite{convgru}{3}
+\bibcite{gn}{4}
+\bibcite{adam}{5}
+\@writefile{toc}{\contentsline {section}{\numberline {10}Reproducibility and source map}{10}{section.10}\protected@file@percent }
+\gdef \@abspage@last{10}

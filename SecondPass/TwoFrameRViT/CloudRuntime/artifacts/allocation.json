@@ -1,0 +1,51 @@
+{
+  "max_steps": 4216,
+  "target_requested": 4216,
+  "minimum_useful_updates": 1000,
+  "exposure_reduced": false,
+  "total_episodes": 134912,
+  "validation_steps": [
+    100,
+    250,
+    500,
+    750,
+    1000,
+    1250,
+    1500,
+    1750,
+    2000,
+    2250,
+    2500,
+    2750,
+    3000,
+    3250,
+    3500,
+    3750,
+    4000,
+    4216
+  ],
+  "planned_validation_looks": 18,
+  "checkpoint_every": 100,
+  "planned_exposure": {
+    "B12": {
+      "updates": 1405,
+      "episodes": 44960
+    },
+    "B20": {
+      "updates": 1405,
+      "episodes": 44960
+    },
+    "B28": {
+      "updates": 1406,
+      "episodes": 44992
+    }
+  },
+  "estimated_optimizer_seconds": 19772.037731242366,
+  "estimated_total_remaining_seconds": 25966.604085632367,
+  "slower_150pct_seconds": 30909.61351844296,
+  "estimated_validation_seconds": 15.979860071791338,
+  "estimated_one_test_seconds": 31.959720143582675,
+  "final_reserve_seconds": 259.8993003589567,
+  "update_estimate_seconds": 6.899041773867793,
+  "method": "discard3nativewarmupupdates; next6nativebatch32micro4updates two/cell; steadypercellmax; exactseededschedule; train1.25eval1.35; exactvalidationlookcount at100,every250,terminal with100/cell+two test200/cell+900s; separate600sretrieval"
+}

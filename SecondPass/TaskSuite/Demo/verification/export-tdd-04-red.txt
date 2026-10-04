@@ -1,0 +1,21 @@
+F
+=================================== FAILURES ===================================
+__ test_lossless_export_gif_decoded_timeline_and_determinism[contrast-mixed] ___
+
+tmp_path = PosixPath('/Users/jonathanmorgan/Desktop/VisualAttentionWorkingMemory/SecondPass/TaskSuite/Demo/.test-tmp-export/test_lossless_export_gif_decod0')
+task = 'contrast', cell = 'mixed'
+
+    @pytest.mark.parametrize('task,cell', [('contrast','mixed'), ('chromatic_increment','mixed'),
+        ('orientation_ring','D0'), ('krauzlis_cued_motion','B12'), ('image_recognition','N4_H3')])
+    def test_lossless_export_gif_decoded_timeline_and_determinism(tmp_path, task, cell):
+        e = exporter()
+>       assert hasattr(e, 'export_episode'), 'Lossless frame/GIF exporter is missing'
+E       AssertionError: Lossless frame/GIF exporter is missing
+E       assert False
+E        +  where False = hasattr(<module 'SecondPass.TaskSuite.Demo.export_assets' from '/Users/jonathanmorgan/Desktop/VisualAttentionWorkingMemory/SecondPass/TaskSuite/Demo/export_assets.py'>, 'export_episode')
+
+SecondPass/TaskSuite/Demo/tests/test_export.py:58: AssertionError
+=========================== short test summary info ============================
+FAILED SecondPass/TaskSuite/Demo/tests/test_export.py::test_lossless_export_gif_decoded_timeline_and_determinism[contrast-mixed]
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed, 6 deselected in 0.85s

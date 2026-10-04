@@ -1,23 +1,32 @@
 # Second pass
 
-Everything needed to pick the project up again after the 2026-09-16 reset and the 2026-09-17 results, in one folder.
+**October 4, 2026: angular contrastive motion learning completed successfully on the simplified task. No training is active.**
 
-| Item | Where | What it is |
+The [technical report](AngularContrastiveMotion/TECHNICAL_REPORT.md) documents the fresh CNN, direction-supervised spring loss and 100% held-out before/after change decisions. The original native cue/distractor task remains untested for this model. Use [current status](../LabJournal/CURRENT_STATUS.md), the [experiment catalog](../LabJournal/EXPERIMENT_CATALOG.md) and the [research history](../LabJournal/RESEARCH_HISTORY.md) for the distinction between final results and older launch snapshots.
+
+## Latest motion-learning sequence
+
+| Implementation | Question | Observed result |
 |---|---|---|
-| Papers we pulled and cited | [papers/BIBLIOGRAPHY.md](papers/BIBLIOGRAPHY.md) | 65 references extracted from every research note in the repository, grouped by theme, each with where it was cited and what claim it supported; unverified locators are flagged. `papers/fetch_papers.py` downloads the open-access ones (arXiv, PMC) into `papers/pdf/`, which is git-ignored. |
-| How we work on pods | [PODS.md](PODS.md) | Rules, accounts, the Windows gotchas that cost hours, the scripts, the procedure, the dated failures and the cost log. |
-| The KDA paper | [KDA_paper/KDA_paper.md](KDA_paper/KDA_paper.md) (also `.tex`, `.docx`, `.html`) | Tutorial-style NeurIPS-format paper: background (linear attention, delta rule, gated decay), the spatial KDA module as implemented with shapes, why it works on cued retention (matrix form, nonexpansive transition, implicit attention), measured results, and the attention and psychometric analysis programmes. |
-| Analysis tools | `../WorkingMemory/PlainBaseline/analysis/` | `kda_probe.py` (gate maps, exact implicit attention weights, state probes, interventions), `psychometric.py` (magnitude, delay, cue and distraction sweeps with cumulative-Gaussian and exponential fits), `psych_stream.py` (the parametrised generator they use). |
-| Where the results live | `../LabJournal/experiments/25-*.md`, `26-*.md`, `27-*.md` | Audit, plain baseline, accumulator comparison. |
+| [WeightedMeanConvGRU](WeightedMeanConvGRU/README.md) | Does a decayed raw-frame mean plus CNN/GRU solve the cue-free single-stimulus task? | Cancelled at570updates for the VAE; no final test |
+| [ThreeFrameConvVAE](ThreeFrameConvVAE/FINAL_REPORT.md) | Can a spatial variational representation reconstruct three motion frames? | 9,900 updates; reconstruction improved; no response decision |
+| [VAERViT](VAERViT/README.md) | Does the explicitly transferred VAE encoder help recurrent change decisions? | Cancelled at 227 updates for the input×10 experiment |
+| [VAERViTInput10](VAERViTInput10/README.md) | Does scaling visual tokens by 10 improve learning? | 330 updates; final BA 50%, mean AUC about 0.490 |
+| [WeightedMeanRViT](WeightedMeanRViT/README.md) | Can a fresh CNN over the weighted mean feed RViT? | 10-epoch cloud run replaced at 1,304 updates; preserved cancellation evidence |
+| [WeightedMeanRViTEpoch2](WeightedMeanRViTEpoch2/FINAL_REPORT.md) | Does refreshing after two epochs improve generalization? | 2,310 updates; selected final BA 50%, mean AUC 0.504 |
+| [VariationalMotionPredictor](VariationalMotionPredictor/FINAL_REPORT.md) | Does prediction of frame 4 from frames 1–3 learn useful motion structure? | 50,240 updates; fresh prediction MSE 92.4% below copy-last |
+| [PredictiveMotionChange](PredictiveMotionChange/FINAL_REPORT.md) | Can a frozen predictive representation plus a concatenation FFN detect a 26°/28° change? | 10,240 FFN updates; final BA 50%, AUC 0.495 |
+| [AngularContrastiveMotion](AngularContrastiveMotion/TECHNICAL_REPORT.md) | Can a fresh CNN learn direction similarity using proportional angular supervision? | 25,024 updates; 100% BA/AUC 1.000 in all six simplified comparison cells |
 
-## State of the project in one paragraph
+These are different objectives and stimulus distributions. They are not an exposure-matched ablation proving one causal mechanism. Prediction loss, angular loss and final response accuracy are separate measures.
 
-The five-task battery is sound (experiment 25). The recipe the old lineage used collapses any model to a constant output within 150 updates; with a centred input, three stacked frames and Adam at 1e-4 a plain CNN+GRU learns the two-way rungs of the orientation family from scratch and the real task by curriculum, and learns retention across blanks only by a delay curriculum, to 0.85-0.88 (experiment 26 and 27). A gated spatial state inside the conv stack, ConvGRU or the KDA accumulator, reaches 0.994-1.000 at every delay on two seeds under the same rules (experiment 27). The KDA model is the working baseline for the second pass. A local re-run (`WorkingMemory/PlainBaseline/runs/local_kda_program_20260917/`) reproduced the pod result with checkpoints kept, and both analyses have been run on it (paper Sections 6.7 and 7.4): the memory is necessary, precise, persistent to 48 blanks and site-local; its only fragility is cue contrast and position, which points the next question at attention rather than memory.
+## Earlier second-pass implementations
 
-## Next steps, in order
+- [JointTraining](JointTraining/README.md), [TaskSuite](TaskSuite/README.md) and the [task atlas](TaskSuite/Demo/README.md): unified 13-task/35-condition battery and learned KDA joint learner.
+- [SpatialReadout](SpatialReadout/FreshRun/README.md), [spatial comparison](SpatialComparisonReadout/README.md), [recurrent transformer](SpatialRecurrentTransformer/README.md), [convolutional recurrent decoder](SpatialRecurrentConvDecoder/README.md): spatial readout/core changes with explicit fresh-versus-transferred lineages.
+- [SequenceKDA](SequenceKDA/README.md), [SequenceKDA3](SequenceKDA3/README.md), [SequenceKDA16](SequenceKDA16/README.md): whole-sequence single-layer, deeper and multi-head alternatives on native Krauzlis movies.
+- [DelayedFrameGRU](DelayedFrameGRU/README.md), [TwoFrameRViT](TwoFrameRViT/README.md), [TwoFrameRViTReplay](TwoFrameRViTReplay/FINAL_REPORT.md), [RandomFrameRViT](RandomFrameRViT/FINAL_REPORT.md): separate temporal encoders, visual/memory attention, replay schedules and selected-frame gradient policy.
+- [StructuredMotionRViT](StructuredMotionRViT/FINAL_REPORT.md), [TrainingPathAudit](TrainingPathAudit/REPORT.md), [SingleStimulusRViT](SingleStimulusRViT/README.md): motion-energy inductive bias, objective/gradient audit and cue/distractor removal.
+- [KDA paper](KDA_paper/KDA_paper.md), [bibliography](papers/BIBLIOGRAPHY.md), [pod runbook](PODS.md), [analysis protocol](../ANALYSIS_SOP.md): source rationale and historical operational records.
 
-1. Done: `kda_probe.py` and `psychometric.py` on the local re-run's final model; remaining probes are site swap and readout attribution (paper 6.4, 6.5).
-2. The same gate, curriculum and ladder program on motion, binding, recognition and Krauzlis, ladder rungs built per family, plain control beside it.
-3. The gating-versus-key-addressing ablation (Section 8 of the paper).
-4. Second seed of everything that is a claim.
-5. Only then any of the old lineage's attention, E/I or priority-readout components, one at a time against this baseline.
+The [original active-baseline record](ACTIVE_BASELINE.md) is a historical architectural rollback. It is not a current training instruction or evidence that the latest contrastive model was initialized from that baseline. Superseded live-status entries are archived in the journal.

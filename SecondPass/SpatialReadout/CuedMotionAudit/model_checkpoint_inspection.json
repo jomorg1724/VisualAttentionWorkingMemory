@@ -1,0 +1,2059 @@
+{
+  "schema": 3,
+  "state": {
+    "step": 35039,
+    "episodes": 1121248,
+    "frames": 10609184,
+    "optimizer_seconds": 30844.376246741507,
+    "best_step": 28539,
+    "best_key": [
+      0.9169200632272345,
+      0.8059561965811965
+    ],
+    "best_checkpoint": "/workspace/vawm_convgru_continuation_01/run/validation_checkpoint_028539.pt",
+    "selection_history": [
+      {
+        "step": 5200,
+        "key": [
+          0.7619572742336331,
+          0.49606036324786323
+        ],
+        "complete": true
+      },
+      {
+        "step": 18139,
+        "additional_step": 10400,
+        "key": [
+          0.8827353710347,
+          0.744586687537269
+        ],
+        "complete": true
+      },
+      {
+        "step": 28539,
+        "additional_step": 20800,
+        "key": [
+          0.9169200632272345,
+          0.8059561965811965
+        ],
+        "complete": true
+      }
+    ],
+    "config": {
+      "cap_started": 1790662486.4311879,
+      "hard_deadline": 1790792086.4311879,
+      "deadline": 1790791486.4311879,
+      "wall_cap_seconds": 129600,
+      "retrieval_reserve_seconds": 600,
+      "origin": "Explicit user-authorized unchanged-model continuation; cap starts at infrastructure transition including setup, training, evaluation and retrieval",
+      "max_usd": 20,
+      "protocol": "final_spatial_convgru_continuation_v1",
+      "device": "cuda",
+      "effective_batch": 32,
+      "microbatch": 4,
+      "eval_microbatch": 4,
+      "val_n": 64,
+      "val_krauzlis_n": 100,
+      "test_n": 128,
+      "test_krauzlis_n": 200,
+      "checkpoint_every": 260,
+      "cpu_threads": 2,
+      "source_hashes": {
+        "/workspace/vawm_convgru_fresh/repo/PreAttentiveVision/TemporalIntegration/accumulators.py": "93706e822f9d0114f544392736bb4ef830cdbe2fc580034e48c0495658f333d7",
+        "/workspace/vawm_convgru_fresh/repo/PreAttentiveVision/data/bsds500/manifest.json": "c7a153c1238d41fe36614b2f872ec3b03df0c1566e3a8c6f8db7e023f42ac50c",
+        "/workspace/vawm_convgru_fresh/repo/PreAttentiveVision/decoder.py": "234e2cd36845ce11a6f04e61dfd1c63d8168c58718eb2260fc5a3386f089c776",
+        "/workspace/vawm_convgru_fresh/repo/PreAttentiveVision/natural_stimuli.py": "d0f5930e863b1b1997251bad5f5315e675b6d84eec5887727fdbf4025065b452",
+        "/workspace/vawm_convgru_fresh/repo/PreAttentiveVision/neuroscience_stimuli.py": "f4d3ed226b8bb4945753127651b037b0994715752258f283d10ca98c06eb8e87",
+        "/workspace/vawm_convgru_fresh/repo/SecondPass/JointTraining/continuation_v2.py": "097500b8914441b68ca3a3620d059c16f95bfe3b5be097bead280418d68323b4",
+        "/workspace/vawm_convgru_fresh/repo/SecondPass/JointTraining/continuation_v3.py": "70729c2888473c0c39e67aea0f7b1cb4be1b830a7dd719c866d050f19624b211",
+        "/workspace/vawm_convgru_fresh/repo/SecondPass/JointTraining/core.py": "28313e648dd2289b2edd9e6d697e5898210fd9b297961a364fcf0620c4b57214",
+        "/workspace/vawm_convgru_fresh/repo/SecondPass/JointTraining/launch.py": "f17a1fa4d3d8160d7641a79275a37d878797b281543a97d9b0d3982d2959366c",
+        "/workspace/vawm_convgru_fresh/repo/SecondPass/JointTraining/worker.py": "2c5bb915a76e936979e5c6f0dd576061203f16532b4920c899e640d20603876c",
+        "/workspace/vawm_convgru_fresh/repo/SecondPass/SpatialComparisonReadout/CloudRun/worker.py": "e2e0517c9ff931c7a5068b477899cd58e7e8f55b465bd56f50d2105c6b476745",
+        "/workspace/vawm_convgru_fresh/repo/SecondPass/SpatialComparisonReadout/experiment.py": "2fc6c0e287bec55ba5f3105569ff20a6390d277520fe6ae6290b2ee6189c5dd3",
+        "/workspace/vawm_convgru_fresh/repo/SecondPass/SpatialComparisonReadout/report.py": "af312a28ceb962df6249a1d94ab4ed0fd3e78045eee0c4ffa2bdd341b696c378",
+        "/workspace/vawm_convgru_fresh/repo/SecondPass/SpatialReadout/FreshRun/README.md": "3c2e383be92bc91a0f82577da6e411d0fb6bd750825020e3e41e5038ef446e15",
+        "/workspace/vawm_convgru_fresh/repo/SecondPass/SpatialReadout/FreshRun/bundle.py": "89c56f73da3849420468455c71692ef5538ef6e16e1c486fa931bb5f9b930233",
+        "/workspace/vawm_convgru_fresh/repo/SecondPass/SpatialReadout/FreshRun/test_fresh.py": "19cd8aee3f24a14133536effbec56c49a976ed2b3a5e24e1ae8bbcd24603f686",
+        "/workspace/vawm_convgru_fresh/repo/SecondPass/SpatialReadout/FreshRun/worker.py": "fd31d0e5e5e39a2b6761e4032aa276163cfb0394349ce0595a5a6bb6114bd71f",
+        "/workspace/vawm_convgru_fresh/repo/SecondPass/SpatialReadout/continuation_v2.py": "6e874e5cdb65521aa7ce06c270835c8af7aa3b6e5ca1fa0bd5615cff29e6c779",
+        "/workspace/vawm_convgru_fresh/repo/SecondPass/SpatialReadout/model.py": "4f88ba0a0cf6abede416f1260a71bc13bfab5cfa51eb00d17e11369301f4d503",
+        "/workspace/vawm_convgru_fresh/repo/SecondPass/SpatialReadout/protocol.py": "384c6b1adb9125669a8090a90757756898629fd54bdeba85a2b91703019e6028",
+        "/workspace/vawm_convgru_fresh/repo/SecondPass/SpatialReadout/state.py": "6f2d013aab9c100297c215e3b5681e4874d3d5b0fe19f5628e6e524a8776cdaa",
+        "/workspace/vawm_convgru_fresh/repo/SecondPass/SpatialReadout/worker.py": "4e60dd74b41c1192c628a266433c4a95b2d6ba7af74af22d65208ee4691ec82d",
+        "/workspace/vawm_convgru_fresh/repo/SecondPass/TaskSuite/catalog.json": "e4a342024c9bed16aa04ea741499e49c30232670b14da61cb82c02ccbf64d69a",
+        "/workspace/vawm_convgru_fresh/repo/SecondPass/TaskSuite/suite.py": "22eaaa3bac77efc95beda13014ca2de012f735afe78a023ccea3951c0767f04f",
+        "/workspace/vawm_convgru_fresh/repo/WorkingMemory/BatteryAudit/observers.py": "aec78e894e4f0ecee116e32421e7ee4e75ac8cc70fd4f7af803a5aa9253a48c3",
+        "/workspace/vawm_convgru_fresh/repo/WorkingMemory/PlainBaseline/accum.py": "a51d0466b7c3f79790536cfbc6eb3294be292e2c6aa957c94600d5d6458d1508",
+        "/workspace/vawm_convgru_fresh/repo/WorkingMemory/PlainBaseline/variants.py": "46735e87f30fdf4966a8467a18cacd803c2e508870048f23bd5425c493ee871f",
+        "/workspace/vawm_convgru_fresh/repo/WorkingMemory/SpatialTaskBattery/stimuli.py": "16b7efd4575eba27b9a79329243dcce0da635008856687a9e62bda72b5ddeb37",
+        "/workspace/vawm_convgru_fresh/repo/WorkingMemory/stimuli.py": "c5a6c6d1c2aa38e3b418e09a9d6c03bd022112d5ece4b5384c5336d9f592c127",
+        "/workspace/vawm_convgru_fresh/repo/SecondPass/SpatialReadout/ContinuationRun/test_continuation.py": "f777c3e323c4d36ad7ff9a025c94e142a42dc417d8e0997688d107648d7e8c07",
+        "/workspace/vawm_convgru_fresh/repo/SecondPass/SpatialReadout/ContinuationRun/README.md": "7f68f54c29a7d99e2b646900c07e9b5c092b678d1d4df0a0f4a7b205e18480ba",
+        "/workspace/vawm_convgru_fresh/repo/SecondPass/SpatialReadout/ContinuationRun/worker.py": "f7d1079b20bb9d91f31c5f92db26821fdb7ff158823bd25252fff953b838d755"
+      },
+      "catalog": {
+        "version": "unified_visual_task_suite_v1",
+        "training_authorized": false,
+        "future_initialization": "all_weights_fresh",
+        "split_seeds": {
+          "train": 731001,
+          "val": 732001,
+          "test": 733001
+        },
+        "input": {
+          "layout": "BTCHW",
+          "channels": 3,
+          "height": 100,
+          "width": 100,
+          "dtype": "float32",
+          "range": [
+            0,
+            1
+          ],
+          "sensory_frames": 2
+        },
+        "tasks": [
+          {
+            "id": "motion_direction",
+            "stream_id": 1,
+            "group": "sensory",
+            "classes": 4,
+            "labels": [
+              "right",
+              "up",
+              "left",
+              "down"
+            ],
+            "question": "Which cardinal direction links the two random-dot frames?",
+            "renderer": "PreAttentiveVision.neuroscience_stimuli.TaskStream",
+            "requires_bsds500": false,
+            "report_by": [
+              "displacement_pixels"
+            ],
+            "conditions": [
+              {
+                "id": "mixed",
+                "kwargs": {},
+                "selection_eligible": true
+              }
+            ]
+          },
+          {
+            "id": "orientation",
+            "stream_id": 2,
+            "group": "sensory",
+            "classes": 2,
+            "labels": [
+              "negative axial angle change",
+              "positive axial angle change"
+            ],
+            "question": "What is the sign of the grating orientation change from frame 0 to frame 1?",
+            "renderer": "PreAttentiveVision.neuroscience_stimuli.TaskStream",
+            "requires_bsds500": false,
+            "report_by": [
+              "signed_orientation_degrees"
+            ],
+            "conditions": [
+              {
+                "id": "mixed",
+                "kwargs": {},
+                "selection_eligible": true
+              }
+            ]
+          },
+          {
+            "id": "contrast",
+            "stream_id": 3,
+            "group": "sensory",
+            "classes": 2,
+            "labels": [
+              "frame 0",
+              "frame 1"
+            ],
+            "question": "Which frame contains the higher-contrast grating?",
+            "renderer": "PreAttentiveVision.neuroscience_stimuli.TaskStream",
+            "requires_bsds500": false,
+            "report_by": [
+              "contrast_increment",
+              "pedestal"
+            ],
+            "conditions": [
+              {
+                "id": "mixed",
+                "kwargs": {},
+                "selection_eligible": true
+              }
+            ]
+          },
+          {
+            "id": "spatial_frequency",
+            "stream_id": 4,
+            "group": "sensory",
+            "classes": 2,
+            "labels": [
+              "frame 0",
+              "frame 1"
+            ],
+            "question": "Which frame contains the higher-spatial-frequency grating?",
+            "renderer": "PreAttentiveVision.neuroscience_stimuli.TaskStream",
+            "requires_bsds500": false,
+            "report_by": [
+              "frequency_octave_increment"
+            ],
+            "conditions": [
+              {
+                "id": "mixed",
+                "kwargs": {},
+                "selection_eligible": true
+              }
+            ]
+          },
+          {
+            "id": "chromatic_increment",
+            "stream_id": 5,
+            "group": "sensory",
+            "classes": 2,
+            "labels": [
+              "frame 0",
+              "frame 1"
+            ],
+            "question": "Which frame has the positive increment along the defined isoluminant linear-RGB axis?",
+            "renderer": "PreAttentiveVision.neuroscience_stimuli.TaskStream",
+            "requires_bsds500": false,
+            "report_by": [
+              "chromatic_increment"
+            ],
+            "conditions": [
+              {
+                "id": "mixed",
+                "kwargs": {},
+                "selection_eligible": true
+              }
+            ]
+          },
+          {
+            "id": "contour",
+            "stream_id": 6,
+            "group": "sensory",
+            "classes": 2,
+            "labels": [
+              "frame 0",
+              "frame 1"
+            ],
+            "question": "Which frame contains the aligned Gabor contour?",
+            "renderer": "PreAttentiveVision.neuroscience_stimuli.TaskStream",
+            "requires_bsds500": false,
+            "report_by": [
+              "alignment_jitter_degrees"
+            ],
+            "conditions": [
+              {
+                "id": "mixed",
+                "kwargs": {},
+                "selection_eligible": true
+              }
+            ]
+          },
+          {
+            "id": "natural_spectrum",
+            "stream_id": 7,
+            "group": "sensory",
+            "classes": 2,
+            "labels": [
+              "frame 0",
+              "frame 1"
+            ],
+            "question": "Which frame has greater relative high-frequency detail (smaller spectral beta)?",
+            "renderer": "PreAttentiveVision.neuroscience_stimuli.TaskStream",
+            "requires_bsds500": true,
+            "report_by": [
+              "beta_delta",
+              "base_id"
+            ],
+            "conditions": [
+              {
+                "id": "mixed",
+                "kwargs": {},
+                "selection_eligible": true
+              }
+            ]
+          },
+          {
+            "id": "orientation_ring",
+            "stream_id": 8,
+            "group": "orientation_auxiliary",
+            "classes": 2,
+            "labels": [
+              "negative axial angle change",
+              "positive axial angle change"
+            ],
+            "question": "What is the sign of rotation at the ring-cued Gabor location?",
+            "renderer": "WorkingMemory.PlainBaseline.variants.VariantStream",
+            "requires_bsds500": false,
+            "report_by": [
+              "rotation_magnitude",
+              "target_location"
+            ],
+            "conditions": [
+              {
+                "id": "D0",
+                "kwargs": {
+                  "delay": 0
+                },
+                "selection_eligible": true
+              }
+            ]
+          },
+          {
+            "id": "orientation_cued",
+            "stream_id": 9,
+            "group": "spatial",
+            "classes": 2,
+            "labels": [
+              "unchanged or opposite to cue sign",
+              "rotation in cue sign"
+            ],
+            "question": "Did the target Gabor rotate in the direction requested by its location/sign glyph?",
+            "renderer": "WorkingMemory.SpatialTaskBattery.stimuli.SpatialBatteryStream",
+            "requires_bsds500": false,
+            "report_by": [
+              "delay",
+              "rotation_magnitude",
+              "target_location",
+              "cue_sign"
+            ],
+            "conditions": [
+              {
+                "id": "D0",
+                "kwargs": {
+                  "delay": 0
+                },
+                "selection_eligible": true
+              },
+              {
+                "id": "D4",
+                "kwargs": {
+                  "delay": 4
+                },
+                "selection_eligible": true
+              },
+              {
+                "id": "D12",
+                "kwargs": {
+                  "delay": 12
+                },
+                "selection_eligible": true
+              },
+              {
+                "id": "D24",
+                "kwargs": {
+                  "delay": 24
+                },
+                "selection_eligible": true
+              }
+            ]
+          },
+          {
+            "id": "motion_duration_cued",
+            "stream_id": 10,
+            "group": "spatial",
+            "classes": 4,
+            "labels": [
+              "right",
+              "up",
+              "left",
+              "down"
+            ],
+            "question": "Which direction occupied the most of eight transitions in the cued patch?",
+            "renderer": "WorkingMemory.SpatialTaskBattery.stimuli.SpatialBatteryStream",
+            "requires_bsds500": false,
+            "report_by": [
+              "delay",
+              "step_pixels",
+              "target_location",
+              "duration_counts_by_patch"
+            ],
+            "conditions": [
+              {
+                "id": "D0",
+                "kwargs": {
+                  "delay": 0
+                },
+                "selection_eligible": true
+              },
+              {
+                "id": "D4",
+                "kwargs": {
+                  "delay": 4
+                },
+                "selection_eligible": true
+              },
+              {
+                "id": "D12",
+                "kwargs": {
+                  "delay": 12
+                },
+                "selection_eligible": true
+              },
+              {
+                "id": "D24",
+                "kwargs": {
+                  "delay": 24
+                },
+                "selection_eligible": true
+              }
+            ]
+          },
+          {
+            "id": "krauzlis_cued_motion",
+            "stream_id": 11,
+            "group": "spatial",
+            "classes": 2,
+            "labels": [
+              "foil-only change or catch",
+              "target change"
+            ],
+            "question": "Did mean motion direction change in the precued patch rather than the foil?",
+            "renderer": "WorkingMemory.SpatialTaskBattery.stimuli.SpatialBatteryStream",
+            "requires_bsds500": false,
+            "report_by": [
+              "baseline_transitions",
+              "event_type",
+              "event_magnitude_degrees",
+              "target_location"
+            ],
+            "conditions": [
+              {
+                "id": "B12",
+                "kwargs": {
+                  "baseline_transitions": 12
+                },
+                "selection_eligible": true
+              },
+              {
+                "id": "B20",
+                "kwargs": {
+                  "baseline_transitions": 20
+                },
+                "selection_eligible": true
+              },
+              {
+                "id": "B28",
+                "kwargs": {
+                  "baseline_transitions": 28
+                },
+                "selection_eligible": true
+              }
+            ]
+          },
+          {
+            "id": "spatial_binding",
+            "stream_id": 12,
+            "group": "spatial",
+            "classes": 2,
+            "labels": [
+              "foil-only exchange",
+              "target participates in exchange"
+            ],
+            "question": "Was the orientation at the retrospectively queried location exchanged with another location?",
+            "renderer": "WorkingMemory.SpatialTaskBattery.stimuli.SpatialBatteryStream",
+            "requires_bsds500": false,
+            "report_by": [
+              "delay",
+              "target_location"
+            ],
+            "conditions": [
+              {
+                "id": "D0",
+                "kwargs": {
+                  "delay": 0
+                },
+                "selection_eligible": true
+              },
+              {
+                "id": "D4",
+                "kwargs": {
+                  "delay": 4
+                },
+                "selection_eligible": true
+              },
+              {
+                "id": "D12",
+                "kwargs": {
+                  "delay": 12
+                },
+                "selection_eligible": true
+              },
+              {
+                "id": "D24",
+                "kwargs": {
+                  "delay": 24
+                },
+                "selection_eligible": true
+              }
+            ]
+          },
+          {
+            "id": "image_recognition",
+            "stream_id": 13,
+            "group": "spatial",
+            "classes": 2,
+            "labels": [
+              "not in study set",
+              "in study set"
+            ],
+            "question": "Is the repeated probe raster an exact member of the preceding study-image set?",
+            "renderer": "WorkingMemory.SpatialTaskBattery.stimuli.SpatialBatteryStream",
+            "requires_bsds500": true,
+            "report_by": [
+              "load",
+              "probe_hold",
+              "seen_study_index",
+              "study_source_ids"
+            ],
+            "conditions": [
+              {
+                "id": "N0_H3",
+                "kwargs": {
+                  "load": 0,
+                  "probe_hold": 3
+                },
+                "selection_eligible": false
+              },
+              {
+                "id": "N0_H4",
+                "kwargs": {
+                  "load": 0,
+                  "probe_hold": 4
+                },
+                "selection_eligible": false
+              },
+              {
+                "id": "N0_H5",
+                "kwargs": {
+                  "load": 0,
+                  "probe_hold": 5
+                },
+                "selection_eligible": false
+              },
+              {
+                "id": "N4_H3",
+                "kwargs": {
+                  "load": 4,
+                  "probe_hold": 3
+                },
+                "selection_eligible": true
+              },
+              {
+                "id": "N4_H4",
+                "kwargs": {
+                  "load": 4,
+                  "probe_hold": 4
+                },
+                "selection_eligible": true
+              },
+              {
+                "id": "N4_H5",
+                "kwargs": {
+                  "load": 4,
+                  "probe_hold": 5
+                },
+                "selection_eligible": true
+              },
+              {
+                "id": "N12_H3",
+                "kwargs": {
+                  "load": 12,
+                  "probe_hold": 3
+                },
+                "selection_eligible": true
+              },
+              {
+                "id": "N12_H4",
+                "kwargs": {
+                  "load": 12,
+                  "probe_hold": 4
+                },
+                "selection_eligible": true
+              },
+              {
+                "id": "N12_H5",
+                "kwargs": {
+                  "load": 12,
+                  "probe_hold": 5
+                },
+                "selection_eligible": true
+              },
+              {
+                "id": "N24_H3",
+                "kwargs": {
+                  "load": 24,
+                  "probe_hold": 3
+                },
+                "selection_eligible": true
+              },
+              {
+                "id": "N24_H4",
+                "kwargs": {
+                  "load": 24,
+                  "probe_hold": 4
+                },
+                "selection_eligible": true
+              },
+              {
+                "id": "N24_H5",
+                "kwargs": {
+                  "load": 24,
+                  "probe_hold": 5
+                },
+                "selection_eligible": true
+              }
+            ]
+          }
+        ]
+      },
+      "source_manifest_sha256": "c7a153c1238d41fe36614b2f872ec3b03df0c1566e3a8c6f8db7e023f42ac50c",
+      "runtime_root": "/workspace/vawm_convgru_fresh/repo",
+      "initialization": {
+        "protocol": "final_spatial_convgru_continuation_v1",
+        "initialization": "unchanged-architecture continuation",
+        "architecture": "final_spatial_convgru",
+        "source_checkpoint": {
+          "path": "/workspace/vawm_convgru_fresh/run/terminal.pt",
+          "bytes": 16742235,
+          "sha256": "7b87e8f21e4a972cbb78f8d657786e38c2aab29bf313329167575f9f564d5ff1",
+          "verified": true,
+          "step": 7739
+        },
+        "inherited_weights": true,
+        "inherited_optimizer": true,
+        "inherited_rng": true,
+        "inherited_stream": true,
+        "inherited_scheduler": true,
+        "profile_state_inherited": false,
+        "train_namespace": 98492763,
+        "validation_namespace": 98592763,
+        "final_namespace": 98792763,
+        "cap_started": 1790662486.4311879,
+        "budget_origin": "Explicit user-authorized unchanged-model continuation; cap starts at infrastructure transition including setup, training, evaluation and retrieval"
+      },
+      "baseline": "carried validation winner; unchanged objective",
+      "selection": "equal-task AUC then chance-normalized BA",
+      "all_trainable": true,
+      "lr": 0.0001,
+      "clipping": null,
+      "bptt": "full",
+      "precision": "fp32",
+      "tf32": false,
+      "max_steps": 111739,
+      "validation_steps": [
+        18139,
+        28539,
+        38939,
+        49339,
+        59739,
+        70139,
+        80539,
+        90939,
+        101339,
+        111739
+      ],
+      "planned_exposure": {
+        "motion_direction": {
+          "updates": 7999,
+          "episodes": 255968,
+          "cells": {
+            "mixed": 255968
+          }
+        },
+        "orientation": {
+          "updates": 8000,
+          "episodes": 256000,
+          "cells": {
+            "mixed": 256000
+          }
+        },
+        "contrast": {
+          "updates": 8001,
+          "episodes": 256032,
+          "cells": {
+            "mixed": 256032
+          }
+        },
+        "spatial_frequency": {
+          "updates": 8000,
+          "episodes": 256000,
+          "cells": {
+            "mixed": 256000
+          }
+        },
+        "chromatic_increment": {
+          "updates": 7999,
+          "episodes": 255968,
+          "cells": {
+            "mixed": 255968
+          }
+        },
+        "contour": {
+          "updates": 8000,
+          "episodes": 256000,
+          "cells": {
+            "mixed": 256000
+          }
+        },
+        "natural_spectrum": {
+          "updates": 8000,
+          "episodes": 256000,
+          "cells": {
+            "mixed": 256000
+          }
+        },
+        "orientation_ring": {
+          "updates": 8001,
+          "episodes": 256032,
+          "cells": {
+            "D0": 256032
+          }
+        },
+        "orientation_cued": {
+          "updates": 8001,
+          "episodes": 256032,
+          "cells": {
+            "D0": 64032,
+            "D4": 64000,
+            "D12": 64000,
+            "D24": 64000
+          }
+        },
+        "motion_duration_cued": {
+          "updates": 8000,
+          "episodes": 256000,
+          "cells": {
+            "D0": 63968,
+            "D4": 64032,
+            "D12": 64000,
+            "D24": 64000
+          }
+        },
+        "krauzlis_cued_motion": {
+          "updates": 8001,
+          "episodes": 256032,
+          "cells": {
+            "B12": 85312,
+            "B20": 85344,
+            "B28": 85376
+          }
+        },
+        "spatial_binding": {
+          "updates": 7999,
+          "episodes": 255968,
+          "cells": {
+            "D0": 63968,
+            "D4": 64000,
+            "D12": 64000,
+            "D24": 64000
+          }
+        },
+        "image_recognition": {
+          "updates": 7999,
+          "episodes": 255968,
+          "cells": {
+            "N0_H3": 21344,
+            "N0_H4": 21344,
+            "N0_H5": 21312,
+            "N4_H3": 21312,
+            "N4_H4": 21344,
+            "N4_H5": 21312,
+            "N12_H3": 21312,
+            "N12_H4": 21344,
+            "N12_H5": 21344,
+            "N24_H3": 21376,
+            "N24_H4": 21312,
+            "N24_H5": 21312
+          }
+        }
+      },
+      "estimated_optimizer_seconds": 94999.51570338976,
+      "estimated_total_remaining_seconds": 115977.16330015122,
+      "slower_150pct_seconds": 144477.01801116814,
+      "estimated_validation_seconds": 76.98174686310813,
+      "estimated_one_test_seconds": 153.96349372621626,
+      "final_reserve_seconds": 487.9269874524325,
+      "update_estimate_seconds": 4.582983341028519,
+      "method": "All saved production rows: cell means; exact inherited scheduler104000; optimizer1.20; max historical eval seconds/episode1.35; 10val+2test+900s; separate retrieval reserve; no profile/no reduction",
+      "additional_updates": 104000,
+      "final_namespace": 98792763,
+      "source_checkpoint": {
+        "path": "/workspace/vawm_convgru_fresh/run/terminal.pt",
+        "bytes": 16742235,
+        "sha256": "7b87e8f21e4a972cbb78f8d657786e38c2aab29bf313329167575f9f564d5ff1",
+        "verified": true,
+        "step": 7739
+      },
+      "parent_best_receipt": {
+        "utc": "2026-09-29T05:32:32.144664+00:00",
+        "path": "/workspace/vawm_convgru_fresh/run/validation_checkpoint_005200.pt",
+        "bytes": 16742107,
+        "sha256": "89554471db30ce298639f22235bcc13508e0eeef9b8021ae66a57292fddc03a2",
+        "verified": true,
+        "step": 5200
+      },
+      "worker_lock": "/workspace/vawm_convgru_fresh/convgru_fresh_worker.lock",
+      "source_step": 7739,
+      "additional_target": 104000,
+      "validation_additional_steps": [
+        10400,
+        20800,
+        31200,
+        41600,
+        52000,
+        62400,
+        72800,
+        83200,
+        93600,
+        104000
+      ],
+      "total_additional_episodes": 3328000,
+      "optimizer_margin": 1.2,
+      "production_cell_seconds": [
+        {
+          "task": "chromatic_increment",
+          "cell": "mixed",
+          "seconds": 0.343730485384765,
+          "samples": 596
+        },
+        {
+          "task": "contour",
+          "cell": "mixed",
+          "seconds": 0.4053967320008062,
+          "samples": 595
+        },
+        {
+          "task": "contrast",
+          "cell": "mixed",
+          "seconds": 0.3298170125135416,
+          "samples": 595
+        },
+        {
+          "task": "image_recognition",
+          "cell": "N0_H3",
+          "seconds": 0.7922849285509437,
+          "samples": 50
+        },
+        {
+          "task": "image_recognition",
+          "cell": "N0_H4",
+          "seconds": 0.8201458133663982,
+          "samples": 50
+        },
+        {
+          "task": "image_recognition",
+          "cell": "N0_H5",
+          "seconds": 0.8540618520881981,
+          "samples": 50
+        },
+        {
+          "task": "image_recognition",
+          "cell": "N12_H3",
+          "seconds": 1.5390568875335158,
+          "samples": 50
+        },
+        {
+          "task": "image_recognition",
+          "cell": "N12_H4",
+          "seconds": 1.607871961143172,
+          "samples": 49
+        },
+        {
+          "task": "image_recognition",
+          "cell": "N12_H5",
+          "seconds": 1.6849100343902044,
+          "samples": 49
+        },
+        {
+          "task": "image_recognition",
+          "cell": "N24_H3",
+          "seconds": 2.4807709542825362,
+          "samples": 49
+        },
+        {
+          "task": "image_recognition",
+          "cell": "N24_H4",
+          "seconds": 2.601641967473552,
+          "samples": 50
+        },
+        {
+          "task": "image_recognition",
+          "cell": "N24_H5",
+          "seconds": 2.666010173894465,
+          "samples": 50
+        },
+        {
+          "task": "image_recognition",
+          "cell": "N4_H3",
+          "seconds": 0.9927670829091221,
+          "samples": 50
+        },
+        {
+          "task": "image_recognition",
+          "cell": "N4_H4",
+          "seconds": 1.02970493197137,
+          "samples": 49
+        },
+        {
+          "task": "image_recognition",
+          "cell": "N4_H5",
+          "seconds": 1.067524764696136,
+          "samples": 50
+        },
+        {
+          "task": "krauzlis_cued_motion",
+          "cell": "B12",
+          "seconds": 2.3115640946092952,
+          "samples": 199
+        },
+        {
+          "task": "krauzlis_cued_motion",
+          "cell": "B20",
+          "seconds": 3.1404252255904592,
+          "samples": 198
+        },
+        {
+          "task": "krauzlis_cued_motion",
+          "cell": "B28",
+          "seconds": 3.8191527841904325,
+          "samples": 198
+        },
+        {
+          "task": "motion_direction",
+          "cell": "mixed",
+          "seconds": 0.34057238178277677,
+          "samples": 596
+        },
+        {
+          "task": "motion_duration_cued",
+          "cell": "D0",
+          "seconds": 0.9931014537961291,
+          "samples": 149
+        },
+        {
+          "task": "motion_duration_cued",
+          "cell": "D12",
+          "seconds": 1.7929644105399665,
+          "samples": 149
+        },
+        {
+          "task": "motion_duration_cued",
+          "cell": "D24",
+          "seconds": 2.8877108272590095,
+          "samples": 149
+        },
+        {
+          "task": "motion_duration_cued",
+          "cell": "D4",
+          "seconds": 1.2620634036673535,
+          "samples": 148
+        },
+        {
+          "task": "natural_spectrum",
+          "cell": "mixed",
+          "seconds": 0.3666900639187451,
+          "samples": 595
+        },
+        {
+          "task": "orientation",
+          "cell": "mixed",
+          "seconds": 0.33906415983518007,
+          "samples": 595
+        },
+        {
+          "task": "orientation_cued",
+          "cell": "D0",
+          "seconds": 0.5887257361759406,
+          "samples": 148
+        },
+        {
+          "task": "orientation_cued",
+          "cell": "D12",
+          "seconds": 1.3078143734159886,
+          "samples": 149
+        },
+        {
+          "task": "orientation_cued",
+          "cell": "D24",
+          "seconds": 2.1617041819872673,
+          "samples": 149
+        },
+        {
+          "task": "orientation_cued",
+          "cell": "D4",
+          "seconds": 0.7789912687883331,
+          "samples": 149
+        },
+        {
+          "task": "orientation_ring",
+          "cell": "D0",
+          "seconds": 0.5813535574635789,
+          "samples": 595
+        },
+        {
+          "task": "spatial_binding",
+          "cell": "D0",
+          "seconds": 0.6278784937512805,
+          "samples": 149
+        },
+        {
+          "task": "spatial_binding",
+          "cell": "D12",
+          "seconds": 1.3756284003564776,
+          "samples": 149
+        },
+        {
+          "task": "spatial_binding",
+          "cell": "D24",
+          "seconds": 2.3003145773495053,
+          "samples": 149
+        },
+        {
+          "task": "spatial_binding",
+          "cell": "D4",
+          "seconds": 0.8417020306809987,
+          "samples": 149
+        },
+        {
+          "task": "spatial_frequency",
+          "cell": "mixed",
+          "seconds": 0.33640614079796716,
+          "samples": 595
+        }
+      ],
+      "checkpoint_policy": "immutable cadence260 plus first1/13/validation/terminal; delete nothing",
+      "timing_evidence": {
+        "progress": {
+          "path": "/workspace/vawm_convgru_fresh/run/progress.jsonl",
+          "sha256": "fbfbcb43a88e3c321acd8cc9d2ac27d00f6c2faa7f1a702d808d3941c767bcfd"
+        },
+        "evaluations": [
+          {
+            "path": "/workspace/vawm_convgru_fresh/run/validation_005200.json",
+            "sha256": "e4de6e659ebc00563305d24b903378ca1dfd9c65f634deb292cec7a973cdecd1"
+          }
+        ]
+      },
+      "disk_preflight": {
+        "free_bytes": 251082552377344,
+        "required_new_bytes": 8131148709,
+        "no_deletion": true,
+        "quota_check_owner": "parent: filesystem free may exceed provider volume quota"
+      }
+    },
+    "exposure": {
+      "motion_direction": {
+        "updates": 2696,
+        "episodes": 86272,
+        "frames": 172544,
+        "cells": {
+          "mixed": 86272
+        }
+      },
+      "orientation": {
+        "updates": 2695,
+        "episodes": 86240,
+        "frames": 172480,
+        "cells": {
+          "mixed": 86240
+        }
+      },
+      "contrast": {
+        "updates": 2695,
+        "episodes": 86240,
+        "frames": 172480,
+        "cells": {
+          "mixed": 86240
+        }
+      },
+      "spatial_frequency": {
+        "updates": 2695,
+        "episodes": 86240,
+        "frames": 172480,
+        "cells": {
+          "mixed": 86240
+        }
+      },
+      "chromatic_increment": {
+        "updates": 2695,
+        "episodes": 86240,
+        "frames": 172480,
+        "cells": {
+          "mixed": 86240
+        }
+      },
+      "contour": {
+        "updates": 2695,
+        "episodes": 86240,
+        "frames": 172480,
+        "cells": {
+          "mixed": 86240
+        }
+      },
+      "natural_spectrum": {
+        "updates": 2695,
+        "episodes": 86240,
+        "frames": 172480,
+        "cells": {
+          "mixed": 86240
+        }
+      },
+      "orientation_ring": {
+        "updates": 2695,
+        "episodes": 86240,
+        "frames": 344960,
+        "cells": {
+          "D0": 86240
+        }
+      },
+      "orientation_cued": {
+        "updates": 2696,
+        "episodes": 86272,
+        "frames": 1207808,
+        "cells": {
+          "D0": 21568,
+          "D4": 21568,
+          "D12": 21568,
+          "D24": 21568
+        }
+      },
+      "motion_duration_cued": {
+        "updates": 2696,
+        "episodes": 86272,
+        "frames": 1811712,
+        "cells": {
+          "D0": 21568,
+          "D4": 21568,
+          "D12": 21568,
+          "D24": 21568
+        }
+      },
+      "krauzlis_cued_motion": {
+        "updates": 2695,
+        "episodes": 86240,
+        "frames": 3190624,
+        "cells": {
+          "B12": 28768,
+          "B20": 28736,
+          "B28": 28736
+        }
+      },
+      "spatial_binding": {
+        "updates": 2695,
+        "episodes": 86240,
+        "frames": 1293536,
+        "cells": {
+          "D0": 21568,
+          "D4": 21568,
+          "D12": 21536,
+          "D24": 21568
+        }
+      },
+      "image_recognition": {
+        "updates": 2696,
+        "episodes": 86272,
+        "frames": 1553120,
+        "cells": {
+          "N0_H3": 7200,
+          "N0_H4": 7168,
+          "N0_H5": 7200,
+          "N4_H3": 7200,
+          "N4_H4": 7168,
+          "N4_H5": 7168,
+          "N12_H3": 7200,
+          "N12_H4": 7200,
+          "N12_H5": 7200,
+          "N24_H3": 7200,
+          "N24_H4": 7168,
+          "N24_H5": 7200
+        }
+      }
+    },
+    "elapsed_cap_seconds": 25942.758793592453,
+    "source_config": {
+      "cap_started": 1790654541.369504,
+      "hard_deadline": 1790683341.369504,
+      "deadline": 1790682741.369504,
+      "wall_cap_seconds": 28800,
+      "retrieval_reserve_seconds": 600,
+      "origin": "Fresh user-authorized run; pod creation, includes setup/profile/train/evaluation/retrieval",
+      "max_usd": 5,
+      "protocol": "final_spatial_convgru_fresh_v1",
+      "device": "cuda",
+      "effective_batch": 32,
+      "microbatch": 4,
+      "eval_microbatch": 4,
+      "val_n": 64,
+      "val_krauzlis_n": 100,
+      "test_n": 128,
+      "test_krauzlis_n": 200,
+      "checkpoint_every": 13,
+      "cpu_threads": 2,
+      "source_hashes": {
+        "/workspace/vawm_convgru_fresh/repo/PreAttentiveVision/TemporalIntegration/accumulators.py": "93706e822f9d0114f544392736bb4ef830cdbe2fc580034e48c0495658f333d7",
+        "/workspace/vawm_convgru_fresh/repo/PreAttentiveVision/data/bsds500/manifest.json": "c7a153c1238d41fe36614b2f872ec3b03df0c1566e3a8c6f8db7e023f42ac50c",
+        "/workspace/vawm_convgru_fresh/repo/PreAttentiveVision/decoder.py": "234e2cd36845ce11a6f04e61dfd1c63d8168c58718eb2260fc5a3386f089c776",
+        "/workspace/vawm_convgru_fresh/repo/PreAttentiveVision/natural_stimuli.py": "d0f5930e863b1b1997251bad5f5315e675b6d84eec5887727fdbf4025065b452",
+        "/workspace/vawm_convgru_fresh/repo/PreAttentiveVision/neuroscience_stimuli.py": "f4d3ed226b8bb4945753127651b037b0994715752258f283d10ca98c06eb8e87",
+        "/workspace/vawm_convgru_fresh/repo/SecondPass/JointTraining/continuation_v2.py": "097500b8914441b68ca3a3620d059c16f95bfe3b5be097bead280418d68323b4",
+        "/workspace/vawm_convgru_fresh/repo/SecondPass/JointTraining/continuation_v3.py": "70729c2888473c0c39e67aea0f7b1cb4be1b830a7dd719c866d050f19624b211",
+        "/workspace/vawm_convgru_fresh/repo/SecondPass/JointTraining/core.py": "28313e648dd2289b2edd9e6d697e5898210fd9b297961a364fcf0620c4b57214",
+        "/workspace/vawm_convgru_fresh/repo/SecondPass/JointTraining/launch.py": "f17a1fa4d3d8160d7641a79275a37d878797b281543a97d9b0d3982d2959366c",
+        "/workspace/vawm_convgru_fresh/repo/SecondPass/JointTraining/worker.py": "2c5bb915a76e936979e5c6f0dd576061203f16532b4920c899e640d20603876c",
+        "/workspace/vawm_convgru_fresh/repo/SecondPass/SpatialComparisonReadout/CloudRun/worker.py": "e2e0517c9ff931c7a5068b477899cd58e7e8f55b465bd56f50d2105c6b476745",
+        "/workspace/vawm_convgru_fresh/repo/SecondPass/SpatialComparisonReadout/experiment.py": "2fc6c0e287bec55ba5f3105569ff20a6390d277520fe6ae6290b2ee6189c5dd3",
+        "/workspace/vawm_convgru_fresh/repo/SecondPass/SpatialComparisonReadout/report.py": "af312a28ceb962df6249a1d94ab4ed0fd3e78045eee0c4ffa2bdd341b696c378",
+        "/workspace/vawm_convgru_fresh/repo/SecondPass/SpatialReadout/FreshRun/README.md": "3c2e383be92bc91a0f82577da6e411d0fb6bd750825020e3e41e5038ef446e15",
+        "/workspace/vawm_convgru_fresh/repo/SecondPass/SpatialReadout/FreshRun/bundle.py": "89c56f73da3849420468455c71692ef5538ef6e16e1c486fa931bb5f9b930233",
+        "/workspace/vawm_convgru_fresh/repo/SecondPass/SpatialReadout/FreshRun/test_fresh.py": "19cd8aee3f24a14133536effbec56c49a976ed2b3a5e24e1ae8bbcd24603f686",
+        "/workspace/vawm_convgru_fresh/repo/SecondPass/SpatialReadout/FreshRun/worker.py": "fd31d0e5e5e39a2b6761e4032aa276163cfb0394349ce0595a5a6bb6114bd71f",
+        "/workspace/vawm_convgru_fresh/repo/SecondPass/SpatialReadout/continuation_v2.py": "6e874e5cdb65521aa7ce06c270835c8af7aa3b6e5ca1fa0bd5615cff29e6c779",
+        "/workspace/vawm_convgru_fresh/repo/SecondPass/SpatialReadout/model.py": "4f88ba0a0cf6abede416f1260a71bc13bfab5cfa51eb00d17e11369301f4d503",
+        "/workspace/vawm_convgru_fresh/repo/SecondPass/SpatialReadout/protocol.py": "384c6b1adb9125669a8090a90757756898629fd54bdeba85a2b91703019e6028",
+        "/workspace/vawm_convgru_fresh/repo/SecondPass/SpatialReadout/state.py": "6f2d013aab9c100297c215e3b5681e4874d3d5b0fe19f5628e6e524a8776cdaa",
+        "/workspace/vawm_convgru_fresh/repo/SecondPass/SpatialReadout/worker.py": "4e60dd74b41c1192c628a266433c4a95b2d6ba7af74af22d65208ee4691ec82d",
+        "/workspace/vawm_convgru_fresh/repo/SecondPass/TaskSuite/catalog.json": "e4a342024c9bed16aa04ea741499e49c30232670b14da61cb82c02ccbf64d69a",
+        "/workspace/vawm_convgru_fresh/repo/SecondPass/TaskSuite/suite.py": "22eaaa3bac77efc95beda13014ca2de012f735afe78a023ccea3951c0767f04f",
+        "/workspace/vawm_convgru_fresh/repo/WorkingMemory/BatteryAudit/observers.py": "aec78e894e4f0ecee116e32421e7ee4e75ac8cc70fd4f7af803a5aa9253a48c3",
+        "/workspace/vawm_convgru_fresh/repo/WorkingMemory/PlainBaseline/accum.py": "a51d0466b7c3f79790536cfbc6eb3294be292e2c6aa957c94600d5d6458d1508",
+        "/workspace/vawm_convgru_fresh/repo/WorkingMemory/PlainBaseline/variants.py": "46735e87f30fdf4966a8467a18cacd803c2e508870048f23bd5425c493ee871f",
+        "/workspace/vawm_convgru_fresh/repo/WorkingMemory/SpatialTaskBattery/stimuli.py": "16b7efd4575eba27b9a79329243dcce0da635008856687a9e62bda72b5ddeb37",
+        "/workspace/vawm_convgru_fresh/repo/WorkingMemory/stimuli.py": "c5a6c6d1c2aa38e3b418e09a9d6c03bd022112d5ece4b5384c5336d9f592c127"
+      },
+      "catalog": {
+        "version": "unified_visual_task_suite_v1",
+        "training_authorized": false,
+        "future_initialization": "all_weights_fresh",
+        "split_seeds": {
+          "train": 731001,
+          "val": 732001,
+          "test": 733001
+        },
+        "input": {
+          "layout": "BTCHW",
+          "channels": 3,
+          "height": 100,
+          "width": 100,
+          "dtype": "float32",
+          "range": [
+            0,
+            1
+          ],
+          "sensory_frames": 2
+        },
+        "tasks": [
+          {
+            "id": "motion_direction",
+            "stream_id": 1,
+            "group": "sensory",
+            "classes": 4,
+            "labels": [
+              "right",
+              "up",
+              "left",
+              "down"
+            ],
+            "question": "Which cardinal direction links the two random-dot frames?",
+            "renderer": "PreAttentiveVision.neuroscience_stimuli.TaskStream",
+            "requires_bsds500": false,
+            "report_by": [
+              "displacement_pixels"
+            ],
+            "conditions": [
+              {
+                "id": "mixed",
+                "kwargs": {},
+                "selection_eligible": true
+              }
+            ]
+          },
+          {
+            "id": "orientation",
+            "stream_id": 2,
+            "group": "sensory",
+            "classes": 2,
+            "labels": [
+              "negative axial angle change",
+              "positive axial angle change"
+            ],
+            "question": "What is the sign of the grating orientation change from frame 0 to frame 1?",
+            "renderer": "PreAttentiveVision.neuroscience_stimuli.TaskStream",
+            "requires_bsds500": false,
+            "report_by": [
+              "signed_orientation_degrees"
+            ],
+            "conditions": [
+              {
+                "id": "mixed",
+                "kwargs": {},
+                "selection_eligible": true
+              }
+            ]
+          },
+          {
+            "id": "contrast",
+            "stream_id": 3,
+            "group": "sensory",
+            "classes": 2,
+            "labels": [
+              "frame 0",
+              "frame 1"
+            ],
+            "question": "Which frame contains the higher-contrast grating?",
+            "renderer": "PreAttentiveVision.neuroscience_stimuli.TaskStream",
+            "requires_bsds500": false,
+            "report_by": [
+              "contrast_increment",
+              "pedestal"
+            ],
+            "conditions": [
+              {
+                "id": "mixed",
+                "kwargs": {},
+                "selection_eligible": true
+              }
+            ]
+          },
+          {
+            "id": "spatial_frequency",
+            "stream_id": 4,
+            "group": "sensory",
+            "classes": 2,
+            "labels": [
+              "frame 0",
+              "frame 1"
+            ],
+            "question": "Which frame contains the higher-spatial-frequency grating?",
+            "renderer": "PreAttentiveVision.neuroscience_stimuli.TaskStream",
+            "requires_bsds500": false,
+            "report_by": [
+              "frequency_octave_increment"
+            ],
+            "conditions": [
+              {
+                "id": "mixed",
+                "kwargs": {},
+                "selection_eligible": true
+              }
+            ]
+          },
+          {
+            "id": "chromatic_increment",
+            "stream_id": 5,
+            "group": "sensory",
+            "classes": 2,
+            "labels": [
+              "frame 0",
+              "frame 1"
+            ],
+            "question": "Which frame has the positive increment along the defined isoluminant linear-RGB axis?",
+            "renderer": "PreAttentiveVision.neuroscience_stimuli.TaskStream",
+            "requires_bsds500": false,
+            "report_by": [
+              "chromatic_increment"
+            ],
+            "conditions": [
+              {
+                "id": "mixed",
+                "kwargs": {},
+                "selection_eligible": true
+              }
+            ]
+          },
+          {
+            "id": "contour",
+            "stream_id": 6,
+            "group": "sensory",
+            "classes": 2,
+            "labels": [
+              "frame 0",
+              "frame 1"
+            ],
+            "question": "Which frame contains the aligned Gabor contour?",
+            "renderer": "PreAttentiveVision.neuroscience_stimuli.TaskStream",
+            "requires_bsds500": false,
+            "report_by": [
+              "alignment_jitter_degrees"
+            ],
+            "conditions": [
+              {
+                "id": "mixed",
+                "kwargs": {},
+                "selection_eligible": true
+              }
+            ]
+          },
+          {
+            "id": "natural_spectrum",
+            "stream_id": 7,
+            "group": "sensory",
+            "classes": 2,
+            "labels": [
+              "frame 0",
+              "frame 1"
+            ],
+            "question": "Which frame has greater relative high-frequency detail (smaller spectral beta)?",
+            "renderer": "PreAttentiveVision.neuroscience_stimuli.TaskStream",
+            "requires_bsds500": true,
+            "report_by": [
+              "beta_delta",
+              "base_id"
+            ],
+            "conditions": [
+              {
+                "id": "mixed",
+                "kwargs": {},
+                "selection_eligible": true
+              }
+            ]
+          },
+          {
+            "id": "orientation_ring",
+            "stream_id": 8,
+            "group": "orientation_auxiliary",
+            "classes": 2,
+            "labels": [
+              "negative axial angle change",
+              "positive axial angle change"
+            ],
+            "question": "What is the sign of rotation at the ring-cued Gabor location?",
+            "renderer": "WorkingMemory.PlainBaseline.variants.VariantStream",
+            "requires_bsds500": false,
+            "report_by": [
+              "rotation_magnitude",
+              "target_location"
+            ],
+            "conditions": [
+              {
+                "id": "D0",
+                "kwargs": {
+                  "delay": 0
+                },
+                "selection_eligible": true
+              }
+            ]
+          },
+          {
+            "id": "orientation_cued",
+            "stream_id": 9,
+            "group": "spatial",
+            "classes": 2,
+            "labels": [
+              "unchanged or opposite to cue sign",
+              "rotation in cue sign"
+            ],
+            "question": "Did the target Gabor rotate in the direction requested by its location/sign glyph?",
+            "renderer": "WorkingMemory.SpatialTaskBattery.stimuli.SpatialBatteryStream",
+            "requires_bsds500": false,
+            "report_by": [
+              "delay",
+              "rotation_magnitude",
+              "target_location",
+              "cue_sign"
+            ],
+            "conditions": [
+              {
+                "id": "D0",
+                "kwargs": {
+                  "delay": 0
+                },
+                "selection_eligible": true
+              },
+              {
+                "id": "D4",
+                "kwargs": {
+                  "delay": 4
+                },
+                "selection_eligible": true
+              },
+              {
+                "id": "D12",
+                "kwargs": {
+                  "delay": 12
+                },
+                "selection_eligible": true
+              },
+              {
+                "id": "D24",
+                "kwargs": {
+                  "delay": 24
+                },
+                "selection_eligible": true
+              }
+            ]
+          },
+          {
+            "id": "motion_duration_cued",
+            "stream_id": 10,
+            "group": "spatial",
+            "classes": 4,
+            "labels": [
+              "right",
+              "up",
+              "left",
+              "down"
+            ],
+            "question": "Which direction occupied the most of eight transitions in the cued patch?",
+            "renderer": "WorkingMemory.SpatialTaskBattery.stimuli.SpatialBatteryStream",
+            "requires_bsds500": false,
+            "report_by": [
+              "delay",
+              "step_pixels",
+              "target_location",
+              "duration_counts_by_patch"
+            ],
+            "conditions": [
+              {
+                "id": "D0",
+                "kwargs": {
+                  "delay": 0
+                },
+                "selection_eligible": true
+              },
+              {
+                "id": "D4",
+                "kwargs": {
+                  "delay": 4
+                },
+                "selection_eligible": true
+              },
+              {
+                "id": "D12",
+                "kwargs": {
+                  "delay": 12
+                },
+                "selection_eligible": true
+              },
+              {
+                "id": "D24",
+                "kwargs": {
+                  "delay": 24
+                },
+                "selection_eligible": true
+              }
+            ]
+          },
+          {
+            "id": "krauzlis_cued_motion",
+            "stream_id": 11,
+            "group": "spatial",
+            "classes": 2,
+            "labels": [
+              "foil-only change or catch",
+              "target change"
+            ],
+            "question": "Did mean motion direction change in the precued patch rather than the foil?",
+            "renderer": "WorkingMemory.SpatialTaskBattery.stimuli.SpatialBatteryStream",
+            "requires_bsds500": false,
+            "report_by": [
+              "baseline_transitions",
+              "event_type",
+              "event_magnitude_degrees",
+              "target_location"
+            ],
+            "conditions": [
+              {
+                "id": "B12",
+                "kwargs": {
+                  "baseline_transitions": 12
+                },
+                "selection_eligible": true
+              },
+              {
+                "id": "B20",
+                "kwargs": {
+                  "baseline_transitions": 20
+                },
+                "selection_eligible": true
+              },
+              {
+                "id": "B28",
+                "kwargs": {
+                  "baseline_transitions": 28
+                },
+                "selection_eligible": true
+              }
+            ]
+          },
+          {
+            "id": "spatial_binding",
+            "stream_id": 12,
+            "group": "spatial",
+            "classes": 2,
+            "labels": [
+              "foil-only exchange",
+              "target participates in exchange"
+            ],
+            "question": "Was the orientation at the retrospectively queried location exchanged with another location?",
+            "renderer": "WorkingMemory.SpatialTaskBattery.stimuli.SpatialBatteryStream",
+            "requires_bsds500": false,
+            "report_by": [
+              "delay",
+              "target_location"
+            ],
+            "conditions": [
+              {
+                "id": "D0",
+                "kwargs": {
+                  "delay": 0
+                },
+                "selection_eligible": true
+              },
+              {
+                "id": "D4",
+                "kwargs": {
+                  "delay": 4
+                },
+                "selection_eligible": true
+              },
+              {
+                "id": "D12",
+                "kwargs": {
+                  "delay": 12
+                },
+                "selection_eligible": true
+              },
+              {
+                "id": "D24",
+                "kwargs": {
+                  "delay": 24
+                },
+                "selection_eligible": true
+              }
+            ]
+          },
+          {
+            "id": "image_recognition",
+            "stream_id": 13,
+            "group": "spatial",
+            "classes": 2,
+            "labels": [
+              "not in study set",
+              "in study set"
+            ],
+            "question": "Is the repeated probe raster an exact member of the preceding study-image set?",
+            "renderer": "WorkingMemory.SpatialTaskBattery.stimuli.SpatialBatteryStream",
+            "requires_bsds500": true,
+            "report_by": [
+              "load",
+              "probe_hold",
+              "seen_study_index",
+              "study_source_ids"
+            ],
+            "conditions": [
+              {
+                "id": "N0_H3",
+                "kwargs": {
+                  "load": 0,
+                  "probe_hold": 3
+                },
+                "selection_eligible": false
+              },
+              {
+                "id": "N0_H4",
+                "kwargs": {
+                  "load": 0,
+                  "probe_hold": 4
+                },
+                "selection_eligible": false
+              },
+              {
+                "id": "N0_H5",
+                "kwargs": {
+                  "load": 0,
+                  "probe_hold": 5
+                },
+                "selection_eligible": false
+              },
+              {
+                "id": "N4_H3",
+                "kwargs": {
+                  "load": 4,
+                  "probe_hold": 3
+                },
+                "selection_eligible": true
+              },
+              {
+                "id": "N4_H4",
+                "kwargs": {
+                  "load": 4,
+                  "probe_hold": 4
+                },
+                "selection_eligible": true
+              },
+              {
+                "id": "N4_H5",
+                "kwargs": {
+                  "load": 4,
+                  "probe_hold": 5
+                },
+                "selection_eligible": true
+              },
+              {
+                "id": "N12_H3",
+                "kwargs": {
+                  "load": 12,
+                  "probe_hold": 3
+                },
+                "selection_eligible": true
+              },
+              {
+                "id": "N12_H4",
+                "kwargs": {
+                  "load": 12,
+                  "probe_hold": 4
+                },
+                "selection_eligible": true
+              },
+              {
+                "id": "N12_H5",
+                "kwargs": {
+                  "load": 12,
+                  "probe_hold": 5
+                },
+                "selection_eligible": true
+              },
+              {
+                "id": "N24_H3",
+                "kwargs": {
+                  "load": 24,
+                  "probe_hold": 3
+                },
+                "selection_eligible": true
+              },
+              {
+                "id": "N24_H4",
+                "kwargs": {
+                  "load": 24,
+                  "probe_hold": 4
+                },
+                "selection_eligible": true
+              },
+              {
+                "id": "N24_H5",
+                "kwargs": {
+                  "load": 24,
+                  "probe_hold": 5
+                },
+                "selection_eligible": true
+              }
+            ]
+          }
+        ]
+      },
+      "source_manifest_sha256": "c7a153c1238d41fe36614b2f872ec3b03df0c1566e3a8c6f8db7e023f42ac50c",
+      "runtime_root": "/workspace/vawm_convgru_fresh/repo",
+      "initialization": {
+        "initialization": "all learned tensors newly constructed; no checkpoint input",
+        "architecture": "final_spatial_convgru",
+        "initialization_seed": 98192763,
+        "cuda_seed": 98292763,
+        "scheduler_seed": 98392763,
+        "train_namespace": 98492763,
+        "validation_namespace": 98592763,
+        "final_namespace": 98692763,
+        "inherited_weights": false,
+        "inherited_optimizer": false,
+        "inherited_rng": false,
+        "inherited_stream": false,
+        "profile_state_inherited": false
+      },
+      "baseline": "none",
+      "selection": "equal-task AUC then chance-normalized BA",
+      "all_trainable": true,
+      "lr": 0.0001,
+      "clipping": null,
+      "bptt": "full",
+      "precision": "fp32",
+      "tf32": false,
+      "max_steps": 10400,
+      "target_requested": 10400,
+      "validation_steps": [
+        5200,
+        10400
+      ],
+      "total_episodes": 332800,
+      "exposure_reduced": false,
+      "updates_per_task": 800,
+      "planned_exposure": {
+        "motion_direction": {
+          "updates": 800,
+          "episodes": 25600,
+          "cells": {
+            "mixed": 25600
+          }
+        },
+        "orientation": {
+          "updates": 800,
+          "episodes": 25600,
+          "cells": {
+            "mixed": 25600
+          }
+        },
+        "contrast": {
+          "updates": 800,
+          "episodes": 25600,
+          "cells": {
+            "mixed": 25600
+          }
+        },
+        "spatial_frequency": {
+          "updates": 800,
+          "episodes": 25600,
+          "cells": {
+            "mixed": 25600
+          }
+        },
+        "chromatic_increment": {
+          "updates": 800,
+          "episodes": 25600,
+          "cells": {
+            "mixed": 25600
+          }
+        },
+        "contour": {
+          "updates": 800,
+          "episodes": 25600,
+          "cells": {
+            "mixed": 25600
+          }
+        },
+        "natural_spectrum": {
+          "updates": 800,
+          "episodes": 25600,
+          "cells": {
+            "mixed": 25600
+          }
+        },
+        "orientation_ring": {
+          "updates": 800,
+          "episodes": 25600,
+          "cells": {
+            "D0": 25600
+          }
+        },
+        "orientation_cued": {
+          "updates": 800,
+          "episodes": 25600,
+          "cells": {
+            "D0": 6400,
+            "D4": 6400,
+            "D12": 6400,
+            "D24": 6400
+          }
+        },
+        "motion_duration_cued": {
+          "updates": 800,
+          "episodes": 25600,
+          "cells": {
+            "D0": 6400,
+            "D4": 6400,
+            "D12": 6400,
+            "D24": 6400
+          }
+        },
+        "krauzlis_cued_motion": {
+          "updates": 800,
+          "episodes": 25600,
+          "cells": {
+            "B12": 8544,
+            "B20": 8512,
+            "B28": 8544
+          }
+        },
+        "spatial_binding": {
+          "updates": 800,
+          "episodes": 25600,
+          "cells": {
+            "D0": 6400,
+            "D4": 6400,
+            "D12": 6400,
+            "D24": 6400
+          }
+        },
+        "image_recognition": {
+          "updates": 800,
+          "episodes": 25600,
+          "cells": {
+            "N0_H3": 2144,
+            "N0_H4": 2144,
+            "N0_H5": 2112,
+            "N4_H3": 2144,
+            "N4_H4": 2144,
+            "N4_H5": 2144,
+            "N12_H3": 2144,
+            "N12_H4": 2112,
+            "N12_H5": 2144,
+            "N24_H3": 2112,
+            "N24_H4": 2112,
+            "N24_H5": 2144
+          }
+        }
+      },
+      "estimated_optimizer_seconds": 20531.191853590193,
+      "estimated_total_remaining_seconds": 27603.323233768384,
+      "slower_150pct_seconds": 32736.121197165932,
+      "estimated_validation_seconds": 173.2222361301072,
+      "estimated_one_test_seconds": 346.4444722602144,
+      "final_reserve_seconds": 1046.111180650536,
+      "update_estimate_seconds": 14.411326162310978,
+      "method": "Fresh13 updates + all35 eval8 cells; slowest-cell task ratio; train1.25/eval1.35; 2val+2test+900s; separate600s retrieval; reduce only before production by13"
+    },
+    "continuation": {
+      "source_step": 7739,
+      "additional_step": 27300,
+      "additional_target": 104000,
+      "cumulative_target": 111739,
+      "additional_optimizer_seconds": 23776.036280459724,
+      "cap_started": 1790662486.4311879
+    }
+  },
+  "optimizer_names": [
+    "blocks.0.0.weight",
+    "blocks.0.0.bias",
+    "blocks.0.1.weight",
+    "blocks.0.1.bias",
+    "blocks.1.0.weight",
+    "blocks.1.0.bias",
+    "blocks.1.1.weight",
+    "blocks.1.1.bias",
+    "blocks.2.0.weight",
+    "blocks.2.0.bias",
+    "blocks.2.1.weight",
+    "blocks.2.1.bias",
+    "blocks.3.0.weight",
+    "blocks.3.0.bias",
+    "blocks.3.1.weight",
+    "blocks.3.1.bias",
+    "proj.0.weight",
+    "proj.0.bias",
+    "proj.1.weight",
+    "proj.1.bias",
+    "proj.2.weight",
+    "proj.2.bias",
+    "acc.0.inputs.weight",
+    "acc.0.inputs.bias",
+    "acc.0.output.weight",
+    "acc.0.output.bias",
+    "acc.1.inputs.weight",
+    "acc.1.inputs.bias",
+    "acc.1.output.weight",
+    "acc.1.output.bias",
+    "acc.2.inputs.weight",
+    "acc.2.inputs.bias",
+    "acc.2.output.weight",
+    "acc.2.output.bias",
+    "heads.motion_direction.weight",
+    "heads.motion_direction.bias",
+    "heads.orientation.weight",
+    "heads.orientation.bias",
+    "heads.contrast.weight",
+    "heads.contrast.bias",
+    "heads.spatial_frequency.weight",
+    "heads.spatial_frequency.bias",
+    "heads.chromatic_increment.weight",
+    "heads.chromatic_increment.bias",
+    "heads.contour.weight",
+    "heads.contour.bias",
+    "heads.natural_spectrum.weight",
+    "heads.natural_spectrum.bias",
+    "heads.orientation_ring.weight",
+    "heads.orientation_ring.bias",
+    "heads.orientation_cued.weight",
+    "heads.orientation_cued.bias",
+    "heads.motion_duration_cued.weight",
+    "heads.motion_duration_cued.bias",
+    "heads.krauzlis_cued_motion.weight",
+    "heads.krauzlis_cued_motion.bias",
+    "heads.spatial_binding.weight",
+    "heads.spatial_binding.bias",
+    "heads.image_recognition.weight",
+    "heads.image_recognition.bias",
+    "spatial_input.weight",
+    "spatial_input.bias",
+    "spatial_gru.gates.weight",
+    "spatial_gru.gates.bias",
+    "spatial_gru.candidate.weight",
+    "spatial_gru.candidate.bias",
+    "readout.weight",
+    "readout.bias"
+  ],
+  "model_constructor_requires_grad": {
+    "blocks.0.0.weight": true,
+    "blocks.0.0.bias": true,
+    "blocks.0.1.weight": true,
+    "blocks.0.1.bias": true,
+    "blocks.1.0.weight": true,
+    "blocks.1.0.bias": true,
+    "blocks.1.1.weight": true,
+    "blocks.1.1.bias": true,
+    "blocks.2.0.weight": true,
+    "blocks.2.0.bias": true,
+    "blocks.2.1.weight": true,
+    "blocks.2.1.bias": true,
+    "blocks.3.0.weight": true,
+    "blocks.3.0.bias": true,
+    "blocks.3.1.weight": true,
+    "blocks.3.1.bias": true,
+    "proj.0.weight": true,
+    "proj.0.bias": true,
+    "proj.1.weight": true,
+    "proj.1.bias": true,
+    "proj.2.weight": true,
+    "proj.2.bias": true,
+    "acc.0.inputs.weight": true,
+    "acc.0.inputs.bias": true,
+    "acc.0.output.weight": true,
+    "acc.0.output.bias": true,
+    "acc.1.inputs.weight": true,
+    "acc.1.inputs.bias": true,
+    "acc.1.output.weight": true,
+    "acc.1.output.bias": true,
+    "acc.2.inputs.weight": true,
+    "acc.2.inputs.bias": true,
+    "acc.2.output.weight": true,
+    "acc.2.output.bias": true,
+    "heads.motion_direction.weight": true,
+    "heads.motion_direction.bias": true,
+    "heads.orientation.weight": true,
+    "heads.orientation.bias": true,
+    "heads.contrast.weight": true,
+    "heads.contrast.bias": true,
+    "heads.spatial_frequency.weight": true,
+    "heads.spatial_frequency.bias": true,
+    "heads.chromatic_increment.weight": true,
+    "heads.chromatic_increment.bias": true,
+    "heads.contour.weight": true,
+    "heads.contour.bias": true,
+    "heads.natural_spectrum.weight": true,
+    "heads.natural_spectrum.bias": true,
+    "heads.orientation_ring.weight": true,
+    "heads.orientation_ring.bias": true,
+    "heads.orientation_cued.weight": true,
+    "heads.orientation_cued.bias": true,
+    "heads.motion_duration_cued.weight": true,
+    "heads.motion_duration_cued.bias": true,
+    "heads.krauzlis_cued_motion.weight": true,
+    "heads.krauzlis_cued_motion.bias": true,
+    "heads.spatial_binding.weight": true,
+    "heads.spatial_binding.bias": true,
+    "heads.image_recognition.weight": true,
+    "heads.image_recognition.bias": true,
+    "spatial_input.weight": true,
+    "spatial_input.bias": true,
+    "spatial_gru.gates.weight": true,
+    "spatial_gru.gates.bias": true,
+    "spatial_gru.candidate.weight": true,
+    "spatial_gru.candidate.bias": true,
+    "readout.weight": true,
+    "readout.bias": true
+  },
+  "checkpoint_sha256": "93762f7968a29092b8acce7ea9632937a23965160822fe98bda9b3e5844531e7"
+}

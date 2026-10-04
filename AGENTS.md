@@ -1,4 +1,371 @@
+## Latest user authorization — document, commit, push and merge
+
+User explicitly requested detailed latestcontrastivetrial documentation, consolidation of allretained research, thencommit/push/mergeeverythingfromrepo. Currenttraining remainscompleted; no newGPU/cloudrunsauthorizedbypublication. Records/figures/source/reportartifacts preserved; original*.pt/*.npz andgeneratedcache exclusions apply, no checkpointdeletion. Current indexesupdatedandoldstatustextarchived. Cataloglabelsuncertainendpoints, fresh-vs-transferredlineages, and3072contrastivetestpresentations/1536pairedcontexts. Publicationguardsfix oldFFNattemptoverwrite/missingtestthreshold, with2behavioraltests passed; model/loss/dataset unchanged. SeeLabJournal/PUBLICATION_20261004.md.
+
+## Latest result — angular contrastive CNN completed successfully
+
+Completed25024freshCNNupdates/782000pairpresentations/391000unique, October4 12:06PM PDT, about3h29m within8h. Onlybest19000/latest25024 preserved CPUverified64Adamstates each. Final3072fresh continuous before/aftertest trials BA100%/AUC1.0 inall6speed(.375/1/2)×angle(26/28)cells. Independent384angularpairs loss.00136432 vs collapsedbaseline.0799425, distance-anglecorrelation.987835. Directembeddingdistance decision/validationthreshold.08698048, no FFN. Explicit angular supervision/newsyntheticconstant-directiondots, not originalcue/distractor/nativeKrauzlis results. Guard/worker exited; no active local/cloud training or automaticfollow-up. Preserveallretainedmodels. SeeSecondPass/AngularContrastiveMotion/FINAL_REPORT.md andLocalRuntime/completion_verified.json.
+
+## Latest actual activation — contrastive CNN training locally
+
+User questioned why queue idle; parent corrected interpretation and launched requested queuedmodel on free localGPU. AngularContrastiveMotion worker65848, all64Adamstates independently CPUverified at saved1, wholefresh model/config no checkpointinputs. Target25024updates/8h cap through2026-10-04T16:37:56.095541-07:00, guard armed/localGPUlock, best/latestonly. No previous model killed: PredictiveMotionChange completedall10240 at8:05AM PDT, predictor completed50240at4:29AM; retainedcheckpoints preserved. No cloud or cap extension. SeeLocalRuntime/production_verified.json.
+
+## Latest user request — angular contrastive CNN queued
+
+User explicitly requests ground-up three-frameCNN with contrastive force proportional to inter-clip motion direction change, put in queue. SecondPass/AngularContrastiveMotion implemented and QUEUED LOCAL ONLY; no accelerator/profile/training/budget started, no cloud. Fresh sharedTripletEncoder/globalmean/128Dunit projection; nocheckpointinputs, all learnedweights trainable. Springloss.5(d−Δ/π)^2 whereΔshortestcircularangle; same-direction differentdotlayouts pulltogether, repulsion increaseslinearlywithΔ atfixed d. Independentdotpositions/count/speed; directions consistent insideeach3frameclip; pairmix1/3same,1/3±26/28°,1/3±45–180°. Fresh namespaces186101/102/103. Batch32pairs/micro4,FP32Adam1e-4/noclip/CPU2; target25024updates,1000pairsx2epochs, finite8h ceiling startsONLYactivation, noextension. Best/latestonly, preserveallpreviousmodels. CPUfixturepassed all parameter gradients/Adam states/force scaling/circularwrap. LocalRuntime/queue.json, launchmodulepreparedbutnotinvoked. Validateddistance threshold/freshcontinuous-change comparisonplanned; no resultclaims. SeeLabJournal/angular-contrastive-motion.md.
+
+## Latest result — predictive encoder FFN completed
+
+PredictiveMotionChange completed10240headupdates/640000presentations/320000unique in23min, final3072testtrials BA50%/AUC0.49519/CE0.693165, allno-change predictions; allsixspeed/anglecells BA50%. Frozenencoder50,000 unchanged; classifierbest5632/latest10240 CPUchecked8Adam states each. Guard/worker exited normally; no active local/cloud jobs or automatic further runs. Preserve bothclassifier andpredictor best/latest. This comparison failed, not evidence that frozenrepresentationcontainsnomotioninformation. SeeSecondPass/PredictiveMotionChange/FINAL_REPORT.md.
+
+## Latest authorization — local predictive representation FFN
+
+User explicitly requests simple before/after representation change classifier, then train locally. SecondPass/PredictiveMotionChange ACTUALLYRUNNING: frozen predictorbest50,000 CNN/vector_features/mu_head transfer authorized by context; freshFFN concat1024/LayerNorm/256GELU/64GELU/2,281026params8tensors/Adam1e-3. Preserve encoder and previous retained models, no inherited classifier optimizer. Six continuous dots frames, two3frameclips, same or+/−26/28°direction change, no cues/distractors, samepretrainingrender/speeds; no-change stillmoving. New synthetic comparison, not nativeKrauzlis. Balancedpairednuisance train/val/test namespaces185101/102/103; allencoderfrozen/no gradients. Batch64,1000freshpairsx2epochs thenrefresh, FP32MPS/CPU2; target10240headupdates/640000presentations/320000unique, new8h ceiling 2026-10-04T15:42:47.446601-07:00, no extension/cloud. Onlyheadbest/latest; cachefeaturesRAMonly. Independent guard andGPUlock armed; persisted8Adamstate proof LocalRuntime/production_verified.json. SeeLabJournal/predictive-motion-change.md.
+
+## Latest result — substantial predictive training completed
+
+VariationalMotionPredictor completed50,240 updates/1,570,000 presentations/785,000 unique samples at2026-10-04T11:29:05UTC (4:29AM PDT), planned_complete within8h cap. Onlybest50,000/latest50,240 retained; CPUverified all138Adam states, final768fresh test sequences complete. Balanced next-frame MSE0.00029275 vs copy-last0.00385410 (92.4% lower), improved all3speeds. No active local/cloud compute; no automatic continuation or downstream classifier training. Preserve predictor best/latest and previous retained models. See SecondPass/VariationalMotionPredictor/FINAL_REPORT.md and LocalRuntime/continuation01/completion_verified.json.
+
+## Latest authorization — substantial local predictive training
+
+User explicitly says start real training now. Resuming existing VariationalMotionPredictor pilot 256 with model/Adam/RNG/pool preserved is authorized. Actual persisted progress >256 independently verified in SecondPass/VariationalMotionPredictor/LocalRuntime/continuation01/production_verified.json. Target49,984 additional updates/50,240 cumulative, or new finite8h local cap 2026-10-04T11:45:34.384345+00:00; no automatic extension. Same constant-direction three-frame-to-fourth architecture/data/objective, batch32/micro4 FP32 MPS Adam1e-4/no clipping/two CPUthreads, 1000 fresh samples x2epochs. Best/latest only in existing attempt01/run; no extra checkpoint copies. Independent guard and GPU lock active. Previous pilot stop authorization is superseded only for this local continuation. No cloud restart.
+
+## Latest user request and result — variational next-frame motion predictor
+
+User requestedbuildingnewlocalvariationalmodel/dataset: threeframesCNN→singleflattenedlatent→fourthframeprediction; alldotswithonesameconstantdirectionpersample,directionvariesacrosssamples,nodirectionchanges. SecondPass/VariationalMotionPredictor implementedfreshCNN/one512DdiagonalGaussianvector/latent-onlyCNNdecoder,noencoder-skips,RViT,classificationorpretrainedweighttransfer. Dataset100x100RGBpersistent16–48Gaussiandots,toroidalwrapping,θuniformacrosssamples,speeds.375/1/2px/frame,nocues/fixation/labels,independent184101/102/103 namespaces. ThisnewsynthbenchmarkisnotKrauzlisreplication. Predictivesupport-balancedMSE+meanKLbeta0→1e-4over250updates; deterministicdecode(mu)eval, stochasticztrain. Parentannouncedinitial20-minuteLOCALpilot; prospectiveprofilepinned256updates/8000presentations/4000unique samples,2epochsper1000set/64updatespool,batch32micro4FP32Adam1e-4/no clippingCPU2/globalMPSlock. Completed2567:37PMPDT; onlybest/latest256 retainedCPUverified/all138Adamstates, allfinal128perspeedcomplete. ModelmeanMSE.004809 vs copylast.003839/gray.005469; predictionslargelyflat/blurry, no motionrepresentationclaim. No active localtraining/automaticcontinuation/budgetrenewal. SeeLabJournal/variational-motion-prediction.md andLocalRuntime/completion_verified.json. Weightedcloudepoch2completed2310allartifactsretrieved,pod7q3pqnv51lil36deleted; no paidcomputeactive. PreservepreviousVAE/classifiercheckpoints andcurrentpredictorbest/latest.
+
+## Latest authorization and actual run — weighted mean RViT two-epoch replay
+
+User said make these changes and try mean variant again after recommendation to change epoch count alone first. Implemented SecondPass/WeightedMeanRViTEpoch2: exact same weightedRGB .5/.4/.1 CNN→RViT/model/optimizer/regularization, 1000trials×2epochs thenfreshpool,66updates/pool. Fullfreshwholemodel/Adam/RNG/streams; same seeds/namespaces for matched comparison, nocheckpointinputs. Same task/cues/labels/rendering, FP32/fullBPTT batch32micro4 Adam1e-4/no clippingCPU2. TargetFULL2310updates/70000presentations/35000unique trials (35pools) prospectivelypinned usingunchangedhardware nativeprofile. Saved3/96 CPUverified all92Adam states and all92tensors changed, nativeproofexplicitlyepoch2/66pool; evidence SecondPass/WeightedMeanRViTEpoch2/CloudRuntime/production_verified.json. Existing A40pod7q3pqnv51lil36 reused with ORIGINAL creationcap8h/$5, no extension/newrental:hard1791089934.23731 (October3,9:58:54PM PDT), science10min earlier. RemoteROOTsame /workspace/vawm_weighted_mean_rvit_01/run butnewrepo_epoch2, owner10843. Existingguardunchanged, newmirrorlabelai.palladio.vawm.weighted-mean-rvit-epoch2-01.mirror; onlybest/latest automaticretrieval/CPUverify thenstop/delete. Oldcloud modelcancelled1304, best100/latest1304 retrievedverified andarchived; oldowner265/worker430 exited. LocalVAERViTInput10 remainsactive/unchanged. Researchersimplementedadapter, parentexecutedhandoff/verification. No otherarms or budgetrenewal. SeeLabJournal/weighted-mean-rvit-epoch2.md.
+
+## Actual local input×10 production — October3
+
+VAERViTInput10 saved update1/32 independently CPU-verified: all94 Adam states at1 and all94 learned tensors changed; input_scale10 provenance. Measured native costs prospectively reduce target990 to330updates/10000presentations/1000unique movies (one full1000×10epoch block), validation100/250/330 and final200/cell. New cap1791064446.677526 to1791093246.677526, hardOctober3,10:54:06PM PDT. Production9023/owner5300/independentguard armed, onlybest/latest. Oldlocalcancelled227/6928; weightedcloudunchanged. No automatic cap extension or additional arms. SeeSecondPass/VAERViTInput10/LocalRuntime/production_verified.json.
+
+## Latest authorization — local VAE–RViT input×10, October3
+
+User explicitly requested multiplying RViT inputs by10, killing current local model and repeating local training. Original VAERViT stopped227/6928; retain best/latest. New SecondPass/VAERViTInput10: deterministic VAE9900 mean/spatial positions/tokenNorm, then×10 before original RViT; preserve internal norms. Same pretrained encoder only, fresh recurrent/readout/Adam/RNG/streams/counters, all parameters trainable. Same paired seeds/namespaces, no-cue single-stimulus task and1000trial×10epoch schedule; full BPTT FP32 MPS Adam1e-4/no clipping batch32micro1CPU2. New finite8h local cap including profile/eval/reporting, target990 prospectively pinned whole330pools; no automatic extension. Onlybest/latest, preserve VAE and cancelled classifier checkpoints. Cloudweighted pod remains active under existing cap, no cloudchanges. New runtime VAERViTInput10 profile launched; require saved optimizer evidence before reporting production. See LabJournal/vae-rvit-input10.md.
+
 # Visual Attention and Working Memory
+
+## Latest authorization: move queued weighted-mean RViT to RunPod
+
+User explicitly says put the queued model onRunPod. Localqueue66646 cancelled/bootout verified, no weightedmodel localbudget/profile/training started. CurrentVAE–RViT58109 stayslocalrunning unchanged. LaunchONE freshWeightedMeanRViT ontheexistingverifiedPalladioRunPodaccount, singleA40, newfinite8h/$5cap frompodcreation inclsetup/profile/eval/retrieval, no renewal. NativeweightedRGB.5/.4/.1->freshCNN25613x13->169x256originalRViT->existingtokenreadout/FFN2; all7,269,426/92weights fresh/trainable, no VAE/otherweight orAdam/RNG/stream inheritance. Same no-cue/no-distractor B12/B20/B28 native29/37/45frame task,26/28change labels57/43;1000trial×10epochreplay, finalCE/fullBPTT/FP32 includingCUDAintermediates/TF32off, Adam1e-4/noclip, batch32micro4/CPU2. ShortnativeCUDAprofile prospectivelypinsfull330updatepools, target2310/70000/7000unique iffit. Best/latestonly, no profile/initial/numbered/terminal copies. Source-onlybundle/no weights; separatefreshproduction afterdiscardedprofile. Parentownsprovision/independentdeadlineguard/automaticartifactmirror,retrievefullbest/latest+logs/reports,CPUverifythenSTOP/DELETEephemeralpod. Noothercloudruns; newcloudbudgetnotstarted untilactualcreation. ExistingRESTkey/accountfrompriorverifiedrun; todayproviderlistempty/A40HIGHsecure.49hr;8hcompute3.92+1storagereserve4.92within5. No paidcreationyet. ClouddeploymentrequirespersistedAdam proofbeforetrainingclaim. Actualpod`7q3pqnv51lil36`running: saved3/96CPU92Adamstateverified, all92tensors changed, directfreshconstructorproof; targetFULL2310/70000/7000pinnednativeGPUprofile. CloudRuntime/production_verified.json anddownloaded_checkpoint_verified.json. Worker430/owner265/guard45, automaticmirror+retrieval+stop/delete armed, hardOctober3,09:58:54 PM PDT; Macawakehelper71012. Researchersadaptworker/runtime,parentlaunches. SeeCloudRuntimeandLocalRuntime/queue_cancelled.json.
+
+## Latest authorization: weighted-mean CNN–RViT queued after currentlocalrun
+
+User explicitly requests .5Xt+.4Xt-1+.1Xt-2 weightedrawimage ->CNN ->RViT as NEXTexperiment inqueue. SecondPass/WeightedMeanRViT freshwhole7,269,426params/92tensors, CNN256×13×13→169×256spatialtokens, originalRViT8heads/169memorytokens,256→16flatten2704FFN2. No VAE/otherweighttransfer; newAdam/RNG/taskstreams/zero counters, alltrainable. Same latest no-cue/single-stimulus B12/B20/B28 task/render/labels,1000freshtrials×10epochs, fullBPTT/FP32/batch32micro1/Adam1e-4/no clipping/CPU2. User requestslocalqueue, no cloud. Newfinite8hcap startsfirstactivation/profile; target2310, prospectivelypinwhole330pools nativeprofiling; no renewal. Best/latestonly, no profilept. Sourceonly35files frozen; actualqueue66646 isarmedwaitingpredecessorVAERViTcomplete/exited andGPUlockfree, freshmodelbudgetNOTstarted, currentrununtouched. Queueexpirespriorharddeadline+300sec, oneactivation/noretry. Parentownsqueue/launcher/guard; researchersimplementedmodelworker. SeeLocalRuntime/queue_verified.json andLabJournal/weighted-mean-rvit.md. Both VAE checkpoints and currentVAE–RViT remain preserved.
+
+## Latest authorization: VAE-encoder RViT trained locally
+
+User explicitly requests trained VAE encoding representation transposed to(H*W,d_model) into an RViT, then says Trainthismodel locally. Implement SecondPass/VAERViT: transfer ONLY encoder+mu_head from retained latest VAE9900 (not best9500); no VAE decoder/logvar/Adam transfer. Causal ordered three-frame window [Xt-2,Xt-1,Xt], repeatfirst startup, deterministic256x13x13mu ->169x256tokens plus learned spatial positions. Original shared recurrentvisualblock8heads queriescurrentvisualtokens with separatevisualself andprevious-memorycrossattention, state169x256;256->16token reduction/flatten2704 FFN response2. Freshrecurrent/position/readoutweights, freshwholeAdam/RNG/streams/zero responsecounters; everylearnedweight includingpretrainedencodertrainable. Same no-cue/no-distractor single-stimulus B12/B20/B28 movies exact29/37/45frame timings/positions/change semantics and57/43prior; no teaching/objective changes, finaltrialcrossentropy. Fresh classification RNG namespaces;1000newmovies then10shuffledepochs, correctpartialtail weighting. One localMPSworker FP32/fullBPTT/Adam1e-4/no clipping/batch32 at profiledmicrobatch, twoCPUthreads. Newfinite8h LOCAL cap starts firstacceleratorprofile andincludesprofile/eval/reporting, target2310updates/70000presentations/7000unique ifmeasuredfit; pincomplete330updatepools prospectively, no automaticextension. Shortnativeprofile, validation100/250/every500/terminal100percell; selectmeanAUCthenBA, freshpairedfinal200percell. Onlybest.pt/latest.pt checkpoints replacedatomically, no initial/numbered/profile/terminalcopies. Preserve both VAEcheckpoints; code/logs/reportspriorrunsremain. Researchers implement parent launches/ownsindependentdeadlineguard. No cloudjob. Actuallaunch requires persistedoptimizer evidence. ACTUALPRODUCTIONverified savedstep3/96episodes/all94Adamstates/tensors advanced in `SecondPass/VAERViT/LocalRuntime/production_verified.json`; profilepins990updates/30000presentations/3000unique beforeproduction, nativeMPS fullBPTT32micro1. Worker58109/supervisor57312/guard57310 active, hardOctober3,9:26:13PM PDT; no validation yet. Nativeprofile launched runtime`VAWMRuntime/vae_rvit_local01/run`, worker57333/supervisor57312/guard57310; newcap1791059173.039737 to1791087973.039737 (October 03, 09:26:13 PM PDT), no productionclaimyet.
+
+## Latest result: three-frame VAE complete, October3
+
+Completed9900updates /300000triplet presentations /30000unique movies at19:34:23UTC. Onlybest.pt9500 andlatest.pt9900 retained; parent verified both full checkpoints/126Adam states, final paired tests complete, guard exited normally. Same originalcap, no renewal. Selectedheldout balancedrecon0.00064548, temporal-differenceMSE31.5%belowcopy-middle, fullpixelMSEaboutsame. No responsearchitecture or downstreamaccuracytest. SeeSecondPass/ThreeFrameConvVAE/FINAL_REPORT.md andLocalRuntime/completion_verified.json. Preserve these two checkpoints; no automaticcontinuation/newrun.
+
+## Latest authorization: resume existing VAE, only best and latest checkpoints
+
+User explicitly requests continuing the interrupted VAE from verified update5600 and retaining ONLY TWO checkpoints: best validation and latest, overwritten atomically. Same whole model/Adam/RNG/streams/scheduler and original target9900/cap through October3,4:49:10PM PDT; no fresh training allocation. Prior best5500 and initial checkpoint files were deleted by user authorization. Preserve historical validation records; evaluate restored5600 to establish the first available best. Retain only `latest.pt` and `best.pt`; transient atomic-write temp file allowed, no per-update/validation/initial/terminal/selected checkpoint copies. Restart authorization supersedes prior hold. All cloud stays closed. Require persisted optimizer advancement before reporting resumed training. Actual resumed launch18:58:37UTC in `VAWMRuntime/three_frame_conv_vae_local01/resume01`; parent CPU verified saved5700/all126Adam steps and onlylatest.pt/best.pt. `LocalRuntime/resume_verified.json` records proof; worker15761/guard15751.
+
+## Latest user instruction: checkpoint cleanup, October 3
+
+User explicitly authorized deleting prior experiment checkpoints and retaining only the latest working VAE checkpoint. Cleanup completed: 1,518 checkpoint/model files removed (57,903,152,114 bytes); retained `/Users/jonathanmorgan/VAWMRuntime/three_frame_conv_vae_local01/run/checkpoint_005600.pt`, independently CPU verified with all126 Adam states at5600 and saved model/RNG/streams/scheduler. Code, logs, reports and metadata remain. This supersedes older requirements to preserve all checkpoints. Prior checkpoint links in historical reports now refer to deleted artifacts. VAE remains stopped after disk-full failure; restart was held at user request. Recovery adapter must be adjusted for latest-only storage before use: original step-zero and best5500 checkpoint files were intentionally removed. No new run, cloud allocation or deadline renewal. Cleanup receipt: `SecondPass/ThreeFrameConvVAE/LocalRuntime/checkpoint_cleanup.json`.
+
+## Latest authorization: replace local response model with three-frame convolutional VAE
+
+User explicitly cancels weighted CNN–GRU local training and requests a freshLOCAL convolutional VAE, jointly encodingthree ordered consecutive RGB100x100frames to spatiallatent(d_model,H,W) and reconstructingallthreeframes. Prepare reusablelatent forlaterdownstreamresponsearchitecture; no downstreamclassificationtraining now. Oldweighted stopped/saved570updates/17288presentations/all70Adam states and launchd jobsremoved; preserveeverything. Fresh ThreeFrameConvVAE encoder/diagonalGaussianmu/logvar/decoder, chosenlatent256x13x13; allweights fresh, no inheritedCNN/GRU/profile state. Same single-stimulus no-cue/no-distractor movies, reconstruction-only; no response labels used. Fixeddata-derivedcontrast-support/backgroundbalancedreconstruction+beta1e-4meanKL; reportunweightedMSE andtemporalDiff errorsversusgray/copymiddle. Uniformthree-frame windowswithinvisiblemotion, no label-conditionedwindow selection. Batch32micro4,Adam1e-4/no clipping, FP32, oneAppleMPSworker/twoCPUthreads. Newfinite8hLOCALcap startsfirstprofile andincludesprofile/eval/reporting; target9900updatesincomplete330update1000movie×10epochpools, measuredpinbeforefreshproduction, no extension. Newtripletwindows eachpresentation; unique movies/presentations/triplets loggedseparately. Plannedval64movies/cell3windows, final128/cell3windows, selectvalreconstructiononly. Parentownslauncher/independentdeadlineguard; researchersimplement. Allcloudpods/queues stayclosed. Productioncheckpoint3/96 parentCPUverified126Adamstates/tensorsadvanced, freshconstructor/emptyAdam/MPSRNG saved. Nativepin9900updates/300000triplets/30000unique, cap1791042550.185318 to1791071350.185318 (October3 8:49AM to4:49PM PDT), science1791070750.185318. Guard21104/supervisor21106/worker21185. SeeSecondPass/ThreeFrameConvVAE/RUN_STATUS.md.
+
+## Latest authorization 2026-10-03 UTC: fresh weighted CNN–GRU LOCAL training
+
+User explicitly says train WeightedMeanConvGRU locally now. This supersedes the
+previous hold-for-tomorrow ONLY for local training; all cloud pods remain deleted,
+cloud automatic queue remains disabled, no cloud restart/provisioning authorized.
+Same single-stimulus/no-cue/no-distractor B12/B20/B28, 29/37/45 native frames,
+original two possible centers and retained dot/label semantics. Fixed .5Xt+.4Xt-1+
+.1Xt-2 RGB mean with repeated-first-frame startup → shared residual CNN → 16x13x13
+flatten2704 → ONE standard GRU256 → terminal2561282 classifier. Whole6,999,474
+parameters/70tensors fresh, Adam/RNG/streams/counters fresh; no predecessor/profile
+state inherited. One Apple MPS worker, FP32/fullBPTT/Adam1e-4/no clipping, batch32/
+micro4/eval4, at most2CPUthreads. Source-only frozen local runtime at
+/Users/jonathanmorgan/VAWMRuntime/weighted_mean_conv_gru_local01. Newfinite8h localcap
+began1791038404.636982 (14:40:04UTC/7:40:04AM PDT), science1791066604.636982,
+hard1791067204.636982 (22:40:04UTC/3:40:04PM PDT), includesprofile/eval/reporting;
+no renewal. NativeMPS3warmup+3steady+20/cell evaluation profile pinsFULL2310updates/
+70000presentations/7000unique, exactly1000movies×10epochs×7pools, partialtail losses
+correctly normalized. Val100/250/every500/terminal100/cell; freshselected/terminal
+200/cell. Independent launchd guard/supervisor and exclusive local GPU lock.
+Productioncheckpoint3/96 parentCPUreloaded: all70Adamstates/tensors advanced, freshconstructor/emptyAdam/MPSRNG verified; live17/544. Preserve completed old
+structured-motion660 run and all cancelled/cloud artifacts.
+
+## Latest user instruction: kill cloud pods; hold weighted CNN for tomorrow
+
+User explicitly cancelled cloud jobs and then said we will pick up the weighted CNN tomorrow. WeightedMeanConvGRU automatic queue and wake processes are stopped, no next rental/budget created; preserve the implementation and CPU evidence. Do not automatically provision, profile, train, resume, or renew today. Stop/retrieve/delete active cloud podjxbmb44y9wamhl; random-frame pod5us0rp5jwmg5bu already deleted. Existing local structured-motion training was not included in the request to kill pods. Earlier cloud/queue authorization is superseded by this stop instruction.
+
+## Latest authorization 2026-10-03 UTC: queued weighted-mean CNN–GRU
+
+User explicitly requests another queued cloud experiment on the SAME last diagnostic:
+one stimulus, no cue/distractor, exact29/37/45frames and original locations/labels.
+Implement SecondPass/WeightedMeanConvGRU: fixed causal RGB100x100 mean
+0.5Xt+0.4Xt-1+0.1Xt-2 (repeat first frame startup), one shared residual CNN,
+16x13x13 spatial output flattened directly to ONE standard GRU256, final binary FFN.
+Fresh whole6,999,474parameter/70tensor model, optimizer/RNG/streams/zero counters;
+no predecessor or disposable-profile weights. FullBPTT/FP32/Adam1e-4/no clipping,
+effective32/micro4, exact1000movies×10shuffledepoch replay pools. Target2310updates/
+70000presentations/7000unique, pin feasible complete330updatepools before production.
+Parent automaticqueue4518/PPID1 waits for single-stimulus podjxbmb44y9wamhl final
+retrieval/verification/deletion, then one newA40 under same-as-last-trial new8h/$5
+cap from podcreation including setup/profile/eval/retrieval, no renewal. Keep
+random-frame cloud and local structured-motion jobs unchanged under existing caps.
+Independent guard and mirror retrieve/check then delete new ephemeral pod.
+Currently QUEUED, no new rental/profile/training; actual launch requires persisted
+Adam evidence. Researchers implement adapters; parent owns cloud/queue/retrieval.
+See SecondPass/WeightedMeanConvGRU/RUN_STATUS.md and LabJournal record.
+
+## Latest authorization 2026-10-03 UTC: fresh structured-motion local training, then proposal
+
+User explicitly requests STARTlocalStructuredMotionRViT, kill otherlocalCNN-GRU,
+then write technicaldocument/proposal. OldCNN-GRU saved2575/82400 and stopped;
+no predecessor/profile weights inherited. All learned7297650params/92tensors train
+fresh, publishedanalyticcoefficients fixedbuffers. Existing nativeKrauzlisB12/B20/B28
+26/28 teaching unchanged; retain1000-movie10epochreplaypolicy, batch32/micro1,
+Adam1e-4/no clipping, FP32/full BPTT/twoCPUthreads. FixedfrontCPU, learnedmodelMPS
+because nativeMPSmotionpath unsupported/numericallydiscrepant; copiesdifferentiable.
+Newassistant-selectedfinite8h LOCALcap starts firstcompatibilityattempt1790990149.2550762,
+hard1791018949.2550762 (09:15:49UTC/October3 2:15:49AM PDT), sciencehard-600;
+no caprenewal/cloudchange/secondarm. Measuredpin660updates/20000presentations/
+2000unique(two complete10epochpools), validations100/250/500/660 at100/cell,
+finalpairedfresh200/cell. Actualcheckpoint3/96 CPUreloaded—all92learnedparams and
+Adamstatesadvanced, analyticbuffersunchanged; directfreshconstructor/emptyAdam.
+Independentlaunchd supervisor20405, worker22149, guard20403; runtime
+/Users/jonathanmorgan/VAWMRuntime/structured_motion_rvit_local01. TechnicalPDF
+written afteractualproductionlaunch. CloudRViTreplay/KDA16 caps unchanged.
+See SecondPass/StructuredMotionRViT/RUN_STATUS.md and TechnicalDocument/architecture_proposal.pdf.
+
+## Latest request 2026-10-03 UTC: implement author-derived motion-energy front end
+
+User requests the Simoncelli–Heeger motion-energy CNN and its paper link. Implement
+one untrained candidate in SecondPass/StructuredMotionRViT using the actual
+Tangemann/Kümmerer/Bethge author code at pinned commit997ec55adf6062d8f92d4adcd555fdaccc5a1200:
+five spatial scales, fixed analytic coefficients, causal nine-frame windows,
+fresh appearance/fusion CNN and existing RViT architecture/readout. No inherited
+learned checkpoint; all new learned parameters trainable. Native Krauzlis teaching
+unchanged. Disclose coefficient axis-layout correction, four-frame causal filter
+delay and replacement of segmentation head. Three focused CPU checks passed;
+implementation is UNTRAINED. No new GPU profile, pod, training launch, queue or cap
+renewal is authorized by this build request. Existing RViT replay, KDA16 and local
+CNN-GRU continue unchanged. See SecondPass/StructuredMotionRViT/README.md and
+LabJournal/krauzlis-simoncelli-heeger.md.
+
+## Latest authorization 2026-10-03 UTC: fresh RViT with 1000-trial / 10-epoch replay
+
+User explicitly requests stopping the current RViT and starting the SAME architecture
+from scratch with 1000 generated movies reused for ten shuffled epochs, then a fresh
+1000-movie pool. Implement in SecondPass/TwoFrameRViTReplay. Native B12/B20/B28,
+26/28-degree stimuli/cues/labels/event proportions and final binary loss unchanged.
+Fresh whole model, Adam, RNG, streams and counters; no predecessor/profile weights.
+Effective batch32/micro4, FP32 full BPTT, Adam1e-4/no clipping retained. Homogeneous
+sequence-length batches include all partial tails with correct normalization; count
+unique movies separately from repeated presentations. Exactly1000 movies/pool,
+conditioncounts334/333/333 rotating extra;10epochs=10000presentations/330updates.
+Parent owns cancellation/artifact retrieval and reuse of pod7f27p6jxpitihn. ORIGINAL
+harddeadline1791004564.370006 (05:16:04UTC/October2 10:16:04PM PDT) and $5 cap
+remain unchanged; no renewal, extra pod or other training-arm changes. Pin feasible
+remaining exposure before production. Preserve cancelled online RViT artifacts;
+16headKDA and localDelayedFrameGRU continue. Actualtraining requires persisted Adam
+progress. Production launched and checkpoint3/96presentations CPUverified: all92Adamstates/parameters advanced, freshconstructor/emptyinitialAdam verified. Pin7completepools=2310updates/70000presentations/7000unique movies. Liveupdate15/480 in firstpool/epoch; seeSecondPass/TwoFrameRViTReplay/RUN_STATUS.md.
+
+## Latest authorization 2026-10-02 parallel TwoFrameRViT cloud training, earlier validations
+
+User explicitly requests the other model on a separate pod and faster validations.
+Launch one fresh SecondPass/TwoFrameRViT on singleA40 concurrently with exactactive
+16headKDApodpa0ko8f2qirisy; no unrelated active rental. Whole7,270,290params/92tensors
+train; Adam1e-4/no clipping/effective32micro4/FP32fullBPTT/CNNcheckpointing; native
+B12/B20/B28 teaching unchanged. SameboundedNEW8h/$5envelope adopted as stated.
+Actualpod7f27p6jxpitihn cap21:16:04UTC→05:16:04UTC /October2 10:16:04PM PDT,
+scientificcutoff600s earlier. Nativeprofilepins4216updates/134912episodes including
+18validationlooks:100then250,500,...terminal,100trials/cell; validationonlyselection
+meanAUC/BA/earliertie, freshpaired200/cellfinalselected/terminal. Checkpoint3/96
+CPUverified,all92params/Adamstatesadvanced,freshconstructor/emptyinitialAdam
+/nativeRNGstreams, no predecessor/profile inheritance. Independentguard/mirror
+retrieval/verifieddeletionparentowned; no caprenewal. CPU-only early validation
+snapshots of existingKDA/localCNN-GRU are authorized by fastervalidationrequest,
+frozenimmutablecheckpoints,2threads,<=1200s eachwithin existingdeadlines,100/cell
+or measuredprespecified50/cell; outputsoutsideactive run directories, no GPUworker,
+training/RNG/stream/officialselection changes. Labelvalidationonly, neverfinalresults.
+LocalCNN-GRU and16headKDA continue. Cancelled3layer staysstopped/deleted.
+See SecondPass/TwoFrameRViT/RUN_STATUS.md and SecondPass/EarlyValidation.
+
+## Latest user correction 2026-10-02 cancel three-layer KDA, start queued sixteen heads
+
+User explicitly said kill3layerKDA and start next queued model. Parent stopped
+three-layer training at2615updates/83680episodes, retrieved/hashverified71files
+and CPUreloadedterminal55Adamstates, then stopped/deleted exactpod5hnvb87npqpqb4.
+No finaltest claim for cancelledrun, and no restart authorized. This supersedes
+complete-finalization prerequisite for the queued16headrun: cancelled artifacts
+are fully preserved before verified predecessor deletion. Fresh16headmodel
+SecondPass/SequenceKDA16 nowprovisioned on singleA40podpa0ko8f2qirisy, new8h/$5
+cap starts2026-10-02T20:33:14.139025+00:00 and ends2026-10-03T04:33:14.139025+00:00, scientificcutoff600s earlier.
+NativeCUDAprofile/pin/freshproduction automatically owned by detached parent
+launcher84441, independentguard/retrieval/deletion. Persistedcheckpoint3/96episodes CPUverified, all27params/Adamstatesadvanced;
+full4216updates/134912episodes pinned beforeproduction. Guard/mirroractive.
+No earlier trained/profile state transfer. LocalCNN-GRU
+continues and TwoFrameRViT remainsimplementationonly. No extra cloud arm/caprenewal.
+
+## Latest implementation request 2026-10-02 two-frame CNN visual-query RViT
+
+User requests BUILD of a recurrent vision transformer variant in
+SecondPass/TwoFrameRViT: sophisticated ordered previous/current RGB CNN,
+256-channel spatial tokens, queries from current visual X, separate visual
+self-attention and previous-memory cross-attention streams, then per-token
+256->16 reduction, flatten and FFN decoding. Use one shared recurrent block,
+8heads,13x13 spatial tokens, full temporal gradients, fresh learned weights.
+Full-resolution early CNN processing precedes learned space-to-depth spatial
+compression; convolutions remain stride1. First pair repeats frame0; initial
+memory zero. Native Krauzlis rendering/teaching unchanged. Researchers implement
+and run focused CPU checks only. This build request creates no new training
+worker, cloud rental, queue entry or compute allowance. Preserve active local
+CNN-GRU, active three-layer cloud KDA and separately authorized16headKDAqueue.
+Do not inherit trained weights. See SecondPass/TwoFrameRViT/README.md.
+
+## Latest authorization 2026-10-02 single KDA sixteen heads queued on RunPod
+
+User explicitly selected "Queue after the cloud KDA run, with a new eight-hour/$5 cap".
+Implement/train SecondPass/SequenceKDA16: exactlyoneglobalKDA,16heads64key/value,
+128-widechronologicalRGBpatchtokens and terminalCLS128->256->2decoder;
+737170parameters/27tensors. Freshwholemodel/Adam/RNG/streams/counters,alltrainable,
+no predecessor/profile inheritance. NativeB12/B20/B28 and teaching unchanged.
+Parentqueue63567 waits for exact three-layerpod5hnvb87npqpqb4 fullartifactretrieval,
+both finalCPUreloads and verifieddeletion; no activeproviderpods beforecreation.
+Only then createoneA40 under NEW28800s/$5fromcreationincludingsetup/profile/eval/
+retrieval. Target4216 prospectivelypinned from nativeGPUfeasibility; effective32/
+micro4/Adam1e-4/noclip/FP32fullBPTT. Parentownsqueue/provisioning/independentguard/
+retrieval/deletion; researchersimplementmodel/worker. Actualtrainingrequires
+persisted optimizer evidence. Queueisactivebutnewrunnotstarted; localCNN–GRUand
+cloudthree-layercontinue unchanged. No caprenewal, secondactivecloudrental or
+extraarchitecture/taskchange. See SecondPass/SequenceKDA16/RUN_STATUS.md.
+
+## Latest training authorization 2026-10-02 delayed-frame CNN–GRU locally
+
+User explicitly said "Go ahead and train this one locally for the time being".
+Run one fresh whole `SecondPass/DelayedFrameGRU` on localAppleMPS, preserving
+all architecture and native Krauzlis teaching. All21,293,770parameters train;
+Adam1e-4/no clipping/FP32/fullBPTT/effectivebatch32, memory-safe micro1 chosen
+before profiling. NEW finite28800s localcap starts firstacceleratorprofile and
+includes profiling/evaluation/reporting, scientificcutoff600s earlier, no
+renewal. Prospectivelypinfeasible exposure from nativeprofile before production;
+actualpin2631updates/84192episodes (877updates/28064episodes percondition).
+Discard all profileprogress, fresh wholemodel/Adam/RNG/streams/counters.
+Parentownslaunchd/absoluteindependentguard and verifies persistedAdam evidence.
+Runtime /Users/jonathanmorgan/VAWMRuntime/delayed_frame_gru_local01, launchd
+org.vawm.delayed-frame-gru-local01. Actualcheckpoint3/96episodes CPUverified,
+all86namedAdamstates advanced. Cap18:57:51UTC→02:57:51UTC /October2 7:57:51PM PDT.
+Cloudthree-layerKDA continues under its original deadline/mirror; no cloud
+restart, additionalrental or architecture/task changes. Earlier implementation-
+only notes below are historical and superseded by this explicit training request.
+
+## Latest implementation request 2026-10-02 delayed-frame CNN and standard GRU
+
+While the three-layer KDA run continues, user requests current and previous
+frame representations, concatenated at each step into a standard GRU, with
+fairly sophisticated convolutional encoders and no strided convolutions.
+Implement `SecondPass/DelayedFrameGRU`: separate fresh trainable residual CNN
+branches, all convolutions stride1/full100x100, no pooling, learned spatial
+readouts256 each; ordered concat512 -> standardGRU256 -> binary head.
+Explicit causal previous-frame delay, zero initial delayed representation,
+full gradients through the delay, no task/phase metadata or altered teaching.
+Keep native Krauzlis and fresh whole-model optimization conventions. Researchers
+implement and verify the candidate; no new paid job or budget has been launched
+by this implementation step. Preserve the active three-layer KDA run, its guard,
+mirror and original deadline. No current-run modification or training claim for
+this untrained candidate. Do not recover or inherit old trained weights.
+
+## Latest authorization 2026-10-02 three-layer whole-sequence KDA depth comparison
+
+After the completed one-layer run, user requests exactly THREE KDA layers.
+Implement and train one fresh `SecondPass/SequenceKDA3` on a new single A40,
+under the same finite NEW8h/$5 run envelope including setup/profile/evaluation/
+retrieval. Use three sequential pre-LN residual global KDA blocks on unchanged
+chronological RGB patch tokens and terminal CLS. First two produce the whole
+token sequence; final layer decodes CLS only. No CNN, GRU, FFN or second arm.
+Keep width128/two heads/key-value64, native B12/B20/B28 at26/28 degrees, all
+cues/rendering/labels/event proportions/teaching, Adam1e-4/no clipping,
+batch32/micro4/FP32/full temporal gradients unchanged. Fresh whole model, Adam,
+RNG/streams/counters, all parameters trainable; no inherited checkpoints.
+Target4216updates/134912episodes to match completed single-layer exposure;
+reduce only prospectively if measured steady native profiling requires it.
+Discard warmup/profile state. Same fresh deterministic task schedule and
+validation/test draw definitions allow direct comparison to saved one-layer
+results. Validation-only selection, fresh paired selected/terminal final tests.
+Researchers implement; parent provisions and owns independent shutdown/retrieval.
+Persisted optimizer evidence before claiming training. Keep prior run preserved;
+no further depth sweep, teaching change or automatic cap renewal. User explicitly
+rejects exhaustive checks: reuse the verified runtime, check only changed model
+and optimizer path, then launch.
+
+## Latest authorization 2026-10-02 single layer whole sequence KDA on RunPod
+
+User approved implementation and pod training of `SecondPass/SequenceKDA`.
+Exactly ONE global KDA layer over chronological patches from every native
+100x100 RGB frame, shared patch projection, spatial/time positions and terminal
+CLS-only response decoder. No extra KDA layers, CNN, GRU or transformer arm.
+Train only unchanged native Krauzlis B12/B20/B28 with 26/28-degree changes;
+keep cues, rendering, labels, target/foil/catch proportions and teaching intact.
+Whole model, Adam, RNG, streams and counters start fresh; all parameters train.
+One A40, FP32 including backend intermediates, full temporal gradients,
+Adam1e-4/no clipping, batch32/micro4. Target10000 updates, pin feasible exposure
+from measured native profiling before production within a NEW8h/$5 cap
+including setup/profile/evaluation/retrieval. Researchers implement model and
+training adapter; parent owns provisioning and independent shutdown/retrieval.
+Persisted optimizer evidence is required before claiming training. Keep earlier
+models and cancelled runs preserved. No second arm, new teaching or cap renewal.
+
+## Latest authorization — fresh ConvGRU on RunPod
+
+User now explicitly requests training the ConvGRU FROM SCRATCH on RunPod.
+One whole freshly initialized `SecondPass.SpatialReadout.model.SpatialReadout`
+(CNN + three KDA modules + final spatial ConvGRU + dense readout + heads),
+not the earlier warm-start run. New optimizer/RNG/streams/zero counters; all
+learned weights trainable. No predecessor or disposable-profile state transfer.
+Keep native13tasks/35conditions and teaching unchanged. Target10400updates at
+batch32, pinned to measured feasibility before production within a new8h/$5
+cloud cap including setup/profile/evaluation/retrieval. Single A40, fp32/full
+BPTT, one Adam1e-4/no clipping; no extra arm/curriculum. Reuse verified
+deadline/retrieval-only stop, off-pod status and mirror. Parent owns cloud;
+researcher implements `SecondPass/SpatialReadout/FreshRun`. Actual training
+requires persisted optimizer evidence. Cancelled transformer runs stay stopped.
+
+## Latest user correction and cancellation — 2026-09-29 UTC
+
+The user cancelled the no-CLS RunPod training and requested the last working
+from-scratch architecture. Pod `7ij62e571pln8w` is verified EXITED; no restart,
+profiling or new training is authorized. The active architecture is the original
+CNN + three spatial KDA modules + flatten projection + global GRU in
+`WorkingMemory/PlainBaseline/accum.py`, not the inherited-weight final ConvGRU,
+comparison or transformer branches. See `SecondPass/ACTIVE_BASELINE.md`.
+
+**NEVER inherit trained weights unless the user specifically says to do so.**
+Default every new run to a fresh whole model, optimizer, RNG and data streams.
+Reusing/reverting an architecture or decoder is NOT permission to load weights.
+Old continuation authorizations below are historical, not standing permission.
+Preserve prior artifacts, label warm-started results honestly, and never use
+them as evidence that a changed architecture learned from scratch.
+
+Current authorization (2026-09-22): the user explicitly requests starting a new
+model locally on the complete SecondPass/TaskSuite. Researcher implements,
+profiles and runs ONE fresh-weight KDA joint learner in SecondPass/JointTraining,
+with all 13 tasks / 35 primary conditions unchanged. Fresh model/optimizer and
+streams; all learned parameters trainable, one LR, no inherited checkpoint,
+frozen encoder, old clipping recipe or staged curriculum. Use one local Apple
+MPS worker (CPU fallback only if required), fp32 full BPTT and at most two CPU
+threads. Assistant-selected finite 14,400-second wall cap begins at first
+accelerator profile and includes evaluation/reporting; pin feasible exposure
+before production from measured costs, no automatic extension. Keep every
+task/cell visible, empty recognition specificity separate, Krauzlis event
+subgroups, validation-only selection and fresh final tests. Preserve all prior
+models. No cloud, second arm or architecture/stimulus changes. See
+LabJournal/joint-suite-training.md. Actual launch status requires persisted
+optimizer progress, not this authorization note.
 
 This repository was reset at the user's explicit request. Do not recover previous implementations, plans, task boards or experiment results.
 

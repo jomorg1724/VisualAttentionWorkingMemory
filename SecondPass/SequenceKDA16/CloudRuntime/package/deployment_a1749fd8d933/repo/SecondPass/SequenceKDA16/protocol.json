@@ -1,0 +1,76 @@
+{
+  "protocol": "single_sequence_patch_kda_16head_cls_wholemodel_fresh_native_v1",
+  "architecture": "single_sequence_patch_kda_16head_cls",
+  "kda_layers": 1,
+  "heads": 16,
+  "head_key_value_width": 64,
+  "token_width": 128,
+  "internal_projection_width": 1024,
+  "state_values_per_trial": 65536,
+  "parameter_count": 737170,
+  "parameter_tensors": 27,
+  "task": "krauzlis_cued_motion",
+  "renderer": "unchanged WorkingMemory.SpatialTaskBattery.stimuli.SpatialBatteryStream",
+  "conditions": [
+    "B12",
+    "B20",
+    "B28"
+  ],
+  "native_changes_degrees": [
+    26,
+    28
+  ],
+  "frames": [
+    29,
+    37,
+    45
+  ],
+  "target_foil_catch_per100": [
+    57,
+    29,
+    14
+  ],
+  "initialization": "fresh whole model, Adam, RNG, scheduler and task-local streams; zero counters; no profile transfer",
+  "optimization": {
+    "optimizer": "Adam",
+    "lr": 0.0001,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "eps": 1e-08,
+    "weight_decay": 0,
+    "clip": null,
+    "effective_batch": 32,
+    "microbatch": 4,
+    "precision": "fp32",
+    "tf32": false,
+    "full_temporal_gradients": true
+  },
+  "target_updates": 4216,
+  "minimum_useful_updates": 1000,
+  "pin": "before production from three native warmup updates then six steady native updates and 20 evaluation trials per condition, with measured margins and both final tests",
+  "validation": {
+    "looks": [
+      "midpoint",
+      "terminal"
+    ],
+    "trials_per_condition": 100,
+    "selection": "mean three-condition AUC; then balanced accuracy; earlier checkpoint ties"
+  },
+  "final": {
+    "trials_per_condition": 200,
+    "models": [
+      "selected",
+      "terminal"
+    ],
+    "pairing": "identical fresh task-local final streams"
+  },
+  "cloud_cap": {
+    "wall_seconds_from_creation": 28800,
+    "maximum_total_dollars": 5,
+    "retrieval_reserve_seconds": 600
+  },
+  "queue": "only after exact three-layer pod5hnvb87npqpqb4 complete retrieval, final CPU reload and verified deletion; no active provider pods; preserve local experiment",
+  "readiness": "persisted checkpoint3 from direct fresh constructor, all parameters changed, named Adam progress, native streams and scheduler advanced"
+}

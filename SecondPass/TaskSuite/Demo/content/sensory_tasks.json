@@ -1,0 +1,1723 @@
+[
+  {
+    "id": "motion_direction",
+    "title": "Motion direction",
+    "group": "sensory",
+    "question": "Which direction carries the surviving dots from the first frame to the second?",
+    "intro": "Two dot clouds contain one brief piece of motion evidence. Some dots keep their identities and shift together; the rest are replaced. Judge the ordered transition—not an individual bright spot—and choose right, up, left or down. There is no cue, competing patch or memory delay.",
+    "sections": {
+      "appears": [
+        "A fixed circular viewing aperture, 85 pixels across and centered at (49.5, 49.5), reveals bright grayscale dots against an intensity-0.2 background. The generator places 256 identities across a larger periodic 100 × 100 square, not 256 guaranteed visible dots. The circle masks a blurred field after rendering, so dots outside it can contribute a clipped portion of their blur near its edge, and overlapping dots can saturate. The three channels contain identical images; color carries no direction information.",
+        "Exactly 128 identities survive the transition and move by the same selected cardinal displacement; the other 128 are born anew at independent square-domain positions. “Coherence = 1” refers to the surviving identities only. It does not mean that every visible dot in frame 1 has a partner in frame 0, and it is not the coherent percentage convention of the source experiment."
+      ],
+      "sequence": [
+        "Frame 0 is the initial dot observation and frame 1 is the translated-and-refreshed observation. The correct response is defined after that single forward transition. There are no intervening blanks, no direction-change event and no cue or fixation symbol. A website replay starts another viewing of the same episode; the jump from frame 1 back to frame 0 is not a second valid motion sample.",
+        "The displacement is expressed in pixels per observed transition. Although the historical raster rationale mapped an 85-pixel aperture to a source-inspired visual angle, this stream does not assign an elapsed biological time to the two arrays. Demonstration milliseconds therefore cannot be converted into a claimed experimental speed."
+      ],
+      "rules": [
+        "The four classes are 0 = right, 1 = up, 2 = left and 3 = down. In image coordinates the corresponding displacement vectors are (1,0), (0,−1), (−1,0) and (0,1), multiplied by a step selected uniformly from 1, 2 or 3 pixels. Surviving positions are translated modulo 100 in both coordinates. The answer names the forward displacement that best explains common structure across the two observations, not the direction from the second frame back to the first."
+      ],
+      "ignore": [
+        "Ignore dots that were independently reborn, isolated apparent pairings, overlap brightness and dots entering or leaving the aperture. The surviving count is a square-domain count, not a count of visible correspondences. A boundary crossing need not indicate disappearance of an identity: the periodic field continues behind the fixed circular mask. A single-frame density edge is not an intended cue, because uniform initial positions, periodic translation and uniform rebirth all preserve the same marginal position law."
+      ],
+      "implementation": [
+        "TaskStream.batch delegates this task directly to CardinalMotionStream.batch in PreAttentiveVision/neuroscience_stimuli.py. It draws a batch-balanced shuffled label sequence, then a displacement, 256 uniform 2-D positions and a random permutation assigning exactly half the initial ages to each age class. Age-zero dots survive; the others are replaced once. This is a two-observation construction, not a long movie simulator with a repeatedly advanced lifetime process.",
+        "_render deposits each subpixel position onto four neighboring square-grid pixels with bilinear weights and wraparound indexing. scipy.ndimage.gaussian_filter then smooths the field at σ = 0.7 pixels with wrap boundaries, followed by multiplication by 2πσ². Only masked pixels receive the 0.7 dot-field increment, and the result is clipped to [0,1] before copying into RGB. There is no added sensor-noise array. Local RNG state and a monotonically increasing trial counter make the stream reproducible for the same seed and call sequence; metadata records direction and step but does not expose individual positions.",
+        "The exported environment records SciPy 1.13.1. Its Gaussian helper uses derivative order zero, a four-standard-deviation truncation and separable normalized one-dimensional kernels; at σ = 0.7 the actual finite radius is three pixels per axis. The caller explicitly supplies periodic wrap boundaries, so the default constant-padding value is irrelevant.[sensory-scipy1131] These dependency details explain why the blurred dot is not an ideal infinite-support Gaussian."
+      ],
+      "neuroscience": [
+        "Limited-lifespan random-dot displays provide a way to ask a direction question while limiting the usefulness of tracking a single enduring object. Lovejoy and Krauzlis used stochastic circular patches with two-refresh dot lifetimes and a mixture of common-direction and random-direction motion in a primate direction-report study; the full task also contained cues, competing signals and longer temporal structure.[sensory-lovejoy2010] That paper is a source for the stimulus family, not evidence that a two-frame classification exercise measures the same selective-attention process.",
+        "The useful distinction here is between local correspondence across observations and a coherent-motion manipulation. This generator injects correspondence noise through replacement while fixing survivor direction coherence at one. It does not sweep the fraction of randomly directed surviving dots, measure a coherence threshold, or reproduce the source’s causal superior-colliculus intervention."
+      ],
+      "network": [
+        "The logical requirement is order-sensitive evidence linking spatial structure across the pair. A representation that makes (frame 0, frame 1) indistinguishable from (frame 1, frame 0) loses the forward-versus-reverse information needed to distinguish opposite directions. Signed displacement correlations, appropriately oriented spatiotemporal filters or learned ordered feature comparisons could all express the relevant calculation; none requires identifying every dot.",
+        "Potential difficulties include preserving a one-pixel shift after spatial pooling, separating persistent evidence from independent births, and tolerating overlap and aperture crossings. These are candidate computational bottlenecks, not diagnoses of any trained system. Two frames make a temporal comparison necessary but do not establish retention over a long delay or the necessity of a particular recurrent architecture."
+      ],
+      "boundary": [
+        "A successful decision procedure would demonstrate recovery of the specified cardinal displacement under this fixed aperture, density, blur and replacement law. It would not establish spatial attention, target-versus-foil rejection, direction-change detection, biological motion speed tuning or human-like motion thresholds. The fixed survivor coherence and discrete cardinal classes are substantial simplifications, and procedural seed separation is not a demonstration of generalization to a new aperture or motion family."
+      ],
+      "metrics": [
+        "The uniform four-class guessing reference is 25%. Accuracy is the fraction of correct episode labels; balanced accuracy is the mean of the four class recalls. A four-by-four confusion matrix distinguishes reversals from orthogonal mistakes. If continuous class scores are available in a separately authorized evaluation, one-versus-rest AUC may be defined for each direction and macro-averaged only when each required positive/negative comparison exists.",
+        "Report denominators and direction-specific recalls at each 1-, 2- and 3-pixel displacement, rather than allowing one easy step to hide another. Curated illustrations are not frequency estimates or evaluation samples. The atlas reports no measured scores, and a person’s response while watching a slowed loop is not a calibrated reaction time."
+      ],
+      "adaptation": [
+        "The project retains the idea of limited-lifespan population motion but replaces the source trial with exactly one two-frame transition and cardinal output classes. The 256-dot square, exact 128/128 age split, blur, intensity and displacement mixture are project raster choices. The source used coherent pulses, diagonal response directions and an attention design; those properties are not silently inherited.[sensory-lovejoy2010]"
+      ]
+    },
+    "properties": [
+      {
+        "name": "Native observation contract",
+        "value": "2 × 3 × 100 × 100; float32 in [0,1]",
+        "units": "frames × channels × pixels",
+        "sampling": "Fixed; no cue, blank, report-only or extra loop-seam input",
+        "role": "Two ordered observations; decision after frame index 1",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:73–101",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Primary condition",
+        "value": "mixed; empty kwargs",
+        "units": "condition ID",
+        "sampling": "One catalog cell; native level mixture retained",
+        "role": "Difficulty variants are not additional primary conditions",
+        "provenance": "SecondPass/TaskSuite/catalog.json:23–186",
+        "visibility": "External condition selection; not extra image input"
+      },
+      {
+        "name": "Answer balancing",
+        "value": "0/1/2/3",
+        "units": "class index",
+        "sampling": "Random cyclic offset of arange(n), then shuffled; exact balance for multiples of 4",
+        "role": "Batch balance, not independent Bernoulli labels and not guaranteed balance in a curated subset",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:78–79",
+        "visibility": "Supervision/analysis only"
+      },
+      {
+        "name": "Random state and trial identity",
+        "value": "NumPy default_rng(seed); seed/split/counter",
+        "units": "state",
+        "sampling": "Local mutable RNG; counter increments once per episode; exact draw order and batch size matter",
+        "role": "Reproducibility without global RNG; no live training stream state is restored; isolated demo progress may be restored for resumable export",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:42–59, 98–100, 113–140, 277–281",
+        "visibility": "Analysis only; never pixel overlays"
+      },
+      {
+        "name": "Adapter dispatch and metadata",
+        "value": "TaskStream; native images and labels unchanged",
+        "units": "interface",
+        "sampling": "A separate stream per task/cell; normal suite seed = split_seed × 100000 + stream_id × 1000 + cell_index; atlas must use recorded demo-only seeds instead",
+        "role": "Task identity externally selects a task-specific output; metadata is not observer input",
+        "provenance": "SecondPass/TaskSuite/suite.py:69–99",
+        "visibility": "Task/head choice external; metadata analysis only"
+      },
+      {
+        "name": "Playback and photometry",
+        "value": "No biological frame duration assigned",
+        "units": "display convention",
+        "sampling": "Atlas preview uses a common clip/rint(255x) mapping; playback speed and repeated looping are presentation choices",
+        "role": "No gamma calibration, per-frame rescaling, tweening or added evidence",
+        "provenance": "SecondPass/TaskSuite/Demo/CONTRACT.md:15, 21–24",
+        "visibility": "Website/display policy, not native stimulus parameter"
+      },
+      {
+        "name": "Class vectors",
+        "value": "0:(1,0), 1:(0,−1), 2:(−1,0), 3:(0,1)",
+        "units": "unit pixel vector",
+        "sampling": "Label-balanced batch assignment",
+        "role": "Ordered forward direction",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:20–22, 78–79",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Displacement",
+        "value": "1, 2, 3",
+        "units": "pixels/transition",
+        "sampling": "Uniform discrete choice per trial; mixed condition has no override",
+        "role": "Difficulty variable",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:73–89",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Square-domain population",
+        "value": "256 positions; each coordinate Uniform[0,100)",
+        "units": "dots; pixels",
+        "sampling": "Independent initial position coordinates; square is periodic modulo 100",
+        "role": "Stationary single-frame marginals",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:84–89",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Age initialization and replacement",
+        "value": "128 age 0, 128 age 1; age-0 survives",
+        "units": "identities",
+        "sampling": "Uniform random subset via permutation; rebirth positions independent Uniform[0,100)²",
+        "role": "Two-frame limited-lifetime correspondence noise",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:85–89",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Aperture",
+        "value": "center (49.5,49.5), radius 42.5; squared distance ≤ 42.5²",
+        "units": "pixels",
+        "sampling": "Fixed mask applied after blur",
+        "role": "Visible count varies; no guarantee of 256 visible dots",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:48–49, 69–71",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Subpixel deposition",
+        "value": "Four bilinear neighbors; modulo-100 indices",
+        "units": "weights",
+        "sampling": "Weights from fractional x,y coordinates; summed using np.add.at",
+        "role": "Preserves fractional location before blur; overlaps add",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:61–67",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Blur and amplitude scale",
+        "value": "Gaussian σ 0.7, wrap mode; multiply by 2π × 0.7²",
+        "units": "pixels; gain",
+        "sampling": "Fixed scipy gaussian_filter call; other arguments use dependency defaults",
+        "role": "Soft dots on a periodic field",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:68",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Background, dot gain and saturation",
+        "value": "0.2 + 0.7 × field within mask; clip to [0,1]",
+        "units": "intensity",
+        "sampling": "Fixed; no sensor-noise addition; overlaps may clip",
+        "role": "Photometry is numerical, not calibrated luminance",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:69–71",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Historical angular mapping",
+        "value": "10 pixels/degree in protocol metadata",
+        "units": "nominal mapping",
+        "sampling": "Declared rationale, not monitor/viewing-distance calibration",
+        "role": "Does not establish speed or retinal size in the browser",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:23–30",
+        "visibility": "Analysis-only historical protocol field"
+      },
+      {
+        "name": "Recorded coherence",
+        "value": "1.0 of surviving dots; 128 survivor / 128 reborn",
+        "units": "fraction; domain identities",
+        "sampling": "Fixed; no random-direction surviving population",
+        "role": "Must not be read as 100% visible-pair correspondence",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:91–99",
+        "visibility": "Metadata describing the visible-generation law"
+      },
+      {
+        "name": "Imported Gaussian defaults",
+        "value": "order=0; truncate=4.0; radius=None; axes=None; cval=0 (unused in wrap mode)",
+        "units": "dependency defaults",
+        "sampling": "SciPy 1.13.1: normalized separable 1-D Gaussian; computed radius int(4×0.7+0.5)=3, seven taps per axis",
+        "role": "Explicit helper closure; caller overrides mode to wrap",
+        "provenance": "SciPy v1.13.1 scipy/ndimage/_filters.py (verification/sensory_scipy_filters.txt):186–199, 218–219, 274–289, 372–387",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      }
+    ],
+    "equations": [
+      "p₁ = (p₀ + s vᵧ) mod 100 for surviving identities; reborn p₁ ∼ Uniform([0,100)²).",
+      "v₀=(1,0), v₁=(0,−1), v₂=(−1,0), v₃=(0,1).",
+      "BA = (recall_right + recall_up + recall_left + recall_down) / 4."
+    ],
+    "references": [
+      "sensory-lovejoy2010",
+      "sensory-scipy1131"
+    ],
+    "worked_example_template": "Use metadata.direction and displacement_pixels with label. Explain that surviving domain identities move by the recorded vector; survivor_count_domain and reborn_count_domain describe the 128/128 split, not visible matches. The opposite answer reverses the ordered pair; an orthogonal answer uses the wrong displacement axis. Do not fabricate dot identity tracks, which are not stored in metadata.",
+    "worked_examples": {
+      "motion_direction--mixed--00000": "The recorded answer is 2 = left. The 128 surviving square-domain identities move 2 pixels in that direction, while 128 are independently reborn. Reversing the answer would describe the opposite temporal order; an orthogonal answer would use the wrong axis. These counts are not visible-correspondence counts.",
+      "motion_direction--mixed--00001": "The recorded answer is 0 = right. The 128 surviving square-domain identities move 1 pixels in that direction, while 128 are independently reborn. Reversing the answer would describe the opposite temporal order; an orthogonal answer would use the wrong axis. These counts are not visible-correspondence counts.",
+      "motion_direction--mixed--00002": "The recorded answer is 0 = right. The 128 surviving square-domain identities move 3 pixels in that direction, while 128 are independently reborn. Reversing the answer would describe the opposite temporal order; an orthogonal answer would use the wrong axis. These counts are not visible-correspondence counts.",
+      "motion_direction--mixed--00005": "The recorded answer is 3 = down. The 128 surviving square-domain identities move 1 pixels in that direction, while 128 are independently reborn. Reversing the answer would describe the opposite temporal order; an orthogonal answer would use the wrong axis. These counts are not visible-correspondence counts.",
+      "motion_direction--mixed--00007": "The recorded answer is 1 = up. The 128 surviving square-domain identities move 2 pixels in that direction, while 128 are independently reborn. Reversing the answer would describe the opposite temporal order; an orthogonal answer would use the wrong axis. These counts are not visible-correspondence counts."
+    },
+    "showcase_worked_example": {
+      "episode_id": "motion_direction--mixed--00002",
+      "text": "The recorded answer is 0 = right. The 128 surviving square-domain identities move 3 pixels in that direction, while 128 are independently reborn. Reversing the answer would describe the opposite temporal order; an orthogonal answer would use the wrong axis. These counts are not visible-correspondence counts."
+    }
+  },
+  {
+    "id": "orientation",
+    "title": "Signed orientation change",
+    "group": "sensory",
+    "question": "Did the grating’s axial angle change in the positive or negative direction?",
+    "intro": "Compare the orientation of a soft central grating across two observations. Its stripes may shift in phase, but the question concerns a small signed change of axis, not the movement of an individual bright band. Label 1 means a positive numeric angle change; label 0 means a negative one.",
+    "sections": {
+      "appears": [
+        "Each image contains a central Gaussian-windowed sinusoidal grating on a gray background. Both intervals share the envelope, spatial frequency and numerical modulation amplitude. A fresh phase is drawn for each carrier, so the visible bright and dark bands can shift independently of the orientation change. Small independent grayscale pixel noise is then added and copied identically into all three channels.",
+        "The parameter θ controls the carrier wavevector in cos[2πf(x cos θ + y sin θ)/100 + φ]. The visible stripe axis is perpendicular to that wavevector. Because an unoriented axis repeats after 180 degrees, changing θ by π describes the same axial orientation family. Image y increases downward, and legacy comments use inconsistent clockwise language; the atlas therefore preserves positive and negative numeric axial changes."
+      ],
+      "sequence": [
+        "Frame 0 supplies the base orientation and frame 1 supplies the base plus a signed change. Both are ordinary observations; there is no cue, blank interval or extra report image. The decision belongs after frame 1. Website slowing and looping do not reproduce a human two-interval presentation schedule and introduce no native retention condition."
+      ],
+      "rules": [
+        "The generator chooses a magnitude of 4, 10 or 22 degrees and applies +magnitude for label 1 or −magnitude for label 0. The base wavevector angle is uniform over [0,π). A correct comparator uses the shortest signed axial difference, Δ = ½ atan2(sin 2(θ₁−θ₀), cos 2(θ₁−θ₀)); the label is 1[Δ > 0]. Since all native magnitudes are well below a right angle, this wrapped local difference identifies the intended sign without ambiguity at the 0/180-degree boundary.",
+        "Raw subtraction of independently wrapped displayed angles is unsafe. Crossing the axial boundary is not a large rotation or a reversal of class, and phase displacement is not an angle sign. The stored signed_orientation_degrees is the authoritative sampled change; the probe angle need not be explicitly reduced modulo 180 inside the renderer for the raster to preserve axial periodicity."
+      ],
+      "ignore": [
+        "Ignore carrier phase, which bright stripe sits nearest the center, overall brightness noise and the trial’s particular absolute base angle. Frequency and amplitude vary between trials but are shared within each pair; they are nuisance dimensions, not an instruction to report the finer or stronger grating. A large absolute pixel difference may result from phase alone and is not the signed orientation decision."
+      ],
+      "implementation": [
+        "TaskStream._orientation selects the difficulty level uniformly, samples θ, frequency and modulation amplitude, draws two independent phases, and calls _grating twice. _grating applies the fixed σ = 19-pixel envelope, subtracts its raster mean and divides by its own maximum absolute value. Multiplying by the sampled amplitude occurs after that normalization; _achromatic adds baseline 0.5 and Uniform(−0.004,+0.004) noise and rejects out-of-gamut values rather than clipping.",
+        "The same local RNG drives the label shuffle and all nuisance draws. Metadata contains the base angle, signed change, shared frequency and amplitude but not the two phases or pixel-noise fields. It is sufficient for an exact answer explanation, not for independently reconstructing the pixels without the recorded seed and generator call sequence. The adapter does not reorient, renormalize or relabel these native images."
+      ],
+      "neuroscience": [
+        "Zhang and colleagues used Gaussian-windowed sinusoidal gratings in orientation-discrimination experiments and explicitly randomized phase on each orientation presentation. Their Methods describe two randomly ordered 92-ms intervals separated by 600 ms and a judgment of which stimulus was more clockwise.[sensory-zhang2010] This supplies a primary experimental anchor for separating orientation information from carrier phase.",
+        "The present scientific question is narrower than their learning-and-transfer investigation: does an input representation preserve enough orientation information for an ordered local comparison despite phase changes? The source’s learning results do not predict this project’s acquisition, and its physical spatial frequency and calibrated timing are not converted into the project’s cycles-per-image and two-array interface."
+      ],
+      "network": [
+        "An adequate procedure must retain an estimate or comparison signal for the first axial orientation until the second is available, while reducing sensitivity to independent carrier phase. Doubled-angle features such as (cos 2θ, sin 2θ) illustrate a representation with the correct periodicity, but they are an explanatory construction rather than measured internal activations or a prescribed architecture.",
+        "Feature coding and decision formation are distinct requirements: an orientation-sensitive representation can still fail to preserve order or compute a sign. Oriented energy filters followed by an ordered comparison, direct pair processing or a learned stateful comparison are possible approaches. Spatial pooling, noisy angle estimates or an order-invariant combination are potential limitations; the atlas does not attribute any of them to a particular trained system."
+      ],
+      "boundary": [
+        "Success would support signed axial discrimination over this roving angle, frequency, amplitude and phase distribution. It would not measure a calibrated human acuity threshold, establish perceptual-learning transfer, demonstrate spatial cue use or isolate a cortical orientation mechanism. The task has no inserted delay, so it is not evidence of long-delay working memory."
+      ],
+      "metrics": [
+        "The uniform binary guessing reference is 50%. Balanced accuracy is the average recall for negative and positive signs; binary AUC, if a continuous score for label 1 is later available, is the probability that a randomly selected positive trial ranks above a negative trial, counting ties as half. Both classes must occur for that AUC to be defined.",
+        "Report confusion and class denominators separately for 4-, 10- and 22-degree changes, preserving the sign within every magnitude. Absolute base-angle bins can reveal anisotropies but must be declared rather than inferred from a few curated examples. No score in this atlas constitutes a measured threshold, and no performance numbers are supplied."
+      ],
+      "adaptation": [
+        "This is a project-specific two-frame signed-axis assay motivated by controlled Gabor discrimination. It adopts phase randomization as a nuisance control but not the source’s staircase, physical presentation protocol, transfer design or threshold interpretation.[sensory-zhang2010] Numeric signs deliberately replace historical clockwise prose so that an editorial label cannot silently change the class definition."
+      ]
+    },
+    "properties": [
+      {
+        "name": "Native observation contract",
+        "value": "2 × 3 × 100 × 100; float32 in [0,1]",
+        "units": "frames × channels × pixels",
+        "sampling": "Fixed; no cue, blank, report-only or extra loop-seam input",
+        "role": "Two ordered observations; decision after frame index 1",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:262–282",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Primary condition",
+        "value": "mixed; empty kwargs",
+        "units": "condition ID",
+        "sampling": "One catalog cell; native level mixture retained",
+        "role": "Difficulty variants are not additional primary conditions",
+        "provenance": "SecondPass/TaskSuite/catalog.json:23–186",
+        "visibility": "External condition selection; not extra image input"
+      },
+      {
+        "name": "Answer balancing",
+        "value": "0/1",
+        "units": "class index",
+        "sampling": "Random cyclic offset of arange(n), then shuffled; exact balance for multiples of 2",
+        "role": "Batch balance, not independent Bernoulli labels and not guaranteed balance in a curated subset",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:267–268",
+        "visibility": "Supervision/analysis only"
+      },
+      {
+        "name": "Random state and trial identity",
+        "value": "NumPy default_rng(seed); seed/split/counter",
+        "units": "state",
+        "sampling": "Local mutable RNG; counter increments once per episode; exact draw order and batch size matter",
+        "role": "Reproducibility without global RNG; no live training stream state is restored; isolated demo progress may be restored for resumable export",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:42–59, 98–100, 113–140, 277–281",
+        "visibility": "Analysis only; never pixel overlays"
+      },
+      {
+        "name": "Adapter dispatch and metadata",
+        "value": "TaskStream; native images and labels unchanged",
+        "units": "interface",
+        "sampling": "A separate stream per task/cell; normal suite seed = split_seed × 100000 + stream_id × 1000 + cell_index; atlas must use recorded demo-only seeds instead",
+        "role": "Task identity externally selects a task-specific output; metadata is not observer input",
+        "provenance": "SecondPass/TaskSuite/suite.py:69–99",
+        "visibility": "Task/head choice external; metadata analysis only"
+      },
+      {
+        "name": "Playback and photometry",
+        "value": "No biological frame duration assigned",
+        "units": "display convention",
+        "sampling": "Atlas preview uses a common clip/rint(255x) mapping; playback speed and repeated looping are presentation choices",
+        "role": "No gamma calibration, per-frame rescaling, tweening or added evidence",
+        "provenance": "SecondPass/TaskSuite/Demo/CONTRACT.md:15, 21–24",
+        "visibility": "Website/display policy, not native stimulus parameter"
+      },
+      {
+        "name": "Coordinate origin",
+        "value": "x,y = pixel index − 49.5",
+        "units": "pixels",
+        "sampling": "Fixed center at (49.5,49.5); x increases right, y down",
+        "role": "Coordinate convention; carrier direction is not stripe direction",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:116–118, 142–146",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Gaussian envelope",
+        "value": "exp[−(x²+y²)/(2 × 19²)]",
+        "units": "σ = 19 pixels",
+        "sampling": "Same fixed envelope for both intervals and all grating tasks; no hard aperture or resized patch",
+        "role": "Localizes carrier while preserving patch geometry",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:116–118",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Carrier and normalization",
+        "value": "cos[2π f(x cos θ + y sin θ)/100 + φ]; subtract raster mean, divide by max absolute value",
+        "units": "f: cycles/image; θ,φ: radians",
+        "sampling": "Each _grating call mean-centers then peak-normalizes its own enveloped carrier; not RMS normalization",
+        "role": "The multiplier is intensity modulation amplitude, not a calibrated contrast definition",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:142–146",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Achromatic baseline and channels",
+        "value": "0.5; R = G = B",
+        "units": "normalized intensity",
+        "sampling": "Fixed baseline; the same realized 2-D signal-plus-noise plane copied into all three channels",
+        "role": "No chromatic class cue; noise differs across generated images",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:148–153",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Additive raster noise",
+        "value": "Uniform(−0.004, +0.004)",
+        "units": "intensity",
+        "sampling": "Independent per pixel and per rendered image; same distribution for both answers and all levels",
+        "role": "Small nuisance, applied after signal construction, not normalized away",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:148–153",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Gamut behavior",
+        "value": "Raise RuntimeError if any native intensity leaves [0,1]",
+        "units": "bounds",
+        "sampling": "No clipping in _achromatic",
+        "role": "Avoid hidden label-specific saturation as a repair",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:150–153",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Signed magnitude",
+        "value": "4, 10, 22; sign = + for 1, − for 0",
+        "units": "degrees",
+        "sampling": "Uniform level choice; nonzero in every trial",
+        "role": "Primary difficulty and answer",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:155–169, 275–276",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Base carrier angle",
+        "value": "Uniform[0,π)",
+        "units": "radians",
+        "sampling": "New per trial; θ₁ = θ₀ + signed delta",
+        "role": "Roving axial reference; no fixed-angle answer shortcut",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:157–163",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Shared frequency",
+        "value": "Uniform[5,10)",
+        "units": "cycles/image",
+        "sampling": "Independent trial draw, held equal across pair",
+        "role": "Nuisance scale",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:159, 162–163",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Shared modulation amplitude",
+        "value": "Uniform[0.20,0.38)",
+        "units": "normalized intensity",
+        "sampling": "Independent trial draw, held equal across pair",
+        "role": "Nuisance amplitude, metadata field named contrast",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:160, 162–168",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Independent carrier phases",
+        "value": "Two Uniform[0,2π) draws",
+        "units": "radians",
+        "sampling": "Independent between intervals; not stored in metadata",
+        "role": "Breaks direct stripe-to-stripe correspondence",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:161–163",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Metadata observability",
+        "value": "base_orientation_degrees, signed_orientation_degrees, frequency_cycles_per_image, contrast",
+        "units": "analysis fields",
+        "sampling": "Records sampled values, not noise or phases",
+        "role": "Explanations can derive wrapped probe angle but must label it derived",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:165–168",
+        "visibility": "Analysis only"
+      }
+    ],
+    "equations": [
+      "Δ = ½ atan2(sin[2(θ₁−θ₀)], cos[2(θ₁−θ₀)]).",
+      "y = 1[Δ > 0]; |Δ| ∈ {4°,10°,22°}.",
+      "θ is a carrier-wavevector angle; stripe axis = θ + 90° modulo 180°."
+    ],
+    "references": [
+      "sensory-zhang2010"
+    ],
+    "worked_example_template": "Use signed_orientation_degrees to state sign and magnitude and base_orientation_degrees for the reference. Derive the probe angle as (base + signed change) modulo 180 and explicitly call it derived. Label 1 is positive and 0 negative regardless of boundary crossing; the alternative sign would reverse the comparison. Do not invent unrecorded phase values.",
+    "worked_examples": {
+      "orientation--mixed--00000": "The recorded base carrier angle is 45.6432° and the signed change is +10°. The derived probe axis is 55.6432° modulo 180°. Therefore label 1 means positive change. The other class reverses the signed comparison; independent phase shifts do not alter this rule. Displayed decimals are rounded from metadata.",
+      "orientation--mixed--00001": "The recorded base carrier angle is 92.0738° and the signed change is -4°. The derived probe axis is 88.0738° modulo 180°. Therefore label 0 means negative change. The other class reverses the signed comparison; independent phase shifts do not alter this rule. Displayed decimals are rounded from metadata.",
+      "orientation--mixed--00003": "The recorded base carrier angle is 26.3896° and the signed change is -22°. The derived probe axis is 4.3896° modulo 180°. Therefore label 0 means negative change. The other class reverses the signed comparison; independent phase shifts do not alter this rule. Displayed decimals are rounded from metadata."
+    },
+    "showcase_worked_example": {
+      "episode_id": "orientation--mixed--00000",
+      "text": "The recorded base carrier angle is 45.6432° and the signed change is +10°. The derived probe axis is 55.6432° modulo 180°. Therefore label 1 means positive change. The other class reverses the signed comparison; independent phase shifts do not alter this rule. Displayed decimals are rounded from metadata."
+    }
+  },
+  {
+    "id": "contrast",
+    "title": "Modulation amplitude",
+    "group": "sensory",
+    "question": "Which frame contains the stronger grating modulation?",
+    "intro": "The two observations share the same grating pattern, but one has a larger light–dark modulation around gray. Choose that interval. The baseline grating is already present in both frames: this is pedestal-plus-increment discrimination, not detection of a pattern against a blank.",
+    "sections": {
+      "appears": [
+        "A soft central grating is drawn twice with the same orientation, spatial frequency, Gaussian envelope and carrier phase. Before noise, the only difference is the scalar amplitude multiplying this shared pattern. A pedestal is chosen from 0.08, 0.18 and 0.30, and an increment of 0.025, 0.06 or 0.13 is added in the answer interval. The background is 0.5 and the output is grayscale replicated into RGB.",
+        "The code names this multiplier contrast, but its operational meaning is peak absolute intensity modulation after the enveloped pattern has been mean-centered and peak-normalized. It is not automatically Michelson contrast, whose numerator and denominator depend on actual extrema and luminance. A Gaussian envelope, discrete sampling, mean subtraction and additive noise make the distinction important; the atlas retains the native values without relabeling them as calibrated percentages."
+      ],
+      "sequence": [
+        "Frame 0 presents one amplitude and frame 1 presents the other. One response follows the pair: report the interval with the larger multiplier. There is no blank, cue, adaptation field or separate report image, and the preview clock is not the original psychophysical timing. A side-by-side filmstrip is an analysis aid; it is not an extra simultaneous observation supplied by the native generator."
+      ],
+      "rules": [
+        "Let p be the pedestal and d the positive increment. The amplitude pair begins as [p,p], and the generator adds d at index y. Thus y = 0 means frame 0 has p+d and y = 1 means frame 1 has p+d. All nine pedestal × increment combinations are possible and equiprobable in the native mixture, before illustration curation. Both intervals always contain a nonzero grating.",
+        "The response is a comparison of amplitude, not the sign of mean luminance or the amount of apparent phase motion. A measurement of signal energy can legitimately discriminate the stronger pattern because the pattern is held fixed. The added independent pixel noise means the two full rasters are not exact scalar multiples even though their noiseless grating components are."
+      ],
+      "ignore": [
+        "Ignore the particular absolute orientation, trial-to-trial frequency and phase, and small unrelated pixel-noise differences. These variables are shared within the noiseless pair or drawn from the same noise law in both intervals. Do not choose the frame with an isolated unusually bright noisy pixel, and do not interpret both frames containing gratings as a change/no-change negative: there is always a prescribed positive increment."
+      ],
+      "implementation": [
+        "TaskStream._contrast draws a uniform difficulty level, a separate uniform pedestal choice, a frequency in [5,10), an angle in [0,π) and one phase in [0,2π). It calls _grating only once, so the peak-normalized pattern is identical before scaling. It then multiplies by each amplitude and calls _achromatic independently for the two images. This retains the task signal rather than independently RMS-normalizing the completed intervals.",
+        "Mean subtraction in _grating removes a noiseless global-mean difference caused by the envelope and carrier. Independent uniform noise can produce tiny realized mean differences, but its law is label-independent. The native routine raises on out-of-gamut images instead of clipping. Metadata records frame_contrasts, pedestal, increment and frequency; phase and orientation remain nuisance draws not available as recorded per-trial explanation fields."
+      ],
+      "neuroscience": [
+        "Legge and Foley explicitly defined contrast discrimination as the same-frequency, same-phase case of distinguishing signal-plus-masker from masker alone; setting masker contrast to zero gives contrast detection. Their experiments measured thresholds over masker contrasts rather than assuming that detection and discrimination are the same operation.[sensory-legge1980] That primary distinction motivates including a nonzero pedestal and reporting the increment conditional on it.",
+        "Their paper investigated facilitation and masking with calibrated gratings and a forced-choice threshold procedure.[sensory-legge1980] The present array task does not reproduce that psychophysical apparatus or predict a human masking curve. Its useful question is whether modulation amplitude survives the processing steps used to compare two otherwise matched inputs."
+      ],
+      "network": [
+        "Amplitude information is the signal here, not an unwanted nuisance to be discarded. If preprocessing divided each noiseless interval by its own amplitude or RMS without retaining the scale factor, the shared pattern would become the same and the intended distinction would disappear. This is a logical consequence of the generator, not a claim about the behavior of any existing normalization layer.",
+        "Energy, contrast-sensitive filter responses or an ordered estimate of local variance could all support the decision. A method need not group contour elements or recognize an object to succeed. Conversely, a representation excellent at scale-invariant pattern identity could be unsuitable if it intentionally forgets amplitude. These are alternative information requirements, not a prescription for a unique network."
+      ],
+      "boundary": [
+        "Success would demonstrate discrimination of the declared numerical amplitude increments across the sampled pedestals and nuisance patterns. It would not establish calibrated contrast sensitivity, a human dipper function, attentional selection, contour integration or natural-image recognition. Even a simple energy solution is valid under the rule; the task is intended to test a low-level quantity rather than to rule out that solution.",
+        "Random interval assignment removes a fixed first-versus-second answer bias, but it does not make pedestal and incremented-amplitude marginal distributions identical. Their finite value sets can provide absolute-amplitude priors. The pair comparison is the intended rule; this generator does not prove that every successful procedure must explicitly compare two fully retained images."
+      ],
+      "metrics": [
+        "The binary uniform-guessing reference is 50%. Accuracy counts correct interval choices; balanced accuracy averages the recalls of frame-0 and frame-1 answers. AUC is defined only for a continuous score oriented toward label 1 and with both labels represented; it describes ranking rather than a fixed decision threshold.",
+        "Every report should preserve the full nine-cell increment × pedestal table with denominators, answer balance and confusion, not merely three increment averages. A mixed score can conceal pedestal dependence. Display quantization may alter a viewer’s apparent difficulty, so informal atlas judgments and GIF appearance are not psychophysical measurements or recorded system scores."
+      ],
+      "adaptation": [
+        "The inherited idea is a pedestal comparison with matched carrier pattern. The specific Gaussian raster, amplitude convention, three-by-three discrete grid, small uniform noise and two-observation timing are project choices, not values attributed to Legge and Foley.[sensory-legge1980] The word contrast in native metadata is preserved for traceability while the prose spells out what that number actually multiplies."
+      ]
+    },
+    "properties": [
+      {
+        "name": "Native observation contract",
+        "value": "2 × 3 × 100 × 100; float32 in [0,1]",
+        "units": "frames × channels × pixels",
+        "sampling": "Fixed; no cue, blank, report-only or extra loop-seam input",
+        "role": "Two ordered observations; decision after frame index 1",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:262–282",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Primary condition",
+        "value": "mixed; empty kwargs",
+        "units": "condition ID",
+        "sampling": "One catalog cell; native level mixture retained",
+        "role": "Difficulty variants are not additional primary conditions",
+        "provenance": "SecondPass/TaskSuite/catalog.json:23–186",
+        "visibility": "External condition selection; not extra image input"
+      },
+      {
+        "name": "Answer balancing",
+        "value": "0/1",
+        "units": "class index",
+        "sampling": "Random cyclic offset of arange(n), then shuffled; exact balance for multiples of 2",
+        "role": "Batch balance, not independent Bernoulli labels and not guaranteed balance in a curated subset",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:267–268",
+        "visibility": "Supervision/analysis only"
+      },
+      {
+        "name": "Random state and trial identity",
+        "value": "NumPy default_rng(seed); seed/split/counter",
+        "units": "state",
+        "sampling": "Local mutable RNG; counter increments once per episode; exact draw order and batch size matter",
+        "role": "Reproducibility without global RNG; no live training stream state is restored; isolated demo progress may be restored for resumable export",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:42–59, 98–100, 113–140, 277–281",
+        "visibility": "Analysis only; never pixel overlays"
+      },
+      {
+        "name": "Adapter dispatch and metadata",
+        "value": "TaskStream; native images and labels unchanged",
+        "units": "interface",
+        "sampling": "A separate stream per task/cell; normal suite seed = split_seed × 100000 + stream_id × 1000 + cell_index; atlas must use recorded demo-only seeds instead",
+        "role": "Task identity externally selects a task-specific output; metadata is not observer input",
+        "provenance": "SecondPass/TaskSuite/suite.py:69–99",
+        "visibility": "Task/head choice external; metadata analysis only"
+      },
+      {
+        "name": "Playback and photometry",
+        "value": "No biological frame duration assigned",
+        "units": "display convention",
+        "sampling": "Atlas preview uses a common clip/rint(255x) mapping; playback speed and repeated looping are presentation choices",
+        "role": "No gamma calibration, per-frame rescaling, tweening or added evidence",
+        "provenance": "SecondPass/TaskSuite/Demo/CONTRACT.md:15, 21–24",
+        "visibility": "Website/display policy, not native stimulus parameter"
+      },
+      {
+        "name": "Coordinate origin",
+        "value": "x,y = pixel index − 49.5",
+        "units": "pixels",
+        "sampling": "Fixed center at (49.5,49.5); x increases right, y down",
+        "role": "Coordinate convention; carrier direction is not stripe direction",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:116–118, 142–146",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Gaussian envelope",
+        "value": "exp[−(x²+y²)/(2 × 19²)]",
+        "units": "σ = 19 pixels",
+        "sampling": "Same fixed envelope for both intervals and all grating tasks; no hard aperture or resized patch",
+        "role": "Localizes carrier while preserving patch geometry",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:116–118",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Carrier and normalization",
+        "value": "cos[2π f(x cos θ + y sin θ)/100 + φ]; subtract raster mean, divide by max absolute value",
+        "units": "f: cycles/image; θ,φ: radians",
+        "sampling": "Each _grating call mean-centers then peak-normalizes its own enveloped carrier; not RMS normalization",
+        "role": "The multiplier is intensity modulation amplitude, not a calibrated contrast definition",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:142–146",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Achromatic baseline and channels",
+        "value": "0.5; R = G = B",
+        "units": "normalized intensity",
+        "sampling": "Fixed baseline; the same realized 2-D signal-plus-noise plane copied into all three channels",
+        "role": "No chromatic class cue; noise differs across generated images",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:148–153",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Additive raster noise",
+        "value": "Uniform(−0.004, +0.004)",
+        "units": "intensity",
+        "sampling": "Independent per pixel and per rendered image; same distribution for both answers and all levels",
+        "role": "Small nuisance, applied after signal construction, not normalized away",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:148–153",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Gamut behavior",
+        "value": "Raise RuntimeError if any native intensity leaves [0,1]",
+        "units": "bounds",
+        "sampling": "No clipping in _achromatic",
+        "role": "Avoid hidden label-specific saturation as a repair",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:150–153",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Amplitude increment",
+        "value": "0.025, 0.06, 0.13",
+        "units": "normalized intensity",
+        "sampling": "Uniform discrete level, independent of pedestal choice",
+        "role": "Primary difficulty",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:171–179, 275–276",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Pedestal",
+        "value": "0.08, 0.18, 0.30",
+        "units": "normalized intensity",
+        "sampling": "Uniform discrete draw per trial",
+        "role": "Nonzero reference amplitude",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:173",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Frame amplitudes",
+        "value": "[p,p] with increment added at label index",
+        "units": "normalized intensity",
+        "sampling": "One higher interval; maximum native multiplier 0.43",
+        "role": "Exact class construction; metadata name frame_contrasts",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:177–182",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Frequency",
+        "value": "Uniform[5,10)",
+        "units": "cycles/image",
+        "sampling": "One draw shared across pair",
+        "role": "Nuisance carrier scale",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:174–176",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Orientation and phase",
+        "value": "θ ∼ Uniform[0,π), φ ∼ Uniform[0,2π)",
+        "units": "radians",
+        "sampling": "One draw of each; one _grating call shared across pair",
+        "role": "Matched pattern, not independent phases",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:175–176",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Nine combinations",
+        "value": "3 increments × 3 pedestals",
+        "units": "combinations",
+        "sampling": "Independent uniform sampling; no enforced factorial balance in a finite batch",
+        "role": "Required subgroup reporting; curation may rebalance illustrations",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:172–173, 275–276",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Metadata subset",
+        "value": "contrast_increment, pedestal, frame_contrasts, frequency_cycles_per_image",
+        "units": "fields",
+        "sampling": "Actual sampled scalars stored; θ and φ absent",
+        "role": "No invented per-trial nuisance values in explanations",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:179–183",
+        "visibility": "Analysis only"
+      }
+    ],
+    "equations": [
+      "Iₜ = 0.5 + aₜ G + εₜ; G is shared, zero-mean and max|G| = 1.",
+      "aᵧ = p + d; a₁₋ᵧ = p; y = argmaxₜ aₜ.",
+      "C_Michelson = (I_max − I_min)/(I_max + I_min) is not the native amplitude parameter a."
+    ],
+    "references": [
+      "sensory-legge1980"
+    ],
+    "worked_example_template": "Read pedestal, contrast_increment and frame_contrasts. State both recorded amplitudes and identify the larger entry; their difference must equal the increment within float tolerance. The alternative interval contains the pedestal alone, not an absent grating. Do not convert amplitude to Michelson contrast without measuring an explicitly defined raster statistic.",
+    "worked_examples": {
+      "contrast--mixed--00000": "The recorded amplitudes are 0.08 in frame 0 and 0.105 in frame 1. The pedestal 0.08 plus increment 0.025 is in frame 1, so the answer is 1. The other interval contains the pedestal grating, not a blank. These numbers are modulation amplitudes, not calibrated Michelson contrasts.",
+      "contrast--mixed--00001": "The recorded amplitudes are 0.14 in frame 0 and 0.08 in frame 1. The pedestal 0.08 plus increment 0.06 is in frame 0, so the answer is 0. The other interval contains the pedestal grating, not a blank. These numbers are modulation amplitudes, not calibrated Michelson contrasts.",
+      "contrast--mixed--00002": "The recorded amplitudes are 0.21 in frame 0 and 0.08 in frame 1. The pedestal 0.08 plus increment 0.13 is in frame 0, so the answer is 0. The other interval contains the pedestal grating, not a blank. These numbers are modulation amplitudes, not calibrated Michelson contrasts.",
+      "contrast--mixed--00003": "The recorded amplitudes are 0.325 in frame 0 and 0.3 in frame 1. The pedestal 0.3 plus increment 0.025 is in frame 0, so the answer is 0. The other interval contains the pedestal grating, not a blank. These numbers are modulation amplitudes, not calibrated Michelson contrasts.",
+      "contrast--mixed--00004": "The recorded amplitudes are 0.31 in frame 0 and 0.18 in frame 1. The pedestal 0.18 plus increment 0.13 is in frame 0, so the answer is 0. The other interval contains the pedestal grating, not a blank. These numbers are modulation amplitudes, not calibrated Michelson contrasts.",
+      "contrast--mixed--00005": "The recorded amplitudes are 0.205 in frame 0 and 0.18 in frame 1. The pedestal 0.18 plus increment 0.025 is in frame 0, so the answer is 0. The other interval contains the pedestal grating, not a blank. These numbers are modulation amplitudes, not calibrated Michelson contrasts.",
+      "contrast--mixed--00006": "The recorded amplitudes are 0.3 in frame 0 and 0.43 in frame 1. The pedestal 0.3 plus increment 0.13 is in frame 1, so the answer is 1. The other interval contains the pedestal grating, not a blank. These numbers are modulation amplitudes, not calibrated Michelson contrasts.",
+      "contrast--mixed--00021": "The recorded amplitudes are 0.3 in frame 0 and 0.36 in frame 1. The pedestal 0.3 plus increment 0.06 is in frame 1, so the answer is 1. The other interval contains the pedestal grating, not a blank. These numbers are modulation amplitudes, not calibrated Michelson contrasts.",
+      "contrast--mixed--00037": "The recorded amplitudes are 0.18 in frame 0 and 0.24 in frame 1. The pedestal 0.18 plus increment 0.06 is in frame 1, so the answer is 1. The other interval contains the pedestal grating, not a blank. These numbers are modulation amplitudes, not calibrated Michelson contrasts."
+    },
+    "showcase_worked_example": {
+      "episode_id": "contrast--mixed--00002",
+      "text": "The recorded amplitudes are 0.21 in frame 0 and 0.08 in frame 1. The pedestal 0.08 plus increment 0.13 is in frame 0, so the answer is 0. The other interval contains the pedestal grating, not a blank. These numbers are modulation amplitudes, not calibrated Michelson contrasts."
+    }
+  },
+  {
+    "id": "spatial_frequency",
+    "title": "Spatial frequency",
+    "group": "sensory",
+    "question": "Which frame contains more grating cycles within the same-sized patch?",
+    "intro": "The patch keeps the same envelope while its stripes become finer or coarser. Choose the interval with the higher carrier frequency. The whole image is not resized, and the independent phase of each grating can move the bright bands without changing the answer.",
+    "sections": {
+      "appears": [
+        "A central achromatic Gabor appears in each image, with the same Gaussian envelope, orientation and numerical peak-modulation amplitude. The lower carrier frequency is drawn uniformly from 4 to 9 cycles per 100-pixel image. The other is larger by a factor 2 raised to an octave increment of 0.08, 0.18 or 0.35. Both patterns are mean-centered and independently peak-normalized before multiplication by their shared amplitude.",
+        "The term cycles per image refers to the carrier formula evaluated on the full coordinate grid, not an exact count of visible bright bars within the fading envelope. Both phases are independent, so edge placement and the appearance of the central stripe can differ. The envelope is neither enlarged nor shrunk; only the spatial scale of the carrier changes."
+      ],
+      "sequence": [
+        "Frame 0 and frame 1 are the two comparison intervals, with the higher frequency randomly assigned to either index. Report after frame 1. There is no reference-only instruction frame, no inserted delay, no frequency-noise mask and no biologically assigned duration. A replay repeats the same decision problem, not a longer sequence with more independent evidence."
+      ],
+      "rules": [
+        "For a lower frequency f and positive octave difference d, the higher frequency is f × 2^d. Label y identifies the frame containing that higher value: 0 for the first and 1 for the second. Octaves encode a ratio, so the same d produces the same multiplicative change at different base frequencies. The code’s frame_frequencies field directly records the two ordered frequencies.",
+        "Neither greater envelope size nor greater raw amplitude defines the answer. In the ideal noiseless construction both amplitudes are equal, although independently peak-normalized finite Gabor rasters need not have exactly equal RMS. An interpretation that assumes every other possible raster statistic is perfectly matched would go beyond the implemented controls."
+      ],
+      "ignore": [
+        "Ignore independent carrier phase and trial-to-trial changes in orientation or modulation amplitude. A band that appears displaced is not evidence of motion direction in this task. Coarse-versus-fine judgments should refer to spacing along the carrier wavevector, not to counting stripes along a fixed screen axis when the pattern is oblique."
+      ],
+      "implementation": [
+        "TaskStream._spatial_frequency draws one base frequency, then constructs a pair differing only in the assigned multiplicative frequency before drawing their phases. The fixed envelope, angle and amplitude are shared. Each _grating call separately removes the raster mean and rescales the peak absolute signal; _achromatic then adds uniform pixel noise and copies the plane into three channels. No resize operation or frequency-dependent envelope is used.",
+        "The frequencies are well below the 100-pixel raster’s axis Nyquist limit, but that fact alone does not guarantee preservation after a downstream system’s pooling or subsampling. The native images and metadata are not passed through an additional normalization in SuiteStream. Metadata stores the octave increment and ordered frequencies but omits angle, amplitude and phases, so those per-trial values cannot be reconstructed from the explanation row alone."
+      ],
+      "neuroscience": [
+        "The historical starting point is Campbell, Nachmias and Jukes’s Spatial-Frequency Discrimination in Human Vision, whose bibliographic record was verified, but its publisher page was blocked and its methods or ratio-specific conclusions were not verified in this pass.[sensory-campbell1970] No detailed result is attributed to that inaccessible body.",
+        "A directly accessible primary anchor is Putzeys and colleagues: their Methods describe a two-alternative, two-interval Gabor task in which observers selected the interval with the higher spatial frequency. They experimentally manipulated broadband and filtered noise, which is not a condition of this atlas task.[sensory-putzeys2012] The shared scientific question is discrimination of spatial scale; the reported human bias and population-code analysis are not evidence about a project model."
+      ],
+      "network": [
+        "The relevant information is the distribution of image variation over spatial scale while tolerating phase and orientation. A bank of appropriately resolved filters could estimate frequency and compare the two estimates; direct ordered image processing could also solve the problem. Pooling or subsampling that makes the frequencies indistinguishable would remove useful evidence, but the degree of any such loss is an empirical question, not a diagnosis made here.",
+        "This narrow-band carrier comparison complements natural-spectrum discrimination. Here one frequency parameter shifts within a fixed Gaussian window; in natural photographs many spatial frequencies remain present and their relative weights change. Success on one task therefore does not logically imply success on the other. Neither task requires semantic labeling of the scene."
+      ],
+      "boundary": [
+        "Success would support frequency-order discrimination within the specified raster distribution. It would not establish human spatial-frequency acuity, a published noise-induced perceptual bias, a biologically identified frequency channel or generalization to arbitrary rescaling. The octave levels are test inputs, not measured thresholds; a human viewer’s monitor and the GIF codec introduce additional uncalibrated factors.",
+        "The lower frequency is confined to [4,9), while the incremented distribution extends above that range. Absolute frequency can therefore provide probabilistic interval evidence near the distribution limits. Randomized order is not a proof that a single-frame statistic is uninformative; the assay measures the stated judgment under this distribution, not a uniquely identified comparison strategy."
+      ],
+      "metrics": [
+        "The two-class uniform guessing reference is 50%. Balanced accuracy is the mean recall for each higher-frequency interval; binary AUC requires both classes and a consistently oriented continuous score. Report the three octave increments separately with actual answer counts and confusion. Base-frequency stratification is useful because the same ratio need not have the same raster difficulty at all scales, but bins must be specified before interpreting them.",
+        "Absolute frequency and octave difference are not interchangeable difficulty labels. Do not pool this task with natural-spectrum results as if they measured the same bandwidth judgment, and do not treat curated clear examples as representative performance. This atlas defines metrics but reports none."
+      ],
+      "adaptation": [
+        "The implementation is a project-specific roving-frequency interval comparison. Its octave parameterization, fixed 100-pixel envelope and independent phases are established by source code, not borrowed unverified from Campbell et al. The full-text Putzeys study anchors the judgment paradigm, while its filtered-noise experiments and physical presentation timings remain explicitly outside this adaptation.[sensory-putzeys2012]"
+      ]
+    },
+    "properties": [
+      {
+        "name": "Native observation contract",
+        "value": "2 × 3 × 100 × 100; float32 in [0,1]",
+        "units": "frames × channels × pixels",
+        "sampling": "Fixed; no cue, blank, report-only or extra loop-seam input",
+        "role": "Two ordered observations; decision after frame index 1",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:262–282",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Primary condition",
+        "value": "mixed; empty kwargs",
+        "units": "condition ID",
+        "sampling": "One catalog cell; native level mixture retained",
+        "role": "Difficulty variants are not additional primary conditions",
+        "provenance": "SecondPass/TaskSuite/catalog.json:23–186",
+        "visibility": "External condition selection; not extra image input"
+      },
+      {
+        "name": "Answer balancing",
+        "value": "0/1",
+        "units": "class index",
+        "sampling": "Random cyclic offset of arange(n), then shuffled; exact balance for multiples of 2",
+        "role": "Batch balance, not independent Bernoulli labels and not guaranteed balance in a curated subset",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:267–268",
+        "visibility": "Supervision/analysis only"
+      },
+      {
+        "name": "Random state and trial identity",
+        "value": "NumPy default_rng(seed); seed/split/counter",
+        "units": "state",
+        "sampling": "Local mutable RNG; counter increments once per episode; exact draw order and batch size matter",
+        "role": "Reproducibility without global RNG; no live training stream state is restored; isolated demo progress may be restored for resumable export",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:42–59, 98–100, 113–140, 277–281",
+        "visibility": "Analysis only; never pixel overlays"
+      },
+      {
+        "name": "Adapter dispatch and metadata",
+        "value": "TaskStream; native images and labels unchanged",
+        "units": "interface",
+        "sampling": "A separate stream per task/cell; normal suite seed = split_seed × 100000 + stream_id × 1000 + cell_index; atlas must use recorded demo-only seeds instead",
+        "role": "Task identity externally selects a task-specific output; metadata is not observer input",
+        "provenance": "SecondPass/TaskSuite/suite.py:69–99",
+        "visibility": "Task/head choice external; metadata analysis only"
+      },
+      {
+        "name": "Playback and photometry",
+        "value": "No biological frame duration assigned",
+        "units": "display convention",
+        "sampling": "Atlas preview uses a common clip/rint(255x) mapping; playback speed and repeated looping are presentation choices",
+        "role": "No gamma calibration, per-frame rescaling, tweening or added evidence",
+        "provenance": "SecondPass/TaskSuite/Demo/CONTRACT.md:15, 21–24",
+        "visibility": "Website/display policy, not native stimulus parameter"
+      },
+      {
+        "name": "Coordinate origin",
+        "value": "x,y = pixel index − 49.5",
+        "units": "pixels",
+        "sampling": "Fixed center at (49.5,49.5); x increases right, y down",
+        "role": "Coordinate convention; carrier direction is not stripe direction",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:116–118, 142–146",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Gaussian envelope",
+        "value": "exp[−(x²+y²)/(2 × 19²)]",
+        "units": "σ = 19 pixels",
+        "sampling": "Same fixed envelope for both intervals and all grating tasks; no hard aperture or resized patch",
+        "role": "Localizes carrier while preserving patch geometry",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:116–118",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Carrier and normalization",
+        "value": "cos[2π f(x cos θ + y sin θ)/100 + φ]; subtract raster mean, divide by max absolute value",
+        "units": "f: cycles/image; θ,φ: radians",
+        "sampling": "Each _grating call mean-centers then peak-normalizes its own enveloped carrier; not RMS normalization",
+        "role": "The multiplier is intensity modulation amplitude, not a calibrated contrast definition",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:142–146",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Achromatic baseline and channels",
+        "value": "0.5; R = G = B",
+        "units": "normalized intensity",
+        "sampling": "Fixed baseline; the same realized 2-D signal-plus-noise plane copied into all three channels",
+        "role": "No chromatic class cue; noise differs across generated images",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:148–153",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Additive raster noise",
+        "value": "Uniform(−0.004, +0.004)",
+        "units": "intensity",
+        "sampling": "Independent per pixel and per rendered image; same distribution for both answers and all levels",
+        "role": "Small nuisance, applied after signal construction, not normalized away",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:148–153",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Gamut behavior",
+        "value": "Raise RuntimeError if any native intensity leaves [0,1]",
+        "units": "bounds",
+        "sampling": "No clipping in _achromatic",
+        "role": "Avoid hidden label-specific saturation as a repair",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:150–153",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Octave increment",
+        "value": "0.08, 0.18, 0.35",
+        "units": "octaves",
+        "sampling": "Uniform discrete level",
+        "role": "Difficulty is log₂ frequency ratio",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:185–196, 275–276",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Lower carrier frequency",
+        "value": "Uniform[4,9)",
+        "units": "cycles/image",
+        "sampling": "One continuous draw per pair",
+        "role": "Roving reference scale",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:187–189",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Higher carrier frequency",
+        "value": "f_low × 2^delta",
+        "units": "cycles/image",
+        "sampling": "Deterministic transform assigned to interval label",
+        "role": "Larger frequency means denser carrier, not resized envelope",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:188–189",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Shared orientation",
+        "value": "Uniform[0,π)",
+        "units": "radians",
+        "sampling": "One draw per pair",
+        "role": "Nuisance orientation",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:190",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Shared modulation amplitude",
+        "value": "Uniform[0.20,0.38)",
+        "units": "intensity",
+        "sampling": "One draw per pair; peak-normalized fields not RMS matched",
+        "role": "Nuisance amplitude",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:191–194",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Independent phases",
+        "value": "Two Uniform[0,2π) draws",
+        "units": "radians",
+        "sampling": "Independent by interval",
+        "role": "Prevents exact band-position matching",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:192–194",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Stored values",
+        "value": "frequency_octave_increment; frame_frequencies",
+        "units": "analysis fields",
+        "sampling": "Angle, amplitude and phases are not stored",
+        "role": "Worked explanation based on actual ordered frequencies",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:194–197",
+        "visibility": "Analysis only"
+      }
+    ],
+    "equations": [
+      "f_high = f_low × 2^d; d = log₂(f_high/f_low).",
+      "y = argmaxₜ frame_frequencies[t]."
+    ],
+    "references": [
+      "sensory-campbell1970",
+      "sensory-putzeys2012"
+    ],
+    "worked_example_template": "Read frame_frequencies and frequency_octave_increment. Identify the larger recorded frequency and show the ratio as 2^delta without substituting a guessed base frequency. The other interval has the coarser carrier; phase shifts cannot change its recorded frequency. Do not describe changing envelope size.",
+    "worked_examples": {
+      "spatial_frequency--mixed--00000": "The recorded frequencies are 7.5686 and 7.1603 cycles/image. Thus frame 0 is higher and label 0 is correct. Their derived ratio is 1.057018, matching 2^0.08. The other frame has the coarser carrier within the same envelope; a phase shift cannot reverse the frequency ordering. Displayed decimals are rounded.",
+      "spatial_frequency--mixed--00001": "The recorded frequencies are 7.9756 and 9.0354 cycles/image. Thus frame 1 is higher and label 1 is correct. Their derived ratio is 1.132884, matching 2^0.18. The other frame has the coarser carrier within the same envelope; a phase shift cannot reverse the frequency ordering. Displayed decimals are rounded.",
+      "spatial_frequency--mixed--00009": "The recorded frequencies are 7.3725 and 9.3967 cycles/image. Thus frame 1 is higher and label 1 is correct. Their derived ratio is 1.274561, matching 2^0.35. The other frame has the coarser carrier within the same envelope; a phase shift cannot reverse the frequency ordering. Displayed decimals are rounded."
+    },
+    "showcase_worked_example": {
+      "episode_id": "spatial_frequency--mixed--00009",
+      "text": "The recorded frequencies are 7.3725 and 9.3967 cycles/image. Thus frame 1 is higher and label 1 is correct. Their derived ratio is 1.274561, matching 2^0.35. The other frame has the coarser carrier within the same envelope; a phase shift cannot reverse the frequency ordering. Displayed decimals are rounded."
+    }
+  },
+  {
+    "id": "chromatic_increment",
+    "title": "Chromatic increment",
+    "group": "sensory",
+    "question": "Which frame is shifted farther along the declared red–green-like RGB direction?",
+    "intro": "Two equal-sized colored discs differ by a small signed color increment. Choose the disc with the positive step along the declared numerical RGB axis. The construction balances a weighted RGB luminance calculation; it is not a calibrated isoluminant stimulus for a human observer, and subtle differences should be inspected with lossless frames rather than a GIF alone.",
+    "sections": {
+      "appears": [
+        "A single central colored disc fades through a one-pixel edge into a neutral intensity-0.5 surround. Its radius is drawn once per trial from 17 to 24 pixels and held fixed across the pair. Three base RGB components are independently uniform from 0.30 to 0.65. One interval receives a positive increment of 0.018, 0.045 or 0.10 along a unit vector proportional to (0.7152, −0.2126, 0), so red increases, green decreases and the noiseless blue component is unchanged.",
+        "The renderer declares these numbers linear RGB and uses luminance weights (0.2126, 0.7152, 0.0722). The axis is orthogonal to that weight vector up to numerical precision. Independent per-pixel, per-channel noise is added afterward, including in the surround, so finite realized luminance differences need not be exactly zero at every pixel. The construction is a numerical constraint, not a measurement of display spectra or observer equiluminance."
+      ],
+      "sequence": [
+        "Frame 0 and frame 1 show the two colors in the same geometric patch. The incremented interval can come first or second, and the report follows frame 1. There is no native adaptation period, fixation cue, blank or delayed report. Browser display time and a viewer’s adaptation history are uncontrolled aspects of the demonstration."
+      ],
+      "rules": [
+        "Let w = (0.2126,0.7152,0.0722) and u = (wG,−wR,0)/||(wG,−wR,0)||. The two colors are c and c+d u, with d positive; label y is the interval containing c+d u. Equivalently, choose the larger projection u·cₜ. Label 0 means the first interval and label 1 the second. The question is not which disc has the greater arithmetic mean of its RGB components, nor which appears subjectively brighter on a particular screen.",
+        "Because w·u = 0, the ideal patch colors have the same declared weighted luminance even though their channels differ. The frame_luminances metadata are computed from those ideal colors, before edge blending and noise, rather than from every rendered pixel. A tiny float-rounding difference in that field is not a separate answer cue."
+      ],
+      "ignore": [
+        "Ignore which base hue happens to be sampled, the disc’s radius, and noise in individual channels or the surround. Those variables are not instructions to name a color category. The positive axis increment is the same mathematical direction for all bases; it is not necessarily a constant perceived hue or a fixed number of perceptual just-noticeable differences.",
+        "Use the lossless PNG player for the intended display mapping. GIF palette quantization, integer RGB conversion, monitor gamma and the browser’s color handling can alter subtle appearances. No per-frame amplification or color normalization should be used to make the answer look clearer without declaring a separate non-native analysis display."
+      ],
+      "implementation": [
+        "TaskStream._chromatic_increment builds the weight vector and normalized axis in float32, copies a uniform base color into two entries and adds the increment at the label index. The common radial mask is clip(radius + 0.5 − distance, 0, 1), with distance measured from (49.5,49.5). Each image is formed as 0.5 + mask × (color − 0.5), then receives Uniform(−0.001,+0.001) noise independently at each pixel and channel.",
+        "Unlike the achromatic Gabor tasks, this method does not call _achromatic, does not duplicate a noise plane across channels, and does not mean-center or peak-normalize the stimulus. It also performs no gamma conversion and no final color clipping; the chosen base range and increment keep the intended colors away from gamut boundaries. The only clip operation constructs the geometric edge mask. Metadata stores the axis, two ideal colors and their weighted luminances but not the sampled radius or noise."
+      ],
+      "neuroscience": [
+        "Krauskopf and Gegenfurtner measured chromatic discrimination in an isoluminant plane under explicitly controlled adaptation. Their Methods describe cone-based L−M and S−(L+M) coordinates, and their Procedure used four simultaneously presented discs with an odd-color response.[sensory-krauskopf1992] This motivates stating the color coordinate system and considering luminance rather than treating an arbitrary RGB distance as a perceptual distance.",
+        "The atlas deliberately does not call its RGB axis a cone-isolating direction. The source’s color-space construction, controlled adaptation and display procedures are different from a fixed arithmetic constraint on three channel values.[sensory-krauskopf1992] The present question is whether a defined chromatic difference remains available for a comparison, not whether human chromatic mechanisms or adaptation effects have been reproduced."
+      ],
+      "network": [
+        "The intended signal resides in a signed relation between channels. An exact linear grayscale reduction with the declared weights would remove the ideal chromatic increment, leaving only nuisance variation and numerical artifacts. Preserving color-channel differences or their projection on the relevant axis is therefore the appropriate information requirement.",
+        "A difference in mean patch color projected onto the axis is a valid solution. This does not require object identity, color constancy across illumination, semantic color naming or a particular opponent neural circuit. Loss of channel distinctions is a plausible bottleneck in an analysis of a system, but no such loss is measured or attributed here."
+      ],
+      "boundary": [
+        "Success would support the defined RGB-axis interval discrimination across the sampled base colors and radii. It would not demonstrate observer-calibrated isoluminance, cone isolation, a human color threshold, chromatic adaptation or color constancy. The native float representation, lossless display conversion and browser appearance are three different levels; a perceptual judgment on a quantized preview cannot certify the underlying photometric constraint.",
+        "The base color occupies a bounded RGB box, and the positive increment shifts that box along the declared axis. Absolute channel values near its limits can offer interval priors. This remaining distribution cue does not change the correct paired rule, but it prevents claiming that randomized order alone eliminates every possible one-frame shortcut."
+      ],
+      "metrics": [
+        "The binary uniform-guessing reference is 50%. Report accuracy, both interval recalls and balanced accuracy by increment, retaining actual class counts. If continuous scores are ever evaluated, binary AUC requires both classes and a score oriented toward the frame-1 answer. Base-color and radius strata may be informative only if those variables are actually recorded or safely derived; radius is not in the native metadata.",
+        "The ideal-color luminance difference is a stimulus-construction diagnostic, not a behavioral score. Keep float-space numerical checks separate from display conversion or GIF quantization checks. The atlas contains curated illustrations and metric definitions, not measured psychophysical or system performance."
+      ],
+      "adaptation": [
+        "This is a project-specific linear-RGB comparison motivated by carefully controlled chromatic-discrimination research. It substitutes two temporal observations and a declared orthogonal RGB axis for the source’s four-disc cone-coordinate experiment; it inherits neither calibrated isoluminance nor an adaptation protocol.[sensory-krauskopf1992] The catalog’s older isoluminant wording is interpreted only as the numerical luminance constraint, not as a biological calibration claim."
+      ]
+    },
+    "properties": [
+      {
+        "name": "Native observation contract",
+        "value": "2 × 3 × 100 × 100; float32 in [0,1]",
+        "units": "frames × channels × pixels",
+        "sampling": "Fixed; no cue, blank, report-only or extra loop-seam input",
+        "role": "Two ordered observations; decision after frame index 1",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:262–282",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Primary condition",
+        "value": "mixed; empty kwargs",
+        "units": "condition ID",
+        "sampling": "One catalog cell; native level mixture retained",
+        "role": "Difficulty variants are not additional primary conditions",
+        "provenance": "SecondPass/TaskSuite/catalog.json:23–186",
+        "visibility": "External condition selection; not extra image input"
+      },
+      {
+        "name": "Answer balancing",
+        "value": "0/1",
+        "units": "class index",
+        "sampling": "Random cyclic offset of arange(n), then shuffled; exact balance for multiples of 2",
+        "role": "Batch balance, not independent Bernoulli labels and not guaranteed balance in a curated subset",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:267–268",
+        "visibility": "Supervision/analysis only"
+      },
+      {
+        "name": "Random state and trial identity",
+        "value": "NumPy default_rng(seed); seed/split/counter",
+        "units": "state",
+        "sampling": "Local mutable RNG; counter increments once per episode; exact draw order and batch size matter",
+        "role": "Reproducibility without global RNG; no live training stream state is restored; isolated demo progress may be restored for resumable export",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:42–59, 98–100, 113–140, 277–281",
+        "visibility": "Analysis only; never pixel overlays"
+      },
+      {
+        "name": "Adapter dispatch and metadata",
+        "value": "TaskStream; native images and labels unchanged",
+        "units": "interface",
+        "sampling": "A separate stream per task/cell; normal suite seed = split_seed × 100000 + stream_id × 1000 + cell_index; atlas must use recorded demo-only seeds instead",
+        "role": "Task identity externally selects a task-specific output; metadata is not observer input",
+        "provenance": "SecondPass/TaskSuite/suite.py:69–99",
+        "visibility": "Task/head choice external; metadata analysis only"
+      },
+      {
+        "name": "Playback and photometry",
+        "value": "No biological frame duration assigned",
+        "units": "display convention",
+        "sampling": "Atlas preview uses a common clip/rint(255x) mapping; playback speed and repeated looping are presentation choices",
+        "role": "No gamma calibration, per-frame rescaling, tweening or added evidence",
+        "provenance": "SecondPass/TaskSuite/Demo/CONTRACT.md:15, 21–24",
+        "visibility": "Website/display policy, not native stimulus parameter"
+      },
+      {
+        "name": "Luminance weights",
+        "value": "(0.2126, 0.7152, 0.0722)",
+        "units": "linear-RGB weights",
+        "sampling": "Fixed float32 vector",
+        "role": "Numerical luminance, not measured observer sensitivity",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:199–202",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Positive axis",
+        "value": "normalize(0.7152, −0.2126, 0)",
+        "units": "unit RGB direction",
+        "sampling": "Fixed norm-one float32 vector",
+        "role": "Red increase / green decrease with w·u approximately zero",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:200–202",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Increment",
+        "value": "0.018, 0.045, 0.10",
+        "units": "Euclidean linear-RGB magnitude",
+        "sampling": "Uniform discrete level",
+        "role": "Difficulty and positive-axis distance",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:203, 275–276",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Base color",
+        "value": "Each channel Uniform[0.30,0.65)",
+        "units": "linear-RGB intensity",
+        "sampling": "Three independent components drawn per pair",
+        "role": "Roving nuisance; same base for both colors",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:204–206",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Frame colors",
+        "value": "c and c + increment × axis",
+        "units": "linear RGB",
+        "sampling": "Increment added only at answer index",
+        "role": "Exact class construction; no channel clamp",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:205–207",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Geometry and center",
+        "value": "center (49.5,49.5); radius Uniform[17,24)",
+        "units": "pixels",
+        "sampling": "One radius shared by pair; fixed center",
+        "role": "Equal geometry within pair",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:116–117, 208–210",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Soft edge",
+        "value": "mask = clip(radius + 0.5 − distance, 0,1)",
+        "units": "one-pixel transition",
+        "sampling": "Deterministic radial linear ramp, shared by pair",
+        "role": "Geometric clipping only; no photometric clipping",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:208–213",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Neutral surround",
+        "value": "(0.5,0.5,0.5)",
+        "units": "intensity",
+        "sampling": "Patch blended into fixed background",
+        "role": "No label-dependent surround",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:211–214",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Independent noise",
+        "value": "Uniform(−0.001,+0.001)",
+        "units": "intensity",
+        "sampling": "Per pixel, channel and interval, over the whole image",
+        "role": "Chromatic and luminance nuisance after ideal color constraint",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:214–215",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Normalization/gamma/gamut",
+        "value": "None after color construction; float32 output",
+        "units": "operations",
+        "sampling": "No _achromatic; no mean/peak/RMS normalization; no gamma; no color clip",
+        "role": "Preserves signed color increment",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:207–215",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Luminance metadata",
+        "value": "w·frame_colors[t]",
+        "units": "ideal-color weighted intensity",
+        "sampling": "Computed before spatial mask and additive noise",
+        "role": "Not the realized full-image or every-pixel luminance",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:216–220",
+        "visibility": "Analysis only"
+      },
+      {
+        "name": "Absent native metadata",
+        "value": "Radius and pixel noise are not recorded",
+        "units": "fields",
+        "sampling": "Only colors/axis/luminances/increment are retained",
+        "role": "Do not fabricate trial-specific radius from nominal range",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:216–221",
+        "visibility": "Analysis limitation"
+      }
+    ],
+    "equations": [
+      "u = (wG,−wR,0)/√(wG²+wR²); w = (0.2126,0.7152,0.0722).",
+      "cᵧ = c + d u; c₁₋ᵧ = c; y = argmaxₜ u·cₜ.",
+      "w·(c+d u) = w·c in exact arithmetic; independent raster noise is added afterward."
+    ],
+    "references": [
+      "sensory-krauskopf1992"
+    ],
+    "worked_example_template": "Read frame_colors, axis_linear_rgb, chromatic_increment and frame_luminances. Explain that the answer color differs from the other by +increment × axis; use dot products if computed, not guessed perceptual color names. The opposite interval is the base, not a dimmer target. Ideal weighted luminances are approximately equal; browser appearance is not calibrated isoluminance.",
+    "worked_examples": {
+      "chromatic_increment--mixed--00000": "The ideal RGB colors are (0.511950, 0.524935, 0.544490) and (0.607804, 0.496441, 0.544490). frame 1 contains the positive 0.1 step along the recorded axis and is answer 1; frame 0 is the base. Ideal weighted luminances are 0.523586 and 0.523586 before noise. These rounded metadata values explain the numerical match, not human isoluminance on the display.",
+      "chromatic_increment--mixed--00001": "The ideal RGB colors are (0.645612, 0.403450, 0.337472) and (0.688747, 0.390628, 0.337472). frame 1 contains the positive 0.045 step along the recorded axis and is answer 1; frame 0 is the base. Ideal weighted luminances are 0.450170 and 0.450170 before noise. These rounded metadata values explain the numerical match, not human isoluminance on the display.",
+      "chromatic_increment--mixed--00002": "The ideal RGB colors are (0.442448, 0.486581, 0.473638) and (0.538303, 0.458087, 0.473638). frame 1 contains the positive 0.1 step along the recorded axis and is answer 1; frame 0 is the base. Ideal weighted luminances are 0.476264 and 0.476264 before noise. These rounded metadata values explain the numerical match, not human isoluminance on the display.",
+      "chromatic_increment--mixed--00003": "The ideal RGB colors are (0.427391, 0.600907, 0.627794) and (0.410138, 0.606036, 0.627794). frame 0 contains the positive 0.018 step along the recorded axis and is answer 0; frame 1 is the base. Ideal weighted luminances are 0.565959 and 0.565959 before noise. These rounded metadata values explain the numerical match, not human isoluminance on the display."
+    },
+    "showcase_worked_example": {
+      "episode_id": "chromatic_increment--mixed--00000",
+      "text": "The ideal RGB colors are (0.511950, 0.524935, 0.544490) and (0.607804, 0.496441, 0.544490). frame 1 contains the positive 0.1 step along the recorded axis and is answer 1; frame 0 is the base. Ideal weighted luminances are 0.523586 and 0.523586 before noise. These rounded metadata values explain the numerical match, not human isoluminance on the display."
+    }
+  },
+  {
+    "id": "contour",
+    "title": "Contour among local elements",
+    "group": "sensory",
+    "question": "Which frame was generated with a seven-element path aligned among the clutter?",
+    "intro": "Look for relationships among small striped patches rather than a single distinctive patch. Both frames use the same element positions and orientation inventory, but one assigns seven elements to follow a smooth path. The answer identifies the structured generator; a shuffled control can still contain chance alignments.",
+    "sections": {
+      "appears": [
+        "Each image contains 32 small achromatic Gabor elements on gray. Seven centers are placed along a shallow quadratic path, randomly rotated and shifted near the image center; 25 additional centers fill the surrounding area subject to a minimum-distance placement rule. Every element has the same five-pixel carrier period, σ = 2-pixel Gaussian window on an 11 × 11 support and numerical multiplier 0.34. The pair has identical center positions and a matched orientation multiset.",
+        "The code’s carrier angle for a path element is tangent + π/2 + Gaussian jitter. Since the visible stripes are perpendicular to the carrier wavevector, this makes their axial stripe orientation follow the path tangent up to the drawn jitter. The atlas must not draw an inferred path on the observer pixels: neither the continuous path nor its center identities are supplied as an overlay or stored in ordinary metadata."
+      ],
+      "sequence": [
+        "Frame 0 and frame 1 are two element fields with the same geometry. One is the structured assignment and the other is an orientation permutation. The correct response follows the second observation and identifies the structured interval. There is no spatial cue, fixation phase, retention blank or separate probe; a side-by-side comparison is an explanatory view rather than an added native input."
+      ],
+      "rules": [
+        "Label 0 means the structured field is frame 0; label 1 means it is frame 1. In the structured field, the first seven generated elements receive near-tangent stripe orientations with Gaussian jitter SD 2, 8 or 16 degrees. In the control, all 32 carrier angles are reassigned by a random permutation to the same 32 centers. This preserves the orientation inventory but changes which orientation belongs to which location.",
+        "The rule concerns the known generative construction, not a guarantee of a unique consciously visible contour. Permutations may keep some orientations at their original positions, neighboring elements can align by chance and larger jitter can weaken the intended path. It is therefore incorrect to call every control contour-free or to treat any individual ambiguous illustration as evidence that the label was measured from perception."
+      ],
+      "ignore": [
+        "Ignore total element count, absolute global path orientation and a histogram of local orientations alone: those do not identify the answer interval by design. Positions are matched, so a density pattern common to both frames cannot alone say which interval is structured. The relevant distinction is the relationship between angle and location.",
+        "Carrier phase is drawn once per position and held at that position across the pair, whereas angles move under the permutation. Thus it is the orientation multiset, not an entire orientation-and-phase feature tuple, that is matched. Exact global pixel means or energies are not explicitly equalized after summing the truncated small Gabors; one should not claim the generator has eliminated every possible low-order raster cue."
+      ],
+      "implementation": [
+        "TaskStream._contour starts with seven t values equally spaced from −1 to 1 and coordinates (31t, b t²), where b is uniform in [−9,9). A uniform global rotation in [0,2π) and independent x/y center offsets in [−3,3) are applied. Up to 2000 proposals from [8,92)² add clutter centers only when at least ten pixels from all existing continuous centers. If 32 total centers cannot be placed, the method raises instead of silently changing the layout. Coordinates are rounded to integer pixels only after this test, so the ten-pixel criterion is a pre-rounding condition.",
+        "All 32 carrier orientations begin as independent Uniform[0,π) draws. The first seven are replaced by analytic path-tangent angles plus π/2 and independent normal jitter. A random permutation creates the control orientation list, while a single independent phase vector remains indexed by position. The nested render function sums 0.34 times each small enveloped carrier into a blank field, then calls _achromatic. Unlike the large grating helper, it does not subtract the summed field mean or normalize peaks. Structured and control noise arrays are drawn independently before interval assignment.",
+        "Metadata records jitter SD, bend, element counts and the multiset-match flag but not positions, phases, global rotation, the permutation or realized jitters. A worked explanation can say how the trial was generated, but a contour-tracing overlay cannot be reconstructed faithfully from those metadata alone."
+      ],
+      "neuroscience": [
+        "Field, Hayes and Hess presented oriented band-pass elements with a subset aligned along a path amid randomly oriented elements. Their temporal forced-choice task asked observers which interval contained the path, and their experiments investigated the importance of alignment for contour visibility.[sensory-field1993] This is a primary behavioral anchor for asking about relations among local features instead of detecting a uniquely colored or oriented target.",
+        "Their association-field interpretation links neighboring orientation signals, but the behavioral assay is not a direct identification of a neural circuit.[sensory-field1993] The project’s compact raster preserves the relational question while using a different path law, fewer elements and an explicitly matched permutation control. It does not establish that grouping is exclusively preattentive."
+      ],
+      "network": [
+        "A count of orientations that ignores their positions discards the intended difference, because both intervals have the same angle inventory. A solution must be sensitive to angle–position relationships, whether through local continuity scores combined over a path, a wider spatial computation or learned pairwise features. It need not recover an explicit symbolic contour to choose the structured interval.",
+        "Receptive-field extent and the ability to combine neighboring evidence are plausible computational concerns. Recurrence is one possible implementation, but feedforward computations with sufficient spatial context can also express grouping. The existence of random-control alignments and unmatched phase–orientation pairings prevents a stronger claim that every correct answer uniquely diagnoses a particular grouping strategy."
+      ],
+      "boundary": [
+        "Success would support distinguishing this structured path generator from its matched-position orientation permutation controls. It would not establish perceptual contour visibility on every trial, natural boundary detection, recurrent necessity, a biological association field or human attentional status. Failures at high jitter likewise do not by themselves diagnose absence of grouping; generated evidence can be weak or accidentally shared."
+      ],
+      "metrics": [
+        "The uniform binary guessing reference is 50%. Define balanced accuracy from recalls for the two structured-interval labels and AUC only when both classes and a continuous frame-1 score exist. Report each 2-, 8- and 16-degree jitter SD with class counts and confusion; path bend may be an additional declared nuisance stratum.",
+        "The stored jitter is a distribution SD, not the maximum angle error and not the measured deviation of every path element. It must not be presented as an exact realized contour angle. Curated examples are chosen to explain the rule, not to estimate visibility rates or any system’s competence."
+      ],
+      "adaptation": [
+        "The source supplies the path-in-clutter question and the importance of orientation–position alignment. The project supplies the seven-point parabola, 32-element array, integer rounding, three normal-jitter SDs and matched-angle permutation comparison.[sensory-field1993] These differences are stated rather than treating the 100-pixel assay as a replication of the original viewing geometry or human threshold procedure."
+      ]
+    },
+    "properties": [
+      {
+        "name": "Native observation contract",
+        "value": "2 × 3 × 100 × 100; float32 in [0,1]",
+        "units": "frames × channels × pixels",
+        "sampling": "Fixed; no cue, blank, report-only or extra loop-seam input",
+        "role": "Two ordered observations; decision after frame index 1",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:262–282",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Primary condition",
+        "value": "mixed; empty kwargs",
+        "units": "condition ID",
+        "sampling": "One catalog cell; native level mixture retained",
+        "role": "Difficulty variants are not additional primary conditions",
+        "provenance": "SecondPass/TaskSuite/catalog.json:23–186",
+        "visibility": "External condition selection; not extra image input"
+      },
+      {
+        "name": "Answer balancing",
+        "value": "0/1",
+        "units": "class index",
+        "sampling": "Random cyclic offset of arange(n), then shuffled; exact balance for multiples of 2",
+        "role": "Batch balance, not independent Bernoulli labels and not guaranteed balance in a curated subset",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:267–268",
+        "visibility": "Supervision/analysis only"
+      },
+      {
+        "name": "Random state and trial identity",
+        "value": "NumPy default_rng(seed); seed/split/counter",
+        "units": "state",
+        "sampling": "Local mutable RNG; counter increments once per episode; exact draw order and batch size matter",
+        "role": "Reproducibility without global RNG; no live training stream state is restored; isolated demo progress may be restored for resumable export",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:42–59, 98–100, 113–140, 277–281",
+        "visibility": "Analysis only; never pixel overlays"
+      },
+      {
+        "name": "Adapter dispatch and metadata",
+        "value": "TaskStream; native images and labels unchanged",
+        "units": "interface",
+        "sampling": "A separate stream per task/cell; normal suite seed = split_seed × 100000 + stream_id × 1000 + cell_index; atlas must use recorded demo-only seeds instead",
+        "role": "Task identity externally selects a task-specific output; metadata is not observer input",
+        "provenance": "SecondPass/TaskSuite/suite.py:69–99",
+        "visibility": "Task/head choice external; metadata analysis only"
+      },
+      {
+        "name": "Playback and photometry",
+        "value": "No biological frame duration assigned",
+        "units": "display convention",
+        "sampling": "Atlas preview uses a common clip/rint(255x) mapping; playback speed and repeated looping are presentation choices",
+        "role": "No gamma calibration, per-frame rescaling, tweening or added evidence",
+        "provenance": "SecondPass/TaskSuite/Demo/CONTRACT.md:15, 21–24",
+        "visibility": "Website/display policy, not native stimulus parameter"
+      },
+      {
+        "name": "Achromatic baseline and channels",
+        "value": "0.5; R = G = B",
+        "units": "normalized intensity",
+        "sampling": "Fixed baseline; the same realized 2-D signal-plus-noise plane copied into all three channels",
+        "role": "No chromatic class cue; noise differs across generated images",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:148–153",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Additive raster noise",
+        "value": "Uniform(−0.004, +0.004)",
+        "units": "intensity",
+        "sampling": "Independent per pixel and per rendered image; same distribution for both answers and all levels",
+        "role": "Small nuisance, applied after signal construction, not normalized away",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:148–153",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Gamut behavior",
+        "value": "Raise RuntimeError if any native intensity leaves [0,1]",
+        "units": "bounds",
+        "sampling": "No clipping in _achromatic",
+        "role": "Avoid hidden label-specific saturation as a repair",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:150–153",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Element inventory",
+        "value": "7 path + 25 clutter = 32",
+        "units": "elements",
+        "sampling": "Fixed count; no structured-only density increase",
+        "role": "Matched geometry in both intervals",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:223–240, 257–259",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Path parameter samples",
+        "value": "t = linspace(−1,1,7); path = (31t, b t²)",
+        "units": "pixels",
+        "sampling": "b ∼ Uniform[−9,9); seven deterministic t values",
+        "role": "Path curvature nuisance; bend metadata is signed b",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:225–227",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Global rotation and translation",
+        "value": "angle Uniform[0,2π); center = 49.5 + Uniform[−3,3)²",
+        "units": "radians; pixels",
+        "sampling": "One shared transform applied to path positions",
+        "role": "Roves orientation and near-center location",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:228–231",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Clutter proposal law",
+        "value": "Uniform[8,92)²; minimum continuous separation 10; 2000 proposal cap",
+        "units": "pixels; proposals",
+        "sampling": "Accept sequentially against all existing centers until count 32; raise if incomplete",
+        "role": "No infinite rejection loop; hard-core center layout",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:233–239",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Raster center rounding",
+        "value": "np.rint(continuous centers).astype(int)",
+        "units": "pixels",
+        "sampling": "Round only after placement; distance test precedes rounding",
+        "role": "Actual pixel separation need not equal continuous minimum",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:240",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Path tangent",
+        "value": "atan2(2 b t,31) + global angle",
+        "units": "radians",
+        "sampling": "Computed before rounding centers",
+        "role": "Analytic tangent of the continuous quadratic path",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:241",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Orientation initialization",
+        "value": "32 draws Uniform[0,π), then replace first 7",
+        "units": "radians",
+        "sampling": "Clutter orientations remain independent uniform",
+        "role": "Matched orientation inventory includes path and clutter",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:242–245",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Path carrier angles",
+        "value": "tangent + π/2 + Normal(0,jitter)",
+        "units": "radians after converting jitter from degrees",
+        "sampling": "Seven independent normal draws; jitter SD uniformly 2,8,16 degrees; normal tails unbounded",
+        "role": "Stripe axis, not carrier vector, follows tangent",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:224, 243, 275–276",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Control permutation",
+        "value": "Uniform RNG permutation of all 32 orientations",
+        "units": "assignment",
+        "sampling": "May contain fixed points; no rejection for retained alignments",
+        "role": "Matched angle multiset, not guaranteed destroyed path",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:244–245",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Carrier phases",
+        "value": "32 Uniform[0,2π) draws",
+        "units": "radians",
+        "sampling": "Drawn once; held by position in both images, not permuted with angle",
+        "role": "Phase–orientation tuples not jointly multiset matched",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:246–250",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Small Gabor support/envelope",
+        "value": "gx,gy = −5…5; exp[−(gx²+gy²)/(2 × 2²)]",
+        "units": "11 × 11 pixels; σ 2 pixels",
+        "sampling": "Fixed truncated Gaussian support",
+        "role": "Trace of TaskStream initializer used by nested renderer",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:119–121, 249–251",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Element carrier and gain",
+        "value": "cos[2π(gx cos θ + gy sin θ)/5 + φ] × 0.34",
+        "units": "period 5 pixels; amplitude 0.34",
+        "sampling": "Same period and multiplier for every element",
+        "role": "Summed fields without _grating mean/peak normalization",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:247–252",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Render order and assignment",
+        "value": "Render structured, then scrambled; put structured at label index",
+        "units": "interval index",
+        "sampling": "Independent _achromatic noise for the two renders",
+        "role": "Label-independent noise law despite fixed render order",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:253–255",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Native explanation limits",
+        "value": "jitter SD, bend, counts, multiset flag only",
+        "units": "metadata",
+        "sampling": "No per-element positions/angles/phases/permutation saved",
+        "role": "No invented exact path overlay from incomplete metadata",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:256–260",
+        "visibility": "Analysis only"
+      }
+    ],
+    "equations": [
+      "p(t) = R(α)(31t, b t²) + c; τ(t) = atan2(2bt,31) + α.",
+      "θ_path = τ + π/2 + η; η ∼ Normal(0,σ_jitter²).",
+      "θ_control[i] = θ_structured[permutation[i]]; y identifies the structured interval."
+    ],
+    "references": [
+      "sensory-field1993"
+    ],
+    "worked_example_template": "Read label, alignment_jitter_degrees, path_bend_pixels, path_elements, total_elements and orientation_multiset_matched. Explain why that interval is designated structured and the other permuted. The stored SD is not each realized jitter. Do not invent exact element indices, path arrows or a claim that the control lacks accidental alignments.",
+    "worked_examples": {
+      "contour--mixed--00000": "Label 1 designates frame 1 as the structured assignment: 7 path elements among 32, with jitter SD 16° and path bend -6.8754 pixels. frame 0 reassigns the same orientation multiset to the matched positions. The alternative is wrong as a generator label, even if chance alignments remain. Realized element angles and path coordinates are not in this metadata.",
+      "contour--mixed--00001": "Label 1 designates frame 1 as the structured assignment: 7 path elements among 32, with jitter SD 2° and path bend -7.3390 pixels. frame 0 reassigns the same orientation multiset to the matched positions. The alternative is wrong as a generator label, even if chance alignments remain. Realized element angles and path coordinates are not in this metadata.",
+      "contour--mixed--00002": "Label 0 designates frame 0 as the structured assignment: 7 path elements among 32, with jitter SD 2° and path bend 0.0752 pixels. frame 1 reassigns the same orientation multiset to the matched positions. The alternative is wrong as a generator label, even if chance alignments remain. Realized element angles and path coordinates are not in this metadata.",
+      "contour--mixed--00003": "Label 1 designates frame 1 as the structured assignment: 7 path elements among 32, with jitter SD 8° and path bend 3.6579 pixels. frame 0 reassigns the same orientation multiset to the matched positions. The alternative is wrong as a generator label, even if chance alignments remain. Realized element angles and path coordinates are not in this metadata."
+    },
+    "showcase_worked_example": {
+      "episode_id": "contour--mixed--00000",
+      "text": "Label 1 designates frame 1 as the structured assignment: 7 path elements among 32, with jitter SD 16° and path bend -6.8754 pixels. frame 0 reassigns the same orientation multiset to the matched positions. The alternative is wrong as a generator label, even if chance alignments remain. Realized element angles and path coordinates are not in this metadata."
+    }
+  },
+  {
+    "id": "natural_spectrum",
+    "title": "Natural-image spectral detail",
+    "group": "sensory",
+    "question": "Which version of the same photograph has greater relative high-frequency detail?",
+    "intro": "Two grayscale views come from the same native photograph crop. Their geometry and Fourier phase are shared, but the balance of fine versus broad image variation differs. Choose the smaller spectral-beta interval; identifying the scene or remembering another photograph is not the task.",
+    "sections": {
+      "appears": [
+        "Each observation fills the 100 × 100 raster with a grayscale natural-image crop repeated in all three channels. The pair shares the source photo, crop coordinates and any quarter-turn or reflection. It has a common mean of 0.5 and a common actual RMS deviation, while radial Fourier weighting changes the relative contribution of higher versus lower spatial frequencies. There is no overlaid cue, frame border, noise patch or segmentation mask.",
+        "Smaller beta means greater relative high-frequency weighting for this same source. It does not assert that the photograph has an exact power-law spectrum or that every object edge necessarily appears sharper to every viewer. RMS standardization removes a global amplitude difference while retaining changes in the distribution of energy across scales."
+      ],
+      "sequence": [
+        "Frame 0 and frame 1 are the two filtered versions; report the higher-relative-detail interval after frame 1. Both versions are generated from one crop, not successive views of a changing scene. There are no study items, intervening blanks or repeated probe holds. Looping is an atlas convenience and does not turn this comparison into an image-recognition trial."
+      ],
+      "rules": [
+        "The renderer samples a beta center uniformly in [−0.5,0.5) and a difference d from 0.15, 0.30 or 0.60. Both interval betas begin at center+d/2, then the label interval is assigned center−d/2. Thus label 0 identifies a smaller beta in frame 0 and label 1 identifies a smaller beta in frame 1. The code’s betas_by_frame directly records this ordered pair.",
+        "For each nonzero radial frequency r, the zero-mean crop spectrum is multiplied by (r/0.1)^(−beta), with frequency in cycles per pixel. A smaller beta increases the high-to-low-frequency amplitude ratio relative to the other version. After inverse transformation each image is standardized and both receive the same final RMS multiplier. The answer is therefore not simply whichever frame has a greater overall standard deviation."
+      ],
+      "ignore": [
+        "Ignore scene semantics, source identity, crop position and shared rotation or reflection: both candidate intervals contain the same transformed crop geometry. Mean brightness and full-raster RMS are intentionally matched within the pair before float32 roundoff. The relevant distinction is relative spectral content, not whether a scene was previously seen, whether it is a particular object, or whether one frame contains an added feature.",
+        "The Fourier transform treats opposite crop edges as periodic neighbors without a tapering window. This can introduce boundary-related spectral content that is part of the implemented assay. It is a limitation to disclose, not permission to silently window, resize, sharpen or otherwise improve the illustrations."
+      ],
+      "implementation": [
+        "TaskStream lazily constructs NaturalSpectrum for the chosen split and passes its local NumPy generator and interval label into sample. The source pool comes from PreAttentiveVision/data/bsds500/manifest.json, and image-file hashes are checked when a photo is first loaded into the cache. Missing data fail explicitly; neither initialization nor sampling downloads photos or substitutes synthetic imagery. The manifest identity and natural protocol are recorded in stream state. No live training stream state is restored; isolated demo progress may be restored for resumable export.",
+        "_image decodes the source JPEG as RGB values divided by 255, applies the piecewise sRGB-to-linear transfer function, and computes luminance with weights (0.2126,0.7152,0.0722). sample chooses a uniform source index and uniformly valid integer row/column for a native 100-pixel crop, converts the crop to float64 and requires its standard deviation to exceed 0.0001. Up to 32 attempts redraw the photo and crop before raising. A uniform quarter-turn and an independently uniform horizontal reflection are shared by both intervals. There is no upsampling, central-crop preference or spatial resizing.",
+        "NaturalSpectrum builds its radial frequency grid with np.fft.fftfreq(100), treating the DC slot specially to avoid a singular logarithm. It subtracts the crop mean, computes fft2 and sets DC to zero. Each beta supplies a positive real radial multiplier, so nonzero Fourier phase is preserved. The inverse transform is made real, re-centered and divided by its population standard deviation; a filtered standard deviation below 10⁻¹² raises an error. The shared RMS is min(0.15, 0.45/max|z|) over both standardized frames. This bounds deviations without clipping either interval, and the result is cast to float32 before repetition into RGB.",
+        "Metadata records source ID, crop rectangle, quarter-turn count, reflection flag, ordered betas, beta difference, actual common RMS and the number of rejected crop attempts. TaskStream replaces the returned task protocol field with its battery protocol string; the underlying natural protocol remains identifiable through NaturalSpectrum.identity. The actual image transform, not the historical proposal’s unimplemented-status wording, governs this atlas."
+      ],
+      "neuroscience": [
+        "Tadmor and Tolhurst’s primary study measured human discrimination of changes in second-order statistics in natural and synthetic images. Its verified abstract reports variation in thresholds among natural images and describes an account in terms of local contrast changes within restricted spatial-frequency bands.[sensory-tadmor1994] This supports asking about scale-dependent image statistics rather than scene category judgments.",
+        "Only that paper’s abstract was available in this verification pass; the publisher API returned bibliographic metadata rather than its full methods. The atlas therefore does not attribute specific original filtering equations, image counts, timing or threshold values to it.[sensory-tadmor1994] The exact spectral multiplier, common-RMS rule and beta distribution described here are independently established by the repository code. Computational explanations are not substituted for directly verified human evidence."
+      ],
+      "network": [
+        "A useful representation must preserve enough broadband scale information to compare the two versions while tolerating differences among source photographs. Relative energies across spatial-frequency bands are one possible sufficient statistic; an ordered spatial filter comparison is another. Full image semantics and exact-photo recognition are unnecessary because the source and geometry are common within the pair.",
+        "Pairwise RMS equalization removes a global contrast shortcut but does not erase spectral allocation. Conversely, a computation that made the entire relevant band-energy distribution invariant could remove the intended signal. These statements follow from the transform, not from inspection of a trained representation. Performance would reflect both information preservation and how that information is used for the interval decision."
+      ],
+      "boundary": [
+        "Success would support distinguishing the specified radial spectral reweightings on the stated crop distribution. It would not establish semantic recognition, image-set memory, segmentation quality, a natural-image prior, human blur thresholds or a uniquely biological normalization mechanism. A finite photo pool and periodic crop boundaries limit generality, and source-aware evaluation would be needed before any generalization claim.",
+        "The official BSDS500 resource was created for boundary detection and segmentation and describes disjoint source splits.[sensory-bsds500] Here only photographs are used. The local manifest contains train 200, validation 100 and test 200 source identities; atlas examples must use train only. The official page supplies a download and citation request, not a verified general redistribution grant, so local delivery is not authorization for later public hosting of the photos or derived crops.",
+        "The two assigned beta distributions have shifted finite ranges around the roving center. Source-dependent spectral appearance can consequently carry absolute-weighting priors, even though the matched-source pair is the intended comparison. Common mean and RMS remove those two global cues; they do not certify the absence of all other shortcuts or identify a unique strategy."
+      ],
+      "metrics": [
+        "The uniform binary guessing reference is 50%. Define accuracy, interval recalls, balanced accuracy and, with both classes and continuous frame-1 scores, binary AUC. Report the three beta differences separately and preserve source-photo identity as a reporting or uncertainty unit. Multiple crops from one photograph are not independent source identities, even when their pixel arrays differ.",
+        "Actual common RMS, beta center and crop-rejection counts describe stimulus variation rather than performance. Mean/RMS matching, no-clipping status and source-split checks are renderer diagnostics, not evidence of learned discrimination. Curated train-photo demonstrations are neither a held-out test nor a human psychophysical sample; no measured scores are supplied."
+      ],
+      "adaptation": [
+        "This is a project-specific phase-preserving spectral-detail assay motivated by human discrimination of image statistics, not a replication of an inaccessible original protocol.[sensory-tadmor1994] BSDS500 provides the image source and official identity partition, not the behavioral objective.[sensory-bsds500] Unlike the suite’s recognition task, which uses a central RGB crop resized for exact membership, this task linearizes to luminance first and takes a native random crop for Fourier filtering."
+      ]
+    },
+    "properties": [
+      {
+        "name": "Native observation contract",
+        "value": "2 × 3 × 100 × 100; float32 in [0,1]",
+        "units": "frames × channels × pixels",
+        "sampling": "Fixed; no cue, blank, report-only or extra loop-seam input",
+        "role": "Two ordered observations; decision after frame index 1",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:262–282",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Primary condition",
+        "value": "mixed; empty kwargs",
+        "units": "condition ID",
+        "sampling": "One catalog cell; native level mixture retained",
+        "role": "Difficulty variants are not additional primary conditions",
+        "provenance": "SecondPass/TaskSuite/catalog.json:23–186",
+        "visibility": "External condition selection; not extra image input"
+      },
+      {
+        "name": "Answer balancing",
+        "value": "0/1",
+        "units": "class index",
+        "sampling": "Random cyclic offset of arange(n), then shuffled; exact balance for multiples of 2",
+        "role": "Batch balance, not independent Bernoulli labels and not guaranteed balance in a curated subset",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:267–268",
+        "visibility": "Supervision/analysis only"
+      },
+      {
+        "name": "Random state and trial identity",
+        "value": "NumPy default_rng(seed); seed/split/counter",
+        "units": "state",
+        "sampling": "Local mutable RNG; counter increments once per episode; exact draw order and batch size matter",
+        "role": "Reproducibility without global RNG; no live training stream state is restored; isolated demo progress may be restored for resumable export",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:42–59, 98–100, 113–140, 277–281",
+        "visibility": "Analysis only; never pixel overlays"
+      },
+      {
+        "name": "Adapter dispatch and metadata",
+        "value": "TaskStream; native images and labels unchanged",
+        "units": "interface",
+        "sampling": "A separate stream per task/cell; normal suite seed = split_seed × 100000 + stream_id × 1000 + cell_index; atlas must use recorded demo-only seeds instead",
+        "role": "Task identity externally selects a task-specific output; metadata is not observer input",
+        "provenance": "SecondPass/TaskSuite/suite.py:69–99",
+        "visibility": "Task/head choice external; metadata analysis only"
+      },
+      {
+        "name": "Playback and photometry",
+        "value": "No biological frame duration assigned",
+        "units": "display convention",
+        "sampling": "Atlas preview uses a common clip/rint(255x) mapping; playback speed and repeated looping are presentation choices",
+        "role": "No gamma calibration, per-frame rescaling, tweening or added evidence",
+        "provenance": "SecondPass/TaskSuite/Demo/CONTRACT.md:15, 21–24",
+        "visibility": "Website/display policy, not native stimulus parameter"
+      },
+      {
+        "name": "Photo pool and source identities",
+        "value": "BSDS500 official train 200 / val 100 / test 200; atlas train only",
+        "units": "photographs",
+        "sampling": "Uniform source-index draw within chosen split on each crop attempt",
+        "role": "Source identity held out across splits; demo is not test data",
+        "provenance": "PreAttentiveVision/natural_stimuli.py:23–36, 114–128, 150–154",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Manifest provenance",
+        "value": "Official Berkeley archive; local archive/image SHA256 records",
+        "units": "source identity",
+        "sampling": "Manifest read, expected split count checked; file hash checked on first photo load",
+        "role": "Locally computed identity is not an independently published checksum or a license",
+        "provenance": "PreAttentiveVision/natural_stimuli.py:94–109, 120–144",
+        "visibility": "Analysis only"
+      },
+      {
+        "name": "sRGB decode",
+        "value": "v/12.92 for v≤0.04045; ((v+0.055)/1.055)^2.4 otherwise",
+        "units": "linear intensity",
+        "sampling": "Pillow RGB conversion; source values divided by 255 first",
+        "role": "Linearize before luminance; no inverse display transfer here",
+        "provenance": "PreAttentiveVision/natural_stimuli.py:136–145",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Luminance conversion",
+        "value": "linear RGB · (0.2126,0.7152,0.0722)",
+        "units": "intensity",
+        "sampling": "Fixed weights; cached float32 luminance source",
+        "role": "Color removed before crop/filter",
+        "provenance": "PreAttentiveVision/natural_stimuli.py:143–145",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Crop position and size",
+        "value": "100 × 100; row integer 0…H−100, col 0…W−100",
+        "units": "pixels",
+        "sampling": "Uniform independently valid row/column conditional on chosen image",
+        "role": "Native crop, not central resize; no upsampling",
+        "provenance": "PreAttentiveVision/natural_stimuli.py:151–155",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Source-crop rejection",
+        "value": "std > 10⁻⁴; at most 32 attempts",
+        "units": "intensity; attempts",
+        "sampling": "Redraw source and crop on each failure; error after cap",
+        "role": "Accepted distribution conditioned on nonzero crop contrast",
+        "provenance": "PreAttentiveVision/natural_stimuli.py:150–159",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Shared geometry augmentation",
+        "value": "quarter_turns ∈ {0,1,2,3}; horizontal_reflection ∈ {false,true}",
+        "units": "rotations; boolean",
+        "sampling": "Uniform independent draws; reflection after np.rot90",
+        "role": "Same augmentation before both filters; no interpolation",
+        "provenance": "PreAttentiveVision/natural_stimuli.py:160–164",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Beta center",
+        "value": "Uniform[−0.5,0.5)",
+        "units": "spectral multiplier exponent",
+        "sampling": "One draw per accepted crop",
+        "role": "Roving reference weighting, not native photograph slope",
+        "provenance": "PreAttentiveVision/natural_stimuli.py:165–168",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Beta difference",
+        "value": "0.15, 0.30, 0.60",
+        "units": "exponent difference",
+        "sampling": "Uniform choice after crop/geometry draws",
+        "role": "Difficulty; smaller beta assigned to label interval",
+        "provenance": "PreAttentiveVision/natural_stimuli.py:165–168",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Ordered betas",
+        "value": "center+d/2 in nonanswer, center−d/2 in answer",
+        "units": "exponent",
+        "sampling": "Deterministic from center, difference and interval label",
+        "role": "Metadata betas_by_frame defines exact rule",
+        "provenance": "PreAttentiveVision/natural_stimuli.py:167–168, 185–191",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Frequency grid and reference",
+        "value": "fftfreq(100); radial √(fx²+fy²); reference 0.1",
+        "units": "cycles/pixel",
+        "sampling": "Default unit pixel spacing; radius[0,0]=1 before logarithm",
+        "role": "Avoid singular DC; no radial cutoff/window specified",
+        "provenance": "PreAttentiveVision/natural_stimuli.py:130–134",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Spectral filter",
+        "value": "FFT(crop−mean) × exp[−beta log(r/0.1)]; DC = 0",
+        "units": "amplitude multiplier",
+        "sampling": "Positive real radial weighting; inverse FFT real part",
+        "role": "Preserves nonzero-component phase; periodic boundaries",
+        "provenance": "PreAttentiveVision/natural_stimuli.py:169–175",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Post-filter normalization",
+        "value": "Subtract mean; divide by std; reject std < 10⁻¹²",
+        "units": "intensity",
+        "sampling": "Separate normalization for each filtered raster using population std",
+        "role": "Equalizes global RMS before common gain",
+        "provenance": "PreAttentiveVision/natural_stimuli.py:175–180",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Pairwise common RMS/gamut",
+        "value": "rms = min(0.15,0.45/max(abs(z))) over both rasters",
+        "units": "intensity deviation",
+        "sampling": "Shared gain can be below nominal target; mean 0.5; no clipping",
+        "role": "Same within-pair RMS and safe peak bound",
+        "provenance": "PreAttentiveVision/natural_stimuli.py:181–184",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Output and noise",
+        "value": "float32; 3 identical channels; no additive sensor noise",
+        "units": "dtype/channels",
+        "sampling": "Cast after common mean and gain, then channel-repeat",
+        "role": "Unlike procedural achromatic tasks, no _achromatic call",
+        "provenance": "PreAttentiveVision/natural_stimuli.py:181–192",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Recorded provenance",
+        "value": "base_id, crop_xywh, quarter_turns, horizontal_reflection, source_contrast_rejections",
+        "units": "metadata",
+        "sampling": "Native values describe actual accepted sample",
+        "role": "Explanations from metadata; not additional input",
+        "provenance": "PreAttentiveVision/natural_stimuli.py:185–191",
+        "visibility": "Analysis only"
+      },
+      {
+        "name": "Lazy cache / state identity",
+        "value": "NaturalSpectrum owns photo cache, caller owns sampling RNG",
+        "units": "state",
+        "sampling": "No random state in photo cache; natural identity includes manifest SHA256, split and PROTOCOL",
+        "role": "No download on import/sample; no synthetic fallback",
+        "provenance": "PreAttentiveVision/natural_stimuli.py:114–145",
+        "visibility": "Visible in pixels; numerical parameter is analysis-only"
+      },
+      {
+        "name": "Protocol metadata layering",
+        "value": "battery protocol overwrites sample protocol; natural identity retains PROTOCOL",
+        "units": "strings",
+        "sampling": "TaskStream wraps native photo metadata",
+        "role": "Distinguish battery version from transform version",
+        "provenance": "PreAttentiveVision/neuroscience_stimuli.py:123–140, 272–280",
+        "visibility": "Analysis only"
+      }
+    ],
+    "equations": [
+      "Fβ(fx,fy) = F[J−mean(J)](fx,fy) × (√(fx²+fy²)/0.1)^(−β), with DC set to zero.",
+      "zβ = (IFFT(Fβ).real − mean)/std; r = min(0.15, 0.45/maxₜ,ₓ,ᵧ|zₜ|).",
+      "Iₜ = 0.5 + r zₜ; y = argminₜ βₜ."
+    ],
+    "references": [
+      "sensory-tadmor1994",
+      "sensory-bsds500"
+    ],
+    "worked_example_template": "Read base_id, crop_xywh, quarter_turns, horizontal_reflection, betas_by_frame, beta_delta and actual_common_rms. Identify the smaller beta interval and explain greater relative high-frequency weighting. The other interval has the larger beta, not a different photograph or larger global RMS. Cite actual crop/augmentation only; do not invent object identity or claim an exact source power-law spectrum.",
+    "worked_examples": {
+      "natural_spectrum--mixed--00000": "Both frames use BSDS500/train/249061.jpg at crop (x,y,w,h)=[179, 41, 100, 100], with 2 quarter-turn(s) and horizontal reflection=false. Betas are 0.228319 and -0.071681; frame 1 has the smaller beta and is answer 1. The difference is 0.3, while both frames have actual RMS 0.106619 around mean 0.5. The other interval has relatively stronger low-frequency weighting, not a different photo or larger global RMS. Values shown are rounded.",
+      "natural_spectrum--mixed--00001": "Both frames use BSDS500/train/299091.jpg at crop (x,y,w,h)=[322, 62, 100, 100], with 1 quarter-turn(s) and horizontal reflection=true. Betas are -0.164326 and -0.764326; frame 1 has the smaller beta and is answer 1. The difference is 0.6, while both frames have actual RMS 0.057218 around mean 0.5. The other interval has relatively stronger low-frequency weighting, not a different photo or larger global RMS. Values shown are rounded.",
+      "natural_spectrum--mixed--00002": "Both frames use BSDS500/train/181018.jpg at crop (x,y,w,h)=[66, 15, 100, 100], with 1 quarter-turn(s) and horizontal reflection=true. Betas are -0.040243 and 0.109757; frame 0 has the smaller beta and is answer 0. The difference is 0.15, while both frames have actual RMS 0.119679 around mean 0.5. The other interval has relatively stronger low-frequency weighting, not a different photo or larger global RMS. Values shown are rounded."
+    },
+    "showcase_worked_example": {
+      "episode_id": "natural_spectrum--mixed--00001",
+      "text": "Both frames use BSDS500/train/299091.jpg at crop (x,y,w,h)=[322, 62, 100, 100], with 1 quarter-turn(s) and horizontal reflection=true. Betas are -0.164326 and -0.764326; frame 1 has the smaller beta and is answer 1. The difference is 0.6, while both frames have actual RMS 0.057218 around mean 0.5. The other interval has relatively stronger low-frequency weighting, not a different photo or larger global RMS. Values shown are rounded."
+    }
+  }
+]

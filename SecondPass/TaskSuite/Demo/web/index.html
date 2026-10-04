@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="An offline-first atlas of native visual attention and working-memory tasks. Lossless frame players, scientific explanations and source provenance.">
+  <title>Visual Task Atlas · Seeing, selecting, remembering</title>
+  <link rel="icon" href="vendor/atlas-mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="vendor/fonts.css">
+  <link rel="stylesheet" href="atlas.css">
+</head>
+<body>
+  <a class="skip-link" href="#app">Skip to experiments</a>
+  <header class="site-header">
+    <a class="wordmark" href="#explore"><span class="brand-mark" aria-hidden="true">◫</span> Visual Task Atlas</a>
+    <nav aria-label="Main navigation"><a href="#explore" data-nav="explore">Explore</a><a href="#conditions" data-nav="conditions">All conditions</a></nav>
+    <span class="edition">Native stimuli · Local edition</span>
+  </header>
+  <div class="global-controls" role="region" aria-label="All player controls">
+    <div class="global-playback"><button type="button" data-global="play-all">▶ Play all</button><button type="button" data-global="pause-all">Ⅱ Pause all</button><label>Playback <select data-global-rate aria-label="Playback rate for all players"><option value="0.25">0.25×</option><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option><option value="4">4×</option></select></label></div>
+    <span class="playback-status" data-playback-status aria-live="polite">Readable illustration speed</span>
+    <button type="button" data-global="answers" aria-pressed="false">Show answers</button>
+  </div>
+  <main id="app" tabindex="-1"><p class="loading-message">Opening the local atlas…</p></main>
+  <noscript><p class="load-error">JavaScript is needed for frame stepping and the local example bank. Native PNG and GIF assets remain available in the assets folder.</p></noscript>
+  <footer class="site-footer"><span>Visual Task Atlas</span><p>Actual generator inputs. Curated examples, not evaluation data. No model performance or biological equivalence is claimed.</p><a href="bibliography.html">Sources & claim boundaries</a><a href="README.md">Methods & provenance</a><a href="#explore">Back to atlas ↑</a></footer>
+  <script src="data.js"></script>
+  <script src="atlas.js"></script>
+</body>
+</html>

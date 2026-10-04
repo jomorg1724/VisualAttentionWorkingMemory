@@ -1,0 +1,162 @@
+"""Single-worker finite motion-readout diagnostic, never trains the deployed model."""
+from motion import *
+import json,time,sys,hashlib,signal
+from pathlib import Path
+OUT=Path(__file__).parent;OLD=OUT.parent/'ProbeAdequacyDiagnostic'
+sys.path.insert(0,str(OUT.parent/'UpstreamMotionDiagnostic'))
+from upstream import d,torch,pixel_summary,circular_change
+for k in ('OMP_NUM_THREADS','OPENBLAS_NUM_THREADS','MKL_NUM_THREADS','VECLIB_MAXIMUM_THREADS','NUMEXPR_NUM_THREADS'):os.environ[k]='2'
+SPEC=json.loads((OUT/'protocol.json').read_text())
+
+def budget():
+    z=json.loads((OUT/'budget.json').read_text());assert time.time()<z['deadline'],'expired'
+    def expired(*_):raise TimeoutError('original diagnostic deadline expired')
+    signal.signal(signal.SIGALRM,expired);signal.setitimer(signal.ITIMER_REAL,z['deadline']-time.time());return z
+
+def raw_maps(x):
+    a=x[0].numpy();b=len(a)-17
+    assert np.array_equal(a[:,0],a[:,1]) and np.array_equal(a[:,0],a[:,2])
+    return np.stack([np.stack([np.stack([a[t-2:t+1,0,36:65,c-14:c+15]-.5 for t in (end-2,end-1,end)]) for c in (20,80)]) for end in (b+7,b+15)])
+
+def neural_maps(model,x):
+    b=x.shape[1]-17;st=model.frames(x)
+    with torch.inference_mode():
+        return np.stack([np.stack([torch.stack([model.blocks[1](model.blocks[0](st[:,t]))[0,:,10:17,c-3:c+4] for t in (end-2,end-1,end)]).numpy() for c in (5,20)]) for end in (b+7,b+15)])
+
+def descriptor(maps,stride=1):
+    return np.stack([patch_descriptor(maps[:,k],stride) for k in range(2)])
+
+def truth(meta):
+    side=np.array([-1 if m['changed_patch'] is None else m['changed_patch'] for m in meta]);return side>=0,side,np.stack([side==0,side==1],1).astype(int)
+
+def metric(event,side,p,threshold,boot):
+    es=p.max(1);ss=p[:,1]-p[:,0];ep=es>threshold;sp=(ss>0).astype(int)
+    vals=[]
+    for r in boot:
+        er=r[event[r]]
+        vals.append([d.ba(event[r],ep[r]),d.auc(event[r],es[r]),d.ba(side[er],sp[er]),d.auc(side[er],ss[er])])
+    ci=np.quantile(vals,[.025,.975],axis=0).T
+    point=[d.ba(event,ep),d.auc(event,es),d.ba(side[event],sp[event]),d.auc(side[event],ss[event])]
+    out={k:dict(value=float(v),ci95=ci[i].tolist()) for i,(k,v) in enumerate(zip(('event_ba','event_auc','side_ba','side_auc'),point))}
+    out.update(event_hits=int((ep&event).sum()),events=int(event.sum()),catch_false_positives=int((ep&~event).sum()),catches=int((~event).sum()),side_confusion=[[int(((side==a)&(sp==b)).sum()) for b in (0,1)] for a in (0,1)])
+    out['joint_left_right_catch_ba']=d.ba(np.where(event,side,2),np.where(ep,sp,2))
+    return out,np.asarray(vals)
+
+def load_model():
+    ident=json.loads((OLD/'identity.json').read_text());assert d.sha(d.CHECKPOINT)==ident['checkpoint_sha256']
+    for f,h in ident['source_hashes'].items():assert d.sha(d.ROOT/f)==h and (d.ROOT/f).read_bytes()==(d.RUN.parent/'repo'/f).read_bytes()
+    c=torch.load(d.CHECKPOINT,map_location='cpu',weights_only=False);assert c['state']['step']==2297
+    classes={k.split('.')[1]:v.shape[0] for k,v in c['model'].items() if k.startswith('heads.') and k.endswith('.weight')}
+    model=d.SpatialConsolidation(classes);model.load_state_dict(c['model'],strict=True);model.eval().requires_grad_(False)
+    assert d.state_hash(model)==ident['trained_state_sha256']
+    return model,ident
+
+def main():
+    cap=budget();torch.set_num_threads(2);torch.set_num_interop_threads(1)
+    if (OUT/'started.json').exists():
+        assert (OUT/'failure_recovery.json').exists() and not (OUT/'recovery_started.json').exists() and not (OUT/'test_freeze.json').exists(),'one serialization-only recovery before test'
+        d.dump(OUT/'recovery_started.json',dict(time=time.time(),original_deadline=cap['deadline']))
+    else:d.dump(OUT/'started.json',dict(time=time.time(),protocol_sha256=d.sha(OUT/'protocol.json')))
+    prior={}
+    for folder in ('FrozenDiagnostic','UpstreamMotionDiagnostic','ProbeAdequacyDiagnostic'):
+        for f in (OUT.parent/folder).glob('*_metadata.json'):
+            for m in json.loads(f.read_text()):prior[m['noncue_sha256']]=True
+    # Instrumentation parity and tests occur before any scientific fit.
+    parity=[]
+    for b in (12,20,28):
+        s=d.SpatialBatteryStream(10610400+b,'test');native=d.SpatialBatteryStream(10610400+b,'test')
+        x,y,m,a=d.captured_batch(s,b);xx,yy,mm=native.batch(1,d.TASK,dict(baseline_transitions=b))
+        assert torch.equal(x,xx) and torch.equal(y,yy) and m==mm and s.state_dict()==native.state_dict();parity.append(b)
+    d.dump(OUT/'renderer_parity.json',dict(baselines=parity,rasters_labels_metadata_rng_exact=True))
+    fits={};selection={};flow_thresholds={};data={};metas={};seen=set();model=None;ident=None;gate=False
+    def extract(split,rep='pixels',head=False):
+        stream=d.SpatialBatteryStream(SPEC['seeds'][split],split);maps=[];desc=[];meta=[];flow=[];headlog=[];decodedcue=[]
+        reference=json.loads((OLD/f'{split}_metadata.json').read_text()) if split!='test' else None
+        for i in range(SPEC['counts'][split]):
+            assert time.time()<cap['deadline']-180,'report reserve'
+            b=(12,20,28)[i%3];x,y,mm=stream.batch(1,d.TASK,dict(baseline_transitions=b));m=mm[0];a=x[0].numpy();h=hashlib.sha256(a[2:].tobytes()).hexdigest();mh=hashlib.sha256(a.tobytes()).hexdigest()
+            if reference is not None:assert h==reference[i]['noncue_sha256'] and mh==reference[i]['movie_sha256']
+            if rep=='pixels':
+                assert h not in seen;seen.add(h)
+                if split=='test':assert h not in prior
+            else:assert mh==metas[split][i]['movie_sha256']
+            z=raw_maps(x) if rep=='pixels' else neural_maps(model,x)
+            assert z.shape==((2,2,3,3,29,29) if rep=='pixels' else (2,2,3,64,7,7))
+            maps.append(z);desc.append(descriptor(z,1 if rep=='pixels' else 4))
+            m.update(group=f'{split}/{i}',movie_sha256=mh,noncue_sha256=h);meta.append(m)
+            if rep=='pixels':
+                f=pixel_summary(a);v=f['flow_sums'];five=np.stack([np.arctan2(v[sl].sum(0)[:,1],v[sl].sum(0)[:,0]) for sl in (slice(b-4,b),slice(b+4,b+8))]);flow.append(np.concatenate([f['angles'],five[None]],0));decodedcue.append(f['cue'])
+            if head:
+                with torch.inference_mode():headlog.append(model(x,d.TASK).numpy()[0])
+            if (i+1)%100==0:print('EXTRACT',split,rep,i+1,'elapsed',round(time.time()-cap['started'],1),flush=True)
+        desc=np.asarray(desc);np.savez(OUT/f'{split}_{rep}_maps.npz',maps=np.asarray(maps));np.savez(OUT/f'{split}_{rep}_descriptors.npz',x=desc)
+        if rep=='pixels':
+            d.dump(OUT/f'{split}_metadata.json',meta);np.savez(OUT/f'{split}_flow.npz',angles=np.asarray(flow),decoded_cue=decodedcue)
+        if head:np.savez(OUT/'native_head.npz',logits=np.asarray(headlog))
+        return desc,meta
+    data['train'],metas['train']=extract('train');data['val'],metas['val']=extract('val')
+    te,ts,ty=truth(metas['train']);ve,vs,vy=truth(metas['val']);perm=np.random.default_rng(106100733).permutation(len(te));np.savez(OUT/'shuffle_permutation.npz',indices=perm)
+    boot=np.random.default_rng(SPEC['bootstrap']['seed']).integers(0,len(ve),(1000,len(ve)));np.savez(OUT/'validation_bootstrap.npz',indices=boot)
+    validation={};valpred={};valdraws={}
+    def fit_rep(rep,tr,va):
+        for sh in (False,True):
+            name=rep+('/shuffled' if sh else '');f=fit(tr,ty[perm] if sh else ty);p=predict(f,va)
+            thresholds=np.arange(1,20)/20;curve=[d.ba(ve,p.max(1)>t) for t in thresholds];threshold=float(thresholds[np.argmax(curve)])
+            fits[name]=f;selection[name]=dict(threshold=threshold,validation_threshold_scores=curve,coefficients=9,descriptor_dimensions=8,train_groups=len(te),patch_rows=2*len(te),fresh_zero_initialization=True,shuffled=sh,iterations=int(f['iterations']))
+            validation[name],valdraws[name]=metric(ve,vs,p,threshold,boot);valpred[name]=p
+    fit_rep('pixels',data['train'],data['val'])
+    real=validation['pixels'];delta=valdraws['pixels']-valdraws['pixels/shuffled'];gainci=np.quantile(delta,[.025,.975],axis=0).T
+    tests=dict(side_ba_at_least_065=real['side_ba']['value']>=.65,side_lower_above_chance=real['side_ba']['ci95'][0]>.5,event_ba_at_least_060=real['event_ba']['value']>=.6,event_auc_at_least_065=real['event_auc']['value']>=.65,event_auc_lower_above_chance=real['event_auc']['ci95'][0]>.5,side_shuffle_gain_lower_positive=gainci[2,0]>0,event_auc_shuffle_gain_lower_positive=gainci[1,0]>0)
+    tests={k:bool(v) for k,v in tests.items()}
+    gate=all(tests.values());d.dump(OUT/'adequacy_gate.json',dict(passed=gate,tests=tests,paired_gain_ci95=gainci.tolist(),metric_order=['event_ba','event_auc','side_ba','side_auc'],time=time.time(),neural_features_extracted=False));print('GATE',gate,tests,real,flush=True)
+    model,ident=load_model();d.dump(OUT/'identity.json',dict(checkpoint=str(d.CHECKPOINT),checkpoint_sha256=ident['checkpoint_sha256'],state_sha256=d.state_hash(model),source_hashes=ident['source_hashes'],device='cpu',threads=torch.get_num_threads(),workers=1))
+    if gate:
+        # Compare full-map direct extraction with native hook at all six times.
+        parity=[]
+        for b in (12,20,28):
+            s=d.SpatialBatteryStream(10610500+b,'test');x,_,_=s.batch(1,d.TASK,dict(baseline_transitions=b));seenmaps=[]
+            hook=model.blocks[1].register_forward_hook(lambda mod,args,out:seenmaps.append(out.detach().numpy().copy()))
+            with torch.inference_mode():hooklog=model(x,d.TASK).numpy()
+            hook.remove()
+            with torch.inference_mode():directlog=model(x,d.TASK).numpy()
+            assert np.array_equal(hooklog,directlog)
+            maps=neural_maps(model,x)
+            for phase,end in enumerate((b+7,b+15)):
+                for patch,c in enumerate((5,20)):
+                    for j,t in enumerate((end-2,end-1,end)):assert np.array_equal(maps[phase,patch,j],seenmaps[t][0,:,10:17,c-3:c+4])
+            parity.append(dict(b=b,logit_max_abs=0,roi_max_abs=0))
+        d.dump(OUT/'neural_hook_parity.json',parity)
+        ntr,_=extract('train','trained');nva,_=extract('val','trained');fit_rep('trained',ntr,nva)
+    d.dump(OUT/'validation_metrics.json',validation);np.savez(OUT/'validation_predictions.npz',**valpred)
+    flowval=np.load(OUT/'val_flow.npz')['angles']
+    for j,name in enumerate(('full','endpoint3','window5')):
+        changes=abs(circular_change(flowval[:,j,0],flowval[:,j,1]));curve=[d.ba(ve,changes.max(1)>t) for t in range(1,41)];flow_thresholds[name]=int(np.argmax(curve)+1)
+    d.dump(OUT/'selection.json',selection);d.dump(OUT/'flow_thresholds.json',flow_thresholds)
+    np.savez(OUT/'fits.npz',**{name+'__'+k:v for name,f in fits.items() for k,v in f.items()})
+    frozen=['motion.py','run_motion.py','protocol.json','selection.json','fits.npz','flow_thresholds.json','adequacy_gate.json']
+    d.dump(OUT/'test_freeze.json',dict(time=time.time(),test_generated=False,hashes={f:d.sha(OUT/f) for f in frozen}))
+    xt,metas['test']=extract('test',head=True);testdata={'pixels':xt}
+    if gate:testdata['trained'],_=extract('test','trained')
+    ee,ss,yy=truth(metas['test']);boot=np.random.default_rng(106100734).integers(0,len(ee),(1000,len(ee)));np.savez(OUT/'test_bootstrap.npz',indices=boot)
+    predictions={};metrics={};draws={}
+    for name,f in fits.items():
+        p=predict(f,testdata[name.split('/')[0]]);predictions[name]=p;metrics[name],draws[name]=metric(ee,ss,p,selection[name]['threshold'],boot)
+    fl=np.load(OUT/'test_flow.npz');flowangles=fl['angles']
+    for j,name in enumerate(('full','endpoint3','window5')):
+        changes=abs(circular_change(flowangles[:,j,0],flowangles[:,j,1]));predictions['flow/'+name]=changes;metrics['flow/'+name],draws['flow/'+name]=metric(ee,ss,changes,flow_thresholds[name],boot)
+    gains={}
+    comparisons=[('pixels','pixels/shuffled'),('flow/window5','pixels')]+([('trained','trained/shuffled'),('pixels','trained')] if gate else [])
+    for a,b in comparisons:gains[a+' MINUS '+b]={k:dict(value=metrics[a][k]['value']-metrics[b][k]['value'],ci95=np.quantile(draws[a][:,j]-draws[b][:,j],[.025,.975]).tolist()) for j,k in enumerate(('event_ba','event_auc','side_ba','side_auc'))}
+    metrics['paired_gains']=gains
+    native=np.load(OUT/'native_head.npz')['logits'];target=np.array([m['label'] for m in metas['test']]);nativepred=native.argmax(1)
+    metrics['native_target_report']=dict(ba=d.ba(target,nativepred),ci95=np.quantile([d.ba(target[r],nativepred[r]) for r in boot],[.025,.975]).tolist(),event_type={et:dict(n=int(sum(m['event_type']==et for m in metas['test'])),positive_reports=int(sum(nativepred[i] for i,m in enumerate(metas['test']) if m['event_type']==et))) for et in ('target','foil','catch')})
+    metrics['native_event_breakdown']={name:{et:dict(n=int(sum(m['event_type']==et for m in metas['test'])),predicted_events=int(sum(p[i].max()>(selection[name]['threshold'] if name in selection else flow_thresholds[name.split('/')[1]]) for i,m in enumerate(metas['test']) if m['event_type']==et))) for et in ('target','foil','catch')} for name,p in predictions.items()}
+    metrics['counts']=dict(train=600,val=150,test=300,events=int(ee.sum()),catches=int((~ee).sum()),test_left=int((ss==0).sum()),test_right=int((ss==1).sum()))
+    np.savez(OUT/'test_predictions.npz',**predictions,truth_event=ee,truth_side=ss);d.dump(OUT/'metrics.json',metrics)
+    assert d.sha(d.CHECKPOINT)==ident['checkpoint_sha256'] and d.state_hash(model)==ident['trained_state_sha256'] and all(not p.requires_grad for p in model.parameters())
+    for f,h in ident['source_hashes'].items():assert d.sha(d.ROOT/f)==h
+    for f,h in json.loads((OUT/'test_freeze.json').read_text())['hashes'].items():assert d.sha(OUT/f)==h
+    d.dump(OUT/'verification.json',dict(checkpoint_and_state_unchanged=True,sources_unchanged=True,train_val_exact_prior_movies=True,fresh_test_disjoint_all_prior=True,within_cap=time.time()<cap['deadline'],elapsed=time.time()-cap['started'],neural_fit_executed=gate,threads=torch.get_num_threads(),interop=torch.get_num_interop_threads(),no_deployed_optimizer=True))
+    print('COMPLETE',json.dumps(metrics),flush=True)
+
+if __name__=='__main__':main()

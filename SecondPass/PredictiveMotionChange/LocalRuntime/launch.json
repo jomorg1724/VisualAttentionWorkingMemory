@@ -1,0 +1,34 @@
+{
+  "encoder_checkpoint": "/Users/jonathanmorgan/Desktop/VisualAttentionWorkingMemory/SecondPass/VariationalMotionPredictor/LocalRuntime/attempt01/run/best.pt",
+  "encoder_sha256": "a8b86cdbad7caceecd07f6f056f2106e9cfe867dd5454841f090dfc383791b42",
+  "encoder_step": 50000,
+  "frozen_encoder": true,
+  "classifier": "concat1024 -> LayerNorm -> 256 GELU -> 64 GELU -> 2 logits",
+  "classifier_parameters": 281026,
+  "batch_size": 64,
+  "pool_size": 1000,
+  "pool_epochs": 2,
+  "target_updates": 10240,
+  "learning_rate": 0.001,
+  "precision": "fp32",
+  "cpu_threads": 2,
+  "validation_samples": 768,
+  "final_test_samples": 3072,
+  "hard_deadline": 1791153767.446601,
+  "run": "/Users/jonathanmorgan/Desktop/VisualAttentionWorkingMemory/SecondPass/PredictiveMotionChange/LocalRuntime/run",
+  "guard": {
+    "state": "armed",
+    "pid": 31220,
+    "hard_deadline": 1791153767.446601,
+    "cap_started": 1791124967.446601
+  },
+  "production_proof": {
+    "verified": true,
+    "saved_step": 768,
+    "all_head_adam_states": 8,
+    "encoder_step": 50000,
+    "encoder_frozen": true,
+    "head_parameters": 281026,
+    "guard_armed": true
+  }
+}

@@ -1,0 +1,145 @@
+"""Execute only the pinned finite matrix. Imported old code never invokes main."""
+from adequacy import *
+from run_upstream import targets,change_from_scores,change_error,metrics_binary
+
+
+def main():
+    budget=json.loads((OUT/'budget.json').read_text());start=budget['started'];deadline=budget['deadline']
+    assert time.time()<deadline and not (OUT/'started.json').exists(),'no restart or budget renewal'
+    def expire(*args):raise TimeoutError('Nonrenewable cap exhausted')
+    signal.signal(signal.SIGALRM,expire);signal.setitimer(signal.ITIMER_REAL,deadline-time.time())
+    d.dump(OUT/'started.json',dict(time=time.time(),pid=os.getpid(),runner_sha256=d.sha(__file__),protocol_sha256=d.sha(OUT/'protocol.json')))
+    spec=json.loads((OUT/'protocol.json').read_text());trained,random,identity=init_models()
+    reps=spec['representations'];modes=spec['projection_modes'];degrees=spec['degrees'];dfs=spec['effective_df_candidates']
+    oldhash=set()
+    for folder in ('FrozenDiagnostic','UpstreamMotionDiagnostic'):
+        for p in (OUT.parent/folder).glob('*_metadata.json'):
+            oldhash.update(m['noncue_sha256'] for m in json.loads(p.read_text()))
+    allhash=set();extract_time={}
+    def extract(split):
+        t=time.time();stream=d.SpatialBatteryStream(spec['seeds'][split],split);data={r:[] for r in reps};meta=[];dots=[];pix=[];sums=[];counts=[];examples={}
+        for i in range(spec['counts'][split]):
+            assert time.time()<deadline-180,'report reserve reached'
+            b=(12,20,28)[i%3];x,y,mm,a=d.captured_batch(stream,b)
+            movie=x[0].numpy();noncue=hashlib.sha256(movie[2:].tobytes()).hexdigest()
+            assert noncue not in allhash and noncue not in oldhash;allhash.add(noncue)
+            data['pixels'].append(raw_features(x));data['trained'].append(endpoint_features(trained,x));data['random'].append(endpoint_features(random,x))
+            p=pixel_summary(movie);pix.append(p['angles']);su=np.zeros((36,2,2));co=np.zeros((36,2),int);su[:b+8]=p['flow_sums'];co[:b+8]=p['counts'];sums.append(su);counts.append(co)
+            aa=np.full((36,2,16),np.nan);aa[:b+8]=a;dots.append(aa)
+            m=dict(mm[0]);m.update(group=f'{split}/{i}',variant=0,actual_circular_angles_radians=d.circular_targets(a,b).tolist(),noncue_sha256=noncue,movie_sha256=hashlib.sha256(movie.tobytes()).hexdigest());meta.append(m)
+            if i<3:examples[str(i)]=movie
+            if (i+1)%100==0:print('EXTRACT',split,i+1,'elapsed',round(time.time()-start,1),flush=True)
+        data={k:np.stack(v) for k,v in data.items()}
+        np.savez(OUT/f'{split}_features.npz',**data);np.savez(OUT/f'{split}_dot_angles.npz',angles=np.stack(dots));np.savez(OUT/f'{split}_pixel.npz',angles=np.stack(pix),flow_sums=np.stack(sums),counts=np.stack(counts),baseline=np.array([m['baseline_transitions'] for m in meta]));np.savez_compressed(OUT/f'{split}_examples.npz',**examples);d.dump(OUT/f'{split}_metadata.json',meta)
+        extract_time[split]=time.time()-t
+        return data,targets(meta)
+    train,ty=extract('train');val,vy=extract('val')
+    rng=np.random.default_rng(674028);projections={'pixels':rng.normal(size=(1587,32))/np.sqrt(32),'trained':rng.normal(size=(1152,32))/np.sqrt(32)};projections['random']=projections['trained'].copy();np.savez(OUT/'projections.npz',**projections)
+    pixval=np.load(OUT/'val_pixel.npz');thresholds={}
+    for w,name in enumerate(('full','endpoint')):
+        delta=circular_change(pixval['angles'][:,w,0],pixval['angles'][:,w,1]);score=abs(delta).max(1);curve=[d.ba(vy['event'],(score>t).astype(int)) for t in range(1,41)];thresholds[name]=dict(threshold=int(np.argmax(curve)+1),validation_ba=curve)
+    d.dump(OUT/'pixel_thresholds.json',thresholds)
+    perm=np.random.default_rng(673001).permutation(len(ty['event']));evix=np.flatnonzero(ty['event']);evperm=np.random.default_rng(673002).permutation(evix)
+    np.savez(OUT/'training_permutations.npz',all_groups=perm,event_groups=evperm)
+    selection={};archive={};index=0
+    for rep in reps:
+        for mode in modes:
+            x=representation(train,rep,mode,projections);v=representation(val,rep,mode,projections)
+            for degree in degrees:
+                for task in ('event','side','change'):
+                    ix=evix if task=='side' else np.arange(len(ty['event']));vi=np.flatnonzero(vy['event']) if task=='side' else np.arange(len(vy['event']))
+                    for shuffled in (False,True):
+                        ti=(evperm if task=='side' else perm) if shuffled else ix
+                        if task=='change':
+                            r=np.deg2rad(ty['delta'][ti]);y=np.stack([np.cos(r),np.sin(r)],-1).reshape(-1,4)
+                        else:y=ty[task][ti,None].astype(float)
+                        candidates=fit_candidates(x[ix],y,dfs,degree);scores=[];th=[]
+                        for f in candidates:
+                            s=predict(f,v[vi])
+                            if task=='change':scores.append(-float(change_error(vy['delta'][vi],change_from_scores(s)).mean()));th.append(0.)
+                            else:
+                                curve=[d.ba(vy[task][vi],(s[:,0]>t).astype(int)) for t in spec['decision_threshold_candidates']];j=int(np.argmax(curve));scores.append(curve[j]);th.append(spec['decision_threshold_candidates'][j])
+                        j=int(np.argmax(scores));fit=candidates[j];key=f'{rep}/{mode}/degree{degree}/{task}'+('/shuffled' if shuffled else '')
+                        for k,z in fit.items():archive[f'{index}_{k}']=np.asarray(z)
+                        dim=x.shape[1];selection[key]=dict(index=index,representation=rep,mode=mode,degree=degree,target=task,shuffled=shuffled,dimensions=dim,implicit_features=dim if degree==1 else dim+dim*(dim+1)//2,train_groups=len(ix),alpha=float(fit['alpha']),effective_df=fit['effective_df'],requested_df=fit['requested_df'],normal_residual=fit['normal_residual'],validation_scores=scores,threshold=th[j],all_validation_thresholds=th)
+                        index+=1
+                print('FIT',rep,mode,degree,'elapsed',round(time.time()-start,1),flush=True)
+    np.savez(OUT/'fitted_models.npz',**archive);d.dump(OUT/'selection.json',selection)
+    del archive
+    freeze=['protocol.json','selection.json','fitted_models.npz','projections.npz','pixel_thresholds.json','run_adequacy.py','adequacy.py']
+    d.dump(OUT/'test_freeze.json',dict(time=time.time(),test_generated=False,hashes={p:d.sha(OUT/p) for p in freeze}))
+    test,ey=extract('test');n=len(ey['event']);ev=ey['event'].astype(bool);eventidx=np.flatnonzero(ev);boot=np.random.default_rng(spec['bootstrap']['seed']).integers(0,n,(500,n));eventboot=[r[ev[r]] for r in boot];emap=np.full(n,-1);emap[eventidx]=np.arange(len(eventidx));eb=[emap[r] for r in eventboot];np.savez(OUT/'bootstrap_groups.npz',indices=boot)
+    fits=np.load(OUT/'fitted_models.npz');predictions={};metrics={};cache={};maxres=0
+    fitkeys=('mean','scale','train_z','kernel_mean','kernel_grand','coef','intercept','degree','alpha','effective_df','requested_df','normal_residual')
+    def fit_for(z):return {k:fits[f"{z['index']}_{k}"] for k in fitkeys}
+    def change_metric(delta):
+        err=change_error(ey['delta'],delta);changed=err[eventidx,ey['side'][ev]]
+        return dict(mean_mae=float(err.mean()),mae_degrees=err.mean(0).tolist(),changed_patch_mae=float(changed.mean()),changed_patch_ci95=np.quantile([err[r,ey['side'][r]].mean() for r in eventboot],[.025,.975]).tolist(),catch_mae=float(err[~ev].mean()),predicted_change_std=delta.std(0).tolist())
+    for key,z in selection.items():
+        x=representation(test,z['representation'],z['mode'],projections);s=predict(fit_for(z),x);predictions[key]=s
+        if z['target']=='change':metrics[key]=change_metric(change_from_scores(s))
+        else:
+            mask=ev if z['target']=='side' else np.ones(n,bool);score=s[:,0];metrics[key]=metrics_binary(ey[z['target']][mask],score[mask],z['threshold'],eb if z['target']=='side' else boot);cache[key]=(ey[z['target']],score-z['threshold'],mask)
+    pix=np.load(OUT/'test_pixel.npz')
+    for w,name in enumerate(('full','endpoint')):
+        delta=circular_change(pix['angles'][:,w,0],pix['angles'][:,w,1]);predictions['pixel_flow/'+name+'/change']=delta;metrics['pixel_flow/'+name+'/change']=change_metric(delta)
+        for task in ('event','side'):
+            score=abs(delta).max(1) if task=='event' else abs(delta[:,1])-abs(delta[:,0]);threshold=thresholds[name]['threshold'] if task=='event' else 0;mask=ev if task=='side' else np.ones(n,bool);key='pixel_flow/'+name+'/'+task
+            predictions[key]=score;metrics[key]=metrics_binary(ey[task][mask],score[mask],threshold,eb if task=='side' else boot);cache[key]=(ey[task],score-threshold,mask)
+    metrics['zero_change_baseline']=change_metric(np.zeros_like(ey['delta']))
+    predictions.update(truth_event=ey['event'],truth_side=ey['side'],truth_delta=ey['delta']);np.savez(OUT/'test_predictions.npz',**predictions)
+    metrics['paired_gains']={}
+    comparisons=[]
+    for degree in degrees:
+        for task in ('event','side'):
+            for rep in reps:comparisons.append((f'{rep}/unprojected/degree{degree}/{task}',f'{rep}/projected/degree{degree}/{task}'))
+            for mode in modes:
+                comparisons.append((f'trained/{mode}/degree{degree}/{task}',f'random/{mode}/degree{degree}/{task}'))
+                comparisons.append((f'pixels/{mode}/degree{degree}/{task}',f'trained/{mode}/degree{degree}/{task}'))
+                for rep in reps:comparisons.append((f'{rep}/{mode}/degree{degree}/{task}',f'{rep}/{mode}/degree{degree}/{task}/shuffled'))
+    comparisons += [('pixel_flow/endpoint/side',f'{rep}/{mode}/degree{degree}/side') for rep in reps for mode in modes for degree in degrees]
+    for a,b in comparisons:
+        yy,sa,mask=cache[a];_,sb,_=cache[b];rs=eventboot if a.endswith('side') else boot;vals=[d.ba(yy[r],(sa[r]>0).astype(int))-d.ba(yy[r],(sb[r]>0).astype(int)) for r in rs];metrics['paired_gains'][a+' MINUS '+b]=dict(ba_gain=d.ba(yy[mask],(sa[mask]>0).astype(int))-d.ba(yy[mask],(sb[mask]>0).astype(int)),ci95=np.quantile(vals,[.025,.975]).tolist())
+    metrics['counts']=dict(groups=n,events=int(ev.sum()),catches=int((~ev).sum()),left=int((ey['side']==0).sum()),right=int((ey['side']==1).sum()),fits=len(selection))
+    d.dump(OUT/'metrics.json',metrics)
+    # Audit scaler/fit identities from serialized data, and replay exact predictions.
+    stored={s:dict(np.load(OUT/f'{s}_features.npz')) for s in ('train','val','test')};saved=np.load(OUT/'test_predictions.npz');replay=0.;meanerr=0.;scaleerr=0.;audit=[]
+    for key,z in selection.items():
+        fit=fit_for(z);ix=evix if z['target']=='side' else np.arange(len(ty['event']));x=representation(stored['train'],z['representation'],z['mode'],projections)[ix]
+        mean=x.mean(0);scale=x.std(0);scale[scale<1e-12]=1
+        assert np.array_equal(mean,fit['mean']) and np.array_equal(scale,fit['scale']) and np.array_equal((x-mean)/scale,fit['train_z'])
+        calc=predict(fit,representation(stored['test'],z['representation'],z['mode'],projections));assert np.array_equal(calc,saved[key]);replay=max(replay,float(abs(calc-saved[key]).max()))
+        ti=(evperm if z['target']=='side' else perm) if z['shuffled'] else ix
+        if z['target']=='change':rr=np.deg2rad(ty['delta'][ti]);y=np.stack([np.cos(rr),np.sin(rr)],-1).reshape(-1,4)
+        else:y=ty[z['target']][ti,None].astype(float)
+        K=kernel(fit['train_z'],fit['train_z'],z['degree']);K=K-K.mean(0)[None,:]-K.mean(1)[:,None]+K.mean()
+        residual=float(np.linalg.norm((K+fit['alpha']*np.eye(len(K)))@fit['coef']-(y-y.mean(0)))/max(1e-15,np.linalg.norm(y-y.mean(0))))
+        assert residual<1e-7;maxres=max(maxres,residual);audit.append(dict(key=key,scaler_exact=True,train_rows_exact=True,prediction_exact=True,normal_residual=residual))
+    for i,b in enumerate(pix['baseline']):assert np.array_equal(flow_angles(pix['flow_sums'][i],pix['counts'][i],b),pix['angles'][i])
+    examples=np.load(OUT/'test_examples.npz')
+    for i in range(3):assert np.array_equal(pixel_summary(examples[str(i)])['angles'],pix['angles'][i])
+    assert d.sha(d.CHECKPOINT)==identity['checkpoint_sha256'] and d.state_hash(trained)==identity['trained_state_sha256'] and d.state_hash(random)==identity['random_state_sha256']
+    assert all(not p.requires_grad for model in (trained,random) for p in model.parameters())
+    for p,h in identity['source_hashes'].items():assert d.sha(d.ROOT/p)==h
+    for p,h in json.loads((OUT/'test_freeze.json').read_text())['hashes'].items():assert d.sha(OUT/p)==h
+    d.dump(OUT/'fit_audit.json',audit)
+    verification=dict(exact_prediction_replay_max_abs=replay,normal_equation_max_relative_residual=maxres,train_only_scalers_exact=True,all_splits_and_prior_movies_disjoint=True,independent_groups_total=len(allhash),checkpoint_and_both_states_unchanged=True,renderer_and_wrapper_parity='profile.json, both encoders, all three durations, bit exact',pixel_flow_replay_exact=True,example_raster_replay_exact=True,all_choices_frozen_before_fresh_test=True,torch_threads=torch.get_num_threads(),interop_threads=torch.get_num_interop_threads(),workers=1,no_optimizers=True,no_cloud=True,extract_seconds=extract_time,elapsed_seconds=time.time()-start,within_cap=time.time()<deadline)
+    d.dump(OUT/'verification.json',verification)
+    lines=['# Probe adequacy diagnostic — selected2297 and fresh random encoder','','Fresh train/validation/test; one original native movie per independent group. Frozen analysis-only models. No deployed change.','',f"Train600 / validation150 / test300; test events{int(ev.sum())}, catches{int((~ev).sum())}. All72 readouts frozen before test generation. No prior movies reused.",'','## Matched readouts','BA [95% grouped bootstrap CI]; signed-change MAE is on actual changed patches (degrees).','|Representation|Projection|Degree|Event BA|Side BA|Side AUC|Changed MAE|Side shuffled BA|','|---|---|---:|---:|---:|---:|---:|---:|']
+    def fmt(q):return f"{q['balanced_accuracy']:.3f} [{q['ba_ci95'][0]:.3f},{q['ba_ci95'][1]:.3f}]"
+    for rep in reps:
+        for mode in modes:
+            for degree in degrees:
+                k=f'{rep}/{mode}/degree{degree}';e=metrics[k+'/event'];s=metrics[k+'/side'];c=metrics[k+'/change'];sh=metrics[k+'/side/shuffled'];lines.append(f"|{rep}|{mode}|{degree}|{fmt(e)}|{fmt(s)}|{s['auc']:.3f}|{c['changed_patch_mae']:.2f}|{fmt(sh)}|")
+    lines+=['','## Positive controls and zero-change baseline','|Image observer|Event BA|Side BA|Changed MAE|Catch MAE|','|---|---:|---:|---:|---:|']
+    for name in ('full','endpoint'):
+        k='pixel_flow/'+name;e=metrics[k+'/event'];s=metrics[k+'/side'];c=metrics[k+'/change'];lines.append(f"|{name}|{fmt(e)}|{fmt(s)}|{c['changed_patch_mae']:.2f}|{c['catch_mae']:.2f}|")
+    c=metrics['zero_change_baseline'];lines.append(f"|Always zero|—|—|{c['changed_patch_mae']:.2f}|{c['catch_mae']:.2f}|")
+    lines+=['','## Capacity and protocol','- Twelve feature/readout arms × three targets × real/shuffled training targets =72 fitted predictors. Frozen selected2297 and independently constructed random architecture share identical input movies, preprocessing, eval state, fixed CNN ROIs and projection matrix. Random was never loaded from trained weights and had no optimizer updates. The raw-pixel arm has no weight state.','- Raw grayscale windows:3174 coordinates; CNN:2304. RGB planes are exactly duplicates. Projection:32 per endpoint,64 total. Linear ridge and degree-two polynomial ridge are separately matched. The unprojected quadratic maps have millions of implicit coefficients, NOT modest nominal capacity. Their sample-effective ridge df is capped/selected from16/64/128, just like every other arm; intercept adds one. Selection.json records exact dimensions, coefficients-equivalent, alpha and df for every fit. Matching df does not equate inductive bias or representation geometry.','- Train-only coordinate scaling and train-centered kernel. K=dot/d (linear) or dot/d+(dot/d)^2 (quadratic), so off-diagonal monomials receive the standard sqrt2 weighting. This is not numerically identical to the earlier explicit unweighted triangle feature basis. Projected results are a controlled new diagnostic, not exact replication of the old probes.','- Validation-only df/decision-threshold selection. Event/side threshold grid0.05..0.95; signed-change target cos/sin of each patch actual circular change, validation minimum all-patch circular error. Side fit/evaluation is restricted to event groups; no event/side/cue truth is passed to feature extraction or predictions. No true cue chooses any ROI. All-patch selection can favor zero shrinkage; changed-patch and catch errors must be read separately.','- CNN early layer is before first KDA, so native early endpoint extraction can omit downstream recurrent compute; exact forward-hook and native-logit parity checked for trained AND random at B12/B20/B28. Endpoint inputs are the same native centered three-frame stacks ending B+7/B+15. External storage of both endpoints is an analyst privilege, not native final-state access.','- Raw windows cover both fixed23×23 dot ROIs; CNN samples3×3 neighborhoods at stride4. CNN GroupNorm additionally depends on the full image. This is endpoint-time matched, not an exact spatial-information/nominal-dimension match. Neither whole-map decoding nor CNN ROI ablation is tested.','- Pixel centroid-flow positive control is image-only, with known geometry/timing, nonlinear isolated-dot matching, and full-history or last-two-transition access. Full-history is privileged, not a matched ridge arm. No deployment is proposed.','- Independent fresh streams, native cycle/renderer unchanged,600/150/300 independent movies. Same held-out groups and500 resamples across arms. Intervals conditional on fixed fitted probes, one trained checkpoint and one random seed; exploratory hypothesis follow-up, no multiple-comparison correction. Grouped uncertainty does not measure training-seed variability.','- Saved raw endpoint windows, both CNN features, dot-angle schedules, flow sums, metadata/hash identities, random state, projections, fitted dual coefficients/scalers, predictions and fit audit support replay. Original files unchanged. The absolute1800s cap includes profile through report/replay, threads≤2, one worker, no cloud.', '', '## Verification',json.dumps(verification,indent=2)]
+    (OUT/'REPORT.md').write_text('\n'.join(lines)+'\n')
+    (d.ROOT/'LabJournal/krauzlis-probe-adequacy-diagnostic.md').write_text('# Frozen probe adequacy diagnostic\n\n'+ '\n'.join(lines[2:24])+'\n\nFull report: `SecondPass/SpatialReadout/SpatialConsolidation/KrauzlisFailureAudit/ProbeAdequacyDiagnostic/REPORT.md`. No training, task change or cloud use.\n')
+    d.dump(OUT/'completion.json',dict(complete=True,elapsed_seconds=time.time()-start,within_cap=time.time()<deadline,deadline=deadline,artifacts={p.name:d.sha(p) for p in OUT.iterdir() if p.is_file() and p.name not in ('completion.json','run.log')}))
+    print('COMPLETE',json.dumps(metrics['counts']),'elapsed',time.time()-start,flush=True)
+    signal.setitimer(signal.ITIMER_REAL,0)
+
+if __name__=='__main__':main()

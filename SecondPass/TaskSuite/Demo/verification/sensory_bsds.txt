@@ -1,0 +1,226 @@
+
+
+    
+    
+    
+        UC Berkeley Computer Vision Group - Contour Detection and Image Segmentation - Resources
+    
+    
+
+
+
+    
+
+
+
+
+
+        
+        
+Contour Detection and Image SegmentationResources
+        
+        
+        
+        
+Overview
+        
+
+            The goal of this work is to provide an empirical basis for research on image segmentation and boundary detection.  
+            In order to promote scientific progress in the study of visual grouping, we provide the following resources:
+            
+                
+
+                    A large dataset of natural images that have been manually segmented. The human annotations serve
+                    as ground truth for learning grouping cues as well as a benchmark for comparing different segmentation and boundary detection algorithms.
+                
+                
+
+                    The most recent algorithms our group has developed for contour detection and image segmentation.
+                
+                  
+
+                    Performance evaluation of the leading computational approaches to grouping.
+                
+          
+	    The complete resources available in this page can be downloaded as a single file. (Updated Jan. 2013) 
+            Details and individual downloads are available below.
+        
+        
+        If you use the resources in this page, please cite the paper:
+            
+
+                Contour Detection and Hierarchical Image Segmentation
+                P. Arbelaez, M. Maire, C. Fowlkes and J. Malik.
+                IEEE TPAMI, Vol. 33, No. 5, pp. 898-916, May 2011.
+		[PDF] [BibTex]
+        
+        
+        
+        
+        
+        
+Berkeley Segmentation Data Set and Benchmarks 500 (BSDS500)
+        
+
+            This new dataset is an extension of the BSDS300,
+            where the original 300 images are used for training / validation and 200 fresh images, together with human annotations, are added for testing.
+            Each image was segmented by five different subjects on average.
+            Performance is evaluated by measuring Precision / Recall on detected boundaries and three additional region-based metrics. 
+        
+        
+        
+                
+                    
+                    
+                    
+                    
+                
+                
+                    Original Image
+                    Subject 1
+                    Subject 2
+                    Subject 3
+                
+        
+        
+      
+ Best Practice Guidelines: The dataset consists of 500 natural images, ground-truth human annotations and benchmarking code. The data is explicitly separated into disjoint train, validation and test subsets. In order to preserve the integrity of the evaluation and obtain a direct and fair comparison of your results with existing methods, the guidelines below must be followed:
+        
+        
+            
+
+                Train only on trainval: All the learning, parameter tuning, model selection, etc. should be done exclusively on the train and validation subsets of the data.
+            
+            
+
+                Run once on test: After training, your algorithm should be run only once with fixed parameters on the test subset of the data. The images and ground-truth segmentations of the test set cannot be used for tuning your algorithm.
+            
+            
+
+                Report all the evaluation results: Evaluate your results on the test subset with the benchmarking code. In order to assess quantitatively different aspects of performance of contour detection and segmentation algorithms, the BSDS500 provides a suite of evaluation measures. Please report all the scores and curves returned by the evaluation script boundaryBench (contour detection methods) or allBench (segmentation methods).
+            
+            
+
+                Evaluate also on the BSDS300: In order to make your results comparable with methods that were evaluated on the original BSDS300, you should repeat the three steps above, but making sure to train only on the train subset of the data and test on the validation subset.
+            
+        
+        
+
+            Download  the BSDS500: images, ground-truth data and benchmarks.
+        
+        
+        
+        
+Algorithms
+        
+ The most recent methods our group has developed.
+        
+        
+            
+
+                Contour Detection. The contour detector globalPb combines multiple local cues into a globalization
+                framework based on spectral clustering.
+            
+            
+
+                Hierarchical Image Segmentation. The generic segmentation algorithm owt-ucm transforms the output of
+                any contour detector into a hierarchical region tree.
+            
+            
+
+                Interactive Segmentation Tool. A Matlab interface to produce high-quality user-specified segmentations
+                from our automatic results.
+            
+        
+        
+
+            
+                    
+                        
+                        
+                        
+                        
+                    
+                    
+                        Original ImageglobalPb
+                        Ultrametric Contour MapAutomatic Segmentation
+                    
+            
+        
+        
+        
+
+           Downloads: 
+       
+            
+
+                Pre-compiled Matlab package.
+            
+            
+
+                Source code (for Linux/Mac, 32/64 bits).
+            
+            
+
+                Pre-computed results on the BSDS500.
+            
+            
+
+                Pre-computed results on PASCAL VOC 2012 (1.4Gb).
+            
+
+        
+ 	
+	
+ Note: All the downloads in this page can be safely uncompressed in the same folder.
+       
+        
+
+        
+Performance Evaluation
+        
+
+            Click on the plot below for comparative results of the leading approaches to grouping.
+        
+        
+        
+ 
+        
+        
+        
+
+        
+Links
+        
+            
+
+                The previous version of the Berkeley Segmentation Data Set (BSDS300) is still available 
+                [here].
+            
+            
+
+                A parallel implementation of the globalPb contour detector on the 
+                GPU.
+            
+            
+
+                Back to the Berkeley Computer Vision Group page.
+            
+            
+
+                Back to the Berkeley Reorganization page.
+            
+        
+        
+        
+        
+        Back to Berkeley Computer Vision page
+        
+        Questions --> Pablo Arbelaez
+
+    
+
+
+
+
+

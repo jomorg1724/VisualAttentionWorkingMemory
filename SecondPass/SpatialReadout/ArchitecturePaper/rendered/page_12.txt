@@ -1,0 +1,90 @@
+SpatialReadout: architecture and decision logic
+Source-audited technical paper
+12
+Task interface and current training lineage
+Reader question: which rule is supplied externally, and what was freshly initialized? The task identiﬁer
+Task identiﬁer
+Ka
+Head params
+Label meaning
+motion_direction
+4
+1,028
+Right, up, left, down
+orientation
+2
+514
+Negative / positive axial change
+contrast
+2
+514
+Frame 0 / frame 1
+spatial_frequency
+2
+514
+Frame 0 / frame 1
+chromatic_increment
+2
+514
+Frame 0 / frame 1
+contour
+2
+514
+Frame 0 / frame 1
+natural_spectrum
+2
+514
+Frame 0 / frame 1
+orientation_ring
+2
+514
+Negative / positive axial change
+orientation_cued
+2
+514
+Unchanged/opposite cue sign / in cue sign
+motion_duration_cued
+4
+1,028
+Right, up, left, down
+krauzlis_cued_motion
+2
+514
+Foil-only or catch / target change
+spatial_binding
+2
+514
+Foil-only exchange / target exchange
+image_recognition
+2
+514
+Not in study set / in study set
+Table 3: Exact catalog identiﬁers and class counts. Binary heads do not all mean “change versus no change.” The
+13 tasks comprise 35 catalog conditions.[S6]
+routes the terminal features to an output head; it is not a learned task inference system and is not supplied as a
+feature to the encoder. Images are the shared trunk’s input. The training loop discards batch metadata before
+calling the model. Task-known routing must not be confused with knowing the target location, cue sign, or correct
+answer within an episode.[S1,S7]
+Acquisition recipe. All learned parameters are trainable in ﬂoat32. One Adam optimizer [5] uses learning rate
+10−4, β1 = 0.9, β2 = 0.999, ϵ = 10−8, and zero weight decay. An eﬀective batch of 32 is accumulated from eight
+microbatches of four from the scheduled task/condition. Each microbatch mean cross-entropy is multiplied by 4/32
+before backpropagation. The optimizer steps once after accumulation and ﬁnite-gradient checks; gradients are never
+clipped. TF32 is disabled in the run conﬁguration.[S4,S7]
+There is no temporal detach in the model. Each complete episode is unrolled and its ﬁnal loss backpropagates
+through the ﬁnal ConvGRU and all three encoder memories. States reset at every sequence call, so microbatch
+accumulation combines parameter gradients, not memory across episodes.
+All heads are trainable in principle,
+but only the selected head obtains gradients on a particular update. Task and condition queues provide balanced
+scheduling without altering native sequence lengths.[S1,S2,S7]
+Fresh origin, unchanged continuation. The fresh worker seeds construction with 98192763 and begins with
+no checkpoint input, optimizer history, stream history, or inherited learned weights. Disposable proﬁling state is
+not production initialization. The authorized continuation resumes the fresh-run terminal at cumulative update
+7,739, preserving model, Adam, scheduler, streams, and RNG, with a target of 104,000 additional updates, or
+111,739 cumulative. These are the declared starting point and horizon, not a claim of completion or current live
+progress.[S4,S5]
+Continuation selection remains validation-only: equal-task mean AUC, then equal-task chance-normalized balanced
+accuracy, retaining earlier ties. Ten planned looks occur every 10,400 additional updates. A later optimizer step
+cannot inherit an earlier checkpoint’s measured score. No live status was fetched for this paper.
+Takeaway. The task name chooses the answer vocabulary; the images must still support the within-episode rule.
+Fresh origin and exact continuation describe provenance, not current performance.
+12

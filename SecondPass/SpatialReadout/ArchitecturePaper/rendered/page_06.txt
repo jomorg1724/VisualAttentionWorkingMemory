@@ -1,0 +1,186 @@
+SpatialReadout: architecture and decision logic
+Source-audited technical paper
+6
+A worked two-by-two memory, with no hidden steps
+Reader question: what do decay and corrective writing actually change? This is a hand-selected arith-
+metic example with two key and two value coordinates, not the model’s actual 8 × 16 head and not a trained-model
+result. All keys and queries below have unit length; gates lie strictly between zero and one. Start with S−1 = 0. At
+time 0 choose
+k0 = q0 =
+
+1
+0
+
+,
+v0 =
+
+2
+4
+
+,
+α0 =
+
+1/2
+3/4
+
+,
+β0 = 1/2.
+(9)
+Decay leaves zero, so bv0 = 0 and e0 = v0. The ﬁrst correction and read are
+S0 = 1
+2
+
+1
+0
+ 
+2
+4
+
+=
+
+1
+2
+0
+0
+
+,
+o0 =
+
+1
+2
+
+.
+(10)
+Only the ﬁrst row changes because the second key coordinate is zero. The write fraction is one half, so the ﬁrst
+prediction moves halfway from zero to the desired value.
+At time 1 choose a diﬀerent key and a query that reads the second row:
+k1 =
+
+3/5
+4/5
+
+,
+q1 =
+
+0
+1
+
+,
+v1 =
+
+2
+0
+
+,
+α1 =
+
+1/2
+3/4
+
+,
+β1 = 1/2.
+(11)
+1. Decay. Scale row 1 by one half and row 2 by three quarters:
+¯S1 =
+
+1/2
+0
+0
+3/4
+ 
+1
+2
+0
+0
+
+=
+
+1/2
+1
+0
+0
+
+.
+(12)
+2. Predict and subtract. The key weights the two rows:
+bv1 =
+
+1/2
+0
+1
+0
+ 
+3/5
+4/5
+
+=
+
+3/10
+3/5
+
+,
+e1 =
+
+2
+0
+
+−
+
+3/10
+3/5
+
+=
+
+17/10
+−3/5
+
+.
+(13)
+3. Write only the correction. The second error coordinate is negative because the old memory predicted a
+positive value where the new desired value is zero:
+β1k1eT
+1 = 1
+2
+
+3/5
+4/5
+ 
+17/10
+−3/5
+
+=
+
+51/100
+−9/50
+17/25
+−6/25
+
+.
+(14)
+4. Add and read. Add that correction to the decayed matrix, then select the query direction:
+S1 =
+
+101/100
+41/50
+17/25
+−6/25
+
+,
+o1 = ST
+1
+
+0
+1
+
+=
+
+17/25
+−6/25
+
+.
+(15)
+Takeaway.
+Positive gates do not force positive stored features or reads.
+Exact rational Python arithmetic in
+verify_toy.py checks these values and a third update, without constructing or executing a model.
+6

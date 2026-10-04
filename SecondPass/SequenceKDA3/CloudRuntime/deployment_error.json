@@ -1,0 +1,42 @@
+{
+  "type": "TimeoutExpired",
+  "message": "Command '['ssh', '-i', '/Users/jonathanmorgan/VAWMRuntime/cloud_comparison_01/ssh_key', '-o', 'BatchMode=yes', '-o', 'StrictHostKeyChecking=accept-new', '-o', 'UserKnownHostsFile=/Users/jonathanmorgan/Desktop/VisualAttentionWorkingMemory/SecondPass/SequenceKDA3/CloudRuntime/known_hosts', '-o', 'ConnectTimeout=8', '-o', 'ServerAliveInterval=15', '-o', 'ServerAliveCountMax=2', '-p', '22130', 'root@194.68.245.67', 'true']' timed out after 15 seconds",
+  "frames": [
+    {
+      "file": "/Users/jonathanmorgan/Desktop/VisualAttentionWorkingMemory/SecondPass/SequenceKDA3/CloudRuntime/./deploy.py",
+      "line": 398,
+      "function": "deploy"
+    },
+    {
+      "file": "/Users/jonathanmorgan/Desktop/VisualAttentionWorkingMemory/SecondPass/SequenceKDA3/CloudRuntime/./deploy.py",
+      "line": 304,
+      "function": "install_and_launch"
+    },
+    {
+      "file": "/Users/jonathanmorgan/Desktop/VisualAttentionWorkingMemory/SecondPass/SequenceKDA3/CloudRuntime/./deploy.py",
+      "line": 159,
+      "function": "wait_ssh"
+    },
+    {
+      "file": "/Users/jonathanmorgan/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/subprocess.py",
+      "line": 550,
+      "function": "run"
+    },
+    {
+      "file": "/Users/jonathanmorgan/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/subprocess.py",
+      "line": 1209,
+      "function": "communicate"
+    },
+    {
+      "file": "/Users/jonathanmorgan/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/subprocess.py",
+      "line": 2116,
+      "function": "_communicate"
+    },
+    {
+      "file": "/Users/jonathanmorgan/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/subprocess.py",
+      "line": 1253,
+      "function": "_check_timeout"
+    }
+  ],
+  "observed": 1790965246.409659
+}

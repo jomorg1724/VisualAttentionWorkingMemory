@@ -1,0 +1,57 @@
+SpatialReadout: architecture and decision logic
+Source-audited technical paper
+14
+Interpretation, limitations, and discriminating tests
+Reader question: which cognitive claims would require evidence beyond these equations?
+14.1
+An approximate computational observer, not a primate circuit
+The architecture supplies explicit state, learned forgetting, and spatially organized recurrent computation. These are
+useful abstractions for asking how an observer can use temporally separated visual evidence. They do not identify
+anatomical areas, neuronal types, synaptic time constants, or a physiological stimulation substrate. Signed feature
+channels and 8 × 16 matrix entries should not be called ﬁring rates or biological synapses without an additional
+measurement model.
+It is useful to distinguish learned weights, which persist across episodes, from recurrent states, which reset. Calling
+the former “long-term memory” and the latter “working memory” is at most a modeling analogy. The architecture
+does not implement a separate biological consolidation process.
+Similarly, learned gates can support selective
+retention but are not, by themselves, evidence for attentional allocation. The repository analysis SOP requires
+behavioral cueing and controlled interventions to support such claims.[S9]
+14.2
+What the architecture audit can and cannot establish
+This paper establishes the source-deﬁned computation and constructor counts. It does not establish task compe-
+tence, improved sensitivity, an optimal memory lifetime, convergence, or superiority to the old model. Historical
+warm-start experiments carried trained CNN/KDA/head tensors while introducing new spatial recurrence/readout
+tensors. Unequal experience and an unmatched control prevent attributing their outcomes solely to the architectural
+replacement. The current fresh-origin lineage removes that particular inheritance at initialization, but one lineage
+alone still does not provide a matched causal architecture comparison.[S4,S8]
+A label decoder that extracts information from a frozen representation is not proof that the deployed head uses it.
+Likewise, externally retaining sample-time activations gives an analysis readout access that the deployed terminal-
+only head does not have. These distinctions are especially important when interpreting relational tasks: accessible
+cue and orientation features do not guarantee a learned cue-conditioned comparison. No explicit comparison operator
+is present here.
+14.3
+Tests that would resolve speciﬁc design uncertainties
+1. Compression order. Compare fresh global-GRU and spatial-ConvGRU models under matched tasks, exposure,
+selection, and multiple seeds. Account separately for parameter budget and recurrent-state size; merely training
+both for the same wall time changes exposure.
+2. Memory necessity. Remove or reset individual KDA states or the ﬁnal ConvGRU at declared epochs, with
+matched trials and sham controls. A global reset is not a spatial inhibition experiment; perturbing an emitted
+ﬁeld is not erasing the module’s stored matrix.
+3. Retention versus stacked sensory access. Test genuinely stimulus-free updates after the explicit frame
+window has cleared. Preserve the nonblank raster evidence when comparing delays; nominal delay labels alone
+are insuﬃcient.
+4. Rule acquisition versus accessibility.
+Compare capacity-matched terminal-only readouts and temporal-
+access diagnostics under declared supervision.
+Do not interpret auxiliary-supervised success as native-label
+learning by the deployed model.
+5. Selection and spatial eﬀects.
+Measure paired psychometric changes for relevant and irrelevant evidence,
+separating sensitivity from response bias. Known task routing does not supply a valid/invalid cue manipulation,
+and a ﬁxed-terminal classiﬁer has no reaction-time policy.
+These are proposed discriminating experiments, not additional work executed for this paper. They preserve the
+distinction between a reasonable design rationale, a correlational diagnostic, and a causal architectural result.
+Takeaway.
+The model makes spatial temporal integration available; whether training uses it for the intended
+evidence-selection and comparison rules remains an empirical question.
+14

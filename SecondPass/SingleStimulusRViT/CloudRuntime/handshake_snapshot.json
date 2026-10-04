@@ -1,0 +1,213 @@
+{
+  "owner_stage.json": {
+    "stage": "supervise-run",
+    "observed": 1790998216.5836446
+  },
+  "latest_checkpoint.json": {
+    "path": "/workspace/vawm_single_stimulus_rvit_01/run/checkpoint_000003.pt",
+    "bytes": 87541915,
+    "sha256": "856c07dfe7e7688f159acd4c53f1f80941d504ef3d1d0371dd8d26643be25cfa",
+    "verified": true,
+    "step": 3
+  },
+  "persisted_progress_verification.json": {
+    "verified": true,
+    "step": 3,
+    "episodes": 96,
+    "checkpoint": {
+      "path": "/workspace/vawm_single_stimulus_rvit_01/run/checkpoint_000003.pt",
+      "bytes": 87541915,
+      "sha256": "856c07dfe7e7688f159acd4c53f1f80941d504ef3d1d0371dd8d26643be25cfa",
+      "verified": true,
+      "step": 3
+    },
+    "parameter_count": 7270290,
+    "changed_parameters": 92,
+    "changed_by_module": {
+      "encoder.": [
+        "encoder.stem.0.weight",
+        "encoder.stem.1.weight",
+        "encoder.stem.1.bias",
+        "encoder.stem.3.layers.0.weight",
+        "encoder.stem.3.layers.1.weight",
+        "encoder.stem.3.layers.1.bias",
+        "encoder.stem.3.layers.3.weight",
+        "encoder.stem.3.layers.4.weight",
+        "encoder.stem.3.layers.4.bias",
+        "encoder.stem.4.layers.0.weight",
+        "encoder.stem.4.layers.1.weight",
+        "encoder.stem.4.layers.1.bias",
+        "encoder.stem.4.layers.3.weight",
+        "encoder.stem.4.layers.4.weight",
+        "encoder.stem.4.layers.4.bias",
+        "encoder.stage50.layers.1.weight",
+        "encoder.stage50.layers.2.weight",
+        "encoder.stage50.layers.2.bias",
+        "encoder.stage50.layers.4.layers.0.weight",
+        "encoder.stage50.layers.4.layers.1.weight",
+        "encoder.stage50.layers.4.layers.1.bias",
+        "encoder.stage50.layers.4.layers.3.weight",
+        "encoder.stage50.layers.4.layers.4.weight",
+        "encoder.stage50.layers.4.layers.4.bias",
+        "encoder.stage50.layers.5.layers.0.weight",
+        "encoder.stage50.layers.5.layers.1.weight",
+        "encoder.stage50.layers.5.layers.1.bias",
+        "encoder.stage50.layers.5.layers.3.weight",
+        "encoder.stage50.layers.5.layers.4.weight",
+        "encoder.stage50.layers.5.layers.4.bias"
+      ],
+      "row_embedding": [
+        "row_embedding"
+      ],
+      "column_embedding": [
+        "column_embedding"
+      ],
+      "recurrent_block.query_norm.": [
+        "recurrent_block.query_norm.weight",
+        "recurrent_block.query_norm.bias"
+      ],
+      "recurrent_block.memory_norm.": [
+        "recurrent_block.memory_norm.weight",
+        "recurrent_block.memory_norm.bias"
+      ],
+      "recurrent_block.visual_attention.": [
+        "recurrent_block.visual_attention.in_proj_weight",
+        "recurrent_block.visual_attention.in_proj_bias",
+        "recurrent_block.visual_attention.out_proj.weight",
+        "recurrent_block.visual_attention.out_proj.bias"
+      ],
+      "recurrent_block.memory_attention.": [
+        "recurrent_block.memory_attention.in_proj_weight",
+        "recurrent_block.memory_attention.in_proj_bias",
+        "recurrent_block.memory_attention.out_proj.weight",
+        "recurrent_block.memory_attention.out_proj.bias"
+      ],
+      "recurrent_block.ffn_norm.": [
+        "recurrent_block.ffn_norm.weight",
+        "recurrent_block.ffn_norm.bias"
+      ],
+      "recurrent_block.ffn.": [
+        "recurrent_block.ffn.0.weight",
+        "recurrent_block.ffn.0.bias",
+        "recurrent_block.ffn.2.weight",
+        "recurrent_block.ffn.2.bias"
+      ],
+      "readout_norm.": [
+        "readout_norm.weight",
+        "readout_norm.bias"
+      ],
+      "classifier.": [
+        "classifier.0.weight",
+        "classifier.0.bias",
+        "classifier.2.weight",
+        "classifier.2.bias",
+        "classifier.4.weight",
+        "classifier.4.bias"
+      ]
+    },
+    "all_active_parameters_changed": true,
+    "persisted_constructor_equality": true,
+    "unique_episodes_generated": 1000,
+    "unique_episodes_presented": 96,
+    "optimizer_seconds": 13.107574781402946,
+    "fresh_initial_optimizer_empty": true
+  },
+  "first_cycle_timing.json": {
+    "updates": 3,
+    "matched_profile_ratio": 1.1030088866952876,
+    "material_slowdown": false
+  },
+  "live_status.json": {
+    "phase": "training",
+    "pid": 492,
+    "utc": "2026-10-03T03:31:04.921462+00:00",
+    "architecture": "single_stimulus_full_bptt_rvit",
+    "initialization": "fresh",
+    "step": 6,
+    "episodes": 192,
+    "optimizer_seconds": 24.59472116176039,
+    "deadline": 1791026282.439784,
+    "latest_checkpoint": {
+      "path": "/workspace/vawm_single_stimulus_rvit_01/run/checkpoint_000003.pt",
+      "bytes": 87541915,
+      "sha256": "856c07dfe7e7688f159acd4c53f1f80941d504ef3d1d0371dd8d26643be25cfa",
+      "verified": true,
+      "step": 3
+    },
+    "best_step": null,
+    "latest_validation": null,
+    "pool_index": 0,
+    "epoch": 0,
+    "unique_episodes_generated": 1000,
+    "unique_episodes_presented": 192,
+    "replay_presentations": 192,
+    "last_update": {
+      "task": "krauzlis_cued_motion",
+      "cell": "B12",
+      "loss": 0.6817320287227631,
+      "seconds": 3.184913670644164
+    }
+  },
+  "owner_claim.json": {
+    "pid": 273,
+    "observed": 1790998146.463693,
+    "restart": false
+  },
+  "run_supervisor.json": {
+    "pid": 474,
+    "worker_pid": 492,
+    "deadline": 1791026282.439784
+  },
+  "profile/profile_supervisor.json": {
+    "pid": 306,
+    "worker_pid": 322,
+    "deadline": 1790999949.667267
+  },
+  "progress": {
+    "utc": "2026-10-03T03:31:04.895640+00:00",
+    "step": 6,
+    "task": "krauzlis_cued_motion",
+    "cell": "B12",
+    "loss": 0.6817320287227631,
+    "seconds": 3.184913670644164,
+    "episodes": 32,
+    "frames": 928,
+    "grad_norm": 0.1835550870532677,
+    "cumulative_episodes": 192,
+    "cumulative_frames": 7104,
+    "optimizer_seconds": 24.59472116176039,
+    "pool_index": 0,
+    "epoch": 0,
+    "cursor": 6,
+    "unique_episodes_generated": 1000,
+    "unique_episodes_presented": 192,
+    "pool_generation_seconds": 0.0,
+    "partial_batch": false,
+    "initialization": "fresh",
+    "clipping": null
+  },
+  "owner_claim.json_alive": true,
+  "live_status.json_alive": true,
+  "owner_log_tail": [
+    "STAGE prepare",
+    "STAGE supervise-profile",
+    "{\"utc\": \"2026-10-03T03:29:33.193998+00:00\", \"step\": 1, \"task\": \"krauzlis_cued_motion\", \"cell\": \"B20\", \"loss\": 0.6930095702409744, \"seconds\": 4.356753615662456, \"episodes\": 32, \"frames\": 1184, \"grad_norm\": 0.538567454402776, \"cumulative_episodes\": 32, \"cumulative_frames\": 1184, \"optimizer_seconds\": 4.356753615662456, \"pool_index\": 0, \"epoch\": 0, \"cursor\": 1, \"unique_episodes_generated\": 1000, \"unique_episodes_presented\": 32, \"pool_generation_seconds\": 13.158409701660275, \"partial_batch\": false, \"",
+    "{\"utc\": \"2026-10-03T03:29:39.338660+00:00\", \"step\": 2, \"task\": \"krauzlis_cued_motion\", \"cell\": \"B28\", \"loss\": 0.6738344356417656, \"seconds\": 4.8780556889250875, \"episodes\": 32, \"frames\": 1440, \"grad_norm\": 0.6400419058232105, \"cumulative_episodes\": 64, \"cumulative_frames\": 2624, \"optimizer_seconds\": 9.234809304587543, \"pool_index\": 0, \"epoch\": 0, \"cursor\": 2, \"unique_episodes_generated\": 1000, \"unique_episodes_presented\": 64, \"pool_generation_seconds\": 0.0, \"partial_batch\": false, \"initializatio",
+    "{\"utc\": \"2026-10-03T03:29:43.796167+00:00\", \"step\": 3, \"task\": \"krauzlis_cued_motion\", \"cell\": \"B12\", \"loss\": 0.6996360011398792, \"seconds\": 3.0921532129868865, \"episodes\": 32, \"frames\": 928, \"grad_norm\": 0.6608215676415573, \"cumulative_episodes\": 96, \"cumulative_frames\": 3552, \"optimizer_seconds\": 12.32696251757443, \"pool_index\": 0, \"epoch\": 0, \"cursor\": 3, \"unique_episodes_generated\": 1000, \"unique_episodes_presented\": 96, \"pool_generation_seconds\": 0.0, \"partial_batch\": false, \"initialization",
+    "{\"utc\": \"2026-10-03T03:29:49.093288+00:00\", \"step\": 4, \"task\": \"krauzlis_cued_motion\", \"cell\": \"B20\", \"loss\": 0.6790394634008408, \"seconds\": 3.9313432052731514, \"episodes\": 32, \"frames\": 1184, \"grad_norm\": 0.2057966965145524, \"cumulative_episodes\": 128, \"cumulative_frames\": 4736, \"optimizer_seconds\": 16.25830572284758, \"pool_index\": 0, \"epoch\": 0, \"cursor\": 4, \"unique_episodes_generated\": 1000, \"unique_episodes_presented\": 128, \"pool_generation_seconds\": 0.0, \"partial_batch\": false, \"initializat",
+    "{\"utc\": \"2026-10-03T03:29:53.911261+00:00\", \"step\": 5, \"task\": \"krauzlis_cued_motion\", \"cell\": \"B28\", \"loss\": 0.6707330122590065, \"seconds\": 4.754646418616176, \"episodes\": 32, \"frames\": 1440, \"grad_norm\": 0.34125301762638316, \"cumulative_episodes\": 160, \"cumulative_frames\": 6176, \"optimizer_seconds\": 21.012952141463757, \"pool_index\": 0, \"epoch\": 0, \"cursor\": 5, \"unique_episodes_generated\": 1000, \"unique_episodes_presented\": 160, \"pool_generation_seconds\": 0.0, \"partial_batch\": false, \"initializa",
+    "{\"utc\": \"2026-10-03T03:29:56.863775+00:00\", \"step\": 6, \"task\": \"krauzlis_cued_motion\", \"cell\": \"B12\", \"loss\": 0.6817320436239243, \"seconds\": 2.8890325548127294, \"episodes\": 32, \"frames\": 928, \"grad_norm\": 0.1835551720334033, \"cumulative_episodes\": 192, \"cumulative_frames\": 7104, \"optimizer_seconds\": 23.901984696276486, \"pool_index\": 0, \"epoch\": 0, \"cursor\": 6, \"unique_episodes_generated\": 1000, \"unique_episodes_presented\": 192, \"pool_generation_seconds\": 0.0, \"partial_batch\": false, \"initializat",
+    "{\"utc\": \"2026-10-03T03:30:00.009578+00:00\", \"step\": 7, \"task\": \"krauzlis_cued_motion\", \"cell\": \"B12\", \"loss\": 0.686668649315834, \"seconds\": 3.083749694749713, \"episodes\": 32, \"frames\": 928, \"grad_norm\": 0.2101410925106423, \"cumulative_episodes\": 224, \"cumulative_frames\": 8032, \"optimizer_seconds\": 26.9857343910262, \"pool_index\": 0, \"epoch\": 0, \"cursor\": 7, \"unique_episodes_generated\": 1000, \"unique_episodes_presented\": 224, \"pool_generation_seconds\": 0.0, \"partial_batch\": false, \"initialization\"",
+    "{\"utc\": \"2026-10-03T03:30:04.900684+00:00\", \"step\": 8, \"task\": \"krauzlis_cued_motion\", \"cell\": \"B28\", \"loss\": 0.7005129531025887, \"seconds\": 4.827400245703757, \"episodes\": 32, \"frames\": 1440, \"grad_norm\": 0.35246762583751895, \"cumulative_episodes\": 256, \"cumulative_frames\": 9472, \"optimizer_seconds\": 31.813134636729956, \"pool_index\": 0, \"epoch\": 0, \"cursor\": 8, \"unique_episodes_generated\": 1000, \"unique_episodes_presented\": 256, \"pool_generation_seconds\": 0.0, \"partial_batch\": false, \"initializa",
+    "{\"utc\": \"2026-10-03T03:30:08.948869+00:00\", \"step\": 9, \"task\": \"krauzlis_cued_motion\", \"cell\": \"B20\", \"loss\": 0.6503678932785988, \"seconds\": 3.9723216611891985, \"episodes\": 32, \"frames\": 1184, \"grad_norm\": 0.4098515175866112, \"cumulative_episodes\": 288, \"cumulative_frames\": 10656, \"optimizer_seconds\": 35.785456297919154, \"pool_index\": 0, \"epoch\": 0, \"cursor\": 9, \"unique_episodes_generated\": 1000, \"unique_episodes_presented\": 288, \"pool_generation_seconds\": 0.0, \"partial_batch\": false, \"initializ",
+    "STAGE pin",
+    "{\"max_steps\": 2310, \"target_requested\": 2310, \"exposure_reduced\": false, \"total_episodes\": 70000, \"planned_presentations\": 70000, \"planned_unique_movies\": 7000, \"validation_steps\": [100, 250, 500, 1000, 1500, 2000, 2310], \"planned_validation_looks\": 7, \"checkpoint_every\": 100, \"estimated_optimizer_seconds\": 9150.273133264855, \"estimated_pool_generation_seconds\": 92.10886791162193, \"estimated_total_remaining_seconds\": 12624.99403757113, \"estimated_validation_seconds\": 15.637866918230428, \"estimat",
+    "STAGE supervise-run",
+    "{\"utc\": \"2026-10-03T03:30:40.522764+00:00\", \"step\": 1, \"task\": \"krauzlis_cued_motion\", \"cell\": \"B20\", \"loss\": 0.6930095702409744, \"seconds\": 4.791733542457223, \"episodes\": 32, \"frames\": 1184, \"grad_norm\": 0.5385674538078353, \"cumulative_episodes\": 32, \"cumulative_frames\": 1184, \"optimizer_seconds\": 4.791733542457223, \"pool_index\": 0, \"epoch\": 0, \"cursor\": 1, \"unique_episodes_generated\": 1000, \"unique_episodes_presented\": 32, \"pool_generation_seconds\": 13.308793996460736, \"partial_batch\": false, ",
+    "{\"utc\": \"2026-10-03T03:30:46.969237+00:00\", \"step\": 2, \"task\": \"krauzlis_cued_motion\", \"cell\": \"B28\", \"loss\": 0.6738344207406044, \"seconds\": 5.155703880824149, \"episodes\": 32, \"frames\": 1440, \"grad_norm\": 0.6400418381204723, \"cumulative_episodes\": 64, \"cumulative_frames\": 2624, \"optimizer_seconds\": 9.947437423281372, \"pool_index\": 0, \"epoch\": 0, \"cursor\": 2, \"unique_episodes_generated\": 1000, \"unique_episodes_presented\": 64, \"pool_generation_seconds\": 0.0, \"partial_batch\": false, \"initialization",
+    "{\"utc\": \"2026-10-03T03:30:51.605330+00:00\", \"step\": 3, \"task\": \"krauzlis_cued_motion\", \"cell\": \"B12\", \"loss\": 0.6996360272169113, \"seconds\": 3.160137358121574, \"episodes\": 32, \"frames\": 928, \"grad_norm\": 0.6608217292406384, \"cumulative_episodes\": 96, \"cumulative_frames\": 3552, \"optimizer_seconds\": 13.107574781402946, \"pool_index\": 0, \"epoch\": 0, \"cursor\": 3, \"unique_episodes_generated\": 1000, \"unique_episodes_presented\": 96, \"pool_generation_seconds\": 0.0, \"partial_batch\": false, \"initialization",
+    "{\"utc\": \"2026-10-03T03:30:57.167763+00:00\", \"step\": 4, \"task\": \"krauzlis_cued_motion\", \"cell\": \"B20\", \"loss\": 0.679039478302002, \"seconds\": 3.92002497240901, \"episodes\": 32, \"frames\": 1184, \"grad_norm\": 0.20579671594578391, \"cumulative_episodes\": 128, \"cumulative_frames\": 4736, \"optimizer_seconds\": 17.027599753811955, \"pool_index\": 0, \"epoch\": 0, \"cursor\": 4, \"unique_episodes_generated\": 1000, \"unique_episodes_presented\": 128, \"pool_generation_seconds\": 0.0, \"partial_batch\": false, \"initializati",
+    "{\"utc\": \"2026-10-03T03:31:01.624933+00:00\", \"step\": 5, \"task\": \"krauzlis_cued_motion\", \"cell\": \"B28\", \"loss\": 0.6707330122590065, \"seconds\": 4.38220773730427, \"episodes\": 32, \"frames\": 1440, \"grad_norm\": 0.34125312335263713, \"cumulative_episodes\": 160, \"cumulative_frames\": 6176, \"optimizer_seconds\": 21.409807491116226, \"pool_index\": 0, \"epoch\": 0, \"cursor\": 5, \"unique_episodes_generated\": 1000, \"unique_episodes_presented\": 160, \"pool_generation_seconds\": 0.0, \"partial_batch\": false, \"initializat",
+    "{\"utc\": \"2026-10-03T03:31:04.895640+00:00\", \"step\": 6, \"task\": \"krauzlis_cued_motion\", \"cell\": \"B12\", \"loss\": 0.6817320287227631, \"seconds\": 3.184913670644164, \"episodes\": 32, \"frames\": 928, \"grad_norm\": 0.1835550870532677, \"cumulative_episodes\": 192, \"cumulative_frames\": 7104, \"optimizer_seconds\": 24.59472116176039, \"pool_index\": 0, \"epoch\": 0, \"cursor\": 6, \"unique_episodes_generated\": 1000, \"unique_episodes_presented\": 192, \"pool_generation_seconds\": 0.0, \"partial_batch\": false, \"initializatio"
+  ]
+}

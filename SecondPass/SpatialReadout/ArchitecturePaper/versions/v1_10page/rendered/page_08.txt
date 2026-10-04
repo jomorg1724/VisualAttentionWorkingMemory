@@ -1,0 +1,73 @@
+SpatialReadout: architecture and decision logic
+Source-audited technical paper
+8
+Design decisions: intended problem and evidential limit
+8.1
+Why move recurrence ahead of global compression?
+The historical encoder emitted the same 160 × 7 × 7 ﬁeld, ﬂattened it at every time step, projected it to 256 with
+ReLU, and passed those vectors to a 256-dimensional global GRU. The current subclass deletes feat, gru, and
+norm; it does not secretly execute them before the spatial cell.[S1,S2]
+The change places a 3,136-scalar, coordinate-indexed state between the encoder and the ﬁnal 256-feature bottleneck.
+In the older ordering, the ﬁnal recurrent module had access only to the already-compressed vector. In the new
+ordering, neighboring locations can interact through recurrent convolutions before the terminal global map. The
+documented intent is to preserve spatial structure through ﬁnal recurrence, keep all three KDA modules, and change
+only that readout pathway.[S8]
+This is not a theorem that the historical projection destroyed relevant information. A learned 256-dimensional code
+may suﬃce for a task; a larger spatial state may still fail to learn its rule. The new 160 →64 projection remains
+a channel bottleneck, the CNN still downsamples, and the ﬁnal 3136 →256 map can discard information. What
+changes is the location and structure of compression, not its absence.
+8.2
+A decision ledger
+Choice
+Computational purpose
+What is not established
+Retain three KDA scales
+Preserve recurrent encoder pathways at
+diﬀerent resolutions; explicit scope in brief.
+That all scales are necessary or optimally
+placed.
+Keep current plus emitted
+ﬁelds
+Let the next block use present features
+alongside memory-derived features.
+That learned weights exploit both pathways.
+160 →64 pointwise
+projection
+Match the ﬁnal recurrent channel width
+without collapsing coordinates.
+Optimal width or information preservation.
+3 × 3 ﬁnal ConvGRU
+Share local spatial update kernels while
+maintaining a ﬁeld-valued state.
+Superiority to dense, larger-kernel, or other
+recurrent cells.
+Terminal ﬂatten, not
+pooling
+Permit coordinate-speciﬁc decisions after
+temporal integration.
+Translation robustness or abstraction from
+ﬁxed layout.
+No new
+controller/comparator
+Keep the architectural change bounded and
+leave task-rule acquisition to training.
+That task-conditioned comparisons emerge
+automatically.
+Task-speciﬁc heads
+Respect diﬀerent output vocabularies with a
+shared trunk.
+Task inference or interference-free joint
+learning.
+Table 4: The retained/replaced modules are documented decisions. Mechanistic purposes in the middle column are
+computational interpretations unless explicitly described as scope; the right column prevents those interpretations
+becoming causal claims.
+8.3
+Why the two recurrent mechanisms are not redundant by deﬁnition
+KDA maintains local key–value association matrices and can selectively correct a prediction in a learned key direction.
+The ﬁnal ConvGRU maintains a feature ﬁeld and combines a candidate with its previous state through channel/site-
+wise gates. Its convolutions also operate over the previous spatial hidden ﬁeld. These are diﬀerent update families
+and occupy diﬀerent levels of the hierarchy. They may complement one another, duplicate useful functions, or
+interfere during joint learning.
+Only controlled removal/replacement and matched training would discriminate
+those possibilities.
+8
