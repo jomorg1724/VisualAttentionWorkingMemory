@@ -10,6 +10,16 @@ Extract `task-suite-atlas.zip`, keep its folder intact, and open `task-suite-atl
 
 Try-the-judgment mode is informal exploration. It does not measure psychophysical thresholds or scientific reaction times. Answers and explanatory annotations are recorded generator ground truth—not predictions or decoded model state. Developer tools and downloadable metadata necessarily contain the correct answer; this is not a secure testing platform.
 
+## Trial audit and selectable variants — October 7, 2026
+
+The recognition task now opens at **N4_H4**, with separate selectors for **0, 4, 12, or 24 study images** and **3, 4, or 5 repeated probe frames**. N0 is explicitly an empty-list control: there are no study images, and the answer is always negative. Recognition always has three intervening blank frames. H changes the number of processing steps on the same probe, not the number of distinct photographs. Explicit links to N0 remain valid.
+
+For cued orientation, cued motion-duration, and spatial binding, D0/D4/D12/D24 select blank-delay counts. Orientation-ring has only D0 in this catalog. Krauzlis B12/B20/B28 selects baseline motion transitions, not blank delays. All 35 existing primary conditions remain available; no new training conditions were introduced. Selectors and sequence explanations precede the player on narrow screens as well as desktop.
+
+**Try the judgment** restarts from the first native frame, presents one complete pass, holds the final frame, and unlocks the response buttons. Answer-dependent example variants remain hidden until reveal. Pausing, frame stepping and replay remain available for informal inspection; this is not a controlled human experiment.
+
+A fresh CPU replay of all 115 examples confirmed all 1,580 displayed PNG frames and every label against the native generators. The float arrays are not claimed to be bit-identical across environments: 22 examples differ by at most 1.1920928955078125e-07, with no displayed-pixel changes. Full evidence and reproducibility limits are recorded in `verification/current_native_audit.json`, `verification/gif_timeline_current_audit.json`, and `TRIAL_AUDIT.md` in the development directory. GIFs remain lossy previews; the HTML player uses PNGs.
+
 ## Scientific boundaries
 
 - All input scenes originate in the existing Python renderers. The native raster is 100 × 100 RGB. Native frame order, blanks, reference frames and repeated probes are retained. No interpolated motion, synthetic replacement scenes or contrast enhancement is inserted.

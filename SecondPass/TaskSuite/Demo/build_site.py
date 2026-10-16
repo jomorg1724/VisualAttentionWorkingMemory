@@ -145,6 +145,13 @@ def build(root=DEMO):
             safe_asset(dist, asset)
     for name in ('index.html', 'atlas.css', 'atlas.js'):
         shutil.copyfile(root / 'web' / name, dist / name)
+    # A local browser can retain old scripts across an HTML refresh. Bind each
+    # asset URL to its actual contents so updated controls replace cached code.
+    entry = (dist / 'index.html').read_text(encoding='utf-8')
+    for name in ('atlas.css', 'atlas.js'):
+        digest = hashlib.sha256((dist / name).read_bytes()).hexdigest()[:12]
+        entry = entry.replace('"'+name+'"', '"'+name+'?v='+digest+'"')
+    (dist / 'index.html').write_text(entry, encoding='utf-8')
     shutil.copytree(root / 'web/vendor', dist / 'vendor', dirs_exist_ok=True)
     for name, data in [('tasks', tasks), ('sources', sources)]:
         (root / 'content' / f'{name}.json').write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n')

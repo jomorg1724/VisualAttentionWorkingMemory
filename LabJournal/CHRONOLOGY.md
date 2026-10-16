@@ -1,8 +1,58 @@
+## 19-task search-suite continuation active - October 9, 18:10 PDT
+
+User explicitly requested training from the last completed checkpoint. MemoryGuidedSearch/LocalRuntime/run01 continues VDA best16000, preserving all86 old Adam states and exact parent weights; three new four-location heads are fresh. Shared architecture/loss/Adam3e-4/clip100/batch32micro4/native task laws unchanged. Balanced19 tasks/437conditions, up to19000 additional updates under one eight-hour local allocation from18:08:57PDT, hard deadline October10 02:08:57PDT; no automatic restart/extension/cloud. Supervisor64808/worker52248 independently live-verified. Saved19 CPU-reloaded: all92parameter tensors advanced,92finite aligned Adamstates, all19tasks updated, original parent hash unchanged,29 imported source files copied and hash verified. Initial/best/latest preserve optimizer/scheduler/streams/allRNG state. Eleven contract tests passed. Monitoring uses a prespecified71-cell panel with32trials/cell atbaseline/19/every380/endpoint, preserving equal-task AUC selection; selected model full437-cell validation64 and fresh test256 are attempted within the same cap. Initial panel duration about60seconds; this is an update ceiling, not a promise of completion. Receipt MemoryGuidedSearch/LocalRuntime/run01/independent_production_verified.json. Separate RunPod Doom run is unchanged. Previous preparation-only search entries below are historical.
+
+## Motion-memory search added - October 9
+
+Prepared SecondPass/MemoryGuidedSearch v3 expands to19 tasks/437conditions with a third new four-location head. Motion memory: central random-dot sample, blank delay, then four simultaneous dot patches; choose the matching direction despite independent dot layouts. S3/6/12 x D0/4/12 x H3/6/12 x direction spacing20/45/90 gives81conditions. Coherent speed1.5pixels/frame,12dots,28pixel worlds/circular apertures; no direction/flow metadata enters model inputs or losses. Counterfactual queries preserve entire arrays and initial sample frame while changing only sample motion and correct answer; duration variants use exact prefixes. Motion stream42; prior18 tasks and their204xxx seeds preserved. Total382434parameters/92tensors, all86 parent Adamstates retained. Eleven CPU contract tests passed; current forward/example receipt is in preparation_verified.json. No local training launched or queued. Related neuroscience: Mendoza-Halliday et al.2014, doi10.1038/nn.3785; four-choice search and timings are adaptations. See MemoryGuidedSearch/README.md. Earlier preparation entries below are historical.
+
+## Search suite expanded with pop-out and independent viewing durations - October 9
+
+Prepared SecondPass/MemoryGuidedSearch v2 now has 18 tasks and 356 conditions. Memory-guided search uses independent S1/2/4/8 sample durations, D0/4/12 delays and H1/2/4/8 array durations across three families and two similarity levels (288 conditions). New popout_search uses color differences12/36/72 or orientation differences5/15/45 degrees crossed with H1/2/4/8 (24 conditions), no sample, four-location output. Matched timing comparisons preserve exact scene pixels and answers. Two new 64-to-4 heads add520 parameters; total382174 parameters/90 tensors; original86 Adam states and VDA best16000 are preserved. Fresh204xxx streams, balanced18-task schedule. Eight CPU tests and312 new-condition forward checks passed; exact-frame examples and preparation receipt retained. No local training started or queued. Old16 task laws and completed checkpoints remain unchanged. Earlier search-v1 preparation below is historical. See SecondPass/MemoryGuidedSearch/README.md.
+
+## October9 memory guided search preparation
+
+Added one four-location sample-guided search task to a separate17-task extension, with36conditions and exact cue-switch controls. Six CPUtests and36condition forwards verified; no productiontraining started. See [protocol](../SecondPass/MemoryGuidedSearch/README.md).
+
+## VDA frozen analysis completed — October 9
+
+VDA training completed 16,000 updates; selected best16000 and latest16000 independently verified with 86 finite Adam states. Frozen Analysis/run01 completed all 131,616 presentations (8,064 primary, 4,608 native, 18,144 psychometric, 100,800 exploratory interventions). The requested VDA-4 experiment used a 100% bottom-right cue, 18-degree top-left change, and bottom-right inhibition only at frames 5–6. Inhibition −4 increased top-left detection 48.18%→67.97% (+19.79 pp; paired 95% CI 15.62–24.22), while bottom-right detection fell 86.98%→6.51% and catch false alarms 3.65%→1.82%. Benefit survives Holm correction across eight planned tests. Separate mirrored-scene sweeps show a smaller VDA-9 gain and weak VDA-16 gain. Psychometrics, 35 exploratory arms per task, 90 attention groups/630 timesteps, nine PNG/PDF figures and three GIFs saved. All 1,080 sprites checked against raw pixels/maps; paired pixels, prechange attention, exact first-frame softmax effect and 5,760 global-control presentations verified. Worker66524/supervisor65640 exited0; GPU lock free; source/checkpoint hashes and tensors unchanged. Offline gallery: SecondPass/StabilizedAttentionVDA/Analysis/run01/gallery/index.html. Browser preview blocked by app security policy; static assets/links verified. This deliberately violates native 100%-cue support and tests computational priority-logit interventions, not biological equivalence or training-seed replication. No training or future compute queued; Doom remains unstarted. Evidence: completion_verified.json and viewer_verification.json. Earlier statuses below are historical.
+
+## VDA explicitly resumed — October 9, 09:16 PDT
+
+User requested continuing training. SecondPass/StabilizedAttentionVDA/LocalRuntime/continuation01 resumes run01/latest1280 with exact model/all86Adam states/scheduler/native streams/allRNG state. Original run01 best/latest1280 and frozen source remain unchanged; best1280 stays validation-eligible. Target remains16000 cumulative VDA updates,14720 remaining at restart; no architecture/loss/lr/clip/batch/data changes. Two CPU resume tests passed, next16 task/condition choices and native draws exact; disposable update identical after reload. CUDA RNG restoration verified. Worker44620/supervisor23228 independently live-verified, saved1296/live1310; all86 finite shape-aligned Adam states advanced correctly (shared+16, each head+1). Receipt continuation01/independent_production_verified.json. Only unused original allocation26607seconds is carried forward from activation09:15:14PDT, hard deadline16:38:41PDT October9; no automatic extension/cloud. Next full validation1600, every320/terminal, final256percondition. New stop request belongs in continuation01. Doom remains prepared and unstarted. Previous pause/live entries below are historical.
+
+## Paused at user request — October 8, 21:59 PDT
+
+VDA continuation run01 stopped cleanly after validation1280. Latest1280 and best1280 preserved with86 finite aligned Adam states each, optimizer/scheduler/native streams/all RNG state saved, zero unsaved updates. Worker44924 and supervisor58400 exited0, GPU lock independently free, original checkpoint/source hashes unchanged. No automatic restart or budget extension; resume only on user request. Doom remains prepared and unstarted. Evidence: SecondPass/StabilizedAttentionVDA/LocalRuntime/run01/pause_verified.json. Earlier running descriptions below are historical.
+
+**2026-10-08 — VDA continuation launched; Doom prepared.** User chose transfer from successful54808. Corrected VDA4/9/16 added, balanced16tasks/44conditions. Saved16 verified with86 finite Adamstates. Separate Deadly Corridor SAC/quantile implementation passed real-engine checks and remains unstarted. [Record](vda-suite-and-deadly-corridor.md).
+
+**2026-10-07 — Full-suite stabilized attention launched.** Fresh shared backbone with13outputheads,13tasks/35conditions; pinned13702updates under8h local cap. All80 Adam states independently verified after13updates; old checkpoints preserved. [Protocol and receipts](stabilized-attention-suite.md).
+
+[October5 — local-comparison Krauzlis](local-comparison-krauzlis.md): user-approved targeted successor following frozen-model diagnostics.
+
+[October5 — native Krauzlis shared attention](shared-attention-krauzlis.md): user-directed cancellation and fresh single-head experiment.
+
+October5 17:55 PDT: CorrespondencePredictiveMemory queued after OutcomeContrastiveRViT; implementation/CPU evidence and fixed pixel diagnostic recorded in correspondence-predictive-memory.md.
+
 # Chronology
+
+## October 5, 2026 — spatial-GRU outcome-contrastive RViT
+
+- **17:06 PDT:** userclarifiedpatch-basedGRU/LSTMarchitecture; spatialConvGRUplusCLS-GRUimplementedafterfeedbackViT. Localproduction16140towardfull25024; rootverifiedsaved500/36alignedfiniteAdamstates. Bounded8-trialmemorization100%at35updates, weightsdiscardedbeforefreshproduction. Finitecapends21:06PDT; nofinalresultyet. [Record](outcome-contrastive-rvit.md).
+
+## October 5, 2026 — explicit shutdown recovery
+
+- **16:36 PDT:** faster-dot transformer completed25024, selected10000; final3072presentations/1536pairedcontexts BA49.772%, AUC0.498358. Recovery28min20sec. Best/latest CPUverifiedall24finitealignedAdamstates; guardnormalexit, noactiveworkers. [Record](weighted-sum-transformer-speed4.md).
+
+- **16:07 PDT:** user-requested speed4 transformer continuation restored checkpoint10000 aftershutdown (lastlive10200,200unsavedupdatesrolledback). Exactmodel/Adam/RNG/pool156/epoch0/cursor512 retained, same25024target. Finiteonehourrecovery, originalbudget/config/source preserved. Actualworker15684 andsaved10250 independentlyverified24alignedfiniteAdamstates. No finalscoreyet. [Record](weighted-sum-transformer-speed4.md).
 
 [Index](README.md) · [Research history](RESEARCH_HISTORY.md) · [Catalog](EXPERIMENT_CATALOG.md) · [Current status](CURRENT_STATUS.md)
 
 ## October 4, 2026 — completed motion-learning sequence
+
+- **22:06 PDT:** user-requested speed-only transformer rerun launched locally, speeds1.5/4/8 (4x); target25,024updates with unchanged architecture/init/optimizer/exposure. Saved best64/latest250 independently CPU-verified24aligned finite Adam states. Prior run and skeptical audit preserved. No final score yet. [Record](weighted-sum-transformer-speed4.md).
 
 - **04:29 PDT:** variational next-frame predictor finished all50,240 updates. Held-out balanced prediction MSE0.00029275 versus copy-last0.00385410. Best50,000/latest50,240 retained. [Record](variational-motion-prediction.md).
 - **08:05 PDT:** frozen predictive encoder + concatenated FFN finished10,240 updates. Final3072presentations/1536paired contexts, BA50%, AUC0.49519, CE0.693165. No previous worker was killed for the next model. [Record](predictive-motion-change.md).
@@ -580,3 +630,53 @@ Savedproduction3/96 locallydownloaded/digest+CPU92Adamstates verified; nativeche
 Localqueue66646cancelled/no localweightedbudget/profile; originalVAERViT Macrun continues (observedupdate123). No extra cloudarm or cap renewal. Currentcloudresults preliminary/no validation yet; no acquisitionclaim.
 
 Platform comparison: CUDA/A40micro4 versuspriorAppleMPSmicro1, same effective32/fulltemporalgradients/FP32/Adam. This newweightedmodel startsfresh, whilecurrentlocalVAERViT haspretrainedencoder; hardware/initialization/exposure differ, so resultsareseparatepilot evidence ratherthancontrolledcausalpretrainingcomparison.
+## 2026-10-04 21:09 UTC — pixel-derived VAE comparison launched locally
+
+User explicitly requested full local training and continuous paired clips. Fresh1,861,625-parameter three-frame VAE, pixel-derived decayed cosine target and matched plain-VAE control; no angle/change targets in backpropagation. One Windows RTX3070 worker24780, owned-process deadline guard29628, joint arm first thencontrol. Native profiling pinned25,024 updates/391,000 unique pairs/782,000 presentations perarm. Shared8h cap21:07:01UTC–05:07:01UTC, noextension. All22 joint parameter tensors/Adamstates independentlyverified in savedproductionprogress. Final3,072 presentations from1,536 paired contexts perarm remainpending. [Journal](pixel-contrastive-vae.md), [protocol](../SecondPass/PixelContrastiveVAE/README.md).
+
+## 2026-10-04 21:30–21:41 UTC — recovery and predictive VAE queue
+
+PixelContrastiveVAE stopped at2,873updates on a Windows live-status replacement denial. Exact checkpoint/22Adam/RNG/shuffle/data-cursor recovery resumed as worker20352, guard15636, same25,024target and original8hdeadline; it advanced beyond5,700updates. Optional telemetry is nonfatal afterboundedsharing-error retries; critical evidence stillrequires successfulwrites.
+
+User authorized the next small predictive-consistency VAE and a10-page mathematical document. Fresh2,124,313parameters/38tensors, causal2-frame prediction throughshareddecoder, three-frameVAE and global-batchsameclipVICReg; noangle/changelabel targets. Model/runnerCPUchecks and independentactualsource reviewpassed, cachedgradients matchfullgraph within1.34e-8. Queue34400 inPredictiveConsistencyVAE/LocalRuntime/queue02 waitsforBOTHcurrentarms success andGPUlockrelease; requested25,024updates, new4hcap beginsatitsfirstprofile. Queue01 replacedbeforeactivation afteroccupiedWindowslockreadtest; no newGPUwork orbudgetyet. Exact10-page/17-equation PDF and journal published locally. [Journal](predictive-consistency-vae.md) | [Document](../output/pdf/predictive_consistency_vae.pdf).
+
+## 2026-10-04 23:05 UTC — pixel-loss arm complete, plain control training
+
+Pixel-loss VAE completed25,024updates andselected25,024. Freshheldout3,072presentations showposterior BA50.46%/AUC0.50940 andprojection BA51.27%/AUC0.50594, near chance; calibratedrawpixels BA60.84%/AUC0.55002. Plaincontrolactiveat5,824updates; entirecomparisonunfinished. PredictiveVAEqueue34400 healthy/pending. [Journal](pixel-contrastive-vae.md).
+
+
+## 2026-10-04 — Control cancelled; predictive context and horizon corrected
+
+The user cancelled the plain-VAE control: saved update7250/all20 Adam states and last live7268 are preserved, with no final control test. Predictive run01 began at23:11:07UTC, failed at64 on an undefined validation-save variable, and preserved weights/all38 Adam states. The user explicitly requested three context frames and three predicted frames. The corrected fresh model recursively trains all three future frames, using continuous12-frame training movies and independent matched objective validation. The actual CPU production path passed64updates, validation/checkpoint selection, final evaluation and completion; independent actual-source review passed.
+
+At23:27:18UTC queue26328 activated corrected run02, preserving the original03:11:07UTC/8:11:07PM PDT deadline. Native profiling prospectively pinned20,032updates (313,000unique movies/626,000presentations). Worker6192 and guard40384 launched sequential local production. Actual GPU validation64 passed; root verified best/latest38Adam states at64 and finite weights, and training continued beyond114. No final predictive result exists yet. The ten-page mathematical PDF was revised to3context/3future and all10 rendered pages visually reviewed. See [journal](predictive-consistency-vae.md) and [current status](CURRENT_STATUS.md).
+
+
+## 2026-10-04 — Predictive-consistency VAE completed; change scores near chance
+
+Correctedrun02 completed20,032updates at7:22:34PM PDT, selectingterminalcheckpoint. Final3,072presentations/1,536pairedcontexts: primaryforecast-surpriseBA50.42%, AUC0.504076; posterior/projectionBA50.68%/50.59%. Separatebalancedpredictionerrorimprovedovercopy-last whileordinaryMSEworsened; exampleswerediffuse/blurred. RootindependentlyCPU-verifiedbest/latestall38Adam statesat20,032 andfiniteweights. Worker6192,queue26328,guard40384 exited; originaldeadlinepreserved. Noautomaticfollow-up. See [finalreport](../SecondPass/PredictiveConsistencyVAE/LocalRuntime/run02/FINAL_REPORT.md).
+
+
+## 2026-10-04 — Final experiment for the night authorized
+
+The user explicitly requested a fresh VAE to reconstruct a single weighted image: newest*3 + middle*2 + oldest*1. After VAE training, a fresh nonlinear decoder learns change/no change from concatenated posterior means of consecutive triplets. The implementation discloses reversible /6 normalization, plain MSE plus KL, frozen VAE in the supervised decoder stage, fresh mode/split namespaces and one finite four-hour local cap from first GPU profile for both stages. Model engineering checks passed; complete runner/source review still in preparation, with no new GPU activation yet. See [journal](weighted-sum-vae.md).
+
+
+## 2026-10-04 — Weighted summed-image VAE activated locally
+
+At7:51:46PM PDT supervisor33384 launched one sequential two-stage experiment. Native profiling pinned the full25,024 VAE updates followed by10,000 decoder updates on64,000 fresh cached labeled pairs. New finite budget7:51:50–11:51:50PM PDT covers both stages and evaluation. Actual worker40436/independent guard42668 active; actual GPU validation64 passed and root independently verified best64/latest250 with20 aligned finite Adam states. The staged CPU fixture and independent source review passed; frozen source snapshot matches profile. No final reconstruction/classification result yet; no extra experiment/cloud arm.
+
+
+## 2026-10-04 — Final weighted-image experiment completed; VAE collapsed
+
+At8:36:51PM PDT both stages completed their full pinned25,024 VAE/10,000 classifier updates within45minutes. Selected VAE25,024/classifier1,000. Final3,072 change presentations/1,536 contexts yieldedBA49.71%, AUC0.500107. Weighted-image reconstruction was nearly uniform gray: output/target variance about0.125%, KL1.49e-8, MSE only marginally below gray/train-mean baselines. The pipeline failed at reconstruction before the operational change decision. Root independently verified four best/latest checkpoints with20/6 aligned finite Adam states. Frozen VAE unchanged; all workers exited. No further experiment queued for the night. See [report](../SecondPass/WeightedSumVAE/LocalRuntime/run01/FINAL_REPORT.md).
+
+
+## 2026-10-04 — Direct weighted-image transformer authorized and activated
+
+The user explicitly replaced the completed weighted VAE pipeline with direct patchification, one transformer layer/CLS/four heads and a nonlinear change classifier. Fresh348,929-parameter end-to-end BCE model uses the same1/2/3weighted RGB representation,patch10,width128,shared independent clip encoding and orderedCLSconcatenation. WholeCPUproduction64/validation/save/finaltest fixture and independent source review passed. Supervisor32432 launched at9:00:16PM PDT; native profile pinned25,024updates, worker16652/guard39176. Actual GPU validation64 passed; root independently verifiedbest64/latest250 all24aligned finite Adam states. New finite four-hour cap endsOctober5,1:00:19AM PDT. No final outcome yet; all older results preserved. See [journal](weighted-sum-transformer.md).
+
+
+## 2026-10-04 — Direct weighted-image transformer completed at chance
+
+Completed all25,024updates at9:45:05PM PDT (44min46sec); selected5,000 by validation BCE. Final3,072presentations/1,536pairedcontexts: BA49.25%, AUC0.492292, BCE0.694917; zero-logitBA49.77%. All sixcells near chance. Root independently verified best5,000/latest25,024 and all24 finite aligned Adam states. Worker/supervisor/guard exited normally within cap; no extra run queued. See [report](../SecondPass/WeightedSumTransformer/LocalRuntime/run01/FINAL_REPORT.md).

@@ -1,0 +1,4506 @@
+{
+  "version": "object_popout_motion_search_suite_v3",
+  "training_authorized": false,
+  "future_initialization": "continue VDA best16000 with three fresh four-class location heads",
+  "split_seeds": {
+    "train": 204101,
+    "val": 204102,
+    "test": 204103
+  },
+  "input": {
+    "layout": "BTCHW",
+    "channels": 3,
+    "height": 100,
+    "width": 100,
+    "dtype": "float32",
+    "range": [
+      0,
+      1
+    ],
+    "sensory_frames": 2
+  },
+  "tasks": [
+    {
+      "id": "motion_direction",
+      "stream_id": 1,
+      "group": "sensory",
+      "classes": 4,
+      "labels": [
+        "right",
+        "up",
+        "left",
+        "down"
+      ],
+      "question": "Which cardinal direction links the two random-dot frames?",
+      "renderer": "PreAttentiveVision.neuroscience_stimuli.TaskStream",
+      "requires_bsds500": false,
+      "report_by": [
+        "displacement_pixels"
+      ],
+      "conditions": [
+        {
+          "id": "mixed",
+          "kwargs": {},
+          "selection_eligible": true
+        }
+      ]
+    },
+    {
+      "id": "orientation",
+      "stream_id": 2,
+      "group": "sensory",
+      "classes": 2,
+      "labels": [
+        "negative axial angle change",
+        "positive axial angle change"
+      ],
+      "question": "What is the sign of the grating orientation change from frame 0 to frame 1?",
+      "renderer": "PreAttentiveVision.neuroscience_stimuli.TaskStream",
+      "requires_bsds500": false,
+      "report_by": [
+        "signed_orientation_degrees"
+      ],
+      "conditions": [
+        {
+          "id": "mixed",
+          "kwargs": {},
+          "selection_eligible": true
+        }
+      ]
+    },
+    {
+      "id": "contrast",
+      "stream_id": 3,
+      "group": "sensory",
+      "classes": 2,
+      "labels": [
+        "frame 0",
+        "frame 1"
+      ],
+      "question": "Which frame contains the higher-contrast grating?",
+      "renderer": "PreAttentiveVision.neuroscience_stimuli.TaskStream",
+      "requires_bsds500": false,
+      "report_by": [
+        "contrast_increment",
+        "pedestal"
+      ],
+      "conditions": [
+        {
+          "id": "mixed",
+          "kwargs": {},
+          "selection_eligible": true
+        }
+      ]
+    },
+    {
+      "id": "spatial_frequency",
+      "stream_id": 4,
+      "group": "sensory",
+      "classes": 2,
+      "labels": [
+        "frame 0",
+        "frame 1"
+      ],
+      "question": "Which frame contains the higher-spatial-frequency grating?",
+      "renderer": "PreAttentiveVision.neuroscience_stimuli.TaskStream",
+      "requires_bsds500": false,
+      "report_by": [
+        "frequency_octave_increment"
+      ],
+      "conditions": [
+        {
+          "id": "mixed",
+          "kwargs": {},
+          "selection_eligible": true
+        }
+      ]
+    },
+    {
+      "id": "chromatic_increment",
+      "stream_id": 5,
+      "group": "sensory",
+      "classes": 2,
+      "labels": [
+        "frame 0",
+        "frame 1"
+      ],
+      "question": "Which frame has the positive increment along the defined isoluminant linear-RGB axis?",
+      "renderer": "PreAttentiveVision.neuroscience_stimuli.TaskStream",
+      "requires_bsds500": false,
+      "report_by": [
+        "chromatic_increment"
+      ],
+      "conditions": [
+        {
+          "id": "mixed",
+          "kwargs": {},
+          "selection_eligible": true
+        }
+      ]
+    },
+    {
+      "id": "contour",
+      "stream_id": 6,
+      "group": "sensory",
+      "classes": 2,
+      "labels": [
+        "frame 0",
+        "frame 1"
+      ],
+      "question": "Which frame contains the aligned Gabor contour?",
+      "renderer": "PreAttentiveVision.neuroscience_stimuli.TaskStream",
+      "requires_bsds500": false,
+      "report_by": [
+        "alignment_jitter_degrees"
+      ],
+      "conditions": [
+        {
+          "id": "mixed",
+          "kwargs": {},
+          "selection_eligible": true
+        }
+      ]
+    },
+    {
+      "id": "natural_spectrum",
+      "stream_id": 7,
+      "group": "sensory",
+      "classes": 2,
+      "labels": [
+        "frame 0",
+        "frame 1"
+      ],
+      "question": "Which frame has greater relative high-frequency detail (smaller spectral beta)?",
+      "renderer": "PreAttentiveVision.neuroscience_stimuli.TaskStream",
+      "requires_bsds500": true,
+      "report_by": [
+        "beta_delta",
+        "base_id"
+      ],
+      "conditions": [
+        {
+          "id": "mixed",
+          "kwargs": {},
+          "selection_eligible": true
+        }
+      ]
+    },
+    {
+      "id": "orientation_ring",
+      "stream_id": 8,
+      "group": "orientation_auxiliary",
+      "classes": 2,
+      "labels": [
+        "negative axial angle change",
+        "positive axial angle change"
+      ],
+      "question": "What is the sign of rotation at the ring-cued Gabor location?",
+      "renderer": "WorkingMemory.PlainBaseline.variants.VariantStream",
+      "requires_bsds500": false,
+      "report_by": [
+        "rotation_magnitude",
+        "target_location"
+      ],
+      "conditions": [
+        {
+          "id": "D0",
+          "kwargs": {
+            "delay": 0
+          },
+          "selection_eligible": true
+        }
+      ]
+    },
+    {
+      "id": "orientation_cued",
+      "stream_id": 9,
+      "group": "spatial",
+      "classes": 2,
+      "labels": [
+        "unchanged or opposite to cue sign",
+        "rotation in cue sign"
+      ],
+      "question": "Did the target Gabor rotate in the direction requested by its location/sign glyph?",
+      "renderer": "WorkingMemory.SpatialTaskBattery.stimuli.SpatialBatteryStream",
+      "requires_bsds500": false,
+      "report_by": [
+        "delay",
+        "rotation_magnitude",
+        "target_location",
+        "cue_sign"
+      ],
+      "conditions": [
+        {
+          "id": "D0",
+          "kwargs": {
+            "delay": 0
+          },
+          "selection_eligible": true
+        },
+        {
+          "id": "D4",
+          "kwargs": {
+            "delay": 4
+          },
+          "selection_eligible": true
+        },
+        {
+          "id": "D12",
+          "kwargs": {
+            "delay": 12
+          },
+          "selection_eligible": true
+        },
+        {
+          "id": "D24",
+          "kwargs": {
+            "delay": 24
+          },
+          "selection_eligible": true
+        }
+      ]
+    },
+    {
+      "id": "motion_duration_cued",
+      "stream_id": 10,
+      "group": "spatial",
+      "classes": 4,
+      "labels": [
+        "right",
+        "up",
+        "left",
+        "down"
+      ],
+      "question": "Which direction occupied the most of eight transitions in the cued patch?",
+      "renderer": "WorkingMemory.SpatialTaskBattery.stimuli.SpatialBatteryStream",
+      "requires_bsds500": false,
+      "report_by": [
+        "delay",
+        "step_pixels",
+        "target_location",
+        "duration_counts_by_patch"
+      ],
+      "conditions": [
+        {
+          "id": "D0",
+          "kwargs": {
+            "delay": 0
+          },
+          "selection_eligible": true
+        },
+        {
+          "id": "D4",
+          "kwargs": {
+            "delay": 4
+          },
+          "selection_eligible": true
+        },
+        {
+          "id": "D12",
+          "kwargs": {
+            "delay": 12
+          },
+          "selection_eligible": true
+        },
+        {
+          "id": "D24",
+          "kwargs": {
+            "delay": 24
+          },
+          "selection_eligible": true
+        }
+      ]
+    },
+    {
+      "id": "krauzlis_cued_motion",
+      "stream_id": 11,
+      "group": "spatial",
+      "classes": 2,
+      "labels": [
+        "foil-only change or catch",
+        "target change"
+      ],
+      "question": "Did mean motion direction change in the precued patch rather than the foil?",
+      "renderer": "WorkingMemory.SpatialTaskBattery.stimuli.SpatialBatteryStream",
+      "requires_bsds500": false,
+      "report_by": [
+        "baseline_transitions",
+        "event_type",
+        "event_magnitude_degrees",
+        "target_location"
+      ],
+      "conditions": [
+        {
+          "id": "B12",
+          "kwargs": {
+            "baseline_transitions": 12
+          },
+          "selection_eligible": true
+        },
+        {
+          "id": "B20",
+          "kwargs": {
+            "baseline_transitions": 20
+          },
+          "selection_eligible": true
+        },
+        {
+          "id": "B28",
+          "kwargs": {
+            "baseline_transitions": 28
+          },
+          "selection_eligible": true
+        }
+      ]
+    },
+    {
+      "id": "spatial_binding",
+      "stream_id": 12,
+      "group": "spatial",
+      "classes": 2,
+      "labels": [
+        "foil-only exchange",
+        "target participates in exchange"
+      ],
+      "question": "Was the orientation at the retrospectively queried location exchanged with another location?",
+      "renderer": "WorkingMemory.SpatialTaskBattery.stimuli.SpatialBatteryStream",
+      "requires_bsds500": false,
+      "report_by": [
+        "delay",
+        "target_location"
+      ],
+      "conditions": [
+        {
+          "id": "D0",
+          "kwargs": {
+            "delay": 0
+          },
+          "selection_eligible": true
+        },
+        {
+          "id": "D4",
+          "kwargs": {
+            "delay": 4
+          },
+          "selection_eligible": true
+        },
+        {
+          "id": "D12",
+          "kwargs": {
+            "delay": 12
+          },
+          "selection_eligible": true
+        },
+        {
+          "id": "D24",
+          "kwargs": {
+            "delay": 24
+          },
+          "selection_eligible": true
+        }
+      ]
+    },
+    {
+      "id": "image_recognition",
+      "stream_id": 13,
+      "group": "spatial",
+      "classes": 2,
+      "labels": [
+        "not in study set",
+        "in study set"
+      ],
+      "question": "Is the repeated probe raster an exact member of the preceding study-image set?",
+      "renderer": "WorkingMemory.SpatialTaskBattery.stimuli.SpatialBatteryStream",
+      "requires_bsds500": true,
+      "report_by": [
+        "load",
+        "probe_hold",
+        "seen_study_index",
+        "study_source_ids"
+      ],
+      "conditions": [
+        {
+          "id": "N0_H3",
+          "kwargs": {
+            "load": 0,
+            "probe_hold": 3
+          },
+          "selection_eligible": false
+        },
+        {
+          "id": "N0_H4",
+          "kwargs": {
+            "load": 0,
+            "probe_hold": 4
+          },
+          "selection_eligible": false
+        },
+        {
+          "id": "N0_H5",
+          "kwargs": {
+            "load": 0,
+            "probe_hold": 5
+          },
+          "selection_eligible": false
+        },
+        {
+          "id": "N4_H3",
+          "kwargs": {
+            "load": 4,
+            "probe_hold": 3
+          },
+          "selection_eligible": true
+        },
+        {
+          "id": "N4_H4",
+          "kwargs": {
+            "load": 4,
+            "probe_hold": 4
+          },
+          "selection_eligible": true
+        },
+        {
+          "id": "N4_H5",
+          "kwargs": {
+            "load": 4,
+            "probe_hold": 5
+          },
+          "selection_eligible": true
+        },
+        {
+          "id": "N12_H3",
+          "kwargs": {
+            "load": 12,
+            "probe_hold": 3
+          },
+          "selection_eligible": true
+        },
+        {
+          "id": "N12_H4",
+          "kwargs": {
+            "load": 12,
+            "probe_hold": 4
+          },
+          "selection_eligible": true
+        },
+        {
+          "id": "N12_H5",
+          "kwargs": {
+            "load": 12,
+            "probe_hold": 5
+          },
+          "selection_eligible": true
+        },
+        {
+          "id": "N24_H3",
+          "kwargs": {
+            "load": 24,
+            "probe_hold": 3
+          },
+          "selection_eligible": true
+        },
+        {
+          "id": "N24_H4",
+          "kwargs": {
+            "load": 24,
+            "probe_hold": 4
+          },
+          "selection_eligible": true
+        },
+        {
+          "id": "N24_H5",
+          "kwargs": {
+            "load": 24,
+            "probe_hold": 5
+          },
+          "selection_eligible": true
+        }
+      ]
+    },
+    {
+      "id": "vda4",
+      "classes": 2,
+      "group": "value_directed",
+      "stream_id": 24,
+      "requires_bsds500": false,
+      "labels": [
+        "no change",
+        "change anywhere"
+      ],
+      "question": "Did any Gabor change orientation?",
+      "conditions": [
+        {
+          "id": "TH8",
+          "kwargs": {
+            "theta": 8
+          }
+        },
+        {
+          "id": "TH26",
+          "kwargs": {
+            "theta": 26
+          }
+        },
+        {
+          "id": "TH65",
+          "kwargs": {
+            "theta": 65
+          }
+        }
+      ],
+      "report_by": [
+        "cue_color",
+        "displayed_validity",
+        "realized_validity",
+        "orientation_change"
+      ]
+    },
+    {
+      "id": "vda9",
+      "classes": 2,
+      "group": "value_directed",
+      "stream_id": 29,
+      "requires_bsds500": false,
+      "labels": [
+        "no change",
+        "change anywhere"
+      ],
+      "question": "Did any Gabor change orientation?",
+      "conditions": [
+        {
+          "id": "TH8",
+          "kwargs": {
+            "theta": 8
+          }
+        },
+        {
+          "id": "TH26",
+          "kwargs": {
+            "theta": 26
+          }
+        },
+        {
+          "id": "TH65",
+          "kwargs": {
+            "theta": 65
+          }
+        }
+      ],
+      "report_by": [
+        "cue_color",
+        "displayed_validity",
+        "realized_validity",
+        "orientation_change"
+      ]
+    },
+    {
+      "id": "vda16",
+      "classes": 2,
+      "group": "value_directed",
+      "stream_id": 36,
+      "requires_bsds500": false,
+      "labels": [
+        "no change",
+        "change anywhere"
+      ],
+      "question": "Did any Gabor change orientation?",
+      "conditions": [
+        {
+          "id": "TH8",
+          "kwargs": {
+            "theta": 8
+          }
+        },
+        {
+          "id": "TH26",
+          "kwargs": {
+            "theta": 26
+          }
+        },
+        {
+          "id": "TH65",
+          "kwargs": {
+            "theta": 65
+          }
+        }
+      ],
+      "report_by": [
+        "cue_color",
+        "displayed_validity",
+        "realized_validity",
+        "orientation_change"
+      ]
+    },
+    {
+      "id": "memory_guided_search",
+      "stream_id": 40,
+      "classes": 4,
+      "group": "memory_guided_search",
+      "requires_bsds500": false,
+      "labels": [
+        "top-left",
+        "top-right",
+        "bottom-left",
+        "bottom-right"
+      ],
+      "question": "Where is the object shown in the sample?",
+      "conditions": [
+        {
+          "id": "features_distinct_S1_D0_H1",
+          "kwargs": {
+            "family": "features",
+            "similarity": "distinct",
+            "sample_frames": 1,
+            "delay": 0,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "features_distinct_S1_D0_H2",
+          "kwargs": {
+            "family": "features",
+            "similarity": "distinct",
+            "sample_frames": 1,
+            "delay": 0,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "features_distinct_S1_D0_H4",
+          "kwargs": {
+            "family": "features",
+            "similarity": "distinct",
+            "sample_frames": 1,
+            "delay": 0,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "features_distinct_S1_D0_H8",
+          "kwargs": {
+            "family": "features",
+            "similarity": "distinct",
+            "sample_frames": 1,
+            "delay": 0,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "features_distinct_S1_D4_H1",
+          "kwargs": {
+            "family": "features",
+            "similarity": "distinct",
+            "sample_frames": 1,
+            "delay": 4,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "features_distinct_S1_D4_H2",
+          "kwargs": {
+            "family": "features",
+            "similarity": "distinct",
+            "sample_frames": 1,
+            "delay": 4,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "features_distinct_S1_D4_H4",
+          "kwargs": {
+            "family": "features",
+            "similarity": "distinct",
+            "sample_frames": 1,
+            "delay": 4,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "features_distinct_S1_D4_H8",
+          "kwargs": {
+            "family": "features",
+            "similarity": "distinct",
+            "sample_frames": 1,
+            "delay": 4,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "features_distinct_S1_D12_H1",
+          "kwargs": {
+            "family": "features",
+            "similarity": "distinct",
+            "sample_frames": 1,
+            "delay": 12,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "features_distinct_S1_D12_H2",
+          "kwargs": {
+            "family": "features",
+            "similarity": "distinct",
+            "sample_frames": 1,
+            "delay": 12,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "features_distinct_S1_D12_H4",
+          "kwargs": {
+            "family": "features",
+            "similarity": "distinct",
+            "sample_frames": 1,
+            "delay": 12,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "features_distinct_S1_D12_H8",
+          "kwargs": {
+            "family": "features",
+            "similarity": "distinct",
+            "sample_frames": 1,
+            "delay": 12,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "features_distinct_S2_D0_H1",
+          "kwargs": {
+            "family": "features",
+            "similarity": "distinct",
+            "sample_frames": 2,
+            "delay": 0,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "features_distinct_S2_D0_H2",
+          "kwargs": {
+            "family": "features",
+            "similarity": "distinct",
+            "sample_frames": 2,
+            "delay": 0,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "features_distinct_S2_D0_H4",
+          "kwargs": {
+            "family": "features",
+            "similarity": "distinct",
+            "sample_frames": 2,
+            "delay": 0,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "features_distinct_S2_D0_H8",
+          "kwargs": {
+            "family": "features",
+            "similarity": "distinct",
+            "sample_frames": 2,
+            "delay": 0,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "features_distinct_S2_D4_H1",
+          "kwargs": {
+            "family": "features",
+            "similarity": "distinct",
+            "sample_frames": 2,
+            "delay": 4,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "features_distinct_S2_D4_H2",
+          "kwargs": {
+            "family": "features",
+            "similarity": "distinct",
+            "sample_frames": 2,
+            "delay": 4,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "features_distinct_S2_D4_H4",
+          "kwargs": {
+            "family": "features",
+            "similarity": "distinct",
+            "sample_frames": 2,
+            "delay": 4,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "features_distinct_S2_D4_H8",
+          "kwargs": {
+            "family": "features",
+            "similarity": "distinct",
+            "sample_frames": 2,
+            "delay": 4,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "features_distinct_S2_D12_H1",
+          "kwargs": {
+            "family": "features",
+            "similarity": "distinct",
+            "sample_frames": 2,
+            "delay": 12,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "features_distinct_S2_D12_H2",
+          "kwargs": {
+            "family": "features",
+            "similarity": "distinct",
+            "sample_frames": 2,
+            "delay": 12,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "features_distinct_S2_D12_H4",
+          "kwargs": {
+            "family": "features",
+            "similarity": "distinct",
+            "sample_frames": 2,
+            "delay": 12,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "features_distinct_S2_D12_H8",
+          "kwargs": {
+            "family": "features",
+            "similarity": "distinct",
+            "sample_frames": 2,
+            "delay": 12,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "features_distinct_S4_D0_H1",
+          "kwargs": {
+            "family": "features",
+            "similarity": "distinct",
+            "sample_frames": 4,
+            "delay": 0,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "features_distinct_S4_D0_H2",
+          "kwargs": {
+            "family": "features",
+            "similarity": "distinct",
+            "sample_frames": 4,
+            "delay": 0,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "features_distinct_S4_D0_H4",
+          "kwargs": {
+            "family": "features",
+            "similarity": "distinct",
+            "sample_frames": 4,
+            "delay": 0,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "features_distinct_S4_D0_H8",
+          "kwargs": {
+            "family": "features",
+            "similarity": "distinct",
+            "sample_frames": 4,
+            "delay": 0,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "features_distinct_S4_D4_H1",
+          "kwargs": {
+            "family": "features",
+            "similarity": "distinct",
+            "sample_frames": 4,
+            "delay": 4,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "features_distinct_S4_D4_H2",
+          "kwargs": {
+            "family": "features",
+            "similarity": "distinct",
+            "sample_frames": 4,
+            "delay": 4,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "features_distinct_S4_D4_H4",
+          "kwargs": {
+            "family": "features",
+            "similarity": "distinct",
+            "sample_frames": 4,
+            "delay": 4,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "features_distinct_S4_D4_H8",
+          "kwargs": {
+            "family": "features",
+            "similarity": "distinct",
+            "sample_frames": 4,
+            "delay": 4,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "features_distinct_S4_D12_H1",
+          "kwargs": {
+            "family": "features",
+            "similarity": "distinct",
+            "sample_frames": 4,
+            "delay": 12,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "features_distinct_S4_D12_H2",
+          "kwargs": {
+            "family": "features",
+            "similarity": "distinct",
+            "sample_frames": 4,
+            "delay": 12,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "features_distinct_S4_D12_H4",
+          "kwargs": {
+            "family": "features",
+            "similarity": "distinct",
+            "sample_frames": 4,
+            "delay": 12,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "features_distinct_S4_D12_H8",
+          "kwargs": {
+            "family": "features",
+            "similarity": "distinct",
+            "sample_frames": 4,
+            "delay": 12,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "features_distinct_S8_D0_H1",
+          "kwargs": {
+            "family": "features",
+            "similarity": "distinct",
+            "sample_frames": 8,
+            "delay": 0,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "features_distinct_S8_D0_H2",
+          "kwargs": {
+            "family": "features",
+            "similarity": "distinct",
+            "sample_frames": 8,
+            "delay": 0,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "features_distinct_S8_D0_H4",
+          "kwargs": {
+            "family": "features",
+            "similarity": "distinct",
+            "sample_frames": 8,
+            "delay": 0,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "features_distinct_S8_D0_H8",
+          "kwargs": {
+            "family": "features",
+            "similarity": "distinct",
+            "sample_frames": 8,
+            "delay": 0,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "features_distinct_S8_D4_H1",
+          "kwargs": {
+            "family": "features",
+            "similarity": "distinct",
+            "sample_frames": 8,
+            "delay": 4,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "features_distinct_S8_D4_H2",
+          "kwargs": {
+            "family": "features",
+            "similarity": "distinct",
+            "sample_frames": 8,
+            "delay": 4,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "features_distinct_S8_D4_H4",
+          "kwargs": {
+            "family": "features",
+            "similarity": "distinct",
+            "sample_frames": 8,
+            "delay": 4,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "features_distinct_S8_D4_H8",
+          "kwargs": {
+            "family": "features",
+            "similarity": "distinct",
+            "sample_frames": 8,
+            "delay": 4,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "features_distinct_S8_D12_H1",
+          "kwargs": {
+            "family": "features",
+            "similarity": "distinct",
+            "sample_frames": 8,
+            "delay": 12,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "features_distinct_S8_D12_H2",
+          "kwargs": {
+            "family": "features",
+            "similarity": "distinct",
+            "sample_frames": 8,
+            "delay": 12,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "features_distinct_S8_D12_H4",
+          "kwargs": {
+            "family": "features",
+            "similarity": "distinct",
+            "sample_frames": 8,
+            "delay": 12,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "features_distinct_S8_D12_H8",
+          "kwargs": {
+            "family": "features",
+            "similarity": "distinct",
+            "sample_frames": 8,
+            "delay": 12,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "features_similar_S1_D0_H1",
+          "kwargs": {
+            "family": "features",
+            "similarity": "similar",
+            "sample_frames": 1,
+            "delay": 0,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "features_similar_S1_D0_H2",
+          "kwargs": {
+            "family": "features",
+            "similarity": "similar",
+            "sample_frames": 1,
+            "delay": 0,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "features_similar_S1_D0_H4",
+          "kwargs": {
+            "family": "features",
+            "similarity": "similar",
+            "sample_frames": 1,
+            "delay": 0,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "features_similar_S1_D0_H8",
+          "kwargs": {
+            "family": "features",
+            "similarity": "similar",
+            "sample_frames": 1,
+            "delay": 0,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "features_similar_S1_D4_H1",
+          "kwargs": {
+            "family": "features",
+            "similarity": "similar",
+            "sample_frames": 1,
+            "delay": 4,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "features_similar_S1_D4_H2",
+          "kwargs": {
+            "family": "features",
+            "similarity": "similar",
+            "sample_frames": 1,
+            "delay": 4,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "features_similar_S1_D4_H4",
+          "kwargs": {
+            "family": "features",
+            "similarity": "similar",
+            "sample_frames": 1,
+            "delay": 4,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "features_similar_S1_D4_H8",
+          "kwargs": {
+            "family": "features",
+            "similarity": "similar",
+            "sample_frames": 1,
+            "delay": 4,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "features_similar_S1_D12_H1",
+          "kwargs": {
+            "family": "features",
+            "similarity": "similar",
+            "sample_frames": 1,
+            "delay": 12,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "features_similar_S1_D12_H2",
+          "kwargs": {
+            "family": "features",
+            "similarity": "similar",
+            "sample_frames": 1,
+            "delay": 12,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "features_similar_S1_D12_H4",
+          "kwargs": {
+            "family": "features",
+            "similarity": "similar",
+            "sample_frames": 1,
+            "delay": 12,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "features_similar_S1_D12_H8",
+          "kwargs": {
+            "family": "features",
+            "similarity": "similar",
+            "sample_frames": 1,
+            "delay": 12,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "features_similar_S2_D0_H1",
+          "kwargs": {
+            "family": "features",
+            "similarity": "similar",
+            "sample_frames": 2,
+            "delay": 0,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "features_similar_S2_D0_H2",
+          "kwargs": {
+            "family": "features",
+            "similarity": "similar",
+            "sample_frames": 2,
+            "delay": 0,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "features_similar_S2_D0_H4",
+          "kwargs": {
+            "family": "features",
+            "similarity": "similar",
+            "sample_frames": 2,
+            "delay": 0,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "features_similar_S2_D0_H8",
+          "kwargs": {
+            "family": "features",
+            "similarity": "similar",
+            "sample_frames": 2,
+            "delay": 0,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "features_similar_S2_D4_H1",
+          "kwargs": {
+            "family": "features",
+            "similarity": "similar",
+            "sample_frames": 2,
+            "delay": 4,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "features_similar_S2_D4_H2",
+          "kwargs": {
+            "family": "features",
+            "similarity": "similar",
+            "sample_frames": 2,
+            "delay": 4,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "features_similar_S2_D4_H4",
+          "kwargs": {
+            "family": "features",
+            "similarity": "similar",
+            "sample_frames": 2,
+            "delay": 4,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "features_similar_S2_D4_H8",
+          "kwargs": {
+            "family": "features",
+            "similarity": "similar",
+            "sample_frames": 2,
+            "delay": 4,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "features_similar_S2_D12_H1",
+          "kwargs": {
+            "family": "features",
+            "similarity": "similar",
+            "sample_frames": 2,
+            "delay": 12,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "features_similar_S2_D12_H2",
+          "kwargs": {
+            "family": "features",
+            "similarity": "similar",
+            "sample_frames": 2,
+            "delay": 12,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "features_similar_S2_D12_H4",
+          "kwargs": {
+            "family": "features",
+            "similarity": "similar",
+            "sample_frames": 2,
+            "delay": 12,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "features_similar_S2_D12_H8",
+          "kwargs": {
+            "family": "features",
+            "similarity": "similar",
+            "sample_frames": 2,
+            "delay": 12,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "features_similar_S4_D0_H1",
+          "kwargs": {
+            "family": "features",
+            "similarity": "similar",
+            "sample_frames": 4,
+            "delay": 0,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "features_similar_S4_D0_H2",
+          "kwargs": {
+            "family": "features",
+            "similarity": "similar",
+            "sample_frames": 4,
+            "delay": 0,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "features_similar_S4_D0_H4",
+          "kwargs": {
+            "family": "features",
+            "similarity": "similar",
+            "sample_frames": 4,
+            "delay": 0,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "features_similar_S4_D0_H8",
+          "kwargs": {
+            "family": "features",
+            "similarity": "similar",
+            "sample_frames": 4,
+            "delay": 0,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "features_similar_S4_D4_H1",
+          "kwargs": {
+            "family": "features",
+            "similarity": "similar",
+            "sample_frames": 4,
+            "delay": 4,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "features_similar_S4_D4_H2",
+          "kwargs": {
+            "family": "features",
+            "similarity": "similar",
+            "sample_frames": 4,
+            "delay": 4,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "features_similar_S4_D4_H4",
+          "kwargs": {
+            "family": "features",
+            "similarity": "similar",
+            "sample_frames": 4,
+            "delay": 4,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "features_similar_S4_D4_H8",
+          "kwargs": {
+            "family": "features",
+            "similarity": "similar",
+            "sample_frames": 4,
+            "delay": 4,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "features_similar_S4_D12_H1",
+          "kwargs": {
+            "family": "features",
+            "similarity": "similar",
+            "sample_frames": 4,
+            "delay": 12,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "features_similar_S4_D12_H2",
+          "kwargs": {
+            "family": "features",
+            "similarity": "similar",
+            "sample_frames": 4,
+            "delay": 12,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "features_similar_S4_D12_H4",
+          "kwargs": {
+            "family": "features",
+            "similarity": "similar",
+            "sample_frames": 4,
+            "delay": 12,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "features_similar_S4_D12_H8",
+          "kwargs": {
+            "family": "features",
+            "similarity": "similar",
+            "sample_frames": 4,
+            "delay": 12,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "features_similar_S8_D0_H1",
+          "kwargs": {
+            "family": "features",
+            "similarity": "similar",
+            "sample_frames": 8,
+            "delay": 0,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "features_similar_S8_D0_H2",
+          "kwargs": {
+            "family": "features",
+            "similarity": "similar",
+            "sample_frames": 8,
+            "delay": 0,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "features_similar_S8_D0_H4",
+          "kwargs": {
+            "family": "features",
+            "similarity": "similar",
+            "sample_frames": 8,
+            "delay": 0,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "features_similar_S8_D0_H8",
+          "kwargs": {
+            "family": "features",
+            "similarity": "similar",
+            "sample_frames": 8,
+            "delay": 0,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "features_similar_S8_D4_H1",
+          "kwargs": {
+            "family": "features",
+            "similarity": "similar",
+            "sample_frames": 8,
+            "delay": 4,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "features_similar_S8_D4_H2",
+          "kwargs": {
+            "family": "features",
+            "similarity": "similar",
+            "sample_frames": 8,
+            "delay": 4,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "features_similar_S8_D4_H4",
+          "kwargs": {
+            "family": "features",
+            "similarity": "similar",
+            "sample_frames": 8,
+            "delay": 4,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "features_similar_S8_D4_H8",
+          "kwargs": {
+            "family": "features",
+            "similarity": "similar",
+            "sample_frames": 8,
+            "delay": 4,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "features_similar_S8_D12_H1",
+          "kwargs": {
+            "family": "features",
+            "similarity": "similar",
+            "sample_frames": 8,
+            "delay": 12,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "features_similar_S8_D12_H2",
+          "kwargs": {
+            "family": "features",
+            "similarity": "similar",
+            "sample_frames": 8,
+            "delay": 12,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "features_similar_S8_D12_H4",
+          "kwargs": {
+            "family": "features",
+            "similarity": "similar",
+            "sample_frames": 8,
+            "delay": 12,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "features_similar_S8_D12_H8",
+          "kwargs": {
+            "family": "features",
+            "similarity": "similar",
+            "sample_frames": 8,
+            "delay": 12,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "objects_distinct_S1_D0_H1",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "distinct",
+            "sample_frames": 1,
+            "delay": 0,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "objects_distinct_S1_D0_H2",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "distinct",
+            "sample_frames": 1,
+            "delay": 0,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "objects_distinct_S1_D0_H4",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "distinct",
+            "sample_frames": 1,
+            "delay": 0,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "objects_distinct_S1_D0_H8",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "distinct",
+            "sample_frames": 1,
+            "delay": 0,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "objects_distinct_S1_D4_H1",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "distinct",
+            "sample_frames": 1,
+            "delay": 4,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "objects_distinct_S1_D4_H2",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "distinct",
+            "sample_frames": 1,
+            "delay": 4,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "objects_distinct_S1_D4_H4",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "distinct",
+            "sample_frames": 1,
+            "delay": 4,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "objects_distinct_S1_D4_H8",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "distinct",
+            "sample_frames": 1,
+            "delay": 4,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "objects_distinct_S1_D12_H1",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "distinct",
+            "sample_frames": 1,
+            "delay": 12,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "objects_distinct_S1_D12_H2",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "distinct",
+            "sample_frames": 1,
+            "delay": 12,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "objects_distinct_S1_D12_H4",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "distinct",
+            "sample_frames": 1,
+            "delay": 12,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "objects_distinct_S1_D12_H8",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "distinct",
+            "sample_frames": 1,
+            "delay": 12,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "objects_distinct_S2_D0_H1",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "distinct",
+            "sample_frames": 2,
+            "delay": 0,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "objects_distinct_S2_D0_H2",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "distinct",
+            "sample_frames": 2,
+            "delay": 0,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "objects_distinct_S2_D0_H4",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "distinct",
+            "sample_frames": 2,
+            "delay": 0,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "objects_distinct_S2_D0_H8",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "distinct",
+            "sample_frames": 2,
+            "delay": 0,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "objects_distinct_S2_D4_H1",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "distinct",
+            "sample_frames": 2,
+            "delay": 4,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "objects_distinct_S2_D4_H2",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "distinct",
+            "sample_frames": 2,
+            "delay": 4,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "objects_distinct_S2_D4_H4",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "distinct",
+            "sample_frames": 2,
+            "delay": 4,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "objects_distinct_S2_D4_H8",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "distinct",
+            "sample_frames": 2,
+            "delay": 4,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "objects_distinct_S2_D12_H1",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "distinct",
+            "sample_frames": 2,
+            "delay": 12,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "objects_distinct_S2_D12_H2",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "distinct",
+            "sample_frames": 2,
+            "delay": 12,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "objects_distinct_S2_D12_H4",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "distinct",
+            "sample_frames": 2,
+            "delay": 12,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "objects_distinct_S2_D12_H8",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "distinct",
+            "sample_frames": 2,
+            "delay": 12,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "objects_distinct_S4_D0_H1",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "distinct",
+            "sample_frames": 4,
+            "delay": 0,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "objects_distinct_S4_D0_H2",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "distinct",
+            "sample_frames": 4,
+            "delay": 0,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "objects_distinct_S4_D0_H4",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "distinct",
+            "sample_frames": 4,
+            "delay": 0,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "objects_distinct_S4_D0_H8",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "distinct",
+            "sample_frames": 4,
+            "delay": 0,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "objects_distinct_S4_D4_H1",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "distinct",
+            "sample_frames": 4,
+            "delay": 4,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "objects_distinct_S4_D4_H2",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "distinct",
+            "sample_frames": 4,
+            "delay": 4,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "objects_distinct_S4_D4_H4",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "distinct",
+            "sample_frames": 4,
+            "delay": 4,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "objects_distinct_S4_D4_H8",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "distinct",
+            "sample_frames": 4,
+            "delay": 4,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "objects_distinct_S4_D12_H1",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "distinct",
+            "sample_frames": 4,
+            "delay": 12,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "objects_distinct_S4_D12_H2",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "distinct",
+            "sample_frames": 4,
+            "delay": 12,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "objects_distinct_S4_D12_H4",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "distinct",
+            "sample_frames": 4,
+            "delay": 12,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "objects_distinct_S4_D12_H8",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "distinct",
+            "sample_frames": 4,
+            "delay": 12,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "objects_distinct_S8_D0_H1",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "distinct",
+            "sample_frames": 8,
+            "delay": 0,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "objects_distinct_S8_D0_H2",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "distinct",
+            "sample_frames": 8,
+            "delay": 0,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "objects_distinct_S8_D0_H4",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "distinct",
+            "sample_frames": 8,
+            "delay": 0,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "objects_distinct_S8_D0_H8",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "distinct",
+            "sample_frames": 8,
+            "delay": 0,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "objects_distinct_S8_D4_H1",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "distinct",
+            "sample_frames": 8,
+            "delay": 4,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "objects_distinct_S8_D4_H2",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "distinct",
+            "sample_frames": 8,
+            "delay": 4,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "objects_distinct_S8_D4_H4",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "distinct",
+            "sample_frames": 8,
+            "delay": 4,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "objects_distinct_S8_D4_H8",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "distinct",
+            "sample_frames": 8,
+            "delay": 4,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "objects_distinct_S8_D12_H1",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "distinct",
+            "sample_frames": 8,
+            "delay": 12,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "objects_distinct_S8_D12_H2",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "distinct",
+            "sample_frames": 8,
+            "delay": 12,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "objects_distinct_S8_D12_H4",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "distinct",
+            "sample_frames": 8,
+            "delay": 12,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "objects_distinct_S8_D12_H8",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "distinct",
+            "sample_frames": 8,
+            "delay": 12,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "objects_similar_S1_D0_H1",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "similar",
+            "sample_frames": 1,
+            "delay": 0,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "objects_similar_S1_D0_H2",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "similar",
+            "sample_frames": 1,
+            "delay": 0,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "objects_similar_S1_D0_H4",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "similar",
+            "sample_frames": 1,
+            "delay": 0,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "objects_similar_S1_D0_H8",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "similar",
+            "sample_frames": 1,
+            "delay": 0,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "objects_similar_S1_D4_H1",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "similar",
+            "sample_frames": 1,
+            "delay": 4,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "objects_similar_S1_D4_H2",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "similar",
+            "sample_frames": 1,
+            "delay": 4,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "objects_similar_S1_D4_H4",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "similar",
+            "sample_frames": 1,
+            "delay": 4,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "objects_similar_S1_D4_H8",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "similar",
+            "sample_frames": 1,
+            "delay": 4,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "objects_similar_S1_D12_H1",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "similar",
+            "sample_frames": 1,
+            "delay": 12,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "objects_similar_S1_D12_H2",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "similar",
+            "sample_frames": 1,
+            "delay": 12,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "objects_similar_S1_D12_H4",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "similar",
+            "sample_frames": 1,
+            "delay": 12,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "objects_similar_S1_D12_H8",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "similar",
+            "sample_frames": 1,
+            "delay": 12,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "objects_similar_S2_D0_H1",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "similar",
+            "sample_frames": 2,
+            "delay": 0,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "objects_similar_S2_D0_H2",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "similar",
+            "sample_frames": 2,
+            "delay": 0,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "objects_similar_S2_D0_H4",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "similar",
+            "sample_frames": 2,
+            "delay": 0,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "objects_similar_S2_D0_H8",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "similar",
+            "sample_frames": 2,
+            "delay": 0,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "objects_similar_S2_D4_H1",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "similar",
+            "sample_frames": 2,
+            "delay": 4,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "objects_similar_S2_D4_H2",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "similar",
+            "sample_frames": 2,
+            "delay": 4,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "objects_similar_S2_D4_H4",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "similar",
+            "sample_frames": 2,
+            "delay": 4,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "objects_similar_S2_D4_H8",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "similar",
+            "sample_frames": 2,
+            "delay": 4,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "objects_similar_S2_D12_H1",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "similar",
+            "sample_frames": 2,
+            "delay": 12,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "objects_similar_S2_D12_H2",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "similar",
+            "sample_frames": 2,
+            "delay": 12,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "objects_similar_S2_D12_H4",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "similar",
+            "sample_frames": 2,
+            "delay": 12,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "objects_similar_S2_D12_H8",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "similar",
+            "sample_frames": 2,
+            "delay": 12,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "objects_similar_S4_D0_H1",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "similar",
+            "sample_frames": 4,
+            "delay": 0,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "objects_similar_S4_D0_H2",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "similar",
+            "sample_frames": 4,
+            "delay": 0,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "objects_similar_S4_D0_H4",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "similar",
+            "sample_frames": 4,
+            "delay": 0,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "objects_similar_S4_D0_H8",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "similar",
+            "sample_frames": 4,
+            "delay": 0,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "objects_similar_S4_D4_H1",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "similar",
+            "sample_frames": 4,
+            "delay": 4,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "objects_similar_S4_D4_H2",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "similar",
+            "sample_frames": 4,
+            "delay": 4,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "objects_similar_S4_D4_H4",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "similar",
+            "sample_frames": 4,
+            "delay": 4,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "objects_similar_S4_D4_H8",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "similar",
+            "sample_frames": 4,
+            "delay": 4,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "objects_similar_S4_D12_H1",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "similar",
+            "sample_frames": 4,
+            "delay": 12,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "objects_similar_S4_D12_H2",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "similar",
+            "sample_frames": 4,
+            "delay": 12,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "objects_similar_S4_D12_H4",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "similar",
+            "sample_frames": 4,
+            "delay": 12,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "objects_similar_S4_D12_H8",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "similar",
+            "sample_frames": 4,
+            "delay": 12,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "objects_similar_S8_D0_H1",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "similar",
+            "sample_frames": 8,
+            "delay": 0,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "objects_similar_S8_D0_H2",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "similar",
+            "sample_frames": 8,
+            "delay": 0,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "objects_similar_S8_D0_H4",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "similar",
+            "sample_frames": 8,
+            "delay": 0,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "objects_similar_S8_D0_H8",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "similar",
+            "sample_frames": 8,
+            "delay": 0,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "objects_similar_S8_D4_H1",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "similar",
+            "sample_frames": 8,
+            "delay": 4,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "objects_similar_S8_D4_H2",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "similar",
+            "sample_frames": 8,
+            "delay": 4,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "objects_similar_S8_D4_H4",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "similar",
+            "sample_frames": 8,
+            "delay": 4,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "objects_similar_S8_D4_H8",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "similar",
+            "sample_frames": 8,
+            "delay": 4,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "objects_similar_S8_D12_H1",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "similar",
+            "sample_frames": 8,
+            "delay": 12,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "objects_similar_S8_D12_H2",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "similar",
+            "sample_frames": 8,
+            "delay": 12,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "objects_similar_S8_D12_H4",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "similar",
+            "sample_frames": 8,
+            "delay": 12,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "objects_similar_S8_D12_H8",
+          "kwargs": {
+            "family": "objects",
+            "similarity": "similar",
+            "sample_frames": 8,
+            "delay": 12,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "fractals_distinct_S1_D0_H1",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "distinct",
+            "sample_frames": 1,
+            "delay": 0,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "fractals_distinct_S1_D0_H2",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "distinct",
+            "sample_frames": 1,
+            "delay": 0,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "fractals_distinct_S1_D0_H4",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "distinct",
+            "sample_frames": 1,
+            "delay": 0,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "fractals_distinct_S1_D0_H8",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "distinct",
+            "sample_frames": 1,
+            "delay": 0,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "fractals_distinct_S1_D4_H1",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "distinct",
+            "sample_frames": 1,
+            "delay": 4,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "fractals_distinct_S1_D4_H2",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "distinct",
+            "sample_frames": 1,
+            "delay": 4,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "fractals_distinct_S1_D4_H4",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "distinct",
+            "sample_frames": 1,
+            "delay": 4,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "fractals_distinct_S1_D4_H8",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "distinct",
+            "sample_frames": 1,
+            "delay": 4,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "fractals_distinct_S1_D12_H1",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "distinct",
+            "sample_frames": 1,
+            "delay": 12,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "fractals_distinct_S1_D12_H2",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "distinct",
+            "sample_frames": 1,
+            "delay": 12,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "fractals_distinct_S1_D12_H4",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "distinct",
+            "sample_frames": 1,
+            "delay": 12,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "fractals_distinct_S1_D12_H8",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "distinct",
+            "sample_frames": 1,
+            "delay": 12,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "fractals_distinct_S2_D0_H1",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "distinct",
+            "sample_frames": 2,
+            "delay": 0,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "fractals_distinct_S2_D0_H2",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "distinct",
+            "sample_frames": 2,
+            "delay": 0,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "fractals_distinct_S2_D0_H4",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "distinct",
+            "sample_frames": 2,
+            "delay": 0,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "fractals_distinct_S2_D0_H8",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "distinct",
+            "sample_frames": 2,
+            "delay": 0,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "fractals_distinct_S2_D4_H1",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "distinct",
+            "sample_frames": 2,
+            "delay": 4,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "fractals_distinct_S2_D4_H2",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "distinct",
+            "sample_frames": 2,
+            "delay": 4,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "fractals_distinct_S2_D4_H4",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "distinct",
+            "sample_frames": 2,
+            "delay": 4,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "fractals_distinct_S2_D4_H8",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "distinct",
+            "sample_frames": 2,
+            "delay": 4,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "fractals_distinct_S2_D12_H1",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "distinct",
+            "sample_frames": 2,
+            "delay": 12,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "fractals_distinct_S2_D12_H2",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "distinct",
+            "sample_frames": 2,
+            "delay": 12,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "fractals_distinct_S2_D12_H4",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "distinct",
+            "sample_frames": 2,
+            "delay": 12,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "fractals_distinct_S2_D12_H8",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "distinct",
+            "sample_frames": 2,
+            "delay": 12,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "fractals_distinct_S4_D0_H1",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "distinct",
+            "sample_frames": 4,
+            "delay": 0,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "fractals_distinct_S4_D0_H2",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "distinct",
+            "sample_frames": 4,
+            "delay": 0,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "fractals_distinct_S4_D0_H4",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "distinct",
+            "sample_frames": 4,
+            "delay": 0,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "fractals_distinct_S4_D0_H8",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "distinct",
+            "sample_frames": 4,
+            "delay": 0,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "fractals_distinct_S4_D4_H1",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "distinct",
+            "sample_frames": 4,
+            "delay": 4,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "fractals_distinct_S4_D4_H2",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "distinct",
+            "sample_frames": 4,
+            "delay": 4,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "fractals_distinct_S4_D4_H4",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "distinct",
+            "sample_frames": 4,
+            "delay": 4,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "fractals_distinct_S4_D4_H8",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "distinct",
+            "sample_frames": 4,
+            "delay": 4,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "fractals_distinct_S4_D12_H1",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "distinct",
+            "sample_frames": 4,
+            "delay": 12,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "fractals_distinct_S4_D12_H2",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "distinct",
+            "sample_frames": 4,
+            "delay": 12,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "fractals_distinct_S4_D12_H4",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "distinct",
+            "sample_frames": 4,
+            "delay": 12,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "fractals_distinct_S4_D12_H8",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "distinct",
+            "sample_frames": 4,
+            "delay": 12,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "fractals_distinct_S8_D0_H1",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "distinct",
+            "sample_frames": 8,
+            "delay": 0,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "fractals_distinct_S8_D0_H2",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "distinct",
+            "sample_frames": 8,
+            "delay": 0,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "fractals_distinct_S8_D0_H4",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "distinct",
+            "sample_frames": 8,
+            "delay": 0,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "fractals_distinct_S8_D0_H8",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "distinct",
+            "sample_frames": 8,
+            "delay": 0,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "fractals_distinct_S8_D4_H1",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "distinct",
+            "sample_frames": 8,
+            "delay": 4,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "fractals_distinct_S8_D4_H2",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "distinct",
+            "sample_frames": 8,
+            "delay": 4,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "fractals_distinct_S8_D4_H4",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "distinct",
+            "sample_frames": 8,
+            "delay": 4,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "fractals_distinct_S8_D4_H8",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "distinct",
+            "sample_frames": 8,
+            "delay": 4,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "fractals_distinct_S8_D12_H1",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "distinct",
+            "sample_frames": 8,
+            "delay": 12,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "fractals_distinct_S8_D12_H2",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "distinct",
+            "sample_frames": 8,
+            "delay": 12,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "fractals_distinct_S8_D12_H4",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "distinct",
+            "sample_frames": 8,
+            "delay": 12,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "fractals_distinct_S8_D12_H8",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "distinct",
+            "sample_frames": 8,
+            "delay": 12,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "fractals_similar_S1_D0_H1",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "similar",
+            "sample_frames": 1,
+            "delay": 0,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "fractals_similar_S1_D0_H2",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "similar",
+            "sample_frames": 1,
+            "delay": 0,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "fractals_similar_S1_D0_H4",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "similar",
+            "sample_frames": 1,
+            "delay": 0,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "fractals_similar_S1_D0_H8",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "similar",
+            "sample_frames": 1,
+            "delay": 0,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "fractals_similar_S1_D4_H1",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "similar",
+            "sample_frames": 1,
+            "delay": 4,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "fractals_similar_S1_D4_H2",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "similar",
+            "sample_frames": 1,
+            "delay": 4,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "fractals_similar_S1_D4_H4",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "similar",
+            "sample_frames": 1,
+            "delay": 4,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "fractals_similar_S1_D4_H8",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "similar",
+            "sample_frames": 1,
+            "delay": 4,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "fractals_similar_S1_D12_H1",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "similar",
+            "sample_frames": 1,
+            "delay": 12,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "fractals_similar_S1_D12_H2",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "similar",
+            "sample_frames": 1,
+            "delay": 12,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "fractals_similar_S1_D12_H4",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "similar",
+            "sample_frames": 1,
+            "delay": 12,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "fractals_similar_S1_D12_H8",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "similar",
+            "sample_frames": 1,
+            "delay": 12,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "fractals_similar_S2_D0_H1",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "similar",
+            "sample_frames": 2,
+            "delay": 0,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "fractals_similar_S2_D0_H2",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "similar",
+            "sample_frames": 2,
+            "delay": 0,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "fractals_similar_S2_D0_H4",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "similar",
+            "sample_frames": 2,
+            "delay": 0,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "fractals_similar_S2_D0_H8",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "similar",
+            "sample_frames": 2,
+            "delay": 0,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "fractals_similar_S2_D4_H1",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "similar",
+            "sample_frames": 2,
+            "delay": 4,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "fractals_similar_S2_D4_H2",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "similar",
+            "sample_frames": 2,
+            "delay": 4,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "fractals_similar_S2_D4_H4",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "similar",
+            "sample_frames": 2,
+            "delay": 4,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "fractals_similar_S2_D4_H8",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "similar",
+            "sample_frames": 2,
+            "delay": 4,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "fractals_similar_S2_D12_H1",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "similar",
+            "sample_frames": 2,
+            "delay": 12,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "fractals_similar_S2_D12_H2",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "similar",
+            "sample_frames": 2,
+            "delay": 12,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "fractals_similar_S2_D12_H4",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "similar",
+            "sample_frames": 2,
+            "delay": 12,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "fractals_similar_S2_D12_H8",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "similar",
+            "sample_frames": 2,
+            "delay": 12,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "fractals_similar_S4_D0_H1",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "similar",
+            "sample_frames": 4,
+            "delay": 0,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "fractals_similar_S4_D0_H2",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "similar",
+            "sample_frames": 4,
+            "delay": 0,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "fractals_similar_S4_D0_H4",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "similar",
+            "sample_frames": 4,
+            "delay": 0,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "fractals_similar_S4_D0_H8",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "similar",
+            "sample_frames": 4,
+            "delay": 0,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "fractals_similar_S4_D4_H1",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "similar",
+            "sample_frames": 4,
+            "delay": 4,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "fractals_similar_S4_D4_H2",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "similar",
+            "sample_frames": 4,
+            "delay": 4,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "fractals_similar_S4_D4_H4",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "similar",
+            "sample_frames": 4,
+            "delay": 4,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "fractals_similar_S4_D4_H8",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "similar",
+            "sample_frames": 4,
+            "delay": 4,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "fractals_similar_S4_D12_H1",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "similar",
+            "sample_frames": 4,
+            "delay": 12,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "fractals_similar_S4_D12_H2",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "similar",
+            "sample_frames": 4,
+            "delay": 12,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "fractals_similar_S4_D12_H4",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "similar",
+            "sample_frames": 4,
+            "delay": 12,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "fractals_similar_S4_D12_H8",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "similar",
+            "sample_frames": 4,
+            "delay": 12,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "fractals_similar_S8_D0_H1",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "similar",
+            "sample_frames": 8,
+            "delay": 0,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "fractals_similar_S8_D0_H2",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "similar",
+            "sample_frames": 8,
+            "delay": 0,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "fractals_similar_S8_D0_H4",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "similar",
+            "sample_frames": 8,
+            "delay": 0,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "fractals_similar_S8_D0_H8",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "similar",
+            "sample_frames": 8,
+            "delay": 0,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "fractals_similar_S8_D4_H1",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "similar",
+            "sample_frames": 8,
+            "delay": 4,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "fractals_similar_S8_D4_H2",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "similar",
+            "sample_frames": 8,
+            "delay": 4,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "fractals_similar_S8_D4_H4",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "similar",
+            "sample_frames": 8,
+            "delay": 4,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "fractals_similar_S8_D4_H8",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "similar",
+            "sample_frames": 8,
+            "delay": 4,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "fractals_similar_S8_D12_H1",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "similar",
+            "sample_frames": 8,
+            "delay": 12,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "fractals_similar_S8_D12_H2",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "similar",
+            "sample_frames": 8,
+            "delay": 12,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "fractals_similar_S8_D12_H4",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "similar",
+            "sample_frames": 8,
+            "delay": 12,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "fractals_similar_S8_D12_H8",
+          "kwargs": {
+            "family": "fractals",
+            "similarity": "similar",
+            "sample_frames": 8,
+            "delay": 12,
+            "exposure": 8
+          }
+        }
+      ],
+      "report_by": [
+        "family",
+        "similarity",
+        "sample_frames",
+        "delay",
+        "exposure",
+        "target_index",
+        "minimum_pair_rms"
+      ]
+    },
+    {
+      "id": "popout_search",
+      "stream_id": 41,
+      "classes": 4,
+      "group": "popout_search",
+      "requires_bsds500": false,
+      "labels": [
+        "top-left",
+        "top-right",
+        "bottom-left",
+        "bottom-right"
+      ],
+      "question": "Where is the item that differs from the other three?",
+      "conditions": [
+        {
+          "id": "color_X12_H1",
+          "kwargs": {
+            "feature": "color",
+            "difference": 12,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "color_X12_H2",
+          "kwargs": {
+            "feature": "color",
+            "difference": 12,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "color_X12_H4",
+          "kwargs": {
+            "feature": "color",
+            "difference": 12,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "color_X12_H8",
+          "kwargs": {
+            "feature": "color",
+            "difference": 12,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "color_X36_H1",
+          "kwargs": {
+            "feature": "color",
+            "difference": 36,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "color_X36_H2",
+          "kwargs": {
+            "feature": "color",
+            "difference": 36,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "color_X36_H4",
+          "kwargs": {
+            "feature": "color",
+            "difference": 36,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "color_X36_H8",
+          "kwargs": {
+            "feature": "color",
+            "difference": 36,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "color_X72_H1",
+          "kwargs": {
+            "feature": "color",
+            "difference": 72,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "color_X72_H2",
+          "kwargs": {
+            "feature": "color",
+            "difference": 72,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "color_X72_H4",
+          "kwargs": {
+            "feature": "color",
+            "difference": 72,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "color_X72_H8",
+          "kwargs": {
+            "feature": "color",
+            "difference": 72,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "orientation_X5_H1",
+          "kwargs": {
+            "feature": "orientation",
+            "difference": 5,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "orientation_X5_H2",
+          "kwargs": {
+            "feature": "orientation",
+            "difference": 5,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "orientation_X5_H4",
+          "kwargs": {
+            "feature": "orientation",
+            "difference": 5,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "orientation_X5_H8",
+          "kwargs": {
+            "feature": "orientation",
+            "difference": 5,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "orientation_X15_H1",
+          "kwargs": {
+            "feature": "orientation",
+            "difference": 15,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "orientation_X15_H2",
+          "kwargs": {
+            "feature": "orientation",
+            "difference": 15,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "orientation_X15_H4",
+          "kwargs": {
+            "feature": "orientation",
+            "difference": 15,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "orientation_X15_H8",
+          "kwargs": {
+            "feature": "orientation",
+            "difference": 15,
+            "exposure": 8
+          }
+        },
+        {
+          "id": "orientation_X45_H1",
+          "kwargs": {
+            "feature": "orientation",
+            "difference": 45,
+            "exposure": 1
+          }
+        },
+        {
+          "id": "orientation_X45_H2",
+          "kwargs": {
+            "feature": "orientation",
+            "difference": 45,
+            "exposure": 2
+          }
+        },
+        {
+          "id": "orientation_X45_H4",
+          "kwargs": {
+            "feature": "orientation",
+            "difference": 45,
+            "exposure": 4
+          }
+        },
+        {
+          "id": "orientation_X45_H8",
+          "kwargs": {
+            "feature": "orientation",
+            "difference": 45,
+            "exposure": 8
+          }
+        }
+      ],
+      "report_by": [
+        "feature",
+        "difference",
+        "exposure",
+        "target_index"
+      ]
+    },
+    {
+      "id": "motion_memory_search",
+      "stream_id": 42,
+      "classes": 4,
+      "group": "motion_memory_search",
+      "requires_bsds500": false,
+      "labels": [
+        "top-left",
+        "top-right",
+        "bottom-left",
+        "bottom-right"
+      ],
+      "question": "Which patch moves in the remembered sample direction?",
+      "conditions": [
+        {
+          "id": "motion_A20_S3_D0_H3",
+          "kwargs": {
+            "spacing": 20,
+            "sample_frames": 3,
+            "delay": 0,
+            "exposure": 3
+          }
+        },
+        {
+          "id": "motion_A20_S3_D0_H6",
+          "kwargs": {
+            "spacing": 20,
+            "sample_frames": 3,
+            "delay": 0,
+            "exposure": 6
+          }
+        },
+        {
+          "id": "motion_A20_S3_D0_H12",
+          "kwargs": {
+            "spacing": 20,
+            "sample_frames": 3,
+            "delay": 0,
+            "exposure": 12
+          }
+        },
+        {
+          "id": "motion_A20_S3_D4_H3",
+          "kwargs": {
+            "spacing": 20,
+            "sample_frames": 3,
+            "delay": 4,
+            "exposure": 3
+          }
+        },
+        {
+          "id": "motion_A20_S3_D4_H6",
+          "kwargs": {
+            "spacing": 20,
+            "sample_frames": 3,
+            "delay": 4,
+            "exposure": 6
+          }
+        },
+        {
+          "id": "motion_A20_S3_D4_H12",
+          "kwargs": {
+            "spacing": 20,
+            "sample_frames": 3,
+            "delay": 4,
+            "exposure": 12
+          }
+        },
+        {
+          "id": "motion_A20_S3_D12_H3",
+          "kwargs": {
+            "spacing": 20,
+            "sample_frames": 3,
+            "delay": 12,
+            "exposure": 3
+          }
+        },
+        {
+          "id": "motion_A20_S3_D12_H6",
+          "kwargs": {
+            "spacing": 20,
+            "sample_frames": 3,
+            "delay": 12,
+            "exposure": 6
+          }
+        },
+        {
+          "id": "motion_A20_S3_D12_H12",
+          "kwargs": {
+            "spacing": 20,
+            "sample_frames": 3,
+            "delay": 12,
+            "exposure": 12
+          }
+        },
+        {
+          "id": "motion_A20_S6_D0_H3",
+          "kwargs": {
+            "spacing": 20,
+            "sample_frames": 6,
+            "delay": 0,
+            "exposure": 3
+          }
+        },
+        {
+          "id": "motion_A20_S6_D0_H6",
+          "kwargs": {
+            "spacing": 20,
+            "sample_frames": 6,
+            "delay": 0,
+            "exposure": 6
+          }
+        },
+        {
+          "id": "motion_A20_S6_D0_H12",
+          "kwargs": {
+            "spacing": 20,
+            "sample_frames": 6,
+            "delay": 0,
+            "exposure": 12
+          }
+        },
+        {
+          "id": "motion_A20_S6_D4_H3",
+          "kwargs": {
+            "spacing": 20,
+            "sample_frames": 6,
+            "delay": 4,
+            "exposure": 3
+          }
+        },
+        {
+          "id": "motion_A20_S6_D4_H6",
+          "kwargs": {
+            "spacing": 20,
+            "sample_frames": 6,
+            "delay": 4,
+            "exposure": 6
+          }
+        },
+        {
+          "id": "motion_A20_S6_D4_H12",
+          "kwargs": {
+            "spacing": 20,
+            "sample_frames": 6,
+            "delay": 4,
+            "exposure": 12
+          }
+        },
+        {
+          "id": "motion_A20_S6_D12_H3",
+          "kwargs": {
+            "spacing": 20,
+            "sample_frames": 6,
+            "delay": 12,
+            "exposure": 3
+          }
+        },
+        {
+          "id": "motion_A20_S6_D12_H6",
+          "kwargs": {
+            "spacing": 20,
+            "sample_frames": 6,
+            "delay": 12,
+            "exposure": 6
+          }
+        },
+        {
+          "id": "motion_A20_S6_D12_H12",
+          "kwargs": {
+            "spacing": 20,
+            "sample_frames": 6,
+            "delay": 12,
+            "exposure": 12
+          }
+        },
+        {
+          "id": "motion_A20_S12_D0_H3",
+          "kwargs": {
+            "spacing": 20,
+            "sample_frames": 12,
+            "delay": 0,
+            "exposure": 3
+          }
+        },
+        {
+          "id": "motion_A20_S12_D0_H6",
+          "kwargs": {
+            "spacing": 20,
+            "sample_frames": 12,
+            "delay": 0,
+            "exposure": 6
+          }
+        },
+        {
+          "id": "motion_A20_S12_D0_H12",
+          "kwargs": {
+            "spacing": 20,
+            "sample_frames": 12,
+            "delay": 0,
+            "exposure": 12
+          }
+        },
+        {
+          "id": "motion_A20_S12_D4_H3",
+          "kwargs": {
+            "spacing": 20,
+            "sample_frames": 12,
+            "delay": 4,
+            "exposure": 3
+          }
+        },
+        {
+          "id": "motion_A20_S12_D4_H6",
+          "kwargs": {
+            "spacing": 20,
+            "sample_frames": 12,
+            "delay": 4,
+            "exposure": 6
+          }
+        },
+        {
+          "id": "motion_A20_S12_D4_H12",
+          "kwargs": {
+            "spacing": 20,
+            "sample_frames": 12,
+            "delay": 4,
+            "exposure": 12
+          }
+        },
+        {
+          "id": "motion_A20_S12_D12_H3",
+          "kwargs": {
+            "spacing": 20,
+            "sample_frames": 12,
+            "delay": 12,
+            "exposure": 3
+          }
+        },
+        {
+          "id": "motion_A20_S12_D12_H6",
+          "kwargs": {
+            "spacing": 20,
+            "sample_frames": 12,
+            "delay": 12,
+            "exposure": 6
+          }
+        },
+        {
+          "id": "motion_A20_S12_D12_H12",
+          "kwargs": {
+            "spacing": 20,
+            "sample_frames": 12,
+            "delay": 12,
+            "exposure": 12
+          }
+        },
+        {
+          "id": "motion_A45_S3_D0_H3",
+          "kwargs": {
+            "spacing": 45,
+            "sample_frames": 3,
+            "delay": 0,
+            "exposure": 3
+          }
+        },
+        {
+          "id": "motion_A45_S3_D0_H6",
+          "kwargs": {
+            "spacing": 45,
+            "sample_frames": 3,
+            "delay": 0,
+            "exposure": 6
+          }
+        },
+        {
+          "id": "motion_A45_S3_D0_H12",
+          "kwargs": {
+            "spacing": 45,
+            "sample_frames": 3,
+            "delay": 0,
+            "exposure": 12
+          }
+        },
+        {
+          "id": "motion_A45_S3_D4_H3",
+          "kwargs": {
+            "spacing": 45,
+            "sample_frames": 3,
+            "delay": 4,
+            "exposure": 3
+          }
+        },
+        {
+          "id": "motion_A45_S3_D4_H6",
+          "kwargs": {
+            "spacing": 45,
+            "sample_frames": 3,
+            "delay": 4,
+            "exposure": 6
+          }
+        },
+        {
+          "id": "motion_A45_S3_D4_H12",
+          "kwargs": {
+            "spacing": 45,
+            "sample_frames": 3,
+            "delay": 4,
+            "exposure": 12
+          }
+        },
+        {
+          "id": "motion_A45_S3_D12_H3",
+          "kwargs": {
+            "spacing": 45,
+            "sample_frames": 3,
+            "delay": 12,
+            "exposure": 3
+          }
+        },
+        {
+          "id": "motion_A45_S3_D12_H6",
+          "kwargs": {
+            "spacing": 45,
+            "sample_frames": 3,
+            "delay": 12,
+            "exposure": 6
+          }
+        },
+        {
+          "id": "motion_A45_S3_D12_H12",
+          "kwargs": {
+            "spacing": 45,
+            "sample_frames": 3,
+            "delay": 12,
+            "exposure": 12
+          }
+        },
+        {
+          "id": "motion_A45_S6_D0_H3",
+          "kwargs": {
+            "spacing": 45,
+            "sample_frames": 6,
+            "delay": 0,
+            "exposure": 3
+          }
+        },
+        {
+          "id": "motion_A45_S6_D0_H6",
+          "kwargs": {
+            "spacing": 45,
+            "sample_frames": 6,
+            "delay": 0,
+            "exposure": 6
+          }
+        },
+        {
+          "id": "motion_A45_S6_D0_H12",
+          "kwargs": {
+            "spacing": 45,
+            "sample_frames": 6,
+            "delay": 0,
+            "exposure": 12
+          }
+        },
+        {
+          "id": "motion_A45_S6_D4_H3",
+          "kwargs": {
+            "spacing": 45,
+            "sample_frames": 6,
+            "delay": 4,
+            "exposure": 3
+          }
+        },
+        {
+          "id": "motion_A45_S6_D4_H6",
+          "kwargs": {
+            "spacing": 45,
+            "sample_frames": 6,
+            "delay": 4,
+            "exposure": 6
+          }
+        },
+        {
+          "id": "motion_A45_S6_D4_H12",
+          "kwargs": {
+            "spacing": 45,
+            "sample_frames": 6,
+            "delay": 4,
+            "exposure": 12
+          }
+        },
+        {
+          "id": "motion_A45_S6_D12_H3",
+          "kwargs": {
+            "spacing": 45,
+            "sample_frames": 6,
+            "delay": 12,
+            "exposure": 3
+          }
+        },
+        {
+          "id": "motion_A45_S6_D12_H6",
+          "kwargs": {
+            "spacing": 45,
+            "sample_frames": 6,
+            "delay": 12,
+            "exposure": 6
+          }
+        },
+        {
+          "id": "motion_A45_S6_D12_H12",
+          "kwargs": {
+            "spacing": 45,
+            "sample_frames": 6,
+            "delay": 12,
+            "exposure": 12
+          }
+        },
+        {
+          "id": "motion_A45_S12_D0_H3",
+          "kwargs": {
+            "spacing": 45,
+            "sample_frames": 12,
+            "delay": 0,
+            "exposure": 3
+          }
+        },
+        {
+          "id": "motion_A45_S12_D0_H6",
+          "kwargs": {
+            "spacing": 45,
+            "sample_frames": 12,
+            "delay": 0,
+            "exposure": 6
+          }
+        },
+        {
+          "id": "motion_A45_S12_D0_H12",
+          "kwargs": {
+            "spacing": 45,
+            "sample_frames": 12,
+            "delay": 0,
+            "exposure": 12
+          }
+        },
+        {
+          "id": "motion_A45_S12_D4_H3",
+          "kwargs": {
+            "spacing": 45,
+            "sample_frames": 12,
+            "delay": 4,
+            "exposure": 3
+          }
+        },
+        {
+          "id": "motion_A45_S12_D4_H6",
+          "kwargs": {
+            "spacing": 45,
+            "sample_frames": 12,
+            "delay": 4,
+            "exposure": 6
+          }
+        },
+        {
+          "id": "motion_A45_S12_D4_H12",
+          "kwargs": {
+            "spacing": 45,
+            "sample_frames": 12,
+            "delay": 4,
+            "exposure": 12
+          }
+        },
+        {
+          "id": "motion_A45_S12_D12_H3",
+          "kwargs": {
+            "spacing": 45,
+            "sample_frames": 12,
+            "delay": 12,
+            "exposure": 3
+          }
+        },
+        {
+          "id": "motion_A45_S12_D12_H6",
+          "kwargs": {
+            "spacing": 45,
+            "sample_frames": 12,
+            "delay": 12,
+            "exposure": 6
+          }
+        },
+        {
+          "id": "motion_A45_S12_D12_H12",
+          "kwargs": {
+            "spacing": 45,
+            "sample_frames": 12,
+            "delay": 12,
+            "exposure": 12
+          }
+        },
+        {
+          "id": "motion_A90_S3_D0_H3",
+          "kwargs": {
+            "spacing": 90,
+            "sample_frames": 3,
+            "delay": 0,
+            "exposure": 3
+          }
+        },
+        {
+          "id": "motion_A90_S3_D0_H6",
+          "kwargs": {
+            "spacing": 90,
+            "sample_frames": 3,
+            "delay": 0,
+            "exposure": 6
+          }
+        },
+        {
+          "id": "motion_A90_S3_D0_H12",
+          "kwargs": {
+            "spacing": 90,
+            "sample_frames": 3,
+            "delay": 0,
+            "exposure": 12
+          }
+        },
+        {
+          "id": "motion_A90_S3_D4_H3",
+          "kwargs": {
+            "spacing": 90,
+            "sample_frames": 3,
+            "delay": 4,
+            "exposure": 3
+          }
+        },
+        {
+          "id": "motion_A90_S3_D4_H6",
+          "kwargs": {
+            "spacing": 90,
+            "sample_frames": 3,
+            "delay": 4,
+            "exposure": 6
+          }
+        },
+        {
+          "id": "motion_A90_S3_D4_H12",
+          "kwargs": {
+            "spacing": 90,
+            "sample_frames": 3,
+            "delay": 4,
+            "exposure": 12
+          }
+        },
+        {
+          "id": "motion_A90_S3_D12_H3",
+          "kwargs": {
+            "spacing": 90,
+            "sample_frames": 3,
+            "delay": 12,
+            "exposure": 3
+          }
+        },
+        {
+          "id": "motion_A90_S3_D12_H6",
+          "kwargs": {
+            "spacing": 90,
+            "sample_frames": 3,
+            "delay": 12,
+            "exposure": 6
+          }
+        },
+        {
+          "id": "motion_A90_S3_D12_H12",
+          "kwargs": {
+            "spacing": 90,
+            "sample_frames": 3,
+            "delay": 12,
+            "exposure": 12
+          }
+        },
+        {
+          "id": "motion_A90_S6_D0_H3",
+          "kwargs": {
+            "spacing": 90,
+            "sample_frames": 6,
+            "delay": 0,
+            "exposure": 3
+          }
+        },
+        {
+          "id": "motion_A90_S6_D0_H6",
+          "kwargs": {
+            "spacing": 90,
+            "sample_frames": 6,
+            "delay": 0,
+            "exposure": 6
+          }
+        },
+        {
+          "id": "motion_A90_S6_D0_H12",
+          "kwargs": {
+            "spacing": 90,
+            "sample_frames": 6,
+            "delay": 0,
+            "exposure": 12
+          }
+        },
+        {
+          "id": "motion_A90_S6_D4_H3",
+          "kwargs": {
+            "spacing": 90,
+            "sample_frames": 6,
+            "delay": 4,
+            "exposure": 3
+          }
+        },
+        {
+          "id": "motion_A90_S6_D4_H6",
+          "kwargs": {
+            "spacing": 90,
+            "sample_frames": 6,
+            "delay": 4,
+            "exposure": 6
+          }
+        },
+        {
+          "id": "motion_A90_S6_D4_H12",
+          "kwargs": {
+            "spacing": 90,
+            "sample_frames": 6,
+            "delay": 4,
+            "exposure": 12
+          }
+        },
+        {
+          "id": "motion_A90_S6_D12_H3",
+          "kwargs": {
+            "spacing": 90,
+            "sample_frames": 6,
+            "delay": 12,
+            "exposure": 3
+          }
+        },
+        {
+          "id": "motion_A90_S6_D12_H6",
+          "kwargs": {
+            "spacing": 90,
+            "sample_frames": 6,
+            "delay": 12,
+            "exposure": 6
+          }
+        },
+        {
+          "id": "motion_A90_S6_D12_H12",
+          "kwargs": {
+            "spacing": 90,
+            "sample_frames": 6,
+            "delay": 12,
+            "exposure": 12
+          }
+        },
+        {
+          "id": "motion_A90_S12_D0_H3",
+          "kwargs": {
+            "spacing": 90,
+            "sample_frames": 12,
+            "delay": 0,
+            "exposure": 3
+          }
+        },
+        {
+          "id": "motion_A90_S12_D0_H6",
+          "kwargs": {
+            "spacing": 90,
+            "sample_frames": 12,
+            "delay": 0,
+            "exposure": 6
+          }
+        },
+        {
+          "id": "motion_A90_S12_D0_H12",
+          "kwargs": {
+            "spacing": 90,
+            "sample_frames": 12,
+            "delay": 0,
+            "exposure": 12
+          }
+        },
+        {
+          "id": "motion_A90_S12_D4_H3",
+          "kwargs": {
+            "spacing": 90,
+            "sample_frames": 12,
+            "delay": 4,
+            "exposure": 3
+          }
+        },
+        {
+          "id": "motion_A90_S12_D4_H6",
+          "kwargs": {
+            "spacing": 90,
+            "sample_frames": 12,
+            "delay": 4,
+            "exposure": 6
+          }
+        },
+        {
+          "id": "motion_A90_S12_D4_H12",
+          "kwargs": {
+            "spacing": 90,
+            "sample_frames": 12,
+            "delay": 4,
+            "exposure": 12
+          }
+        },
+        {
+          "id": "motion_A90_S12_D12_H3",
+          "kwargs": {
+            "spacing": 90,
+            "sample_frames": 12,
+            "delay": 12,
+            "exposure": 3
+          }
+        },
+        {
+          "id": "motion_A90_S12_D12_H6",
+          "kwargs": {
+            "spacing": 90,
+            "sample_frames": 12,
+            "delay": 12,
+            "exposure": 6
+          }
+        },
+        {
+          "id": "motion_A90_S12_D12_H12",
+          "kwargs": {
+            "spacing": 90,
+            "sample_frames": 12,
+            "delay": 12,
+            "exposure": 12
+          }
+        }
+      ],
+      "report_by": [
+        "spacing",
+        "sample_frames",
+        "delay",
+        "exposure",
+        "target_index"
+      ]
+    }
+  ]
+}
