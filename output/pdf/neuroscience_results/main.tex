@@ -1,0 +1,240 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[margin=0.73in,headheight=15pt]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,microtype,amsmath,amssymb,graphicx,booktabs,tabularx,array,xcolor,caption,fancyhdr,enumitem}
+\usepackage[colorlinks=true,linkcolor=blue!45!black,citecolor=blue!45!black,urlcolor=blue!45!black]{hyperref}
+\definecolor{ink}{HTML}{17374D}
+\pagestyle{fancy}\fancyhf{}\lhead{\small Shared priority and working memory}\rhead{\small Neuroscience synthesis}\cfoot{\thepage}
+\setlength{\parindent}{0pt}\setlength{\parskip}{6pt}
+\setlength{\emergencystretch}{2em}
+\captionsetup{font=small,labelfont=bf,skip=5pt,hypcap=false}
+\setlist{nosep,leftmargin=*}
+\newcommand{\result}[1]{\clearpage\section*{\textcolor{ink}{Results: #1}}}
+\newcommand{\panel}[3]{\begin{center}\includegraphics[width=\linewidth,height=#2,keepaspectratio]{figures/#1.pdf}\captionof{figure}{#3}\label{fig:#1}\end{center}}
+\newcommand{\take}[1]{\par\textbf{Biological correspondence.} #1\par}
+\begin{document}
+\thispagestyle{empty}
+{\small\textcolor{ink}{COMPUTATIONAL NEUROSCIENCE \hfill 19 OCTOBER 2026}\par}
+\vspace{0.35in}
+{\LARGE\bfseries Shared spatial priority and working memory across visual behavior\par}
+\vspace{0.12in}
+{\large Neuroscience results from one recurrent visual observer across 19 tasks\par}
+\vspace{0.18in}
+\textbf{Abstract.} A common problem links visual attention, working memory and perceptual decision-making: an observer must preserve useful information and select the part that matters now. We examined whether one trained recurrent visual model expresses the computational signatures identified in human and macaque experiments. A frozen checkpoint was tested on 55,936 native trials spanning 437 conditions, followed by matched spatial-priority perturbations, memory resets, population decoding and diagnostic changes of the remembered sample.
+
+The principal correspondences were causal and representational. Suppressing relevant spatial priority impaired static orientation judgments, motion judgments, binding and memory-guided search. Orientation information remained recoverable during blank delays, with a strong dependence on spatial memory. Motion search retained a direction template across independently generated dot patterns and depended strongly on global recurrent memory. Changing only the remembered sample redirected both choices and attention for successfully learned search conditions. Temporal motion judgments survived trials on which first-event, last-event and short-history strategies gave the wrong answer. Recognition errors increased with memory load chiefly through false acceptance of novel images.
+
+These results support a common computational organization: differentiated visual evidence enters a shared spatial-selection process, and recurrent states preserve and transform that evidence for a later report. The same analyses identify two informative departures. In VDA experiments, cue inhibition produced local detection costs without a reliable improvement at the opposite location. In difficult static object search, externally decoded memory and candidate representations supported much better matching than the agent's own choices. The resulting account separates sensory availability, retained content, selection and use of information.
+
+\subsection*{How to read this paper}
+Each Results section begins with an experimental or theoretical neuroscience claim, then presents the corresponding model measurement and the inference it supports. All plotted observations come from the completed analyses of the \textbf{previous 19-task model, checkpoint 204,289}. The newly trained spatial-memory-query model is a separate experiment. Figures are newly composed from saved measurements; no weights were changed or additional training performed for this synthesis.
+
+\subsection*{Central finding}
+The strongest agreement with neuroscience is the coordinated relationship between \textbf{what is represented, where information is selected, and which stored state is causally required}. Accurate final answers become scientifically informative when those three observations explain the same behavior.
+
+\clearpage
+\section*{The observer and its biological interpretation}
+The model receives a sequence of $100\times100$ pixel images. Each image is represented at 100 spatial sites arranged on a $10\times10$ grid. A site is a location in this internal grid, associated with local evidence from the corresponding image region. Appearance channels carry color and image structure. A temporal pathway compares grayscale crops across previous and current observations, supplying local displacement evidence. Learned fusion combines these signals into a 64-dimensional feature vector at each site.
+
+Two recurrent stores carry information between frames. \textbf{Spatial memory} retains 64 values at each of the 100 sites. \textbf{Global memory}, implemented by the recurrent classification token (CLS), retains a single 64-dimensional vector. The previous global state generates an attention query; current visual evidence and previous spatial memory generate site-specific keys. Their compatibility determines spatial priority:
+\begin{align}
+ q_t &= \operatorname{unit}\!\left[W_q\operatorname{LN}(h_{t-1}+c)\right],\\
+ k_{t,i} &= \operatorname{unit}\!\left[W_k\{\operatorname{LN}(x_{t,i})+\operatorname{LN}(m_{t-1,i})\}\right],\\
+ \alpha_{t,i} &= \frac{\exp(s q_t^\mathsf{T}k_{t,i}+b_{t,i})}
+ {\sum_{j=1}^{100}\exp(s q_t^\mathsf{T}k_{t,j}+b_{t,j})}.
+\end{align}
+Here $t$ indexes frames; $i$ and $j$ index sites; $h$ is global memory; $m$ is spatial memory; $x$ is the fused visual vector including positional information; and $c$ is a learned token. $W_q$ and $W_k$ are learned linear maps. Layer normalization, $\operatorname{LN}$, standardizes channels before a learned rescaling. The operator $\operatorname{unit}$ divides a vector by its Euclidean length. The learned scale $s$ lies between 1 and 16. The intervention $b$ is normally zero. The scalar $\alpha_{t,i}$ is the fraction of priority assigned to site $i$, and all 100 fractions sum to one.
+
+The \textbf{same priority distribution} pools the combined visual and memory values into global memory, weights a temporal-comparison branch, and modulates writing to spatial memory. For the latter, the local write modulation is $w_{t,i}=\alpha_{t,i}/(\alpha_{t,i}+0.01)$; 0.01 is uniform priority over 100 sites. Normalized gated recurrent updates then determine which old contents survive and which new contents enter. A shared nonlinear readout feeds task-specific linear output heads.
+
+\textbf{Neuroscientific interpretation.} The hypothesis is a common spatial selection operation applied to heterogeneous sensory content. It connects the recurrent-attention approach of Morgan, Albanna and Herman \cite{morgan} with competitive selection in visual cortex and the superior colliculus (SC). A learned visual vector is treated as a population representation; a perturbation tests the contribution of an operation. Anatomical labels are assigned to the experiments being compared. The model's spatial and global stores are computationally defined populations.
+
+\clearpage
+\section*{Evidence base: the complete task suite}
+The model was held fixed while fresh trials were generated for every native condition. A condition specifies a particular task setting, such as delay, stimulus family or exposure duration. Each condition contributed 128 trials. The table reports the arithmetic mean of condition accuracies, giving every condition within a task equal weight.
+
+\begin{center}\small
+\begin{tabularx}{\linewidth}{@{}Xrrr@{}}
+\toprule Task & Conditions & Trials & Correct (\%)\\\midrule
+Motion direction & 1 & 128 & 100.00\\
+Orientation comparison & 1 & 128 & 100.00\\
+Contrast increment & 1 & 128 & 100.00\\
+Spatial-frequency comparison & 1 & 128 & 100.00\\
+Chromatic increment & 1 & 128 & 100.00\\
+Contour arrangement & 1 & 128 & 99.22\\
+Natural-image spectrum & 1 & 128 & 100.00\\
+Ring-cued orientation & 1 & 128 & 100.00\\
+Rule-cued orientation & 4 & 512 & 99.80\\
+Cued motion accumulation & 4 & 512 & 97.46\\
+Krauzlis-style cued motion change & 3 & 384 & 95.83\\
+Spatial binding & 4 & 512 & 100.00\\
+Image recognition & 12 & 1,536 & 94.27\\
+VDA4 & 3 & 384 & 67.97\\
+VDA9 & 3 & 384 & 68.49\\
+VDA16 & 3 & 384 & 64.84\\
+Static memory-guided search & 288 & 36,864 & 53.11\\
+Popout search & 24 & 3,072 & 86.36\\
+Motion memory-guided search & 81 & 10,368 & 97.74\\\midrule
+Total & 437 & 55,936 & \\\bottomrule
+\end{tabularx}
+\end{center}
+
+\textbf{A single computational subject.} All results concern the same trained backbone and checkpoint. The suite therefore tests how a common processing system supports different visual computations. Across-condition accuracy reveals the broad behavioral profile; targeted interventions explain how particular computations succeed or fail.
+
+\textbf{Three complementary measurements.} First, behavior is measured as correct decisions or event-specific positive reports. Second, population decoding asks what information an external readout can recover from a saved state on held-out trials. Third, interventions change spatial priority or reset a stored state while preserving the pixels. Decoding establishes available information; paired interventions establish causal dependence under the tested timing and dose.
+
+\textbf{Sampling and uncertainty.} Main intervention comparisons use 128 matched trials per selected condition. Decoder fitting and testing use 192 and 128 separate trials. Identical-array query-switch tests use 64 scenes with four remembered samples per scene. Error bars and bands are defined in the figure captions. Repeated versions of the same scene are clustered when estimating uncertainty across timing or sample-switch conditions.
+
+\result{Sensory sensitivity supplies a graded basis for decisions}
+\textbf{Neuroscience connection.} Britten and colleagues compared macaque motion judgments with the sensitivity of neurons in area MT, placing sensory and behavioral discrimination on a common axis \cite{britten}. Human contrast and spatial-frequency experiments likewise relate performance to controlled changes in the visual signal \cite{legge,campbell,regan}. The shared logic is to weaken the evidence systematically and ask where useful information becomes behaviorally accessible.
+
+\panel{sensory_curves}{3.55in}{Sensory challenge curves for the frozen observer. Points show accuracy on 128 trials per strength; bars are within-condition Wilson 95\% intervals. Dotted lines show uniform-choice baselines: 25\% for four motion directions and 50\% for the binary comparisons. Motion strength is displacement, orientation strength is angular difference, contrast strength is the renderer's image-contrast increment, and frequency strength is an octave difference. Lines connect measured conditions.}
+
+The model showed clear graded sensitivity below its native ceiling. Motion accuracy was 45.3\% at 0.1 pixel per transition, 79.7\% at 0.2 and 100\% at 0.4. Orientation accuracy was 78.9\% for a $0.5^\circ$ difference and 87.5\% for $1^\circ$. Contrast accuracy increased from 60.9\% at an increment of 0.002 to 93.8\% at 0.01. Frequency accuracy rose from 57.0\% at 0.005 octaves to 95.3\% at 0.04 octaves.
+
+\take{The observer reproduces the qualitative relationship between evidence strength and perceptual reliability across several feature domains. The physical axes specify the correspondence precisely: the motion experiment tests displacement sensitivity, whereas Britten et al. manipulated stochastic-motion evidence. The contrast curve measures increment sensitivity at the tested stimulus settings; a pedestal-by-increment experiment would address the human contrast-masking function.}
+
+\result{Sensory encoding and recurrent comparison make different contributions}
+\textbf{Neuroscience connection.} Orientation and spatial-frequency selectivity in macaque visual cortex provide distributed feature channels \cite{devalois_o,devalois_f}. Chromatic opponency and its cortical transformation provide another route for visual information \cite{derrington,lennie}. Contour experiments show that local responses depend on the spatial arrangement of neighboring elements \cite{field,kapadia,li}; natural-spectrum discrimination relates image judgments to spatial-frequency content \cite{tolhurst97}. A common downstream computation must make these different signals usable for a task.
+
+\panel{sensory_processing}{2.85in}{A: final correct-answer decoding from capacity-matched population summaries, using 192 fitting and 128 held-out trials per task. The motion task has four answer classes; the other tasks have two. B: accuracy loss after a single spatial or global state reset at the reference/retention boundary, in percentage points (pp), on 128 paired trials. Values are descriptive point estimates. Global denotes CLS recurrent memory.}
+
+Motion direction was poorly decoded from appearance alone (28.1\% balanced accuracy) but perfectly decoded after fusion. The temporal correspondence pathway therefore makes a direction signal available before the recurrent decision state. Motion accuracy also survived the tested neural-memory resets: previous pixels still supplied short-lag motion evidence.
+
+Sequential static judgments had a different dependence. Resetting global reference-period memory reduced orientation accuracy by 38.3 percentage points and spatial-frequency accuracy by 43.8 points. Spatial resets reduced contrast accuracy by 44.5 points and natural-spectrum accuracy by 35.9 points. Chromatic and contour decisions depended strongly on both stores. These outcomes link a retained first observation to the later comparison.
+
+\take{The model expresses differentiated sensory evidence followed by task-dependent recurrent comparison. Its successful chromatic behavior is especially informative for the shared-selection hypothesis: color-bearing appearance signals pass through the same spatial-priority operation as motion evidence. The contour result identifies a dependence on retained distributed structure. Mapping element alignment, curvature and contextual modulation would make the association-field comparison more specific.}
+
+\result{Shared spatial priority causally selects relevant evidence}
+\textbf{Neuroscience connection.} Lovejoy and Krauzlis showed that SC inactivation altered which competing motion signal guided macaque judgments, including manual reports made during fixation \cite{lovejoy}. Bollimunta and colleagues compared SC and frontal eye field contributions to covert change detection \cite{bollimunta}. Reynolds, Chelazzi and Desimone found that attention biased responses toward the attended member of a competing stimulus pair \cite{competition}. These studies make spatial selection a causal operation on perceptual evidence.
+
+\panel{priority_causality}{2.9in}{Paired spatial-priority interventions during the evidence epoch. Target suppression adds $-4$ to target-site logits; distractor enhancement adds $+4$ to a competing region. Points and horizontal bars show accuracy changes and paired-bootstrap 95\% intervals, with 128 matched trials per selected condition. Orientation and binding use their longest selected delay; motion-change uses B28; motion search uses 12-frame sample, delay and array periods.}
+
+Suppressing target priority reduced accuracy by 18.0 points in ring-cued orientation, 25.0 in rule-cued orientation, 38.3 in spatial binding, 62.5 in motion accumulation and 32.8 in cued motion-change detection. Motion search was especially dependent on access to the correct candidate: losses were 89.8 and 70.3 points at $20^\circ$ and $90^\circ$ direction spacing. Enhancing a distractor also impaired multiple tasks. The primary target-suppression comparisons shown here survive the recorded cross-task Holm correction.
+
+In the Krauzlis-style task, increasing distractor priority cost 13.3 points, whereas suppressing that distractor produced no observed accuracy benefit at the tested native strength. This localizes the strongest agreement to target access and vulnerability to competing evidence.
+
+\take{One intervention on a shared spatial distribution influences both static and moving stimuli. This is the central functional correspondence with a common priority system: the affected information is determined by location and task relevance. The manipulation acts on normalized routing weights, providing an operational computational analogue of changing spatial selection. Its dose is measured in model logits.}
+
+\result{Priority changes with the information required at each task epoch}
+\textbf{Neuroscience connection.} A remembered goal can bias later visual selection. In macaque inferior temporal cortex, Chelazzi and colleagues observed sample-related delay activity and a subsequent search response increasingly dominated by the target \cite{chelazzi}. Bichot and colleagues related visual search to feature-based bias in V4 \cite{bichot}. Condition-by-time maps, as used in the recurrent-attention analysis of Morgan and colleagues \cite{morgan}, expose when such a bias is established and how it changes.
+
+\panel{attention_time}{4.0in}{Condition-averaged spatial priority and matched regional time courses. Both rows select a physical top-left target. Top: rule-cued orientation, D24, trials matching the instructed rotation ($n=16$). Bottom: motion-template search with $20^\circ$ spacing and 12-frame periods ($n=32$). Maps use the original $10\times10$ grid, top at the top of the image; color saturates at 0.12 priority per patch. Lines sum priority within fixed target, other-item and central masks; bands are 95\% cluster-bootstrap intervals. Other-item mass is averaged across the other regions.}
+
+In cued orientation, target priority rises during the sample and persists through the blank delay. The retained selection state is therefore visible even when the target itself is absent. In motion search, priority initially favors the central sample; it later shifts toward the remembered target's peripheral location when the candidate array appears. The same spatial mechanism expresses different schedules because the evidence needed for a decision changes over the trial.
+
+\take{The correspondence is temporal organization of selection: encode a relevant sample, maintain a task state, and select the matching candidate. These maps describe a learned, memory-dependent spatial process. Regional mass is the sum of patch weights; the displayed map is the model's single query-to-site distribution, so no averaging across nonexistent query rows is required.}
+
+\result{VDA interventions recover local costs and delimit competitive benefit}
+\textbf{Neuroscience connection.} The SC experiment of Lovejoy and Krauzlis contains two spatial consequences: disrupting the cued signal shifts behavior toward the foil, while affecting the foil can favor the cued signal \cite{lovejoy}. Target probability also modulates SC preparatory activity \cite{basso}. Competitive-normalization theory explains why changing the weight of one input can alter the relative influence of another \cite{normalization}. Together these motivate a joint test of local harm and remote improvement.
+
+The VDA4, VDA9 and VDA16 tests used a 100\% bottom-right cue. We inhibited priority there only during change frames, then presented a change either at that location or at top left. The latter remained a positive-response event. A weak-change follow-up used $2^\circ$, $4^\circ$ and $8^\circ$ changes to address the high uncued detection observed for the initial stronger VDA4 change.
+
+\panel{vda_dual}{2.65in}{Cue inhibition at a common $-4$ logit dose during $8^\circ$ changes. Each estimate compares 128 paired nuisance draws with sham. Bars are paired-bootstrap 95\% intervals. Left: detection loss when the change occurs at the inhibited cue. Right: detection change when the change occurs at the opposite location. The reference line marks no behavioral change.}
+
+At $8^\circ$, cued detection fell by 28.9, 35.2 and 28.1 percentage points for VDA4, VDA9 and VDA16. The corresponding uncued changes were 0.0, $-0.8$ and $-6.3$ points. The joint analysis across the three VDA follow-ups did not establish a cued cost together with an uncued benefit. Catch responses also changed under some manipulations, making event-specific detection and false reports essential to the interpretation.
+
+\take{The common priority mechanism produces the local behavioral vulnerability expected from spatial selection. The remote-benefit component remains a substantive difference from the relevant SC result in this checkpoint and protocol. A normalized redistribution of weights creates an opportunity for competing evidence to gain influence; behavioral improvement additionally requires that evidence to be represented and used effectively. All seven-frame VDA trials keep the long-window comparison branch at zero, locating these measured effects in the shared visual and recurrent pathways.}
+
+\result{Working memory preserves content, with task-specific causal dependence}
+\textbf{Neuroscience connection.} Harrison and Tong decoded remembered orientation from human visual-cortical patterns during a blank delay \cite{harrison}. Zaksas and Pasternak measured remembered-motion signals in macaque MT and prefrontal cortex \cite{zaksas}. Griffin and Nobre showed that attention can select information within memory \cite{griffin}, while binding experiments distinguish a retained feature inventory from its association with locations \cite{wheeler,bays}.
+
+\panel{memory_content}{3.75in}{A--B: held-out reconstruction of a remembered orientation or direction from global and spatial memory. Shading marks the blank delay. C: reconstruction of all four original orientations, separately for their original locations, in spatial binding; four traces per store. D: paired accuracy effects of resetting each store during retention (blue: global; green: spatial). Decoders use 192 fitting and 128 held-out trials; reset comparisons use 128 paired trials. $R^2=1$ denotes perfect reconstruction, and $R^2=0$ the training-mean reference.}
+
+At the middle of the rule-cued orientation delay, the remembered target angle was readable from global memory ($R^2\approx0.95$) and spatial memory ($R^2\approx0.77$). Resetting spatial memory cost 46.1 points; a single global reset at that time caused no observed loss. In binding, all four original orientations remained highly readable from spatial memory ($R^2=0.991$--0.994 at frame 15), and its reset cost 43.0 points. In motion search, direction remained readable from both stores, while a global reset cost 72.7 points.
+
+\take{The observer exhibits content-bearing delay states and causal retention requirements. The different reset outcomes show how information availability and dependence can diverge: a strongly readable state can be rebuilt from another store during the remaining trial. Orientation and binding emphasize spatial retention; successful motion search places a stronger immediate dependence on the global template.}
+
+\result{Recognition load reveals interference through false familiarity}
+\textbf{Neuroscience connection.} Miller, Li and Desimone examined sample, delay and match-related signals in macaque inferior temporal cortex \cite{miller93}. Miller, Erickson and Desimone examined visual working memory in prefrontal cortex with intervening test objects \cite{miller96}. Their designs motivate separating information carried through a sequence from the eventual match decision. For behavior, separating repeat hits from false acceptance of new images identifies how increasing load changes recognition.
+
+\panel{recognition}{2.65in}{Recognition with a five-frame probe, plotted separately for 4, 12 and 24 studied images. Each nonempty-list condition contains 64 repeat and 64 novel probes. Left: observed repeat hits and novel false alarms. Right: descriptive sensitivity and criterion computed from corrected event rates. Lines connect measured conditions; no fitted biological data are included.}
+
+For four studied images, the model accepted all 64 repeats and rejected all 64 novel probes. At load 12 it accepted 63 repeats and falsely accepted nine novel images. At load 24 it accepted 59 repeats and falsely accepted 21 novel images. The dominant deterioration was therefore growing false recognition: the false-alarm rate rose from 0\% to 14.1\% to 32.8\%, while repeat hits remained 100\%, 98.4\% and 92.2\%.
+
+Sensitivity and criterion summarize these two event rates:
+\[
+ d'=\Phi^{-1}(\widetilde H)-\Phi^{-1}(\widetilde F),\qquad
+ c=-\tfrac12[\Phi^{-1}(\widetilde H)+\Phi^{-1}(\widetilde F)].
+\]
+Here $\widetilde H=(h+0.5)/(n_H+1)$ and $\widetilde F=(f+0.5)/(n_F+1)$ are corrected hit and false-alarm fractions; $h,f$ count the respective positive reports, and $n_H,n_F$ count their opportunities. $\Phi^{-1}$ converts a cumulative probability into a standard-normal quantile. The correction keeps perfect observed rates finite. Sensitivity fell from 4.85 to 3.05 to 1.81, while criterion shifted from approximately zero to $-0.47$, indicating a greater tendency to report familiarity.
+
+\take{The model provides an interference-like recognition phenotype: increasing the stored sequence makes new images more likely to be accepted while many old images remain recognizable. This aligns the analysis with biological experiments on memory under intervening stimulation. Item-specific similarity and serial-position tests can identify which retained contents contribute to false familiarity. The current result establishes the error mechanism at the level of event-conditioned behavior.}
+
+\result{Temporal decisions use evidence beyond a recent sensory snapshot}
+\textbf{Neuroscience connection.} Kiani and colleagues studied bounded integration of decision evidence during varying viewing times \cite{kiani}. Stine and colleagues developed experiments distinguishing integration from alternative temporal strategies \cite{stine}. Mante and colleagues linked context-dependent evidence selection to recurrent population dynamics \cite{mante}. These studies motivate a diagnostic question: does performance require a summary of the relevant stream's history?
+
+\panel{temporal_evidence}{2.7in}{Cued motion accumulation across eight transitions. A: model accuracy and three fixed shortcut rules. B: model accuracy restricted to trials where the indicated shortcut is wrong; bars are Wilson 95\% intervals for each conflict subset. Each native delay condition starts with 128 trials. The shortcuts receive the true cued-stream directions from metadata. Chance is 25\%. Delay changes the retention period after the same number of transitions.}
+
+The correct answer was the direction appearing most often in the cued stream. Native accuracy averaged 97.46\%. With no added retention delay, the model remained 93.5\% correct when the first-transition rule failed, 93.7\% when the last-transition rule failed, and 93.0\% when the last-three rule failed. Longer-delay conditions also retained high conflict-subset accuracy. A single frame or the tested short history therefore fails to account for the observed choices.
+
+The population and intervention measurements support this behavioral inference. At the end of the long-delay condition, global-memory answer decoding reached 98.4\% balanced accuracy with a full-state probe, while the appearance input was constant. Resetting global memory during retention cost 43.0 percentage points; resetting spatial memory cost 27.3 points. Target-priority inhibition during the moving evidence cost 62.5 points.
+
+\take{The model selects a task-relevant stream, forms a temporally extended summary, and retains that summary for a delayed report. This is the experimentally supported correspondence with evidence-integration theory. The native target is a discrete count winner, so exact temporal weighting can be tested next by reordering matched evidence sequences and measuring the effect of each transition on choice.}
+
+\result{A remembered template changes selection on an identical visual array}
+\textbf{Neuroscience connection.} Chelazzi's memory-guided search task links a stored object representation to selection among later objects \cite{chelazzi}. Soto and colleagues showed that human search is influenced by a recently remembered feature \cite{soto}. Guided Search 6.0 treats target goals as one input to spatial priority \cite{wolfe}. These accounts predict that changing the remembered target should change how the same search display is processed.
+
+\panel{query_switch}{3.7in}{Identical-array query switches. Columns show three stimulus conditions. Within each of 64 scenes, the array movie is held exactly fixed while the sample is changed to match each of its four candidates. Rows of each matrix specify the sample-matching location; columns specify the candidate location (TL/TR/BL/BR: top left/top right/bottom left/bottom right). Top matrices show mean choice probabilities; bottom matrices show final regional priority mass. Priority gain is the recorded matched-versus-alternative sample contrast.}
+
+Distinct-feature search produced 99.6\% correct choices across the four queries, with a priority contrast of 0.603. Motion search at $20^\circ$ spacing produced 95.3\% correct choices and a priority contrast of 0.517; at $90^\circ$ these values were 99.2\% and 0.703. The sample and candidate motion used independent dot layouts. The remembered direction therefore guided selection across a new pixel realization.
+
+Distinct contour-object search behaved differently: accuracy was 32.4\%, and the corresponding priority contrast was only 0.003. Similar objects yielded 26.2\% and a contrast close to zero. Replacing the sample with a blank gave 25\% balanced accuracy in these four-location tests.
+
+\take{For features and motion, the remembered content causally redirects both spatial selection and report while the array remains unchanged. This is a direct computational expression of memory-guided attention. The object conditions identify where that functional correspondence breaks down: the previous sample exerts little control over the measured selection process.}
+
+\result{Stored object information can exceed the information used for choice}
+\textbf{Neuroscience connection.} Memory-guided search requires both a retained template and a comparison that favors matching candidates. Chelazzi's results connect those stages through target-dominated search responses \cite{chelazzi}; Guided Search distinguishes guidance from subsequent recognition and decision \cite{wolfe}. This distinction leads to a sharper diagnosis than attributing every error to inadequate storage.
+
+\panel{available_information}{2.85in}{Static search: agent choices versus an external matcher using decoded spatial memory and decoded current candidates. Each condition uses 192 fitting and 128 held-out scenes. The matcher compares reconstructed 28-by-28 RGB samples with reconstructed candidates from local appearance features; decoder regularization is selected within fitting data. Bars show accuracy on the same held-out scenes; error bars are Wilson 95\% intervals for the matcher. Chance is 25\%. These are separately fitted diagnostic readouts for each condition.}
+
+For distinct contour objects, the agent achieved 32.0\% while the diagnostic matcher achieved 100\%. For similar objects, the corresponding accuracies were 20.3\% and 93.0\%. Paired improvements of 68.0 and 72.7 percentage points survived the six-comparison Holm correction. Distinct fractals improved from 46.1\% to 86.7\%, and similar fractals from 29.7\% to 52.3\%. Thus the size of the information-use gap depends on stimulus family.
+
+The object result is especially diagnostic because both sides of the comparison were recovered from the model: the remembered sample from spatial memory, the current candidates from appearance features. Useful information was present at encoding and retrieval, yet the learned decision process extracted much less of it. A complementary manipulation raised object-target attention markedly but produced only a partial behavioral rescue in the paired experiments. Better spatial allocation alone was insufficient to restore the missing comparison.
+
+\take{This is a dissociation between representational availability and effective use. It gives the neuroscience account an explicit failure mode: memory can contain detailed information that does not successfully control selection or matching. Similar-fractal performance remains limited even for the external readout, identifying an additional representation/decoding challenge. The resulting hypothesis is to improve the connection between distributed memory and the comparison process; its benefit is an outcome for the separate architecture experiment to establish.}
+
+\result{Salience becomes a reliable location decision through time}
+\textbf{Neuroscience connection.} Schall and Hanes found that frontal eye field responses evolved from an initial visual response toward target-selective activity during search \cite{schall}. Bichot and colleagues related V4 responses to parallel feature bias and subsequent selection \cite{bichot}. Guided Search 6.0 similarly treats priority as a changing influence on the order and success of selection \cite{wolfe}. The computational prediction is that a salient difference can be available before the correct target report becomes reliable.
+
+\panel{popout_time}{2.7in}{Four-item singleton search with variable array exposure. Color differences use native RGB-coordinate units; orientation differences use degrees. Each point represents 128 trials, with within-condition Wilson 95\% intervals. The same underlying scenes are reused across exposure conditions. Dotted lines mark 25\% chance. Lines join measured points.}
+
+At the smallest color difference, accuracy rose from 48.4\% after one array frame to 100\% after two. At a $5^\circ$ orientation difference, accuracy rose from 25.0\% to approximately 83\% after two frames and approximately 86\% after eight. The matched one-versus-eight-frame comparison survived correction in five of the six feature-difference groups. The largest color difference was already solved at the first exposure.
+
+Each repeated static frame allows another update of the recurrent stores and another evaluation of the visual pathways. The physical target remains fixed while the internal computation evolves. Population measurements correspondingly show highly readable target-location information in recurrent states in the selected long-exposure conditions. This connects the behavioral exposure effect to the construction of a usable location representation.
+
+\take{The model expresses a temporal transition from stimulus difference to effective selection, consistent with the separation of visual response and target identification seen in search physiology. Stronger differences reduce the additional processing needed. With set size fixed at four, the measured effect is an exposure-by-feature interaction; varying set size would add the search-efficiency comparison traditionally used to distinguish feature and conjunction search.}
+
+\result{Recurrent populations transform retained information into an answer}
+\textbf{Neuroscience connection.} Stokes and colleagues analyzed changing prefrontal population codes across task epochs \cite{stokes}. Mante and colleagues showed how context-dependent recurrent dynamics can make selected evidence drive a decision \cite{mante}. The essential question is how the content needed for a task is transformed into an explicit response when the relevant evidence arrives.
+
+\panel{answer_emergence}{2.65in}{Time-resolved correct-answer decoding, using the same capacity-matched procedure across recorded populations. Each frame has its own fitted decoder; fitting and held-out sets contain 192 and 128 trials. Left: rule-cued orientation with a 24-frame blank delay. Right: motion accumulation with a 24-frame retention interval. Global denotes CLS recurrent memory. Traces are held-out balanced accuracy, with chance at 50\% and 25\%, respectively.}
+
+In rule-cued orientation, remembered content is already readable during the blank delay (Fig.~\ref{fig:memory_content}), whereas the answer becomes explicit when the later probe determines whether its rotation matches the instruction. Motion accumulation has a different temporal structure: the answer is defined by the motion history, and recurrent populations can retain it after moving evidence has ended. A common recurrent system therefore carries different task variables at different epochs.
+
+\textbf{Confidence and commitment.} We also applied the unchanged decision head to successive prefixes of each trial. A threshold crossing is the first post-evidence frame at which the largest output probability exceeds a chosen threshold. In motion search with $20^\circ$ spacing, three sample frames, no delay and three array frames, 125 of 128 trials crossed 0.8. Of those, 60 subsequently changed their reported choice; 59 initially wrong choices were rescued by the terminal response. Early confidence can therefore precede a stable solution.
+
+\take{These results support staged computation: retained content, evidence-dependent transformation, and an evolving report. They make chronometry interpretable in model frames. A confidence threshold is an analysis rule applied to the output trajectory; training an explicit stopping decision would test whether the same trajectories support biologically meaningful speed--accuracy trade-offs.}
+
+\clearpage
+\section*{Synthesis and methodological basis}
+\subsection*{What the neuroscience results establish together}
+The most coherent account is a common spatial-selection system coupled to several forms of retained information. Static and motion signals enter different visual channels but share the same priority distribution. Causal perturbations affect both domains. During memory-guided behavior, a previous sample changes selection on a physically identical array. During delayed comparison, content can remain readable before the answer is defined. These three relationships connect the architecture to the functional organization investigated in SC, visual cortex and prefrontal cortex.
+
+The model's strongest biological fidelity lies at this \textbf{computational level}: selection governs access to evidence, delay states carry task content, and recurrent processing transforms that content into a report. Its departures sharpen the account. VDA distinguishes a robust local selection cost from an unobserved remote benefit. Static object search distinguishes preserved information from effective guidance and comparison. These are specific behavioral and causal outcomes that constrain further model development.
+
+\subsection*{Measurements and statistical interpretation}
+The analyzed subject is the previous 19-task model at update 204,289, identified by checkpoint SHA-256 \texttt{596bc351...6451bcf}. Its weights remain fixed. The new spatial-query architecture, recovered at update 22,458, contributes no results to this paper. All curves and maps are replotted from the completed frozen-model analysis outputs.
+
+Native behavior comprises 128 trials per condition, 437 conditions and 55,936 trials. Sensory challenges vary specified image parameters while retaining native response labels. Core intervention experiments replay identical movies across sham and spatial or memory perturbations. A priority dose adds a constant to selected site logits before softmax. Memory resets multiply a named stored state by zero once at the designated boundary; subsequent computation proceeds normally. The tested state can therefore recover later.
+
+Main population probes use separate 192-trial fitting and 128-trial test sets. Large populations are randomly projected to 256 coordinates when applicable, then reduced to a fitted 32-component representation for capacity-matched comparisons. Full-state ridge controls and image reconstruction provide additional checks. All learned preprocessing and penalty selection use fitting data. Decoding accuracies concern the external probe's access to information; the agent's own accuracy is measured separately.
+
+Wilson intervals summarize individual condition/event rates. Matched effects use paired bootstrap intervals and discordant-pair tests; repeated-scene or photograph structure is respected by the recorded clustered analyses where relevant. Primary $\pm4$ priority comparisons receive Holm correction across tasks. Weak-change VDA and diagnostic joint-readout tests have separate stated correction families. Figure captions identify descriptive plots and their sampling units. Trial uncertainty describes this trained subject's stimulus sampling; generality across training seeds requires additional independently trained observers.
+
+\subsection*{Most informative next experiments}
+Three extensions follow directly from the results: measure whether a direct memory-to-query route closes the static object information-use gap; map cue-inhibition effects across location, signal strength and catch responses to identify when remote benefit appears; and learn an explicit stopping policy to connect evolving confidence to response time. Each targets a measured computational dependence.
+
+\clearpage
+\input{references.tex}
+\end{document}

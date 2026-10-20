@@ -87,7 +87,9 @@ def main():
     document+=''.join(f'<a href="#{key}"><span>{i+1:02}</span>{esc(label)}</a>' for i,(key,label) in enumerate(nav))
     document+='</nav><div class="sidebar-bottom"><button id="print-paper">Print / save PDF</button><a href="task-atlas/index.html" target="_blank">Open task atlas ↗</a><a href="../Analysis/run01/gallery/index.html" target="_blank">Frozen analysis & attention maps ↗</a><small>Local, offline reading<br>Research draft · October 2026</small></div></aside><main>'+hero+content+bibliography+'<footer>Methods grounded in the frozen implementation. Interactive teaching figures use specified synthetic examples. <a href="#top">Back to top ↑</a></footer></main></body></html>'
     # Python source escaping must produce exactly one TeX backslash in JS strings after parsing.
-    (ROOT/'index.html').write_text(document,encoding='utf-8')
+    # The guided explainer owns index.html. Keep the extended manuscript as a
+    # separately addressable reference so a legacy rebuild cannot replace it.
+    (ROOT/'reference.html').write_text(document,encoding='utf-8')
     selected=[{field:refs[k][field] for field in ('id','year','authors','title','url','verification','doi') if field in refs[k]} for k in used]
     (ROOT/'research/bibliography.json').write_text(json.dumps(selected,indent=2,ensure_ascii=False),encoding='utf-8')
     (ROOT/'research/parameters.json').write_text(json.dumps(params,indent=2),encoding='utf-8')

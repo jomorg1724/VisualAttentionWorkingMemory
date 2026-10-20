@@ -1,0 +1,27 @@
+NEUROSCIENCE RESULTS SYNTHESIS
+
+18-page manuscript, including references. Written in LaTeX.
+Subject: the previous 19-task observer, checkpoint update 204289.
+No new training or inference was run for this synthesis.
+
+Compile from this folder:
+    tectonic main.tex
+
+The included vector figures are sufficient for compilation. Python and access
+to the original model are not required to compile the manuscript.
+
+To regenerate figures from the existing repository analyses, preserve this
+directory at output/pdf/neuroscience_results and run:
+    python output/pdf/neuroscience_results/build_figures.py
+Dependencies: numpy, matplotlib. The script reads saved JSON measurements
+under SecondPass/TaskNeuroscience/Results. source_manifest.json records those
+53 source files and their hashes. Those original measurements remain in the
+repository workspace and are not duplicated in this source package.
+
+The source package includes LaTeX, vector figures, bibliography metadata,
+plotting code, provenance and task summaries. It contains no model weights,
+training data or videos.
+
+Final PDF checks: 18 pages, 12 figures, 34 linked primary references;
+all pages rendered and visually inspected; no out-of-page text blocks,
+undefined references, or TeX overfull/underfull box warnings.

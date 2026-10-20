@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Attention, memory and decision — architecture walkthrough</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#0d1827;color:#f3f4ee;font:17px/1.6 system-ui,sans-serif}main{max-width:1150px;margin:auto;padding:36px 24px}h1{font-size:clamp(25px,4vw,42px);line-height:1.2;margin:8px 0 14px}.eyebrow{color:#68d6bf;letter-spacing:.12em;font-size:13px}p{color:#b9c8d6}video{display:block;width:100%;border-radius:16px;background:#101f31;margin:26px 0}nav{display:flex;gap:10px;flex-wrap:wrap}button,a{font:inherit}button{border:1px solid #36526c;background:#17273b;color:#dce9f4;padding:10px 15px;border-radius:9px;cursor:pointer}button:hover,button[aria-current=true]{background:#23453f;border-color:#68d6bf;color:#a4f1df}button:focus-visible,a:focus-visible{outline:3px solid #f2c574;outline-offset:4px}a{color:#84b9ff}details{margin:25px 0;padding:18px;background:#17273b;border-radius:12px}summary{cursor:pointer;font-weight:600}li{margin:10px 0}.note{font-size:14px}footer{margin-top:24px}
+</style>
+<main><div class="eyebrow">A SOURCE-CHECKED ANIMATED WALKTHROUGH</div><h1>Attention, memory and decision.</h1><p>Follow the newer architecture from pixels to beliefs. Pause anytime, or choose a chapter. Narration and on-screen captions explain each component as it appears.</p>
+<video id="movie" controls playsinline preload="metadata" poster="poster.png" aria-label="Narrated architecture animation with synchronized on-screen captions"><source src="architecture-explainer.mp4" type="video/mp4">Your browser does not support this video. <a href="architecture-explainer.mp4">Download the animation.</a></video>
+<nav id="chapters" aria-label="Animation chapters"></nav>
+<details><summary>Names and sizes, at a glance</summary><ul>
+<li><b>Spatial recurrent memory:</b> 100 sites × 64 channels = 6,400 stored numbers.</li>
+<li><b>CLS recurrent memory:</b> one evolving 64-number state, updated from selected values.</li>
+<li><b>Learned CLS token:</b> 64 trainable parameters; the same vector is used throughout a trial.</li>
+<li><b>Comparison memory:</b> 735 stored numbers, updated from attention-pooled temporal comparisons.</li>
+<li><b>Query:</b> one 64-number vector combining previous CLS memory and, in the newer architecture, a projection of previous spatial memory.</li>
+<li><b>Beliefs:</b> task output probabilities produced by a shared readout and task-specific head.</li>
+</ul></details>
+<details><summary>Training objectives and implementation details</summary>
+<p>The terminal classification loss is cross-entropy. VDA examples multiply it by their assigned value divided by 3. An auxiliary normalized pixel-transport error enters the objective with weight 0.05. Adam updates learned parameters after gradient-norm clipping at 100.</p>
+<p>Spatial gates use 3 × 3 convolutions. Gate and candidate computations receive LayerNorm before sigmoid/tanh. Attention modulates the write through α / (α + 0.01). Comparison memory uses z ← 0.8z + 0.2 selected comparison. Its reference window spans t−15 through t−8; its recent window spans t−3 through t, with a four-frame gap. Early windows use available history and reliability weighting.</p>
+<p>This animation focuses on the three principal memory representations. Additional temporal state includes the motion-population trace and previous flow; earlier pixel frames supply the lagged comparisons. The original model lacks the newer direct spatial-memory-to-query projection.</p>
+</details>
+<p class="note">The activity patterns and belief bars are teaching illustrations. Connections and dimensions were checked against the local implementation. Voice is synthesized locally; no training was started.</p>
+<footer><a href="architecture-explainer.mp4" download>Download video</a> · <a href="captions.srt" download>Download captions</a></footer>
+</main>
+<script>
+const chapters=[{"title": "The whole system", "start": 0, "end": 18.32485260770975}, {"title": "Visual evidence", "start": 18.32485260770975, "end": 39.30439909297053}, {"title": "Spatial memory", "start": 39.30439909297053, "end": 59.92888888888889}, {"title": "CLS and its constant", "start": 59.92888888888889, "end": 81.08802721088435}, {"title": "Query, keys, values", "start": 81.08802721088435, "end": 101.80766439909297}, {"title": "Shared attention", "start": 101.80766439909297, "end": 122.69727891156462}, {"title": "Temporal comparison", "start": 122.69727891156462, "end": 144.90625850340135}, {"title": "Readout and recurrence", "start": 144.90625850340135, "end": 166.6004535147392}, {"title": "Training objectives", "start": 166.6004535147392, "end": 191.89895691609973}], movie=document.getElementById('movie'), nav=document.getElementById('chapters');
+const buttons=chapters.map((c,i)=>{const b=document.createElement('button');b.type='button';b.textContent=`${i+1}. ${c.title}`;b.onclick=()=>{movie.currentTime=c.start;movie.play().catch(()=>{});};nav.append(b);return b;});
+movie.addEventListener('timeupdate',()=>buttons.forEach((b,i)=>b.setAttribute('aria-current',String(movie.currentTime>=chapters[i].start&&movie.currentTime<chapters[i].end))));
+</script></html>

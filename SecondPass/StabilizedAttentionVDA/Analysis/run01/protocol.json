@@ -1,0 +1,325 @@
+{
+  "checkpoint": "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\SecondPass\\StabilizedAttentionVDA\\LocalRuntime\\continuation01\\best.pt",
+  "checkpoint_step": 16000,
+  "checkpoint_hashes": {
+    "best": "416bc4c256df3df014c561c9fcca5b591c25762d09d0c8dcec1128387da07ecf",
+    "latest": "185568a5f744160050742baeb805449159f176830aeaf641be9640eb69b0caeb"
+  },
+  "original_vda_sources": {
+    "dataset.py": "279c127a31a0030fede778e0cf25e622565c2fa0d33dd0c261f449139863c56b",
+    "model.py": "f382d1820d9870a07e1b1acbee4dec50e2644dd9a429e66a0f3e1538f818bf29",
+    "prepare.py": "e516ac87a191a33d745c60336002efa1eb13a0d0b5ab954d17546c4f01c470f2",
+    "test_contract.py": "ad2595489f7ed4b748a50c05b1ad5047117614b8ad84328ef7cbd68c5ab83f7b",
+    "train.py": "7c234842cc6dfac1abcbf140aa6a88a6e6366f958ec019c8fad2e2144fe6b5ca",
+    "__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "native\\base.py": "a02490af2ca07fd961fe4d219aff038814dd6272d30199a3b127cc4b49f44ba7",
+    "native\\sequences.py": "8d130c9518cc63dd5f26fd2f19a9d43468a93ea149721fed5a4d7fcec38cde16",
+    "native\\tasks.py": "93bad2770cd72ff7281a7e67a113450d373b650cf77294d98775ceefe8df6d56",
+    "native\\__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "analysis_sources": {
+    "design.py": "369b5a8f72b5d3ebc2d35978b070f8ee8e12677a337c507532b1f4b8047e0883",
+    "experiment.py": "103b7adeeb4acb599e741f97676f6bc67c9250471193a2ce7ae5b300a967634e",
+    "supervise.py": "d512762eaa6dc1c3c8c2bec93e5fe37084d0fe7b60d226976b39e2a3885fb09c",
+    "test_analysis.py": "337c9cfe50b4b499dbd132e2c734ae1104957ee0298bf8c57551d8600184c3b2",
+    "__init__.py": "753a99438c5d0001faa48cee208ee0950e4b1c61a92fb684f1f5a2b703928562"
+  },
+  "primary": "VDA4: 100% bottom-right cue, top-left change; bottom-right inhibition ONLY frames5,6",
+  "primary_angle": 18,
+  "primary_clusters": 384,
+  "primary_arms": [
+    {
+      "name": "sham",
+      "site": "cued",
+      "dose": 0,
+      "epoch": "change"
+    },
+    {
+      "name": "cued_-2_change",
+      "site": "cued",
+      "dose": -2,
+      "epoch": "change"
+    },
+    {
+      "name": "cued_-4_change",
+      "site": "cued",
+      "dose": -4,
+      "epoch": "change"
+    },
+    {
+      "name": "cued_-8_change",
+      "site": "cued",
+      "dose": -8,
+      "epoch": "change"
+    },
+    {
+      "name": "uncued_+4_change",
+      "site": "uncued",
+      "dose": 4,
+      "epoch": "change"
+    },
+    {
+      "name": "cued_+4_change",
+      "site": "cued",
+      "dose": 4,
+      "epoch": "change"
+    },
+    {
+      "name": "uncued_-4_change",
+      "site": "uncued",
+      "dose": -4,
+      "epoch": "change"
+    }
+  ],
+  "primary_events": [
+    "cued",
+    "uncued",
+    "catch"
+  ],
+  "primary_directional_tests": "Four benefits and four reciprocal costs at dose4; exact paired binary tests, Holm across8",
+  "main_clusters_per_geometry": 48,
+  "main_validities": [
+    0.75,
+    1.0
+  ],
+  "main_angles": [
+    18,
+    40
+  ],
+  "main_arms": [
+    {
+      "name": "sham",
+      "site": "cued",
+      "dose": 0,
+      "epoch": "all"
+    },
+    {
+      "name": "cued_-8_all",
+      "site": "cued",
+      "dose": -8,
+      "epoch": "all"
+    },
+    {
+      "name": "cued_-4_all",
+      "site": "cued",
+      "dose": -4,
+      "epoch": "all"
+    },
+    {
+      "name": "cued_-2_all",
+      "site": "cued",
+      "dose": -2,
+      "epoch": "all"
+    },
+    {
+      "name": "cued_+2_all",
+      "site": "cued",
+      "dose": 2,
+      "epoch": "all"
+    },
+    {
+      "name": "cued_+4_all",
+      "site": "cued",
+      "dose": 4,
+      "epoch": "all"
+    },
+    {
+      "name": "cued_+8_all",
+      "site": "cued",
+      "dose": 8,
+      "epoch": "all"
+    },
+    {
+      "name": "uncued_-8_all",
+      "site": "uncued",
+      "dose": -8,
+      "epoch": "all"
+    },
+    {
+      "name": "uncued_-4_all",
+      "site": "uncued",
+      "dose": -4,
+      "epoch": "all"
+    },
+    {
+      "name": "uncued_-2_all",
+      "site": "uncued",
+      "dose": -2,
+      "epoch": "all"
+    },
+    {
+      "name": "uncued_+2_all",
+      "site": "uncued",
+      "dose": 2,
+      "epoch": "all"
+    },
+    {
+      "name": "uncued_+4_all",
+      "site": "uncued",
+      "dose": 4,
+      "epoch": "all"
+    },
+    {
+      "name": "uncued_+8_all",
+      "site": "uncued",
+      "dose": 8,
+      "epoch": "all"
+    },
+    {
+      "name": "offsite_-8_all",
+      "site": "offsite",
+      "dose": -8,
+      "epoch": "all"
+    },
+    {
+      "name": "offsite_+8_all",
+      "site": "offsite",
+      "dose": 8,
+      "epoch": "all"
+    },
+    {
+      "name": "both_-8_all",
+      "site": "both",
+      "dose": -8,
+      "epoch": "all"
+    },
+    {
+      "name": "both_+8_all",
+      "site": "both",
+      "dose": 8,
+      "epoch": "all"
+    },
+    {
+      "name": "global_-8_all",
+      "site": "global",
+      "dose": -8,
+      "epoch": "all"
+    },
+    {
+      "name": "global_+8_all",
+      "site": "global",
+      "dose": 8,
+      "epoch": "all"
+    },
+    {
+      "name": "cued_-4_cue",
+      "site": "cued",
+      "dose": -4,
+      "epoch": "cue"
+    },
+    {
+      "name": "cued_+4_cue",
+      "site": "cued",
+      "dose": 4,
+      "epoch": "cue"
+    },
+    {
+      "name": "cued_-4_delay",
+      "site": "cued",
+      "dose": -4,
+      "epoch": "delay"
+    },
+    {
+      "name": "cued_+4_delay",
+      "site": "cued",
+      "dose": 4,
+      "epoch": "delay"
+    },
+    {
+      "name": "cued_-4_sample",
+      "site": "cued",
+      "dose": -4,
+      "epoch": "sample"
+    },
+    {
+      "name": "cued_+4_sample",
+      "site": "cued",
+      "dose": 4,
+      "epoch": "sample"
+    },
+    {
+      "name": "cued_-4_change",
+      "site": "cued",
+      "dose": -4,
+      "epoch": "change"
+    },
+    {
+      "name": "cued_+4_change",
+      "site": "cued",
+      "dose": 4,
+      "epoch": "change"
+    },
+    {
+      "name": "uncued_-4_cue",
+      "site": "uncued",
+      "dose": -4,
+      "epoch": "cue"
+    },
+    {
+      "name": "uncued_+4_cue",
+      "site": "uncued",
+      "dose": 4,
+      "epoch": "cue"
+    },
+    {
+      "name": "uncued_-4_delay",
+      "site": "uncued",
+      "dose": -4,
+      "epoch": "delay"
+    },
+    {
+      "name": "uncued_+4_delay",
+      "site": "uncued",
+      "dose": 4,
+      "epoch": "delay"
+    },
+    {
+      "name": "uncued_-4_sample",
+      "site": "uncued",
+      "dose": -4,
+      "epoch": "sample"
+    },
+    {
+      "name": "uncued_+4_sample",
+      "site": "uncued",
+      "dose": 4,
+      "epoch": "sample"
+    },
+    {
+      "name": "uncued_-4_change",
+      "site": "uncued",
+      "dose": -4,
+      "epoch": "change"
+    },
+    {
+      "name": "uncued_+4_change",
+      "site": "uncued",
+      "dose": 4,
+      "epoch": "change"
+    }
+  ],
+  "psychometric_angles": [
+    2,
+    4,
+    8,
+    12,
+    18,
+    26,
+    40,
+    65
+  ],
+  "psychometric_clusters": 96,
+  "native_trials_per_theta": 512,
+  "namespaces": [
+    203101,
+    203201,
+    203301,
+    203403
+  ],
+  "attention": "Actual single CLS-query row; query average equals this row; no NxN matrix",
+  "site": "All model patch centers in the native stimulus cell; per-token additive priority-logit dose",
+  "cue_violation": "Uncued change with100% cue is a deliberate counterfactual, absent from native training distribution",
+  "labels": "All physical changes, including uncued, are correct change reports; false alarms are catch reports only",
+  "budget_seconds": 7200,
+  "no_training": true
+}

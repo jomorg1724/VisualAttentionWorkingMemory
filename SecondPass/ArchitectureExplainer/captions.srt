@@ -1,0 +1,107 @@
+1
+00:00:00,000 --> 00:00:03,549
+This is our newer spatial memory query architecture.
+
+2
+00:00:03,549 --> 00:00:11,657
+Think of each component as doing a job: describe the scene, select useful information, retain it, and produce a decision.
+
+3
+00:00:11,657 --> 00:00:18,325
+We will keep spatial memory, C L S memory, and comparison memory separate throughout.
+
+4
+00:00:18,325 --> 00:00:22,384
+Each observation is a one hundred by one hundred pixel image.
+
+5
+00:00:22,384 --> 00:00:31,032
+The appearance pathway extracts color and structure. The temporal pathway compares local image crops with earlier frames to estimate displacement.
+
+6
+00:00:31,032 --> 00:00:39,304
+Fusion combines these signals, local statistics, and prediction error into sixty four numbers at each of one hundred spatial sites.
+
+7
+00:00:39,304 --> 00:00:47,342
+Spatial recurrent memory has one hundred locations, each storing sixty four numbers: six thousand four hundred numbers in total.
+
+8
+00:00:47,342 --> 00:00:52,961
+A spatial G R U uses local neighborhoods and learned gates to decide what to retain or update.
+
+9
+00:00:52,961 --> 00:00:59,929
+Attention modulates writing, while layer normalization stabilizes the signals controlling those gates.
+
+10
+00:00:59,929 --> 00:01:05,862
+The C L S recurrent memory contains sixty four numbers and changes as selected evidence arrives.
+
+11
+00:01:05,862 --> 00:01:12,745
+The learned C L S token is a different object: a sixty four number parameter vector, fixed during a trial.
+
+12
+00:01:12,745 --> 00:01:21,088
+Adding that constant to previous C L S memory helps construct the query. Neither vector is itself the final belief output.
+
+13
+00:01:21,088 --> 00:01:26,571
+The newer model adds a direct contribution from the entire previous spatial memory to the query.
+
+14
+00:01:26,571 --> 00:01:35,334
+There is still just one query. Each of the one hundred locations supplies a key and a value, derived from current vision and previous local memory.
+
+15
+00:01:35,334 --> 00:01:41,808
+Keys determine relevance. Values carry the information that selection will combine.
+
+16
+00:01:41,808 --> 00:01:48,601
+Compare the normalized query with every normalized key. Scale the scores, then apply softmax.
+
+17
+00:01:48,601 --> 00:01:54,644
+The resulting one hundred positive weights sum to one. They form the ten by ten attention map.
+
+18
+00:01:54,644 --> 00:02:02,697
+The same weights pool values into C L S memory, weight temporal comparisons, and modulate spatial memory writes.
+
+19
+00:02:02,697 --> 00:02:08,175
+A separate branch compares an older motion window with a recent motion window at every location.
+
+20
+00:02:08,175 --> 00:02:16,798
+Attention pools those local comparisons. Comparison memory keeps eighty percent of its old state and adds twenty percent of the selected comparison.
+
+21
+00:02:16,798 --> 00:02:24,906
+It contains seven hundred thirty five numbers. Its older reference becomes available only after eight preceding frames.
+
+22
+00:02:24,906 --> 00:02:31,739
+The readout combines C L S memory with comparison memory, then a task specific head produces answer scores.
+
+23
+00:02:31,739 --> 00:02:36,148
+Softmax turns those scores into the task's belief probabilities.
+
+24
+00:02:36,148 --> 00:02:46,600
+On the next frame, updated spatial and C L S memories influence attention again. This feedback lets past observations shape the selection of new evidence.
+
+25
+00:02:46,600 --> 00:02:53,964
+Training rewards correct terminal answers through cross entropy. V D A trials weight this loss by their assigned value.
+
+26
+00:02:53,964 --> 00:03:02,876
+An auxiliary pixel prediction error, weighted by zero point zero five, encourages motion estimates that transport the previous image toward the next.
+
+27
+00:03:02,876 --> 00:03:11,899
+Gradients train the connected learned components together. These are shared objectives, rather than a separate supervised target for each memory.

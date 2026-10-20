@@ -18,7 +18,7 @@ python SecondPass/ArchitectureExplainer/verify_package.py
 
 Open the generated `index.html` for video playback and chapter navigation. `architecture-explainer.mp4` includes synchronized on-screen captions and synthesized narration; `captions.srt` supplies a separate subtitle file. The verification script fully decodes the video, checks codecs, timing, narration presence, caption fit and chapter structure, and creates a portable ZIP containing the player, video and source.
 
-Generated videos, audio, frames and packages stay local and are ignored by Git. The original export was 1280 × 720 at 15 fps and passed a complete media decode, caption-fit checks, and visual inspection of all nine chapter stills. The verification script checks media properties; its historical visual-review statement is not a substitute for inspecting any revised render.
+The published player, MP4, narration WAV, poster, subtitles, chapter metadata and verification receipts are included in Git. Intermediate frames, per-sentence audio and ZIP packages remain ignored. The original export was 1280 × 720 at 15 fps and passed a complete media decode, caption-fit checks, and visual inspection of all nine chapter stills. The verification script checks media properties; its historical visual-review statement is not a substitute for inspecting any revised render.
 
 ## The memory distinction
 

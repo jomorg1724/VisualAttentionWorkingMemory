@@ -1,3 +1,47 @@
+# Selection & Memory: guided explainer
+
+## October 20 guided edition
+
+`index.html` is now a progressive-disclosure field guide with three entry paths:
+watch a real trial, explore a finding, and understand the mechanism. The main
+results belong to frozen checkpoint 204289. The separate spatial-query cloud
+experiment and earlier VDA results are identified in Evidence.
+
+- All 19 tasks: 63 recorded attention groups, 888 frame positions, original
+  input sprites, own-trial overlays, condition averages and regional time courses.
+- Play/pause, frame stepping, speed selection, a human judgment exercise,
+  recorded answers, native-condition tables and six downloadable trial GIFs.
+- Ten neuroscience findings, 12 measured figures, linked primary sources and
+  an 18-page paper. Figures enlarge in a keyboard-accessible dialog.
+- Six architecture steps, locally defined notation, a four-score softmax
+  teaching example, and an optional cropping/correlation/FFT explanation.
+- Lazy-loaded per-task measurements, local fonts, narrow-screen navigation,
+  user-controlled playback and no automatic animations.
+
+Edit `explainer.html`, `explainer.css`, `explainer.js`, `explainer-content.js`,
+and `build_explainer.py`. Rebuild from the repository root:
+
+```powershell
+python SecondPass/StabilizedAttentionSuite/Manuscript/build_explainer.py
+```
+
+This copies saved measurements and images and exports annotated viewing GIFs;
+it performs no model inference or training. `assets/guide/provenance.json`
+identifies the sources by hash. Browser and integrity verification is saved
+under `research/guide_*`.
+
+Run `start_explainer.ps1` for the localhost address. Repository-root `index.html`
+also forwards old root-page links to the guide. Direct-file reading works with
+script-based data loading; the HTTP version is the verified browser target.
+Keep `assets/guide`, the font files and the three explainer scripts/styles with
+the page. The extended atlas links additionally require the repository layout.
+
+The prior manuscript is preserved at `reference.html`, with its sections and
+assets intact. Its original `build.py` now rebuilds **reference.html**, so it
+cannot replace the guided entry point. The historical description follows.
+
+---
+
 # A shared spatial priority map for visual selection and working memory
 
 An illustrated research explainer with detailed neuroscience, task protocols, a motion tutorial, mathematical architecture documentation, and verified measured results. Updated October 11 with the completed 19-task test, four new measured figures, and an independent-findings chapter relating the local comparison pathway to James Herman's analyses. Earlier 13-task and 16-task VDA results and their limitations remain intact.

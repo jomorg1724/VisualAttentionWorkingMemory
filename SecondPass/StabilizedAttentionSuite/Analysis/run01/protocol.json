@@ -1,0 +1,735 @@
+{
+  "checkpoint": "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\SecondPass\\StabilizedAttentionSuite\\LocalRuntime\\continuation02\\best.pt",
+  "step": 54808,
+  "checkpoint_sha256": {
+    "best": "308d7292d3cd5540c70c6bc4b69da86b5d33ea97cadd31466e4a4553a552b5f0",
+    "latest": "0f8e9e9b1e347a7c339b8f2ce48d0e949de10abb5e9741cea4a6cd36b790ddb2"
+  },
+  "source_hashes": {
+    "SecondPass\\StabilizedAttentionSuite\\checks.py": "76207f775484c516469b14f21375695bb607e059006db1e6cbb3e4275bc00d0b",
+    "SecondPass\\StabilizedAttentionSuite\\dataset.py": "ad7fb72ed0e5e81aa8ad4d0aecd933cee7511d4fd6c51fb5f6f357122911d224",
+    "SecondPass\\StabilizedAttentionSuite\\launch.py": "9184be04f23ca639c75c74b4635bb8d49b9f43d4fb263cccf1e82e257b263fe1",
+    "SecondPass\\StabilizedAttentionSuite\\model.py": "b3ac2c09f766e517575b526c205273e4aa1e1e52f52f64a6d43525e5b909a397",
+    "SecondPass\\StabilizedAttentionSuite\\train.py": "48b5affeb83dea464ef6528f85ab7f1668c6b34d8f471ee83185c03969043510",
+    "SecondPass\\StabilizedAttentionSuite\\__init__.py": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "SecondPass\\StabilizedAttentionKrauzlis\\model.py": "e5fff417693bc347130ab41585d5d579fa306c373c7e461062b8c4531d465954",
+    "SecondPass\\StabilizedAttentionKrauzlis\\memory.py": "5adb0879ba1ea974ecbfad231602275b5944209c3350cc59e97b2cacbd95f779",
+    "SecondPass\\TaskSuite\\suite.py": "22eaaa3bac77efc95beda13014ca2de012f735afe78a023ccea3951c0767f04f",
+    "SecondPass\\TaskSuite\\catalog.json": "e4a342024c9bed16aa04ea741499e49c30232670b14da61cb82c02ccbf64d69a",
+    "SecondPass\\JointTraining\\core.py": "28313e648dd2289b2edd9e6d697e5898210fd9b297961a364fcf0620c4b57214",
+    "WorkingMemory\\BatteryAudit\\observers.py": "aec78e894e4f0ecee116e32421e7ee4e75ac8cc70fd4f7af803a5aa9253a48c3",
+    "WorkingMemory\\SpatialTaskBattery\\stimuli.py": "16b7efd4575eba27b9a79329243dcce0da635008856687a9e62bda72b5ddeb37",
+    "WorkingMemory\\PlainBaseline\\variants.py": "46735e87f30fdf4966a8467a18cacd803c2e508870048f23bd5425c493ee871f",
+    "WorkingMemory\\stimuli.py": "c5a6c6d1c2aa38e3b418e09a9d6c03bd022112d5ece4b5384c5336d9f592c127",
+    "PreAttentiveVision\\neuroscience_stimuli.py": "f4d3ed226b8bb4945753127651b037b0994715752258f283d10ca98c06eb8e87",
+    "PreAttentiveVision\\natural_stimuli.py": "d0f5930e863b1b1997251bad5f5315e675b6d84eec5887727fdbf4025065b452",
+    "SecondPass\\PixelContrastiveVAE\\train.py": "cbeb565ba689354e294973d0808009e8b284012b9c88e5fdc104c182815522b7",
+    "SecondPass\\PredictiveConsistencyVAE\\queue.py": "1f7bf7fa927c453e491b3d11a69105baf2b13e9f49ae877e5866cd40233039f1"
+  },
+  "analysis_source_hashes": {
+    "design.py": "fe7836fd7654bb76e65538906b0f8bbbee5e4661eec11e00a7b18f5ab4d766d8",
+    "experiment.py": "4e867add75e136fb698cf6a27bf657f0b88a5676d8d33354f9b685baa506ca24",
+    "renderers.py": "216d6eb908f881eae446d8c748be52e7d453e8457d4e6572aaf1c3f45fb21c6e",
+    "supervise.py": "9cdffa46e22cc6ce52006a45879ce606da44ac7f3f3329f64d00644359713149",
+    "__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "strengths": {
+    "motion_direction": [
+      0,
+      0.1,
+      0.2,
+      0.4,
+      0.7,
+      1,
+      2,
+      3
+    ],
+    "orientation": [
+      0,
+      0.5,
+      1,
+      2,
+      4,
+      7,
+      10,
+      15,
+      22
+    ],
+    "contrast": [
+      0,
+      0.002,
+      0.005,
+      0.01,
+      0.018,
+      0.025,
+      0.04,
+      0.06,
+      0.13
+    ],
+    "spatial_frequency": [
+      0,
+      0.005,
+      0.01,
+      0.02,
+      0.04,
+      0.08,
+      0.12,
+      0.18,
+      0.35
+    ],
+    "chromatic_increment": [
+      0,
+      0.001,
+      0.003,
+      0.006,
+      0.01,
+      0.018,
+      0.03,
+      0.045,
+      0.1
+    ],
+    "contour": [
+      0,
+      2,
+      4,
+      8,
+      12,
+      16,
+      24,
+      36,
+      60
+    ],
+    "natural_spectrum": [
+      0,
+      0.01,
+      0.025,
+      0.05,
+      0.1,
+      0.15,
+      0.3,
+      0.6
+    ],
+    "orientation_ring": [
+      0,
+      2,
+      4,
+      8,
+      15,
+      22,
+      30,
+      45
+    ],
+    "orientation_cued": [
+      0,
+      2,
+      4,
+      8,
+      15,
+      22,
+      30,
+      45
+    ],
+    "krauzlis_cued_motion": [
+      0,
+      4,
+      8,
+      12,
+      18,
+      26,
+      28,
+      40,
+      60
+    ]
+  },
+  "native_strengths": {
+    "motion_direction": [
+      1,
+      2,
+      3
+    ],
+    "orientation": [
+      4,
+      10,
+      22
+    ],
+    "contrast": [
+      0.025,
+      0.06,
+      0.13
+    ],
+    "spatial_frequency": [
+      0.08,
+      0.18,
+      0.35
+    ],
+    "chromatic_increment": [
+      0.018,
+      0.045,
+      0.1
+    ],
+    "contour": [
+      2,
+      8,
+      16
+    ],
+    "natural_spectrum": [
+      0.15,
+      0.3,
+      0.6
+    ],
+    "orientation_ring": [
+      15,
+      30,
+      45
+    ],
+    "orientation_cued": [
+      15,
+      30,
+      45
+    ],
+    "krauzlis_cued_motion": [
+      26,
+      28
+    ]
+  },
+  "namespaces": [
+    200101,
+    200102,
+    200103,
+    200201,
+    200303
+  ],
+  "sensory_n_per_point": 256,
+  "cued_orientation_n_per_angle_delay": 128,
+  "krauzlis_n_clusters": 96,
+  "memory_n_per_cell": 512,
+  "atlas_n_per_native_cell": 256,
+  "intervention_krauzlis_clusters": 96,
+  "intervention_orientation_clusters": 256,
+  "intervention_angles": {
+    "krauzlis": [
+      8,
+      18,
+      26,
+      28,
+      40
+    ],
+    "orientation": [
+      8,
+      15,
+      30,
+      45
+    ]
+  },
+  "arms": {
+    "krauzlis_cued_motion": [
+      {
+        "name": "sham",
+        "site": "target",
+        "dose": 0,
+        "epoch": "all"
+      },
+      {
+        "name": "target_-12_all",
+        "site": "target",
+        "dose": -12,
+        "epoch": "all"
+      },
+      {
+        "name": "target_-8_all",
+        "site": "target",
+        "dose": -8,
+        "epoch": "all"
+      },
+      {
+        "name": "target_-4_all",
+        "site": "target",
+        "dose": -4,
+        "epoch": "all"
+      },
+      {
+        "name": "target_-2_all",
+        "site": "target",
+        "dose": -2,
+        "epoch": "all"
+      },
+      {
+        "name": "target_+2_all",
+        "site": "target",
+        "dose": 2,
+        "epoch": "all"
+      },
+      {
+        "name": "target_+4_all",
+        "site": "target",
+        "dose": 4,
+        "epoch": "all"
+      },
+      {
+        "name": "target_+8_all",
+        "site": "target",
+        "dose": 8,
+        "epoch": "all"
+      },
+      {
+        "name": "target_+12_all",
+        "site": "target",
+        "dose": 12,
+        "epoch": "all"
+      },
+      {
+        "name": "distractor_-12_all",
+        "site": "distractor",
+        "dose": -12,
+        "epoch": "all"
+      },
+      {
+        "name": "distractor_-8_all",
+        "site": "distractor",
+        "dose": -8,
+        "epoch": "all"
+      },
+      {
+        "name": "distractor_-4_all",
+        "site": "distractor",
+        "dose": -4,
+        "epoch": "all"
+      },
+      {
+        "name": "distractor_-2_all",
+        "site": "distractor",
+        "dose": -2,
+        "epoch": "all"
+      },
+      {
+        "name": "distractor_+2_all",
+        "site": "distractor",
+        "dose": 2,
+        "epoch": "all"
+      },
+      {
+        "name": "distractor_+4_all",
+        "site": "distractor",
+        "dose": 4,
+        "epoch": "all"
+      },
+      {
+        "name": "distractor_+8_all",
+        "site": "distractor",
+        "dose": 8,
+        "epoch": "all"
+      },
+      {
+        "name": "distractor_+12_all",
+        "site": "distractor",
+        "dose": 12,
+        "epoch": "all"
+      },
+      {
+        "name": "offsite_-12_all",
+        "site": "offsite",
+        "dose": -12,
+        "epoch": "all"
+      },
+      {
+        "name": "offsite_+12_all",
+        "site": "offsite",
+        "dose": 12,
+        "epoch": "all"
+      },
+      {
+        "name": "both_-12_all",
+        "site": "both",
+        "dose": -12,
+        "epoch": "all"
+      },
+      {
+        "name": "both_+12_all",
+        "site": "both",
+        "dose": 12,
+        "epoch": "all"
+      },
+      {
+        "name": "global_-12_all",
+        "site": "global",
+        "dose": -12,
+        "epoch": "all"
+      },
+      {
+        "name": "global_+12_all",
+        "site": "global",
+        "dose": 12,
+        "epoch": "all"
+      },
+      {
+        "name": "target_-8_cue",
+        "site": "target",
+        "dose": -8,
+        "epoch": "cue"
+      },
+      {
+        "name": "target_+8_cue",
+        "site": "target",
+        "dose": 8,
+        "epoch": "cue"
+      },
+      {
+        "name": "target_-8_baseline",
+        "site": "target",
+        "dose": -8,
+        "epoch": "baseline"
+      },
+      {
+        "name": "target_+8_baseline",
+        "site": "target",
+        "dose": 8,
+        "epoch": "baseline"
+      },
+      {
+        "name": "target_-8_postchange",
+        "site": "target",
+        "dose": -8,
+        "epoch": "postchange"
+      },
+      {
+        "name": "target_+8_postchange",
+        "site": "target",
+        "dose": 8,
+        "epoch": "postchange"
+      },
+      {
+        "name": "target_-8_report",
+        "site": "target",
+        "dose": -8,
+        "epoch": "report"
+      },
+      {
+        "name": "target_+8_report",
+        "site": "target",
+        "dose": 8,
+        "epoch": "report"
+      },
+      {
+        "name": "distractor_-8_cue",
+        "site": "distractor",
+        "dose": -8,
+        "epoch": "cue"
+      },
+      {
+        "name": "distractor_+8_cue",
+        "site": "distractor",
+        "dose": 8,
+        "epoch": "cue"
+      },
+      {
+        "name": "distractor_-8_baseline",
+        "site": "distractor",
+        "dose": -8,
+        "epoch": "baseline"
+      },
+      {
+        "name": "distractor_+8_baseline",
+        "site": "distractor",
+        "dose": 8,
+        "epoch": "baseline"
+      },
+      {
+        "name": "distractor_-8_postchange",
+        "site": "distractor",
+        "dose": -8,
+        "epoch": "postchange"
+      },
+      {
+        "name": "distractor_+8_postchange",
+        "site": "distractor",
+        "dose": 8,
+        "epoch": "postchange"
+      },
+      {
+        "name": "distractor_-8_report",
+        "site": "distractor",
+        "dose": -8,
+        "epoch": "report"
+      },
+      {
+        "name": "distractor_+8_report",
+        "site": "distractor",
+        "dose": 8,
+        "epoch": "report"
+      }
+    ],
+    "orientation_cued": [
+      {
+        "name": "sham",
+        "site": "target",
+        "dose": 0,
+        "epoch": "all"
+      },
+      {
+        "name": "target_-12_all",
+        "site": "target",
+        "dose": -12,
+        "epoch": "all"
+      },
+      {
+        "name": "target_-8_all",
+        "site": "target",
+        "dose": -8,
+        "epoch": "all"
+      },
+      {
+        "name": "target_-4_all",
+        "site": "target",
+        "dose": -4,
+        "epoch": "all"
+      },
+      {
+        "name": "target_-2_all",
+        "site": "target",
+        "dose": -2,
+        "epoch": "all"
+      },
+      {
+        "name": "target_+2_all",
+        "site": "target",
+        "dose": 2,
+        "epoch": "all"
+      },
+      {
+        "name": "target_+4_all",
+        "site": "target",
+        "dose": 4,
+        "epoch": "all"
+      },
+      {
+        "name": "target_+8_all",
+        "site": "target",
+        "dose": 8,
+        "epoch": "all"
+      },
+      {
+        "name": "target_+12_all",
+        "site": "target",
+        "dose": 12,
+        "epoch": "all"
+      },
+      {
+        "name": "distractor_-12_all",
+        "site": "distractor",
+        "dose": -12,
+        "epoch": "all"
+      },
+      {
+        "name": "distractor_-8_all",
+        "site": "distractor",
+        "dose": -8,
+        "epoch": "all"
+      },
+      {
+        "name": "distractor_-4_all",
+        "site": "distractor",
+        "dose": -4,
+        "epoch": "all"
+      },
+      {
+        "name": "distractor_-2_all",
+        "site": "distractor",
+        "dose": -2,
+        "epoch": "all"
+      },
+      {
+        "name": "distractor_+2_all",
+        "site": "distractor",
+        "dose": 2,
+        "epoch": "all"
+      },
+      {
+        "name": "distractor_+4_all",
+        "site": "distractor",
+        "dose": 4,
+        "epoch": "all"
+      },
+      {
+        "name": "distractor_+8_all",
+        "site": "distractor",
+        "dose": 8,
+        "epoch": "all"
+      },
+      {
+        "name": "distractor_+12_all",
+        "site": "distractor",
+        "dose": 12,
+        "epoch": "all"
+      },
+      {
+        "name": "offsite_-12_all",
+        "site": "offsite",
+        "dose": -12,
+        "epoch": "all"
+      },
+      {
+        "name": "offsite_+12_all",
+        "site": "offsite",
+        "dose": 12,
+        "epoch": "all"
+      },
+      {
+        "name": "both_-12_all",
+        "site": "both",
+        "dose": -12,
+        "epoch": "all"
+      },
+      {
+        "name": "both_+12_all",
+        "site": "both",
+        "dose": 12,
+        "epoch": "all"
+      },
+      {
+        "name": "global_-12_all",
+        "site": "global",
+        "dose": -12,
+        "epoch": "all"
+      },
+      {
+        "name": "global_+12_all",
+        "site": "global",
+        "dose": 12,
+        "epoch": "all"
+      },
+      {
+        "name": "target_-8_cue",
+        "site": "target",
+        "dose": -8,
+        "epoch": "cue"
+      },
+      {
+        "name": "target_+8_cue",
+        "site": "target",
+        "dose": 8,
+        "epoch": "cue"
+      },
+      {
+        "name": "target_-8_sample",
+        "site": "target",
+        "dose": -8,
+        "epoch": "sample"
+      },
+      {
+        "name": "target_+8_sample",
+        "site": "target",
+        "dose": 8,
+        "epoch": "sample"
+      },
+      {
+        "name": "target_-8_delay",
+        "site": "target",
+        "dose": -8,
+        "epoch": "delay"
+      },
+      {
+        "name": "target_+8_delay",
+        "site": "target",
+        "dose": 8,
+        "epoch": "delay"
+      },
+      {
+        "name": "target_-8_probe",
+        "site": "target",
+        "dose": -8,
+        "epoch": "probe"
+      },
+      {
+        "name": "target_+8_probe",
+        "site": "target",
+        "dose": 8,
+        "epoch": "probe"
+      },
+      {
+        "name": "distractor_-8_cue",
+        "site": "distractor",
+        "dose": -8,
+        "epoch": "cue"
+      },
+      {
+        "name": "distractor_+8_cue",
+        "site": "distractor",
+        "dose": 8,
+        "epoch": "cue"
+      },
+      {
+        "name": "distractor_-8_sample",
+        "site": "distractor",
+        "dose": -8,
+        "epoch": "sample"
+      },
+      {
+        "name": "distractor_+8_sample",
+        "site": "distractor",
+        "dose": 8,
+        "epoch": "sample"
+      },
+      {
+        "name": "distractor_-8_delay",
+        "site": "distractor",
+        "dose": -8,
+        "epoch": "delay"
+      },
+      {
+        "name": "distractor_+8_delay",
+        "site": "distractor",
+        "dose": 8,
+        "epoch": "delay"
+      },
+      {
+        "name": "distractor_-8_probe",
+        "site": "distractor",
+        "dose": -8,
+        "epoch": "probe"
+      },
+      {
+        "name": "distractor_+8_probe",
+        "site": "distractor",
+        "dose": 8,
+        "epoch": "probe"
+      },
+      {
+        "name": "cueglyph_-8_cue",
+        "site": "cueglyph",
+        "dose": -8,
+        "epoch": "cue"
+      },
+      {
+        "name": "cueglyph_+8_cue",
+        "site": "cueglyph",
+        "dose": 8,
+        "epoch": "cue"
+      }
+    ]
+  },
+  "primary_benefits": [
+    "target_+4_all",
+    "target_+8_all",
+    "distractor_-4_all",
+    "distractor_-8_all"
+  ],
+  "near_threshold_angles": {
+    "krauzlis": [
+      8,
+      18
+    ],
+    "orientation": [
+      8,
+      15
+    ]
+  },
+  "uncertainty": "Paired cluster bootstrap, no trial independence across angles/arms. Pointwise exploratory intervals; Holm correction across eight task-by-benefit primary tests.",
+  "attention": "Actual single CLS-query weights alpha. No NxN attention exists in this checkpoint. Query average equals alpha; mass sums one.",
+  "zero_angle": "Scheduled labels only; no physical change, no true hit interpretation.",
+  "no_signal_ring": "Zero omitted because native variant rejects physically ambiguous positive label.",
+  "intervention_units": "Additive pre-softmax priority logits, not biological current.",
+  "orientation_distractor": "One fixed next-index uncued location, chosen independently of its sign/label; subgroup by foil congruence.",
+  "cue_timing": "Cued-orientation cue-only arm affects instruction frame0, sample arms affect1,2 where glyph also remains visible.",
+  "no_training": true,
+  "local_cap_seconds": 14400
+}

@@ -1,0 +1,125 @@
+{
+  "checkpoints": {
+    "best": {
+      "path": "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\SecondPass\\MemoryGuidedSearch\\LocalRuntime\\static_memory4x01\\best.pt",
+      "sha256": "596bc351783b3ddbfa8d37a9cf8d65146d1333dcc0097d40f0f75665b6451bcf"
+    },
+    "latest": {
+      "path": "C:\\Users\\jomor\\Documents\\VisualAttentionWorkingMemory\\SecondPass\\MemoryGuidedSearch\\LocalRuntime\\static_memory4x01\\latest.pt",
+      "sha256": "c13338ff6958c5dbb617914da538bca139944b89122b848b72885ed3241995d4"
+    }
+  },
+  "tasks": [
+    "motion_direction",
+    "orientation",
+    "contrast",
+    "spatial_frequency",
+    "chromatic_increment",
+    "contour",
+    "natural_spectrum",
+    "orientation_ring",
+    "orientation_cued",
+    "motion_duration_cued",
+    "krauzlis_cued_motion",
+    "spatial_binding",
+    "image_recognition",
+    "vda4",
+    "vda9",
+    "vda16",
+    "memory_guided_search",
+    "popout_search",
+    "motion_memory_search"
+  ],
+  "conditions": 437,
+  "native_trials_per_cell": 128,
+  "psychometric_trials_per_point": 128,
+  "probe_train": 192,
+  "probe_test": 128,
+  "intervention_trials_per_cell": 128,
+  "thresholds": [
+    0.6,
+    0.7,
+    0.8,
+    0.9
+  ],
+  "neural_cells": {
+    "motion_direction": [
+      "mixed"
+    ],
+    "orientation": [
+      "mixed"
+    ],
+    "contrast": [
+      "mixed"
+    ],
+    "spatial_frequency": [
+      "mixed"
+    ],
+    "chromatic_increment": [
+      "mixed"
+    ],
+    "contour": [
+      "mixed"
+    ],
+    "natural_spectrum": [
+      "mixed"
+    ],
+    "orientation_ring": [
+      "D0"
+    ],
+    "orientation_cued": [
+      "D24"
+    ],
+    "motion_duration_cued": [
+      "D24"
+    ],
+    "krauzlis_cued_motion": [
+      "B28"
+    ],
+    "spatial_binding": [
+      "D24"
+    ],
+    "image_recognition": [
+      "N4_H5",
+      "N24_H5"
+    ],
+    "vda4": [
+      "TH65"
+    ],
+    "vda9": [
+      "TH65"
+    ],
+    "vda16": [
+      "TH65"
+    ],
+    "memory_guided_search": [
+      "features_distinct_S8_D12_H8",
+      "features_similar_S8_D12_H8",
+      "objects_distinct_S8_D12_H8",
+      "objects_similar_S8_D12_H8",
+      "fractals_distinct_S8_D12_H8",
+      "fractals_similar_S8_D12_H8"
+    ],
+    "popout_search": [
+      "color_X12_H8",
+      "orientation_X5_H8"
+    ],
+    "motion_memory_search": [
+      "motion_A20_S12_D12_H12",
+      "motion_A90_S12_D12_H12"
+    ]
+  },
+  "namespace": 205903,
+  "analysis_source_hashes": {
+    "collect.py": "b03122fe0a3bdaca81463ca87343b107e6bd75aff219008389f2762d65e2b625",
+    "design.py": "7cd08c9455e0dfd84cc5b1334321c7a298300643b0d2c6b8f506d1dc16ea6c33",
+    "recording.py": "d7a0db13aaa110b0539a1c167e256419b5a2a870b6455afb52aae44bed970828",
+    "__init__.py": "d6c6c578923b462cf42156952ae9191276a44e0bb3c96dca22a2ee75b18fc560"
+  },
+  "uncertainty": "Resample procedural trials within cells. Cluster natural-image comparisons by source identity. Model is one trained subject.",
+  "chronometry": "First post-evidence threshold crossing of unchanged terminal readout applied to prefix states; noncrossers are censored; units model frames.",
+  "primary_intervention": "Target and distractor +/-4 evidence logit bias; Holm across tasks/arms. Other doses/epochs exploratory.",
+  "no_model_training": true,
+  "no_optimizer": true,
+  "start": 1792338541.4714704
+}

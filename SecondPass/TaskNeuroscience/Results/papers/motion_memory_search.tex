@@ -1,0 +1,596 @@
+\documentclass[11pt]{article}
+\usepackage[margin=0.85in]{geometry}
+\usepackage{amsmath,amssymb,graphicx,booktabs,longtable,array,xcolor,hyperref,fancyhdr,microtype}
+\definecolor{ink}{HTML}{164D70}
+\hypersetup{colorlinks=true,linkcolor=ink,urlcolor=ink,citecolor=ink}
+\setlength{\parindent}{0pt}\setlength{\parskip}{6pt}
+\setlength{\headheight}{15pt}
+\pagestyle{fancy}\fancyhf{}\fancyhead[L]{\small Computational neurophysiology: frozen suite}
+\fancyhead[R]{\small 18 October 2026}\fancyfoot[C]{\thepage}
+\setcounter{topnumber}{2}\setcounter{bottomnumber}{2}
+\renewcommand{\floatpagefraction}{0.65}
+\newcommand{\R}{\mathbb{R}}
+\emergencystretch=1em
+\begin{document}
+\title{\color{ink}Remembered motion as a template for selection among moving alternatives}
+\author{Visual Attention and Working Memory Project\\Computational experiment series: previous trained model}\date{18 October 2026}\maketitle
+\begin{abstract}
+We characterized motion memory search in a frozen recurrent visual observer using behavioral challenges, spatial-priority interventions, memory perturbations and population decoding. Across 81 native conditions and 10,368 fresh trials, equal-condition accuracy was 97.7\% (95\% interval [96.6\%, 98.8\%]). For the representative condition motion\_\allowbreak{}A20\_\allowbreak{}S12\_\allowbreak{}D12\_\allowbreak{}H12, the strongest final answer readout among the tested regions was cls, with held-out macro AUC 0.996. The largest observed impairment in that condition was distractor\_\allowbreak{}+8\_\allowbreak{}evidence, changing accuracy by -96.1 percentage points. The analyses relate task competence to information availability, spatial selection and state dependence, with paired interventions and independent probe trials.
+\end{abstract}
+\section{Introduction and scientific questions}
+The sample is a moving-dot patch. After a blank delay, four independent moving-dot patches appear, and the observer must locate the one with the remembered direction. The dot layouts differ between sample and array, so an exact raster match cannot provide the solution.
+
+Direction spacing controls the similarity of alternatives. Sample duration, retention delay and search duration are independently varied. The remembered continuous direction is decoded as cosine and sine of its angle, alongside final location and coarse sample-image content. Those targets distinguish motion memory from memory for a particular dot layout.
+
+The biological motivation is developed through \cite{salzman}, \cite{it}, \cite{spatial}. The present experiments use the model as an accessible computational subject: its choices, internal population coordinates and interventions can be measured on exactly matched movies.
+
+\subsection{Neuroscientific rationale}
+Motion physiology supplies a basis for representing direction, while memory-guided search motivates using a remembered feature to select among alternatives. Their combination is demanding because the sample and candidates have independent dot arrangements. The useful memory must describe motion in a form that survives this change in image realization. A circular direction decoder directly tests that information, while a location decoder tests the later use of the template. The delay and exposure manipulations then distinguish retention of direction from the process of finding the matching moving patch.
+
+% BEGIN BIOLOGICAL COMPARISON
+\subsection{Biological experiments motivating this task}
+\textbf{Experimental question.} How can a remembered motion direction guide selection of a new moving pattern at a new location?
+
+\paragraph{Zaksas and Pasternak (2006)} Monkeys compared two motion directions across a delay. MT and PFC carried direction information with transient delay signals; test responses depended on the remembered sample and related to the eventual decision. \cite{bio_zaksas}
+
+\paragraph{Chelazzi, Miller, Duncan and Desimone (1993)} Monkeys remembered a picture and selected its match from a small array. IT showed sample-related delay activity, followed during search by suppression of nontarget responses and dominance of the target representation. \cite{bio_chelazzi}
+
+\paragraph{Ling, Liu and Carrasco (2009)} External-noise motion experiments separated spatial from feature-based attention. Threshold-versus-noise functions supported different combinations of population gain and tuning, giving behavioral tests of attentional mechanisms. \cite{bio_ling}
+
+These experiments motivate the behavioral, spatial-selection and population measurements reported below. The discussion returns to each study to compare its findings with the measured behavior and internal states of this observer.
+% END BIOLOGICAL COMPARISON
+\subsection{Task definition and prediction structure}
+Which patch moves in the remembered sample direction?
+
+Response labels are 0: top-left; 1: top-right; 2: bottom-left; 3: bottom-right. The native suite contains 81 conditions for this task. A complete condition table follows the main results. Detailed neural and intervention measurements use motion\_\allowbreak{}A20\_\allowbreak{}S12\_\allowbreak{}D12\_\allowbreak{}H12, motion\_\allowbreak{}A90\_\allowbreak{}S12\_\allowbreak{}D12\_\allowbreak{}H12.
+
+\subsection{Stimulus sequence and spatial layout}
+For the representative native condition motion\_\allowbreak{}A20\_\allowbreak{}S12\_\allowbreak{}D12\_\allowbreak{}H12, the sequence has 37 frames, indexed from zero: frame 0: fixation; frames 1--12: sample; frames 13--24: delay; frames 25--36: search. The complete condition table specifies the other tested timing and difficulty settings.
+
+The following values are observed in the 128 native trials of this representative condition. Continuous nuisance ranges summarize those draws.
+\begin{center}\small\begin{tabular}{p{.56\textwidth}p{.34\textwidth}}\toprule Stimulus property & Observed values\\\midrule
+Candidate direction spacing (degrees) & 20\\
+\bottomrule\end{tabular}\normalsize\end{center}
+Stimulus centers in the 100 by 100 input are [[25, 25], [75, 25], [25, 75], [75, 75]]. Coordinate x increases rightward and y downward.
+
+The motion pathway must create a representation that generalizes across dot realizations, and the recurrent system must maintain it until new candidates appear. A difference between direction decodability and localization accuracy would identify a retrieval or routing bottleneck. Attention manipulations at the correct array location and an alternative quantify causal competition during matching.
+
+
+\section{Methods}
+\subsection{Computational subject and experimental units}
+The experimental subject is the previously trained 19-task model, with the main analysis fixed at update 204,289. This checkpoint was selected by the existing equal-task monitoring criterion before the present analysis. Its SHA-256 identifier is recorded in the reproducibility table. The final saved checkpoint at update 220,637 provides a matched robustness comparison. Model parameters are frozen throughout these experiments. A trial is a freshly generated native movie, its prescribed response, and the model's output. Independent procedural draws provide the sampling unit; resampling intervals quantify uncertainty for this trained subject under the specified stimulus distribution.
+
+The 19-task training stage inherited the 16-task backbone and output heads, added three search-task heads, and continued optimization with Adam at learning rate $3\times10^{-4}$, moment coefficients $(0.9,0.999)$, numerical epsilon $10^{-8}$ and no weight decay. Effective batches contained 32 trials, accumulated in microbatches of four. The objective combined terminal cross-entropy with a 0.05-weighted pixel-prediction loss; VDA terminal cross-entropy additionally used the native reward value divided by three. Active-parameter gradient norm was clipped at 100. The selected checkpoint was saved during two-times static-memory-search sampling; the final checkpoint includes later four-times sampling. Checkpoint indices refer to this continuation stage, which itself inherited earlier learning.
+
+Each native condition receives 128 new test trials. The final-checkpoint comparison replays the first 32 of those movies under the same generator namespace. Probe fitting uses 192 separate validation-split trials per selected condition and evaluation uses 128 test-split trials. Natural-image probe fitting and evaluation retain separate source-image splits. The native four-trial generator calls are preserved even when their tensors are combined into eight-trial GPU forwards. Inference uses float32; dense appearance, fusion and spatial recordings are stored in float16, while global memory, comparison memory and probabilities retain float32. Stimulus metadata defines analyses and interventions; only native pixels and the requested task head enter the observer's ordinary forward computation.
+
+\subsection{Architecture and recording sites}
+At each model frame, a 100 by 100 RGB (red, green and blue) image is represented at 100 sites arranged on a 10 by 10 grid. Each site carries 32 learned appearance channels, local RGB and contrast statistics, and temporal correspondence-derived features. A learned linear fusion maps these to 64 channels. The spatial recurrent state has 64 channels at each grid site; the global recurrent state, denoted $c_t$ and called CLS memory in the code, has 64 channels. CLS denotes the global classification-token pathway. A separate 735-dimensional comparison-memory vector accumulates selected local temporal-comparison evidence. The task head reads a learned 64-dimensional transformation of the concatenated global and comparison memories.
+
+Let $v_{t,s}$ be the fused visual vector at site $s$, $h_{t-1,s}$ the preceding spatial memory, and $c_{t-1}$ the preceding global memory. The key and query are
+\begin{align}
+ k_{t,s}&=\operatorname{unit}\{W_k[\operatorname{LN}_v(v_{t,s})+\operatorname{LN}_h(h_{t-1,s})]\},\\
+ q_t&=\operatorname{unit}\{W_q\operatorname{LN}_q(c_{t-1}+e_{\rm CLS})\},\\
+ \ell_{t,s}&=\kappa\,k_{t,s}^{\mathsf T}q_t,\qquad
+ \alpha_{t,s}=\frac{\exp\ell_{t,s}}{\sum_{u=1}^{100}\exp\ell_{t,u}}.
+\end{align}
+Here $W_k,W_q$ are learned matrices, $e_{\rm CLS}$ is a learned token vector, $\operatorname{LN}$ denotes layer normalization across channels, and $\operatorname{unit}$ divides a vector by its Euclidean norm with a numerical floor of $10^{-6}$. The expression $k^{\mathsf T}q$ is the key-query dot product. The scale is $\kappa=1+15\sigma(\rho)$, where $\rho$ is a learned scalar and $\sigma$ is the sigmoid function. Its value in the selected checkpoint is approximately 7.7525. The distribution $\alpha$ supplies the actual spatial-selection weights. There is one global query, so averaging the attention matrix over queries returns this same vector. The same spatial weights route learned visual values and temporal-comparison channels and influence spatial-memory writes.
+
+Recordings are taken from appearance features, fused visual tokens, the spatial recurrent field, the global recurrent state, comparison memory and the attention distribution. We verify exact final-output and attention parity between the recording implementation and the authoritative model on all 19 tasks. Intermediate readouts are verified against forwards truncated at the corresponding frame. These controls establish that recording preserves the observer's original computation.
+
+\subsection{Behavioral and signal-detection measures}
+The model's response is the largest terminal class probability. Accuracy is the fraction of prescribed responses selected. Balanced accuracy averages recall across response classes. Macro AUC averages one-versus-rest receiver-operating-characteristic areas using continuous probabilities. Each native condition receives equal weight in the task summary. Wilson intervals accompany individual-condition accuracy; task intervals resample stimulus clusters within the fixed condition set. Matched procedural scenes remain together across timing conditions, and repeated photographs are grouped by image identity. A Wilson boundary interval is used when every observed response is correct or incorrect.
+
+For binary judgements with both classes present, let $H$ and $F$ be hit and false-positive rates. With $h,f$ observed positive reports and $n_1,n_0$ opportunities, the finite-sample rates are $\widetilde H=(h+1/2)/(n_1+1)$ and $\widetilde F=(f+1/2)/(n_0+1)$. We report
+\begin{equation}
+ d'=\Phi^{-1}(\widetilde H)-\Phi^{-1}(\widetilde F),\qquad
+ c=-\tfrac12[\Phi^{-1}(\widetilde H)+\Phi^{-1}(\widetilde F)].
+\end{equation}
+$\Phi^{-1}$ is the inverse standard-normal cumulative distribution. Sensitivity $d'$ measures separation under this signal-detection convention; criterion $c$ summarizes positive-response tendency. This scalar criterion is distinct from the time-indexed global-memory vector $c_t$. Labels and the meaning of a positive report are specified separately for each task. The Brier score in the condition tables is the trial-averaged sum $\sum_k[p(k)-\mathbf 1(y=k)]^2$, where $y$ is the prescribed class and $\mathbf 1(y=k)$ is one for that class and zero otherwise; smaller values indicate better probability predictions. Difficulty challenges use the existing audited renderers. Zero-strength observations retain their scheduled labels as an ambiguity control. The complete native factorial, empirical difficulty points and response probabilities are retained in machine-readable files.
+
+\subsection{Threshold-defined chronometry}
+The unchanged terminal readout is applied to each recorded prefix state. If $p_t(k)$ is its probability for class $k$, evidence becomes available at frame $t_0$, and $\theta$ is a fixed confidence threshold, then
+\begin{equation}
+ \tau_\theta=\min\{t-t_0+1:t\geq t_0,\ \max_k p_t(k)\geq\theta\}.
+\end{equation}
+The chosen class is the argmax at that first crossing. We use thresholds 0.6, 0.7, 0.8 and 0.9, fixed before inspection of outcomes. Trials without a crossing are right-censored at movie end. We report the crossing fraction, median frames among crossings, accuracy of crossing decisions and the fraction already above threshold before task evidence. Time is measured in model frames; two-observation tasks have only one post-evidence frame. This defines a reproducible computational commitment time for the trained readout.
+
+\subsection{Spatial priority and causal manipulations}
+Attention mass in a region $S$ is $A_t(S)=\sum_{s\in S}\alpha_{t,s}$. Spatial concentration is summarized by effective patch count, $N_{\rm eff}=\exp[-\sum_s\alpha_s\log\alpha_s]$, which equals 100 for a uniform distribution and approaches one for selection of a single patch. Spatial masks use model-site centers at pixel coordinates $4.5+10j$, where $j=0,\ldots,9$ on either axis. For point arrays, the designated mask surrounds the task-defined target center; the alternative is the next center in the renderer's location ordering, with wraparound. The radius is 16 pixels for search-array centers and 12 pixels for the other point arrays. Thus the alternative mask is a fixed geometric comparison location and need not coincide with the particular foil that changed. For VDA, masks contain the model-site centers mapped into each native cell by the exact nearest-neighbor resize; the alternative is the cell obtained by reversing the row-major cell index. Native VDA9 cues in this implementation occupy the two opposite corners, so these two masks are distinct. Full-field tasks use the top-left and bottom-right image quadrants as designated and alternative regions. Their designated sites are spatial test regions rather than inferred target objects. Off-site controls use a single site outside the two regional masks; the VDA control additionally minimizes Gabor occupancy.
+
+Computational stimulation and inhibition add a signed dose $\delta$ to the priority logits at the selected sites and frames:
+\begin{equation}
+ \alpha^{(\delta)}_{t,s}=\operatorname{softmax}_s\{\ell_{t,s}+\delta\,\mathbf 1[s\in S]\mathbf 1[t\in E]\}.
+\end{equation}
+$E$ identifies encoding, delay or evidence frames. The indicator $\mathbf 1[\cdot]$ equals one when its condition holds and zero otherwise. Positive doses raise relative priority and negative doses lower it. The dose is measured in logit units. If a selected region has attention mass $A$ before adding a uniform regional dose, its immediate new mass is $A'=e^\delta A/(1-A+e^\delta A)$. Thus its odds against the remaining image are multiplied by $e^\delta$; a dose of four multiplies these odds by approximately 54.6. Later frames can additionally change through recurrent feedback. Evidence-epoch doses are $\pm2,\pm4,\pm8$ at designated and alternative sites; encoding and delay use $\pm4$. A missing epoch is explicitly recorded as zero active intervention trials. Off-site and global shifts provide controls. Every arm reuses identical input pixels. Adding the same constant to all logits must leave the softmax unchanged, and this invariance is checked during collection.
+
+Memory manipulations replace one recurrent state by $g$ times that state after processing the middle delay frame, or after the frame immediately before evidence when no blank delay exists. The next frame is then processed from that modified state. Gains $g=0$ and $g=1.5$ respectively reset and amplify the global state, spatial state or comparison memory, one component at a time. The movie then continues normally. Paired accuracy differences compare each arm with the same-trial sham. Intervals use 3,000 paired resamples; zero-discordance outcomes use a conservative exact bound on the discordance probability, and all-gain/all-loss boundaries use Wilson intervals; exact discordant-pair binomial tests assess changes in correctness for independent procedural trials. For natural photographs, repeated probe or base-image identities remain grouped in bootstrap resamples, and 9,999 paired source-image sign flips test the accuracy contrast. The saved test-method field distinguishes those Monte Carlo cluster tests from the exact trial-level tests. Holm adjustment is applied within task, and the four designated $\pm4$ evidence comparisons also enter one family across tasks and selected conditions.
+
+\subsection{Independent-trial decoding and population geometry}
+Each region is transformed using probe-fitting trials only. Representations wider than 256 coordinates undergo a seeded, label-independent random projection to 256 dimensions. A fixed training-derived principal-component basis then retains at most 32 dimensions and is shared across time. Coordinates are standardized from the fitting data. This capacity-matched representation is used for external linear probes; the original agent remains frozen.
+
+For a design matrix $X$, target matrix $Y$ and fixed ridge penalty $\lambda_{\rm ridge}=10$, the fitted mapping minimizes
+\begin{equation}
+ \|Y-XW-\mathbf 1 b^{\mathsf T}\|_F^2+\lambda_{\rm ridge}\|W\|_F^2.
+\end{equation}
+Each row of $X$ represents one trial and each column one retained activation coordinate. Each row of $Y$ contains that trial's desired decoding target. The matrix $W$ contains fitted weights and $b$ contains output intercepts; $\mathbf 1$ is a column of ones. The squared Frobenius norm $\|\cdot\|_F^2$ sums squared entries of a matrix. The first term therefore measures prediction error, while the second penalizes large fitted weights. Classification targets are one-hot answer labels, the model's eventual choice, and cue or target location where available. Continuous targets include an 8 by 8 RGB descriptor of the last sample/study image and circular orientation or motion variables when provided by the task. Continuous reconstruction is scored against a predictor using the fitting-set mean. The resulting $R^2$ can be negative when the fitted mapping predicts new trials worse than that baseline.
+
+For the spatial and global recurrent states, a decoder fitted at each time is evaluated at every time on independent test trials. The vertical axis is training time and the horizontal axis is test time. Diagonal performance measures available information at the same phase; off-diagonal performance tests transfer of the fitted linear readout between phases. A final-time label-permutation test uses 199 fitting-label shuffles, with unchanged held-out labels. Population trajectories use the same training-derived axes, and their class means are computed from held-out trials. Participation ratio is $(\sum_j\lambda_j)^2/\sum_j\lambda_j^2$ for covariance eigenvalues $\lambda_j$ within the retained subspace. Frame-to-frame root-mean-square (RMS) displacement measures how rapidly the state evolves in those coordinates.
+\subsection{Full-state controls and unit-level selectivity}
+As a control for dimensionality reduction, external ridge classifiers are also fitted directly to every recorded coordinate at the final frame and at the memory-test frame (the middle blank-delay frame, or the frame immediately before evidence when no blank delay exists). The ridge penalty is selected from 0.001, 0.01, 0.1, 1 and 10 using a class-stratified 75/25 split inside the probe-fitting set. Standardization is fitted on the inner fitting subset during selection and on the full fitting set for the final held-out evaluation. Each standardized full-coordinate vector is additionally divided by the square root of its coordinate count; these penalty values refer to that normalized feature scale. The full-crop reconstruction and candidate-reconstruction regressions use the same scaling convention. These full-state probes supplement the fixed-capacity temporal analysis. Global-memory unit selectivity is assessed by response-class differences on held-out trials, with Holm correction across the 64 units. Cross-validated class-centroid distances multiply independently estimated fitting and test centroid differences, standardized by fitting-set channel dispersion; negative estimates are retained.
+
+For native factorial summaries, bootstrap clusters retain the same procedural scene across matched timing conditions. Photo repeats are grouped by probe or base image identity within condition. This preserves the dependence generated by reusing stimuli. The saved condition-level results allow every marginal to be reconstructed and interactions to be examined directly.
+\section{Results}
+\subsection{Native behavior, difficulty and checkpoint robustness}
+Native equal-condition accuracy was 97.7\%, with macro AUC 0.999. The matched final checkpoint changed accuracy by +0.58 percentage points on average across conditions, using 32 same-movie comparisons per condition. The lowest native cell was motion\_\allowbreak{}A20\_\allowbreak{}S6\_\allowbreak{}D4\_\allowbreak{}H3 at 94.5\%; the highest was motion\_\allowbreak{}A90\_\allowbreak{}S3\_\allowbreak{}D0\_\allowbreak{}H6 at 100.0\%. These comparisons retain the native sampling design rather than selecting trials after observing success.
+
+Marginal accuracy by delay was 0: 98.0\%; 4: 97.7\%; 12: 97.5\%. These marginal summaries average over the other native factors; the condition table preserves their interactions.
+
+Marginal accuracy by sample frames was 3: 97.8\%; 6: 97.7\%; 12: 97.7\%. These marginal summaries average over the other native factors; the condition table preserves their interactions.
+
+Marginal accuracy by exposure was 3: 97.4\%; 6: 97.9\%; 12: 97.9\%. These marginal summaries average over the other native factors; the condition table preserves their interactions.
+
+Marginal accuracy by spacing was 20: 96.5\%; 45: 97.0\%; 90: 99.7\%. These marginal summaries average over the other native factors; the condition table preserves their interactions.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.98\textwidth,height=.65\textheight,keepaspectratio]{../motion_memory_search/figures/behavior.pdf}
+\caption{\label{fig:behavior}Behavioral phenotype. Left: accuracy and Wilson intervals for every native condition. Middle: empirical signal-strength functions or native factorial margins. Right: observed accuracy within confidence bins, against the identity line. Zero-strength challenges assess responses to ambiguous physical evidence. Native cells contain 128 trials each.}
+\end{figure}
+\clearpage\subsection{Matched-scene effects of sample, delay and search time}
+The native counter-based generator reuses scene identity and target assignment across timing conditions. We compare the longest and shortest values of each timing factor while matching the other factors, then average those paired differences within scene. Static arrays remain pixel-identical; motion arrays retain the same direction and layout seeds and shared frame prefix as duration increases. Bootstrap intervals resample the 128 scene identities. A two-sided sign-flip test uses 9,999 random sign patterns on the scene-level differences, followed by Holm correction over this task's timing comparisons. These exploratory contrasts distinguish changes in encoding opportunity, retention duration and search opportunity.
+
+\small\begin{longtable}{p{.30\textwidth}lrrr}\toprule Group & Factor & Short/long & Change (pp) & Holm p\\\midrule\endhead
+20 & sample & 3/12 & -0.5 & 1\\
+20 & delay & 0/12 & -1.3 & 1\\
+20 & exposure & 3/12 & +1.2 & 1\\
+45 & sample & 3/12 & +0.1 & 1\\
+45 & delay & 0/12 & -0.5 & 1\\
+45 & exposure & 3/12 & -0.6 & 1\\
+90 & sample & 3/12 & +0.1 & 1\\
+90 & delay & 0/12 & +0.1 & 1\\
+90 & exposure & 3/12 & +0.9 & 1\\
+\bottomrule\end{longtable}\normalsize
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.98\textwidth,height=.65\textheight,keepaspectratio]{../motion_memory_search/figures/timing_effects.pdf}
+\caption{Paired timing effects with scene identity preserved. Each value is the longest-duration accuracy minus the shortest-duration accuracy, averaged over matched remaining factors. Intervals resample complete scenes.}
+\end{figure}
+\subsection{Time course and commitment thresholds}
+\begin{center}\begin{tabular}{rrrrr}\toprule Threshold & Crossed & Median frames & Crossing accuracy & Premature\\\midrule
+0.6 & 100.0\% & 1.0 & 34.4\% & 100.0\% \\
+0.7 & 100.0\% & 1.0 & 43.8\% & 100.0\% \\
+0.8 & 100.0\% & 2.0 & 57.0\% & 100.0\% \\
+0.9 & 100.0\% & 2.0 & 67.2\% & 100.0\% \\
+\bottomrule\end{tabular}\end{center}
+The representative condition motion\_\allowbreak{}A20\_\allowbreak{}S12\_\allowbreak{}D12\_\allowbreak{}H12 provides 12 post-evidence frames. Median latency is conditional on crossing; the uncommitted-fraction plot retains all trials. The threshold sweep makes the speed--coverage tradeoff explicit. A rise in correct-answer probability over time can be compared with the development of location and answer decodability.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.98\textwidth,height=.65\textheight,keepaspectratio]{../motion_memory_search/figures/chronometry.pdf}
+\caption{Threshold-defined timing. Left: the fraction reaching each confidence threshold and accuracy among those crossings. Middle: the fraction still uncommitted after each available evidence frame. Right: probability assigned to the correct response and accuracy of the unchanged head applied to prefix states. The dashed vertical line marks evidence onset.}
+\end{figure}
+\subsection{Does an early confident answer persist?}
+A confidence threshold defines a hypothetical commitment rule. We test that rule directly by comparing its first post-evidence choice with the unchanged terminal choice on the same movie. A rescued error is an incorrect early commitment followed by a correct final answer; a spoiled answer changes from correct to incorrect. For four-class tasks, a revision can also exchange one incorrect alternative for another. These measurements determine whether terminal accuracy transfers to early stopping.
+
+At threshold 0.8 across all native presentations, 10,346 of 10,368 trials crossed. Of those, 4,257 changed their answer later, 4,168 corrected an early error, and 44 lost an initially correct answer. These pooled counts are descriptive; the representative condition is shown separately below.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.98\textwidth,height=.65\textheight,keepaspectratio]{../motion_memory_search/figures/commitment.pdf}
+\caption{Validity of first-threshold commitment in the representative native condition. Early and terminal accuracy are compared on exactly the same crossing trials at each threshold; the second panel separates kinds of later revision. Trials that never cross remain censored in the preceding analysis.}
+\end{figure}
+We additionally measure retrospective choice-settling latency: the first post-evidence frame from which the argmax remains equal to its terminal value for the rest of the movie. Frame counts start at one for the first available evidence frame. This measure uses future observations to locate the final revision. It describes the dynamics of the existing computation; it is distinct from the causal first-threshold stopping rule. Terminally correct and incorrect trajectories are kept separate.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.98\textwidth,height=.65\textheight,keepaspectratio]{../motion_memory_search/figures/choice_settling.pdf}
+\caption{Cumulative distribution of retrospective choice-settling times in the representative condition. A choice is settled once all subsequent prefix classifications agree with the terminal classification. Correct and incorrect terminal decisions can both settle, and are plotted separately.}
+\end{figure}
+% BEGIN CONDITION ATTENTION
+\clearpage\subsection{Attention across conditions and time}
+The analysis is organized around a direct visual question: where does the shared priority signal go as the trial unfolds, and how does that trajectory depend on the task condition? Rows retain fixed experimental conditions and physical locations. Columns follow time. The arrangement follows the heatmap-plus-time-course logic of Morgan, Albanna and Herman (2025), Figure 4 (\url{https://arxiv.org/html/2502.10955v1}).
+
+The matching candidate is fixed at top left. Rows compare 20-, 45- and 90-degree candidate separation at twelve sample frames, twelve delay frames and twelve array frames.
+
+\paragraph{What each plotted quantity means.}
+For trial $i$, frame $t$ and image patch $p$, $\alpha_{itp}$ is the attention probability assigned to that patch; its sum over the 100 patches is one. For a condition containing $n$ trials, the map shows $\bar\alpha_{tp}=n^{-1}\sum_i\alpha_{itp}$. The 100 entries are placed back into their original 10-by-10 image grid without spatial rotation. A line for region $R$ shows the trial-average mass $M_R(t)=n^{-1}\sum_i\sum_{p\in R}\alpha_{itp}$. A line labeled ``other regions (mean) averages their separate masses rather than summing all alternatives. A dotted horizontal line marks the mass the same region would receive under uniform attention, its patch count divided by 100.
+
+Target apertures use the same patch-center geometry throughout a task: circular masks with a 16-pixel radius for search arrays and a 12-pixel radius for the other localized tasks. VDA uses its native stimulus-cell boundaries mapped onto the 100-site grid. The central sample region is a 16-pixel-radius circle excluding candidate apertures. The source tables retain the exact region weights.
+
+Every curve includes all selected trials, independently of whether the model answered correctly. Shaded bands are pointwise 95 percent intervals from 2,000 whole-trial bootstrap resamples. Repeated photograph identities are resampled together. These bands describe each condition separately. Phase-colored backgrounds mark encoding, retention and comparison; frame zero on the horizontal axis is the task-specific evidence onset, or the first motion transition in the duration task. Original frame numbers remain visible on the maps.
+
+Map colors share one scale across every condition and time point within this task. A square-root color transform makes small weights visible; the colorbar retains probability units. The overview uses named temporal landmarks, with explicit original frame numbers when trial lengths differ. The appendix supplies every recorded frame, and the accompanying HTML viewer pairs an exact trial movie with its own attention overlay and the condition-average map.
+
+\begin{center}\small\begin{tabular}{p{.68\textwidth}rr}\toprule Condition & Trials & Clusters\\\midrule
+Direction separation 20 degrees & 32 & 32\\
+Direction separation 45 degrees & 32 & 32\\
+Direction separation 90 degrees & 32 & 32\\
+\bottomrule\end{tabular}\normalsize\end{center}
+\clearpage
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.98\textwidth,height=.65\textheight,keepaspectratio]{../motion_memory_search/figures/attention_conditions_landmarks_00.pdf}
+\caption{Condition-by-time spatial allocation. Each row averages its stated trial group at a fixed physical location. The common square-root color scale is labeled in probability per patch. Original frame t and phase identify each observation; on full-series panels the signed number additionally gives time relative to evidence onset.}
+\end{figure}
+\clearpage
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.98\textwidth,height=.65\textheight,keepaspectratio]{../motion_memory_search/figures/attention_conditions_curves_00.pdf}
+\caption{Regional attention through the entire trial, separately for each condition. Solid traces are mean probability masses; shading gives pointwise 95 percent cluster-bootstrap intervals. Dotted lines show uniform allocation for each region. Background bands and labels identify trial phases. The vertical dashed line is the alignment event.}
+\end{figure}
+\clearpage
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.98\textwidth,height=.65\textheight,keepaspectratio]{../motion_memory_search/figures/attention_conditions_compare.pdf}
+\caption{Direct comparison of conditions on the same axes. Left: attention at the first named region, with pointwise uncertainty. Right: concentration of the condition-average map, measured as the exponential of its entropy. A value near 100 means a broad mean map; smaller values mean concentration on fewer sites. This summary is computed after averaging maps and is distinct from averaging each trial's concentration.}
+\end{figure}
+\paragraph{Reading the observed trajectories.}
+Direction separation 20 degrees: target region mass peaks at 0.600 at original frame 27 (search), and is 0.501 on the final frame. Direction separation 45 degrees: target region mass peaks at 0.692 at original frame 27 (search), and is 0.569 on the final frame. Direction separation 90 degrees: target region mass peaks at 0.760 at original frame 27 (search), and is 0.645 on the final frame. These summaries locate the observed allocation in time; the neighboring intervention experiments test its causal contribution to behavior.
+
+% END CONDITION ATTENTION
+\subsection{Causal sensitivity to spatial and mnemonic interventions}
+For distractor\_\allowbreak{}+8\_\allowbreak{}evidence, paired accuracy changed by -96.1 percentage points (paired 95\% interval [-99.2\%, -92.2\%]; paired p=1.881e-37; within-task Holm p=1.166e-35). There were 0 corrected trials and 123 newly incorrect trials. For target\_\allowbreak{}+2\_\allowbreak{}evidence, paired accuracy changed by +3.9 percentage points (paired 95\% interval [0.8\%, 7.8\%]; paired p=0.0625; within-task Holm p=1). There were 5 corrected trials and 0 newly incorrect trials. These extrema describe the observed exploratory sweep. The four predesignated spatial comparisons at dose magnitude four are evaluated jointly across the full series in the integrated synthesis.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.98\textwidth,height=.65\textheight,keepaspectratio]{../motion_memory_search/figures/causal.pdf}
+\caption{Matched causal effects in the representative condition. Left: changes from sham across signed spatial-priority doses during available evidence. Right: resetting or amplifying one memory component at the specified frame. Intervals resample matched trials, preserving sham--intervention pairing. Target and distractor labels denote the task geometry; full-field tasks use fixed quadrants.}
+\end{figure}
+\clearpage\subsection{Predesignated spatial comparisons across the full series}
+The following dose-four evidence comparisons belong to one family of 108 tests across all nineteen tasks and selected conditions. The Holm-adjusted values therefore account for the complete primary spatial family. Positive changes indicate benefit and negative changes indicate impairment relative to the same-movie sham.
+
+\small\begin{longtable}{p{.29\textwidth}p{.32\textwidth}rr}\toprule Condition & Intervention & Change (pp) & Global Holm p\\\midrule\endhead
+motion\_\allowbreak{}A20\_\allowbreak{}S12\_\allowbreak{}D12\_\allowbreak{}H12 & target\_\allowbreak{}-4 & -89.8 & 5.152e-33\\
+motion\_\allowbreak{}A20\_\allowbreak{}S12\_\allowbreak{}D12\_\allowbreak{}H12 & target\_\allowbreak{}+4 & +3.9 & 1\\
+motion\_\allowbreak{}A20\_\allowbreak{}S12\_\allowbreak{}D12\_\allowbreak{}H12 & distractor\_\allowbreak{}-4 & +1.6 & 1\\
+motion\_\allowbreak{}A20\_\allowbreak{}S12\_\allowbreak{}D12\_\allowbreak{}H12 & distractor\_\allowbreak{}+4 & -66.4 & 5.222e-24\\
+motion\_\allowbreak{}A90\_\allowbreak{}S12\_\allowbreak{}D12\_\allowbreak{}H12 & target\_\allowbreak{}-4 & -70.3 & 1.648e-25\\
+motion\_\allowbreak{}A90\_\allowbreak{}S12\_\allowbreak{}D12\_\allowbreak{}H12 & target\_\allowbreak{}+4 & +0.8 & 1\\
+motion\_\allowbreak{}A90\_\allowbreak{}S12\_\allowbreak{}D12\_\allowbreak{}H12 & distractor\_\allowbreak{}-4 & +0.8 & 1\\
+motion\_\allowbreak{}A90\_\allowbreak{}S12\_\allowbreak{}D12\_\allowbreak{}H12 & distractor\_\allowbreak{}+4 & -46.1 & 3.261e-16\\
+\bottomrule\end{longtable}\normalsize
+\subsection{Readable information across representation levels}
+\begin{center}\begin{tabular}{lrrr}\toprule Region & Final AUC & Balanced accuracy & Permutation p\\\midrule
+appearance & 0.499 & 25.8\% & 0.395\\
+fusion & 0.509 & 24.2\% & 0.635\\
+spatial & 0.679 & 41.4\% & 0.005\\
+cls & 0.996 & 95.3\% & 0.005\\
+comparison & 0.626 & 32.0\% & 0.105\\
+attention & 0.986 & 94.5\% & 0.005\\
+\bottomrule\end{tabular}\end{center}
+All table entries are evaluated on held-out trials. Final-time permutation p-values quantify how unusual the observed decoding is relative to shuffled fitting labels; the full regional panel is exploratory. The capacity-matched probes quantify readable information in the specified projected subspaces. Choice, location and continuous-feature targets are retained in the accompanying JSON results.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.98\textwidth,height=.65\textheight,keepaspectratio]{../motion_memory_search/figures/decoding.pdf}
+\caption{Information across six recording sites. The answer-decoding curves report held-out macro AUC. Sample-content curves report reconstruction of a coarse last-sample or last-study image descriptor relative to a fitting-set-mean predictor. Each region uses an independently fitted training-only projection, shared across time; the agent itself is unchanged.}
+\end{figure}
+\subsection{Mnemonic population geometry and code stability}
+In cls memory, the participation ratio ranged from 0.00 to 14.97 within the retained subspace. The final step displacement was 0.279 standardized RMS units. In spatial memory, the participation ratio ranged from 0.00 to 18.68 within the retained subspace. The final step displacement was 0.178 standardized RMS units. The time-generalization matrices distinguish a stable readout from information that is readable only by a phase-specific decoder. Broad off-diagonal AUC supports persistence of a common linear discriminant; a strong diagonal with weaker transfer supports changing code geometry. Trajectories use one set of axes fitted to independent fitting trials, so apparent movement is not caused by refitting the axes at each frame.
+
+At memory-test frame 19, reconstruction of the sample motion direction, represented by its cosine and sine had held-out R-squared 0.759 in CLS memory and 0.868 in spatial memory. This continuous target describes stimulus content, while the final-answer decoder tests the response required after the subsequent evidence.
+
+At the same intervention boundary, resetting each component changed paired accuracy as follows: cls, -72.7 percentage points, spatial, -10.9 percentage points, comparison, +0.0 percentage points. Comparing these causal effects with the decoding curves distinguishes information that is recoverable from a state from information whose removal at that instant affects the subsequent choice.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.98\textwidth,height=.65\textheight,keepaspectratio]{../motion_memory_search/figures/population.pdf}
+\caption{Temporal generalization and held-out population trajectories. Top: decoders fitted separately at each frame and tested across all frames; chance AUC is 0.5. Bottom: class-mean trajectories in a shared training-derived coordinate system, with squares marking starts and stars marking ends. Spatial and CLS populations are analyzed separately.}
+\end{figure}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.98\textwidth,height=.65\textheight,keepaspectratio]{../motion_memory_search/figures/memory.pdf}
+\caption{Population dynamics and mnemonic variables. Left: covariance participation ratio within the retained subspace. Middle: frame-to-frame RMS state displacement. Right: continuous remembered-feature reconstruction when supplied by the task, otherwise location decoding or response-class centroid variance as stated by the legend. Each quantity is tied to the original sequence clock.}
+\end{figure}
+\subsection{Condition-resolved mechanisms}
+The additional panels retain differences between selected stimulus families and timing conditions. Family averages summarize a balanced native factorial; cells remain available individually in the appendix and source data. The decoding comparison uses the same external fitting protocol for every listed condition.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.98\textwidth,height=.65\textheight,keepaspectratio]{../motion_memory_search/figures/condition_decoding.pdf}
+\caption{Held-out final answer decoding across selected conditions and recording sites. A constant-zero comparison representation is displayed at chance AUC.}
+\end{figure}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.98\textwidth,height=.65\textheight,keepaspectratio]{../motion_memory_search/figures/factorial_exposure.pdf}
+\caption{Memory-search factorial. Each cell shows accuracy averaged over the other exposure or sample-duration factor, within the indicated family/similarity or motion-spacing group. Numbers are percent correct; all contributing native conditions contain 128 trials. Delay, encoding time and search time remain distinct factors.}
+\end{figure}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.98\textwidth,height=.65\textheight,keepaspectratio]{../motion_memory_search/figures/factorial_sample_frames.pdf}
+\caption{Memory-search factorial. Each cell shows accuracy averaged over the other exposure or sample-duration factor, within the indicated family/similarity or motion-spacing group. Numbers are percent correct; all contributing native conditions contain 128 trials. Delay, encoding time and search time remain distinct factors.}
+\end{figure}
+\subsection{Full-state probe control and population selectivity}
+\begin{center}\begin{tabular}{lrrr}\toprule Region & Full final AUC & Memory-test AUC & Coordinates\\\midrule
+appearance & 0.477 & unavailable & 3200\\
+fusion & 0.545 & 0.442 & 6400\\
+spatial & 0.929 & 0.473 & 6400\\
+cls & 0.998 & 0.475 & 64\\
+comparison & 0.645 & 0.459 & 735\\
+attention & 0.984 & 0.460 & 100\\
+\bottomrule\end{tabular}\end{center}
+The full-state control uses the original coordinate width, while the main temporal figures retain at most 32 components. Both evaluations use independent held-out trials. At the final frame, 51 of 64 global-memory units had response-class selectivity at within-population Holm p below 0.05. This is selectivity for the task answer in a recurrent activation coordinate. The complete unit effects and cross-validated centroid-distance trajectories are stored in \texttt{deep\_analysis.json}.
+
+\subsection{Direct verification of attention redistribution}
+On 32 exactly replayed trials per selected condition, all six priority arms reproduced their original behavioral probabilities within numerical tolerance. The following figure measures the induced changes in spatial allocation at every frame. This subset supplies a direct map-level manipulation check.
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.98\textwidth,height=.65\textheight,keepaspectratio]{../motion_memory_search/figures/intervention_maps.pdf}
+\caption{Matched map-level verification. Mean designated, alternative and off-site attention mass under sham and four dose-four evidence interventions. These are the first 32 exact movies from the primary intervention experiment, not a new behavioral sample.}
+\end{figure}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.98\textwidth,height=.65\textheight,keepaspectratio]{../motion_memory_search/figures/intervention_allocation_by_condition.pdf}
+\caption{Condition-resolved manipulation checks. The left panel measures final target-region allocation on 32 exact replays; the right measures accuracy on all 128 paired intervention trials. All displayed spatial doses have magnitude four and act during evidence frames. Rows preserve each selected condition, making redistribution and behavioral rescue separately visible.}
+\end{figure}
+For motion\_\allowbreak{}A20\_\allowbreak{}S12\_\allowbreak{}D12\_\allowbreak{}H12, a sample-centered encoding dose of -4 changed paired accuracy by -56.2 percentage points on 32 trials (interval [-71.9\%, -40.5\%]). This manipulation addresses the central sample location, separately from the future array-target location.
+
+For motion\_\allowbreak{}A20\_\allowbreak{}S12\_\allowbreak{}D12\_\allowbreak{}H12, a sample-centered encoding dose of +4 changed paired accuracy by -3.1 percentage points on 32 trials (interval [-9.4\%, 0.0\%]). This manipulation addresses the central sample location, separately from the future array-target location.
+
+For motion\_\allowbreak{}A90\_\allowbreak{}S12\_\allowbreak{}D12\_\allowbreak{}H12, a sample-centered encoding dose of -4 changed paired accuracy by -34.4 percentage points on 32 trials (interval [-50.0\%, -18.8\%]). This manipulation addresses the central sample location, separately from the future array-target location.
+
+For motion\_\allowbreak{}A90\_\allowbreak{}S12\_\allowbreak{}D12\_\allowbreak{}H12, a sample-centered encoding dose of +4 changed paired accuracy by +0.0 percentage points on 32 trials (interval [-10.9\%, 10.9\%]). This manipulation addresses the central sample location, separately from the future array-target location.
+
+\subsection{Held-out population response profiles}
+The 64 CLS coordinates are ordered by the class with the largest final mean response on fitting trials, with within-class order determined by between-class response variance. The displayed means use independent test trials. Four example coordinates are selected by the largest between-class variance on fitting trials; their held-out trajectories are shown with 1.96 standard-error bands. Activation coordinates use the fitting-set mean and standard deviation across trials and time.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.98\textwidth,height=.65\textheight,keepaspectratio]{../motion_memory_search/figures/unit_population.pdf}
+\caption{All 64 global-memory coordinates, shown separately for each correct-answer class. Unit ordering and standardization are learned from the fitting population; displayed activity comes from held-out trials. Colors represent activation, not firing rate.}
+\end{figure}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.98\textwidth,height=.65\textheight,keepaspectratio]{../motion_memory_search/figures/unit_examples.pdf}
+\caption{Four population coordinates selected on fitting trials and evaluated on independent trials. Curves separate response classes; shaded bands describe uncertainty in the mean activation.}
+\end{figure}
+\subsection{Correct answers, actual choices and spatial instructions}
+The correct-answer decoder asks what the stimulus requires; a separate decoder predicts the model's actual terminal choice. They use the same independent fitting/test split and capacity-matched regional features, but distinct target labels. Errors allow these two kinds of information to separate. A location decoder uses the cue index when available, otherwise the instructed or target location. Balanced accuracy averages recall over the labels represented in the held-out population. When every response is correct, answer and choice labels coincide.
+
+\begin{center}\small\begin{tabular}{lrrr}\toprule Region & Correct answer & Actual choice & Cue/target location\\\midrule
+appearance & 25.8\% & 24.4\% & 25.8\%\\
+fusion & 24.2\% & 28.7\% & 24.2\%\\
+spatial & 41.4\% & 40.5\% & 41.4\%\\
+cls & 95.3\% & 97.6\% & 95.3\%\\
+comparison & 32.0\% & 36.0\% & 32.0\%\\
+attention & 94.5\% & 96.9\% & 94.5\%\\
+\bottomrule\end{tabular}\normalsize\end{center}
+\subsection{Class geometry in the full recurrent states}
+For classes $a$ and $b$, let $d^{\rm fit}_j$ and $d^{\rm test}_j$ be their mean-activation differences in coordinate $j$, estimated from independent fitting and test populations and divided by the fitting-set standard deviation at that frame (with a 0.05 floor). The cross-validated distance is $D_{ab}=M^{-1}\sum_{j=1}^{M}d^{\rm fit}_j d^{\rm test}_j$, where $M$ is 64 for global memory and 6,400 for spatial memory. Independent differences remove the positive within-sample noise contribution present when one squared mean difference is used. Negative estimates are retained. Class codes follow the task response labels. This analysis uses every recorded recurrent coordinate and complements the low-dimensional trajectory visualization.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.98\textwidth,height=.65\textheight,keepaspectratio]{../motion_memory_search/figures/full_state_geometry.pdf}
+\caption{Cross-validated class geometry of the complete recurrent states. Left: mean off-diagonal distance over time, with the memory-test frame marked. Middle and right: class-pair distance matrices at the memory-test and final frames. Color scales are shared between the two matrices within each population. Zero is the null separation baseline; negative estimates remain visible.}
+\end{figure}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.98\textwidth,height=.65\textheight,keepaspectratio]{../motion_memory_search/figures/condition_maps_00.pdf}
+\caption{Condition-resolved attention at four temporal landmarks. Memory-search and pop-out rows average trials with top-left targets. Image-recognition rows average seen-probe trials. Each map is shown in the original image layout with a common probability scale across conditions; the row label gives the number of averaged trials. The memory-test frame is the middle delay, or the frame before evidence when a blank delay is absent.}
+\end{figure}
+\clearpage\subsection{Identical-array, changed-memory experiment}
+For each selected condition, 64 new scenes were each replayed four times. Only the sampled candidate changed; all search-array pixels were verified identical across the four movies. Every location served once as the correct answer within each scene. An additional replay replaced the sample with uniform midpoint gray. Intervals resample whole scenes, keeping their four queries together; all-perfect or all-zero accuracy boundaries use a Wilson interval on the 64 scene units. The template probability gain subtracts mean off-diagonal report probability from mean diagonal probability; the attention gain applies the same diagonal-minus-off-diagonal comparison to final spatial masses. These contrasts measure how a change in the remembered sample changes the response to a fixed array.
+
+For motion\_\allowbreak{}A20\_\allowbreak{}S12\_\allowbreak{}D12\_\allowbreak{}H12, accuracy was 95.3\% (scene-bootstrap interval [93.0\%, 97.7\%]); 81.2\% of scenes had all four queries answered correctly. Choice varied across queries in 100.0\% of scenes. Template probability gain was 0.925 (95 percent interval [0.896, 0.951]) and final attention gain was 0.517 (interval [0.497, 0.537]). The sample-blank response is fixed within each array and therefore scores exactly 25 percent across the four balanced candidate labels.
+
+For motion\_\allowbreak{}A90\_\allowbreak{}S12\_\allowbreak{}D12\_\allowbreak{}H12, accuracy was 99.2\% (scene-bootstrap interval [98.0\%, 100.0\%]); 96.9\% of scenes had all four queries answered correctly. Choice varied across queries in 100.0\% of scenes. Template probability gain was 0.987 (95 percent interval [0.971, 0.998]) and final attention gain was 0.703 (interval [0.685, 0.719]). The sample-blank response is fixed within each array and therefore scores exactly 25 percent across the four balanced candidate labels.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.98\textwidth,height=.65\textheight,keepaspectratio]{../motion_memory_search/figures/query_switch.pdf}
+\caption{Causal template dependence with array pixels held fixed. Rows identify the candidate used as the remembered sample; columns identify report location. A diagonal pattern indicates that memory changes the selected answer appropriately. Each panel averages 64 matched scenes.}
+\end{figure}
+\clearpage\section{Discussion}
+Across 81 native conditions, mean accuracy is about 97.7 percent. The paired timing contrasts show no corrected benefit from extending the tested sample or array durations, consistent with high performance at the shorter settings. The sample and search candidates use independent dot layouts, so the task requires a motion template that survives a change in visual realization. At the middle delay, a capacity-matched linear decoder reconstructs the remembered direction with R-squared about 0.76 from global memory and 0.87 from spatial memory. Resetting global memory there reduces accuracy by about 73 percentage points in both selected direction-spacing conditions, whereas the spatial reset is less damaging. Target-priority inhibition during search separately costs about 70 to 90 percentage points. This combination identifies readable retained content, strong dependence on global memory, and a causal selection requirement in a successful search computation. Continuous direction reconstruction tests retention of that template, while the final location decoder tests its use after the candidates appear. Matched timing effects separate sample evidence from search evidence and intervening retention. The identical-array query switch provides a direct causal test of template dependence: only the preceding sample direction changes. Comparing its behavioral probability contrast with its attention contrast reveals whether memory influences spatial selection, the downstream decision, or both.
+
+The behavioral result establishes 97.7\% native accuracy for this trained subject across the tested condition distribution. The information result identifies cls as the strongest final regional readout in the representative condition under the fixed probe procedure. The causal result identifies distractor\_\allowbreak{}+8\_\allowbreak{}evidence as the largest observed impairment in that condition. These three findings concern distinct levels of explanation: successful behavior, recoverable information and dependence on a manipulated component. Their conjunction is more informative than any one alone.
+
+The most useful interpretation of a null manipulation is determined by its interval and by whether it altered an active component at a relevant time. Zero-active-frame interventions are identified in the data, and comparison memory can be exactly zero in short sequences. The shared softmax also makes priority changes competitive: increasing one region necessarily changes the relative mass elsewhere. Thus the causal object is the complete redistribution induced by the specified intervention.
+
+Novel speeds, coherence levels and direction spacings would test the invariances of the motion template. Extending the identical-array query experiment to those transformations would test whether memory-guided selection follows direction across changed motion statistics.
+
+% BEGIN BIOLOGICAL DISCUSSION
+\subsection{Interpreting these results alongside biological experiments}
+\subsubsection{Zaksas and Pasternak (2006)}
+The shared computation is retaining direction across a delay and comparing later motion with that content. Our independent sample and candidate dot layouts force transfer beyond the same dot arrangement. Mid-delay direction decoding and the large global-reset cost provide complementary evidence for a retained motion template. The biological task compared successive directions, whereas ours must choose among simultaneous locations. \cite{bio_zaksas}
+
+\subsubsection{Chelazzi, Miller, Duncan and Desimone (1993)}
+The visual-search structure adds selection among candidates to memory comparison. Here the template is motion rather than a complex static picture. The strong performance across direction-spacing and timing conditions shows that this architecture can use one kind of remembered content to guide a location decision, even while irregular static-object search remains difficult. \cite{bio_chelazzi}
+
+\subsubsection{Ling, Liu and Carrasco (2009)}
+Feature-based motion attention offers a bridge from remembered direction to distributed selection. Candidate directions close to the remembered sample should produce more competition than distant ones. Measuring target and neighbor allocation as a function of angular separation would connect the template’s precision to spatial selection, while an external-noise manipulation would distinguish tuning precision from simple gain. \cite{bio_ling}
+
+\subsection{A computational account of the observed behavior}
+A circular template can represent direction through its sine and cosine, allowing similarity to depend on angular distance rather than an arbitrary numeric label. The model need not use exactly this two-coordinate code; it can retain a distributed representation with the same geometry. At the middle delay, external direction reconstruction explains substantial variance in both global and spatial states. Resetting global memory produces a much larger behavioral cost than the spatial reset at that moment, identifying a particularly important carrier for subsequent matching. During search, target inhibition creates a separate major cost. These observations link content retention and spatial selection in a successful computation, rather than relying solely on a final correct answer. \cite{bio_wolfe}
+
+\subsection{Where this task agrees with the biological evidence}
+The model agrees with an abstract motion memory that transfers across dot realizations and supports later selection. Its success contrasts with static object search and argues against a single universal failure of memory or attention. The likely difference concerns how each content type is encoded and made accessible to the query and comparison stages.
+
+\subsection{A follow-up experiment motivated by these results}
+Match motion and static search for candidate similarity and baseline difficulty. Compare sample-switch effects on allocation, memory-to-query decodability and paired state interventions. Test whether adding uncertainty to motion templates recreates the static-search pattern of retained information with poor use.
+% END BIOLOGICAL DISCUSSION
+\subsection{Scope of inference}
+This series studies one trained parameter realization. Its uncertainty intervals describe stimulus sampling for that realization. Threshold-defined latencies are in model frames and reflect the existing classifier applied to prefix states. Spatial doses are changes to computational priority logits, and memory perturbations act on recurrent tensors. Independent training seeds, calibrated behavioral clocks and biological intervention models are the next levels of replication. The empirical results, code and task definitions are sufficient to reproduce the computational experiments reported here.
+
+\begin{thebibliography}{99}
+\bibitem{salzman} Salzman CD, Britten KH, Newsome WT (1990). Cortical microstimulation influences perceptual judgements of motion direction. Nature 346:174-177. \url{https://pubmed.ncbi.nlm.nih.gov/2366872/}.
+\bibitem{it} Chelazzi L, Miller EK, Duncan J, Desimone R (1993). A neural basis for visual search in inferior temporal cortex. Nature 363:345-347. \url{https://pubmed.ncbi.nlm.nih.gov/8497317/}.
+\bibitem{spatial} Funahashi S, Bruce CJ, Goldman-Rakic PS (1989). Mnemonic coding of visual space in the monkey dorsolateral prefrontal cortex. Journal of Neurophysiology 61:331-349. \url{https://pubmed.ncbi.nlm.nih.gov/2918358/}.
+\bibitem{king} King JR, Dehaene S (2014). Characterizing the dynamics of mental representations: the temporal generalization method. Trends in Cognitive Sciences 18:203-210. \url{https://pmc.ncbi.nlm.nih.gov/articles/PMC5635958/}.
+\bibitem{stokes} Stokes MG et al. (2013). Dynamic coding for cognitive control in prefrontal cortex. Neuron 78:364-375. \url{https://pubmed.ncbi.nlm.nih.gov/23562541/}.
+% BEGIN BIOLOGICAL REFERENCES
+\bibitem{bio_zaksas} Zaksas and Pasternak (2006). Directional signals in the prefrontal cortex and in area MT during a working memory for visual motion task. \href{https://pubmed.ncbi.nlm.nih.gov/17093094/}{Primary source}.
+\bibitem{bio_chelazzi} Chelazzi, Miller, Duncan and Desimone (1993). A neural basis for visual search in inferior temporal cortex. \href{https://pubmed.ncbi.nlm.nih.gov/8497317/}{Primary source}.
+\bibitem{bio_ling} Ling, Liu and Carrasco (2009). How spatial and feature-based attention affect the gain and tuning of population responses. \href{https://pmc.ncbi.nlm.nih.gov/articles/PMC2696585/}{Primary source}.
+\bibitem{bio_wolfe} Wolfe (2021). Guided Search 6.0: An updated model of visual search. \href{https://doi.org/10.3758/s13423-020-01859-9}{Primary source}.
+% END BIOLOGICAL REFERENCES
+\end{thebibliography}\clearpage\appendix\section{Complete native condition results}
+\small\begin{longtable}{p{.44\textwidth}rrrr}\toprule Condition & n & Accuracy & AUC & Brier\\\midrule\endhead
+motion\_\allowbreak{}A20\_\allowbreak{}S3\_\allowbreak{}D0\_\allowbreak{}H3 & 128 & 96.9\% & 0.998 & 0.058\\
+motion\_\allowbreak{}A20\_\allowbreak{}S3\_\allowbreak{}D0\_\allowbreak{}H6 & 128 & 97.7\% & 0.999 & 0.035\\
+motion\_\allowbreak{}A20\_\allowbreak{}S3\_\allowbreak{}D0\_\allowbreak{}H12 & 128 & 97.7\% & 0.999 & 0.042\\
+motion\_\allowbreak{}A20\_\allowbreak{}S3\_\allowbreak{}D4\_\allowbreak{}H3 & 128 & 96.1\% & 0.998 & 0.056\\
+motion\_\allowbreak{}A20\_\allowbreak{}S3\_\allowbreak{}D4\_\allowbreak{}H6 & 128 & 96.9\% & 0.998 & 0.049\\
+motion\_\allowbreak{}A20\_\allowbreak{}S3\_\allowbreak{}D4\_\allowbreak{}H12 & 128 & 96.9\% & 0.999 & 0.039\\
+motion\_\allowbreak{}A20\_\allowbreak{}S3\_\allowbreak{}D12\_\allowbreak{}H3 & 128 & 95.3\% & 0.997 & 0.073\\
+motion\_\allowbreak{}A20\_\allowbreak{}S3\_\allowbreak{}D12\_\allowbreak{}H6 & 128 & 96.1\% & 0.996 & 0.063\\
+motion\_\allowbreak{}A20\_\allowbreak{}S3\_\allowbreak{}D12\_\allowbreak{}H12 & 128 & 96.9\% & 0.999 & 0.043\\
+motion\_\allowbreak{}A20\_\allowbreak{}S6\_\allowbreak{}D0\_\allowbreak{}H3 & 128 & 97.7\% & 0.998 & 0.051\\
+motion\_\allowbreak{}A20\_\allowbreak{}S6\_\allowbreak{}D0\_\allowbreak{}H6 & 128 & 96.9\% & 0.999 & 0.046\\
+motion\_\allowbreak{}A20\_\allowbreak{}S6\_\allowbreak{}D0\_\allowbreak{}H12 & 128 & 97.7\% & 0.999 & 0.043\\
+motion\_\allowbreak{}A20\_\allowbreak{}S6\_\allowbreak{}D4\_\allowbreak{}H3 & 128 & 94.5\% & 0.999 & 0.060\\
+motion\_\allowbreak{}A20\_\allowbreak{}S6\_\allowbreak{}D4\_\allowbreak{}H6 & 128 & 96.9\% & 0.999 & 0.052\\
+motion\_\allowbreak{}A20\_\allowbreak{}S6\_\allowbreak{}D4\_\allowbreak{}H12 & 128 & 98.4\% & 0.999 & 0.037\\
+motion\_\allowbreak{}A20\_\allowbreak{}S6\_\allowbreak{}D12\_\allowbreak{}H3 & 128 & 96.1\% & 0.998 & 0.064\\
+motion\_\allowbreak{}A20\_\allowbreak{}S6\_\allowbreak{}D12\_\allowbreak{}H6 & 128 & 95.3\% & 0.998 & 0.067\\
+motion\_\allowbreak{}A20\_\allowbreak{}S6\_\allowbreak{}D12\_\allowbreak{}H12 & 128 & 96.1\% & 0.999 & 0.046\\
+motion\_\allowbreak{}A20\_\allowbreak{}S12\_\allowbreak{}D0\_\allowbreak{}H3 & 128 & 96.1\% & 0.998 & 0.060\\
+motion\_\allowbreak{}A20\_\allowbreak{}S12\_\allowbreak{}D0\_\allowbreak{}H6 & 128 & 96.9\% & 0.999 & 0.045\\
+motion\_\allowbreak{}A20\_\allowbreak{}S12\_\allowbreak{}D0\_\allowbreak{}H12 & 128 & 96.9\% & 0.999 & 0.044\\
+motion\_\allowbreak{}A20\_\allowbreak{}S12\_\allowbreak{}D4\_\allowbreak{}H3 & 128 & 94.5\% & 0.999 & 0.065\\
+motion\_\allowbreak{}A20\_\allowbreak{}S12\_\allowbreak{}D4\_\allowbreak{}H6 & 128 & 97.7\% & 0.999 & 0.048\\
+motion\_\allowbreak{}A20\_\allowbreak{}S12\_\allowbreak{}D4\_\allowbreak{}H12 & 128 & 96.9\% & 0.999 & 0.046\\
+motion\_\allowbreak{}A20\_\allowbreak{}S12\_\allowbreak{}D12\_\allowbreak{}H3 & 128 & 95.3\% & 0.998 & 0.069\\
+motion\_\allowbreak{}A20\_\allowbreak{}S12\_\allowbreak{}D12\_\allowbreak{}H6 & 128 & 95.3\% & 0.999 & 0.063\\
+motion\_\allowbreak{}A20\_\allowbreak{}S12\_\allowbreak{}D12\_\allowbreak{}H12 & 128 & 96.1\% & 0.999 & 0.058\\
+motion\_\allowbreak{}A45\_\allowbreak{}S3\_\allowbreak{}D0\_\allowbreak{}H3 & 128 & 97.7\% & 0.999 & 0.042\\
+motion\_\allowbreak{}A45\_\allowbreak{}S3\_\allowbreak{}D0\_\allowbreak{}H6 & 128 & 98.4\% & 1.000 & 0.034\\
+motion\_\allowbreak{}A45\_\allowbreak{}S3\_\allowbreak{}D0\_\allowbreak{}H12 & 128 & 96.9\% & 0.998 & 0.046\\
+motion\_\allowbreak{}A45\_\allowbreak{}S3\_\allowbreak{}D4\_\allowbreak{}H3 & 128 & 96.9\% & 0.999 & 0.049\\
+motion\_\allowbreak{}A45\_\allowbreak{}S3\_\allowbreak{}D4\_\allowbreak{}H6 & 128 & 96.9\% & 1.000 & 0.059\\
+motion\_\allowbreak{}A45\_\allowbreak{}S3\_\allowbreak{}D4\_\allowbreak{}H12 & 128 & 96.9\% & 0.998 & 0.055\\
+motion\_\allowbreak{}A45\_\allowbreak{}S3\_\allowbreak{}D12\_\allowbreak{}H3 & 128 & 96.9\% & 0.998 & 0.048\\
+motion\_\allowbreak{}A45\_\allowbreak{}S3\_\allowbreak{}D12\_\allowbreak{}H6 & 128 & 96.9\% & 0.999 & 0.063\\
+motion\_\allowbreak{}A45\_\allowbreak{}S3\_\allowbreak{}D12\_\allowbreak{}H12 & 128 & 96.9\% & 0.998 & 0.055\\
+motion\_\allowbreak{}A45\_\allowbreak{}S6\_\allowbreak{}D0\_\allowbreak{}H3 & 128 & 96.9\% & 1.000 & 0.047\\
+motion\_\allowbreak{}A45\_\allowbreak{}S6\_\allowbreak{}D0\_\allowbreak{}H6 & 128 & 96.9\% & 1.000 & 0.058\\
+motion\_\allowbreak{}A45\_\allowbreak{}S6\_\allowbreak{}D0\_\allowbreak{}H12 & 128 & 96.9\% & 0.997 & 0.055\\
+motion\_\allowbreak{}A45\_\allowbreak{}S6\_\allowbreak{}D4\_\allowbreak{}H3 & 128 & 96.9\% & 0.999 & 0.048\\
+motion\_\allowbreak{}A45\_\allowbreak{}S6\_\allowbreak{}D4\_\allowbreak{}H6 & 128 & 96.9\% & 0.999 & 0.058\\
+motion\_\allowbreak{}A45\_\allowbreak{}S6\_\allowbreak{}D4\_\allowbreak{}H12 & 128 & 96.1\% & 0.997 & 0.054\\
+motion\_\allowbreak{}A45\_\allowbreak{}S6\_\allowbreak{}D12\_\allowbreak{}H3 & 128 & 96.9\% & 0.998 & 0.044\\
+motion\_\allowbreak{}A45\_\allowbreak{}S6\_\allowbreak{}D12\_\allowbreak{}H6 & 128 & 96.9\% & 0.998 & 0.060\\
+motion\_\allowbreak{}A45\_\allowbreak{}S6\_\allowbreak{}D12\_\allowbreak{}H12 & 128 & 96.1\% & 0.997 & 0.057\\
+motion\_\allowbreak{}A45\_\allowbreak{}S12\_\allowbreak{}D0\_\allowbreak{}H3 & 128 & 97.7\% & 1.000 & 0.031\\
+motion\_\allowbreak{}A45\_\allowbreak{}S12\_\allowbreak{}D0\_\allowbreak{}H6 & 128 & 97.7\% & 0.999 & 0.046\\
+motion\_\allowbreak{}A45\_\allowbreak{}S12\_\allowbreak{}D0\_\allowbreak{}H12 & 128 & 96.9\% & 0.997 & 0.050\\
+motion\_\allowbreak{}A45\_\allowbreak{}S12\_\allowbreak{}D4\_\allowbreak{}H3 & 128 & 97.7\% & 0.999 & 0.036\\
+motion\_\allowbreak{}A45\_\allowbreak{}S12\_\allowbreak{}D4\_\allowbreak{}H6 & 128 & 97.7\% & 0.999 & 0.050\\
+motion\_\allowbreak{}A45\_\allowbreak{}S12\_\allowbreak{}D4\_\allowbreak{}H12 & 128 & 96.9\% & 0.997 & 0.053\\
+motion\_\allowbreak{}A45\_\allowbreak{}S12\_\allowbreak{}D12\_\allowbreak{}H3 & 128 & 97.7\% & 0.999 & 0.038\\
+motion\_\allowbreak{}A45\_\allowbreak{}S12\_\allowbreak{}D12\_\allowbreak{}H6 & 128 & 96.9\% & 0.998 & 0.059\\
+motion\_\allowbreak{}A45\_\allowbreak{}S12\_\allowbreak{}D12\_\allowbreak{}H12 & 128 & 96.1\% & 0.996 & 0.059\\
+motion\_\allowbreak{}A90\_\allowbreak{}S3\_\allowbreak{}D0\_\allowbreak{}H3 & 128 & 98.4\% & 0.999 & 0.026\\
+motion\_\allowbreak{}A90\_\allowbreak{}S3\_\allowbreak{}D0\_\allowbreak{}H6 & 128 & 100.0\% & 1.000 & 0.000\\
+motion\_\allowbreak{}A90\_\allowbreak{}S3\_\allowbreak{}D0\_\allowbreak{}H12 & 128 & 100.0\% & 1.000 & 0.000\\
+motion\_\allowbreak{}A90\_\allowbreak{}S3\_\allowbreak{}D4\_\allowbreak{}H3 & 128 & 99.2\% & 1.000 & 0.015\\
+motion\_\allowbreak{}A90\_\allowbreak{}S3\_\allowbreak{}D4\_\allowbreak{}H6 & 128 & 100.0\% & 1.000 & 0.000\\
+motion\_\allowbreak{}A90\_\allowbreak{}S3\_\allowbreak{}D4\_\allowbreak{}H12 & 128 & 100.0\% & 1.000 & 0.000\\
+motion\_\allowbreak{}A90\_\allowbreak{}S3\_\allowbreak{}D12\_\allowbreak{}H3 & 128 & 99.2\% & 1.000 & 0.015\\
+motion\_\allowbreak{}A90\_\allowbreak{}S3\_\allowbreak{}D12\_\allowbreak{}H6 & 128 & 100.0\% & 1.000 & 0.000\\
+motion\_\allowbreak{}A90\_\allowbreak{}S3\_\allowbreak{}D12\_\allowbreak{}H12 & 128 & 100.0\% & 1.000 & 0.000\\
+motion\_\allowbreak{}A90\_\allowbreak{}S6\_\allowbreak{}D0\_\allowbreak{}H3 & 128 & 99.2\% & 1.000 & 0.016\\
+motion\_\allowbreak{}A90\_\allowbreak{}S6\_\allowbreak{}D0\_\allowbreak{}H6 & 128 & 100.0\% & 1.000 & 0.000\\
+motion\_\allowbreak{}A90\_\allowbreak{}S6\_\allowbreak{}D0\_\allowbreak{}H12 & 128 & 100.0\% & 1.000 & 0.000\\
+motion\_\allowbreak{}A90\_\allowbreak{}S6\_\allowbreak{}D4\_\allowbreak{}H3 & 128 & 99.2\% & 1.000 & 0.015\\
+motion\_\allowbreak{}A90\_\allowbreak{}S6\_\allowbreak{}D4\_\allowbreak{}H6 & 128 & 100.0\% & 1.000 & 0.000\\
+motion\_\allowbreak{}A90\_\allowbreak{}S6\_\allowbreak{}D4\_\allowbreak{}H12 & 128 & 100.0\% & 1.000 & 0.000\\
+motion\_\allowbreak{}A90\_\allowbreak{}S6\_\allowbreak{}D12\_\allowbreak{}H3 & 128 & 99.2\% & 1.000 & 0.015\\
+motion\_\allowbreak{}A90\_\allowbreak{}S6\_\allowbreak{}D12\_\allowbreak{}H6 & 128 & 100.0\% & 1.000 & 0.000\\
+motion\_\allowbreak{}A90\_\allowbreak{}S6\_\allowbreak{}D12\_\allowbreak{}H12 & 128 & 100.0\% & 1.000 & 0.000\\
+motion\_\allowbreak{}A90\_\allowbreak{}S12\_\allowbreak{}D0\_\allowbreak{}H3 & 128 & 99.2\% & 1.000 & 0.014\\
+motion\_\allowbreak{}A90\_\allowbreak{}S12\_\allowbreak{}D0\_\allowbreak{}H6 & 128 & 100.0\% & 1.000 & 0.000\\
+motion\_\allowbreak{}A90\_\allowbreak{}S12\_\allowbreak{}D0\_\allowbreak{}H12 & 128 & 100.0\% & 1.000 & 0.000\\
+motion\_\allowbreak{}A90\_\allowbreak{}S12\_\allowbreak{}D4\_\allowbreak{}H3 & 128 & 99.2\% & 1.000 & 0.015\\
+motion\_\allowbreak{}A90\_\allowbreak{}S12\_\allowbreak{}D4\_\allowbreak{}H6 & 128 & 100.0\% & 1.000 & 0.000\\
+motion\_\allowbreak{}A90\_\allowbreak{}S12\_\allowbreak{}D4\_\allowbreak{}H12 & 128 & 100.0\% & 1.000 & 0.000\\
+motion\_\allowbreak{}A90\_\allowbreak{}S12\_\allowbreak{}D12\_\allowbreak{}H3 & 128 & 99.2\% & 1.000 & 0.014\\
+motion\_\allowbreak{}A90\_\allowbreak{}S12\_\allowbreak{}D12\_\allowbreak{}H6 & 128 & 100.0\% & 1.000 & 0.000\\
+motion\_\allowbreak{}A90\_\allowbreak{}S12\_\allowbreak{}D12\_\allowbreak{}H12 & 128 & 100.0\% & 1.000 & 0.000\\
+\bottomrule\end{longtable}\normalsize\section{Every-frame attention atlas}
+Condition motion\_\allowbreak{}A20\_\allowbreak{}S12\_\allowbreak{}D12\_\allowbreak{}H12. The first two rows show one exact native trial and its own attention overlay. The third row averages attention over 32 trials sharing the selected location/cue and response label. Every model frame is included. Averaging unrelated object identities is restricted to the attention map; the displayed RGB movie remains one real trial.
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.98\textwidth,height=.65\textheight,keepaspectratio]{../motion_memory_search/figures/atlas_000.pdf}
+\caption{Native frames, own attention overlay and condition-group spatial projection. Shared color scaling within each panel represents attention probability per patch.}
+\end{figure}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.98\textwidth,height=.65\textheight,keepaspectratio]{../motion_memory_search/figures/atlas_006.pdf}
+\caption{Native frames, own attention overlay and condition-group spatial projection. Shared color scaling within each panel represents attention probability per patch.}
+\end{figure}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.98\textwidth,height=.65\textheight,keepaspectratio]{../motion_memory_search/figures/atlas_012.pdf}
+\caption{Native frames, own attention overlay and condition-group spatial projection. Shared color scaling within each panel represents attention probability per patch.}
+\end{figure}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.98\textwidth,height=.65\textheight,keepaspectratio]{../motion_memory_search/figures/atlas_018.pdf}
+\caption{Native frames, own attention overlay and condition-group spatial projection. Shared color scaling within each panel represents attention probability per patch.}
+\end{figure}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.98\textwidth,height=.65\textheight,keepaspectratio]{../motion_memory_search/figures/atlas_024.pdf}
+\caption{Native frames, own attention overlay and condition-group spatial projection. Shared color scaling within each panel represents attention probability per patch.}
+\end{figure}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.98\textwidth,height=.65\textheight,keepaspectratio]{../motion_memory_search/figures/atlas_030.pdf}
+\caption{Native frames, own attention overlay and condition-group spatial projection. Shared color scaling within each panel represents attention probability per patch.}
+\end{figure}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.98\textwidth,height=.65\textheight,keepaspectratio]{../motion_memory_search/figures/atlas_036.pdf}
+\caption{Native frames, own attention overlay and condition-group spatial projection. Shared color scaling within each panel represents attention probability per patch.}
+\end{figure}
+% BEGIN FULL CONDITION ATTENTION
+\clearpage\section{Condition-by-time attention: all frames}
+Each panel retains the same condition definitions and color scale as the main attention section. Frames are aligned to the task-specific evidence onset. Gray cells mark times outside a particular trial, rather than missing observations. All observed frames are displayed.
+\clearpage
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.98\textwidth,height=.65\textheight,keepaspectratio]{../motion_memory_search/figures/attention_conditions_maps_00_000.pdf}
+\caption{Complete condition-average spatial trajectory. Rows are conditions, columns are aligned frames, and each title also records the original frame and task phase. Sample counts and a shared probability scale accompany every panel.}
+\end{figure}
+\clearpage
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.98\textwidth,height=.65\textheight,keepaspectratio]{../motion_memory_search/figures/attention_conditions_maps_00_007.pdf}
+\caption{Complete condition-average spatial trajectory. Rows are conditions, columns are aligned frames, and each title also records the original frame and task phase. Sample counts and a shared probability scale accompany every panel.}
+\end{figure}
+\clearpage
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.98\textwidth,height=.65\textheight,keepaspectratio]{../motion_memory_search/figures/attention_conditions_maps_00_014.pdf}
+\caption{Complete condition-average spatial trajectory. Rows are conditions, columns are aligned frames, and each title also records the original frame and task phase. Sample counts and a shared probability scale accompany every panel.}
+\end{figure}
+\clearpage
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.98\textwidth,height=.65\textheight,keepaspectratio]{../motion_memory_search/figures/attention_conditions_maps_00_021.pdf}
+\caption{Complete condition-average spatial trajectory. Rows are conditions, columns are aligned frames, and each title also records the original frame and task phase. Sample counts and a shared probability scale accompany every panel.}
+\end{figure}
+\clearpage
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.98\textwidth,height=.65\textheight,keepaspectratio]{../motion_memory_search/figures/attention_conditions_maps_00_028.pdf}
+\caption{Complete condition-average spatial trajectory. Rows are conditions, columns are aligned frames, and each title also records the original frame and task phase. Sample counts and a shared probability scale accompany every panel.}
+\end{figure}
+\clearpage
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.98\textwidth,height=.65\textheight,keepaspectratio]{../motion_memory_search/figures/attention_conditions_maps_00_035.pdf}
+\caption{Complete condition-average spatial trajectory. Rows are conditions, columns are aligned frames, and each title also records the original frame and task phase. Sample counts and a shared probability scale accompany every panel.}
+\end{figure}
+% END FULL CONDITION ATTENTION
+\clearpage\section{Reproducibility record}
+Main checkpoint: update 204,289. Final robustness checkpoint: update 220,637.
+
+best: \texttt{596bc351783b3ddbfa8d37a9cf8d6514}\par\texttt{6d1333dcc0097d40f0f75665b6451bcf}
+
+latest: \texttt{c13338ff6958c5dbb617914da538bca1}\par\texttt{39944b89122b848b72885ed3241995d4}
+
+Data namespace 205903; probe fitting 205904; probe testing 205905; interventions 205906; difficulty challenges 205907; VDA counterfactuals 205908. The analysis package is \texttt{SecondPass/TaskNeuroscience}. The protocol, source hashes, parity checks, per-trial NPZ files, metadata, statistical JSON files and editable LaTeX sources are retained beside this paper. Figures and text are generated directly from completed analysis results.
+\end{document}
