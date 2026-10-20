@@ -1,0 +1,83 @@
+[
+  {
+    "title": "One observer. Several kinds of memory.",
+    "short": "The whole system",
+    "sentences": [
+      "This is our newer spatial memory query architecture.",
+      "Think of each component as doing a job: describe the scene, select useful information, retain it, and produce a decision.",
+      "We will keep spatial memory, C L S memory, and comparison memory separate throughout."
+    ]
+  },
+  {
+    "title": "Build a description at every location.",
+    "short": "Visual evidence",
+    "sentences": [
+      "Each observation is a one hundred by one hundred pixel image.",
+      "The appearance pathway extracts color and structure. The temporal pathway compares local image crops with earlier frames to estimate displacement.",
+      "Fusion combines these signals, local statistics, and prediction error into sixty four numbers at each of one hundred spatial sites."
+    ]
+  },
+  {
+    "title": "Spatial memory keeps a map of information.",
+    "short": "Spatial memory",
+    "sentences": [
+      "Spatial recurrent memory has one hundred locations, each storing sixty four numbers: six thousand four hundred numbers in total.",
+      "A spatial G R U uses local neighborhoods and learned gates to decide what to retain or update.",
+      "Attention modulates writing, while layer normalization stabilizes the signals controlling those gates."
+    ]
+  },
+  {
+    "title": "CLS memory is one evolving summary.",
+    "short": "CLS and its constant",
+    "sentences": [
+      "The C L S recurrent memory contains sixty four numbers and changes as selected evidence arrives.",
+      "The learned C L S token is a different object: a sixty four number parameter vector, fixed during a trial.",
+      "Adding that constant to previous C L S memory helps construct the query. Neither vector is itself the final belief output."
+    ]
+  },
+  {
+    "title": "Memory asks. Each location offers a key.",
+    "short": "Query, keys, values",
+    "sentences": [
+      "The newer model adds a direct contribution from the entire previous spatial memory to the query.",
+      "There is still just one query. Each of the one hundred locations supplies a key and a value, derived from current vision and previous local memory.",
+      "Keys determine relevance. Values carry the information that selection will combine."
+    ]
+  },
+  {
+    "title": "One query creates 100 attention weights.",
+    "short": "Shared attention",
+    "sentences": [
+      "Compare the normalized query with every normalized key. Scale the scores, then apply softmax.",
+      "The resulting one hundred positive weights sum to one. They form the ten by ten attention map.",
+      "The same weights pool values into C L S memory, weight temporal comparisons, and modulate spatial memory writes."
+    ]
+  },
+  {
+    "title": "Comparison memory tracks motion evidence.",
+    "short": "Temporal comparison",
+    "sentences": [
+      "A separate branch compares an older motion window with a recent motion window at every location.",
+      "Attention pools those local comparisons. Comparison memory keeps eighty percent of its old state and adds twenty percent of the selected comparison.",
+      "It contains seven hundred thirty five numbers. Its older reference becomes available only after eight preceding frames."
+    ]
+  },
+  {
+    "title": "The output is a decision. Memory feeds back.",
+    "short": "Readout and recurrence",
+    "sentences": [
+      "The readout combines C L S memory with comparison memory, then a task specific head produces answer scores.",
+      "Softmax turns those scores into the task's belief probabilities.",
+      "On the next frame, updated spatial and C L S memories influence attention again. This feedback lets past observations shape the selection of new evidence."
+    ]
+  },
+  {
+    "title": "Component jobs are learned through shared losses.",
+    "short": "Training objectives",
+    "sentences": [
+      "Training rewards correct terminal answers through cross entropy. V D A trials weight this loss by their assigned value.",
+      "An auxiliary pixel prediction error, weighted by zero point zero five, encourages motion estimates that transport the previous image toward the next.",
+      "Gradients train the connected learned components together. These are shared objectives, rather than a separate supervised target for each memory."
+    ]
+  }
+]
