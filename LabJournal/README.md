@@ -46,6 +46,7 @@ The journal records what the project tried, how it was trained, what the saved e
 
 ## Motion-learning experiments
 
+- [Structure discovery on native Krauzlis](structure-discovery.md) (October 24, CPU only): unlabeled symmetry removal plus a closed-form-discovered attention gate take an ordinary Adam-trained GRU from chance to 94–96% balanced accuracy from 200–3,000 labeled movies; each piece alone stays near chance. October 25 follow-up on three more tasks: spatial binding reaches 100% from 200 labels; cued orientation reaches about 71% (75% is the ceiling without the cue's sign); memory-guided search fails (structured arms at chance). October 25b, after sign-nuisance and cross-location discovery were added: cued orientation reaches 100% from 200 labels, and memory search reaches 37–47%. October 25c: a richer field lifts memory search to 54–56% at 1,000–3,000 labels; Krauzlis reaches 96.8% with cross-location references, and binding stays at 100%.
 - [Outcome-contrastive RViT with spatial GRU](outcome-contrastive-rvit.md): traininglocallytoward25024updates; full-batchterminalmemoryCLScontrast+choicefeedback;8-trialmemorizationpassed35updates, nofinalresultyet.
 - [Faster-dot transformer rerun](weighted-sum-transformer-speed4.md): completed25,024updates at speeds1.5/4/8; finalBA49.772%, AUC0.498358 remainschance.
 - [Direct weighted-image transformer](weighted-sum-transformer.md): completed25,024 end-to-end updates; final BA49.25%, AUC0.492292 remained at chance.
