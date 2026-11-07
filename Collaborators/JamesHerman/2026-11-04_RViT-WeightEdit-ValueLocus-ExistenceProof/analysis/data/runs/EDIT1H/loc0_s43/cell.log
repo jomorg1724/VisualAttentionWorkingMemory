@@ -1,0 +1,161 @@
+[ep] arm=EDIT1H run=/ix/jpherman/hermanj/rvit_zk/runs/existence/EDIT1H/loc0_s43 start=/ix/jpherman/hermanj/rvit_zk/runs/existence/W/loc0_s43/ckpt_final.pt table_high=0 K=0.25 scale_all=1 eps=5000 flags=--qk-decay 0 --critic-only host=gpu-n65.crc.pitt.edu Thu Nov  5 01:58:55 AM EST 2026
+[ep_make_edit] /ix/jpherman/hermanj/rvit_zk/runs/existence/EDIT1H/loc0_s43/edit_init.pt: site O k 1.0 beta -1.504 L 0
+[ep_train] freeze_actor=False qk_decay=0.0 route_change_ok=False
+[train_orig] low-value location 3 rewards scaled x0.25: {0: (5.769230769230769, 5.769230769230769), 3: (0.03525641025641026, 0.08012820512820513)}
+[train_orig] task=luo2015_sensitivity seed=43 particles=1201 V_max=5.7692 rewards=[5.769230769230769, 5.769230769230769, 0.03525641025641026, 0.08012820512820513]
+[train_orig] INIT from /ix/jpherman/hermanj/rvit_zk/runs/existence/EDIT1H/loc0_s43/edit_init.pt (episode 4999, theta 35.0); replay buffer empty
+[train_orig] {'ep': 0, 'theta': 35.0, 'acc': 1.0, 'rr': '', 'hit': '', 'fa_foil': '', 'fa_none': '', 'prem': 0.0, 'hr0': '', 'fa0': 0.0, 'hr3': '', 'fa3': ''} 290 ep/min
+[train_orig] {'ep': 1000, 'theta': 35.0, 'acc': 0.756, 'rr': '', 'hit': '', 'fa_foil': '', 'fa_none': '', 'prem': 0.005, 'hr0': 0.812, 'fa0': 0.236, 'hr3': 0.587, 'fa3': 0.058} 216 ep/min
+[train_orig] {'ep': 2000, 'theta': 35.0, 'acc': 0.762, 'rr': '', 'hit': '', 'fa_foil': '', 'fa_none': '', 'prem': 0.006, 'hr0': 0.786, 'fa0': 0.228, 'hr3': 0.6, 'fa3': 0.043} 214 ep/min
+[train_orig] {'ep': 3000, 'theta': 35.0, 'acc': 0.766, 'rr': '', 'hit': '', 'fa_foil': '', 'fa_none': '', 'prem': 0.008, 'hr0': 0.784, 'fa0': 0.245, 'hr3': 0.619, 'fa3': 0.039} 216 ep/min
+[train_orig] {'ep': 4000, 'theta': 35.0, 'acc': 0.773, 'rr': '', 'hit': '', 'fa_foil': '', 'fa_none': '', 'prem': 0.008, 'hr0': 0.8, 'fa0': 0.25, 'hr3': 0.643, 'fa3': 0.046} 216 ep/min
+[train_orig] done: /ix/jpherman/hermanj/rvit_zk/runs/existence/EDIT1H/loc0_s43/ckpt_final.pt theta=35.0
+  theta=  3.0 loc0  HR=0.300 FA=0.233 d'=+0.205 c=+0.627
+  theta=  3.0 loc3  HR=0.082 FA=0.055 d'=+0.202 c=+1.494
+  theta=  5.0 loc0  HR=0.349 FA=0.253 d'=+0.277 c=+0.525
+  theta=  5.0 loc3  HR=0.129 FA=0.048 d'=+0.530 c=+1.398
+  theta=  7.0 loc0  HR=0.464 FA=0.260 d'=+0.553 c=+0.368
+  theta=  7.0 loc3  HR=0.216 FA=0.059 d'=+0.774 c=+1.173
+  theta=  9.0 loc0  HR=0.575 FA=0.251 d'=+0.862 c=+0.241
+  theta=  9.0 loc3  HR=0.315 FA=0.041 d'=+1.256 c=+1.110
+  theta= 11.0 loc0  HR=0.697 FA=0.244 d'=+1.208 c=+0.090
+  theta= 11.0 loc3  HR=0.409 FA=0.053 d'=+1.386 c=+0.924
+  theta= 13.0 loc0  HR=0.797 FA=0.254 d'=+1.495 c=-0.085
+  theta= 13.0 loc3  HR=0.569 FA=0.046 d'=+1.863 c=+0.758
+  theta= 15.0 loc0  HR=0.869 FA=0.269 d'=+1.738 c=-0.254
+  theta= 15.0 loc3  HR=0.666 FA=0.053 d'=+2.049 c=+0.595
+  theta= 18.0 loc0  HR=0.942 FA=0.247 d'=+2.251 c=-0.442
+  theta= 18.0 loc3  HR=0.814 FA=0.052 d'=+2.521 c=+0.366
+  theta= 21.0 loc0  HR=0.977 FA=0.250 d'=+2.668 c=-0.659
+  theta= 21.0 loc3  HR=0.878 FA=0.043 d'=+2.880 c=+0.274
+  theta= 24.0 loc0  HR=0.992 FA=0.246 d'=+3.093 c=-0.861
+  theta= 24.0 loc3  HR=0.887 FA=0.040 d'=+2.967 c=+0.271
+  theta= 30.0 loc0  HR=0.999 FA=0.237 d'=+3.803 c=-1.186
+  theta= 30.0 loc3  HR=0.883 FA=0.046 d'=+2.874 c=+0.246
+  theta= 36.0 loc0  HR=1.000 FA=0.260 d'=+4.123 c=-1.418
+  theta= 36.0 loc3  HR=0.851 FA=0.055 d'=+2.638 c=+0.277
+  theta= 42.0 loc0  HR=0.999 FA=0.227 d'=+4.038 c=-1.269
+  theta= 42.0 loc3  HR=0.829 FA=0.043 d'=+2.668 c=+0.383
+[lm_assay] -> /ix/jpherman/hermanj/rvit_zk/runs/existence/EDIT1H/loc0_s43/roc_ckpt_final.json
+EDIT1H/loc0_s43 high: AUC_H 0.889 mid +0.074 dn 1.30 slope 4.32 icpt -3.29 | low: AUC_H 0.876 mid +0.099 dn 1.96 slope 1.87 icpt -7.07
+[lm_readout_probe] -> /ix/jpherman/hermanj/rvit_zk/runs/existence/EDIT1H/loc0_s43/lmro_final.json
+θ=   6 none            loc0 (high) HR=0.389 FA=0.228 d'=+0.46 c=+0.51
+θ=   6 none            loc3 (low ) HR=0.165 FA=0.057 d'=+0.60 c=+1.28
+θ=   6 shift_0         loc0 (high) HR=0.949 FA=0.945 d'=+0.04 c=-1.62
+θ=   6 shift_0         loc3 (low ) HR=0.527 FA=0.525 d'=+0.00 c=-0.07
+θ=   6 shift_0.25      loc0 (high) HR=0.912 FA=0.886 d'=+0.15 c=-1.28
+θ=   6 shift_0.25      loc3 (low ) HR=0.335 FA=0.249 d'=+0.25 c=+0.55
+θ=   6 shift_0.5       loc0 (high) HR=0.790 FA=0.708 d'=+0.26 c=-0.68
+θ=   6 shift_0.5       loc3 (low ) HR=0.189 FA=0.093 d'=+0.44 c=+1.10
+θ=   6 shift_0.75      loc0 (high) HR=0.540 FA=0.405 d'=+0.34 c=+0.07
+θ=   6 shift_0.75      loc3 (low ) HR=0.149 FA=0.061 d'=+0.51 c=+1.30
+θ=   6 shift_1         loc0 (high) HR=0.308 FA=0.155 d'=+0.51 c=+0.76
+θ=   6 shift_1         loc3 (low ) HR=0.145 FA=0.053 d'=+0.56 c=+1.34
+θ=   9 none            loc0 (high) HR=0.564 FA=0.235 d'=+0.88 c=+0.28
+θ=   9 none            loc3 (low ) HR=0.319 FA=0.049 d'=+1.19 c=+1.06
+θ=   9 shift_0         loc0 (high) HR=0.962 FA=0.946 d'=+0.16 c=-1.69
+θ=   9 shift_0         loc3 (low ) HR=0.616 FA=0.527 d'=+0.23 c=-0.18
+θ=   9 shift_0.25      loc0 (high) HR=0.933 FA=0.895 d'=+0.24 c=-1.38
+θ=   9 shift_0.25      loc3 (low ) HR=0.485 FA=0.231 d'=+0.70 c=+0.39
+θ=   9 shift_0.5       loc0 (high) HR=0.840 FA=0.708 d'=+0.45 c=-0.77
+θ=   9 shift_0.5       loc3 (low ) HR=0.367 FA=0.087 d'=+1.02 c=+0.85
+θ=   9 shift_0.75      loc0 (high) HR=0.682 FA=0.393 d'=+0.74 c=-0.10
+θ=   9 shift_0.75      loc3 (low ) HR=0.330 FA=0.042 d'=+1.28 c=+1.08
+θ=   9 shift_1         loc0 (high) HR=0.485 FA=0.158 d'=+0.97 c=+0.52
+θ=   9 shift_1         loc3 (low ) HR=0.297 FA=0.043 d'=+1.19 c=+1.13
+θ=  12 none            loc0 (high) HR=0.766 FA=0.242 d'=+1.42 c=-0.01
+θ=  12 none            loc3 (low ) HR=0.485 FA=0.055 d'=+1.56 c=+0.82
+θ=  12 shift_0         loc0 (high) HR=0.972 FA=0.935 d'=+0.39 c=-1.71
+θ=  12 shift_0         loc3 (low ) HR=0.668 FA=0.529 d'=+0.36 c=-0.25
+θ=  12 shift_0.25      loc0 (high) HR=0.955 FA=0.878 d'=+0.52 c=-1.43
+θ=  12 shift_0.25      loc3 (low ) HR=0.593 FA=0.243 d'=+0.93 c=+0.23
+θ=  12 shift_0.5       loc0 (high) HR=0.907 FA=0.697 d'=+0.81 c=-0.92
+θ=  12 shift_0.5       loc3 (low ) HR=0.521 FA=0.094 d'=+1.37 c=+0.63
+θ=  12 shift_0.75      loc0 (high) HR=0.815 FA=0.391 d'=+1.17 c=-0.31
+θ=  12 shift_0.75      loc3 (low ) HR=0.483 FA=0.054 d'=+1.57 c=+0.83
+θ=  12 shift_1         loc0 (high) HR=0.701 FA=0.151 d'=+1.56 c=+0.25
+θ=  12 shift_1         loc3 (low ) HR=0.448 FA=0.047 d'=+1.54 c=+0.90
+θ=  15 none            loc0 (high) HR=0.863 FA=0.249 d'=+1.77 c=-0.21
+θ=  15 none            loc3 (low ) HR=0.702 FA=0.046 d'=+2.21 c=+0.58
+θ=  15 shift_0         loc0 (high) HR=0.977 FA=0.939 d'=+0.44 c=-1.77
+θ=  15 shift_0         loc3 (low ) HR=0.735 FA=0.520 d'=+0.58 c=-0.34
+θ=  15 shift_0.25      loc0 (high) HR=0.972 FA=0.889 d'=+0.69 c=-1.56
+θ=  15 shift_0.25      loc3 (low ) HR=0.720 FA=0.234 d'=+1.31 c=+0.07
+θ=  15 shift_0.5       loc0 (high) HR=0.956 FA=0.712 d'=+1.14 c=-1.13
+θ=  15 shift_0.5       loc3 (low ) HR=0.718 FA=0.079 d'=+1.99 c=+0.42
+θ=  15 shift_0.75      loc0 (high) HR=0.912 FA=0.390 d'=+1.64 c=-0.54
+θ=  15 shift_0.75      loc3 (low ) HR=0.704 FA=0.042 d'=+2.26 c=+0.59
+θ=  15 shift_1         loc0 (high) HR=0.827 FA=0.151 d'=+1.97 c=+0.04
+θ=  15 shift_1         loc3 (low ) HR=0.679 FA=0.037 d'=+2.25 c=+0.66
+θ=  18 none            loc0 (high) HR=0.935 FA=0.221 d'=+2.29 c=-0.37
+θ=  18 none            loc3 (low ) HR=0.836 FA=0.049 d'=+2.63 c=+0.34
+θ=  18 test_gain0      loc0 (high) HR=0.993 FA=0.963 d'=+0.67 c=-2.12
+θ=  18 test_gain0      loc3 (low ) HR=0.867 FA=0.560 d'=+0.96 c=-0.63
+θ=  18 other_gain0     loc0 (high) HR=0.923 FA=0.190 d'=+2.31 c=-0.28
+θ=  18 other_gain0     loc3 (low ) HR=0.834 FA=0.046 d'=+2.65 c=+0.36
+θ=  18 test_focus      loc0 (high) HR=0.902 FA=0.146 d'=+2.35 c=-0.12
+θ=  18 test_focus      loc3 (low ) HR=0.808 FA=0.038 d'=+2.64 c=+0.45
+θ=  18 sample_gain0_L  loc0 (high) HR=0.924 FA=0.236 d'=+2.15 c=-0.36
+θ=  18 sample_gain0_L  loc3 (low ) HR=0.826 FA=0.047 d'=+2.61 c=+0.37
+θ=  18 sample_gain0_O  loc0 (high) HR=0.930 FA=0.193 d'=+2.34 c=-0.30
+θ=  18 sample_gain0_O  loc3 (low ) HR=0.827 FA=0.048 d'=+2.60 c=+0.36
+θ=  18 shift_0         loc0 (high) HR=0.986 FA=0.932 d'=+0.71 c=-1.84
+θ=  18 shift_0         loc3 (low ) HR=0.801 FA=0.516 d'=+0.80 c=-0.44
+θ=  18 shift_0.25      loc0 (high) HR=0.987 FA=0.870 d'=+1.10 c=-1.68
+θ=  18 shift_0.25      loc3 (low ) HR=0.837 FA=0.254 d'=+1.64 c=-0.16
+θ=  18 shift_0.5       loc0 (high) HR=0.980 FA=0.702 d'=+1.52 c=-1.29
+θ=  18 shift_0.5       loc3 (low ) HR=0.848 FA=0.090 d'=+2.37 c=+0.16
+θ=  18 shift_0.75      loc0 (high) HR=0.952 FA=0.364 d'=+2.01 c=-0.66
+θ=  18 shift_0.75      loc3 (low ) HR=0.845 FA=0.044 d'=+2.72 c=+0.35
+θ=  18 shift_1         loc0 (high) HR=0.903 FA=0.146 d'=+2.35 c=-0.12
+θ=  18 shift_1         loc3 (low ) HR=0.808 FA=0.038 d'=+2.64 c=+0.45
+θ=  24 none            loc0 (high) HR=0.991 FA=0.251 d'=+3.04 c=-0.85
+θ=  24 none            loc3 (low ) HR=0.896 FA=0.035 d'=+3.07 c=+0.28
+θ=  24 shift_0         loc0 (high) HR=0.983 FA=0.936 d'=+0.59 c=-1.82
+θ=  24 shift_0         loc3 (low ) HR=0.838 FA=0.495 d'=+1.00 c=-0.49
+θ=  24 shift_0.25      loc0 (high) HR=0.994 FA=0.884 d'=+1.32 c=-1.85
+θ=  24 shift_0.25      loc3 (low ) HR=0.909 FA=0.216 d'=+2.12 c=-0.28
+θ=  24 shift_0.5       loc0 (high) HR=0.992 FA=0.695 d'=+1.90 c=-1.46
+θ=  24 shift_0.5       loc3 (low ) HR=0.925 FA=0.072 d'=+2.91 c=+0.01
+θ=  24 shift_0.75      loc0 (high) HR=0.994 FA=0.383 d'=+2.81 c=-1.11
+θ=  24 shift_0.75      loc3 (low ) HR=0.897 FA=0.035 d'=+3.08 c=+0.27
+θ=  24 shift_1         loc0 (high) HR=0.990 FA=0.185 d'=+3.22 c=-0.71
+θ=  24 shift_1         loc3 (low ) HR=0.853 FA=0.031 d'=+2.92 c=+0.41
+θ=  30 none            loc0 (high) HR=0.999 FA=0.254 d'=+3.75 c=-1.21
+θ=  30 none            loc3 (low ) HR=0.874 FA=0.047 d'=+2.82 c=+0.26
+θ=  30 shift_0         loc0 (high) HR=0.998 FA=0.929 d'=+1.40 c=-2.17
+θ=  30 shift_0         loc3 (low ) HR=0.878 FA=0.516 d'=+1.13 c=-0.60
+θ=  30 shift_0.25      loc0 (high) HR=1.000 FA=0.892 d'=+2.05 c=-2.26
+θ=  30 shift_0.25      loc3 (low ) HR=0.951 FA=0.258 d'=+2.30 c=-0.50
+θ=  30 shift_0.5       loc0 (high) HR=1.000 FA=0.730 d'=+2.68 c=-1.95
+θ=  30 shift_0.5       loc3 (low ) HR=0.943 FA=0.076 d'=+3.01 c=-0.07
+θ=  30 shift_0.75      loc0 (high) HR=1.000 FA=0.408 d'=+3.52 c=-1.53
+θ=  30 shift_0.75      loc3 (low ) HR=0.887 FA=0.046 d'=+2.90 c=+0.24
+θ=  30 shift_1         loc0 (high) HR=1.000 FA=0.160 d'=+4.28 c=-1.15
+θ=  30 shift_1         loc3 (low ) HR=0.838 FA=0.036 d'=+2.79 c=+0.41
+θ=  42 none            loc0 (high) HR=0.999 FA=0.282 d'=+3.67 c=-1.26
+θ=  42 none            loc3 (low ) HR=0.839 FA=0.051 d'=+2.62 c=+0.32
+θ=  42 shift_0         loc0 (high) HR=0.994 FA=0.945 d'=+0.92 c=-2.05
+θ=  42 shift_0         loc3 (low ) HR=0.886 FA=0.508 d'=+1.19 c=-0.61
+θ=  42 shift_0.25      loc0 (high) HR=0.998 FA=0.874 d'=+1.73 c=-2.01
+θ=  42 shift_0.25      loc3 (low ) HR=0.946 FA=0.243 d'=+2.30 c=-0.45
+θ=  42 shift_0.5       loc0 (high) HR=0.999 FA=0.703 d'=+2.56 c=-1.81
+θ=  42 shift_0.5       loc3 (low ) HR=0.907 FA=0.091 d'=+2.66 c=+0.00
+θ=  42 shift_0.75      loc0 (high) HR=0.999 FA=0.420 d'=+3.29 c=-1.44
+θ=  42 shift_0.75      loc3 (low ) HR=0.846 FA=0.052 d'=+2.64 c=+0.30
+θ=  42 shift_1         loc0 (high) HR=1.000 FA=0.182 d'=+4.20 c=-1.19
+θ=  42 shift_1         loc3 (low ) HR=0.800 FA=0.044 d'=+2.55 c=+0.43
+[lm_perturb] -> /ix/jpherman/hermanj/rvit_zk/runs/existence/EDIT1H/loc0_s43/lm_perturb.json
+  theta= 18.0 loc0  HR=0.942 FA=0.247 d'=+2.252 c=-0.442
+  theta= 18.0 loc3  HR=0.814 FA=0.052 d'=+2.521 c=+0.366
+[lm_assay] -> /scratch/slurm-4671971/tmp7tmv040v/REFactor_ENDtr.json
+  theta= 18.0 loc0  HR=0.917 FA=0.108 d'=+2.623 c=-0.074
+  theta= 18.0 loc3  HR=0.869 FA=0.045 d'=+2.813 c=+0.284
+[lm_assay] -> /scratch/slurm-4671971/tmp7tmv040v/ENDactor_REFtr.json
+[ep_hybrid] -> /ix/jpherman/hermanj/rvit_zk/runs/existence/EDIT1H/loc0_s43/hyb_W.json
+t3_high {'auc_slot_E': 0.889, 'auc_slot_R': 0.906, 'auc_whole_E': 0.862, 'auc_whole_R': 0.908, 'gap_E': 7.796, 'gap_R': 9.976, 'lin_E': 7.101, 'lin_R': 6.669, 'd_ro': 3.599, 'd_rep': -3.167, 'reader_R_on_E': 4.258, 'amp_slot': 0.625, 'cos_slot': 0.925, 'amp_whole': 0.729, 'cos_whole': 0.907, 'proj_slot_E': 1.305, 'proj_slot_R': 2.255, 'sd_slot_E': 0.74, 'sd_slot_R': 0.983}
+t3_low {'auc_slot_E': 0.876, 'auc_slot_R': 0.899, 'auc_whole_E': 0.873, 'auc_whole_R': 0.899, 'gap_E': 5.201, 'gap_R': 5.917, 'lin_E': 3.484, 'lin_R': 3.254, 'd_ro': 0.937, 'd_rep': -0.707, 'reader_R_on_E': 2.645, 'amp_slot': 0.973, 'cos_slot': 0.956, 'amp_whole': 0.867, 'cos_whole': 0.913, 'proj_slot_E': 2.126, 'proj_slot_R': 2.285, 'sd_slot_E': 1.093, 'sd_slot_R': 1.069}
+t4_high {'auc_slot_E': 0.949, 'auc_slot_R': 0.966, 'auc_whole_E': 0.935, 'auc_whole_R': 0.966, 'gap_E': 9.647, 'gap_R': 12.845, 'lin_E': 9.209, 'lin_R': 7.852, 'd_ro': 6.201, 'd_rep': -4.844, 'reader_R_on_E': 4.609, 'amp_slot': 0.533, 'cos_slot': 0.909, 'amp_whole': 0.663, 'cos_whole': 0.919, 'proj_slot_E': 1.229, 'proj_slot_R': 2.535, 'sd_slot_E': 0.619, 'sd_slot_R': 0.915}
+t4_low {'auc_slot_E': 0.946, 'auc_slot_R': 0.953, 'auc_whole_E': 0.942, 'auc_whole_R': 0.951, 'gap_E': 11.779, 'gap_R': 12.513, 'lin_E': 6.769, 'lin_R': 6.23, 'd_ro': 2.081, 'd_rep': -1.542, 'reader_R_on_E': 4.913, 'amp_slot': 0.954, 'cos_slot': 0.962, 'amp_whole': 0.819, 'cos_whole': 0.914, 'proj_slot_E': 2.296, 'proj_slot_R': 2.503, 'sd_slot_E': 0.946, 'sd_slot_R': 0.952}
+[ep_geom] -> /ix/jpherman/hermanj/rvit_zk/runs/existence/EDIT1H/loc0_s43/geom_W.json
+[ep] DONE /ix/jpherman/hermanj/rvit_zk/runs/existence/EDIT1H/loc0_s43 Thu Nov  5 02:30:12 AM EST 2026

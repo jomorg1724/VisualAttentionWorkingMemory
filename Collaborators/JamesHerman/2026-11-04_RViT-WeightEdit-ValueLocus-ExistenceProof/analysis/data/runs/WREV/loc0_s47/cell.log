@@ -1,0 +1,42 @@
+[ep] arm=WREV run=/ix/jpherman/hermanj/rvit_zk/runs/existence/WREV/loc0_s47 start=/ix/jpherman/hermanj/rvit_zk/runs/whichloss/rscaled10/loc0_s47/ckpt_final.pt table_high=3 K=0.25 scale_all=1 eps=5000 flags=--qk-decay 0 --new-critic-head --critic-only host=gpu-n56.crc.pitt.edu Wed Nov  4 02:46:20 PM EST 2026
+[ep_train] freeze_actor=False qk_decay=0.0 route_change_ok=False
+[train_orig] low-value location 0 rewards scaled x0.25: {3: (5.769230769230769, 5.769230769230769), 0: (0.03525641025641026, 0.08012820512820513)}
+[train_orig] task=luo2015_sensitivity seed=47 particles=1201 V_max=5.7692 rewards=[5.769230769230769, 5.769230769230769, 0.03525641025641026, 0.08012820512820513]
+[train_orig] critic head re-initialised: 1201 particles over [0, 5.7692]
+[train_orig] INIT from /ix/jpherman/hermanj/rvit_zk/runs/whichloss/rscaled10/loc0_s47/ckpt_final.pt (episode 199999, theta 35.0); replay buffer empty
+[train_orig] {'ep': 0, 'theta': 35.0, 'acc': 1.0, 'rr': '', 'hit': '', 'fa_foil': '', 'fa_none': '', 'prem': 0.0, 'hr0': 1.0, 'fa0': '', 'hr3': '', 'fa3': ''} 141 ep/min
+[train_orig] {'ep': 1000, 'theta': 35.0, 'acc': 0.783, 'rr': '', 'hit': '', 'fa_foil': '', 'fa_none': '', 'prem': 0.026, 'hr0': 0.739, 'fa0': 0.107, 'hr3': 0.674, 'fa3': 0.094} 26 ep/min
+[train_orig] {'ep': 2000, 'theta': 35.0, 'acc': 0.775, 'rr': '', 'hit': '', 'fa_foil': '', 'fa_none': '', 'prem': 0.026, 'hr0': 0.725, 'fa0': 0.114, 'hr3': 0.69, 'fa3': 0.109} 26 ep/min
+[train_orig] {'ep': 3000, 'theta': 35.0, 'acc': 0.78, 'rr': '', 'hit': '', 'fa_foil': '', 'fa_none': '', 'prem': 0.024, 'hr0': 0.705, 'fa0': 0.092, 'hr3': 0.688, 'fa3': 0.101} 26 ep/min
+[train_orig] {'ep': 4000, 'theta': 35.0, 'acc': 0.783, 'rr': '', 'hit': '', 'fa_foil': '', 'fa_none': '', 'prem': 0.02, 'hr0': 0.691, 'fa0': 0.078, 'hr3': 0.677, 'fa3': 0.093} 26 ep/min
+[train_orig] done: /ix/jpherman/hermanj/rvit_zk/runs/existence/WREV/loc0_s47/ckpt_final.pt theta=35.0
+  theta=  3.0 loc0  HR=0.140 FA=0.088 d'=+0.274 c=+1.217
+  theta=  3.0 loc3  HR=0.150 FA=0.110 d'=+0.189 c=+1.130
+  theta=  5.0 loc0  HR=0.208 FA=0.097 d'=+0.488 c=+1.056
+  theta=  5.0 loc3  HR=0.189 FA=0.102 d'=+0.390 c=+1.078
+  theta=  7.0 loc0  HR=0.329 FA=0.100 d'=+0.838 c=+0.862
+  theta=  7.0 loc3  HR=0.298 FA=0.109 d'=+0.703 c=+0.882
+  theta=  9.0 loc0  HR=0.439 FA=0.099 d'=+1.133 c=+0.719
+  theta=  9.0 loc3  HR=0.372 FA=0.107 d'=+0.919 c=+0.785
+  theta= 11.0 loc0  HR=0.561 FA=0.094 d'=+1.469 c=+0.581
+  theta= 11.0 loc3  HR=0.466 FA=0.110 d'=+1.139 c=+0.655
+  theta= 13.0 loc0  HR=0.696 FA=0.089 d'=+1.860 c=+0.418
+  theta= 13.0 loc3  HR=0.655 FA=0.120 d'=+1.574 c=+0.390
+  theta= 15.0 loc0  HR=0.816 FA=0.094 d'=+2.213 c=+0.208
+  theta= 15.0 loc3  HR=0.750 FA=0.102 d'=+1.944 c=+0.298
+  theta= 18.0 loc0  HR=0.905 FA=0.090 d'=+2.649 c=+0.014
+  theta= 18.0 loc3  HR=0.869 FA=0.109 d'=+2.355 c=+0.056
+  theta= 21.0 loc0  HR=0.976 FA=0.092 d'=+3.305 c=-0.323
+  theta= 21.0 loc3  HR=0.953 FA=0.121 d'=+2.846 c=-0.255
+  theta= 24.0 loc0  HR=0.995 FA=0.100 d'=+3.847 c=-0.642
+  theta= 24.0 loc3  HR=0.985 FA=0.105 d'=+3.427 c=-0.461
+  theta= 30.0 loc0  HR=1.000 FA=0.093 d'=+4.794 c=-1.078
+  theta= 30.0 loc3  HR=0.998 FA=0.104 d'=+4.133 c=-0.805
+  theta= 36.0 loc0  HR=1.000 FA=0.090 d'=+4.813 c=-1.067
+  theta= 36.0 loc3  HR=0.999 FA=0.101 d'=+4.559 c=-1.005
+  theta= 42.0 loc0  HR=1.000 FA=0.094 d'=+4.792 c=-1.078
+  theta= 42.0 loc3  HR=0.999 FA=0.105 d'=+4.340 c=-0.914
+[lm_assay] -> /ix/jpherman/hermanj/rvit_zk/runs/existence/WREV/loc0_s47/roc_ckpt_final.json
+WREV/loc0_s47 high: AUC_H 0.904 mid +0.082 dn 1.84 slope 1.69 icpt -3.88 | low: AUC_H 0.916 mid +0.063 dn 1.86 slope 3.29 icpt -3.42
+[lm_readout_probe] -> /ix/jpherman/hermanj/rvit_zk/runs/existence/WREV/loc0_s47/lmro_final.json
+[ep] DONE /ix/jpherman/hermanj/rvit_zk/runs/existence/WREV/loc0_s47 Wed Nov  4 06:04:37 PM EST 2026
